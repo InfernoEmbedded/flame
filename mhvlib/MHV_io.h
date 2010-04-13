@@ -101,7 +101,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 	} while(0)
 
 #define _mhv_setInput(mhvDir,mhvOutput,mhvInput,mhvBit) \
-	*mhvDir |= _BV(mhvBit); \
+	*mhvDir &= ~_BV(mhvBit); \
 	*mhvOutput &= ~_BV(mhvBit);
 
 #define mhv_setInputPullup(mhvParms) \
