@@ -4,6 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../MHV_AD.cpp \
 ../MHV_HardwareSerial.cpp \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
@@ -11,6 +12,7 @@ CPP_SRCS += \
 ../MHV_Timer8.cpp 
 
 OBJS += \
+./MHV_AD.o \
 ./MHV_HardwareSerial.o \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
@@ -18,6 +20,7 @@ OBJS += \
 ./MHV_Timer8.o 
 
 CPP_DEPS += \
+./MHV_AD.d \
 ./MHV_HardwareSerial.d \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \
@@ -29,7 +32,7 @@ CPP_DEPS += \
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"A:\eclipse\mhvlib" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega168 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
+	avr-g++ -I"A:\eclipse\mhvlib" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega1280 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
