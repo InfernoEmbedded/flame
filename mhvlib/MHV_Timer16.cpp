@@ -29,12 +29,6 @@
 #include "MHV_Timer16.h"
 #include <avr/interrupt.h>
 
-#if 1
-#include "MHV_HardwareSerial.h"
-#include <stdio.h>
-extern MHV_HardwareSerial serial;
-#endif
-
 /* Create a new timer
  * param: time the time in microseconds
  */
@@ -149,9 +143,6 @@ void MHV_Timer16::setOutput2(uint16_t value) {
 	uint8_t reg = SREG;
 	cli();
 
-	char buf[80];
-	snprintf(buf, sizeof(buf), "setOutput2: Setting register at %p to %d\r\n", _outputCompare2, value);
-	serial.busyWrite(buf);
 	*_outputCompare2 = value;
 
 	SREG = reg;
