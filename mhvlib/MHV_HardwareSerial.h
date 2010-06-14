@@ -45,7 +45,6 @@ ISR(mhvTxVect) { \
 	mhvHardwareSerial.tx(); \
 }
 
-
 class MHV_HardwareSerial {
 private:
 	MHV_RingBuffer *_rxBuffer;

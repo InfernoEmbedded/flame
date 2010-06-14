@@ -29,26 +29,27 @@
 #include "MHV_Timer16.h"
 #include <avr/interrupt.h>
 
+#if 1
+#include "MHV_HardwareSerial.h"
+#include <stdio.h>
+extern MHV_HardwareSerial serial;
+#endif
+
 /* Create a new timer
  * param: time the time in microseconds
  */
 MHV_Timer16::MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *controlRegB, volatile uint8_t *controlRegC,
-		volatile uint16_t *overflowReg1, volatile uint16_t *overflowReg2, volatile uint16_t *overflowReg3,
-		volatile uint16_t *counter,	volatile uint8_t *interrupt,
-		uint8_t interruptEnable1, uint8_t interruptEnable2, uint8_t interruptEnable3,
-		uint8_t generationMode) {
+		volatile uint16_t *outputCompare1, volatile uint16_t *outputCompare2, volatile uint16_t *outputCompare3,
+		volatile uint16_t *counter,	volatile uint8_t *interrupt, volatile uint16_t *inputCapture1) {
 	_controlRegA = controlRegA;
 	_controlRegB = controlRegB;
 	_controlRegC = controlRegC;
-	_overflowReg1 = overflowReg1;
-	_overflowReg2 = overflowReg2;
-	_overflowReg2 = overflowReg3;
+	_outputCompare1 = outputCompare1;
+	_outputCompare2 = outputCompare2;
+	_outputCompare3 = outputCompare3;
 	_counter = counter;
 	_interrupt = interrupt;
-	_interruptEnable1 = interruptEnable1;
-	_interruptEnable2 = interruptEnable2;
-	_interruptEnable3 = interruptEnable3;
-	_generationMode = generationMode;
+	_inputCapture1 = inputCapture1;
 	_counterSize = 16;
 	_mode = MHV_TIMER_REPETITIVE;
 	_type = MHV_TIMER_TYPE_5_PRESCALERS;
@@ -63,53 +64,189 @@ uint16_t MHV_Timer16::current(void) {
 	return ret;
 }
 
+/* Set the generation mode
+ * param	mode	the mode to run the timer in
+ */
+void MHV_Timer16::setGenerationMode(void) {
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+		*_controlRegA = (*_controlRegA & 0xfc);
+		*_controlRegB = (*_controlRegB & 0xe7) | _BV(WGM12);
+		break;
+	case MHV_TIMER_16_PWM_PHASE_CORRECT:
+		*_controlRegA = (*_controlRegA & 0xfc);
+		*_controlRegB = (*_controlRegB & 0xe7) | _BV(WGM13);
+		break;
+	case MHV_TIMER_16_PWM_FAST:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM11);
+		*_controlRegB = (*_controlRegB & 0xe7) | _BV(WGM13) | _BV(WGM12);
+		break;
+	case MHV_TIMER_16_PWM_PHASE_FREQ_CORRECT: // Always use ICR for top
+		*_controlRegA = (*_controlRegA & 0xfc);
+		*_controlRegB = (*_controlRegB & 0xe7) | _BV(WGM13);
+		break;
+	default:
+		break;
+	}
+}
+
+/* Get the number of timer cycles available
+ */
+uint16_t MHV_Timer16::getTop(void) {
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+		return *_outputCompare1;
+	case MHV_TIMER_16_PWM_PHASE_CORRECT:
+	case MHV_TIMER_16_PWM_FAST:
+	case MHV_TIMER_16_PWM_PHASE_FREQ_CORRECT:
+		return *_inputCapture1;
+	default:
+		return 0;
+	}
+}
+
+/* Set the number of timer cycles available
+*/
+void MHV_Timer16::setTop(uint16_t value) {
+	uint8_t reg;
+
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+		reg = SREG;
+		cli();
+
+		*_outputCompare1 = value;
+
+		SREG = reg;
+		break;
+	case MHV_TIMER_16_PWM_PHASE_CORRECT:
+	case MHV_TIMER_16_PWM_FAST:
+	case MHV_TIMER_16_PWM_PHASE_FREQ_CORRECT:
+		reg = SREG;
+		cli();
+
+		*_inputCapture1 = value;
+
+		SREG = reg;
+	default:
+		break;
+	}
+}
+
+void MHV_Timer16::setOutput1(uint16_t value) {
+	uint8_t reg = SREG;
+	cli();
+
+	*_outputCompare1 = value;
+
+	SREG = reg;
+}
+
+void MHV_Timer16::setOutput2(uint16_t value) {
+	uint8_t reg = SREG;
+	cli();
+
+	char buf[80];
+	snprintf(buf, sizeof(buf), "setOutput2: Setting register at %p to %d\r\n", _outputCompare2, value);
+	serial.busyWrite(buf);
+	*_outputCompare2 = value;
+
+	SREG = reg;
+}
+
+void MHV_Timer16::setOutput3(uint16_t value) {
+	uint8_t reg = SREG;
+	cli();
+
+	*_outputCompare3 = value;
+
+	SREG = reg;
+}
+
+uint16_t MHV_Timer16::getOutput1(void) {
+	return *_outputCompare1;
+}
+
+uint16_t MHV_Timer16::getOutput2(void) {
+	return *_outputCompare2;
+}
+
+uint16_t MHV_Timer16::getOutput3(void) {
+	return *_outputCompare3;
+}
+
+void MHV_Timer16::connectOutput1(MHV_TIMER_CONNECT_TYPE type) {
+	*_controlRegA = (*_controlRegA & 0x3F) | (type << 6);
+}
+
+void MHV_Timer16::connectOutput2(MHV_TIMER_CONNECT_TYPE type) {
+	*_controlRegA = (*_controlRegA & 0xCF) | (type << 4);
+}
+
+void MHV_Timer16::connectOutput3(MHV_TIMER_CONNECT_TYPE type) {
+	*_controlRegA = (*_controlRegA & 0xF3) | (type << 2);
+}
+
 void MHV_Timer16::disable(void) {
-	*_controlRegB &= ~_generationMode;
-	*_interrupt &= ~_interruptEnable1;
+	uint8_t reg = SREG;
+	cli();
+
+	_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
+	*_interrupt &= ~_BV(OCIE1A);
+
 	if (_haveTime2) {
-		*_interrupt &= ~_interruptEnable2;
+		*_interrupt &= ~_BV(OCIE1B);
 	}
+
 	if (_haveTime3) {
-		*_interrupt &= ~_interruptEnable3;
+		*_interrupt &= ~_BV(OCIE1C);
 	}
+
+	SREG = reg;
 }
 
 void MHV_Timer16::enable(void) {
 	uint8_t reg = SREG;
 	cli();
-	*_counter = 0;
-	SREG = reg;
-	*_controlRegB |= _generationMode;
-	*_interrupt = _interruptEnable1;
-
-	if (_haveTime2) {
-		*_interrupt |= _interruptEnable2;
-	}
-	if (_haveTime3) {
-		*_interrupt |= _interruptEnable3;
-	}
-}
-
-void MHV_Timer16::setPeriods(uint8_t prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
-	uint8_t reg = SREG;
-	cli();
-	*_controlRegA = 0;
-	*_controlRegB = prescaler | _generationMode;
 
 	*_counter = 0;
-	*_overflowReg1 = time1;
-	if (time2) {
-		*_overflowReg2 = time2;
+	_setPrescaler(_prescaler);
+	setGenerationMode();
+	if (_triggerFunction1) {
+		*_interrupt |= _BV(OCIE1A);
+	}
+	if (*_outputCompare2 && _triggerFunction2) {
+		*_interrupt |= _BV(OCIE1B);
 		_haveTime2 = true;
 	} else {
 		_haveTime2 = false;
 	}
-	if (time3) {
-		*_overflowReg3 = time3;
+
+	if (*_outputCompare3 && _triggerFunction3) {
+		*_interrupt |= _BV(OCIE1C);
 		_haveTime3 = true;
 	} else {
 		_haveTime3 = false;
 	}
+
+	SREG = reg;
+}
+
+void MHV_Timer16::setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
+	uint8_t reg = SREG;
+	cli();
+
+	_prescaler = prescaler;
+	_setPrescaler(prescaler);
+
+	*_counter = 0;
+	*_outputCompare1 = time1;
+	*_outputCompare2 = time2;
+	*_outputCompare3 = time3;
+
 	SREG = reg;
 }
 
@@ -121,7 +258,7 @@ extern MHV_HardwareSerial serial;
 /* Times are in microseconds
  */
 void MHV_Timer16::setPeriods(uint32_t time1, uint32_t time2, uint32_t time3) {
-	uint8_t prescaler;
+	MHV_TIMER_PRESCALER prescaler;
 	uint16_t factor = 0;
 	uint32_t maxTime;
 
@@ -138,15 +275,15 @@ void MHV_Timer16::setPeriods(uint32_t time1, uint32_t time2, uint32_t time3) {
 		maxTime = time3;
 	}
 
-	setPrescaler(maxTime, &prescaler, &factor);
+	calculatePrescaler(maxTime, &prescaler, &factor);
 	if (time1) {
-		setTop(&time1, factor);
+		calculateTop(&time1, factor);
 	}
 	if (time2) {
-		setTop(&time2, factor);
+		calculateTop(&time2, factor);
 	}
 	if (time3) {
-		setTop(&time3, factor);
+		calculateTop(&time3, factor);
 	}
 	setPeriods(prescaler, time1, time2, time3);
 }

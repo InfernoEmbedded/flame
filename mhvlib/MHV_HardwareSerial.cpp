@@ -123,7 +123,7 @@ void MHV_HardwareSerial::setSpeed(unsigned long baud) {
 		*_ubrr = (uint16_t)(F_CPU / 8 / baud - 1) / 2;
 	}
 
-	*_ucsrb |= _BV( _rxen) | _BV( _txen) | _BV( _rxcie) | _BV( _txcie);
+	*_ucsrb |= _BV( _rxen) | _BV( _txen) | _BV( _rxcie);
 }
 
 /* If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
@@ -178,9 +178,11 @@ bool MHV_HardwareSerial::canSend() {
 }
 
 uint8_t MHV_HardwareSerial::busyWrite(char c) {
-//	if (!canSend()) {
-//		return 1;
-//	}
+	if (!canSend()) {
+		return 1;
+	}
+	*_ucsrb &= ~_BV( _txcie);
+
 	while (!((*_ucsra) & (1 << _udre))) {}
 
 	*_udr = c;
@@ -195,12 +197,12 @@ uint8_t MHV_HardwareSerial::busyWrite_P(const char *buffer) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb &= ~_BV( _txcie);
 
 	p = buffer;
 	char c = pgm_read_byte(p++);
 	while (c != '\0') {
-		while (!((*_ucsra) & (1 << _udre)))
-			;
+		while (!((*_ucsra) & (1 << _udre))) {}
 
 		*_udr = c;
 		c = pgm_read_byte(p++);
@@ -217,10 +219,10 @@ uint8_t MHV_HardwareSerial::busyWrite(const char *buffer) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb &= ~_BV( _txcie);
 
 	for (p = buffer; *p != '\0';) {
-		while (!((*_ucsra) & (1 << _udre)))
-			;
+		while (!((*_ucsra) & (1 << _udre))) {}
 
 		*_udr = *(p++);
 	}
@@ -249,6 +251,7 @@ uint8_t MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb &= ~_BV( _txcie);
 
 	for (i = 0; i < length; i++) {
 		/* Don't need to check return values as we have already checked up front
@@ -279,6 +282,7 @@ uint8_t MHV_HardwareSerial::asyncWrite_P(const char *buffer) {
 	}
 	_txBufferLength = MHV_SENDING_STRING;
 	_txBufferProgmem = true;
+	*_ucsrb |= _BV( _txcie);
 
 	// Start writing
 	char c = pgm_read_byte(buffer);
@@ -304,6 +308,8 @@ uint8_t MHV_HardwareSerial::asyncWrite(const char *buffer) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb |= _BV( _txcie);
+
 	_txBufferLength = MHV_SENDING_STRING;
 	_txBufferProgmem = false;
 
@@ -330,6 +336,8 @@ uint8_t MHV_HardwareSerial::asyncWrite_P(const char *buffer, uint16_t length) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb |= _BV( _txcie);
+
 	_txBufferProgmem = true;
 
 	// Start writing
@@ -357,6 +365,7 @@ uint8_t MHV_HardwareSerial::asyncWrite(const char *buffer, uint16_t length) {
 	if (!canSend()) {
 		return 1;
 	}
+	*_ucsrb |= _BV( _txcie);
 
 	_txBufferProgmem = false;
 

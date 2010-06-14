@@ -54,7 +54,8 @@ void MHV_ServoControl::refreshServos(void *data) {
 		_nextServoIndex = 0;
 		// Set up the timer to end the first servo pulse
 		// Note that the timer is reset to 0 when the interrupt is triggered, so the current value is how long to reach this point
-		_timer->setPeriods(1, _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer->current(), 0, 0);
+		_timer->setPeriods(MHV_TIMER_PRESCALER_5_1,
+				_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer->current(), 0, 0);
 		_timer->enable();
 		return;
 	}
@@ -76,7 +77,8 @@ void MHV_ServoControl::refreshServos(void *data) {
 		if ((uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex)].position >
 				(uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer->current()) {
 
-			_timer->setPeriods(1, _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer->current(), 0, 0);
+			_timer->setPeriods(MHV_TIMER_PRESCALER_5_1,
+					_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer->current(), 0, 0);
 			_timer->enable();
 			return;
 		}

@@ -32,18 +32,18 @@
 #include <avr/io.h>
 
 // 8 bit timers
-//					 type,                        ctrlRegA,ctrlRegB,overflow1,overflow2,counter,interrupt,intEnable1, intEnable2, mode
-#define MHV_TIMER8_0 MHV_TIMER_TYPE_5_PRESCALERS, &TCCR0A, &TCCR0B, &OCR0A,   &OCR0B,   &TCNT0, &TIMSK0,  _BV(OCIE0A),_BV(OCIE0B), _BV(WGM01)
-#define MHV_TIMER8_2 MHV_TIMER_TYPE_7_PRESCALERS, &TCCR2A, &TCCR2B, &OCR2A,   &OCR2B,   &TCNT2, &TIMSK2,  _BV(OCIE2A),_BV(OCIE2B), _BV(WGM21)
+//					 type,                        ctrlRegA,ctrlRegB,overflow1,overflow2,counter,interrupt
+#define MHV_TIMER8_0 MHV_TIMER_TYPE_5_PRESCALERS, &TCCR0A, &TCCR0B, &OCR0A,   &OCR0B,   &TCNT0, &TIMSK0
+#define MHV_TIMER8_2 MHV_TIMER_TYPE_7_PRESCALERS, &TCCR2A, &TCCR2B, &OCR2A,   &OCR2B,   &TCNT2, &TIMSK2
 
-#define MHV_TIMER0_INTERRUPTS SIG_OUTPUT_COMPARE0A, SIG_OUTPUT_COMPARE0B
-#define MHV_TIMER2_INTERRUPTS SIG_OUTPUT_COMPARE2A, SIG_OUTPUT_COMPARE2B
+#define MHV_TIMER0_INTERRUPTS SIG_OUTPUT_COMPARE0A, SIG_OUTPUT_COMPARE0B, 0
+#define MHV_TIMER2_INTERRUPTS SIG_OUTPUT_COMPARE2A, SIG_OUTPUT_COMPARE2B, 0
 
 // 16 bit timers
-//					  ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,counter,interrupt,intEnable1, intEnable2, intEnable3,   mode
-#define MHV_TIMER16_1 &TCCR1A, &TCCR1B, 0,       &OCR1A,   &OCR1B,   0,        &TCNT1, &TIMSK1,  _BV(OCIE1A),_BV(OCIE1B), 0,           _BV(WGM12)
+//					  ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,counter,interrupt,inputCapture1
+#define MHV_TIMER16_1 &TCCR1A, &TCCR1B, 0,       &OCR1A,   &OCR1B,   0,        &TCNT1, &TIMSK1,  &ICR1
 
-#define MHV_TIMER1_INTERRUPTS SIG_OUTPUT_COMPARE1A, SIG_OUTPUT_COMPARE1B
+#define MHV_TIMER1_INTERRUPTS SIG_OUTPUT_COMPARE1A, SIG_OUTPUT_COMPARE1B, 0
 
 
 // USART
@@ -51,7 +51,28 @@
 #define MHV_USART0 &UBRR0, &UCSR0A, &UCSR0B, &UDR0, RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
 #define MHV_USART0_INTERRUPTS USART_RX_vect, USART_TX_vect
 
-//					Dir,	Output,	Input,	Bit, Interrupt
+
+#define MHV_AD_REFERENCE_AREF	0x00 << 6
+#define MHV_AD_REFERENCE_AVCC	0x01 << 6
+#define MHV_AD_REFERENCE_1V1	0x03 << 6
+
+#define MHV_AD_CHANNEL_0			0x00
+#define MHV_AD_CHANNEL_1			0x01
+#define MHV_AD_CHANNEL_2			0x02
+#define MHV_AD_CHANNEL_3			0x03
+#define MHV_AD_CHANNEL_4			0x04
+#define MHV_AD_CHANNEL_5			0x05
+#define MHV_AD_CHANNEL_6			0x06
+#define MHV_AD_CHANNEL_7			0x07
+#define MHV_AD_CHANNEL_8			0x08
+#define MHV_AD_TEMPERATURE			0x08
+#define MHV_AD_CHANNEL_1V1			0xfe
+#define MHV_AD_CHANNEL_0V			0xff
+
+// Power reduction register for ADC
+#define MHV_AD_PRR	PRR
+
+//					Dir,	Output,	Input,	Bit
 #define MHV_PIN_B0	&DDRB,	&PORTB, &PINB,	0
 #define MHV_PIN_B1	&DDRB,	&PORTB, &PINB,	1
 #define MHV_PIN_B2	&DDRB,	&PORTB, &PINB,	2

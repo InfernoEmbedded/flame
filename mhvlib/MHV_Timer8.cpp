@@ -33,25 +33,32 @@
 /* Create a new timer
  * param: time the time in microseconds
  */
-MHV_Timer8::MHV_Timer8(enum MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
+MHV_Timer8::MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 		volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
-		volatile uint8_t *interrupt, uint8_t interruptEnable1, uint8_t interruptEnable2,
-		uint8_t generationMode) {
+		volatile uint8_t *interrupt) {
 	_controlRegA = controlRegA;
 	_controlRegB = controlRegB;
-	_overflowReg1 = overflowReg1;
-	_overflowReg2 = overflowReg2;
+	_outputCompare1 = overflowReg1;
+	_outputCompare2 = overflowReg2;
 	_counter = counter;
 	_interrupt = interrupt;
-	_interruptEnable1 = interruptEnable1;
-	_interruptEnable2 = interruptEnable2;
-	_generationMode = generationMode;
 	_mode = MHV_TIMER_REPETITIVE;
 	_type = type;
 	_counterSize = 8;
+	_prescaler = MHV_TIMER_PRESCALER_DISABLED;
 }
 
 MHV_Timer8::MHV_Timer8() {};
+
+uint8_t MHV_Timer8::current(void) {
+	uint8_t ret;
+	uint8_t reg = SREG;
+	cli();
+	ret = *_counter;
+	SREG = reg;
+	return ret;
+}
+
 
 /* Set the prescaler
  * param	time		the time in timer ticks
@@ -59,7 +66,7 @@ MHV_Timer8::MHV_Timer8() {};
  * param	factor		the prescale factor
  * return 0 on success
  */
-uint8_t MHV_Timer8::setPrescaler(uint32_t time, uint8_t *prescaler, uint16_t *factor) {
+uint8_t MHV_Timer8::calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *prescaler, uint16_t *factor) {
 	uint32_t limit = 0;
 	if (8 == _counterSize) {
 		limit = 256L;
@@ -70,19 +77,19 @@ uint8_t MHV_Timer8::setPrescaler(uint32_t time, uint8_t *prescaler, uint16_t *fa
 	switch (_type) {
 	case MHV_TIMER_TYPE_5_PRESCALERS:
 		if (time <= limit) {
-			*prescaler = 1;
+			*prescaler = MHV_TIMER_PRESCALER_5_1;
 			*factor = 1;
 		} else if (time <= limit * 8) {
-			*prescaler = 2;
+			*prescaler = MHV_TIMER_PRESCALER_5_8;
 			*factor = 8;
 		} else if (time <= limit * 64) {
-			*prescaler = 3;
+			*prescaler = MHV_TIMER_PRESCALER_5_64;
 			*factor = 64;
 		} else if (time <= limit * 256) {
-			*prescaler = 4;
+			*prescaler = MHV_TIMER_PRESCALER_5_256;
 			*factor = 256;
 		} else if (time <= limit * 1024) {
-			*prescaler = 5;
+			*prescaler = MHV_TIMER_PRESCALER_5_1024;
 			*factor = 1024;
 		} else {
 			return 1;
@@ -91,25 +98,25 @@ uint8_t MHV_Timer8::setPrescaler(uint32_t time, uint8_t *prescaler, uint16_t *fa
 
 	case MHV_TIMER_TYPE_7_PRESCALERS:
 		if (time <= limit) {
-			*prescaler = 1;
+			*prescaler = MHV_TIMER_PRESCALER_7_1;
 			*factor = 1;
 		} else if (time <= limit * 8) {
-			*prescaler = 2;
+			*prescaler = MHV_TIMER_PRESCALER_7_8;
 			*factor = 8;
 		} else if (time <= limit * 32) {
-			*prescaler = 3;
+			*prescaler = MHV_TIMER_PRESCALER_7_32;
 			*factor = 32;
 		} else if (time <= limit * 64) {
-			*prescaler = 4;
+			*prescaler = MHV_TIMER_PRESCALER_7_64;
 			*factor = 64;
 		} else if (time <= limit * 128) {
-			*prescaler = 5;
+			*prescaler = MHV_TIMER_PRESCALER_7_128;
 			*factor = 128;
 		} else if (time <= limit * 256) {
-			*prescaler = 6;
+			*prescaler = MHV_TIMER_PRESCALER_7_256;
 			*factor = 256;
 		} else if (time <= limit * 1024) {
-			*prescaler = 7;
+			*prescaler = MHV_TIMER_PRESCALER_7_1024;
 			*factor = 1024;
 		} else {
 			return 1;
@@ -121,11 +128,10 @@ uint8_t MHV_Timer8::setPrescaler(uint32_t time, uint8_t *prescaler, uint16_t *fa
 }
 
 /* Calculate the top register
- * param	time 		the time in timer ticks
+ * param	time 		input: the time in timer ticks, output: the scaled timer ticks
  * param	factor		the prescaler factor
- * param	top			the top register to set
  */
-void MHV_Timer8::setTop(uint32_t *time, uint16_t factor) {
+void MHV_Timer8::calculateTop(uint32_t *time, uint16_t factor) {
 	*time = *time / factor - 1;
 	return;
 }
@@ -133,7 +139,7 @@ void MHV_Timer8::setTop(uint32_t *time, uint16_t factor) {
 /* Times are in microseconds
  */
 void MHV_Timer8::setPeriods(uint32_t time1, uint32_t time2) {
-	uint8_t prescaler;
+	MHV_TIMER_PRESCALER prescaler;
 	uint16_t factor;
 	uint32_t maxTime;
 
@@ -146,10 +152,61 @@ void MHV_Timer8::setPeriods(uint32_t time1, uint32_t time2) {
 		maxTime = time2;
 	}
 
-	setPrescaler(maxTime, &prescaler, &factor);
-	setTop(&time1, factor);
-	setTop(&time2, factor);
+	calculatePrescaler(maxTime, &prescaler, &factor);
+	calculateTop(&time1, factor);
+	calculateTop(&time2, factor);
 	setPeriods(prescaler, time1, time2);
+}
+
+/* Set the prescaler (internal use only)
+ * param	prescaler	the prescaler value (only the lowest 3 bits may be set)
+ */
+void MHV_Timer8::_setPrescaler(MHV_TIMER_PRESCALER prescaler) {
+	*_controlRegB = (*_controlRegB & 0xf8) | prescaler;
+}
+
+/* Get the prescaler
+ * return the prescaler value
+ */
+MHV_TIMER_PRESCALER MHV_Timer8::getPrescaler(void) {
+	return (MHV_TIMER_PRESCALER)(*_controlRegB & 0x07);
+}
+
+/* set the prescaler
+ * param 	prescaler	the prescaler value
+ */
+void MHV_Timer8::setPrescaler(MHV_TIMER_PRESCALER prescaler) {
+	_prescaler = prescaler;
+}
+
+/* Set the generation mode
+ */
+void MHV_Timer8::setGenerationMode() {
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01);
+		*_controlRegB = (*_controlRegB & 0xf7);
+		break;
+	case MHV_TIMER_8_PWM_PHASE_CORRECT_VAR_FREQ:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM00);
+		*_controlRegB = (*_controlRegB & 0xf7) | _BV(WGM02);
+		break;
+	case MHV_TIMER_8_PWM_PHASE_CORRECT_2_OUTPUT:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01) | _BV(WGM00);
+		*_controlRegB = (*_controlRegB & 0xf7);
+		break;
+	case MHV_TIMER_8_PWM_FAST_VAR_FREQ:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01) | _BV(WGM00);
+		*_controlRegB = (*_controlRegB & 0xf7) | _BV(WGM02);
+		break;
+	case MHV_TIMER_8_PWM_FAST_2_OUTPUT:
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01) | _BV(WGM00);
+		*_controlRegB = (*_controlRegB & 0xf7);
+		break;
+	default:
+		break;
+	}
 }
 
 /* Set the overflow periods
@@ -157,34 +214,90 @@ void MHV_Timer8::setPeriods(uint32_t time1, uint32_t time2) {
  * param	time1		the first time in prescaled timer ticks
  * param	time2		the second time in prescaled timer ticks
  */
-void MHV_Timer8::setPeriods(uint8_t prescaler, uint8_t time1, uint8_t time2) {
+void MHV_Timer8::setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) {
 	uint8_t reg = SREG;
 	cli();
-
-	if (_controlRegB) {
-		*_controlRegA &= ~_generationMode;
-		*_controlRegB = prescaler;
-	} else {
-		*_controlRegA = ~_generationMode & prescaler;
-	}
+	_prescaler = prescaler;
+	_setPrescaler(prescaler);
 
 	*_counter = 0;
-	*_overflowReg1 = time1;
-	*_overflowReg2 = time2;
+	*_outputCompare1 = time1;
+	*_outputCompare2 = time2;
 
 	SREG = reg;
 }
 
+/* Get the number of timer cycles available
+ */
+uint8_t MHV_Timer8::getTop(void) {
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+	case MHV_TIMER_8_PWM_PHASE_CORRECT_VAR_FREQ:
+	case MHV_TIMER_8_PWM_FAST_VAR_FREQ:
+		return *_outputCompare1;
+	case MHV_TIMER_8_PWM_PHASE_CORRECT_2_OUTPUT:
+	case MHV_TIMER_8_PWM_FAST_2_OUTPUT:
+		return 255;
+	default:
+		return 0;
+	}
+}
 
+/* Set the number of timer cycles available
+*/
+void MHV_Timer8::setTop(uint8_t value) {
+	switch (_mode) {
+	case MHV_TIMER_ONE_SHOT:
+	case MHV_TIMER_REPETITIVE:
+	case MHV_TIMER_8_PWM_PHASE_CORRECT_VAR_FREQ:
+	case MHV_TIMER_8_PWM_FAST_VAR_FREQ:
+		*_outputCompare1 = value;
+		break;
+	default:
+		return;
+	}
+}
+
+void MHV_Timer8::setOutput1(uint8_t value) {
+	*_outputCompare1 = value;
+}
+
+void MHV_Timer8::setOutput2(uint8_t value) {
+	*_outputCompare2 = value;
+}
+
+uint8_t MHV_Timer8::getOutput1(void) {
+	return *_outputCompare1;
+}
+
+uint8_t MHV_Timer8::getOutput2(void) {
+	return *_outputCompare2;
+}
+
+void MHV_Timer8::connectOutput1(MHV_TIMER_CONNECT_TYPE type) {
+	*_controlRegA = (*_controlRegA & 0x3F) | (type << 6);
+}
+
+void MHV_Timer8::connectOutput2(MHV_TIMER_CONNECT_TYPE type) {
+	*_controlRegA = (*_controlRegA & 0xCF) | (type << 4);
+}
+
+
+/* Enable the timer module
+ */
 void MHV_Timer8::enable(void) {
 	uint8_t reg = SREG;
 	cli();
 
 	*_counter = 0;
-	*_controlRegA |= _generationMode;
-	*_interrupt |= _interruptEnable1;
-	if (*_overflowReg2) {
-		*_interrupt |= _interruptEnable2;
+	_setPrescaler(_prescaler);
+	setGenerationMode();
+	if (_triggerFunction1) {
+		*_interrupt |= _BV(OCIE0A);
+	}
+	if (*_outputCompare2 && _triggerFunction2) {
+		*_interrupt |= _BV(OCIE0B);
 		_haveTime2 = true;
 	} else {
 		_haveTime2 = false;
@@ -197,17 +310,17 @@ void MHV_Timer8::disable(void) {
 	uint8_t reg = SREG;
 	cli();
 
-	*_controlRegA &= ~_generationMode;
-	*_interrupt &= ~_interruptEnable1;
+	_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
+	*_interrupt &= ~_BV(OCIE0A);
 	if (_haveTime2) {
-		*_interrupt &= ~_interruptEnable2;
+		*_interrupt &= ~_BV(OCIE0B);
 	}
 
 	SREG = reg;
 }
 
 bool MHV_Timer8::enabled(void) {
-	return *_controlRegA & _generationMode;
+	return getPrescaler();
 }
 
 void MHV_Timer8::trigger1() {
@@ -233,6 +346,6 @@ void MHV_Timer8::setTriggers(void (*triggerFunction1)(void *triggerData), void *
 	_triggerData2 = triggerData2;
 }
 
-void MHV_Timer8::setMode(enum MHV_TIMER_MODE mode) {
+void MHV_Timer8::setMode(MHV_TIMER_MODE mode) {
 	_mode = mode;
 }

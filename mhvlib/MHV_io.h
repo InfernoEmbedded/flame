@@ -147,6 +147,6 @@ ISR(mhvInterruptHandler) mhvFunction
 	} while (0)
 
 #define _mhv_enableExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvInterruptMode) \
-	*mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | mhvInterruptMode << mhvModeBitshift
+	*mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | (mhvInterruptMode << mhvModeBitshift)
 
 #endif /* MHV_IO_H_ */

@@ -45,26 +45,37 @@ ISR(mhvTimerVect3) { \
 }
 
 class MHV_Timer16 : public MHV_Timer8 {
-private:
+protected:
 	volatile uint8_t	*_controlRegC;
-	volatile uint16_t	*_overflowReg1;
-	volatile uint16_t	*_overflowReg2;
-	volatile uint16_t	*_overflowReg3;
+	volatile uint16_t	*_outputCompare1;
+	volatile uint16_t	*_outputCompare2;
+	volatile uint16_t	*_outputCompare3;
 	volatile uint16_t	*_counter;
-	uint8_t				_interruptEnable3;
 	bool				_haveTime3;
+	volatile uint16_t	*_inputCapture1;
 
 	void (*_triggerFunction3)(void *data);
 	void *_triggerData3;
 
+	void setGenerationMode(void);
+
 public:
 	MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *controlRegB, volatile uint8_t *controlRegC,
-			volatile uint16_t *overflowReg1, volatile uint16_t *overflowReg2, volatile uint16_t *overflowReg3,
-			volatile uint16_t *counter,	volatile uint8_t *interrupt,
-			uint8_t interruptEnable1, uint8_t interruptEnable2, uint8_t interruptEnable3,
-			uint8_t generationMode);
+			volatile uint16_t *outputCompare1, volatile uint16_t *outputCompare2, volatile uint16_t *outputCompare3,
+			volatile uint16_t *counter,	volatile uint8_t *interrupt, volatile uint16_t *inputCapture1);
 	void setPeriods(uint32_t time1, uint32_t time2, uint32_t time3);
-	void setPeriods(uint8_t prescaler, uint16_t time1, uint16_t time2, uint16_t time3);
+	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3);
+	uint16_t getTop(void);
+	void setTop(uint16_t value);
+	void setOutput1(uint16_t value);
+	void setOutput2(uint16_t value);
+	void setOutput3(uint16_t value);
+	uint16_t getOutput1(void);
+	uint16_t getOutput2(void);
+	uint16_t getOutput3(void);
+	void connectOutput1(MHV_TIMER_CONNECT_TYPE type);
+	void connectOutput2(MHV_TIMER_CONNECT_TYPE type);
+	void connectOutput3(MHV_TIMER_CONNECT_TYPE type);
 	void enable(void);
 	void disable(void);
 	void trigger3(void);
