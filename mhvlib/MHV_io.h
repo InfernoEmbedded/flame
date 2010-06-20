@@ -53,6 +53,38 @@ enum mhv_interruptMode {
 };
 typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 
+struct mhv_pin {
+	volatile uint8_t	*port;
+	uint8_t				pin;
+};
+typedef struct mhv_pin MHV_PIN;
+
+// Convert a pin declaration to a pin struct for output
+#define mhv_pin_out(mhvParms) \
+	_mhv_pin_out(mhvParms)
+
+#define _mhv_pin_out(mhvDir,mhvOutput,mhvInput,mhvBit) \
+		{mhvOutput, _BV(mhvBit)}
+
+// Convert a pin declaration to a pin struct for input
+#define mhv_pin_in(mhvParms) \
+	_mhv_pin_in(mhvParms)
+
+#define _mhv_pin_in(mhvDir,mhvOutput,mhvInput,mhvBit) \
+		{mhvInput, _BV(mhvBit)}
+
+// Set an output pin struct on
+#define mhv_pin_struct_on(mhvPinStruct) \
+		*((mhvPinStruct).port) |= (mhvPinStruct).pin
+
+// Set an output pin struct off
+#define mhv_pin_struct_off(mhvPinStruct) \
+		*((mhvPinStruct).port) &= (mhvPinStruct).pin
+
+// Read an input pin struct
+#define mhv_pin_struct_read(mhvPinStruct) \
+		*((mhvPinStruct).port) & (mhvPinStruct).pin
+
 
 /* We have to shadow all the macros below as the precedence of macro expansion means that
  * the multi-parmeter macros will only see a single argument if one of our MHV_PIN macros
@@ -63,30 +95,35 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
  * to understand why we have do...while(0) on our macros
  */
 
+// Grab the output register of a pin declaration
 #define mhv_out(mhvParms) \
 	_mhv_out(mhvParms)
 
 #define _mhv_out(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	mhvOutput
 
+// Grab the input register of a pin declaration
 #define mhv_in(mhvParms) \
 	_mhv_in(mhvParms)
 
 #define _mhv_in(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	mhvInput
 
+// Grab the bit offset of a pin declaration
 #define mhv_Bit(mhvParms) \
 	_mhv_Bit(mhvParms)
 
 #define _mhv_Bit(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	mhvBit
 
+// Grab the direction register of a pin declaration
 #define mhv_dir(mhvParms) \
 	_mhv_dir(mhvParms)
 
 #define _mhv_dir(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	mhvDir
 
+// Set a pin to be an output
 #define mhv_setOutput(mhvParms) \
 	do { \
 		_mhv_setOutput(mhvParms); \
@@ -95,6 +132,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 #define _mhv_setOutput(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	*mhvDir |= _BV(mhvBit);
 
+// Set a pin to be an input
 #define mhv_setInput(mhvParms) \
 	do { \
 		_mhv_setInput(mhvParms); \
@@ -104,6 +142,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 	*mhvDir &= ~_BV(mhvBit); \
 	*mhvOutput &= ~_BV(mhvBit);
 
+// Set a pin to be an input, with the internal pullup enabled
 #define mhv_setInputPullup(mhvParms) \
 	do { \
 		_mhv_setInputPullup(mhvParms) \
@@ -113,6 +152,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 	*mhvDir |= _BV(mhvBit); \
 	*mhvOutput |= _BV(mhvBit);
 
+// turn a pin on
 #define mhv_pinOn(mhvParms) \
 	do { \
 		_mhv_pinOn(mhvParms) \
@@ -121,6 +161,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 #define _mhv_pinOn(mhvDir,mhvOutput,mhvInput,mhvBit) \
 		*mhvOutput |= _BV(mhvBit);
 
+// turn a pin off
 #define mhv_pinOff(mhvParms) \
 	do { \
 		_mhv_pinOff(mhvParms) \
@@ -129,18 +170,21 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 #define _mhv_pinOff(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	*mhvOutput &= ~_BV(mhvBit); \
 
+// Read a pin
 #define mhv_pinRead(mhvParms) \
 	_mhv_pinRead(mhvParms)
 
 #define _mhv_pinRead(mhvDir,mhvOutput,mhvInput,mhvBit) \
 	(*mhvInput & _BV(mhvBit))
 
+// Assign a function to be triggered by an external interrupt
 #define mhv_declareExternalInterrupt(mhvInterruptParms,mhvFunction) \
 	_mhv_declareExternalInterrupt(mhvInterruptParms, mhvFunction)
 
 #define _mhv_declareExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvFunction) \
 ISR(mhvInterruptHandler) mhvFunction
 
+// Enable an external interrupt
 #define mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode) \
 	do { \
 		_mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode); \
