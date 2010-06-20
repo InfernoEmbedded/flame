@@ -158,15 +158,33 @@ void MHV_Timer16::setOutput3(uint16_t value) {
 }
 
 uint16_t MHV_Timer16::getOutput1(void) {
-	return *_outputCompare1;
+	uint8_t reg = SREG;
+	cli();
+
+	uint16_t ret =  *_outputCompare1;
+
+	SREG = reg;
+	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput2(void) {
-	return *_outputCompare2;
+	uint8_t reg = SREG;
+	cli();
+
+	uint16_t ret =  *_outputCompare2;
+
+	SREG = reg;
+	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput3(void) {
-	return *_outputCompare3;
+	uint8_t reg = SREG;
+	cli();
+
+	uint16_t ret =  *_outputCompare3;
+
+	SREG = reg;
+	return ret;
 }
 
 void MHV_Timer16::connectOutput1(MHV_TIMER_CONNECT_TYPE type) {
