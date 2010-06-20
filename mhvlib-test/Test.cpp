@@ -41,6 +41,8 @@ extern "C" void __cxa_pure_virtual() {
 #include <MHV_io.h>
 #include <MHV_ServoControl.h>
 #include <MHV_AD.h>
+#include <MHV_PWMMatrix.h>
+#include <MHV_GammaCorrect.h>
 
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];
@@ -57,6 +59,68 @@ MHV_Timer16 servoTimer(MHV_TIMER16_3);
 MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER3_INTERRUPTS);
 MHV_SERVOCONTROLBLOCK servoControlBlocks[SERVO_COUNT];
 MHV_ServoControl servos(&servoTimer, servoControlBlocks, SERVO_COUNT);
+MHV_SERVOCONTROL_DECLARE_TRIGGER(servoTimer, servos);
+
+MHV_Timer16 ledMatrixTimer(MHV_TIMER16_4);
+MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER4_INTERRUPTS);
+
+
+/* 4 LED matrix
+ * rows are on pins 8 & 9 and are active low
+ * cols are on pins 10 & 11 and are active high
+ */
+#define LED_MATRIX_ROWS	2
+#define LED_MATRIX_COLS	2
+
+void matrixRowOn(uint8_t row) {
+	switch (row) {
+	case 0:
+		mhv_pinOff(MHV_ARDUINO_PIN_8);
+		break;
+	case 1:
+		mhv_pinOff(MHV_ARDUINO_PIN_9);
+		break;
+	}
+}
+
+void matrixRowOff(uint8_t row) {
+	switch (row) {
+	case 0:
+		mhv_pinOn(MHV_ARDUINO_PIN_8);
+		break;
+	case 1:
+		mhv_pinOn(MHV_ARDUINO_PIN_9);
+		break;
+	}
+}
+
+void matrixColOn(uint8_t col) {
+	switch (col) {
+	case 0:
+		mhv_pinOn(MHV_ARDUINO_PIN_10);
+		break;
+	case 1:
+		mhv_pinOn(MHV_ARDUINO_PIN_11);
+		break;
+	}
+}
+
+void matrixColOff(uint8_t col) {
+	switch (col) {
+	case 0:
+		mhv_pinOff(MHV_ARDUINO_PIN_10);
+		break;
+	case 1:
+		mhv_pinOff(MHV_ARDUINO_PIN_11);
+		break;
+	}
+}
+
+
+uint8_t ledMatrixFrameBuffer[LED_MATRIX_ROWS * LED_MATRIX_COLS];
+MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer,
+		matrixRowOn, matrixRowOff, matrixColOn, matrixColOff);
+
 
 char progmemSync[] PROGMEM = "Busy writes, progmem string\r\n";
 char progmemAsync[] PROGMEM = "Async writes, progmem string\r\n";
@@ -139,12 +203,6 @@ MHV_Timer16 pwmTimer(MHV_TIMER16_1);
 bool pwmDir = 0; // 0 = down, 1 == up
 void tickPWM(void) {
 	uint16_t current = pwmTimer.getOutput2();
-#if 0
-	while (!serial.canSend()) {}
-	snprintf(tickBuf, sizeof(tickBuf), "PWM output is %d, compA=%d compB=%d\r\n", current, OCR1A, OCR1B);
-	(void) serial.asyncWrite(tickBuf);
-#endif
-
 	if (pwmDir && current + PWM_INCREMENT >= PWM_TOP / 2) {
 		pwmDir = 0;
 		pwmTimer.setOutput2(PWM_TOP / 2);
@@ -158,16 +216,61 @@ void tickPWM(void) {
 	}
 }
 
+/* Animation routine for the LED matrix
+ * brings up each LED in turn, then takes then down in turn
+ */
+uint16_t matrixFader = 0;
+#define FADERMAX 255
+void tickMatrix(void) {
+	if (matrixFader < FADERMAX) {
+		ledMatrix.setPixel(0, 0,
+				mhv_precalculatedGammaCorrect(matrixFader));
+	} else if (matrixFader < 2 * FADERMAX) {
+		ledMatrix.setPixel(1, 0,
+				mhv_precalculatedGammaCorrect(matrixFader - FADERMAX));
+	} else if (matrixFader < 3 * FADERMAX) {
+		ledMatrix.setPixel(1, 1,
+				mhv_precalculatedGammaCorrect(matrixFader - 2 * FADERMAX));
+	} else if (matrixFader < 4 * FADERMAX) {
+		ledMatrix.setPixel(0, 1,
+				mhv_precalculatedGammaCorrect(matrixFader - 3 * FADERMAX));
+	} else if (matrixFader < 5 * FADERMAX) {
+		ledMatrix.setPixel(0, 0,
+				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 4 * FADERMAX)));
+	} else if (matrixFader < 6 * FADERMAX) {
+		ledMatrix.setPixel(1, 0,
+				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 5 * FADERMAX)));
+	} else if (matrixFader < 7 * FADERMAX) {
+		ledMatrix.setPixel(1, 1,
+				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 6 * FADERMAX)));
+	} else if (matrixFader < 8 * FADERMAX) {
+		ledMatrix.setPixel(0, 1,
+				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 7 * FADERMAX)));
+	}
+
+	if (++matrixFader == (8 * FADERMAX)) {
+		matrixFader = 0;
+	}
+}
+
 
 void tick30ms(void *data) {
 	tickLED();
 	tickADC();
 	moveServo(NULL);
 	tickPWM();
+	tickMatrix();
 }
 
-
-MHV_SERVOCONTROL_DECLARE_TRIGGER(servoTimer, servos);
+/* Timer tick for the LED matrix
+ * Ideally, this should set a flag which is checked for in the main loop,
+ * keeping the loopy led matrix code out of the interrupt context.
+ * We can't do that here since we have busywaiting code in the main loop
+ * which will keep the ticks from being executed promptly
+ */
+void ledMatrixTick(void *data) {
+	ledMatrix.tick();
+}
 
 int main(void) {
 	char txBuf[81];
@@ -197,12 +300,26 @@ int main(void) {
 	tickTimer.enable();
 
 	MHV_SERVOCONTROL_ASSIGN_TRIGGER(servoTimer, servos);
-	servos.addServo(0, MHV_ARDUINO_PIN_11);
+	servos.addServo(0, MHV_ARDUINO_PIN_7);
 	servos.enable();
+
+	/* Set up LED matrix - 2 rows of 2 columns
+	 * We want a framerate of 30fps, and the software will spend half its time on each column
+	 * Each frame will therefore be 1/60 seconds
+	 * There are 256 PWM periods, so each timer tick needs to be 1 / (60 * 256) seconds
+	 * ~ 64 microseconds
+	 */
+	mhv_setOutput(MHV_ARDUINO_PIN_8);
+	mhv_setOutput(MHV_ARDUINO_PIN_9);
+	mhv_setOutput(MHV_ARDUINO_PIN_10);
+	mhv_setOutput(MHV_ARDUINO_PIN_11);
+	ledMatrixTimer.setTriggers(ledMatrixTick, 0, 0, 0, 0, 0);
+	ledMatrixTimer.setPeriods(64, 0, 0);
+	ledMatrixTimer.enable();
 
 	while (1) {
 		// String writes
-		snprintf(txBuf, sizeof(txBuf), "Busy writes, %s\r\n", "normal string");
+		snprintf(txBuf, sizeof(txBuf), "Busy writes %s\r\n", "normal string");
 		// Not run in conjunction with the asynchronous calls, so it is safe to ignore return code
 		(void) serial.busyWrite(txBuf);
 		(void) serial.busyWrite_P(progmemSync);

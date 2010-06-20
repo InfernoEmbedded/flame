@@ -5,25 +5,34 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../MHV_AD.cpp \
+../MHV_GammaCorrect.cpp \
 ../MHV_HardwareSerial.cpp \
+../MHV_PWMMatrix.cpp \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
+../MHV_Shifter.cpp \
 ../MHV_Timer16.cpp \
 ../MHV_Timer8.cpp 
 
 OBJS += \
 ./MHV_AD.o \
+./MHV_GammaCorrect.o \
 ./MHV_HardwareSerial.o \
+./MHV_PWMMatrix.o \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
+./MHV_Shifter.o \
 ./MHV_Timer16.o \
 ./MHV_Timer8.o 
 
 CPP_DEPS += \
 ./MHV_AD.d \
+./MHV_GammaCorrect.d \
 ./MHV_HardwareSerial.d \
+./MHV_PWMMatrix.d \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \
+./MHV_Shifter.d \
 ./MHV_Timer16.d \
 ./MHV_Timer8.d 
 
