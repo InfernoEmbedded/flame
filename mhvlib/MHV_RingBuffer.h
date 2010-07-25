@@ -42,6 +42,8 @@ public:
 	MHV_RingBuffer(char *buffer, uint8_t length);
 	bool append(char c);
 	uint8_t length(void);
+	uint8_t size(void);
+	bool full(void);
 	void flush(void);
 	int peekHead(void);
 	int consume(void);

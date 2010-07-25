@@ -58,24 +58,11 @@ MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer,
 	setSpeed(baud);
 }
 
-#define DEBUG 0
-
-#if DEBUG
-bool rxToggle = false;
-#endif
-
 // RX interrupt handler
 void MHV_HardwareSerial::rx() {
 	char c = *_udr;
-#if DEBUG
-	if (rxToggle) {
-		mhv_pinOn(MHV_ARDUINO_PIN_13);
-	} else {
-		mhv_pinOff(MHV_ARDUINO_PIN_13);
-	}
-	rxToggle = !rxToggle;
-#endif
 	_rxBuffer->append(c);
+
 	if (_echo && ((*_ucsra) & (1 << _udre))) {
 		*_udr = c;
 	}
@@ -130,13 +117,17 @@ void MHV_HardwareSerial::setSpeed(unsigned long baud) {
  * returns 0 if we have successfully copied a line
  * returns -1 if there was no line available
  * returns -2 if the buffer was too small
+ * returns -3 if we have reached the end of the ringbuffer with no line terminator
  */
 int MHV_HardwareSerial::readLine(char *buffer, uint8_t bufferLength) {
 	// Peek at the last character & see if its a newline
 	int last = _rxBuffer->peekHead();
 
-	if ('\r' != last && '\n' != last) {
-		return -1;
+	bool isFull = _rxBuffer->full();
+	if (!isFull) {
+		if ('\r' != last && '\n' != last) {
+			return -1;
+		}
 	}
 
 	uint8_t i = 0;
@@ -152,6 +143,10 @@ int MHV_HardwareSerial::readLine(char *buffer, uint8_t bufferLength) {
 		buffer[i++] = (char)byte;
 	}
 	buffer[i] = '\0';
+
+	if (isFull) {
+		return -3;
+	}
 	return 0;
 }
 

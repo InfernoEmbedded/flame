@@ -31,22 +31,27 @@
 MHV_RingBuffer::MHV_RingBuffer(char *buffer, uint8_t size) {
 	_buffer = buffer;
 	_size = size;
-	_head = 0;
-	_tail = 0;
+	_head = 0; // Where we are about to write to
+	_tail = 0; // Where we will start reading from
 }
 
 /* Append a character to the buffer
  * return false if we succeeded, true otherwise
  */
 bool MHV_RingBuffer::append(char c) {
-	uint8_t i = (_head + 1) % _size;
+	uint8_t next = _head + 1;
+	if (next > _size) {
+		next = 0;
+	}
 
 	// Don't overwrite valid data in the buffer
-	if (i == _tail) {
+	if (next == _tail) {
 		return true;
 	}
+
 	_buffer[_head] = c;
-	_head = i;
+	_head = next;
+
 	return false;
 }
 
@@ -58,18 +63,40 @@ int MHV_RingBuffer::consume(void) {
 	}
 
 	unsigned char c = _buffer[_tail];
-	_tail = (_tail + 1) % _size;
+	_tail = _tail + 1;
+	if (_tail > _size) {
+			_tail -= _size;
+	}
 	return c;
 }
 
+/* Discard the contents of the ringbuffer
+ */
 void MHV_RingBuffer::flush(void) {
 	_head = _tail;
+}
+
+/* Return the size of the ringbuffer
+ */
+uint8_t MHV_RingBuffer::size(void) {
+	return _size;
 }
 
 /* Return the number of bytes in the ringbuffer
  */
 uint8_t MHV_RingBuffer::length(void) {
-	return (_size + _head - _tail) % _size;
+	uint16_t length = _size + _head - _tail;
+	if (length >= _size) {
+		length -= _size;
+	}
+
+	return (uint8_t) length;
+}
+
+/* Return true if the ringbuffer is full
+ */
+bool MHV_RingBuffer::full(void) {
+	return length() == _size - 1;
 }
 
 int MHV_RingBuffer::peekHead(void) {
