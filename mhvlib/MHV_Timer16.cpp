@@ -130,6 +130,27 @@ void MHV_Timer16::setTop(uint16_t value) {
 	}
 }
 
+void MHV_Timer16::setOutput(uint8_t channel, uint16_t value) {
+	uint8_t reg = SREG;
+	cli();
+
+	switch (channel) {
+	case 1:
+		*_outputCompare1 = value;
+		break;
+	case 2:
+		*_outputCompare2 = value;
+		break;
+	case 3:
+		*_outputCompare3 = value;
+		break;
+
+	}
+
+	SREG = reg;
+}
+
+
 void MHV_Timer16::setOutput1(uint16_t value) {
 	uint8_t reg = SREG;
 	cli();
@@ -155,6 +176,27 @@ void MHV_Timer16::setOutput3(uint16_t value) {
 	*_outputCompare3 = value;
 
 	SREG = reg;
+}
+
+uint16_t MHV_Timer16::getOutput(uint8_t channel) {
+	uint8_t reg = SREG;
+	uint16_t ret = 0;
+	cli();
+
+	switch (channel) {
+	case 1:
+		ret =  *_outputCompare1;
+		break;
+	case 2:
+		ret =  *_outputCompare2;
+		break;
+	case 3:
+		ret =  *_outputCompare3;
+		break;
+	}
+
+	SREG = reg;
+	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput1(void) {
@@ -187,6 +229,20 @@ uint16_t MHV_Timer16::getOutput3(void) {
 	return ret;
 }
 
+void MHV_Timer16::connectOutput(uint8_t channel, MHV_TIMER_CONNECT_TYPE type) {
+	switch (channel) {
+	case 1:
+		*_controlRegA = (*_controlRegA & 0x3F) | (type << 6);
+		break;
+	case 2:
+		*_controlRegA = (*_controlRegA & 0xCF) | (type << 4);
+		break;
+	case 3:
+		*_controlRegA = (*_controlRegA & 0xF3) | (type << 2);
+		break;
+	}
+}
+
 void MHV_Timer16::connectOutput1(MHV_TIMER_CONNECT_TYPE type) {
 	*_controlRegA = (*_controlRegA & 0x3F) | (type << 6);
 }
@@ -210,9 +266,11 @@ void MHV_Timer16::disable(void) {
 		*_interrupt &= ~_BV(OCIE1B);
 	}
 
+#ifdef OCIE1C
 	if (_haveTime3) {
 		*_interrupt &= ~_BV(OCIE1C);
 	}
+#endif
 
 	SREG = reg;
 }
@@ -234,12 +292,14 @@ void MHV_Timer16::enable(void) {
 		_haveTime2 = false;
 	}
 
+#ifdef OCIE1C
 	if (*_outputCompare3 && _triggerFunction3) {
 		*_interrupt |= _BV(OCIE1C);
 		_haveTime3 = true;
 	} else {
 		_haveTime3 = false;
 	}
+#endif
 
 	SREG = reg;
 }
