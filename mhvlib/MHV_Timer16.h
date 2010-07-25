@@ -67,12 +67,15 @@ public:
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3);
 	uint16_t getTop(void);
 	void setTop(uint16_t value);
+	void setOutput(uint8_t channel, uint16_t value);
 	void setOutput1(uint16_t value);
 	void setOutput2(uint16_t value);
 	void setOutput3(uint16_t value);
+	uint16_t getOutput(uint8_t channel);
 	uint16_t getOutput1(void);
 	uint16_t getOutput2(void);
 	uint16_t getOutput3(void);
+	void connectOutput(uint8_t channel, MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput1(MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput2(MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput3(MHV_TIMER_CONNECT_TYPE type);

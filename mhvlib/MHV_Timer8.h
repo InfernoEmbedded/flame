@@ -131,8 +131,10 @@ public:
 
 	uint8_t getTop(void);
 	void setTop(uint8_t value);
+	void setOutput(uint8_t channel, uint8_t value);
 	void setOutput1(uint8_t value);
 	void setOutput2(uint8_t value);
+	uint8_t getOutput(uint8_t channel);
 	uint8_t getOutput1(void);
 	uint8_t getOutput2(void);
 	void connectOutput1(MHV_TIMER_CONNECT_TYPE type);

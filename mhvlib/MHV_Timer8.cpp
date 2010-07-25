@@ -259,6 +259,17 @@ void MHV_Timer8::setTop(uint8_t value) {
 	}
 }
 
+void MHV_Timer8::setOutput(uint8_t channel, uint8_t value) {
+	switch (channel) {
+	case 1:
+		*_outputCompare1 = value;
+		break;
+	case 2:
+		*_outputCompare2 = value;
+		break;
+	}
+}
+
 void MHV_Timer8::setOutput1(uint8_t value) {
 	*_outputCompare1 = value;
 }
@@ -266,6 +277,20 @@ void MHV_Timer8::setOutput1(uint8_t value) {
 void MHV_Timer8::setOutput2(uint8_t value) {
 	*_outputCompare2 = value;
 }
+
+uint8_t MHV_Timer8::getOutput(uint8_t channel) {
+	switch (channel) {
+	case 1:
+		return *_outputCompare1;
+		break;
+	case 2:
+		return *_outputCompare2;
+		break;
+	default:
+		return 0;
+	}
+}
+
 
 uint8_t MHV_Timer8::getOutput1(void) {
 	return *_outputCompare1;
