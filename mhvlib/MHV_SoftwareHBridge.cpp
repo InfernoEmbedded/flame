@@ -10,6 +10,10 @@
 /* Create a new H bridge where all transistors are controlled by us
  * Bottom transistors are toggled between VCC & ground.
  *
+ * *******************************
+ * UNTESTED - USE AT YOUR OWN RISK
+ * *******************************
+ *
  * A timer is required for magnitude control.
  * If this is not required, a NULL may be passed
  *
@@ -155,7 +159,7 @@ void MHV_SoftwareHBridge::set(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t 
 }
 
 /* Set the direction of the H bridge
- * Does no require a timer to be specified
+ * Does not require a timer to be specified
  * param:	direction	the direction of the H bridge
  */
 void MHV_SoftwareHBridge::set(MHV_SOFTWAREHBRIDGE_DIRECTION direction) {
