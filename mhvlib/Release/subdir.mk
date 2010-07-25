@@ -11,6 +11,7 @@ CPP_SRCS += \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
 ../MHV_Shifter.cpp \
+../MHV_SoftwareHBridge.cpp \
 ../MHV_Timer16.cpp \
 ../MHV_Timer8.cpp 
 
@@ -22,6 +23,7 @@ OBJS += \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
 ./MHV_Shifter.o \
+./MHV_SoftwareHBridge.o \
 ./MHV_Timer16.o \
 ./MHV_Timer8.o 
 
@@ -33,6 +35,7 @@ CPP_DEPS += \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \
 ./MHV_Shifter.d \
+./MHV_SoftwareHBridge.d \
 ./MHV_Timer16.d \
 ./MHV_Timer8.d 
 
