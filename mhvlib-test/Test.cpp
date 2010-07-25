@@ -221,31 +221,32 @@ void tickPWM(void) {
  */
 uint16_t matrixFader = 0;
 #define FADERMAX 255
+extern uint8_t mhv_gammaValues[] PROGMEM;
 void tickMatrix(void) {
 	if (matrixFader < FADERMAX) {
 		ledMatrix.setPixel(0, 0,
-				mhv_precalculatedGammaCorrect(matrixFader));
+				MHV_PRECALCULATED_GAMMA_CORRECT(matrixFader));
 	} else if (matrixFader < 2 * FADERMAX) {
 		ledMatrix.setPixel(1, 0,
-				mhv_precalculatedGammaCorrect(matrixFader - FADERMAX));
+				MHV_PRECALCULATED_GAMMA_CORRECT(matrixFader - FADERMAX));
 	} else if (matrixFader < 3 * FADERMAX) {
 		ledMatrix.setPixel(1, 1,
-				mhv_precalculatedGammaCorrect(matrixFader - 2 * FADERMAX));
+				MHV_PRECALCULATED_GAMMA_CORRECT(matrixFader - 2 * FADERMAX));
 	} else if (matrixFader < 4 * FADERMAX) {
 		ledMatrix.setPixel(0, 1,
-				mhv_precalculatedGammaCorrect(matrixFader - 3 * FADERMAX));
+				MHV_PRECALCULATED_GAMMA_CORRECT(matrixFader - 3 * FADERMAX));
 	} else if (matrixFader < 5 * FADERMAX) {
 		ledMatrix.setPixel(0, 0,
-				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 4 * FADERMAX)));
+				MHV_PRECALCULATED_GAMMA_CORRECT(FADERMAX - 1 - (matrixFader - 4 * FADERMAX)));
 	} else if (matrixFader < 6 * FADERMAX) {
 		ledMatrix.setPixel(1, 0,
-				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 5 * FADERMAX)));
+				MHV_PRECALCULATED_GAMMA_CORRECT(FADERMAX - 1 - (matrixFader - 5 * FADERMAX)));
 	} else if (matrixFader < 7 * FADERMAX) {
 		ledMatrix.setPixel(1, 1,
-				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 6 * FADERMAX)));
+				MHV_PRECALCULATED_GAMMA_CORRECT(FADERMAX - 1 - (matrixFader - 6 * FADERMAX)));
 	} else if (matrixFader < 8 * FADERMAX) {
 		ledMatrix.setPixel(0, 1,
-				mhv_precalculatedGammaCorrect(FADERMAX - 1 - (matrixFader - 7 * FADERMAX)));
+				MHV_PRECALCULATED_GAMMA_CORRECT(FADERMAX - 1 - (matrixFader - 7 * FADERMAX)));
 	}
 
 	if (++matrixFader == (8 * FADERMAX)) {
@@ -289,7 +290,7 @@ int main(void) {
 	mhv_setOutput(MHV_ARDUINO_PIN_12);
 	pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
 	pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
-	pwmTimer.setTop(PWM_TOP); // PWM freq = 20MHz / 2 / 1000 = 10kHz
+	pwmTimer.setTop(PWM_TOP); // PWM freq = 16MHz / 2 / 1000 = 8KHz
 	pwmTimer.connectOutput2(MHV_TIMER_CONNECT_CLEAR);
 	pwmTimer.setOutput2(0); // This should only go as high as PWM_TOP
 	pwmTimer.enable();
@@ -358,4 +359,6 @@ int main(void) {
 		serial.busyWrite(txBuf);
 		serial.busyWrite("'\r\n");
 	}
+
+	return 0;
 }
