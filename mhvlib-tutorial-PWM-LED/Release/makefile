@@ -64,7 +64,7 @@ all: mhvlib-tutorial-PWM-LED.elf secondary-outputs
 mhvlib-tutorial-PWM-LED.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-PWM-LED.map,--cref -L"A:\eclipse\mhvlib\Release" -mmcu=atmega1280 -o"mhvlib-tutorial-PWM-LED.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-PWM-LED.map,--cref --gc-sections -L"A:\eclipse\mhvlib\Release" -mmcu=atmega1280 -o"mhvlib-tutorial-PWM-LED.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
