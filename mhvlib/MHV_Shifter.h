@@ -38,7 +38,7 @@
 #endif
 
 #ifdef MHV_SHIFT_ORDER_MSB
-#define SHIFTOUT_BYTE_LOOP mhv_shift_i = 7; mhv_shift_i >= 0; mhv_shift_i--
+#define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 7; mhv_shift_i >= 0; mhv_shift_i--)
 #define MHV_BIT_1 _BV(8)
 #define MHV_BIT_2 _BV(7)
 #define MHV_BIT_3 _BV(6)
@@ -48,7 +48,7 @@
 #define MHV_BIT_7 _BV(2)
 #define MHV_BIT_8 _BV(1)
 #else
-#define SHIFTOUT_BYTE_LOOP mhv_shift_i = 0; mhv_shift_i < 8; mhv_shift_i++
+#define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 0; mhv_shift_i < 8; mhv_shift_i++)
 #define MHV_BIT_1 _BV(1)
 #define MHV_BIT_2 _BV(2)
 #define MHV_BIT_3 _BV(3)
@@ -66,7 +66,7 @@
 do { \
 	uint8_t		mhv_shift_i; \
 \
-for (SHIFTOUT_BYTE_LOOP) { \
+for SHIFTOUT_BYTE_LOOP { \
 		if ((mhv_data >> mhv_shift_i) & 0x01) { \
 			_mhv_pin_on(MHV_SHIFT_WRITEDATA); \
 		} else { \
