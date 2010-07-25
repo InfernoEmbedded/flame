@@ -30,6 +30,12 @@
 #include <inttypes.h>
 #include <math.h>
 
+/* Requires mhv_gammaValues to be brought in as:
+ * 	extern uint8_t mhv_gammaValues[] PROGMEM;
+ */
+#define MHV_PRECALCULATED_GAMMA_CORRECT(gammaValue) \
+	pgm_read_byte(mhv_gammaValues + gammaValue)
+
 uint8_t mhv_calculatedGammaCorrect(uint8_t value);
 uint8_t mhv_precalculatedGammaCorrect(uint8_t value);
 
