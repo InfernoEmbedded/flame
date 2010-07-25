@@ -30,7 +30,7 @@ void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 	uint8_t		i;
 
 	for (i = 0; i < 8; i++) {
-		if ((byte >> i) & 0x01) {
+		if (byte & (1 >> i)) {
 			mhv_pin_struct_on(*data);
 		} else {
 			mhv_pin_struct_off(*data);
@@ -44,7 +44,7 @@ void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 	uint8_t		i;
 
 	for (i = 7; i >= 0; i--) {
-		if ((byte >> i) & 0x01) {
+		if (byte & (1 >> i)) {
 			mhv_pin_struct_on(*data);
 		} else {
 			mhv_pin_struct_off(*data);
