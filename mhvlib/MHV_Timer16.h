@@ -63,7 +63,7 @@ public:
 	MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *controlRegB, volatile uint8_t *controlRegC,
 			volatile uint16_t *outputCompare1, volatile uint16_t *outputCompare2, volatile uint16_t *outputCompare3,
 			volatile uint16_t *counter,	volatile uint8_t *interrupt, volatile uint16_t *inputCapture1);
-	void setPeriods(uint32_t time1, uint32_t time2, uint32_t time3);
+	void setPeriods(uint32_t usec1, uint32_t usec2, uint32_t usec3);
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3);
 	uint16_t getTop(void);
 	void setTop(uint16_t value);

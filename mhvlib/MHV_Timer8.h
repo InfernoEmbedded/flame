@@ -123,10 +123,11 @@ public:
 	MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 			volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
 			volatile uint8_t *interrupt);
-	void setPeriods(uint32_t time1, uint32_t time2);
+	void setPeriods(uint32_t usec1, uint32_t usec2);
 	uint8_t current(void);
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2);
 	MHV_TIMER_PRESCALER getPrescaler(void);
+	uint16_t getPrescalerMultiplier(void);
 	void setPrescaler(MHV_TIMER_PRESCALER prescaler);
 
 	uint8_t getTop(void);

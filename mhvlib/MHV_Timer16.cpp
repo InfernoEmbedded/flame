@@ -326,35 +326,35 @@ extern MHV_HardwareSerial serial;
 
 /* Times are in microseconds
  */
-void MHV_Timer16::setPeriods(uint32_t time1, uint32_t time2, uint32_t time3) {
+void MHV_Timer16::setPeriods(uint32_t usec1, uint32_t usec2, uint32_t usec3) {
 	MHV_TIMER_PRESCALER prescaler;
 	uint16_t factor = 0;
 	uint32_t maxTime;
 
-	time1 *= F_CPU / (1000000 * 2); // time is now in clocks
-	time2 *= F_CPU / (1000000 * 2); // time is now in clocks
-	time3 *= F_CPU / (1000000 * 2); // time is now in clocks
+	usec1 *= F_CPU / (1000000 * 2); // time is now in clocks
+	usec2 *= F_CPU / (1000000 * 2); // time is now in clocks
+	usec3 *= F_CPU / (1000000 * 2); // time is now in clocks
 
-	if (time1 > time2) {
-		maxTime = time1;
+	if (usec1 > usec2) {
+		maxTime = usec1;
 	} else {
-		maxTime = time2;
+		maxTime = usec2;
 	}
-	if (time3 > maxTime) {
-		maxTime = time3;
+	if (usec3 > maxTime) {
+		maxTime = usec3;
 	}
 
 	calculatePrescaler(maxTime, &prescaler, &factor);
-	if (time1) {
-		calculateTop(&time1, factor);
+	if (usec1) {
+		calculateTop(&usec1, factor);
 	}
-	if (time2) {
-		calculateTop(&time2, factor);
+	if (usec2) {
+		calculateTop(&usec2, factor);
 	}
-	if (time3) {
-		calculateTop(&time3, factor);
+	if (usec3) {
+		calculateTop(&usec3, factor);
 	}
-	setPeriods(prescaler, time1, time2, time3);
+	setPeriods(prescaler, usec1, usec2, usec3);
 }
 
 void MHV_Timer16::setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,

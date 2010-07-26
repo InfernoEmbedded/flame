@@ -138,24 +138,24 @@ void MHV_Timer8::calculateTop(uint32_t *time, uint16_t factor) {
 
 /* Times are in microseconds
  */
-void MHV_Timer8::setPeriods(uint32_t time1, uint32_t time2) {
+void MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 	MHV_TIMER_PRESCALER prescaler;
 	uint16_t factor;
 	uint32_t maxTime;
 
-	time1 *= F_CPU / (1000000 * 2); // time is now in timer ticks
-	time2 *= F_CPU / (1000000 * 2); // time is now in timer ticks
+	usec1 *= F_CPU / (1000000 * 2); // time is now in timer ticks
+	usec2 *= F_CPU / (1000000 * 2); // time is now in timer ticks
 
-	if (time1 > time2) {
-		maxTime = time1;
+	if (usec1 > usec2) {
+		maxTime = usec1;
 	} else {
-		maxTime = time2;
+		maxTime = usec2;
 	}
 
 	calculatePrescaler(maxTime, &prescaler, &factor);
-	calculateTop(&time1, factor);
-	calculateTop(&time2, factor);
-	setPeriods(prescaler, time1, time2);
+	calculateTop(&usec1, factor);
+	calculateTop(&usec2, factor);
+	setPeriods(prescaler, usec1, usec2);
 }
 
 /* Set the prescaler (internal use only)
@@ -170,6 +170,47 @@ void MHV_Timer8::_setPrescaler(MHV_TIMER_PRESCALER prescaler) {
  */
 MHV_TIMER_PRESCALER MHV_Timer8::getPrescaler(void) {
 	return (MHV_TIMER_PRESCALER)(*_controlRegB & 0x07);
+}
+
+/* Get the prescaler multiplier
+ */
+uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
+	switch (_type) {
+	case MHV_TIMER_TYPE_5_PRESCALERS:
+		switch (getPrescaler()) {
+		case MHV_TIMER_PRESCALER_5_1:
+			return 1;
+		case MHV_TIMER_PRESCALER_5_8:
+			return 8;
+		case MHV_TIMER_PRESCALER_5_64:
+			return 64;
+		case MHV_TIMER_PRESCALER_5_256:
+			return 256;
+		case MHV_TIMER_PRESCALER_5_1024:
+			return 1024;
+		}
+		break;
+	case MHV_TIMER_TYPE_7_PRESCALERS:
+		switch (getPrescaler) {
+		case MHV_TIMER_PRESCALER_7_1:
+			return 1;
+		case MHV_TIMER_PRESCALER_7_8:
+			return 8;
+		case MHV_TIMER_PRESCALER_7_32:
+			return 32;
+		case MHV_TIMER_PRESCALER_7_64:
+			return 64;
+		case MHV_TIMER_PRESCALER_7_128:
+			return 128;
+		case MHV_TIMER_PRESCALER_7_256:
+			return 256;
+		case MHV_TIMER_PRESCALER_7_1024:
+			return 1024;
+		}
+		break;
+	}
+
+	return 0;
 }
 
 /* set the prescaler
