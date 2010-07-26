@@ -27,7 +27,7 @@
 #ifndef MHV_SHIFTER_H_
 #define MHV_SHIFTER_H_
 
-#include "mhv_io.h"
+#include <MHV_io.h>
 
 #ifndef MHV_SHIFT_WRITECLOCK
 #warning MHV_SHIFT_WRITECLOCK not defined
