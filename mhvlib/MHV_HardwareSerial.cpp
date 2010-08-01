@@ -59,6 +59,30 @@ MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer 
 	setSpeed(baud);
 }
 
+MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer,
+		volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
+		volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie,
+		uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud) {
+	_rxBuffer = rxBuffer;
+	_txPointers = NULL;
+
+	_echo = false;
+	_ubrr = ubrr;
+	_ucsra = ucsra;
+	_ucsrb = ucsrb;
+	_udr = udr;
+	_rxen = rxen;
+	_txen = txen;
+	_rxcie = rxcie;
+	_txcie = txcie;
+	_udre = udre;
+	_u2x = u2x;
+	_tx = NULL;
+
+	setSpeed(baud);
+}
+
+
 // RX interrupt handler
 void MHV_HardwareSerial::rx() {
 	char c = *_udr;

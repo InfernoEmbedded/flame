@@ -92,6 +92,10 @@ public:
 			volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen,
 			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
 			unsigned long baud);
+	MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, volatile uint16_t *ubrr,
+			volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen,
+			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
+			unsigned long baud);
 	void setSpeed(unsigned long baud);
 	void end(void);
 	uint8_t available(void);

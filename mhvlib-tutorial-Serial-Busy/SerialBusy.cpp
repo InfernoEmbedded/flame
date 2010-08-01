@@ -66,14 +66,11 @@ MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 /* Declare the serial object on UART0 using the above ring buffer
  *
- * The NULL parameter is a buffer used for keeping track of data
- * sent asynchronously - see the Serial-Async tutorial for usage
- *
  * Use the USART0 hardware
  *
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(&rxBuffer, NULL, MHV_USART0, 115200);
+MHV_HardwareSerial serial(&rxBuffer, MHV_USART0, 115200);
 
 // Assign interrupts to the serial object
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
