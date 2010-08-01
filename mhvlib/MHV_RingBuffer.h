@@ -30,6 +30,7 @@
 #define MHV_RINGBUFFER_H_
 
 #include <inttypes.h>
+#include <MHV_io.h>
 
 class MHV_RingBuffer {
 private:
@@ -38,15 +39,20 @@ private:
 	uint8_t _head;
 	uint8_t _tail;
 
+	uint8_t increment(uint8_t index);
+
 public:
 	MHV_RingBuffer(char *buffer, uint8_t length);
 	bool append(char c);
-	uint8_t length(void);
-	uint8_t size(void);
-	bool full(void);
-	void flush(void);
-	int peekHead(void);
-	int consume(void);
+	bool append(const void *p, uint8_t pLength);
+	uint8_t length();
+	uint8_t size();
+	bool full();
+	bool full(uint8_t blockLength);
+	void flush();
+	int peekHead();
+	int consume();
+	bool consume(void *p, uint8_t length);
 	void copyLine(char *, uint8_t length);
 };
 

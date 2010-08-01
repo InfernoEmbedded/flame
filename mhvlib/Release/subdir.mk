@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../MHV_GammaCorrect.cpp \
 ../MHV_HardwareSerial.cpp \
 ../MHV_PWMMatrix.cpp \
+../MHV_RTC.cpp \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
 ../MHV_Shifter.cpp \
@@ -20,6 +21,7 @@ OBJS += \
 ./MHV_GammaCorrect.o \
 ./MHV_HardwareSerial.o \
 ./MHV_PWMMatrix.o \
+./MHV_RTC.o \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
 ./MHV_Shifter.o \
@@ -32,6 +34,7 @@ CPP_DEPS += \
 ./MHV_GammaCorrect.d \
 ./MHV_HardwareSerial.d \
 ./MHV_PWMMatrix.d \
+./MHV_RTC.d \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \
 ./MHV_Shifter.d \

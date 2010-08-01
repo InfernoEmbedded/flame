@@ -35,14 +35,24 @@ MHV_RingBuffer::MHV_RingBuffer(char *buffer, uint8_t size) {
 	_tail = 0; // Where we will start reading from
 }
 
+/* Determine where the next location will be
+ * @param index	the current index
+ * @return the next index
+ */
+inline uint8_t MHV_RingBuffer::increment (uint8_t index) {
+	uint8_t next = index + 1;
+	if (next == _size) {
+		next = 0;
+	}
+
+	return next;
+}
+
 /* Append a character to the buffer
  * return false if we succeeded, true otherwise
  */
 bool MHV_RingBuffer::append(char c) {
-	uint8_t next = _head + 1;
-	if (next > _size) {
-		next = 0;
-	}
+	uint8_t next = increment(_head);
 
 	// Don't overwrite valid data in the buffer
 	if (next == _tail) {
@@ -55,39 +65,78 @@ bool MHV_RingBuffer::append(char c) {
 	return false;
 }
 
+/* Append a block of data to the buffer
+ * @param p	the pointer to append from
+ * @param pLength the number of bytes to append
+ * return false if we succeeded, true otherwise
+ */
+bool MHV_RingBuffer::append(const void *p, uint8_t pLength) {
+	if (full(pLength)) {
+		return true;
+	}
+
+	uint8_t i;
+
+	char *c = (char *)p;
+	for (i = 0; i < pLength; i++) {
+		append(*c++);
+	}
+
+	return false;
+}
+
 /* Pop a byte off the ringbuffer
  */
-int MHV_RingBuffer::consume(void) {
+int MHV_RingBuffer::consume() {
 	if (_head == _tail) {
 		return -1;
 	}
 
 	unsigned char c = _buffer[_tail];
-	_tail = _tail + 1;
-	if (_tail > _size) {
-			_tail -= _size;
-	}
+	_tail = increment(_tail);
 	return c;
 }
 
+/* Pop a block off the ringbuffer
+ * @param p			where to write the block
+ * @param length	the length of the block
+ * @return false if we succeeded, true otherwise
+ */
+bool MHV_RingBuffer::consume(void *p, uint8_t pLength) {
+	if (length() < pLength) {
+		return true;
+	}
+
+	uint8_t i;
+	char *c = (char *)p;
+
+	for (i = 0; i < pLength; i++) {
+		*c++ = (char)consume();
+	}
+
+	return false;
+}
+
+
 /* Discard the contents of the ringbuffer
  */
-void MHV_RingBuffer::flush(void) {
-	_head = _tail;
+void MHV_RingBuffer::flush() {
+	_head = _tail = 0;
 }
 
 /* Return the size of the ringbuffer
  */
-uint8_t MHV_RingBuffer::size(void) {
+uint8_t MHV_RingBuffer::size() {
 	return _size;
 }
 
 /* Return the number of bytes in the ringbuffer
  */
-uint8_t MHV_RingBuffer::length(void) {
-	uint16_t length = _size + _head - _tail;
-	if (length >= _size) {
-		length -= _size;
+uint8_t MHV_RingBuffer::length() {
+	int16_t length = _head - _tail;
+	if (length < 0) {
+// The pointers have wrapped
+		length = (_size - _tail) + _head + 1;
 	}
 
 	return (uint8_t) length;
@@ -95,11 +144,19 @@ uint8_t MHV_RingBuffer::length(void) {
 
 /* Return true if the ringbuffer is full
  */
-bool MHV_RingBuffer::full(void) {
+bool MHV_RingBuffer::full() {
 	return length() == _size - 1;
 }
 
-int MHV_RingBuffer::peekHead(void) {
+/* Return true if the ringbuffer is full
+ * @param blockLength	the length of the object to fit in
+ */
+bool MHV_RingBuffer::full(uint8_t blockLength) {
+	return length() > (_size - 1 - blockLength);
+}
+
+
+int MHV_RingBuffer::peekHead() {
 	if (_head == _tail) {
 		return -1;
 	}

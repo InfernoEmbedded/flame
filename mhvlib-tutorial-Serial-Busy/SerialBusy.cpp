@@ -65,40 +65,18 @@ char rxBuf[RX_BUFFER_SIZE];
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 /* Declare the serial object on UART0 using the above ring buffer
+ *
+ * The NULL parameter is a buffer used for keeping track of data
+ * sent asynchronously - see the Serial-Async tutorial for usage
+ *
+ * Use the USART0 hardware
+ *
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(&rxBuffer, MHV_USART0, 115200);
+MHV_HardwareSerial serial(&rxBuffer, NULL, MHV_USART0, 115200);
 
 // Assign interrupts to the serial object
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
-
-// Allocate a string in PROGMEM - this does not consume any RAM, only flash
-char progmemString[] PROGMEM = "busyWrite_P: A string has been written";
-
-// Allocate a buffer in PROGMEM - this does not consume any RAM, only flash
-char progmemBuffer[] PROGMEM = "busyWrite_P: A buffer has been written\r\n";
-
-
-/* We will call this if a write fails
- * Just turn on the LED and stop execution
- */
-void writeFailed(void) {
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
-	mhv_pinOn(MHV_ARDUINO_PIN_13);
-
-	for (;;);
-}
-
-/* We will call this if a read fails
- * Just turn on the LED and stop execution
- */
-void readFailed(void) {
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
-	mhv_pinOn(MHV_ARDUINO_PIN_13);
-
-	for (;;);
-}
-
 
 int main(void) {
 // Enable interrupts
@@ -110,21 +88,24 @@ int main(void) {
  * instead
  *   (void)serial.busyWrite("some string");
  */
-		if (serial.busyWrite("busyWrite: A string has been written\r\n")) {
-			writeFailed();
-		}
+		serial.busyWrite("busyWrite: A string has been written\r\n");
 
-// Write a literal PROGMEM string out
-		if (serial.busyWrite_P(progmemString)) {
-			writeFailed();
-		}
+/* Write a literal PROGMEM string out
+ * PROGMEM data is only stored in flash, and does not consume any RAM, allowing
+ * you to write tighter programs and make better use of the space available on
+ * the microcontroller. See the avr/pgmspace.h documentation for more info
+ */
+		serial.busyWrite_P(PSTR("busyWrite_P: A string has been written"));
 
 // Write single characters (the CR/LF for the PROGMEM string)
 		(void)serial.busyWrite('\r');
 		(void)serial.busyWrite('\n');
 
-// Write a buffer out
-		(void)serial.busyWrite_P(progmemBuffer, sizeof(progmemBuffer));
+/* Write a PROGMEM buffer out
+ * Note that we specify a length of how many bytes we want written
+ */
+		(void)serial.busyWrite_P(PSTR("busyWrite_P: A buffer has been written\r\n this should not be seen"),
+				40);
 
 
 // Prompt the user for a single character and tell them what they typed
@@ -146,9 +127,7 @@ int main(void) {
 // Turn on echo so the user can see what they typed
 		serial.echo(true);
 // Read the line and store it in the buffer we allocated above
-		int rc;
-		while (-1 == (rc = serial.readLine(buffer, sizeof(buffer)))) {}
-		switch (rc) {
+		switch (serial.busyReadLine(buffer, sizeof(buffer))) {
 		case -2:
 // Overflowed the output buffer
 			serial.busyWrite("\r\nYou gave me way too much information, I have truncated it.\r\n");

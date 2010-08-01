@@ -188,10 +188,12 @@ uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
 			return 256;
 		case MHV_TIMER_PRESCALER_5_1024:
 			return 1024;
+		default:
+			break;
 		}
 		break;
 	case MHV_TIMER_TYPE_7_PRESCALERS:
-		switch (getPrescaler) {
+		switch (getPrescaler()) {
 		case MHV_TIMER_PRESCALER_7_1:
 			return 1;
 		case MHV_TIMER_PRESCALER_7_8:
@@ -206,6 +208,8 @@ uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
 			return 256;
 		case MHV_TIMER_PRESCALER_7_1024:
 			return 1024;
+		default:
+			break;
 		}
 		break;
 	}
@@ -401,7 +405,6 @@ void MHV_Timer8::trigger2() {
 		_triggerFunction2(_triggerData2);
 	}
 }
-
 
 void MHV_Timer8::setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
 		void (*triggerFunction2)(void *triggerData), void *triggerData2) {

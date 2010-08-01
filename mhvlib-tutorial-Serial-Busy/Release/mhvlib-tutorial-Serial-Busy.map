@@ -1,7 +1,7 @@
 Archive member included because of file (symbol)
 
 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                              ./SerialBusy.o (MHV_HardwareSerial::tx())
+                              ./SerialBusy.o (MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long))
 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                               ./SerialBusy.o (MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char))
 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
@@ -142,7 +142,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1580
+.text           0x00000000     0x17be
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
                 0x00000000                __vectors
@@ -150,264 +150,281 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
- .progmem.data  0x000000e4       0x50 ./SerialBusy.o
-                0x0000010b                progmemBuffer
-                0x000000e4                progmemString
-                0x00000134                . = ALIGN (0x2)
-                0x00000134                __trampolines_start = .
+ .progmem.data  0x000000e4       0x68 ./SerialBusy.o
+                0x0000014c                . = ALIGN (0x2)
+                0x0000014c                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000134        0x0 linker stubs
+ .trampolines   0x0000014c        0x0 linker stubs
  *(.trampolines*)
-                0x00000134                __trampolines_end = .
+                0x0000014c                __trampolines_end = .
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000134                __ctors_start = .
+                0x0000014c                __ctors_start = .
  *(.ctors)
- .ctors         0x00000134        0x2 ./SerialBusy.o
-                0x00000136                __ctors_end = .
-                0x00000136                __dtors_start = .
+ .ctors         0x0000014c        0x2 ./SerialBusy.o
+                0x0000014e                __ctors_end = .
+                0x0000014e                __dtors_start = .
  *(.dtors)
-                0x00000136                __dtors_end = .
+                0x0000014e                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000136        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-                0x00000136                __init
+ .init0         0x0000014e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                0x0000014e                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000136        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init2         0x0000014e        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000142       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-                0x00000142                __do_copy_data
- .init4         0x0000015c       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
-                0x0000015c                __do_clear_bss
+ .init4         0x0000015a       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                0x0000015a                __do_copy_data
+ .init4         0x00000174       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+                0x00000174                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x0000016c       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
-                0x0000016c                __do_global_ctors
+ .init6         0x00000184       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+                0x00000184                __do_global_ctors
  *(.init6)
  *(.init7)
  *(.init7)
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000182        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init9         0x0000019a        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
  *(.init9)
  *(.text)
- .text          0x0000018a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-                0x0000018a                __vector_38
-                0x0000018a                __vector_22
-                0x0000018a                __vector_28
-                0x0000018a                __vector_1
-                0x0000018a                __vector_32
-                0x0000018a                __vector_34
-                0x0000018a                __vector_24
-                0x0000018a                __vector_12
-                0x0000018a                __vector_55
-                0x0000018a                __vector_46
-                0x0000018a                __bad_interrupt
-                0x0000018a                __vector_6
-                0x0000018a                __vector_31
-                0x0000018a                __vector_35
-                0x0000018a                __vector_39
-                0x0000018a                __vector_3
-                0x0000018a                __vector_23
-                0x0000018a                __vector_30
-                0x0000018a                __vector_45
-                0x0000018a                __vector_11
-                0x0000018a                __vector_54
-                0x0000018a                __vector_13
-                0x0000018a                __vector_17
-                0x0000018a                __vector_19
-                0x0000018a                __vector_56
-                0x0000018a                __vector_7
-                0x0000018a                __vector_49
-                0x0000018a                __vector_41
-                0x0000018a                __vector_43
-                0x0000018a                __vector_5
-                0x0000018a                __vector_33
-                0x0000018a                __vector_47
-                0x0000018a                __vector_52
-                0x0000018a                __vector_37
-                0x0000018a                __vector_4
-                0x0000018a                __vector_44
-                0x0000018a                __vector_51
-                0x0000018a                __vector_9
-                0x0000018a                __vector_2
-                0x0000018a                __vector_21
-                0x0000018a                __vector_15
-                0x0000018a                __vector_36
-                0x0000018a                __vector_29
-                0x0000018a                __vector_40
-                0x0000018a                __vector_8
-                0x0000018a                __vector_26
-                0x0000018a                __vector_48
-                0x0000018a                __vector_14
-                0x0000018a                __vector_53
-                0x0000018a                __vector_10
-                0x0000018a                __vector_50
-                0x0000018a                __vector_16
-                0x0000018a                __vector_18
-                0x0000018a                __vector_20
-                0x0000018a                __vector_42
- .text          0x0000018e      0x2e8 ./SerialBusy.o
-                0x00000198                readFailed()
-                0x00000422                __vector_25
-                0x00000192                writeFailed()
-                0x0000018e                __cxa_pure_virtual
-                0x000003ce                __vector_27
-                0x0000023c                main
- .text          0x00000476        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
- .text          0x00000476        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
- .text          0x00000476        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
-                0x00000476                . = ALIGN (0x2)
+ .text          0x000001a2        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                0x000001a2                __vector_38
+                0x000001a2                __vector_22
+                0x000001a2                __vector_28
+                0x000001a2                __vector_1
+                0x000001a2                __vector_32
+                0x000001a2                __vector_34
+                0x000001a2                __vector_24
+                0x000001a2                __vector_12
+                0x000001a2                __vector_55
+                0x000001a2                __vector_46
+                0x000001a2                __bad_interrupt
+                0x000001a2                __vector_6
+                0x000001a2                __vector_31
+                0x000001a2                __vector_35
+                0x000001a2                __vector_39
+                0x000001a2                __vector_3
+                0x000001a2                __vector_23
+                0x000001a2                __vector_30
+                0x000001a2                __vector_45
+                0x000001a2                __vector_11
+                0x000001a2                __vector_54
+                0x000001a2                __vector_13
+                0x000001a2                __vector_17
+                0x000001a2                __vector_19
+                0x000001a2                __vector_56
+                0x000001a2                __vector_7
+                0x000001a2                __vector_49
+                0x000001a2                __vector_41
+                0x000001a2                __vector_43
+                0x000001a2                __vector_5
+                0x000001a2                __vector_33
+                0x000001a2                __vector_47
+                0x000001a2                __vector_52
+                0x000001a2                __vector_37
+                0x000001a2                __vector_4
+                0x000001a2                __vector_44
+                0x000001a2                __vector_51
+                0x000001a2                __vector_9
+                0x000001a2                __vector_2
+                0x000001a2                __vector_21
+                0x000001a2                __vector_15
+                0x000001a2                __vector_36
+                0x000001a2                __vector_29
+                0x000001a2                __vector_40
+                0x000001a2                __vector_8
+                0x000001a2                __vector_26
+                0x000001a2                __vector_48
+                0x000001a2                __vector_14
+                0x000001a2                __vector_53
+                0x000001a2                __vector_10
+                0x000001a2                __vector_50
+                0x000001a2                __vector_16
+                0x000001a2                __vector_18
+                0x000001a2                __vector_20
+                0x000001a2                __vector_42
+ .text          0x000001a6      0x2ca ./SerialBusy.o
+                0x0000041c                __vector_25
+                0x000001a6                __cxa_pure_virtual
+                0x000003c8                __vector_27
+                0x00000252                main
+ .text          0x00000470        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+ .text          0x00000470        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .text          0x00000470        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                0x00000470                . = ALIGN (0x2)
  *(.text.*)
- .text._ZN18MHV_HardwareSerial2txEv
-                0x00000476       0x6a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000476                MHV_HardwareSerial::tx()
  .text._ZN18MHV_HardwareSerial8setSpeedEm
-                0x000004e0      0x1e2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000004e0                MHV_HardwareSerial::setSpeed(unsigned long)
- .text._ZN18MHV_HardwareSerialC1EP14MHV_RingBufferPVjPVhS5_S5_hhhhhhm
-                0x000006c2       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000006c2                MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long)
- .text._ZN18MHV_HardwareSerialC2EP14MHV_RingBufferPVjPVhS5_S5_hhhhhhm
-                0x00000728       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000728                MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long)
+                0x00000470      0x1e2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000470                MHV_HardwareSerial::setSpeed(unsigned long)
+ .text._ZN18MHV_HardwareSerialC1EP14MHV_RingBufferS1_PVjPVhS5_S5_hhhhhhm
+                0x00000652       0x70 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000652                MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long)
+ .text._ZN18MHV_HardwareSerialC2EP14MHV_RingBufferS1_PVjPVhS5_S5_hhhhhhm
+                0x000006c2       0x70 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x000006c2                MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long)
  .text._ZN18MHV_HardwareSerial3endEv
-                0x0000078e       0x50 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x0000078e                MHV_HardwareSerial::end()
+                0x00000732       0x50 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000732                MHV_HardwareSerial::end()
  .text._ZN18MHV_HardwareSerial4echoEb
-                0x000007de        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000007de                MHV_HardwareSerial::echo(bool)
- .text._ZN18MHV_HardwareSerial7canSendEv
-                0x000007e4       0x12 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000007e4                MHV_HardwareSerial::canSend()
+                0x00000782        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000782                MHV_HardwareSerial::echo(bool)
+ .text._ZN18MHV_HardwareSerial11canSendBusyEv
+                0x00000788       0x3a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000788                MHV_HardwareSerial::canSendBusy()
  .text._ZN18MHV_HardwareSerial9busyWriteEc
-                0x000007f6       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000007f6                MHV_HardwareSerial::busyWrite(char)
+                0x000007c2       0x82 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x000007c2                MHV_HardwareSerial::busyWrite(char)
  .text._ZN18MHV_HardwareSerial11busyWrite_PEPKc
-                0x0000085c       0x80 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x0000085c                MHV_HardwareSerial::busyWrite_P(char const*)
+                0x00000844       0xa0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000844                MHV_HardwareSerial::busyWrite_P(char const*)
  .text._ZN18MHV_HardwareSerial9busyWriteEPKc
-                0x000008dc       0x64 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x000008dc                MHV_HardwareSerial::busyWrite(char const*)
+                0x000008e4       0x9a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x000008e4                MHV_HardwareSerial::busyWrite(char const*)
  .text._ZN18MHV_HardwareSerial11busyWrite_PEPKcj
-                0x00000940       0x56 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000940                MHV_HardwareSerial::busyWrite_P(char const*, unsigned int)
+                0x0000097e       0x9c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x0000097e                MHV_HardwareSerial::busyWrite_P(char const*, unsigned int)
  .text._ZN18MHV_HardwareSerial9busyWriteEPKcj
-                0x00000996       0x7c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000996                MHV_HardwareSerial::busyWrite(char const*, unsigned int)
+                0x00000a1a       0x9a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000a1a                MHV_HardwareSerial::busyWrite(char const*, unsigned int)
  .text._ZN18MHV_HardwareSerial4busyEv
-                0x00000a12       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000a12                MHV_HardwareSerial::busy()
- .text._ZN18MHV_HardwareSerial12asyncWrite_PEPKc
-                0x00000a34       0xa2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000a34                MHV_HardwareSerial::asyncWrite_P(char const*)
- .text._ZN18MHV_HardwareSerial10asyncWriteEPKc
-                0x00000ad6       0xa4 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000ad6                MHV_HardwareSerial::asyncWrite(char const*)
- .text._ZN18MHV_HardwareSerial12asyncWrite_PEPKcj
-                0x00000b7a       0xae A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000b7a                MHV_HardwareSerial::asyncWrite_P(char const*, unsigned int)
- .text._ZN18MHV_HardwareSerial10asyncWriteEPKcj
-                0x00000c28       0xac A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000c28                MHV_HardwareSerial::asyncWrite(char const*, unsigned int)
+                0x00000ab4       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000ab4                MHV_HardwareSerial::busy()
+ .text._ZN18MHV_HardwareSerial7canSendEv
+                0x00000ad6       0x12 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000ad6                MHV_HardwareSerial::canSend()
  .text._ZN18MHV_HardwareSerial9availableEv
-                0x00000cd4        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000cd4                MHV_HardwareSerial::available()
+                0x00000ae8        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000ae8                MHV_HardwareSerial::available()
  .text._ZN18MHV_HardwareSerial5flushEv
-                0x00000ce0        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000ce0                MHV_HardwareSerial::flush()
+                0x00000af4        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000af4                MHV_HardwareSerial::flush()
  .text._ZN18MHV_HardwareSerial4readEv
-                0x00000cec        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000cec                MHV_HardwareSerial::read()
- .text._ZN18MHV_HardwareSerial8readLineEPch
-                0x00000cf8       0xb6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000cf8                MHV_HardwareSerial::readLine(char*, unsigned char)
+                0x00000b00        0xc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000b00                MHV_HardwareSerial::read()
+ .text._ZN18MHV_HardwareSerial13asyncReadLineEPch
+                0x00000b0c       0xb6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000b0c                MHV_HardwareSerial::asyncReadLine(char*, unsigned char)
+ .text._ZN18MHV_HardwareSerial12busyReadLineEPch
+                0x00000bc2       0x2c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000bc2                MHV_HardwareSerial::busyReadLine(char*, unsigned char)
+ .text._ZN18MHV_HardwareSerial6txDoneEv
+                0x00000bee       0x50 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000bee                MHV_HardwareSerial::txDone()
+ .text._ZN18MHV_HardwareSerial2txEv
+                0x00000c3e       0x6e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000c3e                MHV_HardwareSerial::tx()
+ .text._ZN18MHV_HardwareSerial10asyncStartEv
+                0x00000cac       0x68 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000cac                MHV_HardwareSerial::asyncStart()
+ .text._ZN18MHV_HardwareSerial10asyncWriteEPKcj
+                0x00000d14       0x78 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000d14                MHV_HardwareSerial::asyncWrite(char const*, unsigned int)
+ .text._ZN18MHV_HardwareSerial12asyncWrite_PEPKcj
+                0x00000d8c       0x7a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000d8c                MHV_HardwareSerial::asyncWrite_P(char const*, unsigned int)
+ .text._ZN18MHV_HardwareSerial10asyncWriteEPKc
+                0x00000e06       0x70 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000e06                MHV_HardwareSerial::asyncWrite(char const*)
+ .text._ZN18MHV_HardwareSerial12asyncWrite_PEPKc
+                0x00000e76       0x70 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000e76                MHV_HardwareSerial::asyncWrite_P(char const*)
  .text._ZN18MHV_HardwareSerial2rxEv
-                0x00000dae       0x44 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                0x00000dae                MHV_HardwareSerial::rx()
+                0x00000ee6       0x44 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                0x00000ee6                MHV_HardwareSerial::rx()
  .text._ZN14MHV_RingBufferC2EPch
-                0x00000df2        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000df2                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+                0x00000f2a        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f2a                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
  .text._ZN14MHV_RingBufferC1EPch
-                0x00000e00        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e00                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+                0x00000f38        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f38                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
  .text._ZN14MHV_RingBuffer6appendEc
-                0x00000e0e       0x3a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e0e                MHV_RingBuffer::append(char)
+                0x00000f46       0x3a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f46                MHV_RingBuffer::append(char)
  .text._ZN14MHV_RingBuffer7consumeEv
-                0x00000e48       0x44 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e48                MHV_RingBuffer::consume()
+                0x00000f80       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f80                MHV_RingBuffer::consume()
+ .text._ZN14MHV_RingBuffer7consumeEPvh
+                0x00000fbe       0x6c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000fbe                MHV_RingBuffer::consume(void*, unsigned char)
  .text._ZN14MHV_RingBuffer5flushEv
-                0x00000e8c        0x8 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e8c                MHV_RingBuffer::flush()
+                0x0000102a        0x8 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x0000102a                MHV_RingBuffer::flush()
  .text._ZN14MHV_RingBuffer4sizeEv
-                0x00000e94        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e94                MHV_RingBuffer::size()
+                0x00001032        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00001032                MHV_RingBuffer::size()
  .text._ZN14MHV_RingBuffer6lengthEv
-                0x00000e9a       0x24 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e9a                MHV_RingBuffer::length()
+                0x00001038       0x2a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00001038                MHV_RingBuffer::length()
  .text._ZN14MHV_RingBuffer4fullEv
-                0x00000ebe       0x36 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000ebe                MHV_RingBuffer::full()
+                0x00001062       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00001062                MHV_RingBuffer::full()
+ .text._ZN14MHV_RingBuffer4fullEh
+                0x000010a0       0x42 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x000010a0                MHV_RingBuffer::full(unsigned char)
+ .text._ZN14MHV_RingBuffer6appendEPKvh
+                0x000010e2       0x50 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x000010e2                MHV_RingBuffer::append(void const*, unsigned char)
  .text._ZN14MHV_RingBuffer8peekHeadEv
-                0x00000ef4       0x32 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000ef4                MHV_RingBuffer::peekHead()
- .text.libgcc   0x00000f26       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
-                0x00000f26                __mulsi3
- .text.libgcc   0x00000f64       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
-                0x00000f64                __udivmodsi4
- .text.libgcc   0x00000fa8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .text.libgcc   0x00000fa8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000fa8        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .text.libgcc   0x00000fa8        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                0x00000fac                __tablejump__
-                0x00000fa8                __tablejump2__
+                0x00001132       0x32 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                0x00001132                MHV_RingBuffer::peekHead()
+ .text.libgcc   0x00001164       0x3e c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+                0x00001164                __mulsi3
+ .text.libgcc   0x000011a2       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+                0x000011a2                __udivmodsi4
+ .text.libgcc   0x000011e6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x000011e6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000011e6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .text.libgcc   0x000011e6        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+                0x000011ea                __tablejump__
+                0x000011e6                __tablejump2__
  .text.avr-libc
-                0x00000fb4       0x7c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
-                0x00000fb4                snprintf
+                0x000011f2       0x7c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
+                0x000011f2                snprintf
  .text.avr-libc
-                0x00001030      0x40c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
-                0x00001030                vfprintf
+                0x0000126e      0x40c c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+                0x0000126e                vfprintf
  .text.avr-libc
-                0x0000143c       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
-                0x0000143c                strnlen_P
+                0x0000167a       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+                0x0000167a                strnlen_P
  .text.avr-libc
-                0x00001452       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
-                0x00001452                strnlen
+                0x00001690       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
+                0x00001690                strnlen
  .text.avr-libc
-                0x00001468       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
-                0x00001468                fputc
+                0x000016a6       0x58 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
+                0x000016a6                fputc
  .text.avr-libc
-                0x000014c0       0xbc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
-                0x000014c0                __ultoa_invert
-                0x0000157c                . = ALIGN (0x2)
+                0x000016fe       0xbc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+                0x000016fe                __ultoa_invert
+                0x000017ba                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000157c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                0x0000157c                exit
-                0x0000157c                _exit
+ .fini9         0x000017ba        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                0x000017ba                exit
+                0x000017ba                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -426,71 +443,72 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000157c        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .fini0         0x000017ba        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001580                _etext = .
+                0x000017be                _etext = .
 
-.data           0x00800200      0x11a load address 0x00001580
+.data           0x00800200      0x11c load address 0x000017be
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
- .data          0x00800200      0x11a ./SerialBusy.o
- .data          0x0080031a        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
- .data          0x0080031a        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
- .data          0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+ .data          0x00800200      0x11b ./SerialBusy.o
+ .data          0x0080031b        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+ .data          0x0080031b        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .data          0x0080031b        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.d*)
-                0x0080031a                . = ALIGN (0x2)
-                0x0080031a                _edata = .
-                0x0080031a                PROVIDE (__data_end, .)
+                0x0080031c                . = ALIGN (0x2)
+ *fill*         0x0080031b        0x1 00
+                0x0080031c                _edata = .
+                0x0080031c                PROVIDE (__data_end, .)
 
-.bss            0x0080031a       0x6c
-                0x0080031a                PROVIDE (__bss_start, .)
+.bss            0x0080031c       0x71
+                0x0080031c                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x0080031a        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
- .bss           0x0080031a       0x6c ./SerialBusy.o
-                0x0080031a                rxBuf
-                0x00800370                serial
-                0x0080036b                rxBuffer
- .bss           0x00800386        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
- .bss           0x00800386        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
- .bss           0x00800386        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
+ .bss           0x0080031c        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .bss           0x0080031c       0x71 ./SerialBusy.o
+                0x0080031c                rxBuf
+                0x00800372                serial
+                0x0080036d                rxBuffer
+ .bss           0x0080038d        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+ .bss           0x0080038d        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_mulsi3.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen_P.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(strnlen.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(fputc.o)
+ .bss           0x0080038d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(ultoa_invert.o)
  *(.bss*)
  *(COMMON)
-                0x00800386                PROVIDE (__bss_end, .)
-                0x00001580                __data_load_start = LOADADDR (.data)
-                0x0000169a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0080038d                PROVIDE (__bss_end, .)
+                0x000017be                __data_load_start = LOADADDR (.data)
+                0x000018da                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800386        0x0
-                0x00800386                PROVIDE (__noinit_start, .)
+.noinit         0x0080038d        0x0
+                0x0080038d                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800386                PROVIDE (__noinit_end, .)
-                0x00800386                _end = .
-                0x00800386                PROVIDE (__heap_start, .)
+                0x0080038d                PROVIDE (__noinit_end, .)
+                0x0080038d                _end = .
+                0x0080038d                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -574,15 +592,19 @@ LOAD linker stubs
 Cross Reference Table
 
 Symbol                                            File
-MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer*, MHV_RingBuffer*, unsigned int volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned char, unsigned long) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
+MHV_HardwareSerial::asyncReadLine(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_HardwareSerial::asyncStart()                  A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::asyncWrite(char const*)       A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::asyncWrite(char const*, unsigned int) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::asyncWrite_P(char const*)     A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::asyncWrite_P(char const*, unsigned int) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::available()                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::busy()                        A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_HardwareSerial::busyReadLine(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+                                                  ./SerialBusy.o
 MHV_HardwareSerial::busyWrite(char const*)        A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
 MHV_HardwareSerial::busyWrite(char const*, unsigned int) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
@@ -593,6 +615,7 @@ MHV_HardwareSerial::busyWrite_P(char const*)      A:\eclipse\mhvlib\Release\libm
 MHV_HardwareSerial::busyWrite_P(char const*, unsigned int) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
 MHV_HardwareSerial::canSend()                     A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_HardwareSerial::canSendBusy()                 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::echo(bool)                    A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
 MHV_HardwareSerial::end()                         A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
@@ -600,23 +623,28 @@ MHV_HardwareSerial::flush()                       A:\eclipse\mhvlib\Release\libm
                                                   ./SerialBusy.o
 MHV_HardwareSerial::read()                        A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
-MHV_HardwareSerial::readLine(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
-                                                  ./SerialBusy.o
 MHV_HardwareSerial::rx()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
 MHV_HardwareSerial::setSpeed(unsigned long)       A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_HardwareSerial::tx()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
                                                   ./SerialBusy.o
-MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+MHV_HardwareSerial::txDone()                      A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   ./SerialBusy.o
+MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
 MHV_RingBuffer::append(char)                      A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_RingBuffer::append(void const*, unsigned char) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_RingBuffer::consume()                         A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_RingBuffer::consume(void*, unsigned char)     A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_RingBuffer::flush()                           A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_RingBuffer::full()                            A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
+MHV_RingBuffer::full(unsigned char)               A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
 MHV_RingBuffer::length()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_RingBuffer.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_HardwareSerial.o)
@@ -717,9 +745,6 @@ fputc                                             c:/winavr-20100110/bin/../lib/
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
 main                                              ./SerialBusy.o
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-progmemBuffer                                     ./SerialBusy.o
-progmemString                                     ./SerialBusy.o
-readFailed()                                      ./SerialBusy.o
 rxBuf                                             ./SerialBusy.o
 rxBuffer                                          ./SerialBusy.o
 serial                                            ./SerialBusy.o
@@ -731,4 +756,3 @@ strnlen_P                                         c:/winavr-20100110/bin/../lib/
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
 vfprintf                                          c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(vfprintf_std.o)
                                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(snprintf.o)
-writeFailed()                                     ./SerialBusy.o

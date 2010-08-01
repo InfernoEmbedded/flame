@@ -48,7 +48,14 @@ extern "C" void __cxa_pure_virtual() {
 char rxBuf[RX_BUFFER_SIZE];
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
-MHV_HardwareSerial serial(&rxBuffer, MHV_USART0, 115200);
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 10
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+// A buffer for the serial port to send data, it only contains pointers
+char txBuf[TX_BUFFER_SIZE];
+MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
+
+MHV_HardwareSerial serial(&rxBuffer, &txBuffer, MHV_USART0, 115200);
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
 
 MHV_Timer8 tickTimer(MHV_TIMER8_2);
@@ -122,11 +129,11 @@ MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer,
 		matrixRowOn, matrixRowOff, matrixColOn, matrixColOff);
 
 
-char progmemSync[] PROGMEM = "Busy writes, progmem string\r\n";
-char progmemAsync[] PROGMEM = "Async writes, progmem string\r\n";
+PGM_P progmemSync = "Busy writes, progmem string\r\n";
+PGM_P progmemAsync = "Async writes, progmem string\r\n";
 
-char progmemSyncBuffer[] PROGMEM = "Busy writes, progmem buffer\r\n";
-char progmemAsyncBuffer[] PROGMEM = "Async writes, progmem buffer\r\n";
+PGM_P progmemSyncBuffer = "Busy writes, progmem buffer\r\n";
+PGM_P progmemAsyncBuffer = "Async writes, progmem buffer\r\n";
 
 bool ledOn = false;
 uint8_t countLED = 0;
@@ -323,7 +330,7 @@ int main(void) {
 		snprintf(txBuf, sizeof(txBuf), "Busy writes %s\r\n", "normal string");
 		// Not run in conjunction with the asynchronous calls, so it is safe to ignore return code
 		(void) serial.busyWrite(txBuf);
-		(void) serial.busyWrite_P(progmemSync);
+		serial.busyWrite_P(progmemSync);
 
 		/* busyWrite does not wait for the last byte to be sent, so if we're going to do an async write
 		 * we must wait here or the write will fail
@@ -332,12 +339,12 @@ int main(void) {
 		(void) serial.asyncWrite("Async writes, normal string\r\n");
 		// Wait until we're done transmitting asynchronously
 		while (!serial.canSend()) {}
-		(void) serial.asyncWrite_P(progmemAsync);
+		serial.asyncWrite_P(progmemAsync);
 		while (!serial.canSend()) {}
 
 		// Buffer writes
 		(void) serial.busyWrite("Busy writes, normal buffer\r\n", 28);
-		(void) serial.busyWrite_P(progmemSyncBuffer, sizeof(progmemSyncBuffer) - 1);
+		serial.busyWrite_P(progmemSyncBuffer, sizeof(progmemSyncBuffer) - 1);
 
 		/* busyWrite does not wait for the last byte to be sent, so if we're going to do an async write
 		 * we must wait here or the write will fail
@@ -346,14 +353,14 @@ int main(void) {
 		(void) serial.asyncWrite("Async writes, normal buffer\r\n", 29);
 		// Wait until we're done transmitting asynchronously
 		while (!serial.canSend()) {}
-		(void) serial.asyncWrite_P(progmemAsyncBuffer, sizeof(progmemAsyncBuffer) - 1);
+		serial.asyncWrite_P(progmemAsyncBuffer, sizeof(progmemAsyncBuffer) - 1);
 		while (!serial.canSend()) {}
 
 		// Test reads
 		serial.busyWrite("OK, now type something and press enter\r\n");
 		serial.echo(true);
 		// We will use txBuf here to store the incoming data, since we don't need the buffer at this point
-		while (-1 == serial.readLine(txBuf, sizeof(txBuf))) {};
+		(void)serial.busyReadLine(txBuf, sizeof(txBuf));
 		serial.echo(false);
 		serial.busyWrite("\nYou said: '");
 		serial.busyWrite(txBuf);

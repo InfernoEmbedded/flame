@@ -32,7 +32,9 @@
 #include <inttypes.h>
 #include <avr/interrupt.h>
 #include <MHV_io.h>
+#include <stdio.h>
 #include <MHV_RingBuffer.h>
+#include <avr/pgmspace.h>
 
 #define MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts) \
 	_MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts)
@@ -45,9 +47,29 @@ ISR(mhvTxVect) { \
 	mhvHardwareSerial.tx(); \
 }
 
+#define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
+do {\
+	char __debug_buffer[80]; \
+	snprintf(__debug_buffer, sizeof(__debug_buffer), PSTR("%s:%d\t%s():\t\t"), __FILE__, __LINE__, __FUNCTION__); \
+	__dbg_serial.busyWrite(__debug_buffer); \
+	snprintf_P(__debug_buffer, sizeof(__debug_buffer), PSTR(__dbg_format), ## __dbg_args); \
+	__dbg_serial.busyWrite(__debug_buffer); \
+	__dbg_serial.busyWrite_P(PSTR("\r\n")); \
+} while (0)
+
+struct mhv_serial_buffer {
+	const char	*data;
+	uint16_t	length;
+//	void		(*completeFunction)(const char *);
+	bool		progmem;
+	bool		isString;
+};
+typedef struct mhv_serial_buffer MHV_SERIAL_BUFFER;
+
 class MHV_HardwareSerial {
 private:
 	MHV_RingBuffer *_rxBuffer;
+	MHV_RingBuffer *_txPointers;
 	volatile uint16_t *_ubrr;
 	volatile uint8_t *_ucsra;
 	volatile uint8_t *_ucsrb;
@@ -58,14 +80,15 @@ private:
 	uint8_t _txcie;
 	uint8_t _udre;
 	uint8_t _u2x;
-	const char *_txBuffer;
-	int16_t _txBufferLength;
-	void (_txCompleteCallback)(char *);
-	volatile bool _txBufferProgmem;
+	MHV_SERIAL_BUFFER _currentTx;
+	const char *_tx;
 	volatile bool _echo;
 
+	void txDone();
+	void asyncStart();
+
 public:
-	MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, volatile uint16_t *ubrr,
+	MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer, volatile uint16_t *ubrr,
 			volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen,
 			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
 			unsigned long baud);
@@ -74,24 +97,24 @@ public:
 	uint8_t available(void);
 	int read(void);
 	void flush(void);
-	uint8_t busyWrite(char c);
-	uint8_t busyWrite(const char *buffer);
-	uint8_t busyWrite(const char *buffer, uint16_t length);
-	uint8_t busyWrite_P(const char *buffer);
-	uint8_t busyWrite_P(const char *buffer, uint16_t length);
+	void busyWrite(char c);
+	void busyWrite(const char *buffer);
+	void busyWrite(const char *buffer, uint16_t length);
+	void busyWrite_P(PGM_P buffer);
+	void busyWrite_P(PGM_P buffer, uint16_t length);
 	bool canSend(void);
-	uint8_t asyncWrite(const char *buffer);
-	uint8_t asyncWrite_P(const char *buffer);
-	uint8_t asyncWrite(const char *buffer, uint16_t length);
-	uint8_t asyncWrite_P(const char *buffer, uint16_t length);
+	bool canSendBusy(void);
+	bool asyncWrite(const char *buffer);
+	bool asyncWrite_P(PGM_P buffer);
+	bool asyncWrite(const char *buffer, uint16_t length);
+	bool asyncWrite_P(PGM_P buffer, uint16_t length);
 	void rx(void);
 	void tx(void);
-	int readLine(char *buffer, uint8_t bufferLength);
+	int asyncReadLine(char *buffer, uint8_t bufferLength);
+	int busyReadLine(char *buffer, uint8_t bufferLength);
 	void echo(bool echoOn);
 	bool busy(void);
 };
-
-#define MHV_SENDING_STRING -1
 
 
 #endif

@@ -64,19 +64,21 @@ char rxBuf[RX_BUFFER_SIZE];
 // Create a ring buffer wrapping the memory allocated above
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
-/* Declare the serial object on UART0 using the above ring buffer
+
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 10
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+// A buffer for the serial port to send data, it only contains pointers
+char txBuf[TX_BUFFER_SIZE];
+MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
+
+/* Declare the serial object on USART0 using the above ring buffer
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(&rxBuffer, MHV_USART0, 115200);
+MHV_HardwareSerial serial(&rxBuffer, &txBuffer, MHV_USART0, 115200);
 
 // Assign interrupts to the serial object
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
-
-// Allocate a string in PROGMEM - this does not consume any RAM, only flash
-char progmemString[] PROGMEM = "asyncWrite_P: A string has been written";
-
-// Allocate a buffer in PROGMEM - this does not consume any RAM, only flash
-char progmemBuffer[] PROGMEM = "asyncWrite_P: A buffer has been written\r\n";
 
 
 /* We will call this if a write fails
@@ -89,22 +91,17 @@ void writeFailed(void) {
 	for (;;);
 }
 
-/* We will call this if a read fails
- * Just turn on the LED and stop execution
- */
-void readFailed(void) {
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
-	mhv_pinOn(MHV_ARDUINO_PIN_13);
-
-	for (;;);
-}
-
-
 int main(void) {
 // Enable interrupts
 	sei();
 
+	mhv_setOutput(MHV_ARDUINO_PIN_12);
+
+
 	while (1) {
+// Wait until there is space to send
+		while (!serial.canSend()) {}
+
 /* Write a literal string out
  * If there is no possibility of the write failing, you can cast it to void
  * instead
@@ -114,34 +111,35 @@ int main(void) {
 			writeFailed();
 		}
 
-/* Wait until the previous write has been completed - you can do other work
+/* Wait until there is more space to send - you can do other work
+ * at this point - busy will return false when the serial device is ready
+ * to accept another string
+ */
+		while (!serial.canSend()) {}
+
+		// Wait until there is space to send
+		if (serial.asyncWrite("asyncWrite: A buffer has been written\r\n this will not show", 39)) {
+			writeFailed();
+		}
+
+
+/* Wait until there is more space to send - you can do other work
  * at this point - busy will return false when the serial device is ready
  * to accept another string
  */
 		while (!serial.canSend()) {}
 
 // Write a literal PROGMEM string out
-		if (serial.asyncWrite_P(progmemString)) {
+		if (serial.asyncWrite_P(PSTR("asyncWrite_P: A string has been written\r\n"))) {
 			writeFailed();
 		}
 
-		while (!serial.canSend()) {}
-
-/* Write single characters (the CR/LF for the PROGMEM string)
- * Since single characters return as soon as the hardware has the byte,
- * there is no need for a seperate async version of it
- */
-		(void)serial.busyWrite('\r');
-		(void)serial.busyWrite('\n');
-
-// Wait for the last busyWrite to complete
+// Wait until there is space to send
 		while (!serial.canSend()) {}
 
 // Write a buffer out
-		(void)serial.asyncWrite_P(progmemBuffer, sizeof(progmemBuffer));
-
-// Wait for the last asyncWrite to complete
-		while (!serial.canSend()) {}
+		(void)serial.asyncWrite_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
+				41);
 	} // Loop
 
 // Main must return an int, even though we never get here

@@ -126,7 +126,7 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x982
+.text           0x00000000      0xa18
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
                 0x00000000                __vectors
@@ -284,79 +284,82 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  .text._ZN10MHV_Timer812getPrescalerEv
                 0x00000652       0x10 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
                 0x00000652                MHV_Timer8::getPrescaler()
+ .text._ZN10MHV_Timer822getPrescalerMultiplierEv
+                0x00000662       0x96 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000662                MHV_Timer8::getPrescalerMultiplier()
  .text._ZN10MHV_Timer812setPrescalerE19mhv_timer_prescaler
-                0x00000662        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000662                MHV_Timer8::setPrescaler(mhv_timer_prescaler)
+                0x000006f8        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000006f8                MHV_Timer8::setPrescaler(mhv_timer_prescaler)
  .text._ZN10MHV_Timer817setGenerationModeEv
-                0x00000668       0x8c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000668                MHV_Timer8::setGenerationMode()
+                0x000006fe       0x8c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000006fe                MHV_Timer8::setGenerationMode()
  .text._ZN10MHV_Timer810setPeriodsE19mhv_timer_prescalerhh
-                0x000006f4       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000006f4                MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char)
+                0x0000078a       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000078a                MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char)
  .text._ZN10MHV_Timer86getTopEv
-                0x00000732       0x26 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000732                MHV_Timer8::getTop()
+                0x000007c8       0x26 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000007c8                MHV_Timer8::getTop()
  .text._ZN10MHV_Timer86setTopEh
-                0x00000758       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000758                MHV_Timer8::setTop(unsigned char)
+                0x000007ee       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000007ee                MHV_Timer8::setTop(unsigned char)
  .text._ZN10MHV_Timer89setOutputEhh
-                0x0000076e       0x20 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000076e                MHV_Timer8::setOutput(unsigned char, unsigned char)
+                0x00000804       0x20 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000804                MHV_Timer8::setOutput(unsigned char, unsigned char)
  .text._ZN10MHV_Timer810setOutput1Eh
-                0x0000078e        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000078e                MHV_Timer8::setOutput1(unsigned char)
+                0x00000824        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000824                MHV_Timer8::setOutput1(unsigned char)
  .text._ZN10MHV_Timer810setOutput2Eh
-                0x0000079c        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000079c                MHV_Timer8::setOutput2(unsigned char)
+                0x00000832        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000832                MHV_Timer8::setOutput2(unsigned char)
  .text._ZN10MHV_Timer89getOutputEh
-                0x000007aa       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007aa                MHV_Timer8::getOutput(unsigned char)
+                0x00000840       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000840                MHV_Timer8::getOutput(unsigned char)
  .text._ZN10MHV_Timer810getOutput1Ev
-                0x000007cc        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007cc                MHV_Timer8::getOutput1()
+                0x00000862        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000862                MHV_Timer8::getOutput1()
  .text._ZN10MHV_Timer810getOutput2Ev
-                0x000007da        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007da                MHV_Timer8::getOutput2()
+                0x00000870        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000870                MHV_Timer8::getOutput2()
  .text._ZN10MHV_Timer814connectOutput1E22mhv_timer_connect_type
-                0x000007e8       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007e8                MHV_Timer8::connectOutput1(mhv_timer_connect_type)
+                0x0000087e       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000087e                MHV_Timer8::connectOutput1(mhv_timer_connect_type)
  .text._ZN10MHV_Timer814connectOutput2E22mhv_timer_connect_type
-                0x00000802       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000802                MHV_Timer8::connectOutput2(mhv_timer_connect_type)
+                0x00000898       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000898                MHV_Timer8::connectOutput2(mhv_timer_connect_type)
  .text._ZN10MHV_Timer86enableEv
-                0x00000818       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000818                MHV_Timer8::enable()
+                0x000008ae       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000008ae                MHV_Timer8::enable()
  .text._ZN10MHV_Timer87disableEv
-                0x0000087e       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000087e                MHV_Timer8::disable()
+                0x00000914       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000914                MHV_Timer8::disable()
  .text._ZN10MHV_Timer87enabledEv
-                0x000008bc       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000008bc                MHV_Timer8::enabled()
+                0x00000952       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000952                MHV_Timer8::enabled()
  .text._ZN10MHV_Timer88trigger1Ev
-                0x000008d0       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000008d0                MHV_Timer8::trigger1()
+                0x00000966       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000966                MHV_Timer8::trigger1()
  .text._ZN10MHV_Timer88trigger2Ev
-                0x000008f2       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000008f2                MHV_Timer8::trigger2()
+                0x00000988       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000988                MHV_Timer8::trigger2()
  .text._ZN10MHV_Timer811setTriggersEPFvPvES0_S2_S0_
-                0x0000090c       0x1c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000090c                MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*)
+                0x000009a2       0x1c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000009a2                MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*)
  .text._ZN10MHV_Timer87setModeE14mhv_timer_mode
-                0x00000928        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000928                MHV_Timer8::setMode(mhv_timer_mode)
- .text.libgcc   0x0000092e       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
-                0x0000092e                __udivmodsi4
- .text.libgcc   0x00000972        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .text.libgcc   0x00000972        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000972        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .text.libgcc   0x00000972        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                0x00000976                __tablejump__
-                0x00000972                __tablejump2__
-                0x0000097e                . = ALIGN (0x2)
+                0x000009be        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000009be                MHV_Timer8::setMode(mhv_timer_mode)
+ .text.libgcc   0x000009c4       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+                0x000009c4                __udivmodsi4
+ .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .text.libgcc   0x00000a08        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+                0x00000a0c                __tablejump__
+                0x00000a08                __tablejump2__
+                0x00000a14                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000097e        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                0x0000097e                exit
-                0x0000097e                _exit
+ .fini9         0x00000a14        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                0x00000a14                exit
+                0x00000a14                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -375,11 +378,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000097e        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .fini0         0x00000a14        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000982                _etext = .
+                0x00000a18                _etext = .
 
-.data           0x00800200        0x2 load address 0x00000982
+.data           0x00800200        0x2 load address 0x00000a18
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
@@ -414,8 +417,8 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.bss*)
  *(COMMON)
                 0x0080021d                PROVIDE (__bss_end, .)
-                0x00000982                __data_load_start = LOADADDR (.data)
-                0x00000984                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000a18                __data_load_start = LOADADDR (.data)
+                0x00000a1a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080021d        0x0
                 0x0080021d                PROVIDE (__noinit_start, .)
@@ -509,8 +512,8 @@ Symbol                                            File
 MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
                                                   ./BlinkingLED-Timer.o
+MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::_setPrescaler(mhv_timer_prescaler)    A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::calculatePrescaler(unsigned long, mhv_timer_prescaler*, unsigned int*) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::calculateTop(unsigned long*, unsigned int) A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
@@ -525,6 +528,7 @@ MHV_Timer8::getOutput(unsigned char)              A:\eclipse\mhvlib\Release\libm
 MHV_Timer8::getOutput1()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::getOutput2()                          A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::getPrescaler()                        A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getPrescalerMultiplier()              A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::getTop()                              A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::setGenerationMode()                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::setMode(mhv_timer_mode)               A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)

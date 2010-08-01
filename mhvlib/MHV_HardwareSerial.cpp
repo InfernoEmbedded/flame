@@ -36,11 +36,13 @@
 #include "MHV_HardwareSerial.h"
 
 // Constructors
-MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer,
+MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer,
 		volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
 		volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie,
 		uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud) {
 	_rxBuffer = rxBuffer;
+	_txPointers = txBuffer;
+
 	_echo = false;
 	_ubrr = ubrr;
 	_ucsra = ucsra;
@@ -52,8 +54,7 @@ MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer,
 	_txcie = txcie;
 	_udre = udre;
 	_u2x = u2x;
-
-	_txBuffer = NULL;
+	_tx = NULL;
 
 	setSpeed(baud);
 }
@@ -68,34 +69,75 @@ void MHV_HardwareSerial::rx() {
 	}
 }
 
-// TX interrupt handler
-void MHV_HardwareSerial::tx() {
-	char c;
-	if (NULL == _txBuffer) {
+// Done with the current TX buffer
+void MHV_HardwareSerial::txDone() {
+//	if (NULL != _currentTx.completeFunction) {
+//		_currentTx.completeFunction(_currentTx.data);
+//	}
+
+	if (_txPointers->consume(&_currentTx, sizeof(_currentTx))) {
+// Nothing more to send, disable the TX interrupt
+		_tx = NULL;
+		*_ucsrb &= ~_BV( _txcie);
 		return;
 	}
 
-	if (_txBufferProgmem) {
-		c = pgm_read_byte(_txBuffer);
-	} else {
-		c = *_txBuffer;
+	_tx = _currentTx.data;
+	tx();
+}
+
+// TX interrupt handler
+void MHV_HardwareSerial::tx() {
+	char c;
+	if (NULL == _tx) {
+		return;
 	}
-	if (MHV_SENDING_STRING == _txBufferLength) {
+
+	if (_currentTx.progmem) {
+		c = pgm_read_byte(_tx);
+	} else {
+		c = *_tx;
+	}
+
+	if (_currentTx.isString) {
 		// sending a null terminated string
 		if ('\0' == c) {
-			_txBuffer = NULL;
+			txDone();
 			return;
 		}
 	} else {
 		// sending a specific length buffer
-		if (0 == _txBufferLength--) {
-			_txBuffer = NULL;
+		if (_tx == _currentTx.data + _currentTx.length) {
+			txDone();
 			return;
 		}
 	}
 	*_udr = c;
-	_txBuffer++;
+	_tx++;
 }
+
+/* Start sending async data if we aren't already
+ */
+void MHV_HardwareSerial::asyncStart() {
+	if (NULL != _tx) {
+		return;
+	}
+
+	if (_txPointers->consume(&_currentTx, sizeof(_currentTx))) {
+		return;
+	}
+
+	// Enable tx interrupt
+	*_ucsrb |= _BV( _txcie);
+
+	_tx = _currentTx.data;
+
+	// If the UART isn't already sending data, start sending
+	if (((*_ucsra) & (1 << _udre))) {
+		tx();
+	}
+}
+
 
 void MHV_HardwareSerial::setSpeed(unsigned long baud) {
 /* Use U2X if the requested baud rate is higher than (F_CPU/16),
@@ -119,7 +161,7 @@ void MHV_HardwareSerial::setSpeed(unsigned long baud) {
  * returns -2 if the buffer was too small
  * returns -3 if we have reached the end of the ringbuffer with no line terminator
  */
-int MHV_HardwareSerial::readLine(char *buffer, uint8_t bufferLength) {
+int MHV_HardwareSerial::asyncReadLine(char *buffer, uint8_t bufferLength) {
 	// Peek at the last character & see if its a newline
 	int last = _rxBuffer->peekHead();
 
@@ -150,6 +192,18 @@ int MHV_HardwareSerial::readLine(char *buffer, uint8_t bufferLength) {
 	return 0;
 }
 
+/* If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
+ * Blocks until a line is available
+ * returns 0 if we have successfully copied a line
+ * returns -2 if the buffer was too small
+ * returns -3 if we have reached the end of the ringbuffer with no line terminator
+ */
+int MHV_HardwareSerial::busyReadLine(char *buffer, uint8_t bufferLength) {
+	int rc;
+	while (-1 == (rc = asyncReadLine(buffer, bufferLength))) {}
+	return rc;
+}
+
 int MHV_HardwareSerial::read(void) {
 	return _rxBuffer->consume();
 }
@@ -162,6 +216,9 @@ void MHV_HardwareSerial::end() {
 	*_ucsrb &= ~_BV( _rxen) & ~_BV( _txen) & ~_BV( _rxcie) & ~_BV( _txcie);
 }
 
+/* Enable echoing data received by us back to the sender (useful for terminal
+ * interaction
+ */
 void MHV_HardwareSerial::echo(bool echoOn) {
 	_echo = echoOn;
 }
@@ -169,29 +226,30 @@ void MHV_HardwareSerial::echo(bool echoOn) {
 /* Are we ready to asynchronously send another buffer?
  */
 bool MHV_HardwareSerial::canSend() {
-	return _txBuffer == NULL;
+	return !(_txPointers->full(sizeof(MHV_SERIAL_BUFFER)));
 }
 
-uint8_t MHV_HardwareSerial::busyWrite(char c) {
-	if (!canSend()) {
-		return 1;
-	}
+/* Can we send something via busywrite
+ */
+bool MHV_HardwareSerial::canSendBusy() {
+	return ((NULL == _tx) && ((*_ucsra) & (1 << _udre)));
+}
+
+void MHV_HardwareSerial::busyWrite(char c) {
+	while (!canSendBusy()) {};
 	*_ucsrb &= ~_BV( _txcie);
 
 	while (!((*_ucsra) & (1 << _udre))) {}
 
 	*_udr = c;
-	return 0;
 }
 
 /* Write a null terminated progmem string to the serial port
  */
-uint8_t MHV_HardwareSerial::busyWrite_P(const char *buffer) {
+void MHV_HardwareSerial::busyWrite_P(PGM_P buffer) {
 	const char *p;
 
-	if (!canSend()) {
-		return 1;
-	}
+	while (!canSendBusy()) {};
 	*_ucsrb &= ~_BV( _txcie);
 
 	p = buffer;
@@ -202,18 +260,15 @@ uint8_t MHV_HardwareSerial::busyWrite_P(const char *buffer) {
 		*_udr = c;
 		c = pgm_read_byte(p++);
 	}
-	return 0;
 }
 
 
 /* Write a null terminated string to the serial port
  */
-uint8_t MHV_HardwareSerial::busyWrite(const char *buffer) {
+void MHV_HardwareSerial::busyWrite(const char *buffer) {
 	const char *p;
 
-	if (!canSend()) {
-		return 1;
-	}
+	while (!canSendBusy()) {};
 	*_ucsrb &= ~_BV( _txcie);
 
 	for (p = buffer; *p != '\0';) {
@@ -221,15 +276,13 @@ uint8_t MHV_HardwareSerial::busyWrite(const char *buffer) {
 
 		*_udr = *(p++);
 	}
-	return 0;
 }
 
-uint8_t MHV_HardwareSerial::busyWrite_P(const char *buffer, uint16_t length) {
+void MHV_HardwareSerial::busyWrite_P(PGM_P buffer, uint16_t length) {
 	uint16_t i;
 
-	if (!canSend()) {
-		return 1;
-	}
+	while (!canSendBusy()) {};
+	*_ucsrb &= ~_BV( _txcie);
 
 	for (i = 0; i < length; i++) {
 		/* Don't need to check return values as we have already checked up front
@@ -237,15 +290,12 @@ uint8_t MHV_HardwareSerial::busyWrite_P(const char *buffer, uint16_t length) {
 		 */
 		busyWrite(pgm_read_byte(buffer + i));
 	}
-	return 0;
 }
 
-uint8_t MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
+void MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 	uint16_t i;
 
-	if (!canSend()) {
-		return 1;
-	}
+	while (!canSendBusy()) {};
 	*_ucsrb &= ~_BV( _txcie);
 
 	for (i = 0; i < length; i++) {
@@ -254,128 +304,108 @@ uint8_t MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 		 */
 		busyWrite(buffer[i]);
 	}
-	return 0;
 }
 
-/* Are we ready to asynchronously send another buffer?
+/* Check if the hardware is busy - note that this should not be used to
+ * determine if you can actually write - use canSend instead
  */
 bool MHV_HardwareSerial::busy(void) {
 	return !((*_ucsra) & (1 << _udre));
 }
 
+/* Check if there is any received data available
+ * @return the number of bytes available
+ */
 uint8_t MHV_HardwareSerial::available(void) {
 	return _rxBuffer->length();
 }
 
 /* Write a progmem string asynchronously
- * Returns 	0 on success
- * 			1 if there is already a string being sent
+ * @return false on success, true on failure
  */
-uint8_t MHV_HardwareSerial::asyncWrite_P(const char *buffer) {
-	if (!canSend()) {
-		return 1;
-	}
-	_txBufferLength = MHV_SENDING_STRING;
-	_txBufferProgmem = true;
-	*_ucsrb |= _BV( _txcie);
+bool MHV_HardwareSerial::asyncWrite_P(PGM_P buffer) {
+	MHV_SERIAL_BUFFER buf;
 
-	// Start writing
-	char c = pgm_read_byte(buffer);
-	if ('\0' == c) {
-		_txBuffer = NULL;
-		return 0;
-	} else if (((*_ucsra) & (1 << _udre))) {
-		_txBuffer = buffer + 1;
-		*_udr = c;
-	} else {
-		// Already busy sending a byte
-		_txBuffer = buffer;
+	if (_txPointers->full(sizeof(buf))) {
+		return true;
 	}
 
-	return 0;
+	buf.data = buffer;
+	buf.length = 0;
+//	buf.completeFunction = NULL;
+	buf.progmem = true;
+	buf.isString = true;
+
+	_txPointers->append(&buf, sizeof(buf));
+	asyncStart();
+
+	return false;
 }
 
 /* Write a string asynchronously
- * Returns 	0 on success
- * 			1 if there is already a string being sent
+ * @return false on success, true on failure
  */
-uint8_t MHV_HardwareSerial::asyncWrite(const char *buffer) {
-	if (!canSend()) {
-		return 1;
-	}
-	*_ucsrb |= _BV( _txcie);
+bool MHV_HardwareSerial::asyncWrite(const char *buffer) {
+	MHV_SERIAL_BUFFER buf;
 
-	_txBufferLength = MHV_SENDING_STRING;
-	_txBufferProgmem = false;
-
-	// Start writing
-	if (buffer[0] == '\0') {
-		_txBuffer = NULL;
-		return 0;
-	} else if (((*_ucsra) & (1 << _udre))) {
-		_txBuffer = buffer + 1;
-		*_udr = buffer[0];
-	} else {
-		// Already busy sending a byte
-		_txBuffer = buffer;
+	if (_txPointers->full(sizeof(buf))) {
+		return true;
 	}
 
-	return 0;
+	buf.data = buffer;
+	buf.length = 0;
+//	buf.completeFunction = NULL;
+	buf.progmem = false;
+	buf.isString = true;
+
+	_txPointers->append(&buf, sizeof(buf));
+	asyncStart();
+
+	return false;
 }
 
 /* Write a buffer asynchronously
  * Returns 	0 on success
  * 			1 if there is already a string being sent
  */
-uint8_t MHV_HardwareSerial::asyncWrite_P(const char *buffer, uint16_t length) {
-	if (!canSend()) {
-		return 1;
-	}
-	*_ucsrb |= _BV( _txcie);
+bool MHV_HardwareSerial::asyncWrite_P(PGM_P buffer, uint16_t length) {
+	MHV_SERIAL_BUFFER buf;
 
-	_txBufferProgmem = true;
-
-	// Start writing
-	if (length == 0) {
-		_txBuffer = NULL;
-		return 0;
-	}  else if (((*_ucsra) & (1 << _udre))) {
-		_txBuffer = buffer + 1;
-		_txBufferLength = length - 1;
-		*_udr = pgm_read_byte(buffer);
-	} else {
-		// Already busy sending a byte
-		_txBuffer = buffer;
-		_txBufferLength = length;
+	if (_txPointers->full(sizeof(buf))) {
+		return true;
 	}
 
-	return 0;
+	buf.data = buffer;
+	buf.length = length;
+//	buf.completeFunction = NULL;
+	buf.progmem = true;
+	buf.isString = false;
+
+	_txPointers->append(&buf, sizeof(buf));
+	asyncStart();
+
+	return false;
 }
 
 /* Write a buffer asynchronously
  * Returns 	0 on success
  * 			1 if there is already a string being sent
  */
-uint8_t MHV_HardwareSerial::asyncWrite(const char *buffer, uint16_t length) {
-	if (!canSend()) {
-		return 1;
-	}
-	*_ucsrb |= _BV( _txcie);
+bool MHV_HardwareSerial::asyncWrite(const char *buffer, uint16_t length) {
+	MHV_SERIAL_BUFFER buf;
 
-	_txBufferProgmem = false;
-
-	// Start writing
-	if (length == 0) {
-		_txBuffer = NULL;
-		return 0;
-	} else if (((*_ucsra) & (1 << _udre))) {
-		_txBuffer = buffer + 1;
-		_txBufferLength = length - 1;
-		*_udr = buffer[0];
-	} else {
-		// Already busy sending a byte
-		_txBuffer = buffer;
-		_txBufferLength = length;
+	if (_txPointers->full(sizeof(buf))) {
+		return true;
 	}
-	return 0;
+
+	buf.data = buffer;
+	buf.length = length;
+//	buf.completeFunction = NULL;
+	buf.progmem = false;
+	buf.isString = false;
+
+	_txPointers->append(&buf, sizeof(buf));
+	asyncStart();
+
+	return false;
 }

@@ -61,7 +61,7 @@ sizedummy \
 all: mhvlib-tutorial-BlinkingLED-Timer.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/Release && $(MAKE) all
+	-cd A:/eclipse/mhvlib/Release && $(MAKE) clean all
 
 # Tool invocations
 mhvlib-tutorial-BlinkingLED-Timer.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/Release/libmhvlib.a

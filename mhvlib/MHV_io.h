@@ -44,7 +44,6 @@
 #include <MHV_io_ArduinoMega.h>
 #endif
 
-
 enum mhv_interruptMode {
 	MHV_INTERRUPT_LOW,
 	MHV_INTERRUPT_CHANGE,
