@@ -28,7 +28,7 @@
 #include "MHV_GammaCorrect.h"
 #include <avr/pgmspace.h>
 
-prog_uint8_t mhv_gammaValues[] = {
+uint8_t mhv_gammaValues[] PROGMEM = {
 	0,	0,	0,	0,	0,	0,	0,	0,
 	0,	0,	0,	0,	0,	0,	0,	0,
 	0,	0,	0,	0,	0,	0,	1,	1,

@@ -50,7 +50,8 @@ ISR(mhvTxVect) { \
 #define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
 do {\
 	char __debug_buffer[80]; \
-	snprintf(__debug_buffer, sizeof(__debug_buffer), PSTR("%s:%d\t%s():\t\t"), __FILE__, __LINE__, __FUNCTION__); \
+	while (!serial.canSendBusy()) {} \
+	snprintf_P(__debug_buffer, sizeof(__debug_buffer), PSTR("%s:%d\t%s():\t\t"), __FILE__, __LINE__, __FUNCTION__); \
 	__dbg_serial.busyWrite(__debug_buffer); \
 	snprintf_P(__debug_buffer, sizeof(__debug_buffer), PSTR(__dbg_format), ## __dbg_args); \
 	__dbg_serial.busyWrite(__debug_buffer); \
@@ -97,27 +98,27 @@ public:
 			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
 			unsigned long baud);
 	void setSpeed(unsigned long baud);
-	void end(void);
-	uint8_t available(void);
-	int read(void);
-	void flush(void);
+	void end();
+	uint8_t available();
+	int read();
+	void flush();
 	void busyWrite(char c);
 	void busyWrite(const char *buffer);
 	void busyWrite(const char *buffer, uint16_t length);
 	void busyWrite_P(PGM_P buffer);
 	void busyWrite_P(PGM_P buffer, uint16_t length);
-	bool canSend(void);
-	bool canSendBusy(void);
+	bool canSend();
+	bool canSendBusy();
 	bool asyncWrite(const char *buffer);
 	bool asyncWrite_P(PGM_P buffer);
 	bool asyncWrite(const char *buffer, uint16_t length);
 	bool asyncWrite_P(PGM_P buffer, uint16_t length);
-	void rx(void);
-	void tx(void);
+	void rx();
+	void tx();
 	int asyncReadLine(char *buffer, uint8_t bufferLength);
 	int busyReadLine(char *buffer, uint8_t bufferLength);
 	void echo(bool echoOn);
-	bool busy(void);
+	bool busy();
 };
 
 

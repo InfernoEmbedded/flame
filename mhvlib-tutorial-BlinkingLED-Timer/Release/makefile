@@ -61,7 +61,7 @@ sizedummy \
 all: mhvlib-tutorial-BlinkingLED-Timer.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/Release && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/Release && $(MAKE) all
 
 # Tool invocations
 mhvlib-tutorial-BlinkingLED-Timer.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/Release/libmhvlib.a
@@ -91,7 +91,7 @@ mhvlib-tutorial-BlinkingLED-Timer.eep: mhvlib-tutorial-BlinkingLED-Timer.elf
 
 sizedummy: mhvlib-tutorial-BlinkingLED-Timer.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-BlinkingLED-Timer.elf
+	-avr-size --format=berkeley -t mhvlib-tutorial-BlinkingLED-Timer.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

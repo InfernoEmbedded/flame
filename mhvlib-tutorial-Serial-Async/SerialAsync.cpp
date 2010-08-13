@@ -46,17 +46,6 @@
 // Bring in stdio, required for snprintf
 #include <stdio.h>
 
-
-/* Required for C++
- * Stop processing if a pure virtual function is called
- */
-extern "C" void __cxa_pure_virtual() {
-// Disable interrupts
-	cli();
-// Do nothing forever
-	for (;;);
-}
-
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];

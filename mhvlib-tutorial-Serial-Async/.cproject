@@ -843,7 +843,7 @@
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.2035988220" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
 							<tool id="de.innot.avreclipse.tool.cpplinker.app.release.1669481575" name="AVR C++ Linker" superClass="de.innot.avreclipse.tool.cpplinker.app.release">
-								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.1092289470" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="--gc-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.1092289470" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="-Wl,--gc-sections" valueType="string"/>
 								<option id="de.innot.avreclipse.cpplinker.option.libs.356725669" name="Libraries (-l)" superClass="de.innot.avreclipse.cpplinker.option.libs" valueType="libs">
 									<listOptionValue builtIn="false" value="mhvlib"/>
 								</option>

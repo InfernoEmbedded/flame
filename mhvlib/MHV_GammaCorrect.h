@@ -29,6 +29,7 @@
 
 #include <inttypes.h>
 #include <math.h>
+#include <avr/pgmspace.h>
 
 /* Requires mhv_gammaValues to be brought in as:
  * 	extern uint8_t mhv_gammaValues[] PROGMEM;

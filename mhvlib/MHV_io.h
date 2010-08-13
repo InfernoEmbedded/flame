@@ -33,15 +33,15 @@
 
 #if defined(__AVR_ATtiny2313__)
 #include <MHV_io_ATtiny2313.h>
+#elif defined(__AVR_ATmega1280__)
+#include <MHV_io_ATmega1280.h>
+#include <MHV_io_ArduinoMega.h>
 #elif defined(__AVR_ATmega48__) || defined(__AVR_ATmega48A__) || defined(__AVR_ATmega88__) || \
 	defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88PA__) || defined(__AVR_ATmega168__) || \
 	defined(__AVR_ATmega168A__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega328__) || \
 	defined(__AVR_ATmega328P__)
 #include <MHV_io_ATmega168.h>
 #include <MHV_io_ArduinoDiecimilla.h>
-#elif defined(__AVR_ATmega1280__)
-#include <MHV_io_ATmega1280.h>
-#include <MHV_io_ArduinoMega.h>
 #endif
 
 enum mhv_interruptMode {
@@ -78,7 +78,7 @@ typedef struct mhv_pin MHV_PIN;
 
 // Set an output pin struct off
 #define mhv_pin_struct_off(mhvPinStruct) \
-		*((mhvPinStruct).port) &= (mhvPinStruct).pin
+		*((mhvPinStruct).port) &= ~(mhvPinStruct).pin
 
 // Read an input pin struct
 #define mhv_pin_struct_read(mhvPinStruct) \

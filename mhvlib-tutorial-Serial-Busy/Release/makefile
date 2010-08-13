@@ -88,7 +88,7 @@ mhvlib-tutorial-Serial-Busy.eep: mhvlib-tutorial-Serial-Busy.elf
 
 sizedummy: mhvlib-tutorial-Serial-Busy.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-Serial-Busy.elf
+	-avr-size --format=berkeley -t mhvlib-tutorial-Serial-Busy.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

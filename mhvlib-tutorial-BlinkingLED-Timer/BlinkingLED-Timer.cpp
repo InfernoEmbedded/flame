@@ -28,6 +28,9 @@
 /* A blinking LED on Arduino pin 13 - uses a timer to toggle the LED
  */
 
+// Bring in *int*_t types
+#include <inttypes.h>
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -39,17 +42,6 @@
 
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
-
-/* Required for C++
- * Stop processing if a pure virtual function is called
- */
-extern "C" void __cxa_pure_virtual() {
-// Disable interrupts
-	cli();
-// Do nothing forever
-	for (;;);
-}
-
 
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards

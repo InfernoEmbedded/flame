@@ -50,16 +50,6 @@
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
 
-/* Required for C++
- * Stop processing if a pure virtual function is called
- */
-extern "C" void __cxa_pure_virtual() {
-// Disable interrupts
-	cli();
-// Do nothing forever
-	for (;;);
-}
-
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */

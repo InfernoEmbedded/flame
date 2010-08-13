@@ -67,7 +67,7 @@ dependents:
 mhvlib-test.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/Release/libmhvlib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-test.map,--cref --gc-sections -L"A:\eclipse\mhvlib\Release" -mmcu=atmega1280 -o"mhvlib-test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-test.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib\Release" -mmcu=atmega1280 -o"mhvlib-test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -91,7 +91,7 @@ mhvlib-test.eep: mhvlib-test.elf
 
 sizedummy: mhvlib-test.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-test.elf
+	-avr-size --format=berkeley -t mhvlib-test.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

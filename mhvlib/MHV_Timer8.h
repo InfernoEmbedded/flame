@@ -115,8 +115,8 @@ protected:
 
 	uint8_t calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *prescaler, uint16_t *factor);
 	void calculateTop(uint32_t *time, uint16_t factor);
-	void setGenerationMode(void);
-	MHV_Timer8(void);
+	void setGenerationMode();
+	MHV_Timer8();
 	void _setPrescaler(MHV_TIMER_PRESCALER prescaler);
 
 public:
@@ -124,27 +124,27 @@ public:
 			volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
 			volatile uint8_t *interrupt);
 	void setPeriods(uint32_t usec1, uint32_t usec2);
-	uint8_t current(void);
+	uint8_t current();
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2);
-	MHV_TIMER_PRESCALER getPrescaler(void);
-	uint16_t getPrescalerMultiplier(void);
+	MHV_TIMER_PRESCALER getPrescaler();
+	uint16_t getPrescalerMultiplier();
 	void setPrescaler(MHV_TIMER_PRESCALER prescaler);
 
-	uint8_t getTop(void);
+	uint8_t getTop();
 	void setTop(uint8_t value);
 	void setOutput(uint8_t channel, uint8_t value);
 	void setOutput1(uint8_t value);
 	void setOutput2(uint8_t value);
 	uint8_t getOutput(uint8_t channel);
-	uint8_t getOutput1(void);
-	uint8_t getOutput2(void);
+	uint8_t getOutput1();
+	uint8_t getOutput2();
 	void connectOutput1(MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput2(MHV_TIMER_CONNECT_TYPE type);
-	void enable(void);
-	void disable(void);
-	bool enabled(void);
-	void trigger1(void);
-	void trigger2(void);
+	void enable();
+	void disable();
+	bool enabled();
+	void trigger1();
+	void trigger2();
 	void setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
 			void (*triggerFunction2)(void *triggerData), void *triggerData2);
 	void setMode(MHV_TIMER_MODE mode);

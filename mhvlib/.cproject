@@ -40,13 +40,14 @@
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.lib.debug.1175534395" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.lib.debug">
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.level.1156153882" name="Generate Debugging Info" superClass="de.innot.avreclipse.cppcompiler.option.debug.level"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.1419319719" name="Optimization Level" superClass="de.innot.avreclipse.cppcompiler.option.optimize"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.1419319719" name="Optimization Level" superClass="de.innot.avreclipse.cppcompiler.option.optimize" value="de.innot.avreclipse.cppcompiler.optimize.size" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.333425975" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.type.1700490000" name="Debug Info Format" superClass="de.innot.avreclipse.cppcompiler.option.debug.type" value="de.innot.avreclipse.cppcompiler.option.debug.level.dwarf-2" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.gprof.490002647" name="Generate gprof information (-pg)" superClass="de.innot.avreclipse.cppcompiler.option.debug.gprof" value="true" valueType="boolean"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.prof.656185372" name="Generate prof information (-p)" superClass="de.innot.avreclipse.cppcompiler.option.debug.prof" value="true" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1040393812" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.47455789" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.825825390" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>

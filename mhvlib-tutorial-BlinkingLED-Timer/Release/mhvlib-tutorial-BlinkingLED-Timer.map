@@ -2,39 +2,38 @@ Archive member included because of file (symbol)
 
 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
                               ./BlinkingLED-Timer.o (MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*))
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
                               A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o) (__udivmodsi4)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o (exit)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                              c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o (exit)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+                              ./BlinkingLED-Timer.o (__do_copy_data)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
                               ./BlinkingLED-Timer.o (__do_clear_bss)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
                               ./BlinkingLED-Timer.o (__do_global_ctors)
-c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o) (__tablejump__)
+c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
+                              c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o) (__tablejump_elpm__)
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
 text             0x00000000         0x00020000         xr
-data             0x00800060         0x0000ffa0         rw !x
+data             0x00800100         0x0000ff00         rw !x
 eeprom           0x00810000         0x00010000         rw !x
-fuse             0x00820000         0x00000400         rw !x
-lock             0x00830000         0x00000400         rw !x
-signature        0x00840000         0x00000400         rw !x
 *default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 Address of section .data set to 0x800200
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 LOAD ./BlinkingLED-Timer.o
 LOAD A:\eclipse\mhvlib\Release\libmhvlib.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libm.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a
-LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51\libm.a
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51\libc.a
+LOAD c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a
 
 .hash
  *(.hash)
@@ -126,11 +125,11 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xa18
+.text           0x00000000      0x9f4
  *(.vectors)
- .vectors       0x00000000       0xe4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-                0x00000000                __vectors
+ .vectors       0x00000000       0xe4 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
                 0x00000000                __vector_default
+                0x00000000                __vectors
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
@@ -154,26 +153,26 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x000000e6        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init0         0x000000e6        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
                 0x000000e6                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x000000e6        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init2         0x000000e6        0xc c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x000000f2       0x1a c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init4         0x000000f2       0x1a c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
                 0x000000f2                __do_copy_data
- .init4         0x0000010c       0x10 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .init4         0x0000010c       0x10 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
                 0x0000010c                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
  *(.init6)
- .init6         0x0000011c       0x16 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+ .init6         0x0000011c       0x24 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
                 0x0000011c                __do_global_ctors
  *(.init6)
  *(.init7)
@@ -181,185 +180,182 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000132        0x8 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .init9         0x00000140        0x8 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
  *(.init9)
  *(.text)
- .text          0x0000013a        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-                0x0000013a                __vector_38
-                0x0000013a                __vector_22
-                0x0000013a                __vector_28
-                0x0000013a                __vector_1
-                0x0000013a                __vector_32
-                0x0000013a                __vector_34
-                0x0000013a                __vector_24
-                0x0000013a                __vector_12
-                0x0000013a                __vector_55
-                0x0000013a                __vector_46
-                0x0000013a                __bad_interrupt
-                0x0000013a                __vector_6
-                0x0000013a                __vector_31
-                0x0000013a                __vector_35
-                0x0000013a                __vector_39
-                0x0000013a                __vector_3
-                0x0000013a                __vector_23
-                0x0000013a                __vector_30
-                0x0000013a                __vector_45
-                0x0000013a                __vector_25
-                0x0000013a                __vector_11
-                0x0000013a                __vector_54
-                0x0000013a                __vector_17
-                0x0000013a                __vector_19
-                0x0000013a                __vector_56
-                0x0000013a                __vector_7
-                0x0000013a                __vector_49
-                0x0000013a                __vector_41
-                0x0000013a                __vector_43
-                0x0000013a                __vector_27
-                0x0000013a                __vector_5
-                0x0000013a                __vector_33
-                0x0000013a                __vector_47
-                0x0000013a                __vector_52
-                0x0000013a                __vector_37
-                0x0000013a                __vector_4
-                0x0000013a                __vector_44
-                0x0000013a                __vector_51
-                0x0000013a                __vector_9
-                0x0000013a                __vector_2
-                0x0000013a                __vector_21
-                0x0000013a                __vector_15
-                0x0000013a                __vector_36
-                0x0000013a                __vector_29
-                0x0000013a                __vector_40
-                0x0000013a                __vector_8
-                0x0000013a                __vector_26
-                0x0000013a                __vector_48
-                0x0000013a                __vector_53
-                0x0000013a                __vector_10
-                0x0000013a                __vector_50
-                0x0000013a                __vector_16
-                0x0000013a                __vector_18
-                0x0000013a                __vector_20
-                0x0000013a                __vector_42
- .text          0x0000013e      0x170 ./BlinkingLED-Timer.o
-                0x0000025a                __vector_13
-                0x0000013e                __cxa_pure_virtual
-                0x000001c4                main
-                0x00000206                __vector_14
-                0x00000142                timerTrigger(void*)
- .text          0x000002ae        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
- .text          0x000002ae        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .text          0x000002ae        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .text          0x000002ae        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .text          0x000002ae        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .text          0x000002ae        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                0x000002ae                . = ALIGN (0x2)
+ .text          0x00000148        0x4 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+                0x00000148                __vector_38
+                0x00000148                __vector_22
+                0x00000148                __vector_28
+                0x00000148                __vector_1
+                0x00000148                __vector_32
+                0x00000148                __vector_34
+                0x00000148                __vector_24
+                0x00000148                __vector_12
+                0x00000148                __vector_55
+                0x00000148                __vector_46
+                0x00000148                __bad_interrupt
+                0x00000148                __vector_6
+                0x00000148                __vector_31
+                0x00000148                __vector_35
+                0x00000148                __vector_39
+                0x00000148                __vector_3
+                0x00000148                __vector_23
+                0x00000148                __vector_30
+                0x00000148                __vector_45
+                0x00000148                __vector_25
+                0x00000148                __vector_11
+                0x00000148                __vector_54
+                0x00000148                __vector_17
+                0x00000148                __vector_19
+                0x00000148                __vector_56
+                0x00000148                __vector_7
+                0x00000148                __vector_49
+                0x00000148                __vector_41
+                0x00000148                __vector_43
+                0x00000148                __vector_27
+                0x00000148                __vector_5
+                0x00000148                __vector_33
+                0x00000148                __vector_47
+                0x00000148                __vector_52
+                0x00000148                __vector_37
+                0x00000148                __vector_4
+                0x00000148                __vector_44
+                0x00000148                __vector_51
+                0x00000148                __vector_9
+                0x00000148                __vector_2
+                0x00000148                __vector_21
+                0x00000148                __vector_15
+                0x00000148                __vector_36
+                0x00000148                __vector_29
+                0x00000148                __vector_40
+                0x00000148                __vector_8
+                0x00000148                __vector_26
+                0x00000148                __vector_48
+                0x00000148                __vector_53
+                0x00000148                __vector_10
+                0x00000148                __vector_50
+                0x00000148                __vector_16
+                0x00000148                __vector_18
+                0x00000148                __vector_20
+                0x00000148                __vector_42
+ .text          0x0000014c      0x172 ./BlinkingLED-Timer.o
+                0x0000014c                timerTrigger(void*)
+                0x00000186                __cxa_pure_virtual
+                0x0000018a                __vector_13
+                0x000001de                __vector_14
+                0x00000232                main
+ .text          0x000002be        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+ .text          0x000002be        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
+                0x000002be                . = ALIGN (0x2)
  *(.text.*)
  .text._ZN10MHV_Timer8C2E14mhv_timer_typePVhS2_S2_S2_S2_S2_
-                0x000002ae       0x48 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000002ae                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*)
- .text._ZN10MHV_Timer8C1E14mhv_timer_typePVhS2_S2_S2_S2_S2_
-                0x000002f6       0x48 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000002f6                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*)
+                0x000002be       0x48 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000002be                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*)
+                0x000002be                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*)
  .text._ZN10MHV_Timer8C2Ev
-                0x0000033e        0x2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000033e                MHV_Timer8::MHV_Timer8()
- .text._ZN10MHV_Timer8C1Ev
-                0x00000340        0x2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000340                MHV_Timer8::MHV_Timer8()
+                0x00000306        0x2 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000306                MHV_Timer8::MHV_Timer8()
+                0x00000306                MHV_Timer8::MHV_Timer8()
  .text._ZN10MHV_Timer87currentEv
-                0x00000342       0x12 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000342                MHV_Timer8::current()
+                0x00000308       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000308                MHV_Timer8::current()
  .text._ZN10MHV_Timer818calculatePrescalerEmP19mhv_timer_prescalerPj
-                0x00000354      0x1ce A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000354                MHV_Timer8::calculatePrescaler(unsigned long, mhv_timer_prescaler*, unsigned int*)
+                0x0000031c      0x1fc A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000031c                MHV_Timer8::calculatePrescaler(unsigned long, mhv_timer_prescaler*, unsigned int*)
  .text._ZN10MHV_Timer812calculateTopEPmj
-                0x00000522       0x32 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000522                MHV_Timer8::calculateTop(unsigned long*, unsigned int)
- .text._ZN10MHV_Timer810setPeriodsEmm
-                0x00000554       0xea A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000554                MHV_Timer8::setPeriods(unsigned long, unsigned long)
+                0x00000518       0x2e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000518                MHV_Timer8::calculateTop(unsigned long*, unsigned int)
  .text._ZN10MHV_Timer813_setPrescalerE19mhv_timer_prescaler
-                0x0000063e       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000063e                MHV_Timer8::_setPrescaler(mhv_timer_prescaler)
+                0x00000546       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000546                MHV_Timer8::_setPrescaler(mhv_timer_prescaler)
  .text._ZN10MHV_Timer812getPrescalerEv
-                0x00000652       0x10 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000652                MHV_Timer8::getPrescaler()
+                0x0000055a       0x10 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000055a                MHV_Timer8::getPrescaler()
  .text._ZN10MHV_Timer822getPrescalerMultiplierEv
-                0x00000662       0x96 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000662                MHV_Timer8::getPrescalerMultiplier()
+                0x0000056a       0x84 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000056a                MHV_Timer8::getPrescalerMultiplier()
  .text._ZN10MHV_Timer812setPrescalerE19mhv_timer_prescaler
-                0x000006f8        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000006f8                MHV_Timer8::setPrescaler(mhv_timer_prescaler)
+                0x000005ee        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000005ee                MHV_Timer8::setPrescaler(mhv_timer_prescaler)
  .text._ZN10MHV_Timer817setGenerationModeEv
-                0x000006fe       0x8c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000006fe                MHV_Timer8::setGenerationMode()
+                0x000005f4       0x78 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000005f4                MHV_Timer8::setGenerationMode()
  .text._ZN10MHV_Timer810setPeriodsE19mhv_timer_prescalerhh
-                0x0000078a       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000078a                MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char)
+                0x0000066c       0x5a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000066c                MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char)
+ .text._ZN10MHV_Timer810setPeriodsEmm
+                0x000006c6       0xf0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000006c6                MHV_Timer8::setPeriods(unsigned long, unsigned long)
  .text._ZN10MHV_Timer86getTopEv
-                0x000007c8       0x26 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007c8                MHV_Timer8::getTop()
+                0x000007b6       0x26 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000007b6                MHV_Timer8::getTop()
  .text._ZN10MHV_Timer86setTopEh
-                0x000007ee       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000007ee                MHV_Timer8::setTop(unsigned char)
+                0x000007dc       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000007dc                MHV_Timer8::setTop(unsigned char)
  .text._ZN10MHV_Timer89setOutputEhh
-                0x00000804       0x20 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000804                MHV_Timer8::setOutput(unsigned char, unsigned char)
+                0x000007f2       0x20 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000007f2                MHV_Timer8::setOutput(unsigned char, unsigned char)
  .text._ZN10MHV_Timer810setOutput1Eh
-                0x00000824        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000824                MHV_Timer8::setOutput1(unsigned char)
+                0x00000812        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000812                MHV_Timer8::setOutput1(unsigned char)
  .text._ZN10MHV_Timer810setOutput2Eh
-                0x00000832        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000832                MHV_Timer8::setOutput2(unsigned char)
+                0x00000820        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000820                MHV_Timer8::setOutput2(unsigned char)
  .text._ZN10MHV_Timer89getOutputEh
-                0x00000840       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000840                MHV_Timer8::getOutput(unsigned char)
+                0x0000082e       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000082e                MHV_Timer8::getOutput(unsigned char)
  .text._ZN10MHV_Timer810getOutput1Ev
-                0x00000862        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000862                MHV_Timer8::getOutput1()
+                0x00000850        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000850                MHV_Timer8::getOutput1()
  .text._ZN10MHV_Timer810getOutput2Ev
-                0x00000870        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000870                MHV_Timer8::getOutput2()
+                0x0000085e        0xe A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000085e                MHV_Timer8::getOutput2()
  .text._ZN10MHV_Timer814connectOutput1E22mhv_timer_connect_type
-                0x0000087e       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x0000087e                MHV_Timer8::connectOutput1(mhv_timer_connect_type)
+                0x0000086c       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000086c                MHV_Timer8::connectOutput1(mhv_timer_connect_type)
  .text._ZN10MHV_Timer814connectOutput2E22mhv_timer_connect_type
-                0x00000898       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000898                MHV_Timer8::connectOutput2(mhv_timer_connect_type)
+                0x00000886       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000886                MHV_Timer8::connectOutput2(mhv_timer_connect_type)
  .text._ZN10MHV_Timer86enableEv
-                0x000008ae       0x66 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000008ae                MHV_Timer8::enable()
+                0x0000089c       0x5e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000089c                MHV_Timer8::enable()
  .text._ZN10MHV_Timer87disableEv
-                0x00000914       0x3e A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000914                MHV_Timer8::disable()
+                0x000008fa       0x36 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x000008fa                MHV_Timer8::disable()
  .text._ZN10MHV_Timer87enabledEv
-                0x00000952       0x14 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000952                MHV_Timer8::enabled()
+                0x00000930       0x16 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000930                MHV_Timer8::enabled()
  .text._ZN10MHV_Timer88trigger1Ev
-                0x00000966       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000966                MHV_Timer8::trigger1()
+                0x00000946       0x22 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000946                MHV_Timer8::trigger1()
  .text._ZN10MHV_Timer88trigger2Ev
-                0x00000988       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x00000988                MHV_Timer8::trigger2()
+                0x00000968       0x1a A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000968                MHV_Timer8::trigger2()
  .text._ZN10MHV_Timer811setTriggersEPFvPvES0_S2_S0_
-                0x000009a2       0x1c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000009a2                MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*)
+                0x00000982       0x1c A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x00000982                MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*)
  .text._ZN10MHV_Timer87setModeE14mhv_timer_mode
-                0x000009be        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-                0x000009be                MHV_Timer8::setMode(mhv_timer_mode)
- .text.libgcc   0x000009c4       0x44 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
-                0x000009c4                __udivmodsi4
- .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .text.libgcc   0x00000a08        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .text.libgcc   0x00000a08        0xc c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                0x00000a0c                __tablejump__
-                0x00000a08                __tablejump2__
-                0x00000a14                . = ALIGN (0x2)
+                0x0000099e        0x6 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
+                0x0000099e                MHV_Timer8::setMode(mhv_timer_mode)
+ .text.libgcc   0x000009a4       0x44 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+                0x000009a4                __udivmodsi4
+ .text.libgcc   0x000009e8        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x000009e8        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .text.libgcc   0x000009e8        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x000009e8        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+ .text.libgcc   0x000009e8        0x8 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
+                0x000009e8                __tablejump_elpm__
+                0x000009f0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000a14        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                0x00000a14                exit
-                0x00000a14                _exit
+ .fini9         0x000009f0        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                0x000009f0                _exit
+                0x000009f0                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -378,21 +374,22 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000a14        0x4 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .fini0         0x000009f0        0x4 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000a18                _etext = .
+                0x000009f4                _etext = .
 
-.data           0x00800200        0x2 load address 0x00000a18
+.data           0x00800200        0x2 load address 0x000009f4
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800200        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .data          0x00800200        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
  .data          0x00800200        0x1 ./BlinkingLED-Timer.o
  .data          0x00800201        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
- .data          0x00800201        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .data          0x00800201        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .data          0x00800201        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .data          0x00800201        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .data          0x00800201        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+ .data          0x00800201        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
  *(.data*)
  *(.rodata)
  *(.rodata*)
@@ -405,20 +402,21 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
 .bss            0x00800202       0x1b
                 0x00800202                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x00800202        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+ .bss           0x00800202        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
  .bss           0x00800202       0x1b ./BlinkingLED-Timer.o
                 0x00800202                tickTimer
  .bss           0x0080021d        0x0 A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
- .bss           0x0080021d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
- .bss           0x0080021d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
- .bss           0x0080021d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
- .bss           0x0080021d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
- .bss           0x0080021d        0x0 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+ .bss           0x0080021d        0x0 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
  *(.bss*)
  *(COMMON)
                 0x0080021d                PROVIDE (__bss_end, .)
-                0x00000a18                __data_load_start = LOADADDR (.data)
-                0x00000a1a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000009f4                __data_load_start = LOADADDR (.data)
+                0x000009f6                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x0080021d        0x0
                 0x0080021d                PROVIDE (__noinit_start, .)
@@ -431,23 +429,13 @@ LOAD c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
  *(.eeprom*)
                 0x00810000                __eeprom_end = .
 
-.fuse
- *(.fuse)
- *(.lfuse)
- *(.hfuse)
- *(.efuse)
-
-.lock
- *(.lock*)
-
-.signature
- *(.signature*)
-
-.stab
+.stab           0x00000000      0x6cc
  *(.stab)
+ .stab          0x00000000      0x6cc c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 
-.stabstr
+.stabstr        0x00000000       0x71
  *(.stabstr)
+ .stabstr       0x00000000       0x71 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 
 .stab.excl
  *(.stab.excl)
@@ -546,93 +534,92 @@ MHV_Timer8::trigger1()                            A:\eclipse\mhvlib\Release\libm
                                                   ./BlinkingLED-Timer.o
 MHV_Timer8::trigger2()                            A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
                                                   ./BlinkingLED-Timer.o
-__bad_interrupt                                   c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__bss_end                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
-__bss_start                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
-__ctors_end                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
-__ctors_start                                     c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+__bad_interrupt                                   c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__bss_end                                         c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
+__ctors_end                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+__ctors_start                                     c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
 __cxa_pure_virtual                                ./BlinkingLED-Timer.o
-__data_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__data_load_start                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__data_start                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__do_clear_bss                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+__data_end                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__data_start                                      c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_clear_bss.o)
                                                   ./BlinkingLED-Timer.o
-__do_copy_data                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+__do_copy_data                                    c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_copy_data.o)
                                                   ./BlinkingLED-Timer.o
-__do_global_ctors                                 c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
+__do_global_ctors                                 c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
                                                   ./BlinkingLED-Timer.o
-__heap_end                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__init                                            c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__stack                                           c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__tablejump2__                                    c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-__tablejump__                                     c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_tablejump.o)
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_ctors.o)
-__udivmodsi4                                      c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodsi4.o)
+__heap_end                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__init                                            c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__stack                                           c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__tablejump_elpm__                                c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_tablejump_elpm.o)
+                                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_ctors.o)
+__udivmodsi4                                      c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_udivmodsi4.o)
                                                   A:\eclipse\mhvlib\Release\libmhvlib.a(MHV_Timer8.o)
-__vector_1                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_10                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_11                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_12                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+__vector_1                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_10                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_11                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_12                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 __vector_13                                       ./BlinkingLED-Timer.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 __vector_14                                       ./BlinkingLED-Timer.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_15                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_16                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_17                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_18                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_19                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_2                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_20                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_21                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_22                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_23                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_24                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_25                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_26                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_27                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_28                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_29                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_3                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_30                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_31                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_32                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_33                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_34                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_35                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_36                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_37                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_38                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_39                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_4                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_40                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_41                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_42                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_43                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_44                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_45                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_46                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_47                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_48                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_49                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_5                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_50                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_51                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_52                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_53                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_54                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_55                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_56                                       c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_6                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_7                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_8                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_9                                        c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vector_default                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-__vectors                                         c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
-_exit                                             c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-exit                                              c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_15                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_16                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_17                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_18                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_19                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_2                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_20                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_21                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_22                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_23                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_24                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_25                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_26                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_27                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_28                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_29                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_3                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_30                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_31                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_32                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_33                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_34                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_35                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_36                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_37                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_38                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_39                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_4                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_40                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_41                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_42                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_43                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_44                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_45                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_46                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_47                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_48                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_49                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_5                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_50                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_51                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_52                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_53                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_54                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_55                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_56                                       c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_6                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_7                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_8                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_9                                        c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vector_default                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+__vectors                                         c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
+_exit                                             c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+exit                                              c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/avr51\libgcc.a(_exit.o)
+                                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 main                                              ./BlinkingLED-Timer.o
-                                                  c:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtm1280.o
+                                                  c:/mhvwinavr/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtm1280.o
 tickTimer                                         ./BlinkingLED-Timer.o
 timerTrigger(void*)                               ./BlinkingLED-Timer.o

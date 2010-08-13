@@ -88,7 +88,7 @@ mhvlib-tutorial-PWM-LED.eep: mhvlib-tutorial-PWM-LED.elf
 
 sizedummy: mhvlib-tutorial-PWM-LED.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-PWM-LED.elf
+	-avr-size --format=berkeley -t mhvlib-tutorial-PWM-LED.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

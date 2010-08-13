@@ -42,8 +42,8 @@ private:
 	void 		(*_colOn)(uint8_t column);
 	void 		(*_colOff)(uint8_t column);
 
-	void tickRow(void);
-	void tickCol(void);
+	void tickRow();
+	void tickCol();
 
 public:
 	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
@@ -53,7 +53,7 @@ public:
 		void (*colOff)(uint8_t column));
 	void setPixel(uint8_t row, uint8_t col, uint8_t value);
 	uint8_t getPixel(uint8_t row, uint8_t col);
-	void tick(void);
+	void tick();
 };
 
 #endif /* MHV_PWMMATRIX_H_ */

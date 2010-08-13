@@ -88,7 +88,7 @@ mhvlib-tutorial-Serial-Async.eep: mhvlib-tutorial-Serial-Async.elf
 
 sizedummy: mhvlib-tutorial-Serial-Async.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-Serial-Async.elf
+	-avr-size --format=berkeley -t mhvlib-tutorial-Serial-Async.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

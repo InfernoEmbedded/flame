@@ -88,7 +88,7 @@ mhvlib-tutorial-BlinkingLED.eep: mhvlib-tutorial-BlinkingLED.elf
 
 sizedummy: mhvlib-tutorial-BlinkingLED.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-BlinkingLED.elf
+	-avr-size --format=berkeley -t mhvlib-tutorial-BlinkingLED.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

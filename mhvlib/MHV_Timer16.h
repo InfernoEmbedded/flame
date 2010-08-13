@@ -57,7 +57,7 @@ protected:
 	void (*_triggerFunction3)(void *data);
 	void *_triggerData3;
 
-	void setGenerationMode(void);
+	void setGenerationMode();
 
 public:
 	MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *controlRegB, volatile uint8_t *controlRegC,
@@ -65,27 +65,27 @@ public:
 			volatile uint16_t *counter,	volatile uint8_t *interrupt, volatile uint16_t *inputCapture1);
 	void setPeriods(uint32_t usec1, uint32_t usec2, uint32_t usec3);
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3);
-	uint16_t getTop(void);
+	uint16_t getTop();
 	void setTop(uint16_t value);
 	void setOutput(uint8_t channel, uint16_t value);
 	void setOutput1(uint16_t value);
 	void setOutput2(uint16_t value);
 	void setOutput3(uint16_t value);
 	uint16_t getOutput(uint8_t channel);
-	uint16_t getOutput1(void);
-	uint16_t getOutput2(void);
-	uint16_t getOutput3(void);
+	uint16_t getOutput1();
+	uint16_t getOutput2();
+	uint16_t getOutput3();
 	void connectOutput(uint8_t channel, MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput1(MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput2(MHV_TIMER_CONNECT_TYPE type);
 	void connectOutput3(MHV_TIMER_CONNECT_TYPE type);
-	void enable(void);
-	void disable(void);
-	void trigger3(void);
+	void enable();
+	void disable();
+	void trigger3();
 	void setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
 			void (*triggerFunction2)(void *triggerData), void *triggerData2,
 			void (*triggerFunction3)(void *triggerData), void *triggerData3);
-	uint16_t current(void);
+	uint16_t current();
 };
 
 #endif /* MHV_TIMER16_H_ */
