@@ -42,6 +42,8 @@
 
 #if defined(__AVR_ATtiny2313__)
 #include <MHV_io_ATtiny2313.h>
+#elif defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
+#include <MHV_io_ATtiny85.h>
 #elif defined(__AVR_ATmega1280__)
 #include <MHV_io_ATmega1280.h>
 #include <MHV_io_ArduinoMega.h>
@@ -53,7 +55,7 @@
 #include <MHV_io_ArduinoDiecimilla.h>
 #endif
 
-#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 __GNUC_PATCHLEVEL__)
+#define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
 #if GCC_VERSION < 40500
 extern "C" void __cxa_pure_virtual() {
@@ -81,14 +83,14 @@ typedef struct mhv_pin MHV_PIN;
 #define mhv_pin_out(mhvParms) \
 	_mhv_pin_out(mhvParms)
 
-#define _mhv_pin_out(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_pin_out(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 		{mhvOutput, _BV(mhvBit)}
 
 // Convert a pin declaration to a pin struct for input
 #define mhv_pin_in(mhvParms) \
 	_mhv_pin_in(mhvParms)
 
-#define _mhv_pin_in(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_pin_in(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 		{mhvInput, _BV(mhvBit)}
 
 // Set an output pin struct on
@@ -117,29 +119,36 @@ typedef struct mhv_pin MHV_PIN;
 #define mhv_out(mhvParms) \
 	_mhv_out(mhvParms)
 
-#define _mhv_out(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_out(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvOutput
 
 // Grab the input register of a pin declaration
 #define mhv_in(mhvParms) \
 	_mhv_in(mhvParms)
 
-#define _mhv_in(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_in(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvInput
 
 // Grab the bit offset of a pin declaration
 #define mhv_Bit(mhvParms) \
 	_mhv_Bit(mhvParms)
 
-#define _mhv_Bit(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_Bit(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvBit
 
 // Grab the direction register of a pin declaration
 #define mhv_dir(mhvParms) \
 	_mhv_dir(mhvParms)
 
-#define _mhv_dir(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_dir(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvDir
+
+// Grab the pin change interrupt of a pin
+#define mhv_PCInt(mhvParms) \
+	_mhv_PCInt(mhvParms)
+
+#define _mhv_PCInt(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
+	mhvPCInt
 
 // Set a pin to be an output
 #define mhv_setOutput(mhvParms) \
@@ -147,7 +156,7 @@ typedef struct mhv_pin MHV_PIN;
 		_mhv_setOutput(mhvParms); \
 	} while(0)
 
-#define _mhv_setOutput(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_setOutput(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	*mhvDir |= (uint8_t)_BV(mhvBit);
 
 // Set a pin to be an input
@@ -156,7 +165,7 @@ typedef struct mhv_pin MHV_PIN;
 		_mhv_setInput(mhvParms); \
 	} while(0)
 
-#define _mhv_setInput(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_setInput(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	*mhvDir &= ~(uint8_t)_BV(mhvBit); \
 	*mhvOutput &= ~(uint8_t)_BV(mhvBit);
 
@@ -166,8 +175,8 @@ typedef struct mhv_pin MHV_PIN;
 		_mhv_setInputPullup(mhvParms) \
 	} while(0)
 
-#define _mhv_setInputPullup(mhvDir,mhvOutput,mhvInput,mhvBit) \
-	*mhvDir |= (uint8_t)_BV(mhvBit); \
+#define _mhv_setInputPullup(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
+	*mhvDir &= ~(uint8_t)_BV(mhvBit); \
 	*mhvOutput |= (uint8_t)_BV(mhvBit);
 
 // turn a pin on
@@ -176,7 +185,7 @@ typedef struct mhv_pin MHV_PIN;
 		_mhv_pinOn(mhvParms) \
 	} while(0)
 
-#define _mhv_pinOn(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_pinOn(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 		*mhvOutput |= (uint8_t)_BV(mhvBit);
 
 // turn a pin off
@@ -185,14 +194,23 @@ typedef struct mhv_pin MHV_PIN;
 		_mhv_pinOff(mhvParms) \
 	} while(0)
 
-#define _mhv_pinOff(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_pinOff(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	*mhvOutput &= ~(uint8_t)_BV(mhvBit); \
+
+// Toggle a pin
+#define mhv_pinToggle(mhvParms) \
+	do { \
+		_mhv_pinToggle(mhvParms) \
+	} while(0)
+
+#define _mhv_pinToggle(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
+	*mhvInput |= (uint8_t)_BV(mhvBit); \
 
 // Read a pin
 #define mhv_pinRead(mhvParms) \
 	_mhv_pinRead(mhvParms)
 
-#define _mhv_pinRead(mhvDir,mhvOutput,mhvInput,mhvBit) \
+#define _mhv_pinRead(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	(*mhvInput & (uint8_t)_BV(mhvBit))
 
 // Assign a function to be triggered by an external interrupt

@@ -35,17 +35,24 @@
  */
 MHV_Timer8::MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 		volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
-		volatile uint8_t *interrupt) {
+		volatile uint8_t *interrupt, uint8_t interruptEnableA) {
 	_controlRegA = controlRegA;
 	_controlRegB = controlRegB;
 	_outputCompare1 = overflowReg1;
 	_outputCompare2 = overflowReg2;
 	_counter = counter;
 	_interrupt = interrupt;
+	_interruptEnableA = interruptEnableA;
 	_mode = MHV_TIMER_REPETITIVE;
 	_type = type;
 	_counterSize = 8;
 	_prescaler = MHV_TIMER_PRESCALER_DISABLED;
+
+	_haveTime2 = false;
+	_triggerData1 = NULL;
+	_triggerData2 = NULL;
+	_triggerFunction1 = NULL;
+	_triggerFunction2 = NULL;
 }
 
 MHV_Timer8::MHV_Timer8() {};
@@ -138,7 +145,7 @@ void MHV_Timer8::calculateTop(uint32_t *time, uint16_t factor) {
 
 /* Times are in microseconds
  */
-void MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
+bool MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 	MHV_TIMER_PRESCALER prescaler;
 	uint16_t factor;
 	uint32_t maxTime;
@@ -152,10 +159,15 @@ void MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 		maxTime = usec2;
 	}
 
-	calculatePrescaler(maxTime, &prescaler, &factor);
+	if (calculatePrescaler(maxTime, &prescaler, &factor)) {
+		return true;
+	}
 	calculateTop(&usec1, factor);
 	calculateTop(&usec2, factor);
+
 	setPeriods(prescaler, usec1, usec2);
+
+	return false;
 }
 
 /* Set the prescaler (internal use only)
@@ -364,10 +376,10 @@ void MHV_Timer8::enable(void) {
 	_setPrescaler(_prescaler);
 	setGenerationMode();
 	if (_triggerFunction1) {
-		*_interrupt |= _BV(OCIE0A);
+		*_interrupt |= _BV(_interruptEnableA);
 	}
 	if (*_outputCompare2 && _triggerFunction2) {
-		*_interrupt |= _BV(OCIE0B);
+		*_interrupt |= _BV(_interruptEnableA + 1);
 		_haveTime2 = true;
 	} else {
 		_haveTime2 = false;
@@ -381,9 +393,9 @@ void MHV_Timer8::disable(void) {
 	cli();
 
 	_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
-	*_interrupt &= ~_BV(OCIE0A);
+	*_interrupt &= ~_BV(_interruptEnableA);
 	if (_haveTime2) {
-		*_interrupt &= ~_BV(OCIE0B);
+		*_interrupt &= ~_BV(_interruptEnableA + 1);
 	}
 
 	SREG = reg;

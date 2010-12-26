@@ -81,8 +81,7 @@ void timerTrigger(void *data) {
 	}
 }
 
-
-int main(void) {
+int main() {
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 
@@ -91,19 +90,19 @@ int main(void) {
  * Instead, we will trigger the timer every 1 ms, and increment a counter within
  * the trigger function to give us our 333ms count
  */
-tickTimer.setPeriods(1000UL, 0);
+	tickTimer.setPeriods(1000UL, 0);
 
 // Tell the timer to call our trigger function
-tickTimer.setTriggers(timerTrigger, 0, 0, 0);
+	tickTimer.setTriggers(timerTrigger, 0, 0, 0);
 
 // Start the timer
-tickTimer.enable();
+	tickTimer.enable();
 
 // Enable interrupts
-sei();
+	sei();
 
 // Do nothing forever - the timer will call the trigger() function periodically
-	for(;;);
+	for(;;) {}
 
 // Main must return an int, even though we never get here
 	return 0;

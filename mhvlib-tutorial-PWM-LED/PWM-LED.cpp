@@ -26,14 +26,10 @@
  */
 
 /* Fade an LED on Arduino pin 12 (Arduino Mega) or Arduino pin 10 (others)
- * Uses a 16 timer for PWM and an 8 bit timer for animation
+ * This corresponds to pin OC1B
+ * Uses a 16 bit timer for PWM and an 8 bit timer for animation
  */
-#if defined(__AVR_ATmega1280__)
-#define OUTPUT_PIN	MHV_ARDUINO_PIN_12
-#else
-#define OUTPUT_PIN	MHV_ARDUINO_PIN_10
-#endif
-
+#define OUTPUT_PIN MHV_PIN_TIMER_1_B
 
 // Bring in the MHV IO header
 #include <MHV_io.h>
@@ -43,9 +39,6 @@
 
 // Bring in the MHV 16 bit timer header
 #include <MHV_Timer16.h>
-
-// Bring in the AVR delay header (needed for _delay_ms)
-#include <util/delay.h>
 
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
@@ -62,7 +55,6 @@ MHV_Timer8 animationTimer(MHV_TIMER8_2);
  */
 MHV_TIMER_ASSIGN_1INTERRUPT(animationTimer, MHV_TIMER2_INTERRUPTS);
 
-
 /* Declare a 16 bit timer for PWM output
  */
 MHV_Timer16 pwmTimer(MHV_TIMER16_1);
@@ -73,7 +65,7 @@ MHV_Timer16 pwmTimer(MHV_TIMER16_1);
 #define PWM_TOP 1000
 
 // How much to move the PWM duty cycle by each time the animation timer fires
-#define PWM_INCREMENT 10
+#define PWM_INCREMENT 5
 
 
 /* Our animation trigger function that will be called every time the animation
@@ -82,9 +74,9 @@ MHV_Timer16 pwmTimer(MHV_TIMER16_1);
  * This will fade the LED up to 50% and back down to 0
  */
 void animationTrigger(void *data) {
-// static variables are initialised once at boot, and persist between calls
-
-// What is the next action to take
+/* static variables are initialised once at boot, and persist between calls
+ * What is the next action to take
+ */
 	static bool fadeUp = true;
 
 /* Get the current output, and increment/decrement it based on the direction
@@ -112,9 +104,9 @@ int main(void) {
  */
 	mhv_setOutput(OUTPUT_PIN);
 
-/* Trigger the animation routine every 30ms
+/* Trigger the animation routine every 20ms
  */
-animationTimer.setPeriods(30000UL, 0);
+(void)animationTimer.setPeriods(20000UL, 0);
 
 // Tell the timer to call our trigger function
 animationTimer.setTriggers(animationTrigger, 0, 0, 0);
@@ -131,8 +123,12 @@ pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
  * PWM frequency = F_CPU / 2 / PWM_TOP
  *               = 16,000,000 / 2 / 1000
  *               = 8KHz
+ *
+ * PWM frequency = F_CPU / 2 / PWM_TOP
+ *               = 20,000,000 / 2 / 1000
+ *               = 10KHz
  */
-pwmTimer.setTop(PWM_TOP); // PWM freq = 20MHz / 2 / 1000 = 10kHz
+pwmTimer.setTop(PWM_TOP);
 
 /* Tell the pwmTimer to use output compare 2 for PWM output
  * It will turn off the output pin when the timer elapses, and turn it on

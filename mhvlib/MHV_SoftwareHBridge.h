@@ -67,10 +67,10 @@ protected:
 
 public:
 	MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 *timer, uint8_t timerChannel,
-			volatile uint8_t *dir1Top, volatile uint8_t *out1Top, volatile uint8_t *in1Top, uint8_t pin1Top,
-			volatile uint8_t *dir1Bottom, volatile uint8_t *out1Bottom, volatile uint8_t *in1Bottom, uint8_t pin1Bottom,
-			volatile uint8_t *dir2Top, volatile uint8_t *out2Top, volatile uint8_t *in2Top, uint8_t pin2Top,
-			volatile uint8_t *dir2Bottom, volatile uint8_t *out2Bottom, volatile uint8_t *in2Bottom, uint8_t pin2Bottom);
+			volatile uint8_t *dir1Top, volatile uint8_t *out1Top, volatile uint8_t *in1Top, uint8_t pin1Top, int8_t int1Top,
+			volatile uint8_t *dir1Bottom, volatile uint8_t *out1Bottom, volatile uint8_t *in1Bottom, uint8_t pin1Bottom, int8_t int1Bottom,
+			volatile uint8_t *dir2Top, volatile uint8_t *out2Top, volatile uint8_t *in2Top, uint8_t pin2Top, int8_t int2Top,
+			volatile uint8_t *dir2Bottom, volatile uint8_t *out2Bottom, volatile uint8_t *in2Bottom, uint8_t pin2Bottom, int8_t int2Bottom);
 	void reset();
 	void update();
 	void set(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);

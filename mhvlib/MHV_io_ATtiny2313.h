@@ -32,8 +32,8 @@
 #include <avr/io.h>
 
 // 8 bit timers
-//					 type,                        ctrlRegA,ctrlRegB,overflow1,overflow2,counter,interrupt
-#define MHV_TIMER8_0 MHV_TIMER_TYPE_5_PRESCALERS, &TCCR0A, &TCCR0B, &OCR0A,   &OCR0B,   &TCNT0, &TIMSK,
+//					 type,                        ctrlRegA,ctrlRegB,overflow1,overflow2,counter,interrupt,intEnableA
+#define MHV_TIMER8_0 MHV_TIMER_TYPE_5_PRESCALERS, &TCCR0A, &TCCR0B, &OCR0A,   &OCR0B,   &TCNT0, &TIMSK,   OCIE0A
 
 #define MHV_TIMER0_INTERRUPTS SIG_OUTPUT_COMPARE0A, SIG_OUTPUT_COMPARE0B
 
@@ -45,27 +45,34 @@
 #define MHV_USART0 &UBRRH, &UBRRL, &UCSRA, &UCSRB, &UDR, RXEN, TXEN, RXCIE, TXCIE, UDRE, U2X
 #define MHV_USART0_INTERRUPTS USART_RX_vect, USART_TX_vect
 
-//					Dir,	Output,	Input,	Bit, Interrupt
-#define MHV_PIN_A0	&DDRA,	&PORTA, &PINA,	0
-#define MHV_PIN_A1	&DDRA,	&PORTA, &PINA,	1
-#define MHV_PIN_A2	&DDRA,	&PORTA, &PINA,	2
-#define MHV_PIN_B0	&DDRB,	&PORTB, &PINB,	0
-#define MHV_PIN_B1	&DDRB,	&PORTB, &PINB,	1
-#define MHV_PIN_B2	&DDRB,	&PORTB, &PINB,	2
-#define MHV_PIN_B3	&DDRB,	&PORTB, &PINB,	3
-#define MHV_PIN_B4	&DDRB,	&PORTB, &PINB,	4
-#define MHV_PIN_B5	&DDRB,	&PORTB, &PINB,	5
-#define MHV_PIN_B6	&DDRB,	&PORTB, &PINB,	6
-#define MHV_PIN_B7	&DDRB,	&PORTB, &PINB,	7
-#define MHV_PIN_D0	&DDRD,	&PORTD, &PIND,	0
-#define MHV_PIN_D1	&DDRD,	&PORTD, &PIND,	1
-#define MHV_PIN_D2	&DDRD,	&PORTD, &PIND,	2
-#define MHV_PIN_D3	&DDRD,	&PORTD, &PIND,	3
-#define MHV_PIN_D4	&DDRD,	&PORTD, &PIND,	4
-#define MHV_PIN_D5	&DDRD,	&PORTD, &PIND,	5
-#define MHV_PIN_D6	&DDRD,	&PORTD, &PIND,	6
+//					Dir,	Output,	Input,	Bit,PCINT
+#define MHV_PIN_A0	&DDRA,	&PORTA, &PINA,	0,	-1
+#define MHV_PIN_A1	&DDRA,	&PORTA, &PINA,	1,	-1
+#define MHV_PIN_A2	&DDRA,	&PORTA, &PINA,	2,	-1
+#define MHV_PIN_B0	&DDRB,	&PORTB, &PINB,	0,	0
+#define MHV_PIN_B1	&DDRB,	&PORTB, &PINB,	1,	1
+#define MHV_PIN_B2	&DDRB,	&PORTB, &PINB,	2,	2
+#define MHV_PIN_B3	&DDRB,	&PORTB, &PINB,	3,	3
+#define MHV_PIN_B4	&DDRB,	&PORTB, &PINB,	4,	4
+#define MHV_PIN_B5	&DDRB,	&PORTB, &PINB,	5,	5
+#define MHV_PIN_B6	&DDRB,	&PORTB, &PINB,	6,	6
+#define MHV_PIN_B7	&DDRB,	&PORTB, &PINB,	7,	7
+#define MHV_PIN_D0	&DDRD,	&PORTD, &PIND,	0,	-1
+#define MHV_PIN_D1	&DDRD,	&PORTD, &PIND,	1,	-1
+#define MHV_PIN_D2	&DDRD,	&PORTD, &PIND,	2,	-1
+#define MHV_PIN_D3	&DDRD,	&PORTD, &PIND,	3,	-1
+#define MHV_PIN_D4	&DDRD,	&PORTD, &PIND,	4,	-1
+#define MHV_PIN_D5	&DDRD,	&PORTD, &PIND,	5,	-1
+#define MHV_PIN_D6	&DDRD,	&PORTD, &PIND,	6,	-1
+
+#define MHV_PIN_TIMER_0_A	MHV_PIN_B2
+#define MHV_PIN_TIMER_0_B	MHV_PIN_D5
+#define MHV_PIN_TIMER_1_A	MHV_PIN_B3
+#define MHV_PIN_TIMER_1_B	MHV_PIN_B4
 
 #define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
 #define MHV_INTERRUPT_INT1 INT1_vect, &MCUCR, ISC10
+
+#define MHV_PC_INT_COUNT		8
 
 #endif /* MHV_IO_ATTINY2313_H_ */

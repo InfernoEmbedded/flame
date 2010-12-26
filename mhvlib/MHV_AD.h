@@ -51,7 +51,7 @@ typedef enum mhv_ad_prescaler MHV_AD_PRESCALER;
 #define MHV_AD_CHANNEL (ADMUX & 0x0F)
 #endif
 
-// trigger func takes uint8_t parm value
+// trigger func takes uint16_t parm value
 #define MHV_AD_ASSIGN_INTERRUPT(adcTrigger) \
 ISR(ADC_vect) { \
 	adcTrigger(ADC); \

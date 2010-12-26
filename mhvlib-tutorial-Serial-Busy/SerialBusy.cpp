@@ -87,8 +87,8 @@ int main(void) {
 /* Write a PROGMEM buffer out
  * Note that we specify a length of how many bytes we want written
  */
-		(void)serial.busyWrite_P(PSTR("busyWrite_P: A buffer has been written\r\n this should not be seen"),
-				40);
+		(void)serial.busyWrite_P(
+			PSTR("busyWrite_P: A buffer has been written\r\n this should not be seen"), 40);
 
 
 // Prompt the user for a single character and tell them what they typed

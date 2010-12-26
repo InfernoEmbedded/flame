@@ -34,9 +34,6 @@
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
 
-// Bring in the AVR interrupt header (needed for cli)
-#include <avr/interrupt.h>
-
 int main(void) {
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);

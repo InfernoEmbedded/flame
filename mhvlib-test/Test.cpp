@@ -169,7 +169,7 @@ void inline tickLED(void) {
 			ledOn = true;
 		}
 
-		countLED = 5; // toggle every 5 * 30ms
+		countLED = 5; // toggle every 5 * 20ms
 	} else {
 		countLED--;
 	}
@@ -179,7 +179,7 @@ void inline tickLED(void) {
 void inline tickADC(void) {
 	if (!countADC) {
 		mhv_ad_asyncRead(MHV_AD_CHANNEL_0, MHV_AD_REFERENCE_AVCC);
-		countADC = 100; // read the ADC every 100 x 30ms
+		countADC = 100; // read the ADC every 100 x 20ms
 #if defined(__AVR_ATmega48__) || defined(__AVR_ATmega48A__) || defined(__AVR_ATmega88__) || \
 		defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88PA__) || defined(__AVR_ATmega168__) || \
 		defined(__AVR_ATmega168A__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega328__) || \
@@ -257,7 +257,7 @@ void tickMatrix(void) {
 }
 
 
-void tick30ms(void *data) {
+void tick20ms(void *data) {
 	tickLED();
 	tickADC();
 	moveServo(NULL);
@@ -298,8 +298,8 @@ int main(void) {
 	pwmTimer.enable();
 
 	// Set up a timer for automation
-	tickTimer.setTriggers(&tick30ms, 0, &moveServo, 0);
-	tickTimer.setPeriods(30000UL, 20000UL); // 30ms - max an 8 bit timer can count is 32768us @ 16MHz
+	tickTimer.setTriggers(&tick20ms, 0, &moveServo, 0);
+	tickTimer.setPeriods(20000UL, 15000UL); // 20ms - max an 8 bit timer can count is 32768us @ 16MHz
 	tickTimer.enable();
 
 	MHV_SERVOCONTROL_ASSIGN_TRIGGER(servoTimer, servos);

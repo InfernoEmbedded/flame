@@ -47,6 +47,11 @@ MHV_Timer16::MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *contro
 	_counterSize = 16;
 	_mode = MHV_TIMER_REPETITIVE;
 	_type = MHV_TIMER_TYPE_5_PRESCALERS;
+
+	_haveTime3 = false;
+	_triggerData3 = NULL;
+	_triggerFunction3 = NULL;
+
 }
 
 uint16_t MHV_Timer16::current(void) {

@@ -30,7 +30,9 @@
 #define MHV_TIMER8_H_
 
 #include <inttypes.h>
+#include <avr/interrupt.h>
 #include <avr/io.h>
+#include <stdio.h>
 
 enum mhv_timer_mode {
 	MHV_TIMER_ONE_SHOT,
@@ -103,6 +105,7 @@ protected:
 	volatile uint8_t	*_outputCompare2;
 	volatile uint8_t	*_counter;
 	volatile uint8_t	*_interrupt;
+	uint8_t				_interruptEnableA;
 	MHV_TIMER_PRESCALER	_prescaler;
 	MHV_TIMER_MODE		_mode;
 	MHV_TIMER_TYPE		_type;
@@ -122,8 +125,8 @@ protected:
 public:
 	MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 			volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
-			volatile uint8_t *interrupt);
-	void setPeriods(uint32_t usec1, uint32_t usec2);
+			volatile uint8_t *interrupt, uint8_t interruptEnableA);
+	bool setPeriods(uint32_t usec1, uint32_t usec2);
 	uint8_t current();
 	void setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2);
 	MHV_TIMER_PRESCALER getPrescaler();

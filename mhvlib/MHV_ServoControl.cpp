@@ -48,7 +48,7 @@ void MHV_ServoControl::refreshServos(void *data) {
 		for (int i = 0; i < _count; i++) {
 			if (_controlBlocks[i].port) {
 				_mhv_pinOn(0, _controlBlocks[SERVO_ORDER(i)].port,
-						0, _controlBlocks[SERVO_ORDER(i)].pin);
+						0, _controlBlocks[SERVO_ORDER(i)].pin, -1);
 			}
 		}
 		_nextServoIndex = 0;
@@ -63,7 +63,8 @@ void MHV_ServoControl::refreshServos(void *data) {
 	uint16_t startPosition = _controlBlocks[SERVO_ORDER(_nextServoIndex)].position;
 
 	for (;;) {
-		_mhv_pinOff(0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].port, 0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].pin);
+		_mhv_pinOff(0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].port,
+				0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].pin, -1);
 		_nextServoIndex++;
 		if (_nextServoIndex >= _count || 255 == SERVO_ORDER(_nextServoIndex)) {
 			_nextServoIndex = 255;
@@ -104,12 +105,12 @@ MHV_ServoControl::MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *co
 	_timer->setMode(MHV_TIMER_ONE_SHOT);
 }
 
-void MHV_ServoControl::addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin) {
+void MHV_ServoControl::addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt) {
 	_controlBlocks[servo].pin = pin;
 	_controlBlocks[servo].port = out;
 	_controlBlocks[servo].position = (MHV_SERVO_MIN + MHV_SERVO_MAX) / 2;
 
-	_mhv_setOutput(dir, out, in, pin);
+	_mhv_setOutput(dir, out, in, pin, -1);
 
 	if (_timer->enabled()) {
 		sortServos();

@@ -29,9 +29,6 @@
 #include <avr/pgmspace.h>
 #include <string.h> // Needed for memmove
 
-#include <MHV_HardwareSerial.h>
-extern MHV_HardwareSerial serial;
-
 /**
  * A Realtime clock
  *
@@ -272,6 +269,7 @@ void MHV_RTC::current(MHV_TIMESTAMP *timestamp) {
 	} while (timestamp->milliseconds != _milliseconds); // Retry if the value changed while updating
 }
 
+
 /**
  * Determine how long has elapsed since the supplied timestamp
  * @param	since		the timestamp to measure against
@@ -285,9 +283,11 @@ void MHV_RTC::elapsed(MHV_TIMESTAMP *since, MHV_TIMESTAMP *elapsed) {
 	elapsed->timestamp = currentTimestamp.timestamp - since->timestamp;
 	if (currentTimestamp.milliseconds > since->milliseconds) {
 		elapsed->milliseconds = currentTimestamp.milliseconds - since->milliseconds;
-	} else {
+	} else if (elapsed->timestamp) {
 		elapsed->timestamp--;
 		elapsed->milliseconds = 1000 + currentTimestamp.milliseconds - since->milliseconds;
+	} else {
+		elapsed->milliseconds = 0;
 	}
 }
 

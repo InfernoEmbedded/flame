@@ -50,10 +50,10 @@
  * The initial state is coasting
  */
 MHV_SoftwareHBridge::MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 *timer, uint8_t timerChannel,
-		volatile uint8_t *dir1Top, volatile uint8_t *out1Top, volatile uint8_t *in1Top, uint8_t pin1Top,
-		volatile uint8_t *dir1Bottom, volatile uint8_t *out1Bottom, volatile uint8_t *in1Bottom, uint8_t pin1Bottom,
-		volatile uint8_t *dir2Top, volatile uint8_t *out2Top, volatile uint8_t *in2Top, uint8_t pin2Top,
-		volatile uint8_t *dir2Bottom, volatile uint8_t *out2Bottom, volatile uint8_t *in2Bottom, uint8_t pin2Bottom) {
+		volatile uint8_t *dir1Top, volatile uint8_t *out1Top, volatile uint8_t *in1Top, uint8_t pin1Top, int8_t int1Top,
+		volatile uint8_t *dir1Bottom, volatile uint8_t *out1Bottom, volatile uint8_t *in1Bottom, uint8_t pin1Bottom, int8_t int1Bottom,
+		volatile uint8_t *dir2Top, volatile uint8_t *out2Top, volatile uint8_t *in2Top, uint8_t pin2Top, int8_t int2Top,
+		volatile uint8_t *dir2Bottom, volatile uint8_t *out2Bottom, volatile uint8_t *in2Bottom, uint8_t pin2Bottom, int8_t int2Bottom) {
 	_type = type;
 	_timer = timer;
 	_timerChannel = timerChannel;
@@ -82,63 +82,63 @@ void MHV_SoftwareHBridge::reset() {
 		// Tops and bottoms are off
 		switch (_type) {
 		case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:
-			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top);
-			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top);
+			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top, -1);
+			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top, -1);
 			break;
 		case MHV_SOFTWAREHBRIDGE_TYPE_DIRECT:
-			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top);
-			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top);
+			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top, -1);
+			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top, -1);
 			break;
 		}
-		_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom);
-		_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom);
+		_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom, -1);
+		_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom, -1);
 		break;
 	case MHV_SOFTWAREHBRIDGE_DIR_FORWARD:
 		// Top 1 is on, bottom 2 is on
-		_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom);
+		_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom, -1);
 		switch (_type) {
 		case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:
-			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top);
-			_mhv_setOutput(_dir1Top, _out1Top, NULL, _pin1Top);
-			_mhv_pinOff(_dir1Top, _out1Top, NULL, _pin1Top);
+			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top, -1);
+			_mhv_setOutput(_dir1Top, _out1Top, NULL, _pin1Top, -1);
+			_mhv_pinOff(_dir1Top, _out1Top, NULL, _pin1Top, -1);
 			break;
 		case MHV_SOFTWAREHBRIDGE_TYPE_DIRECT:
-			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top);
-			_mhv_pinOff(NULL, _out1Top, NULL, _pin1Top);
+			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top, -1);
+			_mhv_pinOff(NULL, _out1Top, NULL, _pin1Top, -1);
 			break;
 		}
-		_mhv_pinOn(NULL, _out2Bottom, NULL, _pin2Bottom);
+		_mhv_pinOn(NULL, _out2Bottom, NULL, _pin2Bottom, -1);
 		break;
 	case MHV_SOFTWAREHBRIDGE_DIR_BACKWARD:
 		// Top 2 is on, bottom 1 is on
-		_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom);
+		_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom, -1);
 		switch (_type) {
 		case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:
-			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top);
-			_mhv_setOutput(_dir2Top, _out2Top, NULL, _pin2Top);
-			_mhv_pinOff(_dir2Top, _out2Top, NULL, _pin2Top);
+			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top, -1);
+			_mhv_setOutput(_dir2Top, _out2Top, NULL, _pin2Top, -1);
+			_mhv_pinOff(_dir2Top, _out2Top, NULL, _pin2Top, -1);
 			break;
 		case MHV_SOFTWAREHBRIDGE_TYPE_DIRECT:
-			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top);
-			_mhv_pinOff(NULL, _out2Top, NULL, _pin2Top);
+			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top, -1);
+			_mhv_pinOff(NULL, _out2Top, NULL, _pin2Top, -1);
 			break;
 		}
-		_mhv_pinOn(NULL, _out1Bottom, NULL, _pin1Bottom);
+		_mhv_pinOn(NULL, _out1Bottom, NULL, _pin1Bottom, -1);
 		break;
 	case MHV_SOFTWAREHBRIDGE_DIR_BRAKE:
 		// Bottoms are on
 		switch (_type) {
 		case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:
-			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top);
-			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top);
+			_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top, -1);
+			_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top, -1);
 			break;
 		case MHV_SOFTWAREHBRIDGE_TYPE_DIRECT:
-			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top);
-			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top);
+			_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top, -1);
+			_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top, -1);
 			break;
 		}
-		_mhv_pinOn(NULL, _out1Bottom, NULL, _pin1Bottom);
-		_mhv_pinOn(NULL, _out2Bottom, NULL, _pin2Bottom);
+		_mhv_pinOn(NULL, _out1Bottom, NULL, _pin1Bottom, -1);
+		_mhv_pinOn(NULL, _out2Bottom, NULL, _pin2Bottom, -1);
 		break;
 	}
 }
@@ -150,16 +150,16 @@ void MHV_SoftwareHBridge::update() {
 	// Set to coasting until the next reset
 	switch (_type) {
 	case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:
-		_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top);
-		_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top);
+		_mhv_setInput(_dir1Top, _out1Top, NULL, _pin1Top, -1);
+		_mhv_setInput(_dir2Top, _out2Top, NULL, _pin2Top, -1);
 		break;
 	case MHV_SOFTWAREHBRIDGE_TYPE_DIRECT:
-		_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top);
-		_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top);
+		_mhv_pinOn(NULL, _out1Top, NULL, _pin1Top, -1);
+		_mhv_pinOn(NULL, _out2Top, NULL, _pin2Top, -1);
 		break;
 	}
-	_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom);
-	_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom);
+	_mhv_pinOff(NULL, _out1Bottom, NULL, _pin1Bottom, -1);
+	_mhv_pinOff(NULL, _out2Bottom, NULL, _pin2Bottom, -1);
 }
 
 /* Set the direction and magnitude of the H bridge

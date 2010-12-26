@@ -122,7 +122,7 @@ int main(void) {
 	// Enable interrupts
 	sei();
 
-	// Configure the tick timer to tick every 1ms
+	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
 	tickTimer.setTriggers(rtcTrigger, 0, 0, 0);
 
@@ -211,4 +211,6 @@ int main(void) {
 	for (;;) {
 		rtc.runEvents();
 	}
+
+	return 0;
 }

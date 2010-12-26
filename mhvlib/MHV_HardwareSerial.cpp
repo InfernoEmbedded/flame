@@ -56,6 +56,11 @@ MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer 
 	_u2x = u2x;
 	_tx = NULL;
 
+	_currentTx.data = NULL;
+	_currentTx.length = 0;
+	_currentTx.progmem = false;
+	_currentTx.isString = false;
+
 	setSpeed(baud);
 }
 

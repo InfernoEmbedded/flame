@@ -29,12 +29,8 @@
 uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
-#ifdef __AVR_ATmega1280__
-	if (channel & _BV(MUX5)) {
-		ADCSRB |= _BV(MUX5);
-	} else {
-		ADCSRB &= ~_BV(MUX5);
-	}
+#ifdef MUX5
+	ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5-MUX5)));
 #endif
 
 // Start the conversion
@@ -48,12 +44,8 @@ uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference) {
 void mhv_ad_asyncRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
-#ifdef __AVR_ATmega1280__
-	if (channel & _BV(MUX5)) {
-		ADCSRB |= _BV(MUX5);
-	} else {
-		ADCSRB &= ~_BV(MUX5);
-	}
+#ifdef MUX5
+	ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5-MUX5)));
 #endif
 
 // Start the conversion

@@ -70,7 +70,7 @@ private:
 
 public:
 	MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *controlBlocks, uint8_t count);
-	void addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin);
+	void addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt);
 	void tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
 	void positionServo(uint8_t servo, uint16_t position);
 	bool canPosition();

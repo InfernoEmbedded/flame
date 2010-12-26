@@ -126,7 +126,7 @@ int main(void) {
 // Wait until there is space to send
 		while (!serial.canSend()) {}
 
-// Write a buffer out
+// Write a PROGMEM buffer out
 		(void)serial.asyncWrite_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
 				41);
 	} // Loop
