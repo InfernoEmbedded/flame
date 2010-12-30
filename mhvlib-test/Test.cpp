@@ -39,6 +39,15 @@
 #include <MHV_PWMMatrix.h>
 #include <MHV_GammaCorrect.h>
 
+/*
+ * Required as the display classes have pure virtual methods
+ * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
+ */
+extern "C" void __cxa_pure_virtual() {
+	cli();
+	for (;;);
+}
+
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);

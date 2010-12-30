@@ -24,32 +24,21 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MHV_PWMMATRIX_H_
-#define MHV_PWMMATRIX_H_
+#ifndef MHV_DISPLAY_MONOCHROME_BUFFERED_H_
+#define MHV_DISPLAY_MONOCHROME_BUFFERED_H_
 
 #include <inttypes.h>
-#include <MHV_Display_Monochrome_Buffered.h>
+#include <avr/pgmspace.h>
+#include <MHV_Display_Monochrome.h>
 
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered {
-private:
-	uint8_t		_current; // current row or col, depending on scan mode
-	uint8_t		_currentLevel;
-	bool		_scanRows;
-	void		(*_rowOn)(uint8_t row);
-	void 		(*_rowOff)(uint8_t row);
-	void 		(*_colOn)(uint8_t column);
-	void 		(*_colOff)(uint8_t column);
-
-	void tickRow();
-	void tickCol();
+class MHV_Display_Monochrome_Buffered : public MHV_Display_Monochrome {
+protected:
+	uint8_t		*_frameBuffer;
 
 public:
-	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
-		void (*rowOn)(uint8_t row),
-		void (*rowOff)(uint8_t row),
-		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column));
-	void tick();
+	MHV_Display_Monochrome_Buffered(uint16_t colCount, uint16_t rowCount, uint8_t *frameBuffer);
+	void setPixel(uint16_t col, uint16_t row, uint8_t value);
+	uint8_t getPixel(uint16_t col, uint16_t row);
 };
 
-#endif /* MHV_PWMMATRIX_H_ */
+#endif /* MHV_DISPLAY_MONOCHROME_BUFFERED_H_ */

@@ -111,7 +111,7 @@ void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, uint32_t seconds, uint16_t
 	timestamp->timestamp += seconds;
 }
 
-uint8_t mhv_daysInMonthArray[] PROGMEM = {
+const uint8_t mhv_daysInMonthArray[] PROGMEM = {
 		31,	// Jan
 		28,	// Feb
 		31,	// Mar
@@ -292,7 +292,7 @@ void MHV_RTC::elapsed(MHV_TIMESTAMP *since, MHV_TIMESTAMP *elapsed) {
 }
 
 // Used in toTime: Cumulative totals at the end of the month in a normal year
-uint32_t mhv_secondsFromYearStart[] PROGMEM = {
+const uint32_t mhv_secondsFromYearStart[] PROGMEM = {
 		 2678400, 	// Jan
 		 5097600,	// Feb
 		 7776000,	// Mar

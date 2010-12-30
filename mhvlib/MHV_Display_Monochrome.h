@@ -24,32 +24,35 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MHV_PWMMATRIX_H_
-#define MHV_PWMMATRIX_H_
+#ifndef MHV_DISPLAY_MONOCHROME_H_
+#define MHV_DISPLAY_MONOCHROME_H_
 
 #include <inttypes.h>
-#include <MHV_Display_Monochrome_Buffered.h>
+#include <avr/pgmspace.h>
+#include <MHV_io.h>
+#include <MHV_Font.h>
 
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered {
-private:
-	uint8_t		_current; // current row or col, depending on scan mode
-	uint8_t		_currentLevel;
-	bool		_scanRows;
-	void		(*_rowOn)(uint8_t row);
-	void 		(*_rowOff)(uint8_t row);
-	void 		(*_colOn)(uint8_t column);
-	void 		(*_colOff)(uint8_t column);
-
-	void tickRow();
-	void tickCol();
+class MHV_Display_Monochrome {
+protected:
+	uint16_t		_colCount;
+	uint16_t		_rowCount;
 
 public:
-	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
-		void (*rowOn)(uint8_t row),
-		void (*rowOff)(uint8_t row),
-		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column));
-	void tick();
+	MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount);
+	uint16_t getWidth();
+	uint16_t getHeight();
+	void clear(uint8_t value);
+	bool writeChar(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, char character);
+	bool writeSeperator(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue);
+	bool writeString(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const char *string);
+	bool writeString_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const char *string);
+
+	virtual void setPixel(uint16_t row, uint16_t col, uint8_t value)=0;
+	virtual uint8_t getPixel(uint16_t row, uint16_t col)=0;
 };
 
-#endif /* MHV_PWMMATRIX_H_ */
+#endif /* MHV_DISPLAY_MONOCHROME_H_ */

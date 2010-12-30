@@ -58,6 +58,7 @@
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
 #if GCC_VERSION < 40500
+#include <avr/interrupt.h>
 extern "C" void __cxa_pure_virtual() {
 	cli();
 	for (;;);
@@ -130,10 +131,10 @@ typedef struct mhv_pin MHV_PIN;
 	mhvInput
 
 // Grab the bit offset of a pin declaration
-#define mhv_Bit(mhvParms) \
-	_mhv_Bit(mhvParms)
+#define mhv_bit(mhvParms) \
+	_mhv_bit(mhvParms)
 
-#define _mhv_Bit(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
+#define _mhv_bit(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvBit
 
 // Grab the direction register of a pin declaration
@@ -144,8 +145,8 @@ typedef struct mhv_pin MHV_PIN;
 	mhvDir
 
 // Grab the pin change interrupt of a pin
-#define mhv_PCInt(mhvParms) \
-	_mhv_PCInt(mhvParms)
+#define mhv_pcint(mhvParms) \
+	_mhv_pcint(mhvParms)
 
 #define _mhv_PCInt(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvPCInt

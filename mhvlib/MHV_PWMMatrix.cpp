@@ -39,12 +39,9 @@ MHV_PWMMatrix::MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameB
 		void (*rowOn)(uint8_t row),
 		void (*rowOff)(uint8_t row),
 		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column)) {
+		void (*colOff)(uint8_t column)) : MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer) {
 	uint8_t	i;
 
-	_rowCount = rowCount;
-	_colCount = colCount;
-	_frameBuffer = frameBuffer;
 	_current = 0;
 	_currentLevel = 0;
 
@@ -55,32 +52,12 @@ MHV_PWMMatrix::MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameB
 
 	_scanRows = (rowCount <= colCount);
 
-	memset(_frameBuffer, 0, rowCount * colCount);
-
 	for (i = 0; i < _rowCount; i++) {
 		_rowOff(i);
 	}
 	for (i = 0; i < _colCount; i++) {
 		_colOff(i);
 	}
-}
-
-/* Set a pixel
- * param:	row		the row
- * param:	col		the column
- * param:	value	the intensity of the pixel
- */
-void MHV_PWMMatrix::setPixel(uint8_t row, uint8_t col, uint8_t value) {
-	pixel(row, col) = value;
-}
-
-/* Get a pixel
- * param:	row		the row
- * param:	col		the column
- * return	the intensity of the pixel
- */
-uint8_t MHV_PWMMatrix::getPixel(uint8_t row, uint8_t col) {
-	return pixel(row, col);
 }
 
 inline void MHV_PWMMatrix::tickRow(void) {

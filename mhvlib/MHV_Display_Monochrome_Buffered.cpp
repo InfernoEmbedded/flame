@@ -24,32 +24,45 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MHV_PWMMATRIX_H_
-#define MHV_PWMMATRIX_H_
+#include "MHV_Display_Monochrome_Buffered.h"
+#include <string.h>
+#include <math.h>
 
-#include <inttypes.h>
-#include <MHV_Display_Monochrome_Buffered.h>
+#define pixel(pixelRow, pixelCol) _frameBuffer[pixelRow * _colCount + pixelCol]
 
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered {
-private:
-	uint8_t		_current; // current row or col, depending on scan mode
-	uint8_t		_currentLevel;
-	bool		_scanRows;
-	void		(*_rowOn)(uint8_t row);
-	void 		(*_rowOff)(uint8_t row);
-	void 		(*_colOn)(uint8_t column);
-	void 		(*_colOff)(uint8_t column);
+/**
+ * Create a new monochrome display
+ * param:	colCount	the number of columns
+ * param:	rowCount	the number of rows
+ * param:	frameBuffer	memory to use for the framebuffer, must be at least rows * cols * uint8_t
+ */
+MHV_Display_Monochrome_Buffered::MHV_Display_Monochrome_Buffered(
+		uint16_t colCount, uint16_t rowCount,
+		uint8_t *frameBuffer) : MHV_Display_Monochrome(rowCount, colCount) {
+	_frameBuffer = frameBuffer;
+	memset(_frameBuffer, 0, rowCount * colCount);
+}
 
-	void tickRow();
-	void tickCol();
+/* Set a pixel
+ * param:	col		the column
+ * param:	row		the row
+ * param:	value	the intensity of the pixel
+ */
+void MHV_Display_Monochrome_Buffered::setPixel(uint16_t col, uint16_t row, uint8_t value) {
+	if (row < _rowCount && col < _colCount) {
+		pixel(row, col) = value;
+	}
+}
 
-public:
-	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
-		void (*rowOn)(uint8_t row),
-		void (*rowOff)(uint8_t row),
-		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column));
-	void tick();
-};
-
-#endif /* MHV_PWMMATRIX_H_ */
+/* Get a pixel
+ * param:	col		the column
+ * param:	row		the row
+ * return	the intensity of the pixel
+ */
+uint8_t MHV_Display_Monochrome_Buffered::getPixel(uint16_t col, uint16_t row) {
+	if (row < _rowCount && col < _colCount) {
+		return pixel(row, col);
+	} else {
+		return 0;
+	}
+}
