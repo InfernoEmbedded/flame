@@ -45,13 +45,23 @@
 // Bring in the gamma correction library
 #include <MHV_GammaCorrect.h>
 
+
+/*
+ * Required as the display classes have pure virtual methods
+ * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
+ */
+extern "C" void __cxa_pure_virtual() {
+	cli();
+	for (;;);
+}
+
 // A timer we will use for animation
 MHV_Timer8 animateTimer(MHV_TIMER8_2);
 MHV_TIMER_ASSIGN_2INTERRUPTS(animateTimer, MHV_TIMER2_INTERRUPTS);
 
 // A timer we will use for the PWM Matrix
 MHV_Timer16 ledMatrixTimer(MHV_TIMER16_1);
-MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER4_INTERRUPTS);
+MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER1_INTERRUPTS);
 
 /* 4 LED matrix
  * rows are on pins 8 & 9 and are active low
