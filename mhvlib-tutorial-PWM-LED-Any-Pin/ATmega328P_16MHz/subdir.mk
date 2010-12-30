@@ -4,13 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../PWM-LED.cpp 
+../PWM-LED-Any-Pin.cpp 
 
 OBJS += \
-./PWM-LED.o 
+./PWM-LED-Any-Pin.o 
 
 CPP_DEPS += \
-./PWM-LED.d 
+./PWM-LED-Any-Pin.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

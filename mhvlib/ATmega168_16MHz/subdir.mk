@@ -6,6 +6,9 @@
 CPP_SRCS += \
 ../MHV_AD.cpp \
 ../MHV_Debounce.cpp \
+../MHV_Display_Holtek_HT1632.cpp \
+../MHV_Display_Monochrome.cpp \
+../MHV_Display_Monochrome_Buffered.cpp \
 ../MHV_GammaCorrect.cpp \
 ../MHV_HardwareSerial.cpp \
 ../MHV_PWMMatrix.cpp \
@@ -20,6 +23,9 @@ CPP_SRCS += \
 OBJS += \
 ./MHV_AD.o \
 ./MHV_Debounce.o \
+./MHV_Display_Holtek_HT1632.o \
+./MHV_Display_Monochrome.o \
+./MHV_Display_Monochrome_Buffered.o \
 ./MHV_GammaCorrect.o \
 ./MHV_HardwareSerial.o \
 ./MHV_PWMMatrix.o \
@@ -34,6 +40,9 @@ OBJS += \
 CPP_DEPS += \
 ./MHV_AD.d \
 ./MHV_Debounce.d \
+./MHV_Display_Holtek_HT1632.d \
+./MHV_Display_Monochrome.d \
+./MHV_Display_Monochrome_Buffered.d \
 ./MHV_GammaCorrect.d \
 ./MHV_HardwareSerial.d \
 ./MHV_PWMMatrix.d \

@@ -45,56 +45,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-BlinkingLED.lss \
+mhvlib-tutorial-debounce.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-BlinkingLED.hex \
+mhvlib-tutorial-debounce.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-BlinkingLED.eep \
+mhvlib-tutorial-debounce.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: mhvlib-tutorial-BlinkingLED.elf secondary-outputs
+all: mhvlib-tutorial-debounce.elf secondary-outputs
 
 # Tool invocations
-mhvlib-tutorial-BlinkingLED.elf: $(OBJS) $(USER_OBJS)
+mhvlib-tutorial-debounce.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-BlinkingLED.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o"mhvlib-tutorial-BlinkingLED.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-debounce.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o"mhvlib-tutorial-debounce.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-BlinkingLED.lss: mhvlib-tutorial-BlinkingLED.elf
+mhvlib-tutorial-debounce.lss: mhvlib-tutorial-debounce.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-BlinkingLED.elf  >"mhvlib-tutorial-BlinkingLED.lss"
+	-avr-objdump -h -S mhvlib-tutorial-debounce.elf  >"mhvlib-tutorial-debounce.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-BlinkingLED.hex: mhvlib-tutorial-BlinkingLED.elf
+mhvlib-tutorial-debounce.hex: mhvlib-tutorial-debounce.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-BlinkingLED.elf  "mhvlib-tutorial-BlinkingLED.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-debounce.elf  "mhvlib-tutorial-debounce.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-BlinkingLED.eep: mhvlib-tutorial-BlinkingLED.elf
+mhvlib-tutorial-debounce.eep: mhvlib-tutorial-debounce.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-BlinkingLED.elf  "mhvlib-tutorial-BlinkingLED.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-debounce.elf  "mhvlib-tutorial-debounce.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-BlinkingLED.elf
+sizedummy: mhvlib-tutorial-debounce.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-BlinkingLED.elf
+	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-debounce.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-BlinkingLED.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-debounce.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
