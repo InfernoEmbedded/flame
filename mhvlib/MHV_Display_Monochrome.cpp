@@ -265,9 +265,6 @@ bool MHV_Display_Monochrome::writeBuffer_P(const MHV_FONT *font, int16_t *offset
 	return ret;
 }
 
-#include <MHV_HardwareSerial.h>
-extern MHV_HardwareSerial serial;
-
 /**
  * Start rendering TX buffers
  */
@@ -286,25 +283,20 @@ void MHV_Display_Monochrome::runTxBuffers() {
  */
 bool MHV_Display_Monochrome::txAnimation(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
 	int16_t offsetX = _txOffset--;
-MHV_HARDWARESERIAL_DEBUG(serial, "TX Animation offset %d", offsetX);
 
 	clear(offValue);
 
 	bool ret;
 	if (_currentTx.progmem) {
 		if (_currentTx.isString) {
-			MHV_HARDWARESERIAL_DEBUG(serial, "Writing PROGMEM string");
 			ret = writeString_P(font, &offsetX, offsetY, onValue, offValue, _tx);
 		} else {
-			MHV_HARDWARESERIAL_DEBUG(serial, "Writing PROGMEM buffer");
 			ret = writeBuffer_P(font, &offsetX, offsetY, onValue, offValue, _tx, _currentTx.length);
 		}
 	} else {
 		if (_currentTx.isString) {
-			MHV_HARDWARESERIAL_DEBUG(serial, "Writing string");
 			ret = writeString(font, &offsetX, offsetY, onValue, offValue, _tx);
 		} else {
-			MHV_HARDWARESERIAL_DEBUG(serial, "Writing buffer");
 			ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, _tx, _currentTx.length);
 		}
 	}
