@@ -25,7 +25,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* A simple blinking LED on Arduino pin 13 - a loop with sleeps
+/* Demonstrates busy writing to a serial port
  */
 
 // Bring in the MHV IO header
@@ -41,7 +41,17 @@
 #include <avr/pgmspace.h>
 
 // Bring in stdio, required for snprintf
+#include <stdlib.h>
 #include <stdio.h>
+
+/*
+ * Required as the TX classes have pure virtual methods
+ * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
+ */
+extern "C" void __cxa_pure_virtual() {
+	cli();
+	for (;;);
+}
 
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
@@ -51,12 +61,11 @@ char rxBuf[RX_BUFFER_SIZE];
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 /* Declare the serial object on UART0 using the above ring buffer
- *
+ * No TX buffers provided, async write operations will not work
  * Use the USART0 hardware
- *
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(&rxBuffer, MHV_USART0, 115200);
+MHV_HardwareSerial serial(&rxBuffer, NULL, MHV_USART0, 115200);
 
 // Assign interrupts to the serial object
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);

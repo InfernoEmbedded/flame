@@ -129,7 +129,7 @@ void matrixColOff(uint8_t col) {
 
 
 uint8_t ledMatrixFrameBuffer[LED_MATRIX_ROWS * LED_MATRIX_COLS];
-MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer,
+MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer, NULL,
 		matrixRowOn, matrixRowOff, matrixColOn, matrixColOff);
 
 

@@ -37,6 +37,33 @@
 
 #include <avr/interrupt.h>
 
+
+#include <MHV_HardwareSerial.h>
+// Create a buffer we will use for a receive buffer
+#define RX_BUFFER_SIZE	81
+char rxBuf[RX_BUFFER_SIZE];
+
+// Create a ring buffer wrapping the memory allocated above
+MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
+
+
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 10
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
+// A buffer for the serial port to send data, it only contains pointers
+char serTxBuf[TX_BUFFER_SIZE];
+MHV_RingBuffer serTxBuffer(serTxBuf, TX_BUFFER_SIZE);
+
+/* Declare the serial object on USART0 using the above ring buffer
+ * Set the baud rate to 115,200
+ */
+MHV_HardwareSerial serial(&rxBuffer, &serTxBuffer, MHV_USART0, 115200);
+
+// Assign interrupts to the serial object
+MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
+
+
+
 /*
  * Required as the display classes have pure virtual methods
  * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
@@ -53,6 +80,13 @@ extern "C" void __cxa_pure_virtual() {
  * CS1		C2	F2			Arduino pin A2
  * CS2		C3	F3			Arduino pin A3
  */
+
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 10
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
+// A buffer for the display to send data, it only contains pointers
+char txBuf[TX_BUFFER_SIZE];
+MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
 
 
 /**
@@ -167,7 +201,7 @@ void lines(MHV_Display_Holtek_HT1632 *display) {
  * Render text - a homage to Portal
  *  @param	display	the display to draw on
  */
-void text(MHV_Display_Holtek_HT1632 *display) {
+void manualTextAnimation(MHV_Display_Holtek_HT1632 *display) {
 	display->brightness(MHV_HT1632_BRIGHTNESS_MAX);
 	display->clear(0);
 	display->flush();
@@ -248,9 +282,23 @@ void text(MHV_Display_Holtek_HT1632 *display) {
 	display->clear(0);
 }
 
-int main(void) {
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
+/**
+ * Render text using the asynchronous buffers
+ *  @param	display	the display to draw on
+ */
+void textAnimation(MHV_Display_Holtek_HT1632 *display) {
+	display->write("1. Here is a string of text");
+	display->write_P(PSTR("2. Here is string of text in PROGMEM"));
+	display->write("3. Here is a buffer containing some data//This will not show", 40);
+	display->write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
+	while (display->txAnimation(&mhv_fontSansSerif8x10, 0, 1, 0)) {
+		display->flush();
+		_delay_ms(40);
+	}
+	display->flush();
+}
 
+int main(void) {
 	// Enable output on the display pins
 	mhv_setOutput(MHV_ARDUINO_PIN_A0);
 	mhv_setOutput(MHV_ARDUINO_PIN_A1);
@@ -262,12 +310,13 @@ int main(void) {
 
 	uint8_t frameBuffer[2 * 1 * 32 * 8 / 8];
 	MHV_Display_Holtek_HT1632 display(MHV_ARDUINO_PIN_A0, MHV_ARDUINO_PIN_A1,
-			MHV_HT1632_PMOS_32x8, 2, 1, &displaySelect, frameBuffer);
+			MHV_HT1632_PMOS_32x8, 2, 1, &displaySelect, frameBuffer, &txBuffer);
 
 	while (1) {
-		text(&display);
 		lines(&display);
+		textAnimation(&display);
 		fader(&display);
+		manualTextAnimation(&display);
 		slowFill(&display);
 	}
 

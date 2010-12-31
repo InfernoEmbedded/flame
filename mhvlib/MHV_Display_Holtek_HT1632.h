@@ -66,18 +66,10 @@ class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome
 	uint8_t				_displayBytes;
 	uint8_t				*_frameBuffer;
 
-//	void write(uint8_t moduleX, uint8_t moduleY, uint8_t data, uint8_t length);
-    void write(uint8_t data, uint8_t length);
+    void writeData(uint8_t data, uint8_t length);
     void sendCommand(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_COMMAND command);
     void commandComplete(uint8_t moduleX, uint8_t moduleY);
-//    void commandComplete();
-//    void output(uint8_t moduleX, uint8_t moduleY, uint8_t column, uint8_t pixels);
-//    void output(uint8_t column, uint8_t pixels);
-//    void outputStart(uint8_t moduleX, uint8_t moduleY, uint8_t column);
     void outputStart(uint8_t moduleX, uint8_t moduleY);
-//    void outputStart(uint8_t column);
-//    void outputStart();
-//    bool outputStream(uint8_t pixels);
     void master(uint8_t moduleX, uint8_t moduleY);
     void slave(uint8_t moduleX, uint8_t moduleY);
     void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness);
@@ -94,7 +86,7 @@ class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome
 			MHV_HT1632_MODE mode,
 			uint8_t arrayX, uint8_t arrayY,
 			void (*csCallback)(uint8_t x, uint8_t y, bool active),
-			uint8_t *frameBuffer);
+			uint8_t *frameBuffer, MHV_RingBuffer *txBuffers);
     void brightness(uint8_t brightness);
     void poweroff();
     void poweron();

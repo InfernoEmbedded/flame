@@ -30,16 +30,24 @@
 
 #define pixel(pixelRow, pixelCol) _frameBuffer[pixelRow * _colCount + pixelCol]
 
-/* Constructor
- * param:	rowCount	the number of rows
- * param:	colCount	the number of columns
- * param:	frameBuffer	memory to use for the framebuffer, must be at least rows * cols * uint8_t
+/**
+ * Constructor
+ * @param	rowCount	the number of rows
+ * @param	colCount	the number of columns
+ * @param	frameBuffer	memory to use for the framebuffer, must be at least rows * cols * uint8_t
+ * @param	txBuffers	buffers used for text transmission
+ * @param	rowOn		callback to turn a row on
+ * @param	rowOff		callback to turn a row off
+ * @param	colOn		callback to turn a column on
+ * @param	colOff		callback to turn a column off
  */
 MHV_PWMMatrix::MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
+		MHV_RingBuffer *txBuffers,
 		void (*rowOn)(uint8_t row),
 		void (*rowOff)(uint8_t row),
 		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column)) : MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer) {
+		void (*colOff)(uint8_t column)) :
+			MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer, txBuffers) {
 	uint8_t	i;
 
 	_current = 0;

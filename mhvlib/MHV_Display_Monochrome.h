@@ -29,27 +29,36 @@
 
 #include <inttypes.h>
 #include <avr/pgmspace.h>
+#include <MHV_Device_TX.h>
 #include <MHV_io.h>
 #include <MHV_Font.h>
 
-class MHV_Display_Monochrome {
+class MHV_Display_Monochrome : public MHV_Device_TX {
 protected:
 	uint16_t		_colCount;
 	uint16_t		_rowCount;
+	int16_t			_txOffset;
 
-public:
-	MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount);
-	uint16_t getWidth();
-	uint16_t getHeight();
-	void clear(uint8_t value);
 	bool writeChar(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, char character);
 	bool writeSeperator(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue);
+	void runTxBuffers();
+
+public:
+	MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	uint16_t getWidth();
+	uint16_t getHeight();
+	void clear(uint8_t value);
 	bool writeString(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, const char *string);
 	bool writeString_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
-			uint8_t onValue, uint8_t offValue, const char *string);
+			uint8_t onValue, uint8_t offValue, PGM_P string);
+	bool writeBuffer(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length);
+	bool writeBuffer_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length);
+	bool txAnimation(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue);
 
 	virtual void setPixel(uint16_t row, uint16_t col, uint8_t value)=0;
 	virtual uint8_t getPixel(uint16_t row, uint16_t col)=0;

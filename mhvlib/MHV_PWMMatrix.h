@@ -44,7 +44,7 @@ private:
 	void tickCol();
 
 public:
-	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
+	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers,
 		void (*rowOn)(uint8_t row),
 		void (*rowOff)(uint8_t row),
 		void (*colOn)(uint8_t column),

@@ -47,6 +47,7 @@
  * @param	arrayY		the height of the array in number of displays
  * @param	csCallback	A callback to select which display is active (lines must be active low, x & y select the display)
  * @param	frameBuffer	memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long
+ * @param	txBuffers	A ringbuffer used for text printing
  */
 MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
@@ -56,10 +57,11 @@ MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 		MHV_HT1632_MODE mode,
 		uint8_t arrayX, uint8_t arrayY,
 		void (*csCallback)(uint8_t x, uint8_t y, bool active),
-		uint8_t *frameBuffer) :
+		uint8_t *frameBuffer, MHV_RingBuffer *txBuffers) :
 			MHV_Display_Monochrome(
 					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 32 : 24) * arrayX,
-					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 8 : 16) * arrayY) {
+					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 8 : 16) * arrayY,
+					txBuffers) {
 
 	_mhv_setOutput(dataDir, dataOut, dataIn, dataPin, dataPinchangeInterrupt);
 	_mhv_setOutput(writeDir, writeOut, writeIn, writePin, writePinchangeInterrupt);
@@ -125,6 +127,8 @@ MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
  */
 void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t value) {
 	if (row < _rowCount && col < _colCount) {
+
+
 		// Coordinates of the display module
 		uint8_t moduleX, moduleY;
 
@@ -155,6 +159,8 @@ void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t val
 
 		// Change offset from the start of the display to the start of the framebuffer
 		offset += (moduleY * _arrayX + moduleX) * _displayBytes;
+
+//MHV_HARDWARESERIAL_DEBUG(serial, "Setting pixel(%d,%d) to %d, offset=%d, bit=%d", col, row, value, offset, bit);
 
 		if (value) {
 			_frameBuffer[offset] |= 1 << bit;
@@ -211,25 +217,12 @@ uint8_t MHV_Display_Holtek_HT1632::getPixel(uint16_t col, uint16_t row) {
 	return 0;
 }
 
-
-/**
- * Write up to 8 bits
- * @param moduleX	the module to write to
- * @param moduleY	the module to write to
- * @param data 		the data to write
- * @param length	the number of bits to write (starts at bit length-1, and proceeds down to bit 0)
- */
-//void MHV_Display_Holtek_HT1632::write(uint8_t moduleX, uint8_t moduleY, uint8_t data, uint8_t length) {
-//	_csCallback(moduleX, moduleY, 1);
-//	write(data, length);
-//}
-
 /**
  * Write up to 8 bits
  * @param data 		the data to write
  * @param length	the number of bits to write (starts at bit length-1, and proceeds down to bit 0)
  */
-void MHV_Display_Holtek_HT1632::write(uint8_t data, uint8_t length) {
+void MHV_Display_Holtek_HT1632::writeData(uint8_t data, uint8_t length) {
 	while (0 != length) {
 		if (data & 1 << (--length)) {
 		*_port |= _data;
@@ -250,7 +243,7 @@ void MHV_Display_Holtek_HT1632::write(uint8_t data, uint8_t length) {
  */
 void MHV_Display_Holtek_HT1632::sendCommand(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_COMMAND command) {
 	_csCallback(moduleX, moduleY, 1);
-	write(command, 3);
+	writeData(command, 3);
 }
 
 /* Mark a command as complete
@@ -279,7 +272,7 @@ void MHV_Display_Holtek_HT1632::commandComplete(uint8_t moduleX, uint8_t moduleY
  */
 void MHV_Display_Holtek_HT1632::outputStart(uint8_t moduleX, uint8_t moduleY) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_WRITE);
-	write(0, 7);
+	writeData(0, 7);
 }
 
 /**
@@ -309,8 +302,8 @@ void MHV_Display_Holtek_HT1632::flush() {
  */
 void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b00010100, 8);
-	write(0x0, 1);
+	writeData(0b00010100, 8);
+	writeData(0x0, 1);
 	commandComplete(moduleX, moduleY);
 }
 
@@ -319,8 +312,8 @@ void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
  */
 void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b00010000, 8);
-	write(0x0, 1);
+	writeData(0b00010000, 8);
+	writeData(0x0, 1);
 	commandComplete(moduleX, moduleY);
 }
 
@@ -330,8 +323,8 @@ void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
  */
 void MHV_Display_Holtek_HT1632::brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b1010, 4);
-	write(brightness << 1, 5);
+	writeData(0b1010, 4);
+	writeData(brightness << 1, 5);
 	commandComplete(moduleX, moduleY);
 }
 
@@ -357,8 +350,8 @@ void MHV_Display_Holtek_HT1632::brightness(uint8_t brightness_in) {
 void MHV_Display_Holtek_HT1632::poweroff(uint8_t moduleX, uint8_t moduleY) {
 	// Shut down the oscillator & PWM generator
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b00000000, 8);
-	write(0x0, 1);
+	writeData(0b00000000, 8);
+	writeData(0x0, 1);
 	commandComplete(moduleX, moduleY);
 }
 
@@ -370,14 +363,14 @@ void MHV_Display_Holtek_HT1632::poweroff(uint8_t moduleX, uint8_t moduleY) {
 void MHV_Display_Holtek_HT1632::poweron(uint8_t moduleX, uint8_t moduleY) {
 // Turn on the oscillator
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b00000001, 8);
-	write(0x0, 1);
+	writeData(0b00000001, 8);
+	writeData(0x0, 1);
 	commandComplete(moduleX, moduleY);
 
 // Turn on the PWM generator
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b00000011, 8);
-	write(0x0, 1);
+	writeData(0b00000011, 8);
+	writeData(0x0, 1);
 	commandComplete(moduleX, moduleY);
 }
 
@@ -389,9 +382,9 @@ void MHV_Display_Holtek_HT1632::poweron(uint8_t moduleX, uint8_t moduleY) {
  */
 void MHV_Display_Holtek_HT1632::setMode(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_MODE mode) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	write(0b0010, 4);
-	write(mode, 2);
-	write(0b000, 3);
+	writeData(0b0010, 4);
+	writeData(mode, 2);
+	writeData(0b000, 3);
 	commandComplete(moduleX, moduleY);
 }
 

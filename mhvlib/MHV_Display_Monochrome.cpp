@@ -28,10 +28,6 @@
 #include <string.h>
 #include <math.h>
 
-#include <MHV_HardwareSerial.h>
-extern MHV_HardwareSerial serial;
-
-
 /**
  * A monochrome bitmap display
  * Origin (0,0) is bottom left
@@ -41,8 +37,11 @@ extern MHV_HardwareSerial serial;
  * Create a new monochrome display
  * @param	colCount	the number of columns
  * @param	rowCount	the number of rows
+ * @param	txBuffers	buffers to use for text writing
  */
-MHV_Display_Monochrome::MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount) {
+MHV_Display_Monochrome::MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount,
+		MHV_RingBuffer *txBuffers) :
+			MHV_Device_TX(txBuffers){
 	_colCount = colCount;
 	_rowCount = rowCount;
 }
@@ -187,6 +186,32 @@ bool MHV_Display_Monochrome::writeString(const MHV_FONT *font, int16_t *offsetX,
 }
 
 /**
+ * Write a buffer to the display
+ * @param	font		the font to use
+ * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+ * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+ * @param	onValue		the pixel value to use for on
+ * @param	offValue	the pixel value to use for off
+ * @param	buffer		the buffer to write
+ * @param	length		the length of the buffer
+ * @return true if anything was written
+ */
+bool MHV_Display_Monochrome::writeBuffer(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+		uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length) {
+	bool ret = false;
+	uint16_t i = 0;
+	while (i < length && *offsetX < (int16_t)_colCount) {
+		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, buffer[i++]);
+		if (i != length) {
+			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+		}
+	}
+
+	return ret;
+}
+
+
+/**
  * Write a PROGMEM string to the display
  * @param	font		the font to use
  * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
@@ -197,7 +222,7 @@ bool MHV_Display_Monochrome::writeString(const MHV_FONT *font, int16_t *offsetX,
  * @return true if anything was written
  */
 bool MHV_Display_Monochrome::writeString_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
-		uint8_t onValue, uint8_t offValue, const char *string) {
+		uint8_t onValue, uint8_t offValue, PGM_P string) {
 	const char *p = string;
 	char val;
 
@@ -214,3 +239,80 @@ bool MHV_Display_Monochrome::writeString_P(const MHV_FONT *font, int16_t *offset
 	return ret;
 }
 
+/**
+ * Write a PROGMEM buffer to the display
+ * @param	font		the font to use
+ * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+ * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+ * @param	onValue		the pixel value to use for on
+ * @param	offValue	the pixel value to use for off
+ * @param	buffer		the buffer to write
+ * @param	length		the length of the buffer
+ * @return true if anything was written
+ */
+bool MHV_Display_Monochrome::writeBuffer_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+		uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length) {
+
+	bool ret = false;
+	uint16_t i = 0;
+	while (i < length && *offsetX < (int16_t)_colCount) {
+		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, pgm_read_byte(buffer + i++));
+		if (i < length) {
+			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+		}
+	}
+
+	return ret;
+}
+
+#include <MHV_HardwareSerial.h>
+extern MHV_HardwareSerial serial;
+
+/**
+ * Start rendering TX buffers
+ */
+void MHV_Display_Monochrome::runTxBuffers() {
+	_txOffset = _colCount - 1;
+	moreTX();
+}
+
+/**
+ * Render a frame of TX buffer animation - scrolls text from right to left, before moving to the next buffer
+ * @param	font		the font to use
+ * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+ * @param	onValue		the pixel value for on pixels
+ * @param	offValue	the pixel value for off pixels
+ * @return true if there are more frames to be rendered
+ */
+bool MHV_Display_Monochrome::txAnimation(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
+	int16_t offsetX = _txOffset--;
+MHV_HARDWARESERIAL_DEBUG(serial, "TX Animation offset %d", offsetX);
+
+	clear(offValue);
+
+	bool ret;
+	if (_currentTx.progmem) {
+		if (_currentTx.isString) {
+			MHV_HARDWARESERIAL_DEBUG(serial, "Writing PROGMEM string");
+			ret = writeString_P(font, &offsetX, offsetY, onValue, offValue, _tx);
+		} else {
+			MHV_HARDWARESERIAL_DEBUG(serial, "Writing PROGMEM buffer");
+			ret = writeBuffer_P(font, &offsetX, offsetY, onValue, offValue, _tx, _currentTx.length);
+		}
+	} else {
+		if (_currentTx.isString) {
+			MHV_HARDWARESERIAL_DEBUG(serial, "Writing string");
+			ret = writeString(font, &offsetX, offsetY, onValue, offValue, _tx);
+		} else {
+			MHV_HARDWARESERIAL_DEBUG(serial, "Writing buffer");
+			ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, _tx, _currentTx.length);
+		}
+	}
+
+	if (!ret) {
+		_txOffset = _colCount - 1;
+		return moreTX();
+	}
+
+	return true;
+}

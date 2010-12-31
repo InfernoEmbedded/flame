@@ -35,6 +35,7 @@
 #include <stdio.h>
 #include <MHV_RingBuffer.h>
 #include <avr/pgmspace.h>
+#include <MHV_Device_TX.h>
 
 #define MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts) \
 	_MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts)
@@ -58,19 +59,9 @@ do {\
 	__dbg_serial.busyWrite_P(PSTR("\r\n")); \
 } while (0)
 
-struct mhv_serial_buffer {
-	const char	*data;
-	uint16_t	length;
-//	void		(*completeFunction)(const char *);
-	bool		progmem;
-	bool		isString;
-};
-typedef struct mhv_serial_buffer MHV_SERIAL_BUFFER;
-
-class MHV_HardwareSerial {
+class MHV_HardwareSerial : public MHV_Device_TX {
 private:
 	MHV_RingBuffer *_rxBuffer;
-	MHV_RingBuffer *_txPointers;
 	volatile uint16_t *_ubrr;
 	volatile uint8_t *_ucsra;
 	volatile uint8_t *_ucsrb;
@@ -81,19 +72,13 @@ private:
 	uint8_t _txcie;
 	uint8_t _udre;
 	uint8_t _u2x;
-	MHV_SERIAL_BUFFER _currentTx;
-	const char *_tx;
 	volatile bool _echo;
 
-	void txDone();
-	void asyncStart();
+protected:
+	void runTxBuffers();
 
 public:
 	MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer, volatile uint16_t *ubrr,
-			volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen,
-			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
-			unsigned long baud);
-	MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, volatile uint16_t *ubrr,
 			volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen,
 			uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x,
 			unsigned long baud);
@@ -107,12 +92,7 @@ public:
 	void busyWrite(const char *buffer, uint16_t length);
 	void busyWrite_P(PGM_P buffer);
 	void busyWrite_P(PGM_P buffer, uint16_t length);
-	bool canSend();
 	bool canSendBusy();
-	bool asyncWrite(const char *buffer);
-	bool asyncWrite_P(PGM_P buffer);
-	bool asyncWrite(const char *buffer, uint16_t length);
-	bool asyncWrite_P(PGM_P buffer, uint16_t length);
 	void rx();
 	void tx();
 	int asyncReadLine(char *buffer, uint8_t bufferLength);

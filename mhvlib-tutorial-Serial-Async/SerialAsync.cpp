@@ -46,6 +46,15 @@
 // Bring in stdio, required for snprintf
 #include <stdio.h>
 
+/*
+ * Required as the TX classes have pure virtual methods
+ * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
+ */
+extern "C" void __cxa_pure_virtual() {
+	cli();
+	for (;;);
+}
+
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];
@@ -56,7 +65,7 @@ MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
 // A buffer for the serial port to send data, it only contains pointers
 char txBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
@@ -84,19 +93,16 @@ int main(void) {
 // Enable interrupts
 	sei();
 
-	mhv_setOutput(MHV_ARDUINO_PIN_12);
-
-
 	while (1) {
 // Wait until there is space to send
-		while (!serial.canSend()) {}
+		while (!serial.canWrite()) {}
 
 /* Write a literal string out
  * If there is no possibility of the write failing, you can cast it to void
  * instead
  *   (void)serial.asyncWrite("some string");
  */
-		if (serial.asyncWrite("asyncWrite: A string has been written\r\n")) {
+		if (serial.write("asyncWrite: A string has been written\r\n")) {
 			writeFailed();
 		}
 
@@ -104,10 +110,10 @@ int main(void) {
  * at this point - busy will return false when the serial device is ready
  * to accept another string
  */
-		while (!serial.canSend()) {}
+		while (!serial.canWrite()) {}
 
 		// Wait until there is space to send
-		if (serial.asyncWrite("asyncWrite: A buffer has been written\r\n this will not show", 39)) {
+		if (serial.write("asyncWrite: A buffer has been written\r\n this will not show", 39)) {
 			writeFailed();
 		}
 
@@ -116,18 +122,18 @@ int main(void) {
  * at this point - busy will return false when the serial device is ready
  * to accept another string
  */
-		while (!serial.canSend()) {}
+		while (!serial.canWrite()) {}
 
 // Write a literal PROGMEM string out
-		if (serial.asyncWrite_P(PSTR("asyncWrite_P: A string has been written\r\n"))) {
+		if (serial.write_P(PSTR("asyncWrite_P: A string has been written\r\n"))) {
 			writeFailed();
 		}
 
 // Wait until there is space to send
-		while (!serial.canSend()) {}
+		while (!serial.canWrite()) {}
 
 // Write a PROGMEM buffer out
-		(void)serial.asyncWrite_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
+		(void)serial.write_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
 				41);
 	} // Loop
 
