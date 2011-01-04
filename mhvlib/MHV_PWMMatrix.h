@@ -35,20 +35,20 @@ private:
 	uint8_t		_current; // current row or col, depending on scan mode
 	uint8_t		_currentLevel;
 	bool		_scanRows;
-	void		(*_rowOn)(uint8_t row);
-	void 		(*_rowOff)(uint8_t row);
-	void 		(*_colOn)(uint8_t column);
-	void 		(*_colOff)(uint8_t column);
+	void		(*_rowOn)(uint16_t row);
+	void 		(*_rowOff)(uint16_t row);
+	void 		(*_colOn)(uint16_t column);
+	void 		(*_colOff)(uint16_t column);
 
 	void tickRow();
 	void tickCol();
 
 public:
-	MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers,
-		void (*rowOn)(uint8_t row),
-		void (*rowOff)(uint8_t row),
-		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column));
+	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers,
+		void (*rowOn)(uint16_t row),
+		void (*rowOff)(uint16_t row),
+		void (*colOn)(uint16_t column),
+		void (*colOff)(uint16_t column));
 	void tick();
 };
 

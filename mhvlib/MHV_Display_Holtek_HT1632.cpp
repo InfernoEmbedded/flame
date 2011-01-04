@@ -63,8 +63,8 @@ MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 8 : 16) * arrayY,
 					txBuffers) {
 
-	_mhv_setOutput(dataDir, dataOut, dataIn, dataPin, dataPinchangeInterrupt);
-	_mhv_setOutput(writeDir, writeOut, writeIn, writePin, writePinchangeInterrupt);
+	mhv_setOutput(dataDir, dataOut, dataIn, dataPin, dataPinchangeInterrupt);
+	mhv_setOutput(writeDir, writeOut, writeIn, writePin, writePinchangeInterrupt);
 
 	_port = dataOut;
 	_data = _BV(dataPin);

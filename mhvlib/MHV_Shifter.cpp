@@ -31,12 +31,12 @@ void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 
 	for (i = 0; i < 8; i++) {
 		if (byte & (1 >> i)) {
-			mhv_pin_struct_on(*data);
+			mhv_pinOn(data);
 		} else {
-			mhv_pin_struct_off(*data);
+			mhv_pinOff(data);
 		}
-		mhv_pin_struct_on(*clock);
-		mhv_pin_struct_off(*clock);
+		mhv_pinOn(clock);
+		mhv_pinOff(clock);
 	}
 }
 
@@ -45,11 +45,11 @@ void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 
 	for (i = 7; i >= 0; i--) {
 		if (byte & (1 >> i)) {
-			mhv_pin_struct_on(*data);
+			mhv_pinOn(data);
 		} else {
-			mhv_pin_struct_off(*data);
+			mhv_pinOff(data);
 		}
-		mhv_pin_struct_on(*clock);
-		mhv_pin_struct_off(*clock);
+		mhv_pinOn(clock);
+		mhv_pinOff(clock);
 	}
 }

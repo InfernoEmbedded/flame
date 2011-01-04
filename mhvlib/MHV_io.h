@@ -75,36 +75,148 @@ enum mhv_interruptMode {
 typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 
 struct mhv_pin {
-	volatile uint8_t	*port;
-	uint8_t				pin;
+	volatile uint8_t	*dir;
+	volatile uint8_t	*input;
+	volatile uint8_t	*output;
+	// Contains a mask of the pin
+	uint8_t				bit;
+	int8_t				pcInt;
 };
 typedef struct mhv_pin MHV_PIN;
 
-// Convert a pin declaration to a pin struct for output
-#define mhv_pin_out(mhvParms) \
+
+// Convert a pin declaration to a pin struct
+#define mhv_pin(mhvParms) \
 	_mhv_pin_out(mhvParms)
 
-#define _mhv_pin_out(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-		{mhvOutput, _BV(mhvBit)}
+#define _mhv_pin(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
+		{mhvDir, mhvOutput, mhvInput, _BV(mhvBit), mhvPCInt}
 
-// Convert a pin declaration to a pin struct for input
-#define mhv_pin_in(mhvParms) \
-	_mhv_pin_in(mhvParms)
+/**
+ * Set an output pin on
+ * @param	pin		the pin to turn on
+ */
+inline void mhv_pinOn(MHV_PIN *pin) {
+	*(pin->output) |= pin->bit;
+}
 
-#define _mhv_pin_in(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-		{mhvInput, _BV(mhvBit)}
+/**
+ * Set an output pin on
+ * @param	pin		the pin to turn on
+ */
+inline void mhv_pinOn(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*out |= _BV(bit);
+}
 
-// Set an output pin struct on
-#define mhv_pin_struct_on(mhvPinStruct) \
-		*((mhvPinStruct).port) |= (uint8_t)(mhvPinStruct).pin
+/**
+ * Set an output pin off
+ * @param	pin		the pin to turn off
+ */
+inline void mhv_pinOff(MHV_PIN *pin) {
+	*(pin->output) &= ~(pin->bit);
+}
 
-// Set an output pin struct off
-#define mhv_pin_struct_off(mhvPinStruct) \
-		*((mhvPinStruct).port) &= ~(uint8_t)(mhvPinStruct).pin
+/**
+ * Set an output pin off
+ * @param	pin		the pin to turn off
+ */
+inline void mhv_pinOff(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*out &= ~_BV(bit);
+}
 
-// Read an input pin struct
-#define mhv_pin_struct_read(mhvPinStruct) \
-		*((mhvPinStruct).port) & (mhvPinStruct).pin
+/**
+ * Set a pin to be an output
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setOutput(MHV_PIN *pin) {
+	*(pin->dir) |= pin->bit;
+}
+
+/**
+ * Set a pin to be an output
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setOutput(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*dir |= _BV(bit);
+}
+
+/**
+ * Set a pin to be an input
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInput(MHV_PIN *pin) {
+	*(pin->dir) &= ~(pin->bit);
+	*(pin->output) &= ~(pin->bit);
+}
+
+/**
+ * Set a pin to be an input
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInput(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*dir &= ~_BV(bit);
+	*out &= ~_BV(bit);
+}
+
+/**
+ * Set a pin to be an input, with the internal pullup enabled
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputPullup(MHV_PIN *pin) {
+	*(pin->dir) &= ~(pin->bit);
+	*(pin->output) |= pin->bit;
+}
+
+/**
+ * Set a pin to be an input, with the internal pullup enabled
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputPullup(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*dir &= ~_BV(bit);
+	*out |= _BV(bit);
+}
+
+/**
+ * Toggle a pin
+ * @param	pin		the pin to toggle
+ */
+inline void mhv_pinToggle(MHV_PIN *pin) {
+	*(pin->input) |= pin->bit;
+}
+
+/**
+ * Toggle a pin
+ * @param	pin		the pin to toggle
+ */
+inline void mhv_pinToggle(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*in |= _BV(bit);
+}
+
+/**
+ * Read a pin
+ * @param	pin		the pin to read
+ */
+inline bool mhv_pinRead(MHV_PIN *pin) {
+	return *(pin->input) & pin->bit;
+}
+
+
+/**
+ * Read a pin
+ * @param	pin		the pin to read
+ */
+inline bool mhv_pinRead(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	return *in & _BV(bit);
+}
+
+
 
 
 /* We have to shadow all the macros below as the precedence of macro expansion means that
@@ -151,68 +263,6 @@ typedef struct mhv_pin MHV_PIN;
 #define _mhv_PCInt(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvPCInt
 
-// Set a pin to be an output
-#define mhv_setOutput(mhvParms) \
-	do { \
-		_mhv_setOutput(mhvParms); \
-	} while(0)
-
-#define _mhv_setOutput(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	*mhvDir |= (uint8_t)_BV(mhvBit);
-
-// Set a pin to be an input
-#define mhv_setInput(mhvParms) \
-	do { \
-		_mhv_setInput(mhvParms); \
-	} while(0)
-
-#define _mhv_setInput(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	*mhvDir &= ~(uint8_t)_BV(mhvBit); \
-	*mhvOutput &= ~(uint8_t)_BV(mhvBit);
-
-// Set a pin to be an input, with the internal pullup enabled
-#define mhv_setInputPullup(mhvParms) \
-	do { \
-		_mhv_setInputPullup(mhvParms) \
-	} while(0)
-
-#define _mhv_setInputPullup(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	*mhvDir &= ~(uint8_t)_BV(mhvBit); \
-	*mhvOutput |= (uint8_t)_BV(mhvBit);
-
-// turn a pin on
-#define mhv_pinOn(mhvParms) \
-	do { \
-		_mhv_pinOn(mhvParms) \
-	} while(0)
-
-#define _mhv_pinOn(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-		*mhvOutput |= (uint8_t)_BV(mhvBit);
-
-// turn a pin off
-#define mhv_pinOff(mhvParms) \
-	do { \
-		_mhv_pinOff(mhvParms) \
-	} while(0)
-
-#define _mhv_pinOff(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	*mhvOutput &= ~(uint8_t)_BV(mhvBit); \
-
-// Toggle a pin
-#define mhv_pinToggle(mhvParms) \
-	do { \
-		_mhv_pinToggle(mhvParms) \
-	} while(0)
-
-#define _mhv_pinToggle(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	*mhvInput |= (uint8_t)_BV(mhvBit); \
-
-// Read a pin
-#define mhv_pinRead(mhvParms) \
-	_mhv_pinRead(mhvParms)
-
-#define _mhv_pinRead(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-	(*mhvInput & (uint8_t)_BV(mhvBit))
 
 // Assign a function to be triggered by an external interrupt
 #define mhv_declareExternalInterrupt(mhvInterruptParms,mhvFunction) \

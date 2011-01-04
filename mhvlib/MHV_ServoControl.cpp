@@ -47,7 +47,7 @@ void MHV_ServoControl::refreshServos(void *data) {
 		// Start of the servo pulse
 		for (int i = 0; i < _count; i++) {
 			if (_controlBlocks[i].port) {
-				_mhv_pinOn(0, _controlBlocks[SERVO_ORDER(i)].port,
+				mhv_pinOn(0, _controlBlocks[SERVO_ORDER(i)].port,
 						0, _controlBlocks[SERVO_ORDER(i)].pin, -1);
 			}
 		}
@@ -63,7 +63,7 @@ void MHV_ServoControl::refreshServos(void *data) {
 	uint16_t startPosition = _controlBlocks[SERVO_ORDER(_nextServoIndex)].position;
 
 	for (;;) {
-		_mhv_pinOff(0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].port,
+		mhv_pinOff(0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].port,
 				0, _controlBlocks[SERVO_ORDER(_nextServoIndex)].pin, -1);
 		_nextServoIndex++;
 		if (_nextServoIndex >= _count || 255 == SERVO_ORDER(_nextServoIndex)) {
@@ -110,7 +110,7 @@ void MHV_ServoControl::addServo(uint8_t servo, volatile uint8_t *dir, volatile u
 	_controlBlocks[servo].port = out;
 	_controlBlocks[servo].position = (MHV_SERVO_MIN + MHV_SERVO_MAX) / 2;
 
-	_mhv_setOutput(dir, out, in, pin, -1);
+	mhv_setOutput(dir, out, in, pin, -1);
 
 	if (_timer->enabled()) {
 		sortServos();

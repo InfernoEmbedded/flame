@@ -41,12 +41,12 @@
  * @param	colOn		callback to turn a column on
  * @param	colOff		callback to turn a column off
  */
-MHV_PWMMatrix::MHV_PWMMatrix(uint8_t rowCount, uint8_t colCount, uint8_t *frameBuffer,
+MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer,
 		MHV_RingBuffer *txBuffers,
-		void (*rowOn)(uint8_t row),
-		void (*rowOff)(uint8_t row),
-		void (*colOn)(uint8_t column),
-		void (*colOff)(uint8_t column)) :
+		void (*rowOn)(uint16_t row),
+		void (*rowOff)(uint16_t row),
+		void (*colOn)(uint16_t column),
+		void (*colOff)(uint16_t column)) :
 			MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer, txBuffers) {
 	uint8_t	i;
 
