@@ -6,6 +6,9 @@
 CPP_SRCS += \
 ../MHV_AD.cpp \
 ../MHV_Debounce.cpp \
+../MHV_Device_TX.cpp \
+../MHV_Display_Character.cpp \
+../MHV_Display_HD44780.cpp \
 ../MHV_Display_Holtek_HT1632.cpp \
 ../MHV_Display_Monochrome.cpp \
 ../MHV_Display_Monochrome_Buffered.cpp \
@@ -23,6 +26,9 @@ CPP_SRCS += \
 OBJS += \
 ./MHV_AD.o \
 ./MHV_Debounce.o \
+./MHV_Device_TX.o \
+./MHV_Display_Character.o \
+./MHV_Display_HD44780.o \
 ./MHV_Display_Holtek_HT1632.o \
 ./MHV_Display_Monochrome.o \
 ./MHV_Display_Monochrome_Buffered.o \
@@ -40,6 +46,9 @@ OBJS += \
 CPP_DEPS += \
 ./MHV_AD.d \
 ./MHV_Debounce.d \
+./MHV_Device_TX.d \
+./MHV_Display_Character.d \
+./MHV_Display_HD44780.d \
 ./MHV_Display_Holtek_HT1632.d \
 ./MHV_Display_Monochrome.d \
 ./MHV_Display_Monochrome_Buffered.d \
