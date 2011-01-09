@@ -35,7 +35,13 @@
 
 #include "MHV_HardwareSerial.h"
 
-// Constructors
+/**
+ * Constructor
+ * @param	rxBuffer	the receive buffer
+ * @param	txBuffer	the transmit buffer
+ * @param	serial		the parameter list for the serial port
+ * @param	baud		the baud rate
+ */
 MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer,
 		volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
 		volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie,
@@ -58,7 +64,9 @@ MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer 
 	setSpeed(baud);
 }
 
-// RX interrupt handler
+/**
+ * RX interrupt handler
+ */
 void MHV_HardwareSerial::rx() {
 	char c = *_udr;
 	_rxBuffer->append(c);
@@ -68,7 +76,9 @@ void MHV_HardwareSerial::rx() {
 	}
 }
 
-// TX interrupt handler
+/**
+ * TX interrupt handler
+ */
 void MHV_HardwareSerial::tx() {
 	int c = nextCharacter();
 
@@ -82,7 +92,8 @@ void MHV_HardwareSerial::tx() {
 	*_udr = (char)c;
 }
 
-/* Start sending async data
+/**
+ * Start sending async data
  */
 void MHV_HardwareSerial::runTxBuffers() {
 	int c = nextCharacter();
@@ -100,7 +111,10 @@ void MHV_HardwareSerial::runTxBuffers() {
 	*_udr = (char)c;
 }
 
-
+/**
+ * Configure the serial port for a specific baud rate
+ * @param	baud	the baud rate to set
+ */
 void MHV_HardwareSerial::setSpeed(unsigned long baud) {
 /* Use U2X if the requested baud rate is higher than (F_CPU/16),
  * otherwise use whatever has the least error
@@ -117,7 +131,8 @@ void MHV_HardwareSerial::setSpeed(unsigned long baud) {
 	*_ucsrb |= _BV( _rxen) | _BV( _txen) | _BV( _rxcie);
 }
 
-/* If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
+/**
+ * If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
  * returns 0 if we have successfully copied a line
  * returns -1 if there was no line available
  * returns -2 if the buffer was too small
@@ -154,11 +169,12 @@ int MHV_HardwareSerial::asyncReadLine(char *buffer, uint8_t bufferLength) {
 	return 0;
 }
 
-/* If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
+/**
+ * If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
  * Blocks until a line is available
- * returns 0 if we have successfully copied a line
- * returns -2 if the buffer was too small
- * returns -3 if we have reached the end of the ringbuffer with no line terminator
+ * @return 0 if we have successfully copied a line
+ * @return -2 if the buffer was too small
+ * @return -3 if we have reached the end of the ringbuffer with no line terminator
  */
 int MHV_HardwareSerial::busyReadLine(char *buffer, uint8_t bufferLength) {
 	int rc;
@@ -166,31 +182,52 @@ int MHV_HardwareSerial::busyReadLine(char *buffer, uint8_t bufferLength) {
 	return rc;
 }
 
+/**
+ * Read a byte from the receive buffer
+ * @return the byte, or -1 if there is nothing to read
+ */
 int MHV_HardwareSerial::read(void) {
 	return _rxBuffer->consume();
 }
 
+/**
+ * Discard remaining data in the receive buffer
+ */
 void MHV_HardwareSerial::flush() {
 	_rxBuffer->flush();
 }
 
+/**
+ * Halt the serial port
+ */
 void MHV_HardwareSerial::end() {
 	*_ucsrb &= ~_BV( _rxen) & ~_BV( _txen) & ~_BV( _rxcie) & ~_BV( _txcie);
 }
 
-/* Enable echoing data received by us back to the sender (useful for terminal
+/**
+ * Enable echoing data received by us back to the sender (useful for terminal
  * interaction
+ *
+ * @param	echoOn	true to enable echo
  */
 void MHV_HardwareSerial::echo(bool echoOn) {
 	_echo = echoOn;
 }
 
-/* Can we send something via busywrite
+/**
+ * Can we send something via busywrite
+ *
+ * @return true if we can send something
  */
 bool MHV_HardwareSerial::canSendBusy() {
 	return ((NULL == _tx) && ((*_ucsra) & (1 << _udre)));
 }
 
+/**
+ * Write a character
+ *
+ * @param	c	the character to write
+ */
 void MHV_HardwareSerial::busyWrite(char c) {
 	while (!canSendBusy()) {};
 	*_ucsrb &= ~_BV( _txcie);
@@ -200,7 +237,10 @@ void MHV_HardwareSerial::busyWrite(char c) {
 	*_udr = c;
 }
 
-/* Write a null terminated progmem string to the serial port
+/**
+ * Write a null terminated progmem string
+ *
+ * @param	buffer	the string to write
  */
 void MHV_HardwareSerial::busyWrite_P(PGM_P buffer) {
 	const char *p;
@@ -219,7 +259,10 @@ void MHV_HardwareSerial::busyWrite_P(PGM_P buffer) {
 }
 
 
-/* Write a null terminated string to the serial port
+/**
+ * Write a null terminated string to the serial port
+ *
+ * @param	buffer	the string to write
  */
 void MHV_HardwareSerial::busyWrite(const char *buffer) {
 	const char *p;
@@ -234,6 +277,11 @@ void MHV_HardwareSerial::busyWrite(const char *buffer) {
 	}
 }
 
+/**
+ * Write a buffer from PROGMEM
+ * @param	buffer	the buffer to write
+ * @param	length	the length of the buffer
+ */
 void MHV_HardwareSerial::busyWrite_P(PGM_P buffer, uint16_t length) {
 	uint16_t i;
 
@@ -248,6 +296,11 @@ void MHV_HardwareSerial::busyWrite_P(PGM_P buffer, uint16_t length) {
 	}
 }
 
+/**
+ * Write a buffer
+ * @param	buffer	the buffer to write
+ * @param	length	the length of the buffer
+ */
 void MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 	uint16_t i;
 
@@ -262,16 +315,45 @@ void MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 	}
 }
 
-/* Check if the hardware is busy - note that this should not be used to
+/**
+ * Check if the hardware is busy - note that this should not be used to
  * determine if you can actually write - use canSend instead
+ *
+ * @return true if the hardware is busy
  */
 bool MHV_HardwareSerial::busy(void) {
 	return !((*_ucsra) & (1 << _udre));
 }
 
-/* Check if there is any received data available
+/**
+ * Check if there is any received data available
  * @return the number of bytes available
  */
 uint8_t MHV_HardwareSerial::available(void) {
 	return _rxBuffer->length();
+}
+
+/**
+ * Print a debug message
+ * @param	file		the filename
+ * @param	line		the line number
+ * @param	function	the function name
+ * @param	format		a printf format
+ * @param	parms		the printf parms
+ */
+void MHV_HardwareSerial::debug(const char *file, int line, const char *function,
+		PGM_P format, ...) {
+	char	debugBuffer[80];
+	va_list	ap;
+	va_start(ap, format);
+
+	while (!canSendBusy()) {}
+
+	snprintf_P(debugBuffer, sizeof(debugBuffer), PSTR("%s:%d\t%s():\t\t"),
+			file, line, function);
+	busyWrite(debugBuffer);
+
+	vsnprintf_P(debugBuffer, sizeof(debugBuffer), format, ap);
+	busyWrite(debugBuffer);
+	busyWrite_P(PSTR("\r\n"));
 }

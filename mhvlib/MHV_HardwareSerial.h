@@ -50,13 +50,7 @@ ISR(mhvTxVect) { \
 
 #define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
 do {\
-	char __debug_buffer[80]; \
-	while (!serial.canSendBusy()) {} \
-	snprintf_P(__debug_buffer, sizeof(__debug_buffer), PSTR("%s:%d\t%s():\t\t"), __FILE__, __LINE__, __FUNCTION__); \
-	__dbg_serial.busyWrite(__debug_buffer); \
-	snprintf_P(__debug_buffer, sizeof(__debug_buffer), PSTR(__dbg_format), ## __dbg_args); \
-	__dbg_serial.busyWrite(__debug_buffer); \
-	__dbg_serial.busyWrite_P(PSTR("\r\n")); \
+	__dbg_serial.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
 } while (0)
 
 class MHV_HardwareSerial : public MHV_Device_TX {
@@ -99,6 +93,9 @@ public:
 	int busyReadLine(char *buffer, uint8_t bufferLength);
 	void echo(bool echoOn);
 	bool busy();
+	void debug(const char *file, int line, const char *function,
+			PGM_P format, ...);
+
 };
 
 
