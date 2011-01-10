@@ -43,47 +43,29 @@ typedef enum mhv_hd44780_command MHV_HD44780_COMMAND;
 
 class MHV_Display_HD44780 : public MHV_Display_Character {
 protected:
-	volatile uint8_t	*_dataDir;
-	volatile uint8_t	*_dataOut;
-	volatile uint8_t	*_dataIn;
-	uint8_t				_dataPin;
-	uint8_t				_dataMask;
-	volatile uint8_t	*_controlOut;
-	uint8_t				_controlPin;
-	volatile uint8_t	*_visualOut;
-	uint8_t				_visualPin;
 	bool 				_mustDelay;
 	uint16_t			_ticks;
 	uint16_t			_animateTicks;
-	uint8_t				_brightness;
-	uint8_t				_contrast;
 
 	void writeCommand(MHV_HD44780_COMMAND command, uint8_t data);
 	void function(bool multiLine, bool bigFont);
 	void addressCGRAM(uint8_t address);
 	void addressDDRAM(uint8_t address);
-	void writeNibble(uint8_t nibble, bool rs);
-	uint8_t readNibble(bool rs);
+	virtual void writeNibble(uint8_t nibble, bool rs)=0;
+	virtual uint8_t readNibble(bool rs)=0;
 	void _setCursor(uint8_t col, uint8_t row);
 	void _setCursor(uint16_t col, uint16_t row);
 	void _writeChar(char character);
 	char _readChar();
 
 public:
-	MHV_Display_HD44780(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-			volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-			volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt,
-			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
 	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 			bool left2right, bool scroll);
 	void clear();
 	void entryMode(bool left2Right, bool scroll);
 	void control(bool displayOn, bool cursorOn, bool cursorBlink);
-	bool isBusy();
-	void setBacklight(uint8_t value);
-	void setContrast(uint8_t value);
-	void tick1ms();
-
+	virtual bool isBusy()=0;
 };
 
 #endif /* MHV_DISPLAY_HD44780_H_ */

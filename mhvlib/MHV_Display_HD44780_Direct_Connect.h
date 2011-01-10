@@ -54,7 +54,7 @@ public:
 			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
 	void setBacklight(uint8_t value);
 	void setContrast(uint8_t value);
-	void tick1ms();
+	void tickPWM();
 	bool isBusy();
 };
 

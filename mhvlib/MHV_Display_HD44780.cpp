@@ -27,27 +27,7 @@
 #include <util/delay.h>
 #include <MHV_Display_HD44780.h>
 
-#define HD44780_DB4			(1 << _dataPin)
-#define HD44780_DB5			(1 << (_dataPin + 1))
-#define HD44780_DB6			(1 << (_dataPin + 2))
-#define HD44780_DB7			(1 << (_dataPin + 3))
-#define HD44780_RS			(1 << _controlPin)
-#define HD44780_RW			(1 << (_controlPin + 1))
-#define HD44780_E			(1 << (_controlPin + 2))
-#define HD44780_CONTRAST	(1 << _visualPin)
-#define HD44780_LED			(1 << (_visualPin + 1))
-
-/* Delay times in iterations of delay_loop_1 - note that each pass of delay_loop_1 is 3 clocks
- */
-#define HD44780_TC		(1000 * 1000000 / F_CPU / 3 + 1)
-#define HD44780_TSU1	(60 * 1000000 / F_CPU / 3 + 1)
-#define HD44780_TSU2	(195 * 1000000 / F_CPU / 3 + 1)
-#define HD44780_TDH		(5 * 1000000 / F_CPU / 3 + 1)
-#define HD44780_TW		(450 * 1000000 / F_CPU / 3 + 1)
 #define HD44780_TINIT	300		// ms
-#define HD44780_TCLEAR	1530	// us
-#define HD44780_TINSTR	39		// us
-#define HD44780_TRAM	430		// us
 
 /**
  * A class for operating HD44780 based LCD displays (and compatible)
@@ -75,83 +55,11 @@
  * @param	rowCount	the number of rows on the display
  * @param	txBuffers	buffers for async writing
  */
-MHV_Display_HD44780::MHV_Display_HD44780(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-		volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt,
-		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
+MHV_Display_HD44780::MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
 		MHV_Display_Character(colCount, rowCount, txBuffers) {
-	_dataDir = dataDir;
-	_dataOut = dataOut;
-	_dataIn = dataIn;
-	_dataPin = dataPin;
-	_dataMask = 0;
-	_controlOut = controlOut;
-	_controlPin = controlPin;
-	_visualOut = visualOut;
-	_visualPin = visualPin;
-
 	_ticks = 0;
 	_animateTicks = 64;
-
-	uint8_t mask;
-// Set pins as output
-	_dataMask |= 0x0f << _dataPin;
-	*_dataDir |= _dataMask;
-	*_dataOut &= ~(_dataMask);
-
-	mask = 0x07 << _controlPin;
-	*controlDir |= mask;
-	*_controlOut &= ~mask;
-
-	mask |= 0x03 << _visualPin;
-	*visualDir |= mask;
-	*_visualOut &= ~(mask);
-
 	_mustDelay = false;
-}
-
-/**
- * Write a nibble to the display
- * @param 	nibble	the data to write (lower 4 bits)
- * @param	rs		true to set the RS pin
- */
-void MHV_Display_HD44780::writeNibble(uint8_t nibble, bool rs) {
-	uint8_t oldPort = *_dataOut & ~(_dataMask);
-	*_controlOut &= ~(HD44780_RW);
-	if (rs) {
-		*_controlOut |= HD44780_RS;
-	}
-
-	*_dataOut = oldPort | ((nibble << _dataPin) & _dataMask);
-
-	_delay_loop_1(HD44780_TSU1);
-	*_controlOut |= HD44780_E;
-	_delay_loop_1(HD44780_TW);
-	*_controlOut &= ~HD44780_E & ~HD44780_RS;
-	_delay_loop_1(HD44780_TW);
-}
-
-
-/**
- * Read a nibble from the display
- * @param	rs		true to set the RS pin
- */
-uint8_t MHV_Display_HD44780::readNibble(bool rs) {
-	*_controlOut |= HD44780_RW;
-	if (rs) {
-		*_controlOut |= HD44780_RS;
-	}
-
-	*_dataDir &= ~_dataMask;
-	_delay_loop_1(HD44780_TSU1);
-	*_controlOut |= HD44780_E;
-	_delay_loop_1(HD44780_TW);
-	uint8_t data = *_dataIn;
-	*_controlOut &= ~HD44780_E & ~HD44780_RS;
-	*_dataDir |= _dataMask;
-	_delay_loop_1(HD44780_TW);
-
-	return data >> _dataPin;
 }
 
 /**
@@ -291,10 +199,6 @@ void MHV_Display_HD44780::function(bool multiLine, bool bigFont) {
 // Set 4 bit transfer
 	writeNibble(0b0010, false);
 	_delay_ms(4.1);
-//	writeNibble(0b0010, false);
-//	_delay_ms(1);
-//	writeNibble(0b0010, false);
-//	_delay_ms(1);
 
 	writeCommand(MHV_44780_CMD_SET_FUNCTION, data);
 }
@@ -320,51 +224,6 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
 }
 
 /**
- * Check if the display is busy
- * @return true if the display is busy
- */
-bool MHV_Display_HD44780::isBusy() {
-	*_dataDir &= ~(HD44780_DB7);
-	*_dataOut &= ~(HD44780_DB7); // turn off pullup
-	*_controlOut |= HD44780_RW;
-	_delay_loop_1(HD44780_TSU1);
-	*_controlOut |= HD44780_E;
-	_delay_loop_1(HD44780_TW);
-
-	bool busy = *_dataIn & HD44780_DB7;
-	*_controlOut &= ~(HD44780_E | HD44780_RW);
-	*_dataDir |= HD44780_DB7;
-
-	_mustDelay = true;
-
-	return busy;
-}
-
-/**
- * Manipulate the backlight
- * @param	value	the brightness of the backlight (0..15)
- */
-void MHV_Display_HD44780::setBacklight(uint8_t value) {
-	if (value > 15) {
-		value = 16;
-	}
-	_brightness = value;
-}
-
-/**
- * Set the contrast
- * @param	value	the contrast of the display(0..15)
- */
-void MHV_Display_HD44780::setContrast(uint8_t value) {
-	if (value > 15) {
-		value = 16;
-	}
-	value = 15 - value;
-
-	_contrast = value;
-}
-
-/**
  * Initialise the display
  * @param	multiLine	true if there is more than 1 line
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
@@ -385,28 +244,6 @@ void MHV_Display_HD44780::init(bool multiLine, bool bigFont, bool cursorOn, bool
 	control(true, cursorOn, cursorBlink);
 	clear();
 	entryMode(left2right, scroll);
-	setBacklight(5);
-	setContrast(9);
 	_currentRow = _rowCount - 1;
 	_currentCol = 0;
-}
-
-/**
- * Tick the display for animation & PWM - this should be called every millisecond
- */
-void MHV_Display_HD44780::tick1ms() {
-	if (0 == _ticks % 16) {
-		*_visualOut |= HD44780_LED;
-		*_visualOut |= HD44780_CONTRAST;
-	}
-
-	if (_brightness == _ticks % 16) {
-		*_visualOut &= ~HD44780_LED;
-	}
-
-	if (_contrast == _ticks % 16) {
-		*_visualOut &= ~HD44780_CONTRAST;
-	}
-
-	_ticks++;
 }

@@ -82,9 +82,9 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 MHV_Display_HD44780_Direct_Connect display(MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3,
 		COLUMNS, ROWS, &txBuffer);
 
-// A timer trigger that will tick the RTC
+// A timer trigger that will tick the display PWM
 void displayTrigger(void *data) {
-	display.tick1ms();
+	display.tickPWM();
 }
 
 /**
