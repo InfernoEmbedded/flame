@@ -46,7 +46,7 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
-#include <MHV_Display_HD44780.h>
+#include <MHV_Display_HD44780_Direct_Connect.h>
 #include <MHV_Timer8.h>
 
 #include <avr/pgmspace.h>
@@ -79,7 +79,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 #define	LEFT2RIGHT	true
 #define	SCROLL		false
 
-MHV_Display_HD44780 display(MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3,
+MHV_Display_HD44780_Direct_Connect display(MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3,
 		COLUMNS, ROWS, &txBuffer);
 
 // A timer trigger that will tick the RTC
@@ -119,7 +119,9 @@ int main(void) {
 	textAnimation(&display);
 
 	while (display.txAnimation(ROWS - 1)) {
-		_delay_ms(2000);
+		for (uint8_t i = 0; i < 12; i++) {
+			_delay_ms(100);
+		}
 	}
 
 	int16_t offsetX = 0;
