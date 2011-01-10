@@ -49,6 +49,8 @@
 #include <MHV_Display_HD44780.h>
 #include <MHV_Timer8.h>
 
+#include <avr/pgmspace.h>
+
 /*
  * Required as the display classes have pure virtual methods
  * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
@@ -56,34 +58,6 @@
 extern "C" void __cxa_pure_virtual() {
 	cli();
 }
-
-
-#include <MHV_HardwareSerial.h>
-// Create a buffer we will use for a receive buffer
-#define RX_BUFFER_SIZE	81
-char rxBuf[RX_BUFFER_SIZE];
-
-// Create a ring buffer wrapping the memory allocated above
-MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
-
-
-// The number of elements we want to be able to store to send asynchronously
-#define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
-// A buffer for the serial port to send data, it only contains pointers
-char sertxBuf[TX_BUFFER_SIZE];
-MHV_RingBuffer sertxBuffer(sertxBuf, TX_BUFFER_SIZE);
-
-/* Declare the serial object on USART0 using the above ring buffer
- * Set the baud rate to 115,200
- */
-MHV_HardwareSerial serial(&rxBuffer, &sertxBuffer, MHV_USART0, 115200);
-
-// Assign interrupts to the serial object
-MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
-
-
-
 
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
@@ -115,7 +89,7 @@ void displayTrigger(void *data) {
 
 /**
  * Render text using the asynchronous buffers
- *  @param	display	the display to draw on
+ * @param	display	the display to draw on
  */
 void textAnimation(MHV_Display_Character *display) {
 	display->write("1. Here is a string of text");
@@ -144,10 +118,14 @@ int main(void) {
 
 	textAnimation(&display);
 
-	while (1) {
-		display.txAnimation(ROWS - 1);
+	while (display.txAnimation(ROWS - 1)) {
 		_delay_ms(2000);
 	}
+
+	int16_t offsetX = 0;
+	display.writeString_P(&offsetX, ROWS - 1, PSTR("All done"));
+
+	for (;;) {};
 
 // Main must return an int, even though we never get here
 	return 0;

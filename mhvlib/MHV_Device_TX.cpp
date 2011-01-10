@@ -59,6 +59,7 @@ bool MHV_Device_TX::moreTX() {
 	}
 
 	if (_txPointers->consume(&_currentTx, sizeof(_currentTx))) {
+		_tx = NULL;
 		return false;
 	}
 

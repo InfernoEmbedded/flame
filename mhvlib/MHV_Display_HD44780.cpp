@@ -385,8 +385,8 @@ void MHV_Display_HD44780::init(bool multiLine, bool bigFont, bool cursorOn, bool
 	control(true, cursorOn, cursorBlink);
 	clear();
 	entryMode(left2right, scroll);
-	setBacklight(12);
-	setContrast(8);
+	setBacklight(5);
+	setContrast(9);
 	_currentRow = _rowCount - 1;
 	_currentCol = 0;
 }

@@ -24,7 +24,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "MHV_Display_Character.h"
+#include <MHV_Display_Character.h>
 
 /**
  * A Character charcter display
@@ -72,8 +72,8 @@ uint8_t MHV_Display_Character::getHeight() {
 bool MHV_Display_Character::writeString(int16_t *offsetX, uint16_t offsetY, const char *string) {
 	const char *p = string;
 
-	while (offsetX < 0) {
-		offsetX++;
+	while (*offsetX < 0) {
+		(*offsetX)++;
 		p++;
 		if ('\0' == *p) {
 			return false;
@@ -89,6 +89,7 @@ bool MHV_Display_Character::writeString(int16_t *offsetX, uint16_t offsetY, cons
 			writeChar(*p++);
 		}
 	}
+
 	return ret;
 }
 
@@ -105,14 +106,14 @@ bool MHV_Display_Character::writeBuffer(int16_t *offsetX, uint16_t offsetY,
 	bool ret = false;
 	uint16_t i = 0;
 
-	while (offsetX < 0) {
-		offsetX++;
-		i++;
+	if (*offsetX < 0) {
+		i -= *offsetX;
+		*offsetX = 0;
 	}
 
 	setCursor((uint16_t)*offsetX, offsetY);
 
-	while (i < length && *offsetX < (int16_t)_colCount) {
+	while (i < length && (*offsetX)++ < (int16_t)_colCount) {
 		ret = true;
 		writeChar(buffer[i++]);
 	}
@@ -132,8 +133,8 @@ bool MHV_Display_Character::writeString_P(int16_t *offsetX, uint16_t offsetY, PG
 	const char *p = string;
 	char c;
 
-	while (offsetX < 0) {
-		offsetX++;
+	while (*offsetX < 0) {
+		(*offsetX)++;
 		p++;
 		if ('\0' == pgm_read_byte(p)) {
 			return false;
@@ -165,13 +166,13 @@ bool MHV_Display_Character::writeBuffer_P(int16_t *offsetX, uint16_t offsetY,
 	bool ret = false;
 	uint16_t i = 0;
 
-	while (offsetX < 0) {
-		offsetX++;
+	while (*offsetX < 0) {
+		(*offsetX)++;
 		i++;
 	}
 	setCursor((uint16_t)*offsetX, offsetY);
 
-	while (i < length && *offsetX < (int16_t)_colCount) {
+	while (i < length && (*offsetX)++ < (int16_t)_colCount) {
 		ret = true;
 		writeChar(pgm_read_byte(buffer + i++));
 	}
@@ -193,6 +194,10 @@ void MHV_Display_Character::runTxBuffers() {
  * @return true if there are more frames to be rendered
  */
 bool MHV_Display_Character::txAnimation(uint16_t row) {
+	if (!_tx) {
+		return false;
+	}
+
 	int16_t offsetX = _txOffset--;
 
 	setCursor(0, row);
@@ -216,7 +221,7 @@ bool MHV_Display_Character::txAnimation(uint16_t row) {
 		writeChar(' ');
 	}
 
-	if (offsetX < 0) {
+	if (!ret) {
 		_txOffset = _colCount - 1;
 		return moreTX();
 	}
