@@ -108,6 +108,40 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 }
 
 /**
+ * An alternate constructor without visual pins - if this constructor is used, tickPWM behaviour is
+ * undefined and will like overwrite random bits of memory, so don't call it
+ *
+ * @param	data*		pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
+ * @param	control*	pin declaration for the first bit of the control port (will use 3 bits)
+ * @param	dir			the direction register for the port
+ * @param	colCount	the number of columns on the display
+ * @param	rowCount	the number of rows on the display
+ * @param	txBuffers	buffers for async writing
+ */
+MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
+		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
+		volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
+		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
+		MHV_Display_HD44780(colCount, rowCount, txBuffers) {
+	_dataDir = dataDir;
+	_dataOut = dataOut;
+	_dataIn = dataIn;
+	_dataPin = dataPin;
+	_controlOut = controlOut;
+	_controlPin = controlPin;
+
+// Set pins as output
+	_dataMask = 0x0f << _dataPin;
+	*_dataDir |= _dataMask;
+	*_dataOut &= ~(_dataMask);
+
+	uint8_t mask = 0x07 << _controlPin;
+	*controlDir |= mask;
+	*_controlOut &= ~mask;
+}
+
+
+/**
  * Write a byte to the display
  * @param 	byte	the data to write
  * @param	rs		true to set the RS pin

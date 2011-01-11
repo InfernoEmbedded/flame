@@ -55,6 +55,9 @@ public:
 			volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
 			volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt,
 			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	MHV_Display_HD44780_Direct_Connect(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
+			volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
+			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
 	void setBacklight(uint8_t value);
 	void setContrast(uint8_t value);
 	void tickPWM();
