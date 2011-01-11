@@ -44,8 +44,11 @@ protected:
 	uint8_t				_brightness;
 	uint8_t				_contrast;
 
+	void writeByte(uint8_t byte, bool rs);
 	void writeNibble(uint8_t nibble, bool rs);
+	uint8_t readByte(bool rs);
 	uint8_t readNibble(bool rs);
+	bool isBusy();
 
 public:
 	MHV_Display_HD44780_Direct_Connect(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
@@ -55,7 +58,6 @@ public:
 	void setBacklight(uint8_t value);
 	void setContrast(uint8_t value);
 	void tickPWM();
-	bool isBusy();
 };
 
 #endif /* MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_ */

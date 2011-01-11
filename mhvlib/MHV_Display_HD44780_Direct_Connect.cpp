@@ -50,7 +50,7 @@
 #define HD44780_TRAM	430		// us
 
 /**
- * A class for operating HD44780 based LCD displays (and compatible)
+ * A class for operating HD44780 based LCD displays (and compatible) in 4 bit mode
  * Data port layout:
  * Bit	description
  * n	DB4
@@ -85,28 +85,38 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 	_dataOut = dataOut;
 	_dataIn = dataIn;
 	_dataPin = dataPin;
-	_dataMask = 0;
 	_controlOut = controlOut;
 	_controlPin = controlPin;
 	_visualOut = visualOut;
 	_visualPin = visualPin;
 
-	uint8_t mask;
 // Set pins as output
-	_dataMask |= 0x0f << _dataPin;
+	_dataMask = 0x0f << _dataPin;
 	*_dataDir |= _dataMask;
 	*_dataOut &= ~(_dataMask);
 
-	mask = 0x07 << _controlPin;
+	uint8_t mask = 0x07 << _controlPin;
 	*controlDir |= mask;
 	*_controlOut &= ~mask;
 
-	mask |= 0x03 << _visualPin;
+	mask = 0x03 << _visualPin;
 	*visualDir |= mask;
 	*_visualOut &= ~(mask);
 
 	_brightness = 5;
 	_contrast = 6;
+}
+
+/**
+ * Write a byte to the display
+ * @param 	byte	the data to write
+ * @param	rs		true to set the RS pin
+ */
+void MHV_Display_HD44780_Direct_Connect::writeByte(uint8_t byte, bool rs) {
+	// Write high order nibble
+	writeNibble(byte >> 4, rs);
+	// Write low order nibble
+	writeNibble(byte & 0x0f, rs);
 }
 
 /**
@@ -130,6 +140,18 @@ void MHV_Display_HD44780_Direct_Connect::writeNibble(uint8_t nibble, bool rs) {
 	_delay_loop_1(HD44780_TW);
 }
 
+
+/**
+ * Read a byte from the display
+ * @param	rs		true to set the RS pin
+ */
+uint8_t MHV_Display_HD44780_Direct_Connect::readByte(bool rs) {
+	char character = readNibble(rs) << 4;
+	// Read low order nibble
+	character |= readNibble(rs);
+
+	return character;
+}
 
 /**
  * Read a nibble from the display

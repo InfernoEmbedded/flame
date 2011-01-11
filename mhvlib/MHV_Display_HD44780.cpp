@@ -68,11 +68,7 @@ MHV_Display_HD44780::MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MH
  */
 void MHV_Display_HD44780::_writeChar(char character) {
 	while (isBusy()) {};
-
-	// Write high order nibble
-	writeNibble(character >> 4, true);
-	// Write low order nibble
-	writeNibble(character & 0x0f, true);
+	writeByte(character, true);
 }
 
 /**
@@ -81,12 +77,7 @@ void MHV_Display_HD44780::_writeChar(char character) {
  */
 char MHV_Display_HD44780::_readChar() {
 	while (isBusy()) {};
-	// Read high order nibble
-	char character = readNibble(true) << 4;
-	// Read low order nibble
-	character |= readNibble(true);
-
-	return character;
+	return readByte(true);
 }
 
 /**
@@ -144,10 +135,7 @@ void MHV_Display_HD44780::writeCommand(MHV_HD44780_COMMAND command, uint8_t data
 		_mustDelay = false;
 	}
 
-	// Write high order nibble
-	writeNibble(byte >> 4, false);
-	// Write low order nibble
-	writeNibble(byte & 0x0f, false);
+	writeByte(byte, false);
 }
 
 /**
@@ -190,15 +178,18 @@ void MHV_Display_HD44780::control(bool displayOn, bool cursorOn, bool cursorBlin
 
 /**
  * Initialise the display
+ * @param	byteMode	true to use 8 bit protocol
  * @param	multiLine	true if there is more than 1 line
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
  */
-void MHV_Display_HD44780::function(bool multiLine, bool bigFont) {
-	uint8_t data = multiLine << 3 | bigFont << 2;
+void MHV_Display_HD44780::function(bool byteMode, bool multiLine, bool bigFont) {
+	uint8_t data = multiLine << 3 | bigFont << 2 | byteMode << 1;
 
-// Set 4 bit transfer
-	writeNibble(0b0010, false);
-	_delay_ms(4.1);
+	if (!byteMode) {
+		// Set 4 bit transfer
+		writeByte(0b00100010, false);
+		_delay_ms(4.1);
+	}
 
 	writeCommand(MHV_44780_CMD_SET_FUNCTION, data);
 }
@@ -225,6 +216,7 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
 
 /**
  * Initialise the display
+ * @param	bits8		true to use 8 bit transfers
  * @param	multiLine	true if there is more than 1 line
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
  * @param	cursorOn	turn the curson on
@@ -232,14 +224,16 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
  * @param	left2right	true for text reading left to right
  * @param	scroll		true to scroll text rather than moving the cursor
  */
-void MHV_Display_HD44780::init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
+void MHV_Display_HD44780::init(bool byteMode, bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 		bool left2right, bool scroll) {
+	_byteMode = byteMode;
+
 /* Assume the worst case, we are called immediately after poweron
  * Also assume that the MCU init takes 0 time
  */
 	_delay_ms(HD44780_TINIT);
 
-	function(multiLine, bigFont);
+	function(byteMode, multiLine, bigFont);
 	_delay_us(39);
 	control(true, cursorOn, cursorBlink);
 	clear();

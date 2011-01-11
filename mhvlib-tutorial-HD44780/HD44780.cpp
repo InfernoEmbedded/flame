@@ -72,6 +72,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #define COLUMNS		20
 #define	ROWS		4
+#define BYTE_MODE	false	// Direct_Connect only supports nibble mode
 #define MULTILINE	true
 #define	BIGFONT		false
 #define CURSORON	false
@@ -109,7 +110,7 @@ int main(void) {
 	// Enable board LED on
 	mhv_setOutput(MHV_PIN_B5);
 
-	display.init(MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
+	display.init(BYTE_MODE, MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
 
 	// Configure the tick timer to tick every 0.5ms (at 20MHz)
 	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_256, 36, 0);
