@@ -29,6 +29,8 @@
 #ifndef MHV_TXBUFFER_H
 #define MHV_TXBUFFER_H
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <inttypes.h>
 #include <avr/interrupt.h>
 #include <MHV_io.h>

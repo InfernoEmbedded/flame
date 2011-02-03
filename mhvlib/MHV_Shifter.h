@@ -29,12 +29,14 @@
 
 #include <MHV_io.h>
 
+#ifndef MHV_CORE
 #ifndef MHV_SHIFT_WRITECLOCK
 #warning MHV_SHIFT_WRITECLOCK not defined - do not expect MHV_SHIFTOUT_* macros to work!
 #endif
 
 #ifndef MHV_SHIFT_WRITEDATA
 #warning MHV_SHIFT_WRITEDATA not defined - do not expect MHV_SHIFTOUT_* macros to work!
+#endif
 #endif
 
 #ifdef MHV_SHIFT_ORDER_MSB

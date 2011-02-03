@@ -46,15 +46,6 @@
 #include <MHV_GammaCorrect.h>
 
 
-/*
- * Required as the display classes have pure virtual methods
- * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
- */
-extern "C" void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-
 // A timer we will use for animation
 MHV_Timer8 animateTimer(MHV_TIMER8_2);
 MHV_TIMER_ASSIGN_2INTERRUPTS(animateTimer, MHV_TIMER2_INTERRUPTS);
@@ -74,7 +65,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER1_INTERRUPTS);
  * These are implemented as callbacks to allow us to replace directly driven
  * LEDs with shift registers
  */
-void matrixRowOn(uint8_t row) {
+void matrixRowOn(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_8);
@@ -85,7 +76,7 @@ void matrixRowOn(uint8_t row) {
 	}
 }
 
-void matrixRowOff(uint8_t row) {
+void matrixRowOff(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_8);
@@ -96,7 +87,7 @@ void matrixRowOff(uint8_t row) {
 	}
 }
 
-void matrixColOn(uint8_t col) {
+void matrixColOn(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_10);
@@ -107,7 +98,7 @@ void matrixColOn(uint8_t col) {
 	}
 }
 
-void matrixColOff(uint8_t col) {
+void matrixColOff(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_10);
@@ -122,7 +113,7 @@ void matrixColOff(uint8_t col) {
 uint8_t ledMatrixFrameBuffer[LED_MATRIX_ROWS * LED_MATRIX_COLS];
 
 // Create the matrix
-MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer,
+MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer, NULL,
 		matrixRowOn, matrixRowOff, matrixColOn, matrixColOff);
 
 /* Animation routine for the LED matrix

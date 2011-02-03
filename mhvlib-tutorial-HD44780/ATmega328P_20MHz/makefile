@@ -56,9 +56,6 @@ mhvlib-tutorial-HD44780.eep \
 SIZEDUMMY += \
 sizedummy \
 
-AVRDUDEDUMMY += \
-avrdudedummy \
-
 
 # All Target
 all: mhvlib-tutorial-HD44780.elf secondary-outputs
@@ -95,18 +92,12 @@ sizedummy: mhvlib-tutorial-HD44780.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-avrdudedummy: mhvlib-tutorial-HD44780.elf
-	@echo 'Invoking: AVRDude'
-	C:\Progra~2\MHV AVR Tools\bin\avrdude -pm328p -cusbasp -Uflash:w:mhvlib-tutorial-HD44780.hex:a
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(AVRDUDEDUMMY)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HD44780.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HD44780.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY) $(AVRDUDEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

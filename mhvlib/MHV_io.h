@@ -26,6 +26,20 @@
  */
 
 
+#ifdef MHVLIB_NEED_PURE_VIRTUAL
+#ifndef MHVLIB_PURE_VIRTUAL_DECLARED
+#ifndef MHVLIB_CORE
+#define MHVLIB_PURE_VIRTUAL_DECLARED
+#include <avr/interrupt.h>
+extern "C" void __cxa_pure_virtual() {
+	cli();
+	for (;;);
+}
+#endif
+#endif
+#endif
+
+
 #ifndef MHV_IO_H_
 #define MHV_IO_H_
 
@@ -56,15 +70,6 @@
 #endif
 
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
-
-#if GCC_VERSION < 40500
-#include <avr/interrupt.h>
-extern "C" void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-#endif
-
 
 enum mhv_interruptMode {
 	MHV_INTERRUPT_LOW,

@@ -44,15 +44,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/*
- * Required as the TX classes have pure virtual methods
- * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
- */
-extern "C" void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];

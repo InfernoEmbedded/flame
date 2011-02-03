@@ -36,15 +36,6 @@
 
 #include <avr/interrupt.h>
 
-/*
- * Required as the display classes have pure virtual methods
- * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
- */
-extern "C" void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-
 /* We will use the following pins to communicate with the display
  * Signal	328	1280		Arduino
  * Data		C0	F0			Arduino pin A0

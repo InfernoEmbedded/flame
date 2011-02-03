@@ -61,10 +61,10 @@ sizedummy \
 all: mhvlib-tutorial-BlinkingLED-Timer.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/ATmega328P_20MHz && $(MAKE) clean all
 
 # Tool invocations
-mhvlib-tutorial-BlinkingLED-Timer.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a
+mhvlib-tutorial-BlinkingLED-Timer.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
 	avr-g++ -Wl,-Map,mhvlib-tutorial-BlinkingLED-Timer.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega168_16MHz" -mmcu=atmega168 -o"mhvlib-tutorial-BlinkingLED-Timer.elf" $(OBJS) $(USER_OBJS) $(LIBS)
@@ -104,6 +104,6 @@ secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a:
+A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a:
 
 -include ../makefile.targets

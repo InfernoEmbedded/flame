@@ -64,7 +64,7 @@ MHV_HardwareSerial serial(NULL, NULL, MHV_USART0, 115200);
 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
 
 #define TX_ELEMENTS_COUNT 3
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
 char txBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
 
@@ -82,7 +82,7 @@ int main(void) {
 	snprintf(buffer, sizeof(buffer), "Buffer contains %d out of %d bytes\r\n", txBuffer.length(), txBuffer.size());
 	serial.busyWrite(buffer);
 
-	MHV_SERIAL_BUFFER object;
+	MHV_TX_BUFFER object;
 	memset(&object, '_', sizeof(object));
 
 	int i;

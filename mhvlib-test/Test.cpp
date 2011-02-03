@@ -39,22 +39,13 @@
 #include <MHV_PWMMatrix.h>
 #include <MHV_GammaCorrect.h>
 
-/*
- * Required as the display classes have pure virtual methods
- * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
- */
-extern "C" void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-
 #define RX_BUFFER_SIZE	81
 char rxBuf[RX_BUFFER_SIZE];
 MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
 // A buffer for the serial port to send data, it only contains pointers
 char txBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
@@ -83,7 +74,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER4_INTERRUPTS);
 #define LED_MATRIX_ROWS	2
 #define LED_MATRIX_COLS	2
 
-void matrixRowOn(uint8_t row) {
+void matrixRowOn(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_8);
@@ -94,7 +85,7 @@ void matrixRowOn(uint8_t row) {
 	}
 }
 
-void matrixRowOff(uint8_t row) {
+void matrixRowOff(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_8);
@@ -105,7 +96,7 @@ void matrixRowOff(uint8_t row) {
 	}
 }
 
-void matrixColOn(uint8_t col) {
+void matrixColOn(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_10);
@@ -116,7 +107,7 @@ void matrixColOn(uint8_t col) {
 	}
 }
 
-void matrixColOff(uint8_t col) {
+void matrixColOff(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_10);
@@ -162,8 +153,7 @@ void adcTrigger(uint16_t adc) {
 		snprintf(tickBuf, sizeof(tickBuf), "Temperature is about %f\6fC\r\n", (double)((adc + 287) * 1.1) / MHV_AD_MAX);
 #endif
 	}
-	while (!serial.canSend()) {}
-	(void) serial.asyncWrite(tickBuf);
+	(void) serial.write(tickBuf);
 }
 
 MHV_AD_ASSIGN_INTERRUPT(adcTrigger);
@@ -336,29 +326,15 @@ int main(void) {
 		(void) serial.busyWrite(txBuf);
 		serial.busyWrite_P(progmemSync);
 
-		/* busyWrite does not wait for the last byte to be sent, so if we're going to do an async write
-		 * we must wait here or the write will fail
-		 */
-		while (!serial.canSend()) {}
-		(void) serial.asyncWrite("Async writes, normal string\r\n");
-		// Wait until we're done transmitting asynchronously
-		while (!serial.canSend()) {}
-		serial.asyncWrite_P(progmemAsync);
-		while (!serial.canSend()) {}
+		(void) serial.write("Async writes, normal string\r\n");
+		serial.write_P(progmemAsync);
 
 		// Buffer writes
 		(void) serial.busyWrite("Busy writes, normal buffer\r\n", 28);
 		serial.busyWrite_P(progmemSyncBuffer, sizeof(progmemSyncBuffer) - 1);
 
-		/* busyWrite does not wait for the last byte to be sent, so if we're going to do an async write
-		 * we must wait here or the write will fail
-		 */
-		while (!serial.busy()) {}
-		(void) serial.asyncWrite("Async writes, normal buffer\r\n", 29);
-		// Wait until we're done transmitting asynchronously
-		while (!serial.canSend()) {}
-		serial.asyncWrite_P(progmemAsyncBuffer, sizeof(progmemAsyncBuffer) - 1);
-		while (!serial.canSend()) {}
+		(void) serial.write("Async writes, normal buffer\r\n", 29);
+		serial.write_P(progmemAsyncBuffer, sizeof(progmemAsyncBuffer) - 1);
 
 		// Test reads
 		serial.busyWrite("OK, now type something and press enter\r\n");

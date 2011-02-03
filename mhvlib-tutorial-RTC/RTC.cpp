@@ -41,7 +41,7 @@ MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
 
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_SERIAL_BUFFER) + 1
+#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
 // A buffer for the serial port to send data, it only contains pointers
 char txBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
@@ -97,7 +97,7 @@ void oncePerSecond(MHV_EVENT *event) {
 	snprintf_P(buf, sizeof(buf), PSTR("The current time is %02u:%02u:%02u %u-%02u-%02u  (%lu.%03u)\r\n"),
 			time.hours, time.minutes, time.seconds, time.year, time.month, time.day,
 			timestamp.timestamp, timestamp.milliseconds);
-	serial.asyncWrite(buf);
+	serial.write(buf);
 
 	insertEvent(&timestamp);
 }
@@ -112,7 +112,7 @@ inline void insertEvent(MHV_TIMESTAMP *timestamp) {
 	newEvent.actionFunction = oncePerSecond;
 	newEvent.actionData = NULL;
 	if (rtc.addEvent(&newEvent)) {
-		serial.asyncWrite_P(PSTR("Adding event failed\r\n"));
+		serial.write_P(PSTR("Adding event failed\r\n"));
 	}
 }
 
@@ -132,8 +132,8 @@ int main(void) {
 	while (true) {
 		bool error = false;
 
-		serial.asyncWrite_P(PSTR("Please enter the current time in YYYY MM DD HH MM SS:\r\n"));
-		serial.asyncWrite_P(PSTR("                                >"));
+		serial.write_P(PSTR("Please enter the current time in YYYY MM DD HH MM SS:\r\n"));
+		serial.write_P(PSTR("                                >"));
 		serial.echo(true);
 		char input[20];
 		(void)serial.busyReadLine(input, sizeof(input));
@@ -149,36 +149,36 @@ int main(void) {
 		time.seconds = atoi(input + 17);
 
 		if (time.year < 1970 || time.month > 2106) {
-			serial.asyncWrite_P(PSTR("Year must be later than 1970 and less than 2106\r\n"));
+			serial.write_P(PSTR("Year must be later than 1970 and less than 2106\r\n"));
 			error = true;
 		}
 
 		if (time.month > 13 || time.month < 1) {
-			serial.asyncWrite_P(PSTR("Month must be between 1 and 12 inclusive\r\n"));
+			serial.write_P(PSTR("Month must be between 1 and 12 inclusive\r\n"));
 			error = true;
 		}
 
 		if (0 == time.day || time.day > mhv_daysInMonth(time.month, time.year)) {
-			serial.asyncWrite_P(PSTR("Day must be between 1 and "));
+			serial.write_P(PSTR("Day must be between 1 and "));
 			// Reuse input for string representation of the days in month
 			itoa(mhv_daysInMonth(time.month, time.year), input, 10);
-			serial.asyncWrite(input);
-			serial.asyncWrite_P(PSTR(" inclusive\r\n"));
+			serial.write(input);
+			serial.write_P(PSTR(" inclusive\r\n"));
 			error = true;
 		}
 
 		if (time.hours > 23) {
-			serial.asyncWrite_P(PSTR("Hour must be less than or equal to 23\r\n"));
+			serial.write_P(PSTR("Hour must be less than or equal to 23\r\n"));
 			error = true;
 		}
 
 		if (time.minutes > 59) {
-			serial.asyncWrite_P(PSTR("Minutes must be less than or equal to 59\r\n"));
+			serial.write_P(PSTR("Minutes must be less than or equal to 59\r\n"));
 			error = true;
 		}
 
 		if (time.seconds > 59) {
-			serial.asyncWrite_P(PSTR("Seconds must be less than or equal to 59\r\n"));
+			serial.write_P(PSTR("Seconds must be less than or equal to 59\r\n"));
 			error = true;
 		}
 
@@ -197,9 +197,9 @@ int main(void) {
 	rtc.current(&timestamp);
 	char buf[80];
 	snprintf_P(buf, sizeof(buf), PSTR("\r\nThe current unix timestamp is %lu\r\n"), timestamp.timestamp);
-	serial.asyncWrite(buf);
+	serial.write(buf);
 
-	serial.asyncWrite_P(PSTR("\r\nStarting clock\r\n"));
+	serial.write_P(PSTR("\r\nStarting clock\r\n"));
 
 	// Start ticking the RTC through its associated timer
 	tickTimer.enable();
