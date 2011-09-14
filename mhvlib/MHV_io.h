@@ -44,6 +44,7 @@ extern "C" void __cxa_pure_virtual() {
 #define MHV_IO_H_
 
 #include <avr/io.h>
+#include <inttypes.h>
 
 // Some useful attributes
 
@@ -129,6 +130,20 @@ inline void mhv_pinOff(MHV_PIN *pin) {
 inline void mhv_pinOff(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
 	*out &= ~_BV(bit);
+}
+
+/**
+ * Set an output pin on or off (state should really be constant for optimal performance)
+ * @param	pin		the pin to set
+ * @param	state	true to turn the pin on
+ */
+inline void mhv_pinSet(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt, bool state) {
+	if (state) {
+		mhv_pinOn(dir, out, in, bit, pcInt);
+	} else {
+		mhv_pinOff(dir, out, in, bit, pcInt);
+	}
 }
 
 /**

@@ -1,4 +1,5 @@
-/* Copyright (c) 2011, Make, Hack, Void Inc
+/*
+ * Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -24,32 +25,29 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "MHV_Shifter.h"
 
-void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
-	int8_t		i;
+#ifndef MHV_RXBUFFER_H
+#define MHV_RXBUFFER_H
 
-	for (i = 0; i < 8; i++) {
-		if (byte & (1 >> i)) {
-			mhv_pinOn(data);
-		} else {
-			mhv_pinOff(data);
-		}
-		mhv_pinOn(clock);
-		mhv_pinOff(clock);
-	}
-}
+#include <inttypes.h>
+#include <avr/interrupt.h>
+#include <MHV_io.h>
+#include <stdio.h>
+#include <MHV_RingBuffer.h>
+#include <avr/pgmspace.h>
 
-void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
-	int8_t		i;
+class MHV_Device_RX {
+protected:
+	MHV_RingBuffer		*_rxBuffer;
 
-	for (i = 7; i >= 0; i--) {
-		if (byte & (1 >> i)) {
-			mhv_pinOn(data);
-		} else {
-			mhv_pinOff(data);
-		}
-		mhv_pinOn(clock);
-		mhv_pinOff(clock);
-	}
-}
+	MHV_Device_RX(MHV_RingBuffer *rxBuffer);
+
+public:
+	int asyncReadLine(char *buffer, uint8_t bufferLength);
+	int busyReadLine(char *buffer, uint8_t bufferLength);
+	int read();
+	void flush();
+	uint8_t available();
+};
+
+#endif
