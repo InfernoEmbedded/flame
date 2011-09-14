@@ -70,12 +70,12 @@ do { \
 \
 for SHIFTOUT_BYTE_LOOP { \
 		if ((mhv_data >> mhv_shift_i) & 0x01) { \
-			_mhv_pin_on(MHV_SHIFT_WRITEDATA); \
+			mhv_pinOn(MHV_SHIFT_WRITEDATA); \
 		} else { \
-			_mhv_pin_off(MHV_SHIFT_WRITEDATA); \
+			mhv_pinOff(MHV_SHIFT_WRITEDATA); \
 		} \
-		_mhv_pin_on(MHV_SHIFT_WRITECLOCK); \
-		_mhv_pin_off(MHV_SHIFT_WRITECLOCK); \
+		mhv_pinOn(MHV_SHIFT_WRITECLOCK); \
+		mhv_pinOff(MHV_SHIFT_WRITECLOCK); \
 	} \
 } while (0)
 

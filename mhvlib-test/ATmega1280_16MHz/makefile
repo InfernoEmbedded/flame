@@ -61,10 +61,10 @@ sizedummy \
 all: mhvlib-test.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega328P_20MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
 
 # Tool invocations
-mhvlib-test.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a
+mhvlib-test.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
 	avr-g++ -Wl,-Map,mhvlib-test.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -mmcu=atmega1280 -o"mhvlib-test.elf" $(OBJS) $(USER_OBJS) $(LIBS)
@@ -104,6 +104,6 @@ secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a:
+A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a:
 
 -include ../makefile.targets

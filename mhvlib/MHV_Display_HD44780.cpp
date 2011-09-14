@@ -69,6 +69,7 @@ MHV_Display_HD44780::MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MH
 void MHV_Display_HD44780::_writeChar(char character) {
 	while (isBusy()) {};
 	writeByte(character, true);
+	delay(MHV_44780_WRITE_CHAR);
 }
 
 /**
@@ -136,6 +137,8 @@ void MHV_Display_HD44780::writeCommand(MHV_HD44780_COMMAND command, uint8_t data
 	}
 
 	writeByte(byte, false);
+
+	delay(command);
 }
 
 /**
@@ -165,7 +168,7 @@ void MHV_Display_HD44780::entryMode(bool left2Right, bool scroll) {
 /**
  * Set parameters on the display
  * @param	displayOn	turn the display on
- * @param	cursorOn	turn the curson on
+ * @param	cursorOn	turn the cursor on
  * @param	cursorBlink	blink the cursor
  */
 void MHV_Display_HD44780::control(bool displayOn, bool cursorOn, bool cursorBlink) {
@@ -214,6 +217,7 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
 	writeCommand(MHV_44780_CMD_SET_DD_ADDR, address);
 }
 
+
 /**
  * Initialise the display
  * @param	bits8		true to use 8 bit transfers
@@ -232,6 +236,12 @@ void MHV_Display_HD44780::init(bool byteMode, bool multiLine, bool bigFont, bool
  * Also assume that the MCU init takes 0 time
  */
 	_delay_ms(HD44780_TINIT);
+
+// hardware initialization always set 8 bits mode
+	uint8_t resetData = multiLine << 3 | bigFont << 2 | 1 << 1;
+	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
 
 	function(byteMode, multiLine, bigFont);
 	_delay_us(39);

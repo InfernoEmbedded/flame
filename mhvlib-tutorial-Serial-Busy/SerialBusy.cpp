@@ -46,20 +46,14 @@
 
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
-char rxBuf[RX_BUFFER_SIZE];
-
-// Create a ring buffer wrapping the memory allocated above
-MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 0
 
 /* Declare the serial object on UART0 using the above ring buffer
- * No TX buffers provided, async write operations will not work
  * Use the USART0 hardware
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(&rxBuffer, NULL, MHV_USART0, 115200);
-
-// Assign interrupts to the serial object
-MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
+MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 int main(void) {
 // Enable interrupts

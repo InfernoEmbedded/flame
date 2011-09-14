@@ -30,25 +30,36 @@
 #include <inttypes.h>
 #include <MHV_Display_Monochrome_Buffered.h>
 
+enum MHV_PWMMatrix_Mode {
+	MHV_PWMMATRIX_MODE_AUTO,
+	MHV_PWMMATRIX_MODE_ROWS,
+	MHV_PWMMATRIX_MODE_COLS,
+	MHV_PWMMATRIX_MODE_INDIVIDUAL
+};
+typedef enum MHV_PWMMatrix_Mode MHV_PWMMATRIX_MODE;
+
 class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered {
 private:
-	uint8_t		_current; // current row or col, depending on scan mode
-	uint8_t		_currentLevel;
-	bool		_scanRows;
-	void		(*_rowOn)(uint16_t row);
-	void 		(*_rowOff)(uint16_t row);
-	void 		(*_colOn)(uint16_t column);
-	void 		(*_colOff)(uint16_t column);
+	uint16_t				_currentRow;
+	uint16_t				_currentCol;
+	uint8_t					_currentLevel;
+	MHV_PWMMATRIX_MODE		_mode;
+	void					(*_rowOn)(uint16_t row);
+	void 					(*_rowOff)(uint16_t row);
+	void 					(*_colOn)(uint16_t column);
+	void 					(*_colOff)(uint16_t column);
 
 	void tickRow();
 	void tickCol();
+	void tickPixel();
 
 public:
 	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers,
 		void (*rowOn)(uint16_t row),
 		void (*rowOff)(uint16_t row),
 		void (*colOn)(uint16_t column),
-		void (*colOff)(uint16_t column));
+		void (*colOff)(uint16_t column),
+		MHV_PWMMATRIX_MODE mode = MHV_PWMMATRIX_MODE_AUTO);
 	void tick();
 };
 

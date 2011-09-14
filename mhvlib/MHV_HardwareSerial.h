@@ -36,6 +36,7 @@
 #include <MHV_RingBuffer.h>
 #include <avr/pgmspace.h>
 #include <MHV_Device_TX.h>
+#include <MHV_Device_RX.h>
 
 #define MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts) \
 	_MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts)
@@ -48,14 +49,29 @@ ISR(mhvTxVect) { \
 	mhvHardwareSerial.tx(); \
 }
 
+/**
+ * Create a new serial object
+ * @param	_mhvObjectName	the variable name of the object
+ * @param	_mhvRXBUFLEN	the maximum length of the line to be received
+ * @param	_mhvTXBUFCOUNT	the maximum number of tx buffers to send asynchonously
+ * @param	_mhvSERIAL		serial port parameters
+ * @param	_mhvBAUD		the baud rate requested
+ */
+#define MHV_HARDWARESERIAL_CREATE(_mhvObjectName, _mhvRXBUFLEN, _mhvTXBUFCOUNT, _mhvSERIAL, _mhvBAUD) \
+		char _mhvObjectName ## _rxBuffer[_mhvRXBUFLEN + 1]; \
+		char _mhvObjectName ## _txBuffer[_mhvTXBUFCOUNT * sizeof(MHV_TX_BUFFER) + 1]; \
+		MHV_RingBuffer _mhvObjectName ## _rxBuf(_mhvObjectName ## _rxBuffer, sizeof(_mhvObjectName ## _rxBuffer)); \
+		MHV_RingBuffer _mhvObjectName ## _txBuf(_mhvObjectName ## _txBuffer, sizeof(_mhvObjectName ## _txBuffer)); \
+		MHV_HardwareSerial _mhvObjectName(&_mhvObjectName ## _rxBuf, &_mhvObjectName ## _txBuf, _mhvSERIAL, _mhvBAUD); \
+		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
+
 #define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
 do {\
 	__dbg_serial.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
 } while (0)
 
-class MHV_HardwareSerial : public MHV_Device_TX {
+class MHV_HardwareSerial : public MHV_Device_TX, public MHV_Device_RX {
 private:
-	MHV_RingBuffer *_rxBuffer;
 	volatile uint16_t *_ubrr;
 	volatile uint8_t *_ucsra;
 	volatile uint8_t *_ucsrb;
@@ -78,9 +94,6 @@ public:
 			unsigned long baud);
 	void setSpeed(unsigned long baud);
 	void end();
-	uint8_t available();
-	int read();
-	void flush();
 	void busyWrite(char c);
 	void busyWrite(const char *buffer);
 	void busyWrite(const char *buffer, uint16_t length);
@@ -89,8 +102,6 @@ public:
 	bool canSendBusy();
 	void rx();
 	void tx();
-	int asyncReadLine(char *buffer, uint8_t bufferLength);
-	int busyReadLine(char *buffer, uint8_t bufferLength);
 	void echo(bool echoOn);
 	bool busy();
 	void debug(const char *file, int line, const char *function,

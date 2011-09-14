@@ -80,6 +80,8 @@
 
 #define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
 
-#define MHV_PC_INT_COUNT		6
+#define MHV_PC_INT_COUNT	6
+
+#define MHV_EEPROM_VECT		EE_RDY_vect
 
 #endif /* MHV_IO_ATTINY85_H_ */

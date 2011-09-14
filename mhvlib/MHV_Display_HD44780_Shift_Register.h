@@ -54,4 +54,4 @@ public:
 					uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
 };
 
-#endif /* DISPLAY_HD44780_SHIFT_REGISTER_H_ */
+#endif /* MHV_DISPLAY_HD44780_SHIFT_REGISTER_H_ */

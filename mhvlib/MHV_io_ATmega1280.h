@@ -238,6 +238,8 @@
 #define MHV_PIN_TIMER_5_B	MHV_PIN_L4
 #define MHV_PIN_TIMER_5_C	MHV_PIN_L6
 
-#define MHV_PC_INT_COUNT		24
+#define MHV_PC_INT_COUNT	24
+
+#define MHV_EEPROM_VECT		EE_READY_vect
 
 #endif /* MHV_IO_ATMEGA1280_H_ */

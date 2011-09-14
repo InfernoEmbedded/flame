@@ -50,18 +50,9 @@
 
 
 /* Declare the serial object on UART0
- *
- * The NULL parameter is a buffer used for keeping track of data
- * sent asynchronously - see the Serial-Async tutorial for usage
- *
- * Use the USART0 hardware
- *
  * Set the baud rate to 115,200
  */
-MHV_HardwareSerial serial(NULL, NULL, MHV_USART0, 115200);
-
-// Assign interrupts to the serial object
-MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
+MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 
 #define TX_ELEMENTS_COUNT 3
 #define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1

@@ -49,6 +49,7 @@ protected:
 	uint8_t readByte(bool rs);
 	uint8_t readNibble(bool rs);
 	bool isBusy();
+	void delay(MHV_HD44780_COMMAND command);
 
 public:
 	MHV_Display_HD44780_Direct_Connect(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,

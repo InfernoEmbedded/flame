@@ -37,7 +37,8 @@ enum mhv_hd44780_command {
 	MHV_44780_CMD_SET_CURSOR_MODE	= 0x010,
 	MHV_44780_CMD_SET_FUNCTION		= 0x020,
 	MHV_44780_CMD_SET_CG_ADDR		= 0x040,
-	MHV_44780_CMD_SET_DD_ADDR		= 0x080
+	MHV_44780_CMD_SET_DD_ADDR		= 0x080,
+	MHV_44780_WRITE_CHAR			= 0xff
 };
 typedef enum mhv_hd44780_command MHV_HD44780_COMMAND;
 
@@ -59,6 +60,7 @@ protected:
 	void _writeChar(char character);
 	char _readChar();
 	virtual bool isBusy()=0;
+	virtual void delay(MHV_HD44780_COMMAND command)=0;
 
 public:
 	MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);

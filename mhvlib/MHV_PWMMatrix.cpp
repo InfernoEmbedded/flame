@@ -28,10 +28,11 @@
 #include <string.h>
 #include <math.h>
 
-#define pixel(pixelRow, pixelCol) _frameBuffer[pixelRow * _colCount + pixelCol]
+#define pixel(pixelCol, pixelRow) _frameBuffer[pixelRow * _colCount + pixelCol]
 
 /**
- * Constructor
+ * Establish a new matrix
+ * @param	mode		whether to scan rows, cols, individual pixels or auto
  * @param	rowCount	the number of rows
  * @param	colCount	the number of columns
  * @param	frameBuffer	memory to use for the framebuffer, must be at least rows * cols * uint8_t
@@ -46,19 +47,25 @@ MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *fram
 		void (*rowOn)(uint16_t row),
 		void (*rowOff)(uint16_t row),
 		void (*colOn)(uint16_t column),
-		void (*colOff)(uint16_t column)) :
+		void (*colOff)(uint16_t column),
+		MHV_PWMMATRIX_MODE mode) :
 			MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer, txBuffers) {
 	uint8_t	i;
 
-	_current = 0;
+	_currentRow = 0;
+	_currentCol = 0;
 	_currentLevel = 0;
+
+	if (MHV_PWMMATRIX_MODE_AUTO == mode) {
+		_mode = (rowCount <= colCount) ? MHV_PWMMATRIX_MODE_ROWS : MHV_PWMMATRIX_MODE_COLS;
+	} else {
+		_mode = mode;
+	}
 
 	_rowOn = rowOn;
 	_rowOff = rowOff;
 	_colOn = colOn;
 	_colOff = colOff;
-
-	_scanRows = (rowCount <= colCount);
 
 	for (i = 0; i < _rowCount; i++) {
 		_rowOff(i);
@@ -68,21 +75,24 @@ MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *fram
 	}
 }
 
+/**
+ * Render the display row by row
+ */
 inline void MHV_PWMMatrix::tickRow(void) {
-	uint8_t		i;
+	uint16_t		i;
 
 	if (0 == _currentLevel) {
-		// Turn on the current column
-		_rowOn(_current);
+		// Turn on the current row
+		_rowOn(_currentRow);
 		for (i = 0; i < _colCount; i++) {
-			if (pixel(_current, i) > 0) {
+			if (pixel(i, _currentRow) > 0) {
 				_colOn(i);
 			}
 		}
 	} else {
 		// Turn off pixels that get switched off on this pass
 		for (i = 0; i < _colCount; i++) {
-			if (pixel(_current, i) <= _currentLevel) {
+			if (pixel(i, _currentRow) <= _currentLevel) {
 				_colOff(i);
 			}
 		}
@@ -90,30 +100,33 @@ inline void MHV_PWMMatrix::tickRow(void) {
 
 	if (255 == ++_currentLevel) {
 		// Turn off the current row & advance
-		_rowOff(_current);
+		_rowOff(_currentRow);
 
 		_currentLevel = 0;
-		if (++_current == _rowCount) {
-			_current = 0;
+		if (++_currentRow == _rowCount) {
+			_currentRow = 0;
 		}
 	}
 }
 
+/**
+ * Render the display column by column
+ */
 inline void MHV_PWMMatrix::tickCol(void) {
-	uint8_t		i;
+	uint16_t		i;
 
 	if (0 == _currentLevel) {
 		// Turn on the current column
-		_colOn(_current);
+		_colOn(_currentCol);
 		for (i = 0; i < _rowCount; i++) {
-			if (pixel(i, _current) > 0) {
+			if (pixel(_currentCol, i) > 0) {
 				_rowOn(i);
 			}
 		}
 	} else {
 		// Turn off pixels that get switched off on this pass
 		for (i = 0; i < _rowCount; i++) {
-			if (pixel(i, _current) <= _currentLevel) {
+			if (pixel(_currentCol, i) <= _currentLevel) {
 				_rowOff(i);
 			}
 		}
@@ -121,21 +134,57 @@ inline void MHV_PWMMatrix::tickCol(void) {
 
 	if (255 == ++_currentLevel) {
 		// Turn off the current column & advance
-		_colOff(_current);
+		_colOff(_currentCol);
 
 		_currentLevel = 0;
-		if (++_current == _colCount) {
-			_current = 0;
+		if (++_currentCol == _colCount) {
+			_currentCol = 0;
 		}
 	}
 }
 
+/**
+ * Render the display pixel by pixel
+ */
+inline void MHV_PWMMatrix::tickPixel(void) {
+	if (0 == _currentLevel) {
+		// Turn on the pixel at the current row & column
+		_colOn(_currentCol);
+		_rowOn(_currentRow);
+	} else if (pixel(_currentRow, _currentCol) <= _currentLevel) {
+		// Turn off the pixel
+		_colOff(_currentCol);
+		_rowOff(_currentRow);
+	}
+
+	if (255 == ++_currentLevel) {
+		// Advance the column
+		if (++_currentCol == _colCount) {
+			_currentCol = 0;
+
+			// Advance the row
+			if (++_currentRow == _rowCount) {
+				_currentRow = 0;
+			}
+		}
+	}
+}
+
+
 /* Process a timer tick
  */
 void MHV_PWMMatrix::tick(void) {
-	if (_scanRows) {
+	switch (_mode) {
+	case MHV_PWMMATRIX_MODE_ROWS:
 		tickRow();
-	} else {
+		break;
+	case MHV_PWMMATRIX_MODE_COLS:
 		tickCol();
+		break;
+	case MHV_PWMMATRIX_MODE_INDIVIDUAL:
+		tickPixel();
+		break;
+	default:
+		break;
 	}
 }

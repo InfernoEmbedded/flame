@@ -51,16 +51,6 @@
 
 #include <avr/pgmspace.h>
 
-#if 0
-/*
- * Required as the display classes have pure virtual methods
- * This will only get called if a pure virtual method is called in a constructor (never in MHVlib)
- */
-extern "C" void __cxa_pure_virtual() {
-	cli();
-}
-#endif
-
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
 #define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1

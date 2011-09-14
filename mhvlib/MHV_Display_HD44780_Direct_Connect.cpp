@@ -273,3 +273,11 @@ void MHV_Display_HD44780_Direct_Connect::tickPWM() {
 
 	_ticks++;
 }
+
+/**
+ * Delay function
+ * No delays required as we can check whether the display is busy
+ */
+void MHV_Display_HD44780_Direct_Connect::delay(MHV_HD44780_COMMAND command) {
+	return;
+}

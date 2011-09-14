@@ -128,7 +128,6 @@ MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t value) {
 	if (row < _rowCount && col < _colCount) {
 
-
 		// Coordinates of the display module
 		uint8_t moduleX, moduleY;
 
@@ -159,8 +158,6 @@ void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t val
 
 		// Change offset from the start of the display to the start of the framebuffer
 		offset += (moduleY * _arrayX + moduleX) * _displayBytes;
-
-//MHV_HARDWARESERIAL_DEBUG(serial, "Setting pixel(%d,%d) to %d, offset=%d, bit=%d", col, row, value, offset, bit);
 
 		if (value) {
 			_frameBuffer[offset] |= 1 << bit;
@@ -193,12 +190,12 @@ uint8_t MHV_Display_Holtek_HT1632::getPixel(uint16_t col, uint16_t row) {
 		case MHV_HT1632_NMOS_32x8:
 		case MHV_HT1632_PMOS_32x8:
 			offset = col;
-			bit = 7 - row;
+			bit = row;
 			break;
 		case MHV_HT1632_NMOS_24x16:
 		case MHV_HT1632_PMOS_24x16:
 			offset = col * 2;
-			bit = 15 - row;
+			bit = row;
 			if (bit > 7) {
 				bit -= 8;
 				offset++;
@@ -246,19 +243,8 @@ void MHV_Display_Holtek_HT1632::sendCommand(uint8_t moduleX, uint8_t moduleY, MH
 	writeData(command, 3);
 }
 
-/* Mark a command as complete
- */
-//void MHV_Display_Holtek_HT1632::commandComplete() {
-//	uint8_t x, y;
-//
-//	for (y = 0; y < _arrayY; y++) {
-//		for (x = 0; x < _arrayY; x++) {
-//			_csCallback(x, y, 0);
-//		}
-//	}
-//}
-
-/* Mark a command as complete
+/**
+ * Mark a command as complete
  * @param moduleX	the module to complete the command
  * @param moduleY	the module to complete the command
  */
@@ -266,7 +252,8 @@ void MHV_Display_Holtek_HT1632::commandComplete(uint8_t moduleX, uint8_t moduleY
 	_csCallback(moduleX, moduleY, 0);
 }
 
-/* Set up the display to stream output
+/**
+ * Set up the display to stream output
  * @param moduleX	the module to write to
  * @param moduleY	the module to write to
  */
@@ -288,6 +275,12 @@ void MHV_Display_Holtek_HT1632::flush() {
 
 	for (x = 0; x < _arrayX; x++) {
 		for (y = 0; y < _arrayY; y++) {
+			data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
+		}
+	}
+
+	for (x = 0; x < _arrayX; x++) {
+		for (y = 0; y < _arrayY; y++) {
 			bytesCopy = bytes;
 			data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
 			outputStart(x, y);
@@ -297,7 +290,8 @@ void MHV_Display_Holtek_HT1632::flush() {
 	}
 }
 
-/* Set a module to be the master
+/**
+ * Set a module to be the master
  * @param module the module
  */
 void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
@@ -307,7 +301,8 @@ void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
 	commandComplete(moduleX, moduleY);
 }
 
-/* Set a module to be a salve
+/**
+ * Set a module to be a salve
  * @param module the module
  */
 void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
@@ -317,7 +312,8 @@ void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
 	commandComplete(moduleX, moduleY);
 }
 
-/* Set the brightness of a module
+/**
+ * Set the brightness of a module
  * @param module 		the module
  * @param brightness	the brightness (from 0 to 15)
  */

@@ -33,6 +33,7 @@
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <stdio.h>
+#include <MHV_io.h>
 
 enum mhv_timer_mode {
 	MHV_TIMER_ONE_SHOT,

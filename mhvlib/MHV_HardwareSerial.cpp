@@ -45,9 +45,8 @@
 MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer,
 		volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
 		volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie,
-		uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud) : MHV_Device_TX(txBuffer) {
-	_rxBuffer = rxBuffer;
-
+		uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud) :
+		MHV_Device_TX(txBuffer), MHV_Device_RX(rxBuffer) {
 	_echo = false;
 	_ubrr = ubrr;
 	_ucsra = ucsra;
@@ -129,72 +128,6 @@ void MHV_HardwareSerial::setSpeed(unsigned long baud) {
 	}
 
 	*_ucsrb |= _BV( _rxen) | _BV( _txen) | _BV( _rxcie);
-}
-
-/**
- * If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
- * returns 0 if we have successfully copied a line
- * returns -1 if there was no line available
- * returns -2 if the buffer was too small
- * returns -3 if we have reached the end of the ringbuffer with no line terminator
- */
-int MHV_HardwareSerial::asyncReadLine(char *buffer, uint8_t bufferLength) {
-	// Peek at the last character & see if its a newline
-	int last = _rxBuffer->peekHead();
-
-	bool isFull = _rxBuffer->full();
-	if (!isFull) {
-		if ('\r' != last && '\n' != last) {
-			return -1;
-		}
-	}
-
-	uint8_t i = 0;
-	int byte;
-	while (-1 != (byte = _rxBuffer->consume())) {
-		if (i == bufferLength - 1) {
-			buffer[i] = '\0';
-			return -2;
-		}
-		if ('\r' == byte || '\n' == byte) {
-			break;
-		}
-		buffer[i++] = (char)byte;
-	}
-	buffer[i] = '\0';
-
-	if (isFull) {
-		return -3;
-	}
-	return 0;
-}
-
-/**
- * If we have a line on the serial port, copy it into a buffer & null terminate, stripping CR/LF
- * Blocks until a line is available
- * @return 0 if we have successfully copied a line
- * @return -2 if the buffer was too small
- * @return -3 if we have reached the end of the ringbuffer with no line terminator
- */
-int MHV_HardwareSerial::busyReadLine(char *buffer, uint8_t bufferLength) {
-	int rc;
-	while (-1 == (rc = asyncReadLine(buffer, bufferLength))) {}
-	return rc;
-}
-
-/**
- * Read a byte from the receive buffer
- * @return the byte, or -1 if there is nothing to read
- */
-int MHV_HardwareSerial::read(void) {
-	return _rxBuffer->consume();
-}
-
-/**
- * Discard remaining data in the receive buffer
- */
-void MHV_HardwareSerial::flush() {
-	_rxBuffer->flush();
 }
 
 /**
@@ -323,14 +256,6 @@ void MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
  */
 bool MHV_HardwareSerial::busy(void) {
 	return !((*_ucsra) & (1 << _udre));
-}
-
-/**
- * Check if there is any received data available
- * @return the number of bytes available
- */
-uint8_t MHV_HardwareSerial::available(void) {
-	return _rxBuffer->length();
 }
 
 /**

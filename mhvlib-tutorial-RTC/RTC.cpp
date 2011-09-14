@@ -36,18 +36,9 @@
 
 // A buffer for the serial port to receive data
 #define RX_BUFFER_SIZE	81
-char rxBuf[RX_BUFFER_SIZE];
-MHV_RingBuffer rxBuffer(rxBuf, RX_BUFFER_SIZE);
-
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
-// A buffer for the serial port to send data, it only contains pointers
-char txBuf[TX_BUFFER_SIZE];
-MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
-
-MHV_HardwareSerial serial(&rxBuffer, &txBuffer, MHV_USART0, 115200);
-MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(serial, MHV_USART0_INTERRUPTS);
+MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 // A timer we will use to tick the RTC
 MHV_Timer8 tickTimer(MHV_TIMER8_0);
