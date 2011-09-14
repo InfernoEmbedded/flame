@@ -38,6 +38,10 @@
 #include <MHV_RingBuffer.h>
 #include <avr/pgmspace.h>
 
+#define MHV_TX_BUFFER_CREATE(_mhvTxName, _mhvTxElementCount) \
+	char _mhvTxName ## Buf[_mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1]; \
+	MHV_RingBuffer _mhvTxName(_mhvTxName ## Buf, _mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1);
+
 struct mhv_tx_buffer {
 	const char	*data;
 	uint16_t	length;

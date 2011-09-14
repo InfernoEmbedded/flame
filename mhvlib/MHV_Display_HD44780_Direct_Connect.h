@@ -62,6 +62,8 @@ public:
 	void setBacklight(uint8_t value);
 	void setContrast(uint8_t value);
 	void tickPWM();
+	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
+				bool left2right, bool scroll);
 };
 
 #endif /* MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_ */

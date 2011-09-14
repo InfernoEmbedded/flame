@@ -25,28 +25,36 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* Demonstrate the HD44780 display on port D
- * Data port layout  Port=B, n=0
- * Bit	description
- * n	DB4
- * n+1	DB5
- * n+2	DB6
- * n+3	DB7
+/**
+ * Illustrates the use a 16x2 LCD display with a shift register 74HC164
+ * on an AVR ATMEGA 328P.
  *
- * Control port layout  Port=C, n=0
- * n	RS Register Select
- * n+1	R/W Read/Write
- * n+2	E Enable
+ *  The circuit (see docs/HD44780_Shift_Register.pdf for a schematic):
  *
- * Visual port layout	Port=C, n=3
- * n	Contrast (V0)
- * n+1	LED Positive
+ *--- Shift Register ---
+ * SR Pin 1 (A) to AVR PD4 (Data)
+ * SR Pin 2 (B) to AVR PD4 (Data)
+ * SR Pin 3 (QA) to LCD pin 4 (RS)
+ * SR Pin 7 (GND) to Ground
+ * SR Pin 8 (CLK) to AVR PD2 (Clock)
+ * SR Pin 9 (CLR) to +5v *
+ * SR Pin 10 (QE) to LCD pin 11 (D4)
+ * SR Pin 11 (QF) to LCD pin 12 (D5)
+ * SR Pin 12 (QG) to LCD pin 13 (D6)
+ * SR Pin 13 (QH) to LCD pin 14 (D7)
+ * SR Pin 14 (Vcc) to +5v
+ *--- LCD HD44780 --- *
+ * LCD pin 1 (Vss) to Ground
+ * LCD pin 2 (Vdd) to +5V
+ * LCD pin 3 (Vo)  to 10k Wiper
+ * LCD pin 5 (R/W) to Ground
+ * LCD pin 6 (E) to AVR (PD7) (Enable)
  */
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
-#include <MHV_Display_HD44780_Direct_Connect.h>
+#include <MHV_Display_HD44780_Shift_Register.h>
 #include <MHV_Timer8.h>
 
 #include <avr/pgmspace.h>
@@ -67,13 +75,8 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 #define	LEFT2RIGHT	true
 #define	SCROLL		false
 
-MHV_Display_HD44780_Direct_Connect display(MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3,
+MHV_Display_HD44780_Shift_Register display(MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2,
 		COLUMNS, ROWS, &txBuffer);
-
-// A timer trigger that will tick the display PWM
-void displayTrigger(void *data) {
-	display.tickPWM();
-}
 
 /**
  * Render text using the asynchronous buffers
@@ -90,19 +93,7 @@ int main(void) {
 	// Enable global interrupts
 	sei();
 
-	// Turn power on
-	mhv_setOutput(MHV_PIN_C5);
-	mhv_pinOn(MHV_PIN_C5);
-
-	// Enable board LED on
-	mhv_setOutput(MHV_PIN_B5);
-
 	display.init(MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
-
-	// Configure the tick timer to tick every 0.5ms (at 20MHz)
-	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_256, 36, 0);
-	tickTimer.setTriggers(displayTrigger, 0, 0, 0);
-	tickTimer.enable();
 
 	textAnimation(&display);
 

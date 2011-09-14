@@ -52,6 +52,8 @@ public:
 					volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn, uint8_t enablePin, int8_t enablePinchangeInterrupt,
 					volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn, uint8_t clockPin, int8_t clockPinchangeInterrupt,
 					uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
+				bool left2right, bool scroll);
 };
 
 #endif /* MHV_DISPLAY_HD44780_SHIFT_REGISTER_H_ */

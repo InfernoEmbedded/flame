@@ -281,3 +281,19 @@ void MHV_Display_HD44780_Direct_Connect::tickPWM() {
 void MHV_Display_HD44780_Direct_Connect::delay(MHV_HD44780_COMMAND command) {
 	return;
 }
+
+/**
+ * Initialise the display
+ * @param	bits8		true to use 8 bit transfers
+ * @param	multiLine	true if there is more than 1 line
+ * @param	bigFont		true to use 5x11 fonts, false for 5x8
+ * @param	cursorOn	turn the curson on
+ * @param	cursorBlink	blink the cursor
+ * @param	left2right	true for text reading left to right
+ * @param	scroll		true to scroll text rather than moving the cursor
+ */
+void MHV_Display_HD44780_Direct_Connect::init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
+				bool left2right, bool scroll) {
+	MHV_Display_HD44780::init(false, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
+}
+
