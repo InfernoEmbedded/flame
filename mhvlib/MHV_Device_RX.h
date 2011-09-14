@@ -34,7 +34,10 @@
 #include <MHV_io.h>
 #include <stdio.h>
 #include <MHV_RingBuffer.h>
-#include <avr/pgmspace.h>
+
+#define MHV_RX_BUFFER_CREATE(_mhvRxName, _mhvRxCharacterCount) \
+	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
+	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
 
 class MHV_Device_RX {
 protected:

@@ -54,10 +54,10 @@
  */
 MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 
-#define TX_ELEMENTS_COUNT 3
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
-char txBuf[TX_BUFFER_SIZE];
-MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
+// Space for 3 instances of MHV_TX_BUFFER
+#define TX_BUFFER_SIZE 3 * sizeof(MHV_TX_BUFFER) + 1
+char testBuf[TX_BUFFER_SIZE];
+MHV_RingBuffer testRingBuffer(txBuf, TX_BUFFER_SIZE);
 
 int main(void) {
 // Enable interrupts
@@ -67,10 +67,10 @@ int main(void) {
 	snprintf(buffer, sizeof(buffer), "Starting up, ring buffer is at %p\r\n", txBuf);
 	serial.busyWrite(buffer);
 
-	snprintf(buffer, sizeof(buffer), "Allocated %d bytes for buffer, it thinks it is %d bytes\r\n", TX_BUFFER_SIZE, txBuffer.size());
+	snprintf(buffer, sizeof(buffer), "Allocated %d bytes for buffer, it thinks it is %d bytes\r\n", TX_BUFFER_SIZE, testRingBuffer.size());
 	serial.busyWrite(buffer);
 
-	snprintf(buffer, sizeof(buffer), "Buffer contains %d out of %d bytes\r\n", txBuffer.length(), txBuffer.size());
+	snprintf(buffer, sizeof(buffer), "Buffer contains %d out of %d bytes\r\n", testRingBuffer.length(), testRingBuffer.size());
 	serial.busyWrite(buffer);
 
 	MHV_TX_BUFFER object;
@@ -78,15 +78,15 @@ int main(void) {
 
 	int i;
 	for (i = 0; i < 4; i++) {
-		txBuffer.append(&object, sizeof(object));
+		testRingBuffer.append(&object, sizeof(object));
 		snprintf(buffer, sizeof(buffer), "Inserting object of size %d from %p, buffer now contains %d out of %d bytes\r\n",
-				sizeof(object), &object, txBuffer.length(), txBuffer.size());
+				sizeof(object), &object, testRingBuffer.length(), testRingBuffer.size());
 		serial.busyWrite(buffer);
-		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", txBuffer.full() ? "" : "not ");
+		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", testRingBuffer.full() ? "" : "not ");
 		serial.busyWrite(buffer);
 	}
 
-	txBuffer.flush();
+	testRingBuffer.flush();
 
 	const char *data[4];
 	data[0] = "1 abcde";
@@ -95,11 +95,11 @@ int main(void) {
 	data[3] = "4 abcde";
 
 	for (i = 0; i < 4; i++) {
-		(void)txBuffer.append(data[i], 8);
+		(void)testRingBuffer.append(data[i], 8);
 		snprintf(buffer, sizeof(buffer), "A Inserting '%s' of size %d, buffer now contains %d out of %d bytes\r\n",
-				data[i], 8, txBuffer.length(), txBuffer.size());
+				data[i], 8, testRingBuffer.length(), testRingBuffer.size());
 		serial.busyWrite(buffer);
-		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", txBuffer.full() ? "" : "not ");
+		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", testRingBuffer.full() ? "" : "not ");
 		serial.busyWrite(buffer);
 	}
 
@@ -107,31 +107,31 @@ int main(void) {
 	for (i = 0; i < 1; ++i) {
 		snprintf(buffer, sizeof(buffer), "Consumed %d entries\r\n", i+1);
 		serial.busyWrite(buffer);
-		txBuffer.consume((void *)buf, 8);
+		testRingBuffer.consume((void *)buf, 8);
 	}
 
 	snprintf(buffer, sizeof(buffer), "A Buffer now contains %d out of %d bytes\r\n",
-			txBuffer.length(), txBuffer.size());
+			testRingBuffer.length(), testRingBuffer.size());
 	serial.busyWrite(buffer);
 
 
 	for (i = 0; i < 4; i++) {
-		(void)txBuffer.append(data[i], 8);
+		(void)testRingBuffer.append(data[i], 8);
 		snprintf(buffer, sizeof(buffer), "A Inserting '%s' of size %d, buffer now contains %d out of %d bytes\r\n",
-				data[i], 8, txBuffer.length(), txBuffer.size());
+				data[i], 8, testRingBuffer.length(), testRingBuffer.size());
 		serial.busyWrite(buffer);
-		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", txBuffer.full() ? "" : "not ");
+		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", testRingBuffer.full() ? "" : "not ");
 		serial.busyWrite(buffer);
 	}
 
 	for (i = 0; i < 4; i++) {
-		bool success = !txBuffer.consume(buf, 8);
+		bool success = !testRingBuffer.consume(buf, 8);
 		snprintf(buffer, sizeof(buffer), "read at %d '%s' buffer now contains %d out of %d bytes\r\n",
-			i, buf, txBuffer.length(), txBuffer.size());
+			i, buf, testRingBuffer.length(), testRingBuffer.size());
 		serial.busyWrite(buffer);
 		snprintf(buffer, sizeof(buffer), "The read did %ssucceed\r\n", success ? "" : "not ");
 		serial.busyWrite(buffer);
-		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", txBuffer.full() ? "" : "not ");
+		snprintf(buffer, sizeof(buffer), "Buffer is %sfull\r\n", testRingBuffer.full() ? "" : "not ");
 		serial.busyWrite(buffer);
 	}
 

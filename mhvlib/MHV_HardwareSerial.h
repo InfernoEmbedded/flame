@@ -58,11 +58,9 @@ ISR(mhvTxVect) { \
  * @param	_mhvBAUD		the baud rate requested
  */
 #define MHV_HARDWARESERIAL_CREATE(_mhvObjectName, _mhvRXBUFLEN, _mhvTXBUFCOUNT, _mhvSERIAL, _mhvBAUD) \
-		char _mhvObjectName ## _rxBuffer[_mhvRXBUFLEN + 1]; \
-		char _mhvObjectName ## _txBuffer[_mhvTXBUFCOUNT * sizeof(MHV_TX_BUFFER) + 1]; \
-		MHV_RingBuffer _mhvObjectName ## _rxBuf(_mhvObjectName ## _rxBuffer, sizeof(_mhvObjectName ## _rxBuffer)); \
-		MHV_RingBuffer _mhvObjectName ## _txBuf(_mhvObjectName ## _txBuffer, sizeof(_mhvObjectName ## _txBuffer)); \
-		MHV_HardwareSerial _mhvObjectName(&_mhvObjectName ## _rxBuf, &_mhvObjectName ## _txBuf, _mhvSERIAL, _mhvBAUD); \
+		MHV_RX_BUFFER_CREATE(_mhvObjectName ## RX, _mhvRXBUFLEN); \
+		MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTXBUFCOUNT); \
+		MHV_HardwareSerial _mhvObjectName(&_mhvObjectName ## RX, &_mhvObjectName ## RX, _mhvSERIAL, _mhvBAUD); \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
 #define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
