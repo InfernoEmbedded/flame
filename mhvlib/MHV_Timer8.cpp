@@ -31,7 +31,7 @@
 #include <avr/interrupt.h>
 
 /* Create a new timer
- * param: time the time in microseconds
+ * @param: time the time in microseconds
  */
 MHV_Timer8::MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 		volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
@@ -68,9 +68,9 @@ uint8_t MHV_Timer8::current(void) {
 
 
 /* Set the prescaler
- * param	time		the time in timer ticks
- * param	prescaler	the prescaler to set
- * param	factor		the prescale factor
+ * @param	time		the time in timer ticks
+ * @param	prescaler	the prescaler to set
+ * @param	factor		the prescale factor
  * return 0 on success
  */
 uint8_t MHV_Timer8::calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *prescaler, uint16_t *factor) {
@@ -135,15 +135,19 @@ uint8_t MHV_Timer8::calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *presc
 }
 
 /* Calculate the top register
- * param	time 		input: the time in timer ticks, output: the scaled timer ticks
- * param	factor		the prescaler factor
+ * @param	time 		input: the time in timer ticks, output: the scaled timer ticks
+ * @param	factor		the prescaler factor
  */
 void MHV_Timer8::calculateTop(uint32_t *time, uint16_t factor) {
 	*time = *time / factor - 1;
 	return;
 }
 
-/* Times are in microseconds
+/* Set the periods for channels 1 and 2
+ * Times are in microseconds
+ * @param	usec1	the period for channel 1
+ * @param	usec2	the period for channel 2
+ * @return false on success
  */
 bool MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 	MHV_TIMER_PRESCALER prescaler;
@@ -170,15 +174,18 @@ bool MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 	return false;
 }
 
+
+
+
 /* Set the prescaler (internal use only)
- * param	prescaler	the prescaler value (only the lowest 3 bits may be set)
+ * @param	prescaler	the prescaler value (only the lowest 3 bits may be set)
  */
 void MHV_Timer8::_setPrescaler(MHV_TIMER_PRESCALER prescaler) {
 	*_controlRegB = (*_controlRegB & 0xf8) | prescaler;
 }
 
 /* Get the prescaler
- * return the prescaler value
+ * @return the prescaler value
  */
 MHV_TIMER_PRESCALER MHV_Timer8::getPrescaler(void) {
 	return (MHV_TIMER_PRESCALER)(*_controlRegB & 0x07);
@@ -230,7 +237,7 @@ uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
 }
 
 /* set the prescaler
- * param 	prescaler	the prescaler value
+ * @param 	prescaler	the prescaler value
  */
 void MHV_Timer8::setPrescaler(MHV_TIMER_PRESCALER prescaler) {
 	_prescaler = prescaler;
@@ -267,9 +274,9 @@ void MHV_Timer8::setGenerationMode() {
 }
 
 /* Set the overflow periods
- * param	prescaler	the prescaler to use
- * param	time1		the first time in prescaled timer ticks
- * param	time2		the second time in prescaled timer ticks
+ * @param	prescaler	the prescaler to use
+ * @param	time1		the first time in prescaled timer ticks
+ * @param	time2		the second time in prescaled timer ticks
  */
 void MHV_Timer8::setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) {
 	uint8_t reg = SREG;

@@ -27,7 +27,8 @@ CPP_SRCS += \
 ../MHV_Shifter.cpp \
 ../MHV_SoftwareHBridge.cpp \
 ../MHV_Timer16.cpp \
-../MHV_Timer8.cpp 
+../MHV_Timer8.cpp \
+../MHV_VoltageRegulator.cpp 
 
 OBJS += \
 ./MHV_AD.o \
@@ -53,7 +54,8 @@ OBJS += \
 ./MHV_Shifter.o \
 ./MHV_SoftwareHBridge.o \
 ./MHV_Timer16.o \
-./MHV_Timer8.o 
+./MHV_Timer8.o \
+./MHV_VoltageRegulator.o 
 
 CPP_DEPS += \
 ./MHV_AD.d \
@@ -79,7 +81,8 @@ CPP_DEPS += \
 ./MHV_Shifter.d \
 ./MHV_SoftwareHBridge.d \
 ./MHV_Timer16.d \
-./MHV_Timer8.d 
+./MHV_Timer8.d \
+./MHV_VoltageRegulator.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

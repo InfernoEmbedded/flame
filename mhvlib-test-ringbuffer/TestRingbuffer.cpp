@@ -57,14 +57,14 @@ MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 // Space for 3 instances of MHV_TX_BUFFER
 #define TX_BUFFER_SIZE 3 * sizeof(MHV_TX_BUFFER) + 1
 char testBuf[TX_BUFFER_SIZE];
-MHV_RingBuffer testRingBuffer(txBuf, TX_BUFFER_SIZE);
+MHV_RingBuffer testRingBuffer(testBuf, TX_BUFFER_SIZE);
 
 int main(void) {
 // Enable interrupts
 	sei();
 
 	char buffer[80];
-	snprintf(buffer, sizeof(buffer), "Starting up, ring buffer is at %p\r\n", txBuf);
+	snprintf(buffer, sizeof(buffer), "Starting up, ring buffer is at %p\r\n", testBuf);
 	serial.busyWrite(buffer);
 
 	snprintf(buffer, sizeof(buffer), "Allocated %d bytes for buffer, it thinks it is %d bytes\r\n", TX_BUFFER_SIZE, testRingBuffer.size());
