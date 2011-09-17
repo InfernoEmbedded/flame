@@ -186,7 +186,7 @@ void MHV_Display_HD44780::control(bool displayOn, bool cursorOn, bool cursorBlin
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
  */
 void MHV_Display_HD44780::function(bool byteMode, bool multiLine, bool bigFont) {
-	uint8_t data = multiLine << 3 | bigFont << 2 | byteMode << 1;
+	uint8_t data = byteMode << 4 | multiLine << 3 | bigFont << 2;
 
 	if (!byteMode) {
 		// Set 4 bit transfer
@@ -230,18 +230,20 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
  */
 void MHV_Display_HD44780::init(bool byteMode, bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 		bool left2right, bool scroll) {
-	_byteMode = byteMode;
-
 /* Assume the worst case, we are called immediately after poweron
  * Also assume that the MCU init takes 0 time
  */
 	_delay_ms(HD44780_TINIT);
 
 // hardware initialization always set 8 bits mode
-	uint8_t resetData = multiLine << 3 | bigFont << 2 | 1 << 1;
+	_byteMode = true;
+	uint8_t resetData = 1 << 4 | multiLine << 3 | bigFont << 2 | 1;
 	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
 	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
 	writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+
+	_byteMode = byteMode;
+
 
 	function(byteMode, multiLine, bigFont);
 	_delay_us(39);

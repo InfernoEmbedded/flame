@@ -1,15 +1,15 @@
 Archive member included because of file (symbol)
 
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                              ./HD44780.o (MHV_Device_TX::write_P(char const*))
+                              ./HD44780_ShiftRegister.o (MHV_Device_TX::write_P(char const*))
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
-                              ./HD44780.o (MHV_Display_Character::writeString_P(int*, unsigned int, char const*))
+                              ./HD44780_ShiftRegister.o (MHV_Display_Character::writeString_P(int*, unsigned int, char const*))
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                              ./HD44780.o (MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*))
+                              ./HD44780_ShiftRegister.o (MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*))
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                              ./HD44780.o (MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char))
+                              ./HD44780_ShiftRegister.o (MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char))
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                              ./HD44780.o (MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char))
+                              ./HD44780_ShiftRegister.o (MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char))
 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
                               A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o) (MHV_Display_HD44780::_writeChar(char))
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_udivmodsi4.o)
@@ -17,11 +17,11 @@ c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ud
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
                               c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o (exit)
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_copy_data.o)
-                              ./HD44780.o (__do_copy_data)
+                              ./HD44780_ShiftRegister.o (__do_copy_data)
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_clear_bss.o)
-                              ./HD44780.o (__do_clear_bss)
+                              ./HD44780_ShiftRegister.o (__do_clear_bss)
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ctors.o)
-                              ./HD44780.o (__do_global_ctors)
+                              ./HD44780_ShiftRegister.o (__do_global_ctors)
 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_tablejump_elpm.o)
                               c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ctors.o) (__tablejump_elpm__)
 
@@ -29,8 +29,8 @@ Discarded input sections
 
  .data          0x00000000        0x0 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
  .bss           0x00000000        0x0 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
- .text          0x00000000        0x0 ./HD44780.o
- .bss           0x00000000        0x0 ./HD44780.o
+ .text          0x00000000        0x0 ./HD44780_ShiftRegister.o
+ .bss           0x00000000        0x0 ./HD44780_ShiftRegister.o
  .text          0x00000000        0x0 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
  .data          0x00000000        0x0 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
  .bss           0x00000000        0x0 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
@@ -164,7 +164,7 @@ Linker script and memory map
 
 Address of section .data set to 0x800200
 LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
-LOAD ./HD44780.o
+LOAD ./HD44780_ShiftRegister.o
 LOAD A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a
 LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a
 LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51\libm.a
@@ -262,7 +262,7 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1486
+.text           0x00000000     0x14f0
  *(.vectors)
  .vectors       0x00000000       0xe4 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
                 0x00000000                __vector_default
@@ -270,7 +270,7 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
  *(.vectors)
  *(.progmem.gcc*)
  *(.progmem*)
- .progmem.data  0x000000e4       0x76 ./HD44780.o
+ .progmem.data  0x000000e4       0x76 ./HD44780_ShiftRegister.o
  .progmem.data  0x0000015a        0x4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
                 0x0000015e                . = ALIGN (0x2)
                 0x0000015e                __trampolines_start = .
@@ -284,7 +284,7 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
  *(.lowtext*)
                 0x0000015e                __ctors_start = .
  *(.ctors)
- .ctors         0x0000015e        0x2 ./HD44780.o
+ .ctors         0x0000015e        0x2 ./HD44780_ShiftRegister.o
                 0x00000160                __ctors_end = .
                 0x00000160                __dtors_start = .
  *(.dtors)
@@ -382,18 +382,18 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
                 0x000001c6                . = ALIGN (0x2)
  *(.text.*)
  .text.__cxa_pure_virtual
-                0x000001c6        0x4 ./HD44780.o
+                0x000001c6        0x4 ./HD44780_ShiftRegister.o
                 0x000001c6                __cxa_pure_virtual
  .text.__vector_21
-                0x000001ca       0x54 ./HD44780.o
+                0x000001ca       0x54 ./HD44780_ShiftRegister.o
                 0x000001ca                __vector_21
  .text._Z13textAnimationP21MHV_Display_Character
-                0x0000021e       0x3a ./HD44780.o
+                0x0000021e       0x3a ./HD44780_ShiftRegister.o
                 0x0000021e                textAnimation(MHV_Display_Character*)
- .text.main     0x00000258       0x76 ./HD44780.o
+ .text.main     0x00000258       0x76 ./HD44780_ShiftRegister.o
                 0x00000258                main
  .text._GLOBAL__I___cxa_pure_virtual
-                0x000002ce       0xfc ./HD44780.o
+                0x000002ce       0xfc ./HD44780_ShiftRegister.o
  .text._ZN13MHV_Device_TXC2EP14MHV_RingBuffer
                 0x000003ca       0x20 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
                 0x000003ca                MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer*)
@@ -445,103 +445,103 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
                 0x00000b96      0x100 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
                 0x00000b96                MHV_Display_Character::txAnimation(unsigned int)
  .text._ZN34MHV_Display_HD44780_Shift_Register9writeByteEhb
-                0x00000c96       0x8a A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000c96       0xf4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
                 0x00000c96                MHV_Display_HD44780_Shift_Register::writeByte(unsigned char, bool)
  .text._ZN34MHV_Display_HD44780_Shift_Register8readByteEb
-                0x00000d20        0x4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                0x00000d20                MHV_Display_HD44780_Shift_Register::readByte(bool)
+                0x00000d8a        0x4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000d8a                MHV_Display_HD44780_Shift_Register::readByte(bool)
  .text._ZN34MHV_Display_HD44780_Shift_Register6isBusyEv
-                0x00000d24        0x4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                0x00000d24                MHV_Display_HD44780_Shift_Register::isBusy()
+                0x00000d8e        0x4 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000d8e                MHV_Display_HD44780_Shift_Register::isBusy()
  .text._ZN34MHV_Display_HD44780_Shift_Register5delayE19mhv_hd44780_command
-                0x00000d28       0x4c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                0x00000d28                MHV_Display_HD44780_Shift_Register::delay(mhv_hd44780_command)
+                0x00000d92       0x4c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000d92                MHV_Display_HD44780_Shift_Register::delay(mhv_hd44780_command)
  .text._ZN34MHV_Display_HD44780_Shift_RegisterC2EPVhS1_S1_haS1_S1_S1_haS1_S1_S1_hahjP14MHV_RingBuffer
-                0x00000d74       0xcc A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                0x00000d74                MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*)
-                0x00000d74                MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*)
+                0x00000dde       0xcc A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000dde                MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*)
+                0x00000dde                MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*)
  .text._ZN34MHV_Display_HD44780_Shift_Register4initEbbbbbb
-                0x00000e40       0x2e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                0x00000e40                MHV_Display_HD44780_Shift_Register::init(bool, bool, bool, bool, bool, bool)
+                0x00000eaa       0x2e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
+                0x00000eaa                MHV_Display_HD44780_Shift_Register::init(bool, bool, bool, bool, bool, bool)
  .text._ZN14MHV_RingBufferC2EPch
-                0x00000e6e        0xe A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e6e                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
-                0x00000e6e                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+                0x00000ed8        0xe A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000ed8                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+                0x00000ed8                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
  .text._ZN14MHV_RingBuffer6appendEc
-                0x00000e7c       0x2a A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000e7c                MHV_RingBuffer::append(char)
+                0x00000ee6       0x2a A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000ee6                MHV_RingBuffer::append(char)
  .text._ZN14MHV_RingBuffer7consumeEv
-                0x00000ea6       0x2c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000ea6                MHV_RingBuffer::consume()
+                0x00000f10       0x2c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f10                MHV_RingBuffer::consume()
  .text._ZN14MHV_RingBuffer6lengthEv
-                0x00000ed2       0x26 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000ed2                MHV_RingBuffer::length()
+                0x00000f3c       0x26 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f3c                MHV_RingBuffer::length()
  .text._ZN14MHV_RingBuffer7consumeEPvh
-                0x00000ef8       0x5c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000ef8                MHV_RingBuffer::consume(void*, unsigned char)
+                0x00000f62       0x5c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000f62                MHV_RingBuffer::consume(void*, unsigned char)
  .text._ZN14MHV_RingBuffer4fullEh
-                0x00000f54       0x40 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000f54                MHV_RingBuffer::full(unsigned char)
+                0x00000fbe       0x40 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000fbe                MHV_RingBuffer::full(unsigned char)
  .text._ZN14MHV_RingBuffer6appendEPKvh
-                0x00000f94       0x5e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                0x00000f94                MHV_RingBuffer::append(void const*, unsigned char)
+                0x00000ffe       0x5e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000ffe                MHV_RingBuffer::append(void const*, unsigned char)
  .text._ZN10MHV_Timer8C2E14mhv_timer_typePVhS2_S2_S2_S2_S2_h
-                0x00000ff2       0x6c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                0x00000ff2                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
-                0x00000ff2                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
+                0x0000105c       0x6c A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
+                0x0000105c                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
+                0x0000105c                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
  .text._ZN10MHV_Timer813_setPrescalerE19mhv_timer_prescaler
-                0x0000105e       0x14 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                0x0000105e                MHV_Timer8::_setPrescaler(mhv_timer_prescaler)
+                0x000010c8       0x14 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
+                0x000010c8                MHV_Timer8::_setPrescaler(mhv_timer_prescaler)
  .text._ZN10MHV_Timer87disableEv
-                0x00001072       0x60 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                0x00001072                MHV_Timer8::disable()
+                0x000010dc       0x60 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
+                0x000010dc                MHV_Timer8::disable()
  .text._ZN10MHV_Timer88trigger1Ev
-                0x000010d2       0x22 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                0x000010d2                MHV_Timer8::trigger1()
+                0x0000113c       0x22 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
+                0x0000113c                MHV_Timer8::trigger1()
  .text._ZN19MHV_Display_HD4478010_writeCharEc
-                0x000010f4       0x58 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000010f4                MHV_Display_HD44780::_writeChar(char)
+                0x0000115e       0x58 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x0000115e                MHV_Display_HD44780::_writeChar(char)
  .text._ZN19MHV_Display_HD447809_readCharEv
-                0x0000114c       0x2e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x0000114c                MHV_Display_HD44780::_readChar()
+                0x000011b6       0x2e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x000011b6                MHV_Display_HD44780::_readChar()
  .text._ZN19MHV_Display_HD44780C2EhjP14MHV_RingBuffer
-                0x0000117a       0x28 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x0000117a                MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*)
-                0x0000117a                MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*)
+                0x000011e4       0x28 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x000011e4                MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*)
+                0x000011e4                MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*)
  .text._ZN19MHV_Display_HD4478012writeCommandE19mhv_hd44780_commandh
-                0x000011a2       0x46 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000011a2                MHV_Display_HD44780::writeCommand(mhv_hd44780_command, unsigned char)
+                0x0000120c       0x46 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x0000120c                MHV_Display_HD44780::writeCommand(mhv_hd44780_command, unsigned char)
  .text._ZN19MHV_Display_HD447805clearEv
-                0x000011e8       0x36 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000011e8                MHV_Display_HD44780::clear()
+                0x00001252       0x36 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001252                MHV_Display_HD44780::clear()
  .text._ZN19MHV_Display_HD447809entryModeEbb
-                0x0000121e       0x32 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x0000121e                MHV_Display_HD44780::entryMode(bool, bool)
+                0x00001288       0x32 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001288                MHV_Display_HD44780::entryMode(bool, bool)
  .text._ZN19MHV_Display_HD447807controlEbbb
-                0x00001250       0x46 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x00001250                MHV_Display_HD44780::control(bool, bool, bool)
+                0x000012ba       0x46 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x000012ba                MHV_Display_HD44780::control(bool, bool, bool)
  .text._ZN19MHV_Display_HD447808functionEbbb
-                0x00001296       0x60 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x00001296                MHV_Display_HD44780::function(bool, bool, bool)
+                0x00001300       0x60 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001300                MHV_Display_HD44780::function(bool, bool, bool)
  .text._ZN19MHV_Display_HD4478012addressDDRAMEh
-                0x000012f6       0x3e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000012f6                MHV_Display_HD44780::addressDDRAM(unsigned char)
+                0x00001360       0x3e A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001360                MHV_Display_HD44780::addressDDRAM(unsigned char)
  .text._ZN19MHV_Display_HD4478010_setCursorEhh
-                0x00001334       0x72 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x00001334                MHV_Display_HD44780::_setCursor(unsigned char, unsigned char)
+                0x0000139e       0x72 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x0000139e                MHV_Display_HD44780::_setCursor(unsigned char, unsigned char)
  .text._ZN19MHV_Display_HD4478010_setCursorEjj
-                0x000013a6        0x6 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000013a6                MHV_Display_HD44780::_setCursor(unsigned int, unsigned int)
+                0x00001410        0x6 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001410                MHV_Display_HD44780::_setCursor(unsigned int, unsigned int)
  .text._ZN19MHV_Display_HD447804initEbbbbbbb
-                0x000013ac       0xce A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
-                0x000013ac                MHV_Display_HD44780::init(bool, bool, bool, bool, bool, bool, bool)
- .text.libgcc   0x0000147a        0x8 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_tablejump_elpm.o)
-                0x0000147a                __tablejump_elpm__
-                0x00001482                . = ALIGN (0x2)
+                0x00001416       0xce A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
+                0x00001416                MHV_Display_HD44780::init(bool, bool, bool, bool, bool, bool, bool)
+ .text.libgcc   0x000014e4        0x8 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_tablejump_elpm.o)
+                0x000014e4                __tablejump_elpm__
+                0x000014ec                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001482        0x0 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
-                0x00001482                _exit
-                0x00001482                exit
+ .fini9         0x000014ec        0x0 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
+                0x000014ec                _exit
+                0x000014ec                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -560,14 +560,14 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001482        0x4 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
+ .fini0         0x000014ec        0x4 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001486                _etext = .
+                0x000014f0                _etext = .
 
-.data           0x00800200       0x9a load address 0x00001486
+.data           0x00800200       0x9a load address 0x000014f0
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
- .data          0x00800200       0x59 ./HD44780.o
+ .data          0x00800200       0x59 ./HD44780_ShiftRegister.o
  *(.data*)
  *(.rodata)
  *(.rodata*)
@@ -594,19 +594,19 @@ LOAD c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.
  *(.bss)
  *(.bss*)
  .bss.txBufferBuf
-                0x0080029a       0x51 ./HD44780.o
+                0x0080029a       0x51 ./HD44780_ShiftRegister.o
                 0x0080029a                txBufferBuf
- .bss.txBuffer  0x008002eb        0x5 ./HD44780.o
+ .bss.txBuffer  0x008002eb        0x5 ./HD44780_ShiftRegister.o
                 0x008002eb                txBuffer
  .bss.tickTimer
-                0x008002f0       0x1a ./HD44780.o
+                0x008002f0       0x1a ./HD44780_ShiftRegister.o
                 0x008002f0                tickTimer
- .bss.display   0x0080030a       0x29 ./HD44780.o
+ .bss.display   0x0080030a       0x29 ./HD44780_ShiftRegister.o
                 0x0080030a                display
  *(COMMON)
                 0x00800333                PROVIDE (__bss_end, .)
-                0x00001486                __data_load_start = LOADADDR (.data)
-                0x00001520                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000014f0                __data_load_start = LOADADDR (.data)
+                0x0000158a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800333        0x0
                 0x00800333                PROVIDE (__noinit_start, .)
@@ -707,15 +707,15 @@ MHV_Device_TX::moreTX()                           A:\eclipse\mhvlib/ATmega1280_1
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Device_TX::nextCharacter()                    A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
 MHV_Device_TX::write(char const*)                 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Device_TX::write(char const*, unsigned int)   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Device_TX::write(char const*, unsigned int, void (*)(char const*)) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
 MHV_Device_TX::write(char const*, void (*)(char const*)) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
 MHV_Device_TX::write_P(char const*)               A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Device_TX::write_P(char const*, unsigned int) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Display_Character::MHV_Display_Character(unsigned int, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::MHV_Display_Character(unsigned int, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
@@ -729,13 +729,13 @@ MHV_Display_Character::setCursor(unsigned int, unsigned int) A:\eclipse\mhvlib/A
 MHV_Display_Character::setScroll(bool)            A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::setWrap(bool)              A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::txAnimation(unsigned int)  A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Display_Character::writeBuffer(int*, unsigned int, char const*, unsigned int) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::writeBuffer_P(int*, unsigned int, char const*, unsigned int) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::writeChar(char)            A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::writeString(int*, unsigned int, char const*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 MHV_Display_Character::writeString_P(int*, unsigned int, char const*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
 MHV_Display_HD44780::MHV_Display_HD44780(unsigned char, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
@@ -757,16 +757,16 @@ MHV_Display_HD44780::init(bool, bool, bool, bool, bool, bool, bool) A:\eclipse\m
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_Display_HD44780::writeCommand(mhv_hd44780_command, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
 MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char, signed char, unsigned char, unsigned int, MHV_RingBuffer*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_Display_HD44780_Shift_Register::delay(mhv_hd44780_command) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_Display_HD44780_Shift_Register::init(bool, bool, bool, bool, bool, bool) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Display_HD44780_Shift_Register::isBusy()      A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_Display_HD44780_Shift_Register::readByte(bool) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_Display_HD44780_Shift_Register::writeByte(unsigned char, bool) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
 MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
 MHV_RingBuffer::append(char)                      A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
 MHV_RingBuffer::append(void const*, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_RingBuffer.o)
@@ -785,7 +785,7 @@ MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib/ATmega1280_1
 MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Timer8::_setPrescaler(mhv_timer_prescaler)    A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::calculatePrescaler(unsigned long, mhv_timer_prescaler*, unsigned int*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::calculateTop(unsigned long*, unsigned int) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
@@ -812,14 +812,14 @@ MHV_Timer8::setPrescaler(mhv_timer_prescaler)     A:\eclipse\mhvlib/ATmega1280_1
 MHV_Timer8::setTop(unsigned char)                 A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*) A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 MHV_Timer8::trigger1()                            A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 MHV_Timer8::trigger2()                            A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Timer8.o)
 __bad_interrupt                                   c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __bss_end                                         c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_clear_bss.o)
 __bss_start                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_clear_bss.o)
 __ctors_end                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ctors.o)
 __ctors_start                                     c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ctors.o)
-__cxa_pure_virtual                                ./HD44780.o
+__cxa_pure_virtual                                ./HD44780_ShiftRegister.o
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
@@ -827,15 +827,15 @@ __data_end                                        c:/program files (x86)/mhv avr
 __data_load_start                                 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_copy_data.o)
 __data_start                                      c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_copy_data.o)
 __do_clear_bss                                    c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_clear_bss.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 __do_copy_data                                    c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_copy_data.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780_Shift_Register.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
                                                   A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 __do_global_ctors                                 c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_ctors.o)
-                                                  ./HD44780.o
+                                                  ./HD44780_ShiftRegister.o
 __heap_end                                        c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __init                                            c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __stack                                           c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
@@ -856,7 +856,7 @@ __vector_18                                       c:/program files (x86)/mhv avr
 __vector_19                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __vector_2                                        c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __vector_20                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
-__vector_21                                       ./HD44780.o
+__vector_21                                       ./HD44780_ShiftRegister.o
                                                   c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __vector_22                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __vector_23                                       c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
@@ -903,15 +903,15 @@ __vector_9                                        c:/program files (x86)/mhv avr
 __vector_default                                  c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 __vectors                                         c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
 _exit                                             c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
-display                                           ./HD44780.o
+display                                           ./HD44780_ShiftRegister.o
 exit                                              c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/avr51\libgcc.a(_exit.o)
                                                   c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
-main                                              ./HD44780.o
+main                                              ./HD44780_ShiftRegister.o
                                                   c:/program files (x86)/mhv avr tools/bin/../lib/gcc/avr/4.5.2/../../../../avr/lib/avr51/crtm1280.o
-textAnimation(MHV_Display_Character*)             ./HD44780.o
-tickTimer                                         ./HD44780.o
-txBuffer                                          ./HD44780.o
-txBufferBuf                                       ./HD44780.o
+textAnimation(MHV_Display_Character*)             ./HD44780_ShiftRegister.o
+tickTimer                                         ./HD44780_ShiftRegister.o
+txBuffer                                          ./HD44780_ShiftRegister.o
+txBufferBuf                                       ./HD44780_ShiftRegister.o
 vtable for MHV_Device_TX                          A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Device_TX.o)
 vtable for MHV_Display_Character                  A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_Character.o)
 vtable for MHV_Display_HD44780                    A:\eclipse\mhvlib/ATmega1280_16MHz\libmhvlib.a(MHV_Display_HD44780.o)

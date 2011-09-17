@@ -40,7 +40,7 @@
 
 
 /**
- * A class for operating HD44780 based LCD displays via a shift register as 74HC164
+ * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164
  *
  * @param	data*		pin declaration for the data port on the MCU
  * @param	enable*		pin declaration for the enable port on the MCU
@@ -71,11 +71,11 @@ MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(volatile 
 }
 
 /**
- * Write a byte to the display
- * @param 	byte	the data to write
- * @param	rs		true to set the RS pin (aka data pin )
+ * Write 8 data bits to the display
+ * @param 	byte	the data to write (nibble or true byte)
+ * @param	rs		true to set the RS pin
  */
-void MHV_Display_HD44780_Shift_Register::writeByte(uint8_t byte, bool rs) {
+void MHV_Display_HD44780_Shift_Register::pushBits(uint8_t byte, bool rs) {
 // setup RS
 	byte |= (rs ? 0x01 : 0x00);
 
@@ -88,6 +88,24 @@ void MHV_Display_HD44780_Shift_Register::writeByte(uint8_t byte, bool rs) {
 	_delay_loop_1(HD44780_TW);
 	mhv_pinOff(0, _enableOut, 0, _enablePin, -1);
 	_delay_loop_1(HD44780_TW);
+}
+
+/**
+ * Write a byte to the display
+ * @param 	byte	the data to write
+ * @param	rs		true to set the RS pin (aka data pin )
+ */
+void MHV_Display_HD44780_Shift_Register::writeByte(uint8_t byte, bool rs) {
+	if (_byteMode) {
+// 8 bits interface mode
+		pushBits(byte, rs);
+	} else {
+// 4 bits interface mode
+// Write high order nibble
+		pushBits(byte & 0xF0, rs);
+// Write low order nibble
+		pushBits(byte << 4, rs);
+	}
 }
 
 /**
@@ -138,6 +156,6 @@ void MHV_Display_HD44780_Shift_Register::delay(MHV_HD44780_COMMAND command) {
  */
 void MHV_Display_HD44780_Shift_Register::init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 				bool left2right, bool scroll) {
-	MHV_Display_HD44780::init(false, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
+	MHV_Display_HD44780::init(true, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
 }
 

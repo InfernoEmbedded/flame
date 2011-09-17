@@ -66,7 +66,7 @@
  */
 #define MHV_SHIFTOUT_BYTE(mhv_data) \
 do { \
-	uint8_t		mhv_shift_i; \
+	int8_t		mhv_shift_i; \
 \
 for SHIFTOUT_BYTE_LOOP { \
 		if ((mhv_data >> mhv_shift_i) & 0x01) { \

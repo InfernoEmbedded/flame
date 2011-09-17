@@ -54,9 +54,6 @@ extern "C" void __cxa_pure_virtual() {
 // A function that has no effect other than its return value
 #define PURE __attribute__ ((pure))
 
-#undef PROGMEM
-#define PROGMEM __attribute__((section(".progmem.data")))
-
 #if defined(__AVR_ATtiny2313__)
 #include <MHV_io_ATtiny2313.h>
 #elif defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)

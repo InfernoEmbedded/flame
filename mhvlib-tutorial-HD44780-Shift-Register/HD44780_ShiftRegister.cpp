@@ -26,7 +26,7 @@
  */
 
 /**
- * Illustrates the use a 16x2 LCD display with a shift register 74HC164
+ * Illustrates the use of a 20x4 LCD display with a 74HC164 shift register
  * on an AVR ATMEGA 328P.
  *
  *  The circuit (see docs/HD44780_Shift_Register.pdf for a schematic):

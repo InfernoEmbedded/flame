@@ -61,7 +61,7 @@ sizedummy \
 all: mhvlib-test.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
 
 # Tool invocations
 mhvlib-test.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a

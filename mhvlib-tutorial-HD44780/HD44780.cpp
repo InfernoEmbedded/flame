@@ -48,7 +48,6 @@
 #include <MHV_io.h>
 #include <MHV_Display_HD44780_Direct_Connect.h>
 #include <MHV_Timer8.h>
-
 #include <avr/pgmspace.h>
 
 // A buffer for the display to send data, it only contains pointers and has space for 10 elements

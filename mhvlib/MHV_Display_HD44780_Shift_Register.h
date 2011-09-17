@@ -40,6 +40,7 @@ protected:
 	volatile uint8_t	*_clockOut;
 	uint8_t 			_clockPin;
 
+	void pushBits(uint8_t byte, bool rs);
 	void writeByte(uint8_t byte, bool rs);
 	uint8_t readByte(bool rs);
 
