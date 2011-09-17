@@ -156,6 +156,6 @@ void MHV_Display_HD44780_Shift_Register::delay(MHV_HD44780_COMMAND command) {
  */
 void MHV_Display_HD44780_Shift_Register::init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 				bool left2right, bool scroll) {
-	MHV_Display_HD44780::init(true, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
+	MHV_Display_HD44780::init(false, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
 }
 
