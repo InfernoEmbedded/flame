@@ -177,6 +177,7 @@ int8_t MHV_EEPROM::write(void *buffer, uint16_t address, uint16_t length,
 	EEAR = address;
 	EEDR = ((uint8_t *)buffer)[0];
 	EECR = _BV(EEMPE);
+
 	// Enable the ready interrupt, further writes will continue in the interrupt handler
 	EECR = _BV(EEMPE) | _BV(EEPE) | _BV(EERIE);
 
@@ -195,6 +196,8 @@ void MHV_EEPROM::writeInterrupt() {
 		if (_doneCallback) {
 			_doneCallback(_writeBuffer, _doneCallbackData);
 		}
+
+		return;
 	}
 
 	EEAR = _writeAddress + _bytesWritten;
@@ -212,4 +215,6 @@ bool MHV_EEPROM::isBusy() {
 	if ((EECR & _BV(EEPE)) || _lock.check()) {
 		return MHV_EEPROM_BUSY;
 	}
+
+	return false;
 }

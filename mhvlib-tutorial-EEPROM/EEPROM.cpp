@@ -81,26 +81,29 @@ int main(void) {
 	uint16_t 	crc;
 	char		buf[DATA_MAX_LENGTH];
 
+	// Enable interrupts
+		sei();
+
 	while (1) {
 		eeprom.read(&length, LENGTH_ADDRESS, (uint16_t) sizeof(length));
 
 		if (length > DATA_MAX_LENGTH) {
-			serial.busyWrite_P(PSTR("EEPROM length is invalid\n"));
+			serial.busyWrite_P(PSTR("EEPROM length is invalid\r\n"));
 		} else {
 			// Validate the EEPROM contents
 			eeprom.busyRead(&crc, CRC_ADDRESS, (uint16_t) sizeof(crc));
 			uint16_t calculatedCRC = calculateCRC(length);
 			if (crc == calculatedCRC) {
-				serial.busyWrite_P(PSTR("EEPROM checksum is valid\n"));
+				serial.busyWrite_P(PSTR("EEPROM checksum is valid\r\n"));
 
 				// Read the EEPROM contents into the buffer
 				eeprom.busyRead(buf, DATA_ADDRESS, length);
 
 				serial.busyWrite_P(PSTR("EEPROM contains: '"));
 				serial.busyWrite(buf, length);
-				serial.busyWrite_P(PSTR("'\n"));
+				serial.busyWrite_P(PSTR("'\r\n"));
 			} else {
-				serial.busyWrite_P(PSTR("EEPROM checksum is invalid\n"));
+				serial.busyWrite_P(PSTR("EEPROM checksum is invalid\r\n"));
 			}
 		}
 
@@ -112,21 +115,21 @@ int main(void) {
 		length = strlen(buf);
 
 		// Write the length to the EEPROM
-		serial.busyWrite_P(PSTR("Writing length\n"));
+		serial.busyWrite_P(PSTR("\r\nWriting length\r\n"));
 		eeprom.busyWrite(&length, LENGTH_ADDRESS, sizeof(length));
 
 		// Write the data to the EEPROM asynchronously
 		serial.busyWrite_P(PSTR("Writing data"));
 		eeprom.write(buf, DATA_ADDRESS, length, NULL, NULL);
 		while (eeprom.isBusy()) {
-			serial.write_P(PSTR("."));
+//			serial.write_P(PSTR("."));
 			_delay_ms(10);
 		}
-		serial.busyWrite_P(PSTR("\nDone\n"));
+		serial.busyWrite_P(PSTR("\r\nDone\r\n"));
 
 		// Write the checksum to the EEPROM
 		uint16_t calculatedCRC = calculateCRC(length);
-		serial.busyWrite_P(PSTR("Writing CRC\n"));
+		serial.busyWrite_P(PSTR("Writing CRC\r\n"));
 		eeprom.busyWrite(&calculatedCRC, CRC_ADDRESS, sizeof(calculatedCRC));
 	}
 
