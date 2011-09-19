@@ -45,7 +45,6 @@ protected:
 	uint8_t readByte(bool rs);
 
 	bool isBusy();
-	inline void pulseHD44780();
 	void delay(MHV_HD44780_COMMAND command);
 
 public:

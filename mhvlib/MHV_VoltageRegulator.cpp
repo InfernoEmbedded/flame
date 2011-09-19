@@ -26,27 +26,31 @@
  */
 
 /*
-* Allows the AVR to act as a voltage regulator
-* Inspired by: http://spritesmods.com/?art=ucboost
-*
-* Boost Mode:
-* 	Refer to http://www.ladyada.net/library/diyboostcalc.html for the schematic & calculator
-*
-* Buck mode:
-*  Refer to http://www.daycounter.com/Calculators/Switching-Converter-Calculator.phtml for the schematic & calculator
-*
-* The ADC input is capped at 1.1V or 2.56V - you must use a resistor divider (total impedance should be <10kOhm)
-* to bring the feedback voltage down into this range. Use the divider parameter to tell the library the value
-* of this divider network
-*/
+ * Allows the AVR to act as a voltage regulator
+ * Inspired by: http://spritesmods.com/?art=ucboost
+ *
+ * Boost Mode:
+ * 	Refer to http://www.ladyada.net/library/diyboostcalc.html for the schematic & calculator
+ *
+ * Buck mode:
+ *  Refer to http://www.daycounter.com/Calculators/Switching-Converter-Calculator.phtml for the schematic & calculator
+ *
+ * The ADC input is capped at 1.1V or 2.56V - you must use a resistor divider (total impedance should be <10kOhm)
+ * to bring the feedback voltage down into this range. Use the divider parameter to tell the library the value
+ * of this divider network
+ */
 
 #include <MHV_io.h>
 #include <MHV_VoltageRegulator.h>
 #include <MHV_AD.h>
 
+#include <MHV_HardwareSerial.h>
+extern MHV_HardwareSerial serial;
+
 #ifdef MHV_AD_RESOLUTION
 
-/* Initialize the library
+/**
+ * Initialise the library
  * @param mode			the mode the converter runs in (VREG_BUCK, VREG_BOOST)
  * @param voltage		the voltage to regulate to
  * @param vrefVoltage	the reference voltage value
@@ -57,9 +61,10 @@
  * @param adcChannel	the ADC channel
  */
 MHV_VoltageRegulator::MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, float vrefVoltage, uint8_t vref,
-		float divider, MHV_Timer8 *timer, uint8_t channel) {
+		float divider, MHV_Timer16 *timer, uint8_t channel) {
 	_targetADC = (uint16_t)(voltage * divider * MHV_AD_RESOLUTION / vrefVoltage);
 	_vref = vref;
+	_vrefVoltage = vrefVoltage;
 	_timer = timer;
 	_adcChannel = channel;
 	_mode = mode;
@@ -67,14 +72,17 @@ MHV_VoltageRegulator::MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, f
 	_lastADC = 0;
 	_lastMoveUp = true;
 	_invert = false;
+	_divider = divider;
 }
 
 /* Regulate as a boosting regulator
  */
 inline void MHV_VoltageRegulator::regulateBoost() {
 	uint16_t adc = mhv_ad_busyRead(_adcChannel, _vref);
+MHV_HARDWARESERIAL_DEBUG(serial, "ADC is %u, target ADC is %u", adc, _targetADC);
 
 	uint16_t newPWM = (uint16_t)(_pwm * (float)_targetADC / (float)adc);
+//	uint16_t newPWM;
 
 	if (newPWM == _pwm) {
 		if (_targetADC < adc) {
@@ -87,20 +95,23 @@ inline void MHV_VoltageRegulator::regulateBoost() {
 	// set a minimum on and off time - boost regulators are useless if the transistor is always on or off
 	if (newPWM < 1) {
 		newPWM = 1;
-	} else if (newPWM > _timer->getTop()) {
-		newPWM = 200;
+	} else if (newPWM + 1 > _timer->getTop()) {
+		newPWM = _timer->getTop() - 1;
 	}
+
+MHV_HARDWARESERIAL_DEBUG(serial, "newPWM is %u", newPWM);
 
 	_pwm = newPWM;
 	_timer->setOutput2(_pwm);
+
+	_lastADC = adc;
 }
 
-/* Regulate as a buck regulator
+/**
+ * Regulate as a buck regulator
  */
 inline void MHV_VoltageRegulator::regulateBuck() {
 	uint16_t adc = mhv_ad_busyRead(_adcChannel, _vref);
-
-	_lastADC = adc;
 
 	if (adc < _targetADC) {
 		_lastMoveUp = true;
@@ -120,27 +131,54 @@ inline void MHV_VoltageRegulator::regulateBuck() {
 // set a minimum on and off time
 		if (newPWM < 1) {
 			newPWM = 1;
-		} else if (newPWM > 255) {
-			newPWM = 255;
+		} else if (newPWM > uint16_t(_timer->getTop() - 1)) {
+			newPWM = _timer->getTop() - 1;
 		}
 
 		_pwm = newPWM;
 		_timer->setOutput2(_pwm);
 	}
+
+	_lastADC = adc;
 }
 
-/* Adjust the duty cycle to bring the voltage closer to what we want
+/**
+ * Adjust the duty cycle to bring the voltage closer to what we want
  * Call this function periodically to ensure regulation
  */
 void MHV_VoltageRegulator::regulate() {
 	switch (_mode) {
-	case VREG_MODE_BOOST:
+	case MHV_VREG_MODE_BOOST:
 		regulateBoost();
 		break;
-	case VREG_MODE_BUCK:
+	case MHV_VREG_MODE_BUCK:
 		regulateBuck();
 		break;
 	}
 }
 
+/**
+ * Start regulating
+ */
+void MHV_VoltageRegulator::enable() {
+	_timer->enable();
+	_timer->setOutput2(1);
+
+	MHV_AD_ENABLE;
+}
+
+/**
+ * Stop regulating
+ */
+void MHV_VoltageRegulator::disable() {
+	_timer->setOutput2(0);
+	_timer->disable();
+}
+
+/**
+ * Get the voltage as of when regulate was last called
+ */
+float MHV_VoltageRegulator::getVoltage() {
+	return (float)(_lastADC * _vrefVoltage) / (_divider * MHV_AD_RESOLUTION);
+}
 #endif

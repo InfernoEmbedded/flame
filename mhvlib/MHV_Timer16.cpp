@@ -130,6 +130,7 @@ void MHV_Timer16::setTop(uint16_t value) {
 		*_inputCapture1 = value;
 
 		SREG = reg;
+
 	default:
 		break;
 	}

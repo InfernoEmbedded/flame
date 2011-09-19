@@ -29,11 +29,11 @@
 #define MHV_VOLTAGEREGULATOR_H_
 
 #ifdef MHV_AD_RESOLUTION
-#include <MHV_Timer8.h>
+#include <MHV_Timer16.h>
 
 enum mhv_vreg_modes {
-	VREG_MODE_BUCK,
-	VREG_MODE_BOOST
+	MHV_VREG_MODE_BUCK,
+	MHV_VREG_MODE_BOOST
 };
 typedef enum mhv_vreg_modes MHV_VREG_MODES;
 
@@ -42,25 +42,27 @@ class MHV_VoltageRegulator {
 private:
 	MHV_VREG_MODES	_mode;
 	uint8_t			_vref;
-
-
+	float			_vrefVoltage;
 	uint16_t		_targetADC;
-	MHV_Timer8		*_timer;
+	MHV_Timer16		*_timer;
 	uint8_t			_adcChannel;
-	uint8_t			_pwm;	// The current PWM rate
+	uint16_t		_pwm;	// The current PWM rate
 	bool			_lastMoveUp;
 	bool			_invert;
 	uint16_t		_lastADC;
+	float			_divider;
 
 	void regulateBoost();
 	void regulateBuck();
 
 public:
 	MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, float vrefVoltage, uint8_t vref,
-			float divider, MHV_Timer8 *timer, uint8_t channel);
-	void stop();
+			float divider, MHV_Timer16 *timer, uint8_t channel);
+	void enable();
+	void disable();
+	float getVoltage();
 	void regulate();
 };
 
-#endif // MHV_AD_CHANNEL_0
+#endif // MHV_AD_RESOLUTION
 #endif // MHV_VOLTAGEREGULATOR_H_
