@@ -44,9 +44,6 @@
 #include <MHV_VoltageRegulator.h>
 #include <MHV_AD.h>
 
-#include <MHV_HardwareSerial.h>
-extern MHV_HardwareSerial serial;
-
 #ifdef MHV_AD_RESOLUTION
 
 /**
@@ -79,10 +76,7 @@ MHV_VoltageRegulator::MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, f
  */
 inline void MHV_VoltageRegulator::regulateBoost() {
 	uint16_t adc = mhv_ad_busyRead(_adcChannel, _vref);
-MHV_HARDWARESERIAL_DEBUG(serial, "ADC is %u, target ADC is %u", adc, _targetADC);
-
 	uint16_t newPWM = (uint16_t)(_pwm * (float)_targetADC / (float)adc);
-//	uint16_t newPWM;
 
 	if (newPWM == _pwm) {
 		if (_targetADC < adc) {
@@ -98,8 +92,6 @@ MHV_HARDWARESERIAL_DEBUG(serial, "ADC is %u, target ADC is %u", adc, _targetADC)
 	} else if (newPWM + 1 > _timer->getTop()) {
 		newPWM = _timer->getTop() - 1;
 	}
-
-MHV_HARDWARESERIAL_DEBUG(serial, "newPWM is %u", newPWM);
 
 	_pwm = newPWM;
 	_timer->setOutput2(_pwm);
