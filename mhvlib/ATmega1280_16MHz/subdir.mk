@@ -20,6 +20,7 @@ CPP_SRCS += \
 ../MHV_GammaCorrect.cpp \
 ../MHV_HardwareSerial.cpp \
 ../MHV_Lock.cpp \
+../MHV_PID.cpp \
 ../MHV_PWMMatrix.cpp \
 ../MHV_RTC.cpp \
 ../MHV_RingBuffer.cpp \
@@ -47,6 +48,7 @@ OBJS += \
 ./MHV_GammaCorrect.o \
 ./MHV_HardwareSerial.o \
 ./MHV_Lock.o \
+./MHV_PID.o \
 ./MHV_PWMMatrix.o \
 ./MHV_RTC.o \
 ./MHV_RingBuffer.o \
@@ -74,6 +76,7 @@ CPP_DEPS += \
 ./MHV_GammaCorrect.d \
 ./MHV_HardwareSerial.d \
 ./MHV_Lock.d \
+./MHV_PID.d \
 ./MHV_PWMMatrix.d \
 ./MHV_RTC.d \
 ./MHV_RingBuffer.d \

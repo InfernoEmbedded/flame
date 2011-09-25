@@ -11,6 +11,7 @@ CPP_SRCS += \
 ../MHV_Display_Character.cpp \
 ../MHV_Display_HD44780.cpp \
 ../MHV_Display_HD44780_Direct_Connect.cpp \
+../MHV_Display_HD44780_Shift_Register.cpp \
 ../MHV_Display_Holtek_HT1632.cpp \
 ../MHV_Display_Monochrome.cpp \
 ../MHV_Display_Monochrome_Buffered.cpp \
@@ -26,7 +27,8 @@ CPP_SRCS += \
 ../MHV_Shifter.cpp \
 ../MHV_SoftwareHBridge.cpp \
 ../MHV_Timer16.cpp \
-../MHV_Timer8.cpp 
+../MHV_Timer8.cpp \
+../MHV_VoltageRegulator.cpp 
 
 OBJS += \
 ./MHV_AD.o \
@@ -36,6 +38,7 @@ OBJS += \
 ./MHV_Display_Character.o \
 ./MHV_Display_HD44780.o \
 ./MHV_Display_HD44780_Direct_Connect.o \
+./MHV_Display_HD44780_Shift_Register.o \
 ./MHV_Display_Holtek_HT1632.o \
 ./MHV_Display_Monochrome.o \
 ./MHV_Display_Monochrome_Buffered.o \
@@ -51,7 +54,8 @@ OBJS += \
 ./MHV_Shifter.o \
 ./MHV_SoftwareHBridge.o \
 ./MHV_Timer16.o \
-./MHV_Timer8.o 
+./MHV_Timer8.o \
+./MHV_VoltageRegulator.o 
 
 CPP_DEPS += \
 ./MHV_AD.d \
@@ -61,6 +65,7 @@ CPP_DEPS += \
 ./MHV_Display_Character.d \
 ./MHV_Display_HD44780.d \
 ./MHV_Display_HD44780_Direct_Connect.d \
+./MHV_Display_HD44780_Shift_Register.d \
 ./MHV_Display_Holtek_HT1632.d \
 ./MHV_Display_Monochrome.d \
 ./MHV_Display_Monochrome_Buffered.d \
@@ -76,7 +81,8 @@ CPP_DEPS += \
 ./MHV_Shifter.d \
 ./MHV_SoftwareHBridge.d \
 ./MHV_Timer16.d \
-./MHV_Timer8.d 
+./MHV_Timer8.d \
+./MHV_VoltageRegulator.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

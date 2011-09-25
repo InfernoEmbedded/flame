@@ -81,11 +81,13 @@ typedef struct mhv_time MHV_TIME;
 typedef struct mhv_event MHV_EVENT;
 struct mhv_event {
 	MHV_TIMESTAMP	when;
+	MHV_TIMESTAMP	repeat;
 	void (*actionFunction)(MHV_EVENT *event);
 	void *actionData;
 };
 
 void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, uint32_t seconds, uint16_t milliseconds);
+void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, MHV_TIMESTAMP *timestamp2);
 bool mhv_isLeapYear(uint16_t year);
 bool mhv_timestampGreaterThanOrEqual(MHV_TIMESTAMP *first, MHV_TIMESTAMP *second);
 bool mhv_timestampLessThan(MHV_TIMESTAMP *first, MHV_TIMESTAMP *second);
@@ -120,6 +122,8 @@ public:
 	bool addEvent(MHV_EVENT *event);
 	void runEvents();
 	uint8_t eventsPending();
+	void removeEvent(void (*actionFunction)(MHV_EVENT *event), void *actionData);
+
 
 };
 

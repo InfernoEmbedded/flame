@@ -88,7 +88,6 @@ bool mhv_timestampGreaterThanOrEqual(MHV_TIMESTAMP *first, MHV_TIMESTAMP *second
  */
 bool mhv_isLeapYear(uint16_t year) {
 	if ((0 == year % 4 && year % 100) || 0 == year % 400) {
-//	if ((year & 0x03   && year % 100) || 0 == year % 400) {
 		return true;
 	}
 	return false;
@@ -96,9 +95,9 @@ bool mhv_isLeapYear(uint16_t year) {
 
 /**
  * Increment a timestamp
- * @param timestamp the timestamp to increment
- * @param seconds the number of seconds to increment by
- * @param milliseconds the number of milliseconds to increment by
+ * @param timestamp		the timestamp to increment
+ * @param seconds		the number of seconds to increment by
+ * @param milliseconds	the number of milliseconds to increment by
  */
 void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, uint32_t seconds, uint16_t milliseconds) {
 	timestamp->milliseconds += milliseconds;
@@ -110,6 +109,23 @@ void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, uint32_t seconds, uint16_t
 
 	timestamp->timestamp += seconds;
 }
+
+/**
+ * Increment a timestamp
+ * @param timestamp		the timestamp to increment
+ * @param timestamp2	the timestamp to increment by
+ */
+void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, MHV_TIMESTAMP *timestamp2) {
+	timestamp->milliseconds += timestamp2->milliseconds;
+
+	while (timestamp->milliseconds >= 1000) {
+		timestamp->timestamp++;
+		timestamp->milliseconds -= 1000;
+	}
+
+	timestamp->timestamp += timestamp2->timestamp;
+}
+
 
 const uint8_t mhv_daysInMonthArray[] PROGMEM = {
 		31,	// Jan
@@ -469,6 +485,12 @@ void MHV_RTC::runEvents(void) {
 	for (i = 0; i < _eventCount && mhv_timestampGreaterThanOrEqual(&timestamp, &(_events[i].when));
 			i++, current(&timestamp)) {
 		_events[i].actionFunction(&(_events[i]));
+
+		// Repeat the event if necessary
+		if (0 != _events[i].repeat.milliseconds || 0 != _events[i].repeat.timestamp) {
+			mhv_timestampIncrement(&(_events[i].when), &(_events[i].repeat));
+			addEvent(&(_events[i]));
+		}
 	}
 
 	if (0 == i) {
@@ -489,4 +511,22 @@ void MHV_RTC::runEvents(void) {
  */
 uint8_t MHV_RTC::eventsPending() {
 	return _eventCount;
+}
+
+/**
+ * Remove all matching events from the list of pending events
+ * @param	actionFunction		the action for the event to remove
+ * @param	actionData			the data for the event to remove
+ */
+ void MHV_RTC::removeEvent(void(*actionFunction)(MHV_EVENT *event), void *actionData) {
+	for (int i = 0; i < _eventCount; i++) {
+		if (_events[i].actionFunction == actionFunction && _events[i].actionData == actionData) {
+			// Shift remaining events down
+			if (i < _eventCount) {
+				memmove(_events, &(_events[i]), (_eventCount - i) * sizeof(*_events));
+			}
+
+			_eventCount -= i;
+		}
+	}
 }

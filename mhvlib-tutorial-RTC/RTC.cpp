@@ -66,11 +66,6 @@ void rtcTrigger(void *data) {
 
 
 
-/* Forward declaration of insertEvent, as there is a circular depedancy
- * between oncePerSecond and insertEvent
- */
-void insertEvent(MHV_TIMESTAMP *timestamp);
-
 /* An event that we will trigger every second
  * We will be passed the event that triggered us - we can have parameters
  * passed through the actionData member of the event
@@ -89,8 +84,6 @@ void oncePerSecond(MHV_EVENT *event) {
 			time.hours, time.minutes, time.seconds, time.year, time.month, time.day,
 			timestamp.timestamp, timestamp.milliseconds);
 	serial.write(buf);
-
-	insertEvent(&timestamp);
 }
 
 /* Insert an event to be triggered on the next second
@@ -100,6 +93,8 @@ inline void insertEvent(MHV_TIMESTAMP *timestamp) {
 	MHV_EVENT newEvent;
 	newEvent.when.milliseconds = 0;
 	newEvent.when.timestamp = timestamp->timestamp + 1;
+	newEvent.repeat.milliseconds = 0;
+	newEvent.repeat.timestamp = 1;
 	newEvent.actionFunction = oncePerSecond;
 	newEvent.actionData = NULL;
 	if (rtc.addEvent(&newEvent)) {
