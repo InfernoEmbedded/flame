@@ -39,9 +39,16 @@
 	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
 	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
 
+class MHV_Device_RX;
+class MHV_RXListener {
+public:
+	virtual void rxReady(MHV_Device_RX *rx) =0;
+};
+
 class MHV_Device_RX {
 protected:
 	MHV_RingBuffer		*_rxBuffer;
+	MHV_RXListener		*_listener;
 
 	MHV_Device_RX(MHV_RingBuffer *rxBuffer);
 
@@ -50,7 +57,11 @@ public:
 	int busyReadLine(char *buffer, uint8_t bufferLength);
 	int read();
 	void flush();
-	uint8_t available();
+	bool ready();
+	void registerListener(MHV_RXListener *listener);
+	void deregisterListener();
+
+	void handleEvents();
 };
 
 #endif

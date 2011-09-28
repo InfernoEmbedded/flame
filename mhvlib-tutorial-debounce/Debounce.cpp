@@ -41,13 +41,13 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 /* A buffer the RTC will use to store events - this determines how many events
  * can be registered simultaneously
  */
-#define EVENT_COUNT	10
-MHV_EVENT events[EVENT_COUNT];
+#define ALARM_COUNT	10
+MHV_ALARM alarms[ALARM_COUNT];
 
 #define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTC rtc(&tickTimer, events, EVENT_COUNT, TIMEZONE);
+MHV_RTC rtc(&tickTimer, alarms, ALARM_COUNT, TIMEZONE);
 
 // A timer trigger that will tick the RTC
 void rtcTrigger(void *data) {
@@ -67,18 +67,27 @@ void rtcTrigger(void *data) {
 // Time to repeat the held down call while the button is held down (milliseconds)
 #define REPEAT_TIME		100
 
+
 // Triggers for button presses
-void pressTrigger(MHV_TIMESTAMP *heldFor, void *data) {
+class ButtonHandler : public MHV_DebounceListener {
+	void singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
+	void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
+};
+
+void ButtonHandler::singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
 
-void heldTrigger(MHV_TIMESTAMP *heldFor, void *data) {
+void ButtonHandler::heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
 
+ButtonHandler buttonHandler;
 
-MHV_Debounce debouncer(&rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
-MHV_DEBOUNCE_ASSIGN_INTERRUPTS(debouncer);
+MHV_PinChangeManager pinChangeManager;
+MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
+
+MHV_Debounce debouncer(&pinChangeManager, &rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
 int main(void) {
 	// Enable output on pin 13 of the Arduino - this normally has an LED connected
@@ -91,7 +100,7 @@ int main(void) {
 
 	// B0 is pin 53 on the Arduino Mega, pin 8 on the Diecimilla
 	mhv_setInputPullup(MHV_PIN_B0);
-	debouncer.assignKey(MHV_PIN_B0, &pressTrigger, &heldTrigger, NULL);
+	debouncer.assignKey(MHV_PIN_B0, &buttonHandler);
 
 	// Enable global interrupts
 	sei();

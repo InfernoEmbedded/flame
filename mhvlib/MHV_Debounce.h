@@ -12,6 +12,7 @@
 
 #include <MHV_RTC.h>
 #include <MHV_io.h>
+#include <MHV_PinChangeManager.h>
 
 
 #define MHV_DEBOUNCE_ASSIGN_PCINT(__mhvDebounce) \
@@ -52,43 +53,36 @@ ISR(PCINT2_vect) { \
 		MHV_DEBOUNCE_ASSIGN_PCINT(_mhvDebounce)
 #endif
 
+class MHV_DebounceListener {
+public:
+	virtual void singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
+	virtual void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
+};
+
 struct mhv_debouncePin {
-	volatile uint8_t	*port;
-	uint8_t				mask;
-	uint8_t				previous;
-	MHV_TIMESTAMP		timestamp;
-	void 				(*singlePress)(MHV_TIMESTAMP *heldFor, void *data);
-	void 				(*heldDown)(MHV_TIMESTAMP *heldFor, void *data);
-	void				*data;
-	bool				held;
+	uint8_t					previous;
+	MHV_TIMESTAMP			timestamp;
+	MHV_DebounceListener	*listener;
+	bool					held;
 };
 typedef struct mhv_debouncePin MHV_DEBOUNCE_PIN;
 
-class MHV_Debounce {
-private:
-	MHV_RTC				*_rtc;
-	MHV_DEBOUNCE_PIN	_pins[MHV_PC_INT_COUNT];
-	MHV_TIMESTAMP		_debounceTime;
-	MHV_TIMESTAMP		_heldTime;
-	MHV_TIMESTAMP		_repeatTime;
+class MHV_Debounce : MHV_PinEventListener {
+protected:
+	MHV_RTC					*_rtc;
+	MHV_DEBOUNCE_PIN		_pins[MHV_PC_INT_COUNT];
+	MHV_TIMESTAMP			_debounceTime;
+	MHV_TIMESTAMP			_heldTime;
+	MHV_TIMESTAMP			_repeatTime;
+	MHV_PinChangeManager	*_pinChangeManager;
 
-	void pinChange(uint8_t offset);
+	void pinChanged(uint8_t pcInt, bool newState);
 	void initPin(uint8_t pinchangeInterrupt);
 
 public:
-	MHV_Debounce(MHV_RTC *rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
-#if MHV_PC_INT_COUNT > 15
-	void pinChange2();
-#endif
-#if MHV_PC_INT_COUNT > 7
-	void pinChange1();
-#endif
-	void pinChange0();
+	MHV_Debounce(MHV_PinChangeManager *pinChangeManager, MHV_RTC *rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
 	void assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-			uint8_t pin, int8_t pinchangeInterrupt,
-			void (*singlePress)(MHV_TIMESTAMP *heldFor, void *data),
-			void (*heldDown)(MHV_TIMESTAMP *heldFor, void *data),
-			void *data);
+			uint8_t pin, int8_t pinchangeInterrupt, MHV_DebounceListener *listener);
 	void deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t pin, int8_t pinchangeInterrupt);
 	void checkHeld();

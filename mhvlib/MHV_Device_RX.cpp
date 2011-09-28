@@ -40,6 +40,7 @@
  */
 MHV_Device_RX::MHV_Device_RX(MHV_RingBuffer *rxBuffer) {
 	_rxBuffer = rxBuffer;
+	_listener = NULL;
 }
 
 /**
@@ -106,5 +107,48 @@ int MHV_Device_RX::read(void) {
  */
 void MHV_Device_RX::flush() {
 	_rxBuffer->flush();
+}
+
+/**
+ * Check if a line is ready, or the ringbuffer is full
+ * @return true if either of the situations occur0
+ */
+bool MHV_Device_RX::ready() {
+	if (_rxBuffer->full()) {
+		return true;
+	}
+
+	// Peek at the last character & see if its a newline
+	int last = _rxBuffer->peekHead();
+	if ('\r' == last || '\n' == last) {
+		return true;
+	}
+
+	return false;
+}
+
+/**
+ * Register interest for lines/overflows from an RX device
+ * @param	listener	an MHV_RXListener to notify that the device is ready
+ */
+void MHV_Device_RX::registerListener(MHV_RXListener *listener) {
+	_listener = listener;
+}
+
+/**
+ * Deregister interest for lines/overflows from an RX device
+ */
+void MHV_Device_RX::deregisterListener() {
+	_listener = NULL;
+}
+
+
+/**
+ * Call from the main loop to handle any events
+ */
+void MHV_Device_RX::handleEvents() {
+		if (ready()) {
+		_listener->rxReady(this);
+	}
 }
 

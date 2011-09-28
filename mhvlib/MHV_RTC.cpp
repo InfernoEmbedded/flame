@@ -164,7 +164,7 @@ uint8_t mhv_daysInMonth(MHV_MONTH month, uint16_t year) {
  * @param	eventCount	The number of events that can be stored in the buffer
  * @param	timezone	minutes offset from UTC
  */
-MHV_RTC::MHV_RTC(MHV_Timer8 *timer, MHV_EVENT *eventBuffer, uint8_t eventCount, int16_t timezone) {
+MHV_RTC::MHV_RTC(MHV_Timer8 *timer, MHV_ALARM *eventBuffer, uint8_t eventCount, int16_t timezone) {
 	_timer = timer;
 
 	_ticks = 0;
@@ -176,12 +176,12 @@ MHV_RTC::MHV_RTC(MHV_Timer8 *timer, MHV_EVENT *eventBuffer, uint8_t eventCount, 
 	for (i = 0; i < eventCount; i++) {
 		eventBuffer[i].when.timestamp = 0;
 		eventBuffer[i].when.milliseconds = 0;
-		eventBuffer[i].actionFunction = 0;
+		eventBuffer[i].listener = NULL;
 	}
 
-	_events = eventBuffer;
-	_eventMax = eventCount;
-	_eventCount = 0;
+	_alarms = eventBuffer;
+	_alarmMax = eventCount;
+	_alarmCount = 0;
 }
 
 /**
@@ -260,7 +260,7 @@ void MHV_RTC::tickAndRunEvents(void) {
 		_timestamp++;
 	}
 
-	runEvents();
+	handleEvents();
 }
 
 /**
@@ -438,34 +438,34 @@ void MHV_RTC::toTimestamp(MHV_TIMESTAMP *to, MHV_TIME *from) {
 
 
 /**
- * Insert an event, to be triggered at a later date
- * @param	event	the event, consisting of:
+ * Insert an alarm, to be triggered at a later date
+ * @param	alarm	the alarm, consisting of:
  * 						when it should be triggered
  * 						what should be called (it will be passed a pointer to the event)
  * 						a pointer to user-defined data
  * @return	true if the event could not be added
  */
-bool MHV_RTC::addEvent(MHV_EVENT *event) {
-	if (_eventCount == _eventMax) {
+bool MHV_RTC::addAlarm(MHV_ALARM *alarm) {
+	if (_alarmCount == _alarmMax) {
 		return true;
 	}
 
 	// Figure out where it needs to be inserted
 	int i;
-	for (i = 0; i < _eventCount; ++i) {
-		if (mhv_timestampLessThan(&(event->when), &(_events[i].when))) {
+	for (i = 0; i < _alarmCount; ++i) {
+		if (mhv_timestampLessThan(&(alarm->when), &(_alarms[i].when))) {
 			break;
 		}
 	}
 	// i now is the offset of where the timestamp should be inserted
-	if (i < _eventCount) {
-		memmove(&(_events[i+1]), &(_events[i]), (_eventCount - i) * sizeof(*_events));
-		memcpy(&(_events[i]), event, sizeof(*_events));
+	if (i < _alarmCount) {
+		memmove(&(_alarms[i+1]), &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
+		memcpy(&(_alarms[i]), alarm, sizeof(*_alarms));
 	} else {
-		memcpy(&(_events[_eventCount]), event, sizeof(*_events));
+		memcpy(&(_alarms[_alarmCount]), alarm, sizeof(*_alarms));
 	}
 
-	_eventCount++;
+	_alarmCount++;
 
 	return false;
 }
@@ -476,20 +476,20 @@ bool MHV_RTC::addEvent(MHV_EVENT *event) {
  * tickAndRunEvents instead of tick from the timer (note that this will run your
  * events in the interrupt handler, so keep them short!)
  */
-void MHV_RTC::runEvents(void) {
+void MHV_RTC::handleEvents(void) {
 	int i;
 	MHV_TIMESTAMP timestamp;
 	current(&timestamp);
 
 	// Run any events pending
-	for (i = 0; i < _eventCount && mhv_timestampGreaterThanOrEqual(&timestamp, &(_events[i].when));
+	for (i = 0; i < _alarmCount && mhv_timestampGreaterThanOrEqual(&timestamp, &(_alarms[i].when));
 			i++, current(&timestamp)) {
-		_events[i].actionFunction(&(_events[i]));
+		_alarms[i].listener->alarm(&(_alarms[i]));
 
 		// Repeat the event if necessary
-		if (0 != _events[i].repeat.milliseconds || 0 != _events[i].repeat.timestamp) {
-			mhv_timestampIncrement(&(_events[i].when), &(_events[i].repeat));
-			addEvent(&(_events[i]));
+		if (0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {
+			mhv_timestampIncrement(&(_alarms[i].when), &(_alarms[i].repeat));
+			addAlarm(&(_alarms[i]));
 		}
 	}
 
@@ -498,19 +498,19 @@ void MHV_RTC::runEvents(void) {
 	}
 
 	// Shift remaining events down
-	if (i < _eventCount) {
-		memmove(_events, &(_events[i]), (_eventCount - i) * sizeof(*_events));
+	if (i < _alarmCount) {
+		memmove(_alarms, &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
 	}
 
-	_eventCount -= i;
+	_alarmCount -= i;
 }
 
 /**
  * How many events are left in the queue
  * @return the number of events
  */
-uint8_t MHV_RTC::eventsPending() {
-	return _eventCount;
+uint8_t MHV_RTC::alarmsPending() {
+	return _alarmCount;
 }
 
 /**
@@ -518,15 +518,15 @@ uint8_t MHV_RTC::eventsPending() {
  * @param	actionFunction		the action for the event to remove
  * @param	actionData			the data for the event to remove
  */
- void MHV_RTC::removeEvent(void(*actionFunction)(MHV_EVENT *event), void *actionData) {
-	for (int i = 0; i < _eventCount; i++) {
-		if (_events[i].actionFunction == actionFunction && _events[i].actionData == actionData) {
+ void MHV_RTC::removeAlarm(MHV_AlarmListener *listener, void *actionData) {
+	for (int i = 0; i < _alarmCount; i++) {
+		if (_alarms[i].listener == listener && _alarms[i].actionData == actionData) {
 			// Shift remaining events down
-			if (i < _eventCount) {
-				memmove(_events, &(_events[i]), (_eventCount - i) * sizeof(*_events));
+			if (i < _alarmCount) {
+				memmove(_alarms, &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
 			}
 
-			_eventCount -= i;
+			_alarmCount -= i;
 		}
 	}
 }

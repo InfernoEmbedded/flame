@@ -20,15 +20,15 @@ class MHV_PID {
 	float	outMin;
 	float	outMax;
 
-	void clampIntegral();
+	inline void clampIntegral();
 
   public:
-	MHV_PID(float setpoint, float kP, float kI, float kD, bool reverse,
-			uint16_t min, uint16_t max);
+	MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
+			bool reverse, uint16_t min, uint16_t max);
 	void setDirection(bool reverse);
 	void enable(bool enable);
 	float compute(float input);
-	void setTuning(float kP, float kI, float kD);
+	void setTuning(float kP, float kI, float kD, uint16_t period);
     void setOutputLimits(float, float);
 };
 #endif

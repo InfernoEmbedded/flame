@@ -78,13 +78,20 @@ struct mhv_time {
 };
 typedef struct mhv_time MHV_TIME;
 
-typedef struct mhv_event MHV_EVENT;
-struct mhv_event {
-	MHV_TIMESTAMP	when;
-	MHV_TIMESTAMP	repeat;
-	void (*actionFunction)(MHV_EVENT *event);
-	void *actionData;
+class MHV_AlarmListener;
+struct mhv_alarm {
+	MHV_TIMESTAMP		when;
+	MHV_TIMESTAMP		repeat;
+	MHV_AlarmListener	*listener;
+	void				*actionData;
 };
+typedef struct mhv_alarm MHV_ALARM;
+
+class MHV_AlarmListener {
+public:
+	virtual void alarm(MHV_ALARM *alarm) =0;
+};
+
 
 void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, uint32_t seconds, uint16_t milliseconds);
 void mhv_timestampIncrement(MHV_TIMESTAMP *timestamp, MHV_TIMESTAMP *timestamp2);
@@ -96,9 +103,9 @@ uint8_t mhv_daysInMonth(MHV_MONTH month, uint16_t year);
 class MHV_RTC {
 protected:
 	MHV_Timer8				*_timer;
-	MHV_EVENT				*_events;
-	volatile uint8_t		_eventCount;
-	uint8_t					_eventMax;
+	MHV_ALARM				*_alarms;
+	volatile uint8_t		_alarmCount;
+	uint8_t					_alarmMax;
 	uint32_t				_timestamp;
 	uint16_t				_milliseconds;
 	uint8_t					_ticks;
@@ -107,7 +114,7 @@ protected:
 
 
 public:
-	MHV_RTC(MHV_Timer8 *timer, MHV_EVENT *eventBuffer, uint8_t eventCount, int16_t timezone);
+	MHV_RTC(MHV_Timer8 *timer, MHV_ALARM *eventBuffer, uint8_t eventCount, int16_t timezone);
 	void synchronise();
 	void setTime(uint32_t timestamp, uint16_t milliseconds);
 	void setTime(MHV_TIMESTAMP *timestamp);
@@ -119,10 +126,10 @@ public:
 	void elapsed(MHV_TIMESTAMP *since, MHV_TIMESTAMP *elapsed);
 	void toTime(MHV_TIME *to, MHV_TIMESTAMP *from);
 	void toTimestamp(MHV_TIMESTAMP *to, MHV_TIME *from);
-	bool addEvent(MHV_EVENT *event);
-	void runEvents();
-	uint8_t eventsPending();
-	void removeEvent(void (*actionFunction)(MHV_EVENT *event), void *actionData);
+	bool addAlarm(MHV_ALARM *alarm);
+	void handleEvents();
+	uint8_t alarmsPending();
+	void removeAlarm(MHV_AlarmListener *listener, void *actionData);
 
 
 };

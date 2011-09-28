@@ -45,6 +45,7 @@ extern "C" void __cxa_pure_virtual() {
 
 #include <avr/io.h>
 #include <inttypes.h>
+#include <stddef.h>
 
 // Some useful attributes
 

@@ -44,16 +44,16 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
 MHV_Timer8 tickTimer(MHV_TIMER8_0);
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
-/* A buffer the RTC will use to store events - this determines how many events
+/* A buffer the RTC will use to store alarms - this determines how many alarms
  * can be registered simultaneously
  */
-#define EVENT_COUNT	10
-MHV_EVENT events[EVENT_COUNT];
+#define ALARM_COUNT	10
+MHV_ALARM alarms[ALARM_COUNT];
 
 #define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTC rtc(&tickTimer, events, EVENT_COUNT, TIMEZONE);
+MHV_RTC rtc(&tickTimer, alarms, ALARM_COUNT, TIMEZONE);
 
 // A timer trigger that will tick the RTC
 void rtcTrigger(void *data) {
@@ -65,12 +65,15 @@ void rtcTrigger(void *data) {
 }
 
 
+class OncePerSecond : public MHV_AlarmListener {
+	void alarm(MHV_ALARM *alarm);
+};
 
 /* An event that we will trigger every second
  * We will be passed the event that triggered us - we can have parameters
  * passed through the actionData member of the event
  */
-void oncePerSecond(MHV_EVENT *event) {
+void OncePerSecond::alarm(MHV_ALARM *alarm) {
 	// Get the current timestamp
 	MHV_TIMESTAMP timestamp;
 	rtc.current(&timestamp);
@@ -79,26 +82,25 @@ void oncePerSecond(MHV_EVENT *event) {
 	MHV_TIME time;
 	rtc.toTime(&time, &timestamp);
 
-	char buf[90];
+	static char buf[90];
 	snprintf_P(buf, sizeof(buf), PSTR("The current time is %02u:%02u:%02u %u-%02u-%02u  (%lu.%03u)\r\n"),
 			time.hours, time.minutes, time.seconds, time.year, time.month, time.day,
 			timestamp.timestamp, timestamp.milliseconds);
 	serial.write(buf);
 }
 
-/* Insert an event to be triggered on the next second
- */
-inline void insertEvent(MHV_TIMESTAMP *timestamp) {
-	// Set up an initial event for the next second
-	MHV_EVENT newEvent;
-	newEvent.when.milliseconds = 0;
-	newEvent.when.timestamp = timestamp->timestamp + 1;
-	newEvent.repeat.milliseconds = 0;
-	newEvent.repeat.timestamp = 1;
-	newEvent.actionFunction = oncePerSecond;
-	newEvent.actionData = NULL;
-	if (rtc.addEvent(&newEvent)) {
-		serial.write_P(PSTR("Adding event failed\r\n"));
+OncePerSecond oncePerSecond;
+
+// Insert an alarm to be triggered on the next second
+inline void insertAlarm(MHV_TIMESTAMP *timestamp) {
+	MHV_ALARM newAlarm;
+	newAlarm.when.milliseconds = 0;
+	newAlarm.when.timestamp = timestamp->timestamp + 1;
+	newAlarm.repeat.milliseconds = 0;
+	newAlarm.repeat.timestamp = 1;
+	newAlarm.listener = &oncePerSecond;
+	if (rtc.addAlarm(&newAlarm)) {
+		serial.write_P(PSTR("Adding alarm failed\r\n"));
 	}
 }
 
@@ -134,7 +136,7 @@ int main(void) {
 		time.minutes = atoi(input + 14);
 		time.seconds = atoi(input + 17);
 
-		if (time.year < 1970 || time.month > 2106) {
+		if (time.year < 1970 || time.year > 2106) {
 			serial.write_P(PSTR("Year must be later than 1970 and less than 2106\r\n"));
 			error = true;
 		}
@@ -190,12 +192,12 @@ int main(void) {
 	// Start ticking the RTC through its associated timer
 	tickTimer.enable();
 
-	// Insert the initial event
-	insertEvent(&timestamp);
+	// Insert the initial alarm
+	insertAlarm(&timestamp);
 
 	// main loop
 	for (;;) {
-		rtc.runEvents();
+		rtc.handleEvents();
 	}
 
 	return 0;

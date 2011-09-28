@@ -34,14 +34,20 @@
 
 /**
  * Create a new PID
- * @param setPoint	the target value
+ * @param	setPoint	the target value
+ * @param	kP			the proportional constant
+ * @param	kI			the integral constant
+ * @param	kD			the derivative constant
+ * @param	period		the period that compute() is called, in ms
+ * @param	min			the minimum value for output
+ * @param	max			the maximum value four output
  */
-MHV_PID::MHV_PID(float setpoint, float kP, float kI, float kD, bool reverse,
-		uint16_t min, uint16_t max) {
+MHV_PID::MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
+		bool reverse, uint16_t min, uint16_t max) {
 	_setpoint = setpoint;
 
 	setDirection(reverse);
-    setTuning(kP, kI, kD);
+    setTuning(kP, kI, kD, period);
 
     _enabled = false;
 }
@@ -82,19 +88,24 @@ float MHV_PID::compute(float input) {
 
 /**
  * Adjust PID parameters
- * @param	kP	the proportional constant
- * @param	kI	the integral constant
- * @param	kD	the derivative constant
+ * @param	kP		the proportional constant
+ * @param	kI		the integral constant
+ * @param	kD		the derivative constant
+ * @param	period	the period that compute() is called, in ms
  */
-void MHV_PID::setTuning(float kP, float kI, float kD) {
+void MHV_PID::setTuning(float kP, float kI, float kD, uint16_t period) {
+	float myPeriod = period / 1000;
+
+	_kP = kP;
+	_kI = kI * myPeriod;
+	_kD = kD / myPeriod;
+
+
+
 	if (_reverse) {
-		_kP = 0 - kP;
-		_kI = 0 - kI;
-		_kD = 0 - kD;
-	} else {
-		_kP = kP;
-		_kI = kI;
-		_kD = kD;
+		_kP = 0 - _kP;
+		_kI = 0 - _kI;
+		_kD = 0 - _kD;
 	}
 }
 
