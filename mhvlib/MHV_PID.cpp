@@ -100,8 +100,6 @@ void MHV_PID::setTuning(float kP, float kI, float kD, uint16_t period) {
 	_kI = kI * myPeriod;
 	_kD = kD / myPeriod;
 
-
-
 	if (_reverse) {
 		_kP = 0 - _kP;
 		_kI = 0 - _kI;
