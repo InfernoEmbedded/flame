@@ -43,6 +43,9 @@
 // Bring in the AVR PROGMEM header, needed to store data in PROGMEM
 #include <avr/pgmspace.h>
 
+// Bring in the power management header
+#include <avr/power.h>
+
 // Bring in stdio, required for snprintf
 #include <stdio.h>
 
@@ -67,6 +70,10 @@ void writeFailed(void) {
 }
 
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_usart0_enable();
+
 // Enable interrupts
 	sei();
 

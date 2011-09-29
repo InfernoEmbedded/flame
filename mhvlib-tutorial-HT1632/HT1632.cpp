@@ -33,8 +33,8 @@
 #include <MHV_io.h>
 #include <MHV_Display_Holtek_HT1632.h>
 #include <MHV_Font_SansSerif_10x8.h>
-
 #include <avr/interrupt.h>
+#include <avr/power.h>
 
 /* We will use the following pins to communicate with the display
  * Signal	328	1280		Arduino
@@ -262,6 +262,9 @@ void textAnimation(MHV_Display_Holtek_HT1632 *display) {
 }
 
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+
 	// Enable output on the display pins
 	mhv_setOutput(MHV_ARDUINO_PIN_A0);
 	mhv_setOutput(MHV_ARDUINO_PIN_A1);

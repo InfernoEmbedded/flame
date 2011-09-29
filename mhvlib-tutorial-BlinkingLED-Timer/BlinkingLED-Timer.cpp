@@ -43,6 +43,10 @@
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
 
+// Bring in the power management headers
+#include <avr/power.h>
+#include <avr/sleep.h>
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
@@ -82,6 +86,12 @@ void timerTrigger(void *data) {
 }
 
 int main() {
+// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer2_enable();
+// Specify what level sleep to perform
+	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 
@@ -101,8 +111,10 @@ int main() {
 // Enable interrupts
 	sei();
 
-// Do nothing forever - the timer will call the trigger() function periodically
-	for(;;) {}
+// Main loop - just sleep the CPU until the timer wakes it up
+	for(;;) {
+		sleep_mode();
+	}
 
 // Main must return an int, even though we never get here
 	return 0;

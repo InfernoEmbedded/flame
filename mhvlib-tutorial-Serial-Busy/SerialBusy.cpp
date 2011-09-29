@@ -44,6 +44,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// Bring in the power management header
+#include <avr/power.h>
+
+
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 // The number of elements we want to be able to store to send asynchronously
@@ -56,6 +60,10 @@
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 int main(void) {
+// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_usart0_enable();
+
 // Enable interrupts
 	sei();
 

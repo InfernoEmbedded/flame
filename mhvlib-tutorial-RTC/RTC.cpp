@@ -34,6 +34,9 @@
 #include <MHV_RTC.h>
 #include <stdlib.h> // required for atoi, itoa
 
+#include <avr/power.h>
+#include <avr/sleep.h>
+
 // A buffer for the serial port to receive data
 #define RX_BUFFER_SIZE	81
 // The number of elements we want to be able to store to send asynchronously
@@ -107,6 +110,12 @@ inline void insertAlarm(MHV_TIMESTAMP *timestamp) {
 
 // Program main
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer0_enable();
+	power_usart0_enable();
+	set_sleep_mode(SLEEP_MODE_IDLE);
+
 	// Enable interrupts
 	sei();
 
@@ -198,6 +207,7 @@ int main(void) {
 	// main loop
 	for (;;) {
 		rtc.handleEvents();
+		sleep_mode();
 	}
 
 	return 0;

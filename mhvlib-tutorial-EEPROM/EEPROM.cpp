@@ -40,6 +40,8 @@
 #include <util/CRC16.h>
 #include <util/delay.h>
 #include <string.h>
+#include <avr/power.h>
+#include <avr/sleep.h>
 
 // Chosen to fit within all supported MCUs - yours may have more space available
 #define DATA_MAX_LENGTH ((uint16_t)(128 - DATA_ADDRESS))
@@ -81,8 +83,12 @@ int main(void) {
 	uint16_t 	crc;
 	char		buf[DATA_MAX_LENGTH];
 
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_usart0_enable();
+
 	// Enable interrupts
-		sei();
+	sei();
 
 	while (1) {
 		eeprom.read(&length, LENGTH_ADDRESS, (uint16_t) sizeof(length));
@@ -122,8 +128,8 @@ int main(void) {
 		serial.busyWrite_P(PSTR("Writing data"));
 		eeprom.write(buf, DATA_ADDRESS, length, NULL, NULL);
 		while (eeprom.isBusy()) {
-//			serial.write_P(PSTR("."));
-			_delay_ms(10);
+			serial.write_P(PSTR("."));
+			_delay_ms(1);
 		}
 		serial.busyWrite_P(PSTR("\r\nDone\r\n"));
 

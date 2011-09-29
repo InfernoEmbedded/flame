@@ -45,6 +45,9 @@
 // Bring in the gamma correction library
 #include <MHV_GammaCorrect.h>
 
+// Bring in the power management header
+#include <avr/power.h>
+#include <avr/sleep.h>
 
 // A timer we will use for animation
 MHV_Timer8 animateTimer(MHV_TIMER8_2);
@@ -182,6 +185,12 @@ void ledMatrixTick(void *data) {
 }
 
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer2_enable();
+	power_timer1_enable();
+	set_sleep_mode(SLEEP_MODE_IDLE);
+
 	sei();
 
 	animateTimer.setTriggers(&animateMatrix, 0, 0, 0);
@@ -212,6 +221,8 @@ int main(void) {
 			ledMatrix.tick();
 			tick = false;
 		}
+
+		sleep_mode();
 	}
 
 	return 0;

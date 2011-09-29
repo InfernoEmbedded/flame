@@ -34,9 +34,12 @@
 #include <MHV_RTC.h>
 #include <MHV_Debounce.h>
 
+#include <avr/power.h>
+#include <avr/sleep.h>
+
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_0);
-MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
+MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 /* A buffer the RTC will use to store events - this determines how many events
  * can be registered simultaneously
@@ -90,6 +93,12 @@ MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 MHV_Debounce debouncer(&pinChangeManager, &rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer2_enable();
+	// Specify what level sleep to perform
+	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+
 	// Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 
@@ -108,6 +117,8 @@ int main(void) {
 	while (1) {
 		pinChangeManager.handleEvents();
 		debouncer.checkHeld();
+// Sleep until the next interrupt
+		sleep_mode();
 	}
 
 // Main must return an int, even though we never get here

@@ -42,6 +42,10 @@
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
 
+// Bring in the power management header
+#include <avr/power.h>
+#include <avr/sleep.h>
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
@@ -110,54 +114,62 @@ void ledOff(void *data) {
 
 
 int main(void) {
-/* Enable output on the output pin - see the declaration above
- */
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer2_enable();
+	power_timer1_enable();
+	set_sleep_mode(SLEEP_MODE_IDLE);
+
+	/* Enable output on the output pin - see the declaration above
+	 */
 	mhv_setOutput(OUTPUT_PIN);
 
-/* Trigger the animation routine every 20ms
- */
-(void)animationTimer.setPeriods(20000UL, 0);
+	/* Trigger the animation routine every 20ms
+	 */
+	(void) animationTimer.setPeriods(20000UL, 0);
 
-// Tell the timer to call our trigger function
-animationTimer.setTriggers(animationTrigger, 0, 0, 0);
+	// Tell the timer to call our trigger function
+	animationTimer.setTriggers(animationTrigger, 0, 0, 0);
 
-// Set the PWM mode to FAST PWM
-//pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
+	// Set the PWM mode to FAST PWM
+	//pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
 
-// Tell the pwmTimer which functions to use when times elapse
-pwmTimer.setTriggers(ledOn, 0, ledOff, 0, 0, 0);
+	// Tell the pwmTimer which functions to use when times elapse
+	pwmTimer.setTriggers(ledOn, 0, ledOff, 0, 0, 0);
 
-// Set the PWM prescaler to 1 (no prescaler)
-pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
+	// Set the PWM prescaler to 1 (no prescaler)
+	pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
 
-/* Set the TOP value of the PWM timer - this defines the resolution &
- * frequency of the PWM output
- *
- * PWM frequency = F_CPU / 2 / PWM_TOP
- *               = 16,000,000 / 2 / 10000
- *               = 800Hz
- *
- * PWM frequency = F_CPU / 2 / PWM_TOP
- *               = 20,000,000 / 2 / 10000
- *               = 1KHz
- */
-pwmTimer.setOutput1(PWM_TOP);
+	/* Set the TOP value of the PWM timer - this defines the resolution &
+	 * frequency of the PWM output
+	 *
+	 * PWM frequency = F_CPU / 2 / PWM_TOP
+	 *               = 16,000,000 / 2 / 10000
+	 *               = 800Hz
+	 *
+	 * PWM frequency = F_CPU / 2 / PWM_TOP
+	 *               = 20,000,000 / 2 / 10000
+	 *               = 1KHz
+	 */
+	pwmTimer.setOutput1(PWM_TOP);
 
-// Start with the PWM duty cycle set to 0
-pwmTimer.setOutput2(20);
+	// Start with the PWM duty cycle set to 0
+	pwmTimer.setOutput2(20);
 
-// Start the timers
-animationTimer.enable();
-pwmTimer.enable();
+	// Start the timers
+	animationTimer.enable();
+	pwmTimer.enable();
 
-// Enable interrupts
-sei();
+	// Enable interrupts
+	sei();
 
-/* Do nothing forever - the timer will call the animationTrigger() function
- * periodically
- */
-	for(;;);
+	/* Do nothing forever - the timer will call the animationTrigger() function
+	 * periodically
+	 */
+	for (;;) {
+		sleep_mode();
+	}
 
-// Main must return an int, even though we never get here
+	// Main must return an int, even though we never get here
 	return 0;
 }

@@ -49,13 +49,15 @@
 #include <MHV_Display_HD44780_Direct_Connect.h>
 #include <MHV_Timer8.h>
 #include <avr/pgmspace.h>
+#include <avr/power.h>
+#include <avr/sleep.h>
 
 // A buffer for the display to send data, it only contains pointers and has space for 10 elements
 MHV_TX_BUFFER_CREATE(txBuffer, 10);
 
 // A timer we will use to tick the display
-MHV_Timer8 tickTimer(MHV_TIMER8_0);
-MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
+MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20
 #define	ROWS		4
@@ -86,6 +88,12 @@ void textAnimation(MHV_Display_Character *display) {
 }
 
 int main(void) {
+	// Disable all peripherals and enable just what we need
+	power_all_disable();
+	power_timer2_enable();
+	// Specify what level sleep to perform
+	set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+
 	// Enable global interrupts
 	sei();
 
@@ -114,7 +122,9 @@ int main(void) {
 	int16_t offsetX = 0;
 	display.writeString_P(&offsetX, ROWS - 1, PSTR("All done"));
 
-	for (;;) {};
+	for (;;) {
+		sleep_mode();
+	};
 
 // Main must return an int, even though we never get here
 	return 0;

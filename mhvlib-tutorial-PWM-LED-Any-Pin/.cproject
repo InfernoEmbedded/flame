@@ -38,7 +38,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.232948732" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.optimize.other.1710366176" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.compiler.option.optimize.other.1710366176" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.922817161" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.app.release.275889926" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.app.release">
@@ -1451,7 +1451,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.33946861" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.optimize.other.2010993438" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.compiler.option.optimize.other.2010993438" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.737978040" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.app.release.879849699" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.app.release">
@@ -2864,7 +2864,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.826044087" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.optimize.other.354682459" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.compiler.option.optimize.other.354682459" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1360404532" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.app.release.797236887" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.app.release">
@@ -4277,7 +4277,7 @@
 								<option id="de.innot.avreclipse.compiler.option.incpath.1052049645" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.compiler.option.optimize.other.511372953" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.compiler.option.optimize.other.511372953" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.2016234195" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.app.release.1047505197" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.app.release">

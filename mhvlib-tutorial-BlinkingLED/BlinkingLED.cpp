@@ -33,8 +33,12 @@
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
+#include <avr/power.h>
 
 int main(void) {
+// Disable all peripherals and enable just what we need
+	power_all_disable();
+
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 
