@@ -73,7 +73,7 @@ void MHV_Debounce::checkHeld() {
 	MHV_DEBOUNCE_PIN *maxPin = pin + MHV_PC_INT_COUNT;
 
 	for (; pin < maxPin; ++pin) {
-		if (pin->timestamp.timestamp && pin->timestamp.milliseconds && !pin->previous) {
+		if (pin->timestamp.timestamp && !pin->previous) {
 // Pin is currently held down
 			MHV_TIMESTAMP heldFor;
 			_rtc->elapsed(&(pin->timestamp), &heldFor);
@@ -109,6 +109,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
 		}
 
 		_pins[pcInt].held = false;
+		_pins[pcInt].timestamp.timestamp = 0;
 	} else {
 // Pin has been pressed
 		_rtc->current(&(_pins[pcInt].timestamp));
@@ -136,46 +137,10 @@ void MHV_Debounce::assignKey(volatile uint8_t *dir, volatile uint8_t *out, volat
 		_rtc->current(&(_pins[pinchangeInterrupt].timestamp));
 	}
 
-// Enable the interrupt
-	uint8_t bit = pinchangeInterrupt;
-#if MHV_PC_INT_COUNT > 15
-	if (pinchangeInterrupt > 15) {
-		bit -= 16;
-		PCMSK2 |= _BV(bit);
-		PCICR |= _BV(PCIE2);
-	} else
-#endif
-#if MHV_PC_INT_COUNT > 7
-	if (pinchangeInterrupt > 7) {
-		bit -= 8;
-		PCMSK1 |= _BV(bit);
-		PCICR |= _BV(PCIE1);
-	} else
-#endif
-	{
-		PCMSK0 |= _BV(bit);
-		PCICR |= _BV(PCIE0);
-	}
+	_pinChangeManager->registerListener(dir, out, in, pin, pinchangeInterrupt, this);
 }
 
 void MHV_Debounce::deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t pin, int8_t pinchangeInterrupt) {
 	initPin(pinchangeInterrupt);
-
-	uint8_t bit = pinchangeInterrupt;
-#if MHV_PC_INT_COUNT > 15
-	if (pinchangeInterrupt > 15) {
-		bit -= 16;
-		PCMSK2 &= ~_BV(bit);
-	} else
-#endif
-#if MHV_PC_INT_COUNT > 7
-	if (pinchangeInterrupt > 7) {
-		bit -= 8;
-		PCMSK1 &= ~_BV(bit);
-	} else
-#endif
-	{
-		PCMSK0 &= ~_BV(bit);
-	}
 }

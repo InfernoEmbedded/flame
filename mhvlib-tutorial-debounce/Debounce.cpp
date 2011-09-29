@@ -58,15 +58,6 @@ void rtcTrigger(void *data) {
 	rtc.tick1ms();
 }
 
-// Minimum time a button must be held to be considered a press (milliseconds)
-#define DEBOUNCE_TIME	16
-
-// Minimum time a button must be held to be considered held down (milliseconds)
-#define HELD_TIME		500
-
-// Time to repeat the held down call while the button is held down (milliseconds)
-#define REPEAT_TIME		100
-
 
 // Triggers for button presses
 class ButtonHandler : public MHV_DebounceListener {
@@ -87,6 +78,15 @@ ButtonHandler buttonHandler;
 MHV_PinChangeManager pinChangeManager;
 MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 
+// Minimum time a button must be held to be considered a press (milliseconds)
+#define DEBOUNCE_TIME	100
+
+// Minimum time a button must be held to be considered held down (milliseconds)
+#define HELD_TIME		500
+
+// Time to repeat the held down call while the button is held down (milliseconds)
+#define REPEAT_TIME		100
+
 MHV_Debounce debouncer(&pinChangeManager, &rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
 int main(void) {
@@ -106,6 +106,7 @@ int main(void) {
 	sei();
 
 	while (1) {
+		pinChangeManager.handleEvents();
 		debouncer.checkHeld();
 	}
 
