@@ -83,7 +83,6 @@ struct mhv_alarm {
 	MHV_TIMESTAMP		when;
 	MHV_TIMESTAMP		repeat;
 	MHV_AlarmListener	*listener;
-	void				*actionData;
 };
 typedef struct mhv_alarm MHV_ALARM;
 
@@ -129,7 +128,7 @@ public:
 	bool addAlarm(MHV_ALARM *alarm);
 	void handleEvents();
 	uint8_t alarmsPending();
-	void removeAlarm(MHV_AlarmListener *listener, void *actionData);
+	void removeAlarm(MHV_AlarmListener *listener);
 
 
 };

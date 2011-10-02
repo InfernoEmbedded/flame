@@ -515,12 +515,11 @@ uint8_t MHV_RTC::alarmsPending() {
 
 /**
  * Remove all matching events from the list of pending events
- * @param	actionFunction		the action for the event to remove
- * @param	actionData			the data for the event to remove
+ * @param	listener		the listener for the event to remove
  */
- void MHV_RTC::removeAlarm(MHV_AlarmListener *listener, void *actionData) {
+ void MHV_RTC::removeAlarm(MHV_AlarmListener *listener) {
 	for (int i = 0; i < _alarmCount; i++) {
-		if (_alarms[i].listener == listener && _alarms[i].actionData == actionData) {
+		if (_alarms[i].listener == listener) {
 			// Shift remaining events down
 			if (i < _alarmCount) {
 				memmove(_alarms, &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
