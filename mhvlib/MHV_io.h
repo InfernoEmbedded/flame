@@ -90,10 +90,16 @@ struct mhv_pin {
 };
 typedef struct mhv_pin MHV_PIN;
 
+// Convert a literal port and pin into a pin macro
+#define mhv_make_pin(_mhv_port, _mhv_bit) \
+	_mhv_make_pin(_mhv_port, _mhv_bit)
+
+#define _mhv_make_pin(_mhv_port, _mhv_bit) \
+	MHV_PIN_ ## _mhv_port ## _mhv_bit
 
 // Convert a pin declaration to a pin struct
 #define mhv_pin(mhvParms) \
-	_mhv_pin_out(mhvParms)
+	_mhv_pin(mhvParms)
 
 #define _mhv_pin(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 		{mhvDir, mhvOutput, mhvInput, _BV(mhvBit), mhvPCInt}

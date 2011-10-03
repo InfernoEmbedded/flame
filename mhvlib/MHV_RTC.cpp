@@ -459,8 +459,8 @@ bool MHV_RTC::addAlarm(MHV_ALARM *alarm) {
 	}
 	// i now is the offset of where the timestamp should be inserted
 	if (i < _alarmCount) {
-		memmove(&(_alarms[i+1]), &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
-		memcpy(&(_alarms[i]), alarm, sizeof(*_alarms));
+		memmove(_alarms + i + 1, _alarms + i, (_alarmCount - i) * sizeof(*_alarms));
+		memcpy(_alarms + i, alarm, sizeof(*_alarms));
 	} else {
 		memcpy(&(_alarms[_alarmCount]), alarm, sizeof(*_alarms));
 	}
@@ -488,6 +488,7 @@ void MHV_RTC::handleEvents(void) {
 
 		// Repeat the event if necessary
 		if (0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {
+			current(&(_alarms[i].when));
 			mhv_timestampIncrement(&(_alarms[i].when), &(_alarms[i].repeat));
 			addAlarm(&(_alarms[i]));
 		}

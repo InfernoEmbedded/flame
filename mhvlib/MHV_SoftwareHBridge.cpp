@@ -25,6 +25,8 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifdef MHV_TIMER16_1
+
 #include <MHV_SoftwareHBridge.h>
 
 /* Create a new H bridge where all transistors are controlled by us
@@ -187,3 +189,4 @@ void MHV_SoftwareHBridge::set(MHV_SOFTWAREHBRIDGE_DIRECTION direction) {
 	reset();
 }
 
+#endif // MHV_TIMER16_1

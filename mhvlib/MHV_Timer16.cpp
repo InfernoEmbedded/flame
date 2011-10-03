@@ -29,6 +29,8 @@
 #include "MHV_Timer16.h"
 #include <avr/interrupt.h>
 
+#ifdef MHV_TIMER16_1
+
 /* Create a new timer
  * param: time the time in microseconds
  */
@@ -381,3 +383,4 @@ void MHV_Timer16::trigger3() {
 	}
 }
 
+#endif // MHV_TIMER16_1

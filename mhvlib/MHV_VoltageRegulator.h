@@ -29,6 +29,7 @@
 #define MHV_VOLTAGEREGULATOR_H_
 
 #ifdef MHV_AD_RESOLUTION
+#ifdef MHV_TIMER16_1
 #include <MHV_Timer16.h>
 
 enum mhv_vreg_modes {
@@ -64,5 +65,6 @@ public:
 	void regulate();
 };
 
+#endif // MHV_TIMER16_1
 #endif // MHV_AD_RESOLUTION
 #endif // MHV_VOLTAGEREGULATOR_H_

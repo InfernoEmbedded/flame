@@ -45,6 +45,7 @@
 #include <MHV_AD.h>
 
 #ifdef MHV_AD_RESOLUTION
+#ifdef MHV_TIMER16_1
 
 /**
  * Initialise the library
@@ -173,4 +174,7 @@ void MHV_VoltageRegulator::disable() {
 float MHV_VoltageRegulator::getVoltage() {
 	return (float)(_lastADC * _vrefVoltage) / (_divider * MHV_AD_RESOLUTION);
 }
-#endif
+
+#endif // MHV_TIMER16_1
+#endif // MHV_AD_RESOLUTION
+

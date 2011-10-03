@@ -35,6 +35,7 @@
  *
  */
 
+#ifdef MHV_TIMER16_1
 
 #include <MHV_ServoControl.h>
 #include <MHV_io.h>
@@ -220,3 +221,6 @@ void MHV_ServoControl::sortServos() {
 		}
 	}
 }
+
+
+#endif // MHV_TIMER16_1

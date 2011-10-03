@@ -117,10 +117,17 @@ void MHV_PinChangeManager::registerListener(volatile uint8_t *pinDir, volatile u
 		PCICR |= _BV(PCIE1);
 	} else
 #endif
+#ifdef PCMSK0
 	{
 		PCMSK0 |= _BV(bit);
 		PCICR |= _BV(PCIE0);
 	}
+#else
+	{
+		PCMSK |= _BV(bit);
+		GIMSK |= _BV(PCIE);
+	}
+#endif
 }
 
 /**
@@ -147,10 +154,15 @@ void MHV_PinChangeManager::deregisterListener(volatile uint8_t *pinDir, volatile
 		PCMSK1 &= ~_BV(bit);
 	} else
 #endif
+#ifdef PCMSK0
 	{
 		PCMSK0 &= ~_BV(bit);
 	}
-
+#else
+	{
+		PCMSK &= ~_BV(bit);
+	}
+#endif
 }
 
 /**

@@ -28,6 +28,8 @@
 #ifndef MHV_SOFTWAREHBRIDGE_H_
 #define MHV_SOFTWAREHBRIDGE_H_
 
+#ifdef MHV_TIMER16_1
+
 #include <inttypes.h>
 #include <MHV_io.h>
 #include <MHV_Timer16.h>
@@ -76,5 +78,7 @@ public:
 	void set(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);
 	void set(MHV_SOFTWAREHBRIDGE_DIRECTION direction);
 };
+
+#endif // MHV_TIMER16_1
 
 #endif /* MHV_SOFTWAREHBRIDGE_H_ */
