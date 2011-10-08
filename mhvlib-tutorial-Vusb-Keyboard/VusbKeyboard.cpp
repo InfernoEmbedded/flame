@@ -147,9 +147,9 @@ Typist typist(&rtc, &keyboard);
 
 int main(void) {
 	// Disable all peripherals and enable just what we need
-//	power_all_disable();
+	power_all_disable();
 #ifdef ATTINY
-//	power_timer0_enable();
+	power_timer0_enable();
 #define PRESCALER	MHV_TIMER_PRESCALER_5_64
 #else
 	power_timer2_enable();
@@ -158,7 +158,7 @@ int main(void) {
 
 #ifdef ATTINY
 // Timer will not wake the ATtiny from power save
-//	set_sleep_mode(SLEEP_MODE_IDLE);
+	set_sleep_mode(SLEEP_MODE_IDLE);
 #else
 	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 #endif
@@ -177,6 +177,6 @@ int main(void) {
 		rtc.handleEvents();
 
 		// Sleep until an interrupt occurs
-//		sleep_mode();
+		sleep_mode();
 	}
 }

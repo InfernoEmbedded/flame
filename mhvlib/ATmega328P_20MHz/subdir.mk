@@ -5,6 +5,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../MHV_AD.cpp \
+../MHV_ADC.cpp \
 ../MHV_Debounce.cpp \
 ../MHV_Device_RX.cpp \
 ../MHV_Device_TX.cpp \
@@ -20,7 +21,9 @@ CPP_SRCS += \
 ../MHV_GammaCorrect.cpp \
 ../MHV_HardwareSerial.cpp \
 ../MHV_Lock.cpp \
+../MHV_PID.cpp \
 ../MHV_PWMMatrix.cpp \
+../MHV_PinChangeManager.cpp \
 ../MHV_RTC.cpp \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
@@ -32,6 +35,7 @@ CPP_SRCS += \
 
 OBJS += \
 ./MHV_AD.o \
+./MHV_ADC.o \
 ./MHV_Debounce.o \
 ./MHV_Device_RX.o \
 ./MHV_Device_TX.o \
@@ -47,7 +51,9 @@ OBJS += \
 ./MHV_GammaCorrect.o \
 ./MHV_HardwareSerial.o \
 ./MHV_Lock.o \
+./MHV_PID.o \
 ./MHV_PWMMatrix.o \
+./MHV_PinChangeManager.o \
 ./MHV_RTC.o \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
@@ -59,6 +65,7 @@ OBJS += \
 
 CPP_DEPS += \
 ./MHV_AD.d \
+./MHV_ADC.d \
 ./MHV_Debounce.d \
 ./MHV_Device_RX.d \
 ./MHV_Device_TX.d \
@@ -74,7 +81,9 @@ CPP_DEPS += \
 ./MHV_GammaCorrect.d \
 ./MHV_HardwareSerial.d \
 ./MHV_Lock.d \
+./MHV_PID.d \
 ./MHV_PWMMatrix.d \
+./MHV_PinChangeManager.d \
 ./MHV_RTC.d \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \

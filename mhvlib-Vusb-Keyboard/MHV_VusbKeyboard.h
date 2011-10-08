@@ -1,5 +1,4 @@
 /*
-/*
  * Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
  *
@@ -177,12 +176,13 @@ class MHV_VusbKeyboard : public MHV_AlarmListener {
 protected:
 	MHV_RTC		*_rtc;
 
-	void addAlarm();
-
 public:
 	MHV_VusbKeyboard(MHV_RTC *rtc);
-	void keyStroke(uint8_t keys);
-	void keyStroke(uint8_t keys, uint8_t modifiers);
+	void keyStroke(uint8_t key);
+	void keyStroke(uint8_t key, uint8_t modifiers);
+	void keyDown(uint8_t key, uint8_t modifiers);
+	void keysUp(uint8_t modifiers);
+	void keysUp();
 	void alarm(MHV_ALARM *alarm);
 };
 

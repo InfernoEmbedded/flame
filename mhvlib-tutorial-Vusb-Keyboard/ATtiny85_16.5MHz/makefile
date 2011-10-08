@@ -64,8 +64,8 @@ avrdudedummy \
 all: mhvlib-tutorial-Vusb-Keyboard.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATtiny85_16.5MHz && $(MAKE) clean all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/ATtiny85_16.5MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz && $(MAKE) all
 
 # Tool invocations
 mhvlib-tutorial-Vusb-Keyboard.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATtiny85_16.5MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz/libmhvlib-vusb-keyboard.a

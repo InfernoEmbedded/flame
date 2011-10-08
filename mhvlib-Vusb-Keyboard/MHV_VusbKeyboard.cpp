@@ -177,7 +177,15 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 
 	usbInit();
 
-	addAlarm();
+	MHV_ALARM newAlarm;
+
+	_rtc->current(&(newAlarm.when));
+	mhv_timestampIncrement(&(newAlarm.when), 0, 5);
+	newAlarm.repeat.milliseconds = 5;
+	newAlarm.repeat.timestamp = 0;
+	newAlarm.listener = this;
+
+	_rtc->addAlarm(&newAlarm);
 }
 
 /**
@@ -188,16 +196,8 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
  * @return false if the keyStroke was not sent
  */
 void MHV_VusbKeyboard::keyStroke(uint8_t key, uint8_t modifiers) {
-	mhv_vusbReportBuffer[0] = modifiers;
-	mhv_vusbReportBuffer[1] = key;
-
-	while (!usbInterruptIsReady()) {}
-	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
-
-	while (!usbInterruptIsReady()) {}
-	mhv_vusbReportBuffer[0] = 0;
-	mhv_vusbReportBuffer[1] = 0;
-	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
+	keyDown(key, modifiers);
+	keysUp(0);
 }
 
 /**
@@ -211,23 +211,34 @@ void MHV_VusbKeyboard::keyStroke(uint8_t key) {
 }
 
 /**
+ * Press a key
+ * @param	key			the key to send
+ * @param	modifiers	the key modifiers
+ */
+void MHV_VusbKeyboard::keyDown(uint8_t key, uint8_t modifiers) {
+	mhv_vusbReportBuffer[0] = modifiers;
+	mhv_vusbReportBuffer[1] = key;
+
+	while (!usbInterruptIsReady()) {}
+	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
+}
+
+/**
+ * Release all keys
+ * @param	modifiers	the key modifiers still held
+ */
+void MHV_VusbKeyboard::keysUp(uint8_t modifiers) {
+	while (!usbInterruptIsReady()) {}
+
+	mhv_vusbReportBuffer[0] = modifiers;
+	mhv_vusbReportBuffer[1] = 0;
+	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
+}
+
+
+/**
  * Periodically called to maintain USB comms
  */
 void MHV_VusbKeyboard::alarm(MHV_ALARM *alarm) {
 	usbPoll();
-}
-
-/**
- * Add an alarm to the RTC to poll the USB connection
- */
-void MHV_VusbKeyboard::addAlarm() {
-	MHV_ALARM newAlarm;
-
-	_rtc->current(&(newAlarm.when));
-	mhv_timestampIncrement(&(newAlarm.when), 0, 5);
-	newAlarm.repeat.milliseconds = 5;
-	newAlarm.repeat.timestamp = 0;
-	newAlarm.listener = this;
-
-	_rtc->addAlarm(&newAlarm);
 }
