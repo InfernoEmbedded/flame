@@ -59,10 +59,9 @@ MHV_Timer8::MHV_Timer8() {};
 
 uint8_t MHV_Timer8::current(void) {
 	uint8_t ret;
-	uint8_t reg = SREG;
-	cli();
-	ret = *_counter;
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		ret = *_counter;
+	}
 	return ret;
 }
 
@@ -279,16 +278,14 @@ void MHV_Timer8::setGenerationMode() {
  * @param	time2		the second time in prescaled timer ticks
  */
 void MHV_Timer8::setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) {
-	uint8_t reg = SREG;
-	cli();
-	_prescaler = prescaler;
-	_setPrescaler(prescaler);
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		_prescaler = prescaler;
+		_setPrescaler(prescaler);
 
-	*_counter = 0;
-	*_outputCompare1 = time1;
-	*_outputCompare2 = time2;
-
-	SREG = reg;
+		*_counter = 0;
+		*_outputCompare1 = time1;
+		*_outputCompare2 = time2;
+	}
 }
 
 /* Get the number of timer cycles available
@@ -376,36 +373,31 @@ void MHV_Timer8::connectOutput2(MHV_TIMER_CONNECT_TYPE type) {
 /* Enable the timer module
  */
 void MHV_Timer8::enable(void) {
-	uint8_t reg = SREG;
-	cli();
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 
-	*_counter = 0;
-	_setPrescaler(_prescaler);
-	setGenerationMode();
-	if (_triggerFunction1) {
-		*_interrupt |= _BV(_interruptEnableA);
+		*_counter = 0;
+		_setPrescaler(_prescaler);
+		setGenerationMode();
+		if (_triggerFunction1) {
+			*_interrupt |= _BV(_interruptEnableA);
+		}
+		if (*_outputCompare2 && _triggerFunction2) {
+			*_interrupt |= _BV(_interruptEnableA + 1);
+			_haveTime2 = true;
+		} else {
+			_haveTime2 = false;
+		}
 	}
-	if (*_outputCompare2 && _triggerFunction2) {
-		*_interrupt |= _BV(_interruptEnableA + 1);
-		_haveTime2 = true;
-	} else {
-		_haveTime2 = false;
-	}
-
-	SREG = reg;
 }
 
 void MHV_Timer8::disable(void) {
-	uint8_t reg = SREG;
-	cli();
-
-	_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
-	*_interrupt &= ~_BV(_interruptEnableA);
-	if (_haveTime2) {
-		*_interrupt &= ~_BV(_interruptEnableA + 1);
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
+		*_interrupt &= ~_BV(_interruptEnableA);
+		if (_haveTime2) {
+			*_interrupt &= ~_BV(_interruptEnableA + 1);
+		}
 	}
-
-	SREG = reg;
 }
 
 bool MHV_Timer8::enabled(void) {

@@ -58,10 +58,10 @@ MHV_Timer16::MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *contro
 
 uint16_t MHV_Timer16::current(void) {
 	uint16_t ret;
-	uint8_t reg = SREG;
-	cli();
-	ret = *_counter;
-	SREG = reg;
+
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		ret = *_counter;
+	}
 	return ret;
 }
 
@@ -116,124 +116,95 @@ void MHV_Timer16::setTop(uint16_t value) {
 	switch (_mode) {
 	case MHV_TIMER_ONE_SHOT:
 	case MHV_TIMER_REPETITIVE:
-		reg = SREG;
-		cli();
-
-		*_outputCompare1 = value;
-
-		SREG = reg;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			*_outputCompare1 = value;
+		}
 		break;
 	case MHV_TIMER_16_PWM_PHASE_CORRECT:
 	case MHV_TIMER_16_PWM_FAST:
 	case MHV_TIMER_16_PWM_PHASE_FREQ_CORRECT:
-		reg = SREG;
-		cli();
-
-		*_inputCapture1 = value;
-
-		SREG = reg;
-
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			*_inputCapture1 = value;
+		}
 	default:
 		break;
 	}
 }
 
 void MHV_Timer16::setOutput(uint8_t channel, uint16_t value) {
-	uint8_t reg = SREG;
-	cli();
-
-	switch (channel) {
-	case 1:
-		*_outputCompare1 = value;
-		break;
-	case 2:
-		*_outputCompare2 = value;
-		break;
-	case 3:
-		*_outputCompare3 = value;
-		break;
-
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		switch (channel) {
+		case 1:
+			*_outputCompare1 = value;
+			break;
+		case 2:
+			*_outputCompare2 = value;
+			break;
+		case 3:
+			*_outputCompare3 = value;
+			break;
+		}
 	}
-
-	SREG = reg;
 }
 
 
 void MHV_Timer16::setOutput1(uint16_t value) {
-	uint8_t reg = SREG;
-	cli();
-
-	*_outputCompare1 = value;
-
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*_outputCompare1 = value;
+	}
 }
 
 void MHV_Timer16::setOutput2(uint16_t value) {
-	uint8_t reg = SREG;
-	cli();
-
-	*_outputCompare2 = value;
-
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*_outputCompare2 = value;
+	}
 }
 
 void MHV_Timer16::setOutput3(uint16_t value) {
-	uint8_t reg = SREG;
-	cli();
-
-	*_outputCompare3 = value;
-
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*_outputCompare3 = value;
+	}
 }
 
 uint16_t MHV_Timer16::getOutput(uint8_t channel) {
-	uint8_t reg = SREG;
 	uint16_t ret = 0;
-	cli();
 
-	switch (channel) {
-	case 1:
-		ret =  *_outputCompare1;
-		break;
-	case 2:
-		ret =  *_outputCompare2;
-		break;
-	case 3:
-		ret =  *_outputCompare3;
-		break;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		switch (channel) {
+		case 1:
+			ret =  *_outputCompare1;
+			break;
+		case 2:
+			ret =  *_outputCompare2;
+			break;
+		case 3:
+			ret =  *_outputCompare3;
+			break;
+		}
 	}
 
-	SREG = reg;
 	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput1(void) {
-	uint8_t reg = SREG;
-	cli();
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		uint16_t ret =  *_outputCompare1;
+	}
 
-	uint16_t ret =  *_outputCompare1;
-
-	SREG = reg;
 	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput2(void) {
-	uint8_t reg = SREG;
-	cli();
-
-	uint16_t ret =  *_outputCompare2;
-
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		uint16_t ret =  *_outputCompare2;
+	}
 	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput3(void) {
-	uint8_t reg = SREG;
-	cli();
-
-	uint16_t ret =  *_outputCompare3;
-
-	SREG = reg;
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		uint16_t ret =  *_outputCompare3;
+	}
 	return ret;
 }
 
@@ -264,73 +235,59 @@ void MHV_Timer16::connectOutput3(MHV_TIMER_CONNECT_TYPE type) {
 }
 
 void MHV_Timer16::disable(void) {
-	uint8_t reg = SREG;
-	cli();
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
+		*_interrupt &= ~_BV(OCIE1A);
 
-	_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
-	*_interrupt &= ~_BV(OCIE1A);
-
-	if (_haveTime2) {
-		*_interrupt &= ~_BV(OCIE1B);
-	}
+		if (_haveTime2) {
+			*_interrupt &= ~_BV(OCIE1B);
+		}
 
 #ifdef OCIE1C
-	if (_haveTime3) {
-		*_interrupt &= ~_BV(OCIE1C);
-	}
+		if (_haveTime3) {
+			*_interrupt &= ~_BV(OCIE1C);
+		}
 #endif
-
-	SREG = reg;
+	}
 }
 
 void MHV_Timer16::enable(void) {
-	uint8_t reg = SREG;
-	cli();
-
-	*_counter = 0;
-	_setPrescaler(_prescaler);
-	setGenerationMode();
-	if (_triggerFunction1) {
-		*_interrupt |= _BV(OCIE1A);
-	}
-	if (*_outputCompare2 && _triggerFunction2) {
-		*_interrupt |= _BV(OCIE1B);
-		_haveTime2 = true;
-	} else {
-		_haveTime2 = false;
-	}
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*_counter = 0;
+		_setPrescaler(_prescaler);
+		setGenerationMode();
+		if (_triggerFunction1) {
+			*_interrupt |= _BV(OCIE1A);
+		}
+		if (*_outputCompare2 && _triggerFunction2) {
+			*_interrupt |= _BV(OCIE1B);
+			_haveTime2 = true;
+		} else {
+			_haveTime2 = false;
+		}
 
 #ifdef OCIE1C
-	if (*_outputCompare3 && _triggerFunction3) {
-		*_interrupt |= _BV(OCIE1C);
-		_haveTime3 = true;
-	} else {
-		_haveTime3 = false;
-	}
+		if (*_outputCompare3 && _triggerFunction3) {
+			*_interrupt |= _BV(OCIE1C);
+			_haveTime3 = true;
+		} else {
+			_haveTime3 = false;
+		}
 #endif
-
-	SREG = reg;
+	}
 }
 
 void MHV_Timer16::setPeriods(MHV_TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
-	uint8_t reg = SREG;
-	cli();
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		_prescaler = prescaler;
+		_setPrescaler(prescaler);
 
-	_prescaler = prescaler;
-	_setPrescaler(prescaler);
-
-	*_counter = 0;
-	*_outputCompare1 = time1;
-	*_outputCompare2 = time2;
-	*_outputCompare3 = time3;
-
-	SREG = reg;
+		*_counter = 0;
+		*_outputCompare1 = time1;
+		*_outputCompare2 = time2;
+		*_outputCompare3 = time3;
+	}
 }
-
-#include <MHV_HardwareSerial.h>
-#include <stdio.h>
-extern MHV_HardwareSerial serial;
-
 
 /* Times are in microseconds
  */
