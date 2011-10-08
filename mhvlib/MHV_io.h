@@ -46,6 +46,7 @@ extern "C" void __cxa_pure_virtual() {
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stddef.h>
+#include <util/atomic.h>
 
 // Some useful attributes
 
@@ -113,6 +114,17 @@ inline void mhv_pinOn(MHV_PIN *pin) {
 }
 
 /**
+ * Set an output pin on atomically (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to turn on
+ */
+inline void mhv_pinOnAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->output) |= pin->bit;
+	}
+}
+
+
+/**
  * Set an output pin on
  * @param	pin		the pin to turn on
  */
@@ -120,6 +132,18 @@ inline void mhv_pinOn(volatile uint8_t *dir, volatile uint8_t *out, volatile uin
 		uint8_t bit, int8_t pcInt) {
 	*out |= _BV(bit);
 }
+
+/**
+ * Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to turn on
+ */
+inline void mhv_pinOnAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*out |= _BV(bit);
+	}
+}
+
 
 /**
  * Set an output pin off
@@ -130,6 +154,17 @@ inline void mhv_pinOff(MHV_PIN *pin) {
 }
 
 /**
+ * Set an output pin off  (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to turn off
+ */
+inline void mhv_pinOffAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->output) &= ~(pin->bit);
+	}
+}
+
+
+/**
  * Set an output pin off
  * @param	pin		the pin to turn off
  */
@@ -137,6 +172,18 @@ inline void mhv_pinOff(volatile uint8_t *dir, volatile uint8_t *out, volatile ui
 		uint8_t bit, int8_t pcInt) {
 	*out &= ~_BV(bit);
 }
+
+/**
+ * Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to turn off
+ */
+inline void mhv_pinOffAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*out &= ~_BV(bit);
+	}
+}
+
 
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
@@ -153,12 +200,39 @@ inline void mhv_pinSet(volatile uint8_t *dir, volatile uint8_t *out, volatile ui
 }
 
 /**
+ * Set an output pin on or off (state should really be constant for optimal performance)
+ * 	 (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to set
+ * @param	state	true to turn the pin on
+ */
+inline void mhv_pinSetAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt, bool state) {
+	if (state) {
+		mhv_pinOnAtomic(dir, out, in, bit, pcInt);
+	} else {
+		mhv_pinOffAtomic(dir, out, in, bit, pcInt);
+	}
+}
+
+
+/**
  * Set a pin to be an output
  * @param	pin		the pin to become an output
  */
 inline void mhv_setOutput(MHV_PIN *pin) {
 	*(pin->dir) |= pin->bit;
 }
+
+/**
+ * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setOutputAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->dir) |= pin->bit;
+	}
+}
+
 
 /**
  * Set a pin to be an output
@@ -170,12 +244,34 @@ inline void mhv_setOutput(volatile uint8_t *dir, volatile uint8_t *out, volatile
 }
 
 /**
+ * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setOutputAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*dir |= _BV(bit);
+	}
+}
+
+/**
  * Set a pin to be an input
  * @param	pin		the pin to become an output
  */
 inline void mhv_setInput(MHV_PIN *pin) {
 	*(pin->dir) &= ~(pin->bit);
 	*(pin->output) &= ~(pin->bit);
+}
+
+/**
+ * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->dir) &= ~(pin->bit);
+		*(pin->output) &= ~(pin->bit);
+	}
 }
 
 /**
@@ -189,6 +285,19 @@ inline void mhv_setInput(volatile uint8_t *dir, volatile uint8_t *out, volatile 
 }
 
 /**
+ * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*dir &= ~_BV(bit);
+		*out &= ~_BV(bit);
+	}
+}
+
+
+/**
  * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		the pin to become an output
  */
@@ -196,6 +305,18 @@ inline void mhv_setInputPullup(MHV_PIN *pin) {
 	*(pin->dir) &= ~(pin->bit);
 	*(pin->output) |= pin->bit;
 }
+
+/**
+ * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputPullupAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->dir) &= ~(pin->bit);
+		*(pin->output) |= pin->bit;
+	}
+}
+
 
 /**
  * Set a pin to be an input, with the internal pullup enabled
@@ -208,12 +329,34 @@ inline void mhv_setInputPullup(volatile uint8_t *dir, volatile uint8_t *out, vol
 }
 
 /**
+ * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to become an output
+ */
+inline void mhv_setInputPullupAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	*dir &= ~_BV(bit);
+	*out |= _BV(bit);
+}
+
+
+/**
  * Toggle a pin
  * @param	pin		the pin to toggle
  */
 inline void mhv_pinToggle(MHV_PIN *pin) {
 	*(pin->input) |= pin->bit;
 }
+
+/**
+ * Toggle a pin (used if the state of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to toggle
+ */
+inline void mhv_pinToggleAtomic(MHV_PIN *pin) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*(pin->input) |= pin->bit;
+	}
+}
+
 
 /**
  * Toggle a pin
@@ -223,6 +366,18 @@ inline void mhv_pinToggle(volatile uint8_t *dir, volatile uint8_t *out, volatile
 		uint8_t bit, int8_t pcInt) {
 	*in |= _BV(bit);
 }
+
+/**
+ * Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler)
+ * @param	pin		the pin to toggle
+ */
+inline void mhv_pinToggleAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
+		uint8_t bit, int8_t pcInt) {
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		*in |= _BV(bit);
+	}
+}
+
 
 /**
  * Read a pin
