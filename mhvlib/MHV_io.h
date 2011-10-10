@@ -398,6 +398,22 @@ inline bool mhv_pinRead(volatile uint8_t *dir, volatile uint8_t *out, volatile u
 }
 
 
+/**
+ * Cheap memset to 0
+ * @param	bufIn	a pointer to the buffer
+ * @param	len		the length of an element in the buffer
+ * @param	count	the number of elements in the buffer
+ */
+inline void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < count; i++) {
+		for (uint8_t j = 0; j < len; j++, buf++) {
+			*buf = 0;
+		}
+	}
+}
+
 
 
 /* We have to shadow all the macros below as the precedence of macro expansion means that

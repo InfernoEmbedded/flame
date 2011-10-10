@@ -34,7 +34,7 @@ extern "C" {
  * Redundant entries (such as LOGICAL_MINIMUM and USAGE_PAGE) have been omitted
  * for the second INPUT item.
  */
-PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /* USB report descriptor */
+PROGMEM const char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /* USB report descriptor */
   0x05, 0x01,	// USAGE_PAGE (Generic Desktop)
   0x09, 0x06,	// USAGE (Keyboard)
   0xa1, 0x01,	// COLLECTION (Application)
@@ -58,7 +58,7 @@ PROGMEM char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /*
 /* This code has been borrowed from Sparkfun's AVR Stick firmware
  * See: http://www.sparkfun.com/products/9147
  */
-#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
+#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH || 1
 #include <avr/eeprom.h>
 /* ------------------------------------------------------------------------- */
 /* ------------------------ Oscillator Calibration ------------------------- */
@@ -157,7 +157,7 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 	_rtc = rtc;
 
-#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
+#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH || 1
 	uchar calibrationValue;
 
 	calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS); /* calibration value from last time */
@@ -195,7 +195,7 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
  *
  * @return false if the keyStroke was not sent
  */
-void MHV_VusbKeyboard::keyStroke(uint8_t key, uint8_t modifiers) {
+void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
 	keyDown(key, modifiers);
 	keysUp(0);
 }
@@ -206,7 +206,7 @@ void MHV_VusbKeyboard::keyStroke(uint8_t key, uint8_t modifiers) {
  *
  * @return false if the keyStroke was not sent
  */
-void MHV_VusbKeyboard::keyStroke(uint8_t key) {
+void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key) {
 	return keyStroke(key, 0);
 }
 
@@ -215,7 +215,7 @@ void MHV_VusbKeyboard::keyStroke(uint8_t key) {
  * @param	key			the key to send
  * @param	modifiers	the key modifiers
  */
-void MHV_VusbKeyboard::keyDown(uint8_t key, uint8_t modifiers) {
+void MHV_VusbKeyboard::keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
 	mhv_vusbReportBuffer[0] = modifiers;
 	mhv_vusbReportBuffer[1] = key;
 
@@ -235,6 +235,12 @@ void MHV_VusbKeyboard::keysUp(uint8_t modifiers) {
 	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
 }
 
+/**
+ * Release all keys
+ */
+void MHV_VusbKeyboard::keysUp() {
+	keysUp(0);
+}
 
 /**
  * Periodically called to maintain USB comms

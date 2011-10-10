@@ -41,11 +41,11 @@
 
 #define MHV_AD_RESOLUTION		1024
 
-#define MHV_AD_REFERENCE_VCC	0x00 << 4
-#define MHV_AD_REFERENCE_AREF	0x04 << 4
-#define MHV_AD_REFERENCE_1V1	0x08 << 6
-#define MHV_AD_REFERENCE_2V56	0x09 << 6
-#define MHV_AD_REFERENCE_2V56_AREF	0x0d << 6
+#define MHV_AD_REFERENCE_VCC	(uint8_t)(0x00 << 4)
+#define MHV_AD_REFERENCE_AREF	(uint8_t)(0x04 << 4)
+#define MHV_AD_REFERENCE_1V1	(uint8_t)(0x08 << 6)
+#define MHV_AD_REFERENCE_2V56	(uint8_t)(0x09 << 6)
+#define MHV_AD_REFERENCE_2V56_AREF	(uint8_t)(0x0d << 6)
 
 #define MHV_AD_CHANNEL_0			0x00
 #define MHV_AD_CHANNEL_1			0x01

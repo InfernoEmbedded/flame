@@ -37,6 +37,11 @@ ISR(ADC_vect) { \
 	__mhvADCManager.adc(); \
 }
 
+/**
+ * Allocate a buffer to contain event mappings
+ */
+#define MHV_ADC_BUFFER_CREATE(_mhvADCBufferName, _mhvADCBufferCount) \
+MHV_EVENT_ADC _mhvADCBufferName[_mhvADCBufferCount];
 
 class MHV_ADCListener {
 public:
@@ -66,7 +71,7 @@ public:
 	void deregisterListener(uint8_t channel);
 	void enable();
 	void disable();
-	void busyRead(uint8_t channel, uint8_t reference);
+	uint16_t busyRead(uint8_t channel, uint8_t reference);
 	void asyncRead(uint8_t channel, uint8_t reference);
 	void setPrescaler(MHV_AD_PRESCALER prescaler);
 

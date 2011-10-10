@@ -33,7 +33,7 @@ ASM_DEPS += \
 vusb/%.o: ../vusb/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"A:\eclipse\mhvlib" -I"A:\eclipse\mhvlib-Vusb-Keyboard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny85 -DF_CPU=16500000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
+	avr-gcc -I"A:\eclipse\mhvlib" -I"A:\eclipse\mhvlib-Vusb-Keyboard" -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=attiny85 -DF_CPU=16500000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

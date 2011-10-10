@@ -26,8 +26,9 @@
  */
 
 
-#include "MHV_Timer16.h"
+#include <MHV_Timer16.h>
 #include <avr/interrupt.h>
+#include <util/atomic.h>
 
 #ifdef MHV_TIMER16_1
 
@@ -111,8 +112,6 @@ uint16_t MHV_Timer16::getTop(void) {
 /* Set the number of timer cycles available
 */
 void MHV_Timer16::setTop(uint16_t value) {
-	uint8_t reg;
-
 	switch (_mode) {
 	case MHV_TIMER_ONE_SHOT:
 	case MHV_TIMER_REPETITIVE:
@@ -187,23 +186,25 @@ uint16_t MHV_Timer16::getOutput(uint8_t channel) {
 }
 
 uint16_t MHV_Timer16::getOutput1(void) {
+	uint16_t ret;
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		uint16_t ret =  *_outputCompare1;
+		ret =  *_outputCompare1;
 	}
-
 	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput2(void) {
+	uint16_t ret;
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		uint16_t ret =  *_outputCompare2;
+		ret =  *_outputCompare2;
 	}
 	return ret;
 }
 
 uint16_t MHV_Timer16::getOutput3(void) {
+	uint16_t ret;
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		uint16_t ret =  *_outputCompare3;
+		ret =  *_outputCompare3;
 	}
 	return ret;
 }

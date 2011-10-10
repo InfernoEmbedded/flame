@@ -138,17 +138,15 @@ void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t val
 		col -= moduleX * _displayX;
 		row -= moduleY * _displayY;
 
-		uint8_t offset, bit;
+		uint8_t offset = col;
+		uint8_t bit = row;
 		switch (_mode) {
 		case MHV_HT1632_NMOS_32x8:
 		case MHV_HT1632_PMOS_32x8:
-			offset = col;
-			bit = row;
 			break;
 		case MHV_HT1632_NMOS_24x16:
 		case MHV_HT1632_PMOS_24x16:
-			offset = col * 2;
-			bit = row;
+			offset *= 2;
 			if (bit > 7) {
 				bit -= 8;
 				offset++;

@@ -125,12 +125,6 @@ void MHV_Display_HD44780::_setCursor(uint8_t col, uint8_t row) {
 void MHV_Display_HD44780::writeCommand(MHV_HD44780_COMMAND command, uint8_t data) {
 	uint8_t byte = command | data;
 
-	char buf[9];
-	buf[8] = '\0';
-	for (uint8_t i = 0; i < 8; ++i) {
-		buf[i] = ((byte >> (7 - i)) & 0x01) ? '1' : '0';
-	}
-
 	if (_mustDelay) {
 		_delay_us(19);
 		_mustDelay = false;

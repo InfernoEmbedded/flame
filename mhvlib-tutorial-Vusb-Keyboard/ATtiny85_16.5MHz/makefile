@@ -64,8 +64,8 @@ avrdudedummy \
 all: mhvlib-tutorial-Vusb-Keyboard.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATtiny85_16.5MHz && $(MAKE) all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib/ATtiny85_16.5MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz && $(MAKE) clean all
 
 # Tool invocations
 mhvlib-tutorial-Vusb-Keyboard.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATtiny85_16.5MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz/libmhvlib-vusb-keyboard.a
@@ -101,7 +101,7 @@ sizedummy: mhvlib-tutorial-Vusb-Keyboard.elf
 
 avrdudedummy: mhvlib-tutorial-Vusb-Keyboard.elf
 	@echo 'Invoking: AVRDude'
-	C:\Progra~2\MHV AVR Tools\bin\avrdude -pt85 -cusbasp -Uflash:w:mhvlib-tutorial-Vusb-Keyboard.hex:a
+	c:\mhvavrtools\bin\avrdude -pt85 -cusbasp -Uflash:w:mhvlib-tutorial-Vusb-Keyboard.hex:a
 	@echo 'Finished building: $@'
 	@echo ' '
 

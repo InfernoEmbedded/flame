@@ -31,146 +31,149 @@
 #define MHV_MOD_ALT_RIGHT       (1<<6)
 #define MHV_MOD_GUI_RIGHT       (1<<7)
 
-#define MHV_KEY_A					4
-#define MHV_KEY_B					5
-#define MHV_KEY_C					6
-#define MHV_KEY_D					7
-#define MHV_KEY_E					8
-#define MHV_KEY_F					9
-#define MHV_KEY_G					10
-#define MHV_KEY_H					11
-#define MHV_KEY_I					12
-#define MHV_KEY_J					13
-#define MHV_KEY_K					14
-#define MHV_KEY_L					15
-#define MHV_KEY_M					16
-#define MHV_KEY_N					17
-#define MHV_KEY_O					18
-#define MHV_KEY_P					19
-#define MHV_KEY_Q					20
-#define MHV_KEY_R					21
-#define MHV_KEY_S					22
-#define MHV_KEY_T					23
-#define MHV_KEY_U					24
-#define MHV_KEY_V					25
-#define MHV_KEY_W					26
-#define MHV_KEY_X					27
-#define MHV_KEY_Y					28
-#define MHV_KEY_Z					29
-#define MHV_KEY_1					30
-#define MHV_KEY_2					31
-#define MHV_KEY_3					32
-#define MHV_KEY_4					33
-#define MHV_KEY_5					34
-#define MHV_KEY_6					35
-#define MHV_KEY_7					36
-#define MHV_KEY_8					37
-#define MHV_KEY_9					38
-#define MHV_KEY_0					39
-#define MHV_KEY_ENTER   			40
-#define MHV_KEY_ESCAPE				41
-#define MHV_KEY_BACKSPACE			42
-#define MHV_KEY_TAB					43
-#define MHV_KEY_SPACE   			44
-#define MHV_KEY_MINUS				45
-#define MHV_KEY_EQUALS				46
-#define MHV_KEY_L_SQUARE			47
-#define MHV_KEY_R_SQUARE			48
-#define MHV_KEY_BACKSLASH			49
-#define MHV_KEY_NON_US_HASH			50
-#define MHV_KEY_SEMICOLON			51
-#define MHV_KEY_QUOTE				52
-#define MHV_KEY_GRAVE_ACCENT		53
-#define MHV_KEY_COMMA				54
-#define MHV_KEY_FULLSTOP			55
-#define MHV_KEY_SLASH				56
-#define MHV_KEY_CAPSLOCK			57
-#define MHV_KEY_F1      			58
-#define MHV_KEY_F2      			59
-#define MHV_KEY_F3      			60
-#define MHV_KEY_F4      			61
-#define MHV_KEY_F5      			62
-#define MHV_KEY_F6      			63
-#define MHV_KEY_F7      			64
-#define MHV_KEY_F8     				65
-#define MHV_KEY_F9      			66
-#define MHV_KEY_F10     			67
-#define MHV_KEY_F11					68
-#define MHV_KEY_F12					69
-#define MHV_KEY_PRINTSCREEN			70
-#define MHV_KEY_SCROLL_LOCK			71
-#define MHV_KEY_PAUSE				72
-#define MHV_KEY_INSERT				73
-#define MHV_KEY_HOME				74
-#define MHV_KEY_PAGE_UP				75
-#define MHV_KEY_DELETE				76
-#define MHV_KEY_END					77
-#define MHV_KEY_PAGE_DOWN			78
-#define MHV_KEY_ARROW_RIGHT			79
-#define MHV_KEY_ARROW_LEFT			80
-#define MHV_KEY_ARROW_DOWN			81
-#define MHV_KEY_ARROW_UP			82
-#define MHV_KEY_NUM_LOCK			83
-#define MHV_KEYPAD_SLASH			84
-#define MHV_KEYPAD_ASTERISK			85
-#define MHV_KEYPAD_MINUS			86
-#define MHV_KEYPAD_PLUS				87
-#define MHV_KEYPAD_ENTER			88
-#define MHV_KEYPAD_1				89
-#define MHV_KEYPAD_2				90
-#define MHV_KEYPAD_3				91
-#define MHV_KEYPAD_4				92
-#define MHV_KEYPAD_5				93
-#define MHV_KEYPAD_6				94
-#define MHV_KEYPAD_7				95
-#define MHV_KEYPAD_8				96
-#define MHV_KEYPAD_9				97
-#define MHV_KEYPAD_0				98
-#define MHV_KEYPAD_FULLSTOP			99
-#define MHV_KEY_NON_US_BACKSLASH	100
-#define MHV_KEY_APPLICATION			101
-#define MHV_KEYPAD_POWER			102
-#define MHV_KEYPAD_EQUALS			103
-#define MHV_KEY_F13					104
-#define MHV_KEY_F14					105
-#define MHV_KEY_F15					106
-#define MHV_KEY_F16					107
-#define MHV_KEY_F17					108
-#define MHV_KEY_F18					109
-#define MHV_KEY_F19					110
-#define MHV_KEY_F20					111
-#define MHV_KEY_F21					112
-#define MHV_KEY_F22					113
-#define MHV_KEY_F23					114
-#define MHV_KEY_F24					115
-#define MHV_KEY_EXECUTE				116
-#define MHV_KEY_HELP				117
-#define MHV_KEY_MENU				118
-#define MHV_KEY_SELECT				119
-#define MHV_KEY_STOP				120
-#define MHV_KEY_AGAIN				121
-#define MHV_KEY_UNDO				122
-#define MHV_KEY_CUT					123
-#define MHV_KEY_COPY				124
-#define MHV_KEY_PASTE				125
-#define MHV_KEY_FIND				126
-#define MHV_KEY_MUTE				127
-#define MHV_KEY_VOLUME_UP			128
-#define MHV_KEY_VOLUME_DOWN			129
-#define MHV_KEY_LOCKING_CAPS_LOCK	130
-#define MHV_KEY_LOCKING_NUM_LOCK	131
-#define MHV_KEY_LOCKING_SCROLL_LOCK	132
-#define MHV_KEYPAD_COMMA			133
-#define MHV_KEYPAD_EQUAL			134
-#define MHV_KEY_CONTROL_LEFT		224
-#define MHV_KEY_SHIFT_LEFT			225
-#define MHV_KEY_ALT_LEFT			226
-#define MHV_KEY_GUI_LEFT			227
-#define MHV_KEY_CONTROL_RIGHT		228
-#define MHV_KEY_SHIFT_RIGHT			229
-#define MHV_KEY_ALT_RIGHT			230
-#define MHV_KEY_GUI_RIGHT			231
+enum mhv_vusb_keyboard_key {
+	 MHV_KEY_A					= 4,
+	 MHV_KEY_B					= 5,
+	 MHV_KEY_C					= 6,
+	 MHV_KEY_D					= 7,
+	 MHV_KEY_E					= 8,
+	 MHV_KEY_F					= 9,
+	 MHV_KEY_G					= 10,
+	 MHV_KEY_H					= 11,
+	 MHV_KEY_I					= 12,
+	 MHV_KEY_J					= 13,
+	 MHV_KEY_K					= 14,
+	 MHV_KEY_L					= 15,
+	 MHV_KEY_M					= 16,
+	 MHV_KEY_N					= 17,
+	 MHV_KEY_O					= 18,
+	 MHV_KEY_P					= 19,
+	 MHV_KEY_Q					= 20,
+	 MHV_KEY_R					= 21,
+	 MHV_KEY_S					= 22,
+	 MHV_KEY_T					= 23,
+	 MHV_KEY_U					= 24,
+	 MHV_KEY_V					= 25,
+	 MHV_KEY_W					= 26,
+	 MHV_KEY_X					= 27,
+	 MHV_KEY_Y					= 28,
+	 MHV_KEY_Z					= 29,
+	 MHV_KEY_1					= 30,
+	 MHV_KEY_2					= 31,
+	 MHV_KEY_3					= 32,
+	 MHV_KEY_4					= 33,
+	 MHV_KEY_5					= 34,
+	 MHV_KEY_6					= 35,
+	 MHV_KEY_7					= 36,
+	 MHV_KEY_8					= 37,
+	 MHV_KEY_9					= 38,
+	 MHV_KEY_0					= 39,
+	 MHV_KEY_ENTER   			= 40,
+	 MHV_KEY_ESCAPE				= 41,
+	 MHV_KEY_BACKSPACE			= 42,
+	 MHV_KEY_TAB				= 43,
+	 MHV_KEY_SPACE   			= 44,
+	 MHV_KEY_MINUS				= 45,
+	 MHV_KEY_EQUALS				= 46,
+	 MHV_KEY_L_SQUARE			= 47,
+	 MHV_KEY_R_SQUARE			= 48,
+	 MHV_KEY_BACKSLASH			= 49,
+	 MHV_KEY_NON_US_HASH		= 50,
+	 MHV_KEY_SEMICOLON			= 51,
+	 MHV_KEY_QUOTE				= 52,
+	 MHV_KEY_GRAVE_ACCENT		= 53,
+	 MHV_KEY_COMMA				= 54,
+	 MHV_KEY_FULLSTOP			= 55,
+	 MHV_KEY_SLASH				= 56,
+	 MHV_KEY_CAPSLOCK			= 57,
+	 MHV_KEY_F1      			= 58,
+	 MHV_KEY_F2      			= 59,
+	 MHV_KEY_F3      			= 60,
+	 MHV_KEY_F4      			= 61,
+	 MHV_KEY_F5      			= 62,
+	 MHV_KEY_F6      			= 63,
+	 MHV_KEY_F7      			= 64,
+	 MHV_KEY_F8     			= 65,
+	 MHV_KEY_F9      			= 66,
+	 MHV_KEY_F10     			= 67,
+	 MHV_KEY_F11				= 68,
+	 MHV_KEY_F12				= 69,
+	 MHV_KEY_PRINTSCREEN		= 70,
+	 MHV_KEY_SCROLL_LOCK		= 71,
+	 MHV_KEY_PAUSE				= 72,
+	 MHV_KEY_INSERT				= 73,
+	 MHV_KEY_HOME				= 74,
+	 MHV_KEY_PAGE_UP			= 75,
+	 MHV_KEY_DELETE				= 76,
+	 MHV_KEY_END				= 77,
+	 MHV_KEY_PAGE_DOWN			= 78,
+	 MHV_KEY_ARROW_RIGHT		= 79,
+	 MHV_KEY_ARROW_LEFT			= 80,
+	 MHV_KEY_ARROW_DOWN			= 81,
+	 MHV_KEY_ARROW_UP			= 82,
+	 MHV_KEY_NUM_LOCK			= 83,
+	 MHV_KEYPAD_SLASH			= 84,
+	 MHV_KEYPAD_ASTERISK		= 85,
+	 MHV_KEYPAD_MINUS			= 86,
+	 MHV_KEYPAD_PLUS			= 87,
+	 MHV_KEYPAD_ENTER			= 88,
+	 MHV_KEYPAD_1				= 89,
+	 MHV_KEYPAD_2				= 90,
+	 MHV_KEYPAD_3				= 91,
+	 MHV_KEYPAD_4				= 92,
+	 MHV_KEYPAD_5				= 93,
+	 MHV_KEYPAD_6				= 94,
+	 MHV_KEYPAD_7				= 95,
+	 MHV_KEYPAD_8				= 96,
+	 MHV_KEYPAD_9				= 97,
+	 MHV_KEYPAD_0				= 98,
+	 MHV_KEYPAD_FULLSTOP		= 99,
+	 MHV_KEY_NON_US_BACKSLASH	= 100,
+	 MHV_KEY_APPLICATION		= 101,
+	 MHV_KEYPAD_POWER			= 102,
+	 MHV_KEYPAD_EQUALS			= 103,
+	 MHV_KEY_F13				= 104,
+	 MHV_KEY_F14				= 105,
+	 MHV_KEY_F15				= 106,
+	 MHV_KEY_F16				= 107,
+	 MHV_KEY_F17				= 108,
+	 MHV_KEY_F18				= 109,
+	 MHV_KEY_F19				= 110,
+	 MHV_KEY_F20				= 111,
+	 MHV_KEY_F21				= 112,
+	 MHV_KEY_F22				= 113,
+	 MHV_KEY_F23				= 114,
+	 MHV_KEY_F24				= 115,
+	 MHV_KEY_EXECUTE			= 116,
+	 MHV_KEY_HELP				= 117,
+	 MHV_KEY_MENU				= 118,
+	 MHV_KEY_SELECT				= 119,
+	 MHV_KEY_STOP				= 120,
+	 MHV_KEY_AGAIN				= 121,
+	 MHV_KEY_UNDO				= 122,
+	 MHV_KEY_CUT				= 123,
+	 MHV_KEY_COPY				= 124,
+	 MHV_KEY_PASTE				= 125,
+	 MHV_KEY_FIND				= 126,
+	 MHV_KEY_MUTE				= 127,
+	 MHV_KEY_VOLUME_UP			= 128,
+	 MHV_KEY_VOLUME_DOWN		= 129,
+	 MHV_KEY_LOCKING_CAPS_LOCK	= 130,
+	 MHV_KEY_LOCKING_NUM_LOCK	= 131,
+	 MHV_KEY_LOCKING_SCROLL_LOCK = 132,
+	 MHV_KEYPAD_COMMA			= 133,
+	 MHV_KEYPAD_EQUAL			= 134,
+	 MHV_KEY_CONTROL_LEFT		= 224,
+	 MHV_KEY_SHIFT_LEFT			= 225,
+	 MHV_KEY_ALT_LEFT			= 226,
+	 MHV_KEY_GUI_LEFT			= 227,
+	 MHV_KEY_CONTROL_RIGHT		= 228,
+	 MHV_KEY_SHIFT_RIGHT		= 229,
+	 MHV_KEY_ALT_RIGHT			= 230,
+	 MHV_KEY_GUI_RIGHT			= 231
+};
 
+typedef enum mhv_vusb_keyboard_key MHV_VUSB_KEYBOARD_KEY;
 
 class MHV_VusbKeyboard : public MHV_AlarmListener {
 protected:
@@ -178,9 +181,9 @@ protected:
 
 public:
 	MHV_VusbKeyboard(MHV_RTC *rtc);
-	void keyStroke(uint8_t key);
-	void keyStroke(uint8_t key, uint8_t modifiers);
-	void keyDown(uint8_t key, uint8_t modifiers);
+	void keyStroke(MHV_VUSB_KEYBOARD_KEY key);
+	void keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
+	void keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keysUp(uint8_t modifiers);
 	void keysUp();
 	void alarm(MHV_ALARM *alarm);

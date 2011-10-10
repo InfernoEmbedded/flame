@@ -38,15 +38,11 @@ MHV_ADC::MHV_ADC(MHV_EVENT_ADC *adcs, uint8_t adcCount) {
 
 	_adcChannel = -1;
 
-	uint8_t i;
-	for (i = 0; i < adcCount; i++) {
-		_adcs[i].channel = 0xff;
-		_adcs[i].listener = NULL;
-	}
+	mhv_memClear(_adcs, sizeof(*_adcs), adcCount);
 }
 
 /**
- * Read the ADC
+ * Interrupt handler to read the ADC
  */
 void MHV_ADC::adc() {
 	_adcValue = ADC;
@@ -88,7 +84,7 @@ void MHV_ADC::deregisterListener(uint8_t channel) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-uint16_t busyRead(uint8_t channel, uint8_t reference) {
+uint16_t MHV_ADC::busyRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -108,7 +104,7 @@ uint16_t busyRead(uint8_t channel, uint8_t reference) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-void asyncRead(uint8_t channel, uint8_t reference) {
+void MHV_ADC::asyncRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -125,7 +121,7 @@ void asyncRead(uint8_t channel, uint8_t reference) {
  * Set the ADC clock prescaler
  * @param	prescaler	the prescaler to use
  */
-void setPrescaler(MHV_AD_PRESCALER prescaler) {
+void MHV_ADC::setPrescaler(MHV_AD_PRESCALER prescaler) {
 	ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
 }
 

@@ -35,10 +35,9 @@
  *
  */
 
-#ifdef MHV_TIMER16_1
-
 #include <MHV_ServoControl.h>
-#include <MHV_io.h>
+
+#ifdef MHV_TIMER16_1
 
 #define SERVO_ORDER(mhvServoIndex) \
 	(_controlBlocks[mhvServoIndex].servoOrder)
@@ -50,7 +49,7 @@
 void MHV_ServoControl::refreshServos(void *data) {
 	if (255 == _nextServoIndex) {
 		// Start of the servo pulse
-		for (int i = 0; i < _count; i++) {
+		for (uint8_t i = 0; i < _count; i++) {
 			if (_controlBlocks[i].port) {
 				mhv_pinOn(0, _controlBlocks[SERVO_ORDER(i)].port,
 						0, _controlBlocks[SERVO_ORDER(i)].pin, -1);

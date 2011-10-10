@@ -26,7 +26,7 @@
 #include <MHV_io.h>
 
 // Bring in the USB Keyboard driver
-#include <MHV_VusbKeyboard.h>
+#include <MHV_VusbTypist.h>
 
 // Bring in the power management header
 #include <avr/power.h>
@@ -68,82 +68,18 @@ void rtcTrigger(void *data) {
 }
 
 // The USB Keyboard driver
-MHV_VusbKeyboard keyboard(&rtc);
+MHV_TX_BUFFER_CREATE(typistBuffer, 2);
+MHV_VusbTypist typist(&typistBuffer, &rtc);
 
-
-class Typist : public MHV_AlarmListener {
-	uint8_t				_state;
-	MHV_RTC				*_rtc;
-	MHV_VusbKeyboard	*_keyboard;
-
+class TypeString : public MHV_AlarmListener {
 public:
-	Typist(MHV_RTC *rtc, MHV_VusbKeyboard *keyboard);
 	void alarm(MHV_ALARM *alarm);
 };
 
-// Time between keystrokes (ms)
-#define TIME_BETWEEN_KEYSTROKES		200
-
-/**
- * Class to write characters on the keyboard
- * @param	rtc			the rtc to trigger events from
- * @param	keyboard	the keyboard to type on
- */
-Typist::Typist(MHV_RTC *rtc, MHV_VusbKeyboard *keyboard) {
-	_rtc = rtc;
-	_keyboard = keyboard;
-
-	_state = 0;
-
-	MHV_ALARM newAlarm;
-
-// Start writing 10 seconds after boot
-	rtc->current(&(newAlarm.when));
-	mhv_timestampIncrement(&(newAlarm.when), 10, 0);
-	newAlarm.repeat.milliseconds = TIME_BETWEEN_KEYSTROKES;
-	newAlarm.repeat.timestamp = 0;
-	newAlarm.listener = this;
-	rtc->addAlarm(&newAlarm);
+void TypeString::alarm(MHV_ALARM *alarm) {
+	typist.write_P(PSTR("Greetings, program!"));
 }
 
-PROGMEM uint8_t text[] = {
-		MHV_KEY_G, 		MHV_MOD_SHIFT_LEFT,
-		MHV_KEY_R,		0,
-		MHV_KEY_E,		0,
-		MHV_KEY_E,		0,
-		MHV_KEY_T,		0,
-		MHV_KEY_I,		0,
-		MHV_KEY_N,		0,
-		MHV_KEY_G,		0,
-		MHV_KEY_S,		0,
-		MHV_KEY_COMMA,	0,
-		MHV_KEY_SPACE,	0,
-		MHV_KEY_P,		0,
-		MHV_KEY_R,		0,
-		MHV_KEY_O,		0,
-		MHV_KEY_G,		0,
-		MHV_KEY_R,		0,
-		MHV_KEY_A,		0,
-		MHV_KEY_M,		0,
-		MHV_KEY_1,		MHV_MOD_SHIFT_LEFT
-};
-
-void Typist::alarm(MHV_ALARM *alarm) {
-	if (_state >= sizeof(text)) {
-		// All done
-			_rtc->removeAlarm(this);
-			return;
-	}
-
-	uint8_t keyAndModifier[2];
-
-	*(uint16_t *)keyAndModifier = pgm_read_word(text + _state);
-	_keyboard->keyStroke(keyAndModifier[0], keyAndModifier[1]);
-	_state += 2;
-}
-
-// Create the typist
-Typist typist(&rtc, &keyboard);
 
 int main(void) {
 	// Disable all peripherals and enable just what we need
@@ -169,6 +105,16 @@ int main(void) {
 	tickTimer.enable();
 
 	sei();
+
+	// Set up the string to be typed after 10 seconds
+	MHV_ALARM newAlarm;
+	rtc.current(&(newAlarm.when));
+	mhv_timestampIncrement(&(newAlarm.when), 10, 0);
+	newAlarm.repeat.timestamp = 0;
+	newAlarm.repeat.milliseconds = 0;
+	TypeString typeString;
+	newAlarm.listener = &typeString;
+	rtc.addAlarm(&newAlarm);
 
 	for (;;) {
 		/* All the interesting things happen in the events

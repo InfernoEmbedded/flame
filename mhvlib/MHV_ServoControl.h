@@ -29,9 +29,9 @@
 #ifndef MHV_SERVOCONTROL_H_
 #define MHV_SERVOCONTROL_H_
 
-#ifdef MHV_TIMER16_1
-
 #include <MHV_Timer16.h>
+
+#ifdef MHV_TIMER16_1
 
 // 1ms in timer ticks
 #define MHV_SERVO_MIN	(F_CPU / (1000L))

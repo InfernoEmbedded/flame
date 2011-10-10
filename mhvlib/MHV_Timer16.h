@@ -29,9 +29,10 @@
 #ifndef MHV_TIMER16_H_
 #define MHV_TIMER16_H_
 
+#include <MHV_Timer8.h>
+
 #ifdef MHV_TIMER16_1
 
-#include <MHV_Timer8.h>
 
 #define MHV_TIMER_ASSIGN_3INTERRUPTS(mhvTimer, mhvTimerVectors) \
 	_MHV_TIMER_ASSIGN_3INTERRUPTS(mhvTimer, mhvTimerVectors)

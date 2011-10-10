@@ -172,12 +172,7 @@ MHV_RTC::MHV_RTC(MHV_Timer8 *timer, MHV_ALARM *eventBuffer, uint8_t eventCount, 
 
 	_tzOffset = timezone;
 
-	int i;
-	for (i = 0; i < eventCount; i++) {
-		eventBuffer[i].when.timestamp = 0;
-		eventBuffer[i].when.milliseconds = 0;
-		eventBuffer[i].listener = NULL;
-	}
+	mhv_memClear (eventBuffer, sizeof(*eventBuffer), eventCount);
 
 	_alarms = eventBuffer;
 	_alarmMax = eventCount;
@@ -451,7 +446,7 @@ bool MHV_RTC::addAlarm(MHV_ALARM *alarm) {
 	}
 
 	// Figure out where it needs to be inserted
-	int i;
+	uint8_t i;
 	for (i = 0; i < _alarmCount; ++i) {
 		if (mhv_timestampLessThan(&(alarm->when), &(_alarms[i].when))) {
 			break;
@@ -460,7 +455,7 @@ bool MHV_RTC::addAlarm(MHV_ALARM *alarm) {
 	// i now is the offset of where the timestamp should be inserted
 	if (i < _alarmCount) {
 		memmove(_alarms + i + 1, _alarms + i, (_alarmCount - i) * sizeof(*_alarms));
-		memcpy(_alarms + i, alarm, sizeof(*_alarms));
+		memmove(_alarms + i, alarm, sizeof(*_alarms));
 	} else {
 		memcpy(&(_alarms[_alarmCount]), alarm, sizeof(*_alarms));
 	}
@@ -477,7 +472,7 @@ bool MHV_RTC::addAlarm(MHV_ALARM *alarm) {
  * events in the interrupt handler, so keep them short!)
  */
 void MHV_RTC::handleEvents(void) {
-	int i;
+	uint8_t i;
 	MHV_TIMESTAMP timestamp;
 	current(&timestamp);
 
@@ -519,7 +514,7 @@ uint8_t MHV_RTC::alarmsPending() {
  * @param	listener		the listener for the event to remove
  */
  void MHV_RTC::removeAlarm(MHV_AlarmListener *listener) {
-	for (int i = 0; i < _alarmCount; i++) {
+	for (uint8_t i = 0; i < _alarmCount; i++) {
 		if (_alarms[i].listener == listener) {
 			// Shift remaining events down
 			if (i < _alarmCount) {
