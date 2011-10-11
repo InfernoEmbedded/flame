@@ -1,0 +1,210 @@
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp}{
+\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.cpp \-File \-Reference}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+}
+{\ttfamily \#include $<$util/delay.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h$>$}\*
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_ada62927a3bd126e9088ded6dff1c9c1a}{\-H\-D44780\-\_\-\-D\-B4}~(1 $<$$<$ \-\_\-data\-Pin)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_ad3dfbcc20eb49b048647d3be4fe684bd}{\-H\-D44780\-\_\-\-D\-B5}~(1 $<$$<$ (\-\_\-data\-Pin + 1))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a6deced8116ba003475c27e4482c4f267}{\-H\-D44780\-\_\-\-D\-B6}~(1 $<$$<$ (\-\_\-data\-Pin + 2))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a2edaf63e8065dfe2c1f9800dd44f3593}{\-H\-D44780\-\_\-\-D\-B7}~(1 $<$$<$ (\-\_\-data\-Pin + 3))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_aac7b2021d59d04f3b3e12951ee06ba1f}{\-H\-D44780\-\_\-\-R\-S}~(1 $<$$<$ \-\_\-control\-Pin)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_af4fd18e291920029a9fb95a9e1bda761}{\-H\-D44780\-\_\-\-R\-W}~(1 $<$$<$ (\-\_\-control\-Pin + 1))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a3fe1bbfe04ed23b9db1ea01c26183ff0}{\-H\-D44780\-\_\-\-E}~(1 $<$$<$ (\-\_\-control\-Pin + 2))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a692927c797dbb727ee4107e6da377c75}{\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T}~(1 $<$$<$ \-\_\-visual\-Pin)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_af13190c155cd155d3c7ee1fa2df243b5}{\-H\-D44780\-\_\-\-L\-E\-D}~(1 $<$$<$ (\-\_\-visual\-Pin + 1))
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a15e6a4c48deb6d69b7ec5b293deec8ec}{\-H\-D44780\-\_\-\-T\-C}~(1000 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a910e6cbd5b8a18460d2e98088da54212}{\-H\-D44780\-\_\-\-T\-S\-U1}~(60 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a8c4ab72d23d14b12afd2261b709b79d8}{\-H\-D44780\-\_\-\-T\-S\-U2}~(195 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a66f3b45e0a58157e37fcf2cb14ad614f}{\-H\-D44780\-\_\-\-T\-D\-H}~(5 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_aa384bf862b79d4aeec579c8d2a4c0eaf}{\-H\-D44780\-\_\-\-T\-W}~(450 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_ae8dbb0d3bff2a766514d96c5b83b22f1}{\-H\-D44780\-\_\-\-T\-I\-N\-I\-T}~300
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a1e8d7568f2c1abcf8188070ca4743754}{\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R}~1530
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_ad1a60e80b55f078cb5631fd2c6addc9a}{\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R}~39
+\item 
+\#define \hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp_a64c6ea37bc20e78b07f4353e106328b7}{\-H\-D44780\-\_\-\-T\-R\-A\-M}~430
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a692927c797dbb727ee4107e6da377c75}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T@{\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T}}
+\index{\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T@{\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-C\-O\-N\-T\-R\-A\-S\-T~(1 $<$$<$ \-\_\-visual\-Pin)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a692927c797dbb727ee4107e6da377c75}
+
+
+\-Definition at line 37 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_ada62927a3bd126e9088ded6dff1c9c1a}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-D\-B4@{\-H\-D44780\-\_\-\-D\-B4}}
+\index{\-H\-D44780\-\_\-\-D\-B4@{\-H\-D44780\-\_\-\-D\-B4}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-D\-B4}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-D\-B4~(1 $<$$<$ \-\_\-data\-Pin)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_ada62927a3bd126e9088ded6dff1c9c1a}
+
+
+\-Definition at line 30 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_ad3dfbcc20eb49b048647d3be4fe684bd}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-D\-B5@{\-H\-D44780\-\_\-\-D\-B5}}
+\index{\-H\-D44780\-\_\-\-D\-B5@{\-H\-D44780\-\_\-\-D\-B5}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-D\-B5}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-D\-B5~(1 $<$$<$ (\-\_\-data\-Pin + 1))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_ad3dfbcc20eb49b048647d3be4fe684bd}
+
+
+\-Definition at line 31 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a6deced8116ba003475c27e4482c4f267}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-D\-B6@{\-H\-D44780\-\_\-\-D\-B6}}
+\index{\-H\-D44780\-\_\-\-D\-B6@{\-H\-D44780\-\_\-\-D\-B6}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-D\-B6}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-D\-B6~(1 $<$$<$ (\-\_\-data\-Pin + 2))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a6deced8116ba003475c27e4482c4f267}
+
+
+\-Definition at line 32 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a2edaf63e8065dfe2c1f9800dd44f3593}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-D\-B7@{\-H\-D44780\-\_\-\-D\-B7}}
+\index{\-H\-D44780\-\_\-\-D\-B7@{\-H\-D44780\-\_\-\-D\-B7}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-D\-B7}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-D\-B7~(1 $<$$<$ (\-\_\-data\-Pin + 3))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a2edaf63e8065dfe2c1f9800dd44f3593}
+
+
+\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a3fe1bbfe04ed23b9db1ea01c26183ff0}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-E@{\-H\-D44780\-\_\-\-E}}
+\index{\-H\-D44780\-\_\-\-E@{\-H\-D44780\-\_\-\-E}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-E~(1 $<$$<$ (\-\_\-control\-Pin + 2))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a3fe1bbfe04ed23b9db1ea01c26183ff0}
+
+
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_af13190c155cd155d3c7ee1fa2df243b5}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-L\-E\-D@{\-H\-D44780\-\_\-\-L\-E\-D}}
+\index{\-H\-D44780\-\_\-\-L\-E\-D@{\-H\-D44780\-\_\-\-L\-E\-D}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-L\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-L\-E\-D~(1 $<$$<$ (\-\_\-visual\-Pin + 1))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_af13190c155cd155d3c7ee1fa2df243b5}
+
+
+\-Definition at line 38 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_aac7b2021d59d04f3b3e12951ee06ba1f}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-R\-S@{\-H\-D44780\-\_\-\-R\-S}}
+\index{\-H\-D44780\-\_\-\-R\-S@{\-H\-D44780\-\_\-\-R\-S}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-R\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-R\-S~(1 $<$$<$ \-\_\-control\-Pin)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_aac7b2021d59d04f3b3e12951ee06ba1f}
+
+
+\-Definition at line 34 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_af4fd18e291920029a9fb95a9e1bda761}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-R\-W@{\-H\-D44780\-\_\-\-R\-W}}
+\index{\-H\-D44780\-\_\-\-R\-W@{\-H\-D44780\-\_\-\-R\-W}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-R\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-R\-W~(1 $<$$<$ (\-\_\-control\-Pin + 1))}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_af4fd18e291920029a9fb95a9e1bda761}
+
+
+\-Definition at line 35 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a15e6a4c48deb6d69b7ec5b293deec8ec}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-C@{\-H\-D44780\-\_\-\-T\-C}}
+\index{\-H\-D44780\-\_\-\-T\-C@{\-H\-D44780\-\_\-\-T\-C}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-C~(1000 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a15e6a4c48deb6d69b7ec5b293deec8ec}
+
+
+\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a1e8d7568f2c1abcf8188070ca4743754}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R@{\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R}}
+\index{\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R@{\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-C\-L\-E\-A\-R~1530}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a1e8d7568f2c1abcf8188070ca4743754}
+
+
+\-Definition at line 48 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a66f3b45e0a58157e37fcf2cb14ad614f}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-D\-H@{\-H\-D44780\-\_\-\-T\-D\-H}}
+\index{\-H\-D44780\-\_\-\-T\-D\-H@{\-H\-D44780\-\_\-\-T\-D\-H}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-D\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-D\-H~(5 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a66f3b45e0a58157e37fcf2cb14ad614f}
+
+
+\-Definition at line 45 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_ae8dbb0d3bff2a766514d96c5b83b22f1}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-I\-N\-I\-T@{\-H\-D44780\-\_\-\-T\-I\-N\-I\-T}}
+\index{\-H\-D44780\-\_\-\-T\-I\-N\-I\-T@{\-H\-D44780\-\_\-\-T\-I\-N\-I\-T}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-I\-N\-I\-T~300}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_ae8dbb0d3bff2a766514d96c5b83b22f1}
+
+
+\-Definition at line 47 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_ad1a60e80b55f078cb5631fd2c6addc9a}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R@{\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R}}
+\index{\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R@{\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-I\-N\-S\-T\-R~39}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_ad1a60e80b55f078cb5631fd2c6addc9a}
+
+
+\-Definition at line 49 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a64c6ea37bc20e78b07f4353e106328b7}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-R\-A\-M@{\-H\-D44780\-\_\-\-T\-R\-A\-M}}
+\index{\-H\-D44780\-\_\-\-T\-R\-A\-M@{\-H\-D44780\-\_\-\-T\-R\-A\-M}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-R\-A\-M~430}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a64c6ea37bc20e78b07f4353e106328b7}
+
+
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a910e6cbd5b8a18460d2e98088da54212}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-S\-U1@{\-H\-D44780\-\_\-\-T\-S\-U1}}
+\index{\-H\-D44780\-\_\-\-T\-S\-U1@{\-H\-D44780\-\_\-\-T\-S\-U1}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-S\-U1}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-S\-U1~(60 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a910e6cbd5b8a18460d2e98088da54212}
+
+
+\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_a8c4ab72d23d14b12afd2261b709b79d8}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-S\-U2@{\-H\-D44780\-\_\-\-T\-S\-U2}}
+\index{\-H\-D44780\-\_\-\-T\-S\-U2@{\-H\-D44780\-\_\-\-T\-S\-U2}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-S\-U2}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-S\-U2~(195 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_a8c4ab72d23d14b12afd2261b709b79d8}
+
+
+\-Definition at line 44 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
+\hypertarget{_m_h_v___display___h_d44780___direct___connect_8cpp_aa384bf862b79d4aeec579c8d2a4c0eaf}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}!\-H\-D44780\-\_\-\-T\-W@{\-H\-D44780\-\_\-\-T\-W}}
+\index{\-H\-D44780\-\_\-\-T\-W@{\-H\-D44780\-\_\-\-T\-W}!MHV_Display_HD44780_Direct_Connect.cpp@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}}
+\subsubsection[{\-H\-D44780\-\_\-\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-H\-D44780\-\_\-\-T\-W~(450 $\ast$ 1000000 / \-F\-\_\-\-C\-P\-U / 3 + 1)}}
+\label{_m_h_v___display___h_d44780___direct___connect_8cpp_aa384bf862b79d4aeec579c8d2a4c0eaf}
+
+
+\-Definition at line 46 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+

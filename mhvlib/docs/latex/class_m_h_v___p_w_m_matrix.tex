@@ -1,0 +1,95 @@
+\hypertarget{class_m_h_v___p_w_m_matrix}{
+\section{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix \-Class \-Reference}
+\label{class_m_h_v___p_w_m_matrix}\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_m_h_v___p_w_m_matrix}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix} (uint16\-\_\-t row\-Count, uint16\-\_\-t col\-Count, uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers, void($\ast$row\-On)(uint16\-\_\-t row), void($\ast$row\-Off)(uint16\-\_\-t row), void($\ast$col\-On)(uint16\-\_\-t column), void($\ast$col\-Off)(uint16\-\_\-t column), \hyperlink{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E} mode=\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O)
+\item 
+void \hyperlink{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{tick} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 41 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}{
+\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
+\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}!MHV_PWMMatrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
+\subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-::\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row\-Count, }
+\item[{uint16\-\_\-t}]{col\-Count, }
+\item[{uint8\-\_\-t $\ast$}]{frame\-Buffer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers, }
+\item[{void($\ast$)(uint16\-\_\-t row)}]{row\-On, }
+\item[{void($\ast$)(uint16\-\_\-t row)}]{row\-Off, }
+\item[{void($\ast$)(uint16\-\_\-t column)}]{col\-On, }
+\item[{void($\ast$)(uint16\-\_\-t column)}]{col\-Off, }
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}]{mode = {\ttfamily \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}
+\-Establish a new matrix 
+\begin{DoxyParams}{\-Parameters}
+{\em mode} & whether to scan rows, cols, individual pixels or auto \\
+\hline
+{\em row\-Count} & the number of rows \\
+\hline
+{\em col\-Count} & the number of columns \\
+\hline
+{\em frame\-Buffer} & memory to use for the framebuffer, must be at least rows $\ast$ cols $\ast$ uint8\-\_\-t \\
+\hline
+{\em tx\-Buffers} & buffers used for text transmission \\
+\hline
+{\em row\-On} & callback to turn a row on \\
+\hline
+{\em row\-Off} & callback to turn a row off \\
+\hline
+{\em col\-On} & callback to turn a column on \\
+\hline
+{\em col\-Off} & callback to turn a column off \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 45 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{
+\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}!tick@{tick}}
+\index{tick@{tick}!MHV_PWMMatrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
+\subsubsection[{tick}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-::tick (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}
+
+
+\-Definition at line 176 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___p_w_m_matrix_8h}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___p_w_m_matrix_8cpp}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-cpp}\end{DoxyCompactItemize}

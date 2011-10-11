@@ -67,13 +67,24 @@
  * n	Contrast (V0)
  * n+1	LED Positive
  *
- * @param	data*		pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
- * @param	control*	pin declaration for the first bit of the control port (will use 3 bits)
- * @param	visual*		pin declaration for the first bit of the visual port (will use 2 bits)
- * @param	dir			the direction register for the port
- * @param	colCount	the number of columns on the display
- * @param	rowCount	the number of rows on the display
- * @param	txBuffers	buffers for async writing
+ * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
+ * @param	dataOut						A member of the MHV_PIN_* macro
+ * @param	dataIn						A member of the MHV_PIN_* macro
+ * @param	dataPin						A member of the MHV_PIN_* macro
+ * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	controlDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the control port (will use 3 bits)
+ * @param	controlOut					A member of the MHV_PIN_* macro
+ * @param	controlIn					A member of the MHV_PIN_* macro
+ * @param	controlPin					A member of the MHV_PIN_* macro
+ * @param	controlPinchangeInterrupt	A member of the MHV_PIN_* macro
+ * @param	visualDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the visual port (will use 2 bits)
+ * @param	visualOut					A member of the MHV_PIN_* macro
+ * @param	visualIn					A member of the MHV_PIN_* macro
+ * @param	visualPin					A member of the MHV_PIN_* macro
+ * @param	visualPinchangeInterrupt	A member of the MHV_PIN_* macro
+ * @param	colCount					the number of columns on the display
+ * @param	rowCount					the number of rows on the display
+ * @param	txBuffers					buffers for async writing
  */
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
@@ -111,12 +122,19 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
  * An alternate constructor without visual pins - if this constructor is used, tickPWM behaviour is
  * undefined and will like overwrite random bits of memory, so don't call it
  *
- * @param	data*		pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
- * @param	control*	pin declaration for the first bit of the control port (will use 3 bits)
- * @param	dir			the direction register for the port
- * @param	colCount	the number of columns on the display
- * @param	rowCount	the number of rows on the display
- * @param	txBuffers	buffers for async writing
+ * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
+ * @param	dataOut						A member of the MHV_PIN_* macro
+ * @param	dataIn						A member of the MHV_PIN_* macro
+ * @param	dataPin						A member of the MHV_PIN_* macro
+ * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	controlDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the control port (will use 3 bits)
+ * @param	controlOut					A member of the MHV_PIN_* macro
+ * @param	controlIn					A member of the MHV_PIN_* macro
+ * @param	controlPin					A member of the MHV_PIN_* macro
+ * @param	controlPinchangeInterrupt	A member of the MHV_PIN_* macro
+ * @param	colCount					the number of columns on the display
+ * @param	rowCount					the number of rows on the display
+ * @param	txBuffers					buffers for async writing
  */
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
@@ -284,7 +302,6 @@ void MHV_Display_HD44780_Direct_Connect::delay(MHV_HD44780_COMMAND command) {
 
 /**
  * Initialise the display
- * @param	bits8		true to use 8 bit transfers
  * @param	multiLine	true if there is more than 1 line
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
  * @param	cursorOn	turn the curson on

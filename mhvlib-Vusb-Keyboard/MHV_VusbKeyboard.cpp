@@ -58,7 +58,7 @@ PROGMEM const char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] 
 /* This code has been borrowed from Sparkfun's AVR Stick firmware
  * See: http://www.sparkfun.com/products/9147
  */
-#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH || 1
+#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 #include <avr/eeprom.h>
 /* ------------------------------------------------------------------------- */
 /* ------------------------ Oscillator Calibration ------------------------- */
@@ -153,11 +153,12 @@ unsigned char usbFunctionSetup(uchar data[8]) {
  * Emulate a USB keyboard using V-USB
  *   Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h)
  *   Uses pins B0/B2 for ATtiny25/45/85
+ * @param	rtc	an RTC to schedule jobs on
  */
 MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 	_rtc = rtc;
 
-#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH || 1
+#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 	uchar calibrationValue;
 
 	calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS); /* calibration value from last time */

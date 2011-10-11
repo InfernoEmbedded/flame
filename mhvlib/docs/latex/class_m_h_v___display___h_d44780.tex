@@ -1,0 +1,466 @@
+\hypertarget{class_m_h_v___display___h_d44780}{
+\section{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780 \-Class \-Reference}
+\label{class_m_h_v___display___h_d44780}\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_m_h_v___display___h_d44780}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___display___h_d44780_a11a3f21e245e2cb1edfbb8b9ba6d56d4}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780} (uint8\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a4e0ed118d834b0c0ac68ac03d28f4246}{init} (bool byte\-Mode, bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a1dd0adb212ad9485352ee3a59e7e4e7b}{clear} ()
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a428016d2114187bbe3030e8c08861897}{entry\-Mode} (bool left2\-Right, bool scroll)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_ada0c9ee4be9958c59e02bc55e4033511}{control} (bool display\-On, bool cursor\-On, bool cursor\-Blink)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a99ad2131b4ea26638a75f865a740c7ed}{write\-Command} (\hyperlink{_m_h_v___display___h_d44780_8h_a76bff68a0c366080486a09e3beec77e1}{\-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command, uint8\-\_\-t data)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_ab8c89d4e57ae1008ab553e2f890129a3}{function} (bool byte\-Mode, bool multi\-Line, bool big\-Font)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a9e601dd017a6d9f4e2bdc37efe49a13d}{address\-C\-G\-R\-A\-M} (uint8\-\_\-t address)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_af8eb6f055b4a28b63422a53e6d4190e7}{address\-D\-D\-R\-A\-M} (uint8\-\_\-t address)
+\item 
+virtual void \hyperlink{class_m_h_v___display___h_d44780_ad1691510b6d35301e4182edcf11d81db}{write\-Byte} (uint8\-\_\-t byte, bool rs)=0
+\item 
+virtual uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780_a5f35b3083cca3fb405b4f56a631cbc63}{read\-Byte} (bool rs)=0
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_ab59dcf627ffb487a0a63e92cdfce7373}{\-\_\-set\-Cursor} (uint8\-\_\-t col, uint8\-\_\-t row)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a70c2bd4ead6aa04eb0f198842ea7c278}{\-\_\-set\-Cursor} (uint16\-\_\-t col, uint16\-\_\-t row)
+\item 
+void \hyperlink{class_m_h_v___display___h_d44780_a7a46e31a6ee22db0cf3132630eb88554}{\-\_\-write\-Char} (char character)
+\item 
+char \hyperlink{class_m_h_v___display___h_d44780_ad0fb71213a916a4a85fedf8f5d25316e}{\-\_\-read\-Char} ()
+\item 
+virtual bool \hyperlink{class_m_h_v___display___h_d44780_a667d9f8ca08b3021fea77a47cf6c1965}{is\-Busy} ()=0
+\item 
+virtual void \hyperlink{class_m_h_v___display___h_d44780_a8a6017accb4910deb470ce2d1a5b5fc5}{delay} (\hyperlink{_m_h_v___display___h_d44780_8h_a76bff68a0c366080486a09e3beec77e1}{\-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command)=0
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___h_d44780_a5dac9510b7fc9e79e5fbf8b07eeaa661}{\-\_\-ticks}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___h_d44780_af1be1afa290ea524c24b1324ce0a1017}{\-\_\-animate\-Ticks}
+\item 
+bool \hyperlink{class_m_h_v___display___h_d44780_af0f2603c415f13dedfe6e9147d40b06f}{\-\_\-must\-Delay}
+\item 
+bool \hyperlink{class_m_h_v___display___h_d44780_a122793e8b5dc3a2f0ad1eeab407ece4b}{\-\_\-byte\-Mode}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 45 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___display___h_d44780_a11a3f21e245e2cb1edfbb8b9ba6d56d4}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780 (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{col\-Count, }
+\item[{uint16\-\_\-t}]{row\-Count, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___h_d44780_a11a3f21e245e2cb1edfbb8b9ba6d56d4}
+\-A class for operating \-H\-D44780 based \-L\-C\-D displays (and compatible) \-Data port layout\-: \-Bit description n \-D\-B4 n+1 \-D\-B5 n+2 \-D\-B6 n+3 \-D\-B7
+
+\-Control port layout\-: n \-R\-S \-Register \-Select n+1 \-R/\-W \-Read/\-Write n+2 \-E \-Enable
+
+\-Visual port layout\-: n \-Contrast (\-V0) n+1 \-L\-E\-D \-Positive
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em col\-Count} & the number of columns on the display \\
+\hline
+{\em row\-Count} & the number of rows on the display \\
+\hline
+{\em tx\-Buffers} & buffers for async writing \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 54 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___display___h_d44780_ad0fb71213a916a4a85fedf8f5d25316e}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-read\-Char@{\-\_\-read\-Char}}
+\index{\-\_\-read\-Char@{\-\_\-read\-Char}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-read\-Char}]{\setlength{\rightskip}{0pt plus 5cm}char \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-read\-Char (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_ad0fb71213a916a4a85fedf8f5d25316e}
+\-Read a character from the display at the current location, incrementing the location by 1 \begin{DoxyReturn}{\-Returns}
+the character at the current location 
+\end{DoxyReturn}
+
+
+\-Implements \hyperlink{class_m_h_v___display___character_ada7e2fa3ad94e7841cb553d60c20e1bc}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Character}.
+
+
+
+\-Definition at line 75 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_ab59dcf627ffb487a0a63e92cdfce7373}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-set\-Cursor@{\-\_\-set\-Cursor}}
+\index{\-\_\-set\-Cursor@{\-\_\-set\-Cursor}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_ab59dcf627ffb487a0a63e92cdfce7373}
+\-Move the cursor to a location, so the next write\-Char will write a character at that location (\-Origin is at the bottom left) 
+\begin{DoxyParams}{\-Parameters}
+{\em col} & the column to put the character \\
+\hline
+{\em row} & the row to put the character \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 101 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a70c2bd4ead6aa04eb0f198842ea7c278}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-set\-Cursor@{\-\_\-set\-Cursor}}
+\index{\-\_\-set\-Cursor@{\-\_\-set\-Cursor}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a70c2bd4ead6aa04eb0f198842ea7c278}
+\-Move the cursor to a location, so the next write\-Char will write a character at that location (\-Origin is at the bottom left) 
+\begin{DoxyParams}{\-Parameters}
+{\em col} & the column to put the character \\
+\hline
+{\em row} & the row to put the character \\
+\hline
+\end{DoxyParams}
+
+
+\-Implements \hyperlink{class_m_h_v___display___character_a014011698be99484d0aef022e6f2f368}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Character}.
+
+
+
+\-Definition at line 86 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a7a46e31a6ee22db0cf3132630eb88554}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-write\-Char@{\-\_\-write\-Char}}
+\index{\-\_\-write\-Char@{\-\_\-write\-Char}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a7a46e31a6ee22db0cf3132630eb88554}
+\-Write a character to the display at the current location, incrementing the location by 1 
+\begin{DoxyParams}{\-Parameters}
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+\-Implements \hyperlink{class_m_h_v___display___character_a0708f0d85fdd520debe872089b210ef6}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Character}.
+
+
+
+\-Definition at line 65 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a9e601dd017a6d9f4e2bdc37efe49a13d}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!address\-C\-G\-R\-A\-M@{address\-C\-G\-R\-A\-M}}
+\index{address\-C\-G\-R\-A\-M@{address\-C\-G\-R\-A\-M}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{address\-C\-G\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::address\-C\-G\-R\-A\-M (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a9e601dd017a6d9f4e2bdc37efe49a13d}
+\-Set the \-C\-G\-R\-A\-M address 
+\begin{DoxyParams}{\-Parameters}
+{\em address} & the \-C\-G\-R\-A\-M address \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 194 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_af8eb6f055b4a28b63422a53e6d4190e7}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!address\-D\-D\-R\-A\-M@{address\-D\-D\-R\-A\-M}}
+\index{address\-D\-D\-R\-A\-M@{address\-D\-D\-R\-A\-M}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{address\-D\-D\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::address\-D\-D\-R\-A\-M (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_af8eb6f055b4a28b63422a53e6d4190e7}
+\-Set the \-D\-D\-R\-A\-M address 
+\begin{DoxyParams}{\-Parameters}
+{\em address} & the \-D\-D\-R\-A\-M address \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 204 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a1dd0adb212ad9485352ee3a59e7e4e7b}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!clear@{clear}}
+\index{clear@{clear}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a1dd0adb212ad9485352ee3a59e7e4e7b}
+\-Clear the display 
+
+\-Implements \hyperlink{class_m_h_v___display___character_ac33b74b5d4bd8a5ffcceef9863793aa8}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Character}.
+
+
+
+\-Definition at line 137 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_ada0c9ee4be9958c59e02bc55e4033511}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!control@{control}}
+\index{control@{control}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::control (
+\begin{DoxyParamCaption}
+\item[{bool}]{display\-On, }
+\item[{bool}]{cursor\-On, }
+\item[{bool}]{cursor\-Blink}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___h_d44780_ada0c9ee4be9958c59e02bc55e4033511}
+\-Set parameters on the display 
+\begin{DoxyParams}{\-Parameters}
+{\em display\-On} & turn the display on \\
+\hline
+{\em cursor\-On} & turn the cursor on \\
+\hline
+{\em cursor\-Blink} & blink the cursor \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 164 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a8a6017accb4910deb470ce2d1a5b5fc5}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!delay@{delay}}
+\index{delay@{delay}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::delay (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a8a6017accb4910deb470ce2d1a5b5fc5}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a0446739e0eebe70e9c1e7b2d5aa74532}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}, and \hyperlink{class_m_h_v___display___h_d44780___shift___register_a5f396630acf45e37a766ae9ae18b6508}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}.
+
+\hypertarget{class_m_h_v___display___h_d44780_a428016d2114187bbe3030e8c08861897}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!entry\-Mode@{entry\-Mode}}
+\index{entry\-Mode@{entry\-Mode}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{entry\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::entry\-Mode (
+\begin{DoxyParamCaption}
+\item[{bool}]{left2\-Right, }
+\item[{bool}]{scroll}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___h_d44780_a428016d2114187bbe3030e8c08861897}
+\-Set the entry mode -\/ allows for left or right printing, allows for scrolling display or moving cursor 
+\begin{DoxyParams}{\-Parameters}
+{\em left2\-Right} & true for text reading left to right \\
+\hline
+{\em scroll} & true to scroll text rather than moving the cursor \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 150 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_ab8c89d4e57ae1008ab553e2f890129a3}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!function@{function}}
+\index{function@{function}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::function (
+\begin{DoxyParamCaption}
+\item[{bool}]{byte\-Mode, }
+\item[{bool}]{multi\-Line, }
+\item[{bool}]{big\-Font}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_ab8c89d4e57ae1008ab553e2f890129a3}
+\-Initialise the display 
+\begin{DoxyParams}{\-Parameters}
+{\em byte\-Mode} & true to use 8 bit protocol \\
+\hline
+{\em multi\-Line} & true if there is more than 1 line \\
+\hline
+{\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 178 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a4e0ed118d834b0c0ac68ac03d28f4246}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!init@{init}}
+\index{init@{init}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::init (
+\begin{DoxyParamCaption}
+\item[{bool}]{byte\-Mode, }
+\item[{bool}]{multi\-Line, }
+\item[{bool}]{big\-Font, }
+\item[{bool}]{cursor\-On, }
+\item[{bool}]{cursor\-Blink, }
+\item[{bool}]{left2right, }
+\item[{bool}]{scroll}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___h_d44780_a4e0ed118d834b0c0ac68ac03d28f4246}
+\-Initialise the display 
+\begin{DoxyParams}{\-Parameters}
+{\em byte\-Mode} & true to use 8 bit transfers \\
+\hline
+{\em multi\-Line} & true if there is more than 1 line \\
+\hline
+{\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
+\hline
+{\em cursor\-On} & turn the curson on \\
+\hline
+{\em cursor\-Blink} & blink the cursor \\
+\hline
+{\em left2right} & true for text reading left to right \\
+\hline
+{\em scroll} & true to scroll text rather than moving the cursor \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 221 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+\hypertarget{class_m_h_v___display___h_d44780_a667d9f8ca08b3021fea77a47cf6c1965}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!is\-Busy@{is\-Busy}}
+\index{is\-Busy@{is\-Busy}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::is\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a667d9f8ca08b3021fea77a47cf6c1965}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___h_d44780___direct___connect_af91e71543df100ec60594c9094cbd444}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}, and \hyperlink{class_m_h_v___display___h_d44780___shift___register_a39ad131326358bd4c512117f1f40ed08}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}.
+
+\hypertarget{class_m_h_v___display___h_d44780_a5f35b3083cca3fb405b4f56a631cbc63}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!read\-Byte@{read\-Byte}}
+\index{read\-Byte@{read\-Byte}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::read\-Byte (
+\begin{DoxyParamCaption}
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a5f35b3083cca3fb405b4f56a631cbc63}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a395c757364dfea8eccb8d42d83d5060c}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}, and \hyperlink{class_m_h_v___display___h_d44780___shift___register_a2d3cd6330de50850ee2500c51cfb9864}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}.
+
+\hypertarget{class_m_h_v___display___h_d44780_ad1691510b6d35301e4182edcf11d81db}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!write\-Byte@{write\-Byte}}
+\index{write\-Byte@{write\-Byte}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::write\-Byte (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{byte, }
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_ad1691510b6d35301e4182edcf11d81db}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ac61f7b7429e954bbb418ec6f2a7942f8}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}, and \hyperlink{class_m_h_v___display___h_d44780___shift___register_a34da17fc30876b5be697c6515a9a8b29}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}.
+
+\hypertarget{class_m_h_v___display___h_d44780_a99ad2131b4ea26638a75f865a740c7ed}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!write\-Command@{write\-Command}}
+\index{write\-Command@{write\-Command}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{write\-Command}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::write\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command, }
+\item[{uint8\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a99ad2131b4ea26638a75f865a740c7ed}
+\-Send a command to the display 
+
+\-Definition at line 121 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___display___h_d44780_af1be1afa290ea524c24b1324ce0a1017}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-animate\-Ticks@{\-\_\-animate\-Ticks}}
+\index{\-\_\-animate\-Ticks@{\-\_\-animate\-Ticks}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-animate\-Ticks}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-animate\-Ticks}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_af1be1afa290ea524c24b1324ce0a1017}
+
+
+\-Definition at line 48 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{class_m_h_v___display___h_d44780_a122793e8b5dc3a2f0ad1eeab407ece4b}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-byte\-Mode@{\-\_\-byte\-Mode}}
+\index{\-\_\-byte\-Mode@{\-\_\-byte\-Mode}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-byte\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-byte\-Mode}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a122793e8b5dc3a2f0ad1eeab407ece4b}
+
+
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{class_m_h_v___display___h_d44780_af0f2603c415f13dedfe6e9147d40b06f}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-must\-Delay@{\-\_\-must\-Delay}}
+\index{\-\_\-must\-Delay@{\-\_\-must\-Delay}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-must\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-must\-Delay}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_af0f2603c415f13dedfe6e9147d40b06f}
+
+
+\-Definition at line 49 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{class_m_h_v___display___h_d44780_a5dac9510b7fc9e79e5fbf8b07eeaa661}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!MHV_Display_HD44780@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-::\-\_\-ticks}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780_a5dac9510b7fc9e79e5fbf8b07eeaa661}
+
+
+\-Definition at line 47 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___h_d44780_8h}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___h_d44780_8cpp}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780.\-cpp}\end{DoxyCompactItemize}

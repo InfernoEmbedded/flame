@@ -1,0 +1,112 @@
+\hypertarget{class_m_h_v___display___monochrome___buffered}{
+\section{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered \-Class \-Reference}
+\label{class_m_h_v___display___monochrome___buffered}\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_m_h_v___display___monochrome___buffered}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___display___monochrome___buffered_afe84158d5520297439830f2baedc44d6}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered} (uint16\-\_\-t col\-Count, uint16\-\_\-t row\-Count, uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers)
+\item 
+void \hyperlink{class_m_h_v___display___monochrome___buffered_afc17261971874f319878629d90f7f426}{set\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row, uint8\-\_\-t value)
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___display___monochrome___buffered_a134f42819a667a3aafb60a3fd432ef12}{get\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___monochrome___buffered_a2e63d0f32900fc0e078a46edf011b7aa}{\-\_\-frame\-Buffer}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 34 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome___buffered_afe84158d5520297439830f2baedc44d6}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!MHV_Display_Monochrome_Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col\-Count, }
+\item[{uint16\-\_\-t}]{row\-Count, }
+\item[{uint8\-\_\-t $\ast$}]{frame\-Buffer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome___buffered_afe84158d5520297439830f2baedc44d6}
+\-Create a new monochrome display param\-: col\-Count the number of columns param\-: row\-Count the number of rows param\-: frame\-Buffer memory to use for the framebuffer, must be at least rows $\ast$ cols $\ast$ uint8\-\_\-t 
+
+\-Definition at line 39 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome___buffered_a134f42819a667a3aafb60a3fd432ef12}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!MHV_Display_Monochrome_Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___display___monochrome___buffered_a134f42819a667a3aafb60a3fd432ef12}
+
+
+\-Implements \hyperlink{class_m_h_v___display___monochrome_a80573e21b6b455fdd79c9d7d0a981492}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}.
+
+
+
+\-Definition at line 63 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome___buffered_afc17261971874f319878629d90f7f426}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!MHV_Display_Monochrome_Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___display___monochrome___buffered_afc17261971874f319878629d90f7f426}
+
+
+\-Implements \hyperlink{class_m_h_v___display___monochrome_a58a17e8662802e7f5d6ccd6f0bcc51a0}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}.
+
+
+
+\-Definition at line 52 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome___buffered_a2e63d0f32900fc0e078a46edf011b7aa}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}}
+\index{\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}!MHV_Display_Monochrome_Buffered@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{\-\_\-frame\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered\-::\-\_\-frame\-Buffer}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome___buffered_a2e63d0f32900fc0e078a46edf011b7aa}
+
+
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___monochrome___buffered_8h}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___monochrome___buffered_8cpp}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,19 @@
+all: refman.pdf
+
+pdf: refman.pdf
+
+refman.pdf: clean refman.tex
+	pdflatex refman
+	C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe refman.tex
+	pdflatex refman
+	latex_count=5 ; \
+	while egrep -s 'Rerun (LaTeX|to get cross-references right)' refman.log && [ $$latex_count -gt 0 ] ;\
+	    do \
+	      echo "Rerunning latex...." ;\
+	      pdflatex refman ;\
+	      latex_count=`expr $$latex_count - 1` ;\
+	    done
+
+
+clean:
+	del /s *.ps *.dvi *.aux *.toc *.idx *.ind *.ilg *.log *.out *.brf *.blg *.bbl refman.pdf

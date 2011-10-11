@@ -47,10 +47,6 @@
  * n	Contrast (V0)
  * n+1	LED Positive
  *
- * @param	data*		pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
- * @param	control*	pin declaration for the first bit of the control port (will use 3 bits)
- * @param	visual*		pin declaration for the first bit of the visual port (will use 2 bits)
- * @param	dir			the direction register for the port
  * @param	colCount	the number of columns on the display
  * @param	rowCount	the number of rows on the display
  * @param	txBuffers	buffers for async writing
@@ -148,7 +144,7 @@ void MHV_Display_HD44780::clear() {
 
 /**
  * Set the entry mode - allows for left or right printing, allows for scrolling display or moving cursor
- * @param	left2right	true for text reading left to right
+ * @param	left2Right	true for text reading left to right
  * @param	scroll		true to scroll text rather than moving the cursor
  */
 void MHV_Display_HD44780::entryMode(bool left2Right, bool scroll) {
@@ -214,7 +210,7 @@ void MHV_Display_HD44780::addressDDRAM(uint8_t address) {
 
 /**
  * Initialise the display
- * @param	bits8		true to use 8 bit transfers
+ * @param	byteMode	true to use 8 bit transfers
  * @param	multiLine	true if there is more than 1 line
  * @param	bigFont		true to use 5x11 fonts, false for 5x8
  * @param	cursorOn	turn the curson on

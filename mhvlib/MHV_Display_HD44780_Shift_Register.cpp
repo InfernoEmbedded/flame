@@ -42,18 +42,32 @@
 /**
  * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164
  *
- * @param	data*		pin declaration for the data port on the MCU
- * @param	enable*		pin declaration for the enable port on the MCU
- * @param	clock*		pin declaration for the clock port on the MCU
- * @param	colCount	the number of columns on the display
- * @param	rowCount	the number of rows on the display
- * @param	txBuffers	buffers for async writing
+ * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the data line of the shift register
+ * @param	dataOut						A member of the MHV_PIN_* macro
+ * @param	dataIn						A member of the MHV_PIN_* macro
+ * @param	dataPin						A member of the MHV_PIN_* macro
+ * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	enableDir					A member of the MHV_PIN_* macro   pin declaration for the enable line of the shift register
+ * @param	enableOut					A member of the MHV_PIN_* macro
+ * @param	enableIn					A member of the MHV_PIN_* macro
+ * @param	enablePin					A member of the MHV_PIN_* macro
+ * @param	enablePinchangeInterrupt	A member of the MHV_PIN_* macro
+ * @param	clockDir					A member of the MHV_PIN_* macro   pin declaration for the clock line of the shift register
+ * @param	clockOut					A member of the MHV_PIN_* macro
+ * @param	clockIn						A member of the MHV_PIN_* macro
+ * @param	clockPin					A member of the MHV_PIN_* macro
+ * @param	clockPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	colCount					the number of columns on the display
+ * @param	rowCount					the number of rows on the display
+ * @param	txBuffers					buffers for async writing
  */
-MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(volatile uint8_t *dataDir,
-		volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn, uint8_t enablePin,
-		int8_t enablePinchangeInterrupt, volatile uint8_t *clockDir, volatile uint8_t *clockOut,
-		volatile uint8_t *clockIn, uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount,
+MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(
+		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
+		uint8_t dataPin, int8_t dataPinchangeInterrupt,
+		volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn,
+		uint8_t enablePin, int8_t enablePinchangeInterrupt,
+		volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn,
+		uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount,
 		uint16_t rowCount, MHV_RingBuffer *txBuffers) :
 	MHV_Display_HD44780(colCount, rowCount, txBuffers) {
 	_dataOut = dataOut;

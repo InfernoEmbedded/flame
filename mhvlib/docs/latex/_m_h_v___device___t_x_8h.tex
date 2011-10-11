@@ -1,0 +1,73 @@
+\hypertarget{_m_h_v___device___t_x_8h}{
+\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.h \-File \-Reference}
+\label{_m_h_v___device___t_x_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-io.\-h$>$}\*
+{\ttfamily \#include $<$stdio.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Ring\-Buffer.\-h$>$}\*
+{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmhv__tx__buffer}{mhv\-\_\-tx\-\_\-buffer}
+\item 
+class \hyperlink{class_m_h_v___device___t_x}{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v___device___t_x_8h_a93297871599244e349991d161d4ea34b}{\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L}
+\item 
+\#define \hyperlink{_m_h_v___device___t_x_8h_a34d7ebba366c003751c9b18d3964d69e}{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Tx\-Name, \-\_\-mhv\-Tx\-Element\-Count)
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmhv__tx__buffer}{mhv\-\_\-tx\-\_\-buffer} \hyperlink{_m_h_v___device___t_x_8h_a8f969362e45e1a805a4a189101bd1f97}{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___device___t_x_8h_a34d7ebba366c003751c9b18d3964d69e}{
+\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}!\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_Device_TX.h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Tx\-Name, }
+\item[{}]{\-\_\-mhv\-Tx\-Element\-Count}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___device___t_x_8h_a34d7ebba366c003751c9b18d3964d69e}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+char _mhvTxName ## Buf[_mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1]; \
+        MHV_RingBuffer _mhvTxName(_mhvTxName ## Buf, _mhvTxElementCount * 
+      sizeof(MHV_TX_BUFFER) + 1);
+\end{DoxyCode}
+
+
+\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{_m_h_v___device___t_x_8h_a93297871599244e349991d161d4ea34b}{
+\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}!\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L@{\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L}}
+\index{\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L@{\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L}!MHV_Device_TX.h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}}
+\subsubsection[{\-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-L\-I\-B\-\_\-\-N\-E\-E\-D\-\_\-\-P\-U\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L}}
+\label{_m_h_v___device___t_x_8h_a93297871599244e349991d161d4ea34b}
+
+
+\-Definition at line 32 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{_m_h_v___device___t_x_8h_a8f969362e45e1a805a4a189101bd1f97}{
+\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}!\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R@{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R}}
+\index{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R@{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R}!MHV_Device_TX.h@{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-tx\-\_\-buffer} {\bf \-M\-H\-V\-\_\-\-T\-X\-\_\-\-B\-U\-F\-F\-E\-R}}}
+\label{_m_h_v___device___t_x_8h_a8f969362e45e1a805a4a189101bd1f97}
+
+
+\-Definition at line 52 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h.
+

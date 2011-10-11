@@ -1,0 +1,264 @@
+\hypertarget{class_m_h_v___a_d_c}{
+\section{\-M\-H\-V\-\_\-\-A\-D\-C \-Class \-Reference}
+\label{class_m_h_v___a_d_c}\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-A\-D\-C.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___a_d_c_a99020253bc4e308715108a37ff317471}{\-M\-H\-V\-\_\-\-A\-D\-C} (\hyperlink{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$adcs, uint8\-\_\-t adc\-Count)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_a62548b3bbb7b2e916a5adba15d40723f}{adc} ()
+\item 
+void \hyperlink{class_m_h_v___a_d_c_aa05d2f83cd5a2cd1efc87a396dc25b03}{register\-Listener} (uint8\-\_\-t channel, \hyperlink{class_m_h_v___a_d_c_listener}{\-M\-H\-V\-\_\-\-A\-D\-C\-Listener} $\ast$listener)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_afccc455d24da99698a91b10710fcaf36}{deregister\-Listener} (uint8\-\_\-t channel)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_a5578b8f74a62fbf4207dd10a6d3da4f0}{enable} ()
+\item 
+void \hyperlink{class_m_h_v___a_d_c_ad7eb5acfd0484c0213dcfb6851de2052}{disable} ()
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___a_d_c_ad0b41df30ca6f91fb79c64dd85f24d78}{busy\-Read} (uint8\-\_\-t channel, uint8\-\_\-t reference)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_a4b3f1fb04a289201287c38ef57929fb1}{async\-Read} (uint8\-\_\-t channel, uint8\-\_\-t reference)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_a29943f22942857e41e6c060ec7238765}{set\-Prescaler} (\hyperlink{_m_h_v___a_d_8h_a1c5416b19545e0c8422dbe381d6df18f}{\-M\-H\-V\-\_\-\-A\-D\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler)
+\item 
+void \hyperlink{class_m_h_v___a_d_c_a431d2be95d566a7595691a0ecb40ba54}{handle\-Events} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___a_d_c_a5b4912e06e7c9c39637fa1d4f3e00ef7}{\-\_\-adc\-Value}
+\item 
+int8\-\_\-t \hyperlink{class_m_h_v___a_d_c_ac37e4bbff5ab56cf804ccbdaa438dab3}{\-\_\-adc\-Channel}
+\item 
+\hyperlink{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$ \hyperlink{class_m_h_v___a_d_c_a6033f6790dd0a65e88d5a04fc01daaac}{\-\_\-adcs}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___a_d_c_acfc87dc2be1e01a43b8cb0a1dbfde7e8}{\-\_\-adc\-Count}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 57 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___a_d_c_a99020253bc4e308715108a37ff317471}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{\-M\-H\-V\-\_\-\-A\-D\-C}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-A\-D\-C\-::\-M\-H\-V\-\_\-\-A\-D\-C (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$}]{adcs, }
+\item[{uint8\-\_\-t}]{adc\-Count}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a99020253bc4e308715108a37ff317471}
+\-An event manager for \-A\-D\-C events 
+\begin{DoxyParams}{\-Parameters}
+{\em adcs} & \-A\-D\-C event handles \\
+\hline
+{\em adc\-Count} & \-The number of \-A\-D\-C events we can handle (must match adcs) \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 35 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___a_d_c_a62548b3bbb7b2e916a5adba15d40723f}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!adc@{adc}}
+\index{adc@{adc}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{adc}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::adc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a62548b3bbb7b2e916a5adba15d40723f}
+\-Interrupt handler to read the \-A\-D\-C 
+
+\-Definition at line 47 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_a4b3f1fb04a289201287c38ef57929fb1}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!async\-Read@{async\-Read}}
+\index{async\-Read@{async\-Read}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{async\-Read}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::async\-Read (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint8\-\_\-t}]{reference}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a4b3f1fb04a289201287c38ef57929fb1}
+\-Trigger an \-A\-D\-C channel event 
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & the channel to read \\
+\hline
+{\em reference} & the voltage reference to use \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 107 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_ad0b41df30ca6f91fb79c64dd85f24d78}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!busy\-Read@{busy\-Read}}
+\index{busy\-Read@{busy\-Read}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{busy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-M\-H\-V\-\_\-\-A\-D\-C\-::busy\-Read (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint8\-\_\-t}]{reference}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_ad0b41df30ca6f91fb79c64dd85f24d78}
+\-Read an \-A\-D\-C channel 
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & the channel to read \\
+\hline
+{\em reference} & the voltage reference to use \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 87 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_afccc455d24da99698a91b10710fcaf36}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_afccc455d24da99698a91b10710fcaf36}
+\-Deregister interest for an \-A\-D\-C channel 
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & the \-A\-D\-C channel \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 73 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_ad7eb5acfd0484c0213dcfb6851de2052}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!disable@{disable}}
+\index{disable@{disable}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_ad7eb5acfd0484c0213dcfb6851de2052}
+\hypertarget{class_m_h_v___a_d_c_a5578b8f74a62fbf4207dd10a6d3da4f0}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!enable@{enable}}
+\index{enable@{enable}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a5578b8f74a62fbf4207dd10a6d3da4f0}
+\hypertarget{class_m_h_v___a_d_c_a431d2be95d566a7595691a0ecb40ba54}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a431d2be95d566a7595691a0ecb40ba54}
+\-Call from the main loop to handle any events 
+
+\-Definition at line 132 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_aa05d2f83cd5a2cd1efc87a396dc25b03}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-D\-C\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_aa05d2f83cd5a2cd1efc87a396dc25b03}
+\-Register interest for an \-A\-D\-C channel 
+\begin{DoxyParams}{\-Parameters}
+{\em channel} & the \-A\-D\-C channel \\
+\hline
+{\em listener} & an \hyperlink{class_m_h_v___a_d_c_listener}{\-M\-H\-V\-\_\-\-A\-D\-C\-Listener} to notify when an \-A\-D\-C reading has been completed \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 59 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+\hypertarget{class_m_h_v___a_d_c_a29943f22942857e41e6c060ec7238765}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!set\-Prescaler@{set\-Prescaler}}
+\index{set\-Prescaler@{set\-Prescaler}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-A\-D\-C\-::set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-D\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___a_d_c_a29943f22942857e41e6c060ec7238765}
+\-Set the \-A\-D\-C clock prescaler 
+\begin{DoxyParams}{\-Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 124 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___a_d_c_ac37e4bbff5ab56cf804ccbdaa438dab3}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!\-\_\-adc\-Channel@{\-\_\-adc\-Channel}}
+\index{\-\_\-adc\-Channel@{\-\_\-adc\-Channel}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{\-\_\-adc\-Channel}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t {\bf \-M\-H\-V\-\_\-\-A\-D\-C\-::\-\_\-adc\-Channel}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___a_d_c_ac37e4bbff5ab56cf804ccbdaa438dab3}
+
+
+\-Definition at line 60 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+\hypertarget{class_m_h_v___a_d_c_acfc87dc2be1e01a43b8cb0a1dbfde7e8}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!\-\_\-adc\-Count@{\-\_\-adc\-Count}}
+\index{\-\_\-adc\-Count@{\-\_\-adc\-Count}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{\-\_\-adc\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-A\-D\-C\-::\-\_\-adc\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___a_d_c_acfc87dc2be1e01a43b8cb0a1dbfde7e8}
+
+
+\-Definition at line 62 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+\hypertarget{class_m_h_v___a_d_c_a6033f6790dd0a65e88d5a04fc01daaac}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!\-\_\-adcs@{\-\_\-adcs}}
+\index{\-\_\-adcs@{\-\_\-adcs}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{\-\_\-adcs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}$\ast$ {\bf \-M\-H\-V\-\_\-\-A\-D\-C\-::\-\_\-adcs}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___a_d_c_a6033f6790dd0a65e88d5a04fc01daaac}
+
+
+\-Definition at line 61 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+\hypertarget{class_m_h_v___a_d_c_a5b4912e06e7c9c39637fa1d4f3e00ef7}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-A\-D\-C}!\-\_\-adc\-Value@{\-\_\-adc\-Value}}
+\index{\-\_\-adc\-Value@{\-\_\-adc\-Value}!MHV_ADC@{\-M\-H\-V\-\_\-\-A\-D\-C}}
+\subsubsection[{\-\_\-adc\-Value}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-A\-D\-C\-::\-\_\-adc\-Value}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___a_d_c_a5b4912e06e7c9c39637fa1d4f3e00ef7}
+
+
+\-Definition at line 59 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___a_d_c_8h}{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___a_d_c_8cpp}{\-M\-H\-V\-\_\-\-A\-D\-C.\-cpp}\end{DoxyCompactItemize}

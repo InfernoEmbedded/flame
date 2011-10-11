@@ -28,6 +28,11 @@
 
 #include "MHV_RingBuffer.h"
 
+/**
+ * Create a new ringbuffer
+ * @param	buffer	memory to use for the ringbuffer
+ * @param	size	the size of the available memory
+ */
 MHV_RingBuffer::MHV_RingBuffer(char *buffer, uint8_t size) {
 	_buffer = buffer;
 	_size = size;
@@ -35,8 +40,9 @@ MHV_RingBuffer::MHV_RingBuffer(char *buffer, uint8_t size) {
 	_tail = 0; // Where we will start reading from
 }
 
-/* Determine where the next location will be
- * @param index	the current index
+/**
+ * Determine where the next location will be
+ * @param	index	the current index
  * @return the next index
  */
 inline uint8_t MHV_RingBuffer::increment (uint8_t index) {
@@ -48,8 +54,9 @@ inline uint8_t MHV_RingBuffer::increment (uint8_t index) {
 	return next;
 }
 
-/* Append a character to the buffer
- * return false if we succeeded, true otherwise
+/**
+ * Append a character to the buffer
+ * @return false if we succeeded, true otherwise
  */
 bool MHV_RingBuffer::append(char c) {
 	uint8_t next = increment(_head);
@@ -65,10 +72,11 @@ bool MHV_RingBuffer::append(char c) {
 	return false;
 }
 
-/* Append a block of data to the buffer
- * @param p	the pointer to append from
- * @param pLength the number of bytes to append
- * return false if we succeeded, true otherwise
+/**
+ * Append a block of data to the buffer
+ * @param	p	the pointer to append from
+ * @param	pLength the number of bytes to append
+ * @return false if we succeeded, true otherwise
  */
 bool MHV_RingBuffer::append(const void *p, uint8_t pLength) {
 	if (full(pLength)) {
@@ -85,7 +93,8 @@ bool MHV_RingBuffer::append(const void *p, uint8_t pLength) {
 	return false;
 }
 
-/* Pop a byte off the ringbuffer
+/**
+ * Pop a byte off the ringbuffer
  */
 int MHV_RingBuffer::consume() {
 	if (_head == _tail) {
@@ -97,9 +106,10 @@ int MHV_RingBuffer::consume() {
 	return c;
 }
 
-/* Pop a block off the ringbuffer
+/**
+ * Pop a block off the ringbuffer
  * @param p			where to write the block
- * @param length	the length of the block
+ * @param pLength	the length of the block
  * @return false if we succeeded, true otherwise
  */
 bool MHV_RingBuffer::consume(void *p, uint8_t pLength) {
@@ -118,19 +128,24 @@ bool MHV_RingBuffer::consume(void *p, uint8_t pLength) {
 }
 
 
-/* Discard the contents of the ringbuffer
+/**
+ * Discard the contents of the ringbuffer
  */
 void MHV_RingBuffer::flush() {
 	_head = _tail = 0;
 }
 
-/* Return the size of the ringbuffer
+/**
+ * Get the size of the ringbuffer
+ * @return the size of the ringbuffer
  */
 uint8_t MHV_RingBuffer::size() {
 	return _size;
 }
 
-/* Return the number of bytes in the ringbuffer
+/**
+ * Get the length of the contents of the ringbuffer
+ * Return the number of bytes in the ringbuffer
  */
 uint8_t MHV_RingBuffer::length() {
 	int16_t length = _head - _tail;
@@ -142,20 +157,28 @@ uint8_t MHV_RingBuffer::length() {
 	return (uint8_t) length;
 }
 
-/* Return true if the ringbuffer is full
+/**
+ * Check if the ringbuffer is full
+ * @return true if the ringbuffer is full
  */
 bool MHV_RingBuffer::full() {
 	return length() == _size - 1;
 }
 
-/* Return true if the ringbuffer is full
+/**
+ * Check if an object can fit in the ringbuffer
  * @param blockLength	the length of the object to fit in
+ * @return true if the ringbuffer is full
  */
 bool MHV_RingBuffer::full(uint8_t blockLength) {
 	return length() > (_size - 1 - blockLength);
 }
 
 
+/**
+ * Check the first character in the buffer
+ * @return the character, or -1 if the buffer is empty
+ */
 int MHV_RingBuffer::peekHead() {
 	if (_head == _tail) {
 		return -1;

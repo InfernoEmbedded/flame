@@ -1,0 +1,667 @@
+\hypertarget{class_m_h_v___timer8}{
+\section{\-M\-H\-V\-\_\-\-Timer8 \-Class \-Reference}
+\label{class_m_h_v___timer8}\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Timer8.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___timer8_a1e661983dc5da0563574498e48f94251}{\-M\-H\-V\-\_\-\-Timer8} (\hyperlink{_m_h_v___timer8_8h_aec9828462529f91a09d74c9abb33b611}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E} type, volatile uint8\-\_\-t $\ast$control\-Reg\-A, volatile uint8\-\_\-t $\ast$control\-Reg\-B, volatile uint8\-\_\-t $\ast$overflow\-Reg1, volatile uint8\-\_\-t $\ast$overflow\-Reg2, volatile uint8\-\_\-t $\ast$counter, volatile uint8\-\_\-t $\ast$interrupt, uint8\-\_\-t interrupt\-Enable\-A)
+\item 
+bool \hyperlink{class_m_h_v___timer8_a0c1158eedfde50067f9a4a51138c6f0a}{set\-Periods} (uint32\-\_\-t usec1, uint32\-\_\-t usec2)
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_abf8177d8863fa27a9c3daf5f2df56613}{current} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a25759cd2886c1002d5377be19fc80549}{set\-Periods} (\hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler, uint8\-\_\-t time1, uint8\-\_\-t time2)
+\item 
+\hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} \hyperlink{class_m_h_v___timer8_aa01fcc5fd321b842e00bd12b6b938d92}{get\-Prescaler} ()
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___timer8_aba018c39ad2355ba0da8357aa3b4d3dc}{get\-Prescaler\-Multiplier} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a106e5400b14fa7d938be056efc531c89}{set\-Prescaler} (\hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler)
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a37004c8305a689239cde4a9f6fa51fa5}{get\-Top} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a1e2da36ae04182ffe36f3e7504744168}{set\-Top} (uint8\-\_\-t value)
+\item 
+void \hyperlink{class_m_h_v___timer8_a5b165bd717b85730b2d92314b9d16617}{set\-Output} (uint8\-\_\-t channel, uint8\-\_\-t value)
+\item 
+void \hyperlink{class_m_h_v___timer8_afcb083692e774d84872b85a82a95c0a6}{set\-Output1} (uint8\-\_\-t value)
+\item 
+void \hyperlink{class_m_h_v___timer8_ac36f7d0d7827acf902bb850b81f2d76f}{set\-Output2} (uint8\-\_\-t value)
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a643aa48eeb3653e233423d372c77af59}{get\-Output} (uint8\-\_\-t channel)
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a079f492f84cbb561013afdcfcc23bb14}{get\-Output1} ()
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a7d941cc774d1fda7f94b14d191b8d7e1}{get\-Output2} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a8babe8403f7cd117145f7a6faf79c755}{connect\-Output1} (\hyperlink{_m_h_v___timer8_8h_a6655b3f5fdc629857c7c337fa819421a}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-T\-Y\-P\-E} type)
+\item 
+void \hyperlink{class_m_h_v___timer8_a95e432f5240fd44204dd3fc203a8ef7b}{connect\-Output2} (\hyperlink{_m_h_v___timer8_8h_a6655b3f5fdc629857c7c337fa819421a}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-T\-Y\-P\-E} type)
+\item 
+void \hyperlink{class_m_h_v___timer8_a963a2426ca2cd67242039e31760202eb}{enable} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_acb53366943386bf683ab97a8de42eee8}{disable} ()
+\item 
+bool \hyperlink{class_m_h_v___timer8_a28aa46400cf8c1f279e9588f1a912b65}{enabled} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a29d11c49e658ba8d2936b62f0fa75806}{trigger1} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a4c99d0b6b3b546fcb73b59540f7f88c4}{trigger2} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a6baeeb61a53f8156cde82b348a421093}{set\-Triggers} (void($\ast$trigger\-Function1)(void $\ast$trigger\-Data), void $\ast$trigger\-Data1, void($\ast$trigger\-Function2)(void $\ast$trigger\-Data), void $\ast$trigger\-Data2)
+\item 
+void \hyperlink{class_m_h_v___timer8_ad18f37f37ce07f2d39b8f3cac4b2fb82}{set\-Mode} (\hyperlink{_m_h_v___timer8_8h_ae9de6a07a79f63ce9eeb6ba2bc9b053d}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E} mode)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a044d91ee04cc07dad098be8010f94463}{calculate\-Prescaler} (uint32\-\_\-t time, \hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} $\ast$prescaler, uint16\-\_\-t $\ast$factor)
+\item 
+void \hyperlink{class_m_h_v___timer8_a8f1a062c5b11ccc6d644576d127ca4ca}{calculate\-Top} (uint32\-\_\-t $\ast$time, uint16\-\_\-t factor)
+\item 
+void \hyperlink{class_m_h_v___timer8_a5f8f53c9fc73fed26424c6a6904fdfe6}{set\-Generation\-Mode} ()
+\item 
+\hyperlink{class_m_h_v___timer8_a2df9d6ab1036772eeea2037f6ad68ab0}{\-M\-H\-V\-\_\-\-Timer8} ()
+\item 
+void \hyperlink{class_m_h_v___timer8_a45bec0afb3006126f53066365a8558f6}{\-\_\-set\-Prescaler} (\hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_a2370aea351bfaed055c42b2ecfe6c930}{\-\_\-control\-Reg\-A}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_ab713d8f3b71551b6146703d9ecfc5301}{\-\_\-control\-Reg\-B}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_ab69320fb8fee00da797099aa633fdd92}{\-\_\-output\-Compare1}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_a81be7741280c03ccfa31d22a20b5609b}{\-\_\-output\-Compare2}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_ae99499e5828be6ed0c312cd43821a7c3}{\-\_\-counter}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___timer8_a98e41d7d3ceef4b8fce11644ea110ee9}{\-\_\-interrupt}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_ad2fac7586dc6104b1c7323c84ba88559}{\-\_\-interrupt\-Enable\-A}
+\item 
+\hyperlink{_m_h_v___timer8_8h_a2e7ef9dbc200586bf55b0003896de599}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} \hyperlink{class_m_h_v___timer8_a2d610b4bbd5aef2db6a4062dbd063aba}{\-\_\-prescaler}
+\item 
+\hyperlink{_m_h_v___timer8_8h_ae9de6a07a79f63ce9eeb6ba2bc9b053d}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E} \hyperlink{class_m_h_v___timer8_a6f6b063d32d0778e8d1a91c561c79f13}{\-\_\-mode}
+\item 
+\hyperlink{_m_h_v___timer8_8h_aec9828462529f91a09d74c9abb33b611}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E} \hyperlink{class_m_h_v___timer8_a10c0fdfbbe901b923ea7fb1c0fc9690c}{\-\_\-type}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___timer8_a25827d35452ab31f1f0e1beb232a259b}{\-\_\-counter\-Size}
+\item 
+bool \hyperlink{class_m_h_v___timer8_adffeb4bbdd699814b5d0abd9cf59b3a9}{\-\_\-have\-Time2}
+\item 
+void($\ast$ \hyperlink{class_m_h_v___timer8_a0129830ac565811db27e07a31d635ec9}{\-\_\-trigger\-Function1} )(void $\ast$data)
+\item 
+void $\ast$ \hyperlink{class_m_h_v___timer8_a1e3fc760ea6b757afb648804750bca93}{\-\_\-trigger\-Data1}
+\item 
+void($\ast$ \hyperlink{class_m_h_v___timer8_a114593dd16cb46412e97c1e8a07bbc6c}{\-\_\-trigger\-Function2} )(void $\ast$data)
+\item 
+void $\ast$ \hyperlink{class_m_h_v___timer8_a4b78acf417bc2f051cdec4025c57d15b}{\-\_\-trigger\-Data2}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 101 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___timer8_a2df9d6ab1036772eeea2037f6ad68ab0}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Timer8}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Timer8\-::\-M\-H\-V\-\_\-\-Timer8 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a2df9d6ab1036772eeea2037f6ad68ab0}
+
+
+\-Definition at line 58 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a1e661983dc5da0563574498e48f94251}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Timer8}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Timer8\-::\-M\-H\-V\-\_\-\-Timer8 (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E}}]{type, }
+\item[{volatile uint8\-\_\-t $\ast$}]{control\-Reg\-A, }
+\item[{volatile uint8\-\_\-t $\ast$}]{control\-Reg\-B, }
+\item[{volatile uint8\-\_\-t $\ast$}]{overflow\-Reg1, }
+\item[{volatile uint8\-\_\-t $\ast$}]{overflow\-Reg2, }
+\item[{volatile uint8\-\_\-t $\ast$}]{counter, }
+\item[{volatile uint8\-\_\-t $\ast$}]{interrupt, }
+\item[{uint8\-\_\-t}]{interrupt\-Enable\-A}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a1e661983dc5da0563574498e48f94251}
+
+
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___timer8_a45bec0afb3006126f53066365a8558f6}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}}
+\index{\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a45bec0afb3006126f53066365a8558f6}
+
+
+\-Definition at line 182 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a044d91ee04cc07dad098be8010f94463}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!calculate\-Prescaler@{calculate\-Prescaler}}
+\index{calculate\-Prescaler@{calculate\-Prescaler}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{calculate\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::calculate\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{time, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} $\ast$}]{prescaler, }
+\item[{uint16\-\_\-t $\ast$}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a044d91ee04cc07dad098be8010f94463}
+
+
+\-Definition at line 75 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a8f1a062c5b11ccc6d644576d127ca4ca}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!calculate\-Top@{calculate\-Top}}
+\index{calculate\-Top@{calculate\-Top}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{calculate\-Top}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::calculate\-Top (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t $\ast$}]{time, }
+\item[{uint16\-\_\-t}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a8f1a062c5b11ccc6d644576d127ca4ca}
+
+
+\-Definition at line 140 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a8babe8403f7cd117145f7a6faf79c755}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!connect\-Output1@{connect\-Output1}}
+\index{connect\-Output1@{connect\-Output1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{connect\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::connect\-Output1 (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-T\-Y\-P\-E}}]{type}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a8babe8403f7cd117145f7a6faf79c755}
+
+
+\-Definition at line 364 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a95e432f5240fd44204dd3fc203a8ef7b}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!connect\-Output2@{connect\-Output2}}
+\index{connect\-Output2@{connect\-Output2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{connect\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::connect\-Output2 (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-T\-Y\-P\-E}}]{type}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a95e432f5240fd44204dd3fc203a8ef7b}
+
+
+\-Definition at line 368 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_abf8177d8863fa27a9c3daf5f2df56613}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!current@{current}}
+\index{current@{current}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::current (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_abf8177d8863fa27a9c3daf5f2df56613}
+
+
+\-Definition at line 60 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_acb53366943386bf683ab97a8de42eee8}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!disable@{disable}}
+\index{disable@{disable}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::disable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_acb53366943386bf683ab97a8de42eee8}
+
+
+\-Definition at line 393 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a963a2426ca2cd67242039e31760202eb}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!enable@{enable}}
+\index{enable@{enable}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::enable (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a963a2426ca2cd67242039e31760202eb}
+
+
+\-Definition at line 375 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a28aa46400cf8c1f279e9588f1a912b65}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!enabled@{enabled}}
+\index{enabled@{enabled}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Timer8\-::enabled (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a28aa46400cf8c1f279e9588f1a912b65}
+
+
+\-Definition at line 403 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a643aa48eeb3653e233423d372c77af59}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Output@{get\-Output}}
+\index{get\-Output@{get\-Output}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Output}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::get\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a643aa48eeb3653e233423d372c77af59}
+
+
+\-Definition at line 342 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a079f492f84cbb561013afdcfcc23bb14}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Output1@{get\-Output1}}
+\index{get\-Output1@{get\-Output1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::get\-Output1 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a079f492f84cbb561013afdcfcc23bb14}
+
+
+\-Definition at line 356 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a7d941cc774d1fda7f94b14d191b8d7e1}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Output2@{get\-Output2}}
+\index{get\-Output2@{get\-Output2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::get\-Output2 (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a7d941cc774d1fda7f94b14d191b8d7e1}
+
+
+\-Definition at line 360 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_aa01fcc5fd321b842e00bd12b6b938d92}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Prescaler@{get\-Prescaler}}
+\index{get\-Prescaler@{get\-Prescaler}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} \-M\-H\-V\-\_\-\-Timer8\-::get\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_aa01fcc5fd321b842e00bd12b6b938d92}
+
+
+\-Definition at line 189 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_aba018c39ad2355ba0da8357aa3b4d3dc}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}}
+\index{get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Prescaler\-Multiplier}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::get\-Prescaler\-Multiplier (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_aba018c39ad2355ba0da8357aa3b4d3dc}
+
+
+\-Definition at line 195 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a37004c8305a689239cde4a9f6fa51fa5}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!get\-Top@{get\-Top}}
+\index{get\-Top@{get\-Top}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{get\-Top}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Timer8\-::get\-Top (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a37004c8305a689239cde4a9f6fa51fa5}
+
+
+\-Definition at line 293 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a5f8f53c9fc73fed26424c6a6904fdfe6}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Generation\-Mode@{set\-Generation\-Mode}}
+\index{set\-Generation\-Mode@{set\-Generation\-Mode}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Generation\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Generation\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a5f8f53c9fc73fed26424c6a6904fdfe6}
+
+
+\-Definition at line 247 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_ad18f37f37ce07f2d39b8f3cac4b2fb82}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Mode@{set\-Mode}}
+\index{set\-Mode@{set\-Mode}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E}}]{mode}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_ad18f37f37ce07f2d39b8f3cac4b2fb82}
+
+
+\-Definition at line 429 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a5b165bd717b85730b2d92314b9d16617}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Output@{set\-Output}}
+\index{set\-Output@{set\-Output}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a5b165bd717b85730b2d92314b9d16617}
+
+
+\-Definition at line 323 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_afcb083692e774d84872b85a82a95c0a6}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Output1@{set\-Output1}}
+\index{set\-Output1@{set\-Output1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Output1 (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_afcb083692e774d84872b85a82a95c0a6}
+
+
+\-Definition at line 334 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_ac36f7d0d7827acf902bb850b81f2d76f}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Output2@{set\-Output2}}
+\index{set\-Output2@{set\-Output2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Output2 (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_ac36f7d0d7827acf902bb850b81f2d76f}
+
+
+\-Definition at line 338 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a0c1158eedfde50067f9a4a51138c6f0a}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Timer8\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{usec1, }
+\item[{uint32\-\_\-t}]{usec2}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a0c1158eedfde50067f9a4a51138c6f0a}
+
+
+\-Definition at line 151 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a25759cd2886c1002d5377be19fc80549}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler, }
+\item[{uint8\-\_\-t}]{time1, }
+\item[{uint8\-\_\-t}]{time2}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a25759cd2886c1002d5377be19fc80549}
+
+
+\-Definition at line 280 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a106e5400b14fa7d938be056efc531c89}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Prescaler@{set\-Prescaler}}
+\index{set\-Prescaler@{set\-Prescaler}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a106e5400b14fa7d938be056efc531c89}
+
+
+\-Definition at line 241 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a1e2da36ae04182ffe36f3e7504744168}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Top@{set\-Top}}
+\index{set\-Top@{set\-Top}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Top}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Top (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a1e2da36ae04182ffe36f3e7504744168}
+
+
+\-Definition at line 310 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a6baeeb61a53f8156cde82b348a421093}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!set\-Triggers@{set\-Triggers}}
+\index{set\-Triggers@{set\-Triggers}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{set\-Triggers}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::set\-Triggers (
+\begin{DoxyParamCaption}
+\item[{void($\ast$)(void $\ast$trigger\-Data)}]{trigger\-Function1, }
+\item[{void $\ast$}]{trigger\-Data1, }
+\item[{void($\ast$)(void $\ast$trigger\-Data)}]{trigger\-Function2, }
+\item[{void $\ast$}]{trigger\-Data2}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a6baeeb61a53f8156cde82b348a421093}
+
+
+\-Definition at line 420 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a29d11c49e658ba8d2936b62f0fa75806}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!trigger1@{trigger1}}
+\index{trigger1@{trigger1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{trigger1}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::trigger1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a29d11c49e658ba8d2936b62f0fa75806}
+
+
+\-Definition at line 407 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+\hypertarget{class_m_h_v___timer8_a4c99d0b6b3b546fcb73b59540f7f88c4}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!trigger2@{trigger2}}
+\index{trigger2@{trigger2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{trigger2}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Timer8\-::trigger2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___timer8_a4c99d0b6b3b546fcb73b59540f7f88c4}
+
+
+\-Definition at line 414 of file \-M\-H\-V\-\_\-\-Timer8.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___timer8_a2370aea351bfaed055c42b2ecfe6c930}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-control\-Reg\-A@{\-\_\-control\-Reg\-A}}
+\index{\-\_\-control\-Reg\-A@{\-\_\-control\-Reg\-A}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-control\-Reg\-A}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-control\-Reg\-A}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a2370aea351bfaed055c42b2ecfe6c930}
+
+
+\-Definition at line 103 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_ab713d8f3b71551b6146703d9ecfc5301}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-control\-Reg\-B@{\-\_\-control\-Reg\-B}}
+\index{\-\_\-control\-Reg\-B@{\-\_\-control\-Reg\-B}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-control\-Reg\-B}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-control\-Reg\-B}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_ab713d8f3b71551b6146703d9ecfc5301}
+
+
+\-Definition at line 104 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_ae99499e5828be6ed0c312cd43821a7c3}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-counter@{\-\_\-counter}}
+\index{\-\_\-counter@{\-\_\-counter}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-counter}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-counter}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_ae99499e5828be6ed0c312cd43821a7c3}
+
+
+\-Definition at line 107 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a25827d35452ab31f1f0e1beb232a259b}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-counter\-Size@{\-\_\-counter\-Size}}
+\index{\-\_\-counter\-Size@{\-\_\-counter\-Size}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-counter\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-counter\-Size}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a25827d35452ab31f1f0e1beb232a259b}
+
+
+\-Definition at line 113 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_adffeb4bbdd699814b5d0abd9cf59b3a9}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-have\-Time2@{\-\_\-have\-Time2}}
+\index{\-\_\-have\-Time2@{\-\_\-have\-Time2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-have\-Time2}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-have\-Time2}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_adffeb4bbdd699814b5d0abd9cf59b3a9}
+
+
+\-Definition at line 114 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a98e41d7d3ceef4b8fce11644ea110ee9}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-interrupt@{\-\_\-interrupt}}
+\index{\-\_\-interrupt@{\-\_\-interrupt}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-interrupt}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-interrupt}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a98e41d7d3ceef4b8fce11644ea110ee9}
+
+
+\-Definition at line 108 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_ad2fac7586dc6104b1c7323c84ba88559}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-interrupt\-Enable\-A@{\-\_\-interrupt\-Enable\-A}}
+\index{\-\_\-interrupt\-Enable\-A@{\-\_\-interrupt\-Enable\-A}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-interrupt\-Enable\-A}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-interrupt\-Enable\-A}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_ad2fac7586dc6104b1c7323c84ba88559}
+
+
+\-Definition at line 109 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a6f6b063d32d0778e8d1a91c561c79f13}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-mode@{\-\_\-mode}}
+\index{\-\_\-mode@{\-\_\-mode}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-mode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E} {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-mode}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a6f6b063d32d0778e8d1a91c561c79f13}
+
+
+\-Definition at line 111 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_ab69320fb8fee00da797099aa633fdd92}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-output\-Compare1@{\-\_\-output\-Compare1}}
+\index{\-\_\-output\-Compare1@{\-\_\-output\-Compare1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-output\-Compare1}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-output\-Compare1}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_ab69320fb8fee00da797099aa633fdd92}
+
+
+\-Definition at line 105 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a81be7741280c03ccfa31d22a20b5609b}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-output\-Compare2@{\-\_\-output\-Compare2}}
+\index{\-\_\-output\-Compare2@{\-\_\-output\-Compare2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-output\-Compare2}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-output\-Compare2}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a81be7741280c03ccfa31d22a20b5609b}
+
+
+\-Definition at line 106 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a2d610b4bbd5aef2db6a4062dbd063aba}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-prescaler@{\-\_\-prescaler}}
+\index{\-\_\-prescaler@{\-\_\-prescaler}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-prescaler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-prescaler}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a2d610b4bbd5aef2db6a4062dbd063aba}
+
+
+\-Definition at line 110 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a1e3fc760ea6b757afb648804750bca93}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-trigger\-Data1@{\-\_\-trigger\-Data1}}
+\index{\-\_\-trigger\-Data1@{\-\_\-trigger\-Data1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-trigger\-Data1}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-trigger\-Data1}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a1e3fc760ea6b757afb648804750bca93}
+
+
+\-Definition at line 116 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a4b78acf417bc2f051cdec4025c57d15b}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-trigger\-Data2@{\-\_\-trigger\-Data2}}
+\index{\-\_\-trigger\-Data2@{\-\_\-trigger\-Data2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-trigger\-Data2}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-trigger\-Data2}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a4b78acf417bc2f051cdec4025c57d15b}
+
+
+\-Definition at line 118 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a0129830ac565811db27e07a31d635ec9}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-trigger\-Function1@{\-\_\-trigger\-Function1}}
+\index{\-\_\-trigger\-Function1@{\-\_\-trigger\-Function1}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-trigger\-Function1}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-trigger\-Function1})(void $\ast$data)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a0129830ac565811db27e07a31d635ec9}
+
+
+\-Definition at line 115 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a114593dd16cb46412e97c1e8a07bbc6c}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-trigger\-Function2@{\-\_\-trigger\-Function2}}
+\index{\-\_\-trigger\-Function2@{\-\_\-trigger\-Function2}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-trigger\-Function2}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-trigger\-Function2})(void $\ast$data)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a114593dd16cb46412e97c1e8a07bbc6c}
+
+
+\-Definition at line 117 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+\hypertarget{class_m_h_v___timer8_a10c0fdfbbe901b923ea7fb1c0fc9690c}{
+\index{\-M\-H\-V\-\_\-\-Timer8@{\-M\-H\-V\-\_\-\-Timer8}!\-\_\-type@{\-\_\-type}}
+\index{\-\_\-type@{\-\_\-type}!MHV_Timer8@{\-M\-H\-V\-\_\-\-Timer8}}
+\subsubsection[{\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E} {\bf \-M\-H\-V\-\_\-\-Timer8\-::\-\_\-type}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___timer8_a10c0fdfbbe901b923ea7fb1c0fc9690c}
+
+
+\-Definition at line 112 of file \-M\-H\-V\-\_\-\-Timer8.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___timer8_8h}{\-M\-H\-V\-\_\-\-Timer8.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___timer8_8cpp}{\-M\-H\-V\-\_\-\-Timer8.\-cpp}\end{DoxyCompactItemize}

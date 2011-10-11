@@ -1,0 +1,385 @@
+\hypertarget{class_m_h_v___hardware_serial}{
+\section{\-M\-H\-V\-\_\-\-Hardware\-Serial \-Class \-Reference}
+\label{class_m_h_v___hardware_serial}\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Hardware\-Serial\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m_h_v___hardware_serial}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___hardware_serial_ac1a95bdefa81bae650979c7053901133}{\-M\-H\-V\-\_\-\-Hardware\-Serial} (\hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$rx\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffer, volatile uint16\-\_\-t $\ast$ubrr, volatile uint8\-\_\-t $\ast$ucsra, volatile uint8\-\_\-t $\ast$ucsrb, volatile uint8\-\_\-t $\ast$udr, uint8\-\_\-t rxen, uint8\-\_\-t txen, uint8\-\_\-t rxcie, uint8\-\_\-t txcie, uint8\-\_\-t udre, uint8\-\_\-t u2x, unsigned long baud)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_af8d170e311447db775b308a3ba882b91}{set\-Speed} (unsigned long baud)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_a1cc98a306711c95770df293def48dd9b}{end} ()
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_aa4c2fa65afae88e4d3854a35955705ee}{busy\-Write} (char c)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_acc533901bc41d333e48a93b75bf9a15d}{busy\-Write} (const char $\ast$buffer)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_aca9542f5ed2b7ba04f5398fccf8da262}{busy\-Write} (const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_aef0e7d7d7866c39a1cd5d2ef8c9bdbd2}{busy\-Write\-\_\-\-P} (\-P\-G\-M\-\_\-\-P buffer)
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_a6a2371b9509e27893a6c238fc9a046a8}{busy\-Write\-\_\-\-P} (\-P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{class_m_h_v___hardware_serial_a650ce0799c3dbefb7170fc1875449e5a}{can\-Send\-Busy} ()
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_aab993847fb6369e666495000d94196a3}{rx} ()
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_a3674578dc6dce3ca7d32d6f3df9cd49f}{tx} ()
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_a815b6e92f32457c55c2808701f315ff2}{echo} (bool echo\-On)
+\item 
+bool \hyperlink{class_m_h_v___hardware_serial_a8ea82d7e9d6958604ff94a55f331e9d5}{busy} ()
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_aa6f5253788861521668da888c9844594}{debug} (const char $\ast$file, int line, const char $\ast$function, \-P\-G\-M\-\_\-\-P format,...)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_m_h_v___hardware_serial_a8801ff1e85b487e233737a9591131f02}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 71 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___hardware_serial_ac1a95bdefa81bae650979c7053901133}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Hardware\-Serial}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Hardware\-Serial\-::\-M\-H\-V\-\_\-\-Hardware\-Serial (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{rx\-Buffer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffer, }
+\item[{volatile uint16\-\_\-t $\ast$}]{ubrr, }
+\item[{volatile uint8\-\_\-t $\ast$}]{ucsra, }
+\item[{volatile uint8\-\_\-t $\ast$}]{ucsrb, }
+\item[{volatile uint8\-\_\-t $\ast$}]{udr, }
+\item[{uint8\-\_\-t}]{rxen, }
+\item[{uint8\-\_\-t}]{txen, }
+\item[{uint8\-\_\-t}]{rxcie, }
+\item[{uint8\-\_\-t}]{txcie, }
+\item[{uint8\-\_\-t}]{udre, }
+\item[{uint8\-\_\-t}]{u2x, }
+\item[{unsigned long}]{baud}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_ac1a95bdefa81bae650979c7053901133}
+\-Constructor 
+\begin{DoxyParams}{\-Parameters}
+{\em rx\-Buffer} & the receive buffer \\
+\hline
+{\em tx\-Buffer} & the transmit buffer \\
+\hline
+{\em ubrr} & \-A member of the \-M\-H\-V\-\_\-\-U\-S\-A\-R\-T\-\_\-$\ast$ macro \\
+\hline
+{\em ucsra} & \-See ubrr \\
+\hline
+{\em ucsrb} & \-See ubrr \\
+\hline
+{\em udr} & \-See ubrr \\
+\hline
+{\em rxen} & \-See ubrr \\
+\hline
+{\em txen} & \-See ubrr \\
+\hline
+{\em rxcie} & \-See ubrr \\
+\hline
+{\em txcie} & \-See ubrr \\
+\hline
+{\em udre} & \-See ubrr \\
+\hline
+{\em u2x} & \-See ubrr \\
+\hline
+{\em baud} & the baud rate \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 54 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___hardware_serial_a8ea82d7e9d6958604ff94a55f331e9d5}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy@{busy}}
+\index{busy@{busy}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a8ea82d7e9d6958604ff94a55f331e9d5}
+\-Check if the hardware is busy -\/ note that this should not be used to determine if you can actually write -\/ use can\-Send instead
+
+\begin{DoxyReturn}{\-Returns}
+true if the hardware is busy 
+\end{DoxyReturn}
+
+
+\-Definition at line 266 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_aa4c2fa65afae88e4d3854a35955705ee}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_aa4c2fa65afae88e4d3854a35955705ee}
+\-Write a character
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em c} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 173 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_acc533901bc41d333e48a93b75bf9a15d}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_acc533901bc41d333e48a93b75bf9a15d}
+\-Write a null terminated string to the serial port
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the string to write \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 209 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_aca9542f5ed2b7ba04f5398fccf8da262}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_aca9542f5ed2b7ba04f5398fccf8da262}
+\-Write a buffer 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 246 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_aef0e7d7d7866c39a1cd5d2ef8c9bdbd2}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}}
+\index{busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy\-Write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy\-Write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{\-P\-G\-M\-\_\-\-P}]{buffer}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_aef0e7d7d7866c39a1cd5d2ef8c9bdbd2}
+\-Write a null terminated progmem string
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the string to write \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 187 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a6a2371b9509e27893a6c238fc9a046a8}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}}
+\index{busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{busy\-Write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::busy\-Write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{\-P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a6a2371b9509e27893a6c238fc9a046a8}
+\-Write a buffer from \-P\-R\-O\-G\-M\-E\-M 
+\begin{DoxyParams}{\-Parameters}
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 227 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a650ce0799c3dbefb7170fc1875449e5a}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!can\-Send\-Busy@{can\-Send\-Busy}}
+\index{can\-Send\-Busy@{can\-Send\-Busy}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{can\-Send\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Hardware\-Serial\-::can\-Send\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a650ce0799c3dbefb7170fc1875449e5a}
+\-Can we send something via busywrite
+
+\begin{DoxyReturn}{\-Returns}
+true if we can send something 
+\end{DoxyReturn}
+
+
+\-Definition at line 164 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_aa6f5253788861521668da888c9844594}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!debug@{debug}}
+\index{debug@{debug}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::debug (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file, }
+\item[{int}]{line, }
+\item[{const char $\ast$}]{function, }
+\item[{\-P\-G\-M\-\_\-\-P}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_aa6f5253788861521668da888c9844594}
+\-Print a debug message 
+\begin{DoxyParams}{\-Parameters}
+{\em file} & the filename \\
+\hline
+{\em line} & the line number \\
+\hline
+{\em function} & the function name \\
+\hline
+{\em format} & a printf format \\
+\hline
+{\em ...} & the printf parms \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 278 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a815b6e92f32457c55c2808701f315ff2}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!echo@{echo}}
+\index{echo@{echo}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{echo}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::echo (
+\begin{DoxyParamCaption}
+\item[{bool}]{echo\-On}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a815b6e92f32457c55c2808701f315ff2}
+\-Enable echoing data received by us back to the sender (useful for terminal interaction
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em echo\-On} & true to enable echo \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 155 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a1cc98a306711c95770df293def48dd9b}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!end@{end}}
+\index{end@{end}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a1cc98a306711c95770df293def48dd9b}
+\-Halt the serial port 
+
+\-Definition at line 145 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a8801ff1e85b487e233737a9591131f02}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_m_h_v___hardware_serial_a8801ff1e85b487e233737a9591131f02}
+\-Start sending async data 
+
+\-Implements \hyperlink{class_m_h_v___device___t_x_a3a86067d417c3d5a1f64042ecfcefff7}{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}.
+
+
+
+\-Definition at line 106 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_aab993847fb6369e666495000d94196a3}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!rx@{rx}}
+\index{rx@{rx}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{rx}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::rx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_aab993847fb6369e666495000d94196a3}
+\-R\-X interrupt handler 
+
+\-Definition at line 78 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_af8d170e311447db775b308a3ba882b91}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!set\-Speed@{set\-Speed}}
+\index{set\-Speed@{set\-Speed}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{set\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::set\-Speed (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{baud}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_af8d170e311447db775b308a3ba882b91}
+\-Configure the serial port for a specific baud rate 
+\begin{DoxyParams}{\-Parameters}
+{\em baud} & the baud rate to set \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 126 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+\hypertarget{class_m_h_v___hardware_serial_a3674578dc6dce3ca7d32d6f3df9cd49f}{
+\index{\-M\-H\-V\-\_\-\-Hardware\-Serial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}!tx@{tx}}
+\index{tx@{tx}!MHV_HardwareSerial@{\-M\-H\-V\-\_\-\-Hardware\-Serial}}
+\subsubsection[{tx}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Hardware\-Serial\-::tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___hardware_serial_a3674578dc6dce3ca7d32d6f3df9cd49f}
+\-T\-X interrupt handler 
+
+\-Definition at line 90 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___hardware_serial_8h}{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___hardware_serial_8cpp}{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-cpp}\end{DoxyCompactItemize}

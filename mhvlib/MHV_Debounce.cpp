@@ -58,10 +58,7 @@ MHV_Debounce::MHV_Debounce(MHV_PinChangeManager *pinChangeManager, MHV_RTC *rtc,
 }
 
 void MHV_Debounce::initPin(uint8_t pinchangeInterrupt) {
-	_pins[pinchangeInterrupt].previous = 0;
-	_pins[pinchangeInterrupt].timestamp.timestamp = 0;
-	_pins[pinchangeInterrupt].timestamp.milliseconds = 0;
-	_pins[pinchangeInterrupt].held = false;
+	mhv_memClear(_pins + pinchangeInterrupt, sizeof(*_pins), 1);
 }
 
 /**
@@ -119,14 +116,16 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
 
 /**
  * Assign a pin to debounce
- * @param dir..pinchangeInterrupt	a pin declaration (MHV_PIN_*)
- * @param singlePress				the function to call when a single press is detected
- * @param heldDown					the function to call when a button is held down (called repeatedly)
- * @param data						data to pass to the functions when called
+ * @param	dir						A member of the MHV_PIN_* macro
+ * @param	out						A member of the MHV_PIN_* macro
+ * @param	in						A member of the MHV_PIN_* macro
+ * @param	bit						A member of the MHV_PIN_* macro
+ * @param	pinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	listener				a class to call when the button is pressed or held down
  */
 void MHV_Debounce::assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t pin, int8_t pinchangeInterrupt, MHV_DebounceListener *listener) {
-	_pins[pinchangeInterrupt].previous = *in & _BV(pin);
+		uint8_t bit, int8_t pinchangeInterrupt, MHV_DebounceListener *listener) {
+	_pins[pinchangeInterrupt].previous = *in & _BV(bit);
 	_pins[pinchangeInterrupt].timestamp.milliseconds = 0;
 	_pins[pinchangeInterrupt].timestamp.timestamp = 0;
 	_pins[pinchangeInterrupt].listener = listener;
@@ -137,10 +136,18 @@ void MHV_Debounce::assignKey(volatile uint8_t *dir, volatile uint8_t *out, volat
 		_rtc->current(&(_pins[pinchangeInterrupt].timestamp));
 	}
 
-	_pinChangeManager->registerListener(dir, out, in, pin, pinchangeInterrupt, this);
+	_pinChangeManager->registerListener(dir, out, in, bit, pinchangeInterrupt, this);
 }
 
+/**
+ * Deassign a pin
+ * @param	dir					A member of the MHV_PIN_* macro
+ * @param	out					A member of the MHV_PIN_* macro
+ * @param	in					A member of the MHV_PIN_* macro
+ * @param	bit					A member of the MHV_PIN_* macro
+ * @param	pinchangeInterrupt	A member of the MHV_PIN_* macro
+ */
 void MHV_Debounce::deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t pin, int8_t pinchangeInterrupt) {
+		uint8_t bit, int8_t pinchangeInterrupt) {
 	initPin(pinchangeInterrupt);
 }

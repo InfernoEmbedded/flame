@@ -1,0 +1,371 @@
+\hypertarget{_m_h_v___r_t_c_8h}{
+\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.h \-File \-Reference}
+\label{_m_h_v___r_t_c_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+}
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Timer8.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmhv__timestamp}{mhv\-\_\-timestamp}
+\item 
+struct \hyperlink{structmhv__time}{mhv\-\_\-time}
+\item 
+struct \hyperlink{structmhv__alarm}{mhv\-\_\-alarm}
+\item 
+class \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener}
+\item 
+class \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmhv__timestamp}{mhv\-\_\-timestamp} \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}
+\item 
+typedef enum \hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}{mhv\-\_\-weekday} \hyperlink{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}
+\item 
+typedef enum \hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}{mhv\-\_\-month} \hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}
+\item 
+typedef struct \hyperlink{structmhv__time}{mhv\-\_\-time} \hyperlink{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{\-M\-H\-V\-\_\-\-T\-I\-M\-E}
+\item 
+typedef struct \hyperlink{structmhv__alarm}{mhv\-\_\-alarm} \hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}{mhv\-\_\-weekday} \{ \*
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa1a39d6a85ae9658d17f0e0b54ed70d16}{\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y}, 
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa6987455020a9f757dcde3999a6f0b7c9}{\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y}, 
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffad4df00ad8a2bcddc89ea07e33f61b8a1}{\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y}, 
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa337209b4ab3506ed597222cae8cb0d0f}{\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y}, 
+\*
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa54c78786489b8bd78f20d92575c5dba8}{\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y}, 
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa58c1e417dc0ac48c6a4f6d15f3173159}{\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y}, 
+\hyperlink{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa5fa9bcfce0df6a946790af380f662200}{\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y}
+ \}
+\item 
+enum \hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}{mhv\-\_\-month} \{ \*
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adafe6fcd8b4264a782234a6cd0118fdd}{\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y} =  1, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a5a1758e8b15cdfc3418b7a55cb0a2411}{\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y} =  2, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a58dc453199af8d86232a88b0092f6e1d}{\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H} =  3, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a0f7e86b538c0dd64a5f44aefe82326b2}{\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L} =  4, 
+\*
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ad27a528b39c6e0be2258e93cd74c9148}{\-M\-H\-V\-\_\-\-M\-A\-Y} =  5, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575af9164c9841ee857060adbc354e1a7d7c}{\-M\-H\-V\-\_\-\-J\-U\-N\-E} =  6, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575aae5a34e8981e9a82987b17bc74575104}{\-M\-H\-V\-\_\-\-J\-U\-L\-Y} =  7, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a3fec0003fb111523a338ace3b448ef9e}{\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T} =  8, 
+\*
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a6c04f64a6b5fe8093fe963c5e21b60d3}{\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R} =  9, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ab55215e1babc5b0bcc87e47026c71876}{\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R} =  10, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adf6bad3aaf9e164f3495bdb9d0e6274e}{\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R} =  11, 
+\hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a1d4c02010de7aac3d2f8fe053f7bc120}{\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R} =  12
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
+\item 
+void \hyperlink{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp2)
+\item 
+bool \hyperlink{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}{mhv\-\_\-is\-Leap\-Year} (uint16\-\_\-t year)
+\item 
+bool \hyperlink{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$first, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$second)
+\item 
+bool \hyperlink{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}{mhv\-\_\-timestamp\-Less\-Than} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$first, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$second)
+\item 
+uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M@{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}}
+\index{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M@{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-alarm} {\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}}}
+\label{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}
+
+
+\-Definition at line 87 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H@{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}
+\index{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H@{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf mhv\-\_\-month} {\bf \-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}}
+\label{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}
+
+
+\-Definition at line 64 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E@{\-M\-H\-V\-\_\-\-T\-I\-M\-E}}
+\index{\-M\-H\-V\-\_\-\-T\-I\-M\-E@{\-M\-H\-V\-\_\-\-T\-I\-M\-E}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-T\-I\-M\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-time} {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E}}}
+\label{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}
+
+
+\-Definition at line 79 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P@{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}}
+\index{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P@{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-timestamp} {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}}}
+\label{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}
+
+
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}}
+\index{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf mhv\-\_\-weekday} {\bf \-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}}}
+\label{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}
+
+
+\-Definition at line 48 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-month@{mhv\-\_\-month}}
+\index{mhv\-\_\-month@{mhv\-\_\-month}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-month}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mhv\-\_\-month}}}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}
+\begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y@{\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y@{\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adafe6fcd8b4264a782234a6cd0118fdd}{
+\-M\-H\-V\-\_\-\-J\-A\-N\-U\-A\-R\-Y}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adafe6fcd8b4264a782234a6cd0118fdd}
+}]\index{\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y@{\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y@{\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a5a1758e8b15cdfc3418b7a55cb0a2411}{
+\-M\-H\-V\-\_\-\-F\-E\-B\-R\-U\-A\-R\-Y}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a5a1758e8b15cdfc3418b7a55cb0a2411}
+}]\index{\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H@{\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H@{\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a58dc453199af8d86232a88b0092f6e1d}{
+\-M\-H\-V\-\_\-\-M\-A\-R\-C\-H}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a58dc453199af8d86232a88b0092f6e1d}
+}]\index{\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L@{\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L@{\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a0f7e86b538c0dd64a5f44aefe82326b2}{
+\-M\-H\-V\-\_\-\-A\-P\-R\-I\-L}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a0f7e86b538c0dd64a5f44aefe82326b2}
+}]\index{\-M\-H\-V\-\_\-\-M\-A\-Y@{\-M\-H\-V\-\_\-\-M\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-A\-Y@{\-M\-H\-V\-\_\-\-M\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ad27a528b39c6e0be2258e93cd74c9148}{
+\-M\-H\-V\-\_\-\-M\-A\-Y}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ad27a528b39c6e0be2258e93cd74c9148}
+}]\index{\-M\-H\-V\-\_\-\-J\-U\-N\-E@{\-M\-H\-V\-\_\-\-J\-U\-N\-E}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-J\-U\-N\-E@{\-M\-H\-V\-\_\-\-J\-U\-N\-E}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575af9164c9841ee857060adbc354e1a7d7c}{
+\-M\-H\-V\-\_\-\-J\-U\-N\-E}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575af9164c9841ee857060adbc354e1a7d7c}
+}]\index{\-M\-H\-V\-\_\-\-J\-U\-L\-Y@{\-M\-H\-V\-\_\-\-J\-U\-L\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-J\-U\-L\-Y@{\-M\-H\-V\-\_\-\-J\-U\-L\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575aae5a34e8981e9a82987b17bc74575104}{
+\-M\-H\-V\-\_\-\-J\-U\-L\-Y}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575aae5a34e8981e9a82987b17bc74575104}
+}]\index{\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T@{\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T@{\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a3fec0003fb111523a338ace3b448ef9e}{
+\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a3fec0003fb111523a338ace3b448ef9e}
+}]\index{\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a6c04f64a6b5fe8093fe963c5e21b60d3}{
+\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a6c04f64a6b5fe8093fe963c5e21b60d3}
+}]\index{\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R@{\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R@{\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ab55215e1babc5b0bcc87e47026c71876}{
+\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575ab55215e1babc5b0bcc87e47026c71876}
+}]\index{\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adf6bad3aaf9e164f3495bdb9d0e6274e}{
+\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575adf6bad3aaf9e164f3495bdb9d0e6274e}
+}]\index{\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R@{\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a1d4c02010de7aac3d2f8fe053f7bc120}{
+\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R}
+\label{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575a1d4c02010de7aac3d2f8fe053f7bc120}
+}]\end{description}
+\end{Desc}
+
+
+
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-weekday@{mhv\-\_\-weekday}}
+\index{mhv\-\_\-weekday@{mhv\-\_\-weekday}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-weekday}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mhv\-\_\-weekday}}}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}
+\begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y@{\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y@{\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa1a39d6a85ae9658d17f0e0b54ed70d16}{
+\-M\-H\-V\-\_\-\-S\-U\-N\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa1a39d6a85ae9658d17f0e0b54ed70d16}
+}]\index{\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y@{\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y@{\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa6987455020a9f757dcde3999a6f0b7c9}{
+\-M\-H\-V\-\_\-\-M\-O\-N\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa6987455020a9f757dcde3999a6f0b7c9}
+}]\index{\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffad4df00ad8a2bcddc89ea07e33f61b8a1}{
+\-M\-H\-V\-\_\-\-T\-U\-E\-S\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffad4df00ad8a2bcddc89ea07e33f61b8a1}
+}]\index{\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa337209b4ab3506ed597222cae8cb0d0f}{
+\-M\-H\-V\-\_\-\-W\-E\-D\-N\-E\-S\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa337209b4ab3506ed597222cae8cb0d0f}
+}]\index{\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y@{\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa54c78786489b8bd78f20d92575c5dba8}{
+\-M\-H\-V\-\_\-\-T\-H\-U\-R\-S\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa54c78786489b8bd78f20d92575c5dba8}
+}]\index{\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y@{\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y@{\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa58c1e417dc0ac48c6a4f6d15f3173159}{
+\-M\-H\-V\-\_\-\-F\-R\-I\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa58c1e417dc0ac48c6a4f6d15f3173159}
+}]\index{\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y@{\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y}!\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y@{\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y}}\item[{\em 
+\hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa5fa9bcfce0df6a946790af380f662200}{
+\-M\-H\-V\-\_\-\-S\-A\-T\-U\-R\-D\-A\-Y}
+\label{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ffa5fa9bcfce0df6a946790af380f662200}
+}]\end{description}
+\end{Desc}
+
+
+
+\-Definition at line 39 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}}
+\index{mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-days\-In\-Month}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhv\-\_\-days\-In\-Month (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}]{month, }
+\item[{uint16\-\_\-t}]{year}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}
+\-Get the number of days in a month 
+\begin{DoxyParams}{\-Parameters}
+{\em month} & the month \\
+\hline
+{\em year} & the year \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the number of days 
+\end{DoxyReturn}
+
+
+\-Definition at line 151 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}}
+\index{mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-is\-Leap\-Year}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-is\-Leap\-Year (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{year}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}
+\-Determine if a year is a leap year 
+
+\-Definition at line 89 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}}
+\index{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{first, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{second}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}
+\-Compare 2 timestamps 
+\begin{DoxyParams}{\-Parameters}
+{\em first} & the first timestamp \\
+\hline
+{\em second} & the second timestamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the first timestamp is greater than or equal to the second 
+\end{DoxyReturn}
+
+
+\-Definition at line 72 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
+\index{mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp, }
+\item[{uint32\-\_\-t}]{seconds, }
+\item[{uint16\-\_\-t}]{milliseconds}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}
+\-Increment a timestamp 
+\begin{DoxyParams}{\-Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em seconds} & the number of seconds to increment by \\
+\hline
+{\em milliseconds} & the number of milliseconds to increment by \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
+\index{mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp2}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}
+\-Increment a timestamp 
+\begin{DoxyParams}{\-Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em timestamp2} & the timestamp to increment by \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 118 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}}
+\index{mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-timestamp\-Less\-Than}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Less\-Than (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{first, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{second}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}
+\-A \-Realtime clock
+
+\-Takes a trigger from a timer, and keeps time.
+
+\-Recommended values\-: \-Clock \-Prescaler \-Top \-Ticks/ms 16\-M\-Hz 64 249 1 \-Compare 2 timestamps 
+\begin{DoxyParams}{\-Parameters}
+{\em first} & the first timestamp \\
+\hline
+{\em second} & the second timestamp \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the first timestamp is less than the second 
+\end{DoxyReturn}
+
+
+\-Definition at line 52 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+

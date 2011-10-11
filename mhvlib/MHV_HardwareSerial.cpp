@@ -37,10 +37,19 @@
 
 /**
  * Constructor
- * @param	rxBuffer	the receive buffer
- * @param	txBuffer	the transmit buffer
- * @param	serial		the parameter list for the serial port
- * @param	baud		the baud rate
+ * @param	rxBuffer		the receive buffer
+ * @param	txBuffer		the transmit buffer
+ * @param	ubrr			A member of the MHV_USART_* macro
+ * @param	ucsra			See ubrr
+ * @param	ucsrb			See ubrr
+ * @param	udr				See ubrr
+ * @param	rxen			See ubrr
+ * @param	txen			See ubrr
+ * @param	rxcie			See ubrr
+ * @param	txcie			See ubrr
+ * @param	udre			See ubrr
+ * @param	u2x				See ubrr
+ * @param	baud			the baud rate
  */
 MHV_HardwareSerial::MHV_HardwareSerial(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer,
 		volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb,
@@ -264,7 +273,7 @@ bool MHV_HardwareSerial::busy(void) {
  * @param	line		the line number
  * @param	function	the function name
  * @param	format		a printf format
- * @param	parms		the printf parms
+ * @param	...			the printf parms
  */
 void MHV_HardwareSerial::debug(const char *file, int line, const char *function,
 		PGM_P format, ...) {

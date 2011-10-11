@@ -1,0 +1,469 @@
+\hypertarget{class_m_h_v___display___monochrome}{
+\section{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome \-Class \-Reference}
+\label{class_m_h_v___display___monochrome}\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_m_h_v___display___monochrome}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___display___monochrome_a28ba8d0420841b820935e2102f977602}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome} (uint16\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers)
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___monochrome_a1ef9b1ddbc9e57007903076005335211}{get\-Width} ()
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___monochrome_a988a98e01d54b12d3dcecc2d7878a985}{get\-Height} ()
+\item 
+void \hyperlink{class_m_h_v___display___monochrome_a25b062aefde440ad5c47dbca98b5b478}{clear} (uint8\-\_\-t value)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_aaf243ab4abd9bc1c3a298a10dc178d99}{write\-String} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, const char $\ast$string)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_a3942e2c4facd80affaeef8c7b8e6dcfb}{write\-String\-\_\-\-P} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, \-P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_abe4588ca31be3759738e38922fe8d3ad}{write\-Buffer} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_a8e71ea1bf003d91679892f20389e851b}{write\-Buffer\-\_\-\-P} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, \-P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_aae1f1c81f5cb08d6a318d9b3d1122d28}{tx\-Animation} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value)
+\item 
+virtual void \hyperlink{class_m_h_v___display___monochrome_a58a17e8662802e7f5d6ccd6f0bcc51a0}{set\-Pixel} (uint16\-\_\-t row, uint16\-\_\-t col, uint8\-\_\-t value)=0
+\item 
+virtual uint8\-\_\-t \hyperlink{class_m_h_v___display___monochrome_a80573e21b6b455fdd79c9d7d0a981492}{get\-Pixel} (uint16\-\_\-t row, uint16\-\_\-t col)=0
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_a271af24e97bbf0e7c8df0d4e15853473}{write\-Char} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, char character)
+\item 
+bool \hyperlink{class_m_h_v___display___monochrome_a232ae179856cab71ed0f1a73f6312af5}{write\-Seperator} (const \hyperlink{_m_h_v___font_8h_ab7088ba808ac223275dfd526d198356f}{\-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$font, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value)
+\item 
+void \hyperlink{class_m_h_v___display___monochrome_a7abdfbe71e00421a4275760ab6632b4a}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___monochrome_ae34bd61b8cffa2ee240bfe29f49a99d2}{\-\_\-col\-Count}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___display___monochrome_a29a7a7b8ceaf0ce0087002b9458d5074}{\-\_\-row\-Count}
+\item 
+int16\-\_\-t \hyperlink{class_m_h_v___display___monochrome_a75607cd77067ab059e8962e666593d4e}{\-\_\-tx\-Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome_a28ba8d0420841b820935e2102f977602}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col\-Count, }
+\item[{uint16\-\_\-t}]{row\-Count, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a28ba8d0420841b820935e2102f977602}
+\-A monochrome bitmap display \-Origin (0,0) is bottom left \-Create a new monochrome display 
+\begin{DoxyParams}{\-Parameters}
+{\em col\-Count} & the number of columns \\
+\hline
+{\em row\-Count} & the number of rows \\
+\hline
+{\em tx\-Buffers} & buffers to use for text writing \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome_a25b062aefde440ad5c47dbca98b5b478}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!clear@{clear}}
+\index{clear@{clear}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::clear (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a25b062aefde440ad5c47dbca98b5b478}
+\-Clear the display to a particular value 
+\begin{DoxyParams}{\-Parameters}
+{\em value} & the value to fill the display with \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 67 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a988a98e01d54b12d3dcecc2d7878a985}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a988a98e01d54b12d3dcecc2d7878a985}
+\-Get the width of the display 
+
+\-Definition at line 59 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a80573e21b6b455fdd79c9d7d0a981492}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint16\-\_\-t}]{col}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a80573e21b6b455fdd79c9d7d0a981492}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55a32e02a9570e67639d}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}, and \hyperlink{class_m_h_v___display___monochrome___buffered_a134f42819a667a3aafb60a3fd432ef12}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}.
+
+\hypertarget{class_m_h_v___display___monochrome_a1ef9b1ddbc9e57007903076005335211}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a1ef9b1ddbc9e57007903076005335211}
+\-Get the width of the display 
+
+\-Definition at line 52 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a7abdfbe71e00421a4275760ab6632b4a}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a7abdfbe71e00421a4275760ab6632b4a}
+\-Start rendering \-T\-X buffers 
+
+\-Implements \hyperlink{class_m_h_v___device___t_x_a3a86067d417c3d5a1f64042ecfcefff7}{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}.
+
+
+
+\-Definition at line 271 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a58a17e8662802e7f5d6ccd6f0bcc51a0}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a58a17e8662802e7f5d6ccd6f0bcc51a0}
+
+
+\-Implemented in \hyperlink{class_m_h_v___display___holtek___h_t1632_a664e9a5744bed3fa50a6adc9fcf80206}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}, and \hyperlink{class_m_h_v___display___monochrome___buffered_afc17261971874f319878629d90f7f426}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}.
+
+\hypertarget{class_m_h_v___display___monochrome_aae1f1c81f5cb08d6a318d9b3d1122d28}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!tx\-Animation@{tx\-Animation}}
+\index{tx\-Animation@{tx\-Animation}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{tx\-Animation}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::tx\-Animation (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_aae1f1c81f5cb08d6a318d9b3d1122d28}
+\-Render a frame of \-T\-X buffer animation -\/ scrolls text from right to left, before moving to the next buffer 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value for on pixels \\
+\hline
+{\em off\-Value} & the pixel value for off pixels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if there are more frames to be rendered 
+\end{DoxyReturn}
+
+
+\-Definition at line 284 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_abe4588ca31be3759738e38922fe8d3ad}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-Buffer@{write\-Buffer}}
+\index{write\-Buffer@{write\-Buffer}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_abe4588ca31be3759738e38922fe8d3ad}
+\-Write a buffer to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 199 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a8e71ea1bf003d91679892f20389e851b}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}}
+\index{write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Buffer\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-Buffer\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{\-P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a8e71ea1bf003d91679892f20389e851b}
+\-Write a \-P\-R\-O\-G\-M\-E\-M buffer to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 253 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a271af24e97bbf0e7c8df0d4e15853473}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-Char@{write\-Char}}
+\index{write\-Char@{write\-Char}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-Char (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a271af24e97bbf0e7c8df0d4e15853473}
+\-Write a character to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if a character was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 87 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a232ae179856cab71ed0f1a73f6312af5}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-Seperator@{write\-Seperator}}
+\index{write\-Seperator@{write\-Seperator}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Seperator}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-Seperator (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a232ae179856cab71ed0f1a73f6312af5}
+\-Write a character seperator (a single column of off pixels) to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the seperator was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 141 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_aaf243ab4abd9bc1c3a298a10dc178d99}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-String@{write\-String}}
+\index{write\-String@{write\-String}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-String}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-String (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_aaf243ab4abd9bc1c3a298a10dc178d99}
+\-Write a string to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 173 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+\hypertarget{class_m_h_v___display___monochrome_a3942e2c4facd80affaeef8c7b8e6dcfb}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!write\-String\-\_\-\-P@{write\-String\-\_\-\-P}}
+\index{write\-String\-\_\-\-P@{write\-String\-\_\-\-P}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-String\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::write\-String\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-M\-H\-V\-\_\-\-F\-O\-N\-T} $\ast$}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{\-P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___display___monochrome_a3942e2c4facd80affaeef8c7b8e6dcfb}
+\-Write a \-P\-R\-O\-G\-M\-E\-M string to the display 
+\begin{DoxyParams}{\-Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+\-Definition at line 224 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___display___monochrome_ae34bd61b8cffa2ee240bfe29f49a99d2}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!\-\_\-col\-Count@{\-\_\-col\-Count}}
+\index{\-\_\-col\-Count@{\-\_\-col\-Count}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{\-\_\-col\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::\-\_\-col\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_ae34bd61b8cffa2ee240bfe29f49a99d2}
+
+
+\-Definition at line 38 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{class_m_h_v___display___monochrome_a29a7a7b8ceaf0ce0087002b9458d5074}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!\-\_\-row\-Count@{\-\_\-row\-Count}}
+\index{\-\_\-row\-Count@{\-\_\-row\-Count}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{\-\_\-row\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::\-\_\-row\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a29a7a7b8ceaf0ce0087002b9458d5074}
+
+
+\-Definition at line 39 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{class_m_h_v___display___monochrome_a75607cd77067ab059e8962e666593d4e}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}!\-\_\-tx\-Offset@{\-\_\-tx\-Offset}}
+\index{\-\_\-tx\-Offset@{\-\_\-tx\-Offset}!MHV_Display_Monochrome@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome}}
+\subsubsection[{\-\_\-tx\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-::\-\_\-tx\-Offset}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___display___monochrome_a75607cd77067ab059e8962e666593d4e}
+
+
+\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___monochrome_8h}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___monochrome_8cpp}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,442 @@
+\hypertarget{class_m_h_v___r_t_c}{
+\section{\-M\-H\-V\-\_\-\-R\-T\-C \-Class \-Reference}
+\label{class_m_h_v___r_t_c}\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-R\-T\-C.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}{\-M\-H\-V\-\_\-\-R\-T\-C} (\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} $\ast$timer, \hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$event\-Buffer, uint8\-\_\-t event\-Count, int16\-\_\-t timezone)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}{synchronise} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{set\-Time} (uint32\-\_\-t timestamp, uint16\-\_\-t milliseconds)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a7e4f42af3581cce6261f1c83d1e2b0c1}{set\-Time} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_af56442a6497ade702d8eb8ba935fb1ef}{tick} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a7149adf9da9e7209cd352eb67f40bf30}{tick1ms} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a7246016a7c37aefcdf2bb46f67bbb455}{tick\-And\-Run\-Events} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a1e0b5a223fb74c10a30f7712c42081e2}{tick1ms\-And\-Run\-Events} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_aa4b7a93658ea4548520103f63d5897ec}{current} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a6bd66dbb9fd2229e3b229667e38adbf6}{elapsed} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$since, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$elapsed)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_af8e273e8cc911c8f355299416e7a7db2}{to\-Time} (\hyperlink{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{\-M\-H\-V\-\_\-\-T\-I\-M\-E} $\ast$to, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$from)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_aaaf020893b6a5bd81f08371cd804a68b}{to\-Timestamp} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$to, \hyperlink{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{\-M\-H\-V\-\_\-\-T\-I\-M\-E} $\ast$from)
+\item 
+bool \hyperlink{class_m_h_v___r_t_c_a2d58b554a2ff0eb2cf9f7fccc29e5738}{add\-Alarm} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$alarm)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{handle\-Events} ()
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{alarms\-Pending} ()
+\item 
+void \hyperlink{class_m_h_v___r_t_c_ad567f1efa0e4e108699d0895debc40dd}{remove\-Alarm} (\hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} $\ast$listener)
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} $\ast$ \hyperlink{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}{\-\_\-timer}
+\item 
+\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$ \hyperlink{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{\-\_\-alarms}
+\item 
+volatile uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}{\-\_\-alarm\-Count}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}{\-\_\-alarm\-Max}
+\item 
+uint32\-\_\-t \hyperlink{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}{\-\_\-timestamp}
+\item 
+uint16\-\_\-t \hyperlink{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}{\-\_\-milliseconds}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}{\-\_\-ticks}
+\item 
+uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}{\-\_\-ticks\-Per\-Millisecond}
+\item 
+int16\-\_\-t \hyperlink{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{\-\_\-tz\-Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-R\-T\-C\-::\-M\-H\-V\-\_\-\-R\-T\-C (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer8} $\ast$}]{timer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$}]{event\-Buffer, }
+\item[{uint8\-\_\-t}]{event\-Count, }
+\item[{int16\-\_\-t}]{timezone}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}
+\-Create a new \-R\-T\-C 
+\begin{DoxyParams}{\-Parameters}
+{\em timer} & the timer this \-R\-T\-C is associated with \\
+\hline
+{\em event\-Buffer} & \-A buffer to store events until they are executed \\
+\hline
+{\em event\-Count} & \-The number of events that can be stored in the buffer \\
+\hline
+{\em timezone} & minutes offset from \-U\-T\-C \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 167 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___r_t_c_a2d58b554a2ff0eb2cf9f7fccc29e5738}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$}]{alarm}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a2d58b554a2ff0eb2cf9f7fccc29e5738}
+\-Insert an alarm, to be triggered at a later date 
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered what should be called (it will be passed a pointer to the event) a pointer to user-\/defined data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+\-Definition at line 443 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!alarms\-Pending@{alarms\-Pending}}
+\index{alarms\-Pending@{alarms\-Pending}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{alarms\-Pending}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-R\-T\-C\-::alarms\-Pending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}
+\-How many events are left in the queue \begin{DoxyReturn}{\-Returns}
+the number of events 
+\end{DoxyReturn}
+
+
+\-Definition at line 508 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_aa4b7a93658ea4548520103f63d5897ec}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!current@{current}}
+\index{current@{current}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::current (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_aa4b7a93658ea4548520103f63d5897ec}
+\-Get the current timestamp 
+
+\-Definition at line 276 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a6bd66dbb9fd2229e3b229667e38adbf6}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{elapsed}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::elapsed (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{since, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{elapsed}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a6bd66dbb9fd2229e3b229667e38adbf6}
+\-Determine how long has elapsed since the supplied timestamp 
+\begin{DoxyParams}{\-Parameters}
+{\em since} & the timestamp to measure against \\
+\hline
+{\em elapsed} & returns how much time has elapsed \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 289 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::handle\-Events (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}
+\-Check for events that are due, and run them \-Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
+
+\-Definition at line 474 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_ad567f1efa0e4e108699d0895debc40dd}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_ad567f1efa0e4e108699d0895debc40dd}
+\-Remove all matching events from the list of pending events 
+\begin{DoxyParams}{\-Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 516 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{timestamp, }
+\item[{uint16\-\_\-t}]{milliseconds}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}
+\-Set the current time 
+\begin{DoxyParams}{\-Parameters}
+{\em timestamp} & the current \-Unix timestamp \\
+\hline
+{\em milliseconds} & the current milliseconds offset \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 195 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a7e4f42af3581cce6261f1c83d1e2b0c1}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a7e4f42af3581cce6261f1c83d1e2b0c1}
+\-Set the current time 
+\begin{DoxyParams}{\-Parameters}
+{\em timestamp} & the current \-Unix timestamp \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 206 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!synchronise@{synchronise}}
+\index{synchronise@{synchronise}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{synchronise}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::synchronise (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}
+\-Synchronise the ticks\-Per\-Millisecond with the timer (useful if you change the timer values) 
+
+\-Definition at line 185 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_af56442a6497ade702d8eb8ba935fb1ef}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick@{tick}}
+\index{tick@{tick}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{tick}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::tick (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_af56442a6497ade702d8eb8ba935fb1ef}
+\-Tick from the timer module 
+
+\-Definition at line 217 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a7149adf9da9e7209cd352eb67f40bf30}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick1ms@{tick1ms}}
+\index{tick1ms@{tick1ms}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{tick1ms}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::tick1ms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a7149adf9da9e7209cd352eb67f40bf30}
+\-Tick from the timer module that is exactly 1ms 
+
+\-Definition at line 234 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a1e0b5a223fb74c10a30f7712c42081e2}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick1ms\-And\-Run\-Events@{tick1ms\-And\-Run\-Events}}
+\index{tick1ms\-And\-Run\-Events@{tick1ms\-And\-Run\-Events}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{tick1ms\-And\-Run\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::tick1ms\-And\-Run\-Events (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a1e0b5a223fb74c10a30f7712c42081e2}
+\-Tick from the timer module that is exactly 1ms, run any pending events 
+
+\-Definition at line 264 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a7246016a7c37aefcdf2bb46f67bbb455}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick\-And\-Run\-Events@{tick\-And\-Run\-Events}}
+\index{tick\-And\-Run\-Events@{tick\-And\-Run\-Events}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{tick\-And\-Run\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::tick\-And\-Run\-Events (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a7246016a7c37aefcdf2bb46f67bbb455}
+\-Tick from the timer module, and run any pending events 
+
+\-Definition at line 245 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_af8e273e8cc911c8f355299416e7a7db2}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!to\-Time@{to\-Time}}
+\index{to\-Time@{to\-Time}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{to\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::to\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E} $\ast$}]{to, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{from}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_af8e273e8cc911c8f355299416e7a7db2}
+\-Convert a timestamp into year,month,day,hours,minutes,seconds 
+\begin{DoxyParams}{\-Parameters}
+{\em to} & the \-M\-H\-V\-\_\-\-T\-I\-M\-E to store the results \\
+\hline
+{\em from} & the \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 327 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_aaaf020893b6a5bd81f08371cd804a68b}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!to\-Timestamp@{to\-Timestamp}}
+\index{to\-Timestamp@{to\-Timestamp}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{to\-Timestamp}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::to\-Timestamp (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{to, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E} $\ast$}]{from}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_aaaf020893b6a5bd81f08371cd804a68b}
+\-Convert year,month,day,hours,minutes,seconds into a timestamp 
+\begin{DoxyParams}{\-Parameters}
+{\em to} & the \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P to store the results \\
+\hline
+{\em from} & the \-M\-H\-V\-\_\-\-T\-I\-M\-E struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 396 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarm\-Count@{\-\_\-alarm\-Count}}
+\index{\-\_\-alarm\-Count@{\-\_\-alarm\-Count}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-alarm\-Count}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-alarm\-Count}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}
+
+
+\-Definition at line 106 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarm\-Max@{\-\_\-alarm\-Max}}
+\index{\-\_\-alarm\-Max@{\-\_\-alarm\-Max}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-alarm\-Max}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-alarm\-Max}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}
+
+
+\-Definition at line 107 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarms@{\-\_\-alarms}}
+\index{\-\_\-alarms@{\-\_\-alarms}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-alarms}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}$\ast$ {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-alarms}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}
+
+
+\-Definition at line 105 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-milliseconds@{\-\_\-milliseconds}}
+\index{\-\_\-milliseconds@{\-\_\-milliseconds}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-milliseconds}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}
+
+
+\-Definition at line 109 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-ticks}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}
+
+
+\-Definition at line 110 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}}
+\index{\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks\-Per\-Millisecond}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-ticks\-Per\-Millisecond}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}
+
+
+\-Definition at line 111 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-timer@{\-\_\-timer}}
+\index{\-\_\-timer@{\-\_\-timer}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-Timer8}$\ast$ {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-timer}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}
+
+
+\-Definition at line 104 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-timestamp@{\-\_\-timestamp}}
+\index{\-\_\-timestamp@{\-\_\-timestamp}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-timestamp}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-timestamp}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}
+
+
+\-Definition at line 108 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-tz\-Offset@{\-\_\-tz\-Offset}}
+\index{\-\_\-tz\-Offset@{\-\_\-tz\-Offset}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{\-\_\-tz\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-tz\-Offset}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}
+
+
+\-Definition at line 112 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___r_t_c_8h}{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___r_t_c_8cpp}{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}\end{DoxyCompactItemize}

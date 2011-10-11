@@ -1,0 +1,75 @@
+\hypertarget{_m_h_v___a_d_c_8h}{
+\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-A\-D\-C.h \-File \-Reference}
+\label{_m_h_v___a_d_c_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-A\-D\-C.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-A\-D\-C.\-h}}
+}
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-io.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-A\-D.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_m_h_v___a_d_c_listener}{\-M\-H\-V\-\_\-\-A\-D\-C\-Listener}
+\item 
+struct \hyperlink{structmhv__event_a_d_c}{mhv\-\_\-event\-A\-D\-C}
+\item 
+class \hyperlink{class_m_h_v___a_d_c}{\-M\-H\-V\-\_\-\-A\-D\-C}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v___a_d_c_8h_aa9db9954215268ef2088002e5861bb10}{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}(\-\_\-\-\_\-mhv\-A\-D\-C\-Manager)
+\item 
+\#define \hyperlink{_m_h_v___a_d_c_8h_ad0d78f49ceb6f33740a1fb078f776de2}{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-A\-D\-C\-Buffer\-Name, \-\_\-mhv\-A\-D\-C\-Buffer\-Count)~\hyperlink{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C} \-\_\-mhv\-A\-D\-C\-Buffer\-Name\mbox{[}\-\_\-mhv\-A\-D\-C\-Buffer\-Count\mbox{]};
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmhv__event_a_d_c}{mhv\-\_\-event\-A\-D\-C} \hyperlink{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___a_d_c_8h_aa9db9954215268ef2088002e5861bb10}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C.\-h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}!\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}!MHV_ADC.h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-mhv\-A\-D\-C\-Manager}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___a_d_c_8h_aa9db9954215268ef2088002e5861bb10}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+ISR(ADC_vect) { \
+        __mhvADCManager.adc(); \
+}
+\end{DoxyCode}
+
+
+\-Definition at line 35 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+\hypertarget{_m_h_v___a_d_c_8h_ad0d78f49ceb6f33740a1fb078f776de2}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C.\-h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}!\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_ADC.h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-A\-D\-C\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-A\-D\-C\-Buffer\-Name, }
+\item[{}]{\-\_\-mhv\-A\-D\-C\-Buffer\-Count}
+\end{DoxyParamCaption}
+)~{\bf \-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C} \-\_\-mhv\-A\-D\-C\-Buffer\-Name\mbox{[}\-\_\-mhv\-A\-D\-C\-Buffer\-Count\mbox{]};}}
+\label{_m_h_v___a_d_c_8h_ad0d78f49ceb6f33740a1fb078f776de2}
+\-Allocate a buffer to contain event mappings 
+
+\-Definition at line 43 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}{
+\index{\-M\-H\-V\-\_\-\-A\-D\-C.\-h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}!\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}}
+\index{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C@{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}!MHV_ADC.h@{\-M\-H\-V\-\_\-\-A\-D\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-event\-A\-D\-C} {\bf \-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}}}
+\label{_m_h_v___a_d_c_8h_a21c373c52cc2836a0010981c9b63d1f9}
+
+
+\-Definition at line 55 of file \-M\-H\-V\-\_\-\-A\-D\-C.\-h.
+

@@ -32,6 +32,7 @@
 #include <inttypes.h>
 #include <avr/pgmspace.h>
 
+// Font widths
 static const uint8_t mhv_fontSansSerif8x10Widths[] PROGMEM = {
 	    0x01, 0x01, 0x01, 0x05, 0x05, 0x06, 0x05, 0x01, 0x02, 0x02,
 	    0x01, 0x03, 0x02, 0x02, 0x01, 0x03, 0x04, 0x02, 0x04, 0x04,
@@ -45,6 +46,7 @@ static const uint8_t mhv_fontSansSerif8x10Widths[] PROGMEM = {
 	    0x04, 0x03, 0x01, 0x03, 0x05, 0x00,
 };
 
+// Font offsets into the data table
 static const uint16_t mhv_fontSansSerif8x10Offsets[] PROGMEM = {
 		  0,   1,   2,   3,   8,  13,  19,  24,  25, 27,
 		 29,  30,  33,  35,  37,  38,  41,  45,  47, 51,
@@ -58,6 +60,7 @@ static const uint16_t mhv_fontSansSerif8x10Offsets[] PROGMEM = {
 		318, 322, 325, 326, 329, 334
 };
 
+//Font data
 static const uint8_t mhv_fontSansSerif8x10Data[] PROGMEM = {
     0x00, // 32
     0x2F, // 33
@@ -156,6 +159,9 @@ static const uint8_t mhv_fontSansSerif8x10Data[] PROGMEM = {
     0x08, 0x04, 0x08, 0x10, 0x08, // 126
 };
 
+/**
+ * Font descriptor
+ */
 static const MHV_FONT mhv_fontSansSerif8x10 = {
 	10,								// width
 	8,								// height

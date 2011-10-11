@@ -34,11 +34,12 @@
 
 /**
  * Create a new PID
- * @param	setPoint	the target value
+ * @param	setpoint	the target value
  * @param	kP			the proportional constant
  * @param	kI			the integral constant
  * @param	kD			the derivative constant
  * @param	period		the period that compute() is called, in ms
+ * @param	reverse		true if there is an inverse relationship between the output and the input (eg. running a cooler to reduce temperature)
  * @param	min			the minimum value for output
  * @param	max			the maximum value four output
  */
@@ -123,7 +124,7 @@ void MHV_PID::setOutputLimits(float min, float max) {
 
 /**
  * Enable/Disable the PID
- * @param	auto	true to enable the pid
+ * @param	enable	true to enable the pid
  */
 void MHV_PID::enable(bool enable) {
 	if (enable && !_enabled) {

@@ -73,14 +73,6 @@ extern "C" void __cxa_pure_virtual() {
 
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
-enum mhv_interruptMode {
-	MHV_INTERRUPT_LOW,
-	MHV_INTERRUPT_CHANGE,
-	MHV_INTERRUPT_FALLING,
-	MHV_INTERRUPT_RISING
-};
-typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
-
 struct mhv_pin {
 	volatile uint8_t	*dir;
 	volatile uint8_t	*input;
@@ -91,14 +83,21 @@ struct mhv_pin {
 };
 typedef struct mhv_pin MHV_PIN;
 
-// Convert a literal port and pin into a pin macro
+/**
+ * Convert a literal port and pin into a pin macro
+ * @param	_mhv_port	the port (eg, B)
+ * @param	_mhv_bit	the bit (eg, 3)
+ */
 #define mhv_make_pin(_mhv_port, _mhv_bit) \
 	_mhv_make_pin(_mhv_port, _mhv_bit)
 
 #define _mhv_make_pin(_mhv_port, _mhv_bit) \
 	MHV_PIN_ ## _mhv_port ## _mhv_bit
 
-// Convert a pin declaration to a pin struct
+/**
+ *  Convert a pin declaration to a pin struct
+ * @param mhvParms	a MHV_PIN_* macro
+ */
 #define mhv_pin(mhvParms) \
 	_mhv_pin(mhvParms)
 
@@ -126,7 +125,11 @@ inline void mhv_pinOnAtomic(MHV_PIN *pin) {
 
 /**
  * Set an output pin on
- * @param	pin		the pin to turn on
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinOn(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -135,7 +138,11 @@ inline void mhv_pinOn(volatile uint8_t *dir, volatile uint8_t *out, volatile uin
 
 /**
  * Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to turn on
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinOnAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -166,7 +173,11 @@ inline void mhv_pinOffAtomic(MHV_PIN *pin) {
 
 /**
  * Set an output pin off
- * @param	pin		the pin to turn off
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinOff(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -175,7 +186,11 @@ inline void mhv_pinOff(volatile uint8_t *dir, volatile uint8_t *out, volatile ui
 
 /**
  * Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to turn off
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinOffAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -187,7 +202,11 @@ inline void mhv_pinOffAtomic(volatile uint8_t *dir, volatile uint8_t *out, volat
 
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
- * @param	pin		the pin to set
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  * @param	state	true to turn the pin on
  */
 inline void mhv_pinSet(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
@@ -202,7 +221,11 @@ inline void mhv_pinSet(volatile uint8_t *dir, volatile uint8_t *out, volatile ui
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
  * 	 (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to set
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  * @param	state	true to turn the pin on
  */
 inline void mhv_pinSetAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
@@ -236,7 +259,11 @@ inline void mhv_setOutputAtomic(MHV_PIN *pin) {
 
 /**
  * Set a pin to be an output
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setOutput(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -245,7 +272,11 @@ inline void mhv_setOutput(volatile uint8_t *dir, volatile uint8_t *out, volatile
 
 /**
  * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setOutputAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -276,7 +307,11 @@ inline void mhv_setInputAtomic(MHV_PIN *pin) {
 
 /**
  * Set a pin to be an input
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setInput(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -286,7 +321,11 @@ inline void mhv_setInput(volatile uint8_t *dir, volatile uint8_t *out, volatile 
 
 /**
  * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setInputAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -320,7 +359,11 @@ inline void mhv_setInputPullupAtomic(MHV_PIN *pin) {
 
 /**
  * Set a pin to be an input, with the internal pullup enabled
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setInputPullup(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -330,7 +373,11 @@ inline void mhv_setInputPullup(volatile uint8_t *dir, volatile uint8_t *out, vol
 
 /**
  * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_setInputPullupAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -360,7 +407,11 @@ inline void mhv_pinToggleAtomic(MHV_PIN *pin) {
 
 /**
  * Toggle a pin
- * @param	pin		the pin to toggle
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinToggle(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -369,7 +420,11 @@ inline void mhv_pinToggle(volatile uint8_t *dir, volatile uint8_t *out, volatile
 
 /**
  * Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to toggle
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline void mhv_pinToggleAtomic(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -390,7 +445,11 @@ inline bool mhv_pinRead(MHV_PIN *pin) {
 
 /**
  * Read a pin
- * @param	pin		the pin to read
+ * @param	dir		A member of the MHV_PIN_* macro
+ * @param	out		A member of the MHV_PIN_* macro
+ * @param	in		A member of the MHV_PIN_* macro
+ * @param	bit		A member of the MHV_PIN_* macro
+ * @param	pcInt	A member of the MHV_PIN_* macro
  */
 inline bool mhv_pinRead(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t bit, int8_t pcInt) {
@@ -414,6 +473,19 @@ inline void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
 	}
 }
 
+/**
+ * Cheap memset to 0
+ * @param	bufIn	a pointer to the buffer
+ * @param	len		the length of an element in the buffer
+ */
+inline void mhv_memClear(void *bufIn, uint8_t len) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < len; i++, buf++) {
+		*buf = 0;
+	}
+}
+
 
 
 /* We have to shadow all the macros below as the precedence of macro expansion means that
@@ -425,35 +497,50 @@ inline void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
  * to understand why we have do...while(0) on our macros
  */
 
-// Grab the output register of a pin declaration
+/**
+ * Grab the output register of a pin declaration
+ * @param	mhvParms	a MHV_PIN_* macro
+ */
 #define mhv_out(mhvParms) \
 	_mhv_out(mhvParms)
 
 #define _mhv_out(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvOutput
 
-// Grab the input register of a pin declaration
+/**
+ * Grab the input register of a pin declaration
+ * @param	mhvParms	a MHV_PIN_* macro
+ */
 #define mhv_in(mhvParms) \
 	_mhv_in(mhvParms)
 
 #define _mhv_in(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvInput
 
-// Grab the bit offset of a pin declaration
+/**
+ * Grab the bit offset of a pin declaration
+ * @param	mhvParms	A MHV_PIN_* Macro
+ */
 #define mhv_bit(mhvParms) \
 	_mhv_bit(mhvParms)
 
 #define _mhv_bit(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvBit
 
-// Grab the direction register of a pin declaration
+/**
+ * Grab the direction register of a pin declaration
+ * @param	mhvParms	A MHV_PIN_* Macro
+ */
 #define mhv_dir(mhvParms) \
 	_mhv_dir(mhvParms)
 
 #define _mhv_dir(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
 	mhvDir
 
-// Grab the pin change interrupt of a pin
+/**
+ * Grab the pin change interrupt of a pin
+ * @param	mhvParms	A MHV_PIN_* Macro
+ */
 #define mhv_pcint(mhvParms) \
 	_mhv_pcint(mhvParms)
 
@@ -461,14 +548,34 @@ inline void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
 	mhvPCInt
 
 
-// Assign a function to be triggered by an external interrupt
+/**
+ * Assign a function to be triggered by an external interrupt
+ * @param	mhvInterruptParms	A MHV_INTERRUPT_* Macro
+ * @param	mhvFunction			a block to execute when the interrupt occurs
+ */
 #define mhv_declareExternalInterrupt(mhvInterruptParms,mhvFunction) \
 	_mhv_declareExternalInterrupt(mhvInterruptParms, mhvFunction)
 
 #define _mhv_declareExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvFunction) \
 ISR(mhvInterruptHandler) mhvFunction
 
-// Enable an external interrupt
+/**
+ * Situations that interrupts can be triggered on
+ */
+enum mhv_interruptMode {
+	MHV_INTERRUPT_LOW,    //!< MHV_INTERRUPT_LOW to level trigger when low
+	MHV_INTERRUPT_CHANGE, //!< MHV_INTERRUPT_CHANGE to edge trigger on change
+	MHV_INTERRUPT_FALLING,//!< MHV_INTERRUPT_FALLING to edge trigger when falling
+	MHV_INTERRUPT_RISING  //!< MHV_INTERRUPT_RISING to edge trigger when rising
+};
+typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
+
+
+/**
+ * Enable an external interrupt
+ * @param	mhvInterruptParms	A MHV_INTERRUPT_* Macro
+ * @param	mhvInterruptMode	When to raise the interrupt (see MHV_INTERRUPTMODE)
+ */
 #define mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode) \
 	do { \
 		_mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode); \

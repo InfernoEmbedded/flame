@@ -1,0 +1,1297 @@
+\hypertarget{_m_h_v__io_8h}{
+\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-io.h \-File \-Reference}
+\label{_m_h_v__io_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-io.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-io.\-h}}
+}
+{\ttfamily \#include $<$avr/io.\-h$>$}\*
+{\ttfamily \#include $<$inttypes.\-h$>$}\*
+{\ttfamily \#include $<$stddef.\-h$>$}\*
+{\ttfamily \#include $<$util/atomic.\-h$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmhv__pin}{mhv\-\_\-pin}
+\end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a7bd1629f93c9a87bfae9627bc8d793a0}{\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-}
+\item 
+\#define \hyperlink{_m_h_v__io_8h_aa1728270d73c5d1598de1fd691762eb1}{\-N\-O\-R\-E\-T\-U\-R\-N}~\-\_\-\-\_\-attribute\-\_\-\-\_\- ((noreturn))
+\item 
+\#define \hyperlink{_m_h_v__io_8h_acd42770aecb025cfac170d4d3ace4544}{\-P\-U\-R\-E}~\-\_\-\-\_\-attribute\-\_\-\-\_\- ((pure))
+\item 
+\#define \hyperlink{_m_h_v__io_8h_adbba0f726fc66d7100916c683b7568ae}{\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}~(\-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-\_\- $\ast$ 10000 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-M\-I\-N\-O\-R\-\_\-\-\_\- $\ast$ 100 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-P\-A\-T\-C\-H\-L\-E\-V\-E\-L\-\_\-\-\_\-)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_af993aeb5443128b44cf538670f01e3f4}{mhv\-\_\-make\-\_\-pin}(\-\_\-mhv\-\_\-port, \-\_\-mhv\-\_\-bit)~\-\_\-mhv\-\_\-make\-\_\-pin(\-\_\-mhv\-\_\-port, \-\_\-mhv\-\_\-bit)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a6930b0ef9bd49825eea4615474847977}{\-\_\-mhv\-\_\-make\-\_\-pin}(\-\_\-mhv\-\_\-port, \-\_\-mhv\-\_\-bit)~\-M\-H\-V\-\_\-\-P\-I\-N\-\_\- \#\# \-\_\-mhv\-\_\-port \#\# \-\_\-mhv\-\_\-bit
+\item 
+\#define \hyperlink{_m_h_v__io_8h_ab1eee3d9ad2bffb40285bcb444558305}{mhv\-\_\-pin}(mhv\-Parms)~\-\_\-mhv\-\_\-pin(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a35c2bc661161826f95bdb11cacc53d6c}{\-\_\-mhv\-\_\-pin}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~\{mhv\-Dir, mhv\-Output, mhv\-Input, \-\_\-\-B\-V(mhv\-Bit), mhv\-P\-C\-Int\}
+\item 
+\#define \hyperlink{_m_h_v__io_8h_ac59cdce37836e1922380801158ea6132}{mhv\-\_\-out}(mhv\-Parms)~\-\_\-mhv\-\_\-out(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a6ef71c38d4504fc9421faf82af54df29}{\-\_\-mhv\-\_\-out}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Output
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a029368f3cab1cc789b6cb95cb711bed7}{mhv\-\_\-in}(mhv\-Parms)~\-\_\-mhv\-\_\-in(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_ac2ef617d9047aab1de9d4165db3f0d99}{\-\_\-mhv\-\_\-in}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Input
+\item 
+\#define \hyperlink{_m_h_v__io_8h_ab3a8d80106983248da489c25ab3ec556}{mhv\-\_\-bit}(mhv\-Parms)~\-\_\-mhv\-\_\-bit(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Bit
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a9472a0cb737739bd772445975647be3a}{mhv\-\_\-dir}(mhv\-Parms)~\-\_\-mhv\-\_\-dir(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_acd72c031114221de739dc41ce1a2a58e}{\-\_\-mhv\-\_\-dir}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Dir
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}{mhv\-\_\-pcint}(mhv\-Parms)~\-\_\-mhv\-\_\-pcint(mhv\-Parms)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}{\-\_\-mhv\-\_\-\-P\-C\-Int}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-P\-C\-Int
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a4645a034d7cc7ce9932088342a880d3e}{mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Function)~\-\_\-mhv\-\_\-declare\-External\-Interrupt(mhv\-Interrupt\-Parms, mhv\-Function)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_ae6e779df498b67e3c79678c98c0c2ff9}{\-\_\-mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Handler, mhv\-Mode\-Register, mhv\-Mode\-Bitshift, mhv\-Function)~\-I\-S\-R(mhv\-Interrupt\-Handler) mhv\-Function
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a4920d6b22bf37464759debaebfc2987e}{mhv\-\_\-enable\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Interrupt\-Mode)
+\item 
+\#define \hyperlink{_m_h_v__io_8h_a7cd281ce18e1879706a84d4ad98c59f8}{\-\_\-mhv\-\_\-enable\-External\-Interrupt}(mhv\-Interrupt\-Handler, mhv\-Mode\-Register, mhv\-Mode\-Bitshift, mhv\-Interrupt\-Mode)~$\ast$mhv\-Mode\-Register = ($\ast$mhv\-Mode\-Register \& $\sim$(0x03 $<$$<$ mhv\-Mode\-Bitshift)) $|$ (mhv\-Interrupt\-Mode $<$$<$ mhv\-Mode\-Bitshift)
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structmhv__pin}{mhv\-\_\-pin} \hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N}
+\item 
+typedef enum \hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387}{mhv\-\_\-interrupt\-Mode} \hyperlink{_m_h_v__io_8h_a5904b6bedaf56a3f641c6ea2b6d8eae0}{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}
+\end{DoxyCompactItemize}
+\subsection*{\-Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387}{mhv\-\_\-interrupt\-Mode} \{ \hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ab738dde69e0b1326c1bf61cf89244618}{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W}, 
+\hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a98a6b3473abe24abecde40eed20cab5f}{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E}, 
+\hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ac662333d150bd4790bcf00a8d782f21f}{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}, 
+\hyperlink{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a2f41c0a6fb3c97faa9e890d997a4d43d}{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_m_h_v__io_8h_a31128832d0b166b97a45871602706553}{mhv\-\_\-pin\-On} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_a9a7888c9f40d31d4c63e0990073f05df}{mhv\-\_\-pin\-On\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_a298dbf5ac97d6b7a13c8e62b54b5f51b}{mhv\-\_\-pin\-On} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a4be059228397a83d2bd4090af1e067ef}{mhv\-\_\-pin\-On\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a09fb9ab4d81b04e5bd344b284e1897ae}{mhv\-\_\-pin\-Off} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_ab0b95a61cdd8e3916dd916c6846fbe41}{mhv\-\_\-pin\-Off\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_af794108f9455bbf8a25dd23da8aa0397}{mhv\-\_\-pin\-Off} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a292ee9c8cdae0081a1d4b0fb6e6cfdef}{mhv\-\_\-pin\-Off\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a4e9100b3baf8d128d34eb442cde2b989}{mhv\-\_\-pin\-Set} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int, bool state)
+\item 
+void \hyperlink{_m_h_v__io_8h_acb7afcea912bbe34926d457bda65e152}{mhv\-\_\-pin\-Set\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int, bool state)
+\item 
+void \hyperlink{_m_h_v__io_8h_a0d9b0efcf453876cbec27c7e5e487102}{mhv\-\_\-set\-Output} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_a94535934938c6903ef2d7ac209a29f25}{mhv\-\_\-set\-Output\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_aa0e6d65dd96fb2651742101c420edbf5}{mhv\-\_\-set\-Output} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a0175f71671a7a87396bc4c8176bd3bbf}{mhv\-\_\-set\-Output\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a0f549923b6d324681eb0b10b4a1b57a2}{mhv\-\_\-set\-Input} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_a6146ee7a65cae427fc8ec75d7e20792c}{mhv\-\_\-set\-Input\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_aa51f75e0355a551519ee2e149aafb039}{mhv\-\_\-set\-Input} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_aed7e8cf52e4430ea84f5328ad3f58ff4}{mhv\-\_\-set\-Input\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_aafbe3f43159d310906612b6bf48aa688}{mhv\-\_\-set\-Input\-Pullup} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_ac8bf7a5842bfb8fa6e464e52abb3afdd}{mhv\-\_\-set\-Input\-Pullup\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_ac414b135acd1acfe550f7a01bcbb079e}{mhv\-\_\-set\-Input\-Pullup} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_ac9feb945b6a0690c30e011d18b3d1ce7}{mhv\-\_\-set\-Input\-Pullup\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a21b64bb618c8b164e27846400c68bac6}{mhv\-\_\-pin\-Toggle} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_a9bb35c0e624021b9abae2c1d7e0f7c3f}{mhv\-\_\-pin\-Toggle\-Atomic} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+void \hyperlink{_m_h_v__io_8h_acf1bdc19a8ea7ff2083c684a945fb04e}{mhv\-\_\-pin\-Toggle} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_a23923bc452d75836def42d5ec31c5e16}{mhv\-\_\-pin\-Toggle\-Atomic} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+bool \hyperlink{_m_h_v__io_8h_a7865c800ceb654a95b780149d18fc8de}{mhv\-\_\-pin\-Read} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$pin)
+\item 
+bool \hyperlink{_m_h_v__io_8h_a2c59a917e6be5552276f7ac34dfd09a7}{mhv\-\_\-pin\-Read} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t bit, int8\-\_\-t pc\-Int)
+\item 
+void \hyperlink{_m_h_v__io_8h_ae6d3326bf7ddc3200466b85660016a84}{mhv\-\_\-mem\-Clear} (void $\ast$buf\-In, uint8\-\_\-t len, uint8\-\_\-t count)
+\item 
+void \hyperlink{_m_h_v__io_8h_a47418c80d7f73a0fa4e066d9a7b07081}{mhv\-\_\-mem\-Clear} (void $\ast$buf\-In, uint8\-\_\-t len)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v__io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-bit@{\-\_\-mhv\-\_\-bit}}
+\index{\-\_\-mhv\-\_\-bit@{\-\_\-mhv\-\_\-bit}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-bit(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Bit}}
+\label{_m_h_v__io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}
+
+
+\-Definition at line 527 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ae6e779df498b67e3c79678c98c0c2ff9}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-declare\-External\-Interrupt@{\-\_\-mhv\-\_\-declare\-External\-Interrupt}}
+\index{\-\_\-mhv\-\_\-declare\-External\-Interrupt@{\-\_\-mhv\-\_\-declare\-External\-Interrupt}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-declare\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-declare\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Handler, }
+\item[{}]{mhv\-Mode\-Register, }
+\item[{}]{mhv\-Mode\-Bitshift, }
+\item[{}]{mhv\-Function}
+\end{DoxyParamCaption}
+)~\-I\-S\-R(mhv\-Interrupt\-Handler) mhv\-Function}}
+\label{_m_h_v__io_8h_ae6e779df498b67e3c79678c98c0c2ff9}
+
+
+\-Definition at line 559 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_acd72c031114221de739dc41ce1a2a58e}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-dir@{\-\_\-mhv\-\_\-dir}}
+\index{\-\_\-mhv\-\_\-dir@{\-\_\-mhv\-\_\-dir}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-dir(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Dir}}
+\label{_m_h_v__io_8h_acd72c031114221de739dc41ce1a2a58e}
+
+
+\-Definition at line 537 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a7cd281ce18e1879706a84d4ad98c59f8}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-enable\-External\-Interrupt@{\-\_\-mhv\-\_\-enable\-External\-Interrupt}}
+\index{\-\_\-mhv\-\_\-enable\-External\-Interrupt@{\-\_\-mhv\-\_\-enable\-External\-Interrupt}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-enable\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-enable\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Handler, }
+\item[{}]{mhv\-Mode\-Register, }
+\item[{}]{mhv\-Mode\-Bitshift, }
+\item[{}]{mhv\-Interrupt\-Mode}
+\end{DoxyParamCaption}
+)~$\ast$mhv\-Mode\-Register = ($\ast$mhv\-Mode\-Register \& $\sim$(0x03 $<$$<$ mhv\-Mode\-Bitshift)) $|$ (mhv\-Interrupt\-Mode $<$$<$ mhv\-Mode\-Bitshift)}}
+\label{_m_h_v__io_8h_a7cd281ce18e1879706a84d4ad98c59f8}
+
+
+\-Definition at line 584 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ac2ef617d9047aab1de9d4165db3f0d99}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-in@{\-\_\-mhv\-\_\-in}}
+\index{\-\_\-mhv\-\_\-in@{\-\_\-mhv\-\_\-in}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-in(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Input}}
+\label{_m_h_v__io_8h_ac2ef617d9047aab1de9d4165db3f0d99}
+
+
+\-Definition at line 517 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a6930b0ef9bd49825eea4615474847977}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-make\-\_\-pin@{\-\_\-mhv\-\_\-make\-\_\-pin}}
+\index{\-\_\-mhv\-\_\-make\-\_\-pin@{\-\_\-mhv\-\_\-make\-\_\-pin}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-make\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-make\-\_\-pin(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-\_\-port, }
+\item[{}]{\-\_\-mhv\-\_\-bit}
+\end{DoxyParamCaption}
+)~\-M\-H\-V\-\_\-\-P\-I\-N\-\_\- \#\# \-\_\-mhv\-\_\-port \#\# \-\_\-mhv\-\_\-bit}}
+\label{_m_h_v__io_8h_a6930b0ef9bd49825eea4615474847977}
+
+
+\-Definition at line 94 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a6ef71c38d4504fc9421faf82af54df29}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-out@{\-\_\-mhv\-\_\-out}}
+\index{\-\_\-mhv\-\_\-out@{\-\_\-mhv\-\_\-out}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-out(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Output}}
+\label{_m_h_v__io_8h_a6ef71c38d4504fc9421faf82af54df29}
+
+
+\-Definition at line 507 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-\-P\-C\-Int@{\-\_\-mhv\-\_\-\-P\-C\-Int}}
+\index{\-\_\-mhv\-\_\-\-P\-C\-Int@{\-\_\-mhv\-\_\-\-P\-C\-Int}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-\-P\-C\-Int}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-\-P\-C\-Int(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-P\-C\-Int}}
+\label{_m_h_v__io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}
+
+
+\-Definition at line 547 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a35c2bc661161826f95bdb11cacc53d6c}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-\_\-mhv\-\_\-pin@{\-\_\-mhv\-\_\-pin}}
+\index{\-\_\-mhv\-\_\-pin@{\-\_\-mhv\-\_\-pin}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-pin(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~\{mhv\-Dir, mhv\-Output, mhv\-Input, \-\_\-\-B\-V(mhv\-Bit), mhv\-P\-C\-Int\}}}
+\label{_m_h_v__io_8h_a35c2bc661161826f95bdb11cacc53d6c}
+
+
+\-Definition at line 104 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_adbba0f726fc66d7100916c683b7568ae}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N@{\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}}
+\index{\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N@{\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N~(\-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-\_\- $\ast$ 10000 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-M\-I\-N\-O\-R\-\_\-\-\_\- $\ast$ 100 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-P\-A\-T\-C\-H\-L\-E\-V\-E\-L\-\_\-\-\_\-)}}
+\label{_m_h_v__io_8h_adbba0f726fc66d7100916c683b7568ae}
+
+
+\-Definition at line 74 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ab3a8d80106983248da489c25ab3ec556}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-bit@{mhv\-\_\-bit}}
+\index{mhv\-\_\-bit@{mhv\-\_\-bit}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-bit(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-bit(mhv\-Parms)}}
+\label{_m_h_v__io_8h_ab3a8d80106983248da489c25ab3ec556}
+\-Grab the bit offset of a pin declaration 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & \-A \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ \-Macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 524 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a4645a034d7cc7ce9932088342a880d3e}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-declare\-External\-Interrupt@{mhv\-\_\-declare\-External\-Interrupt}}
+\index{mhv\-\_\-declare\-External\-Interrupt@{mhv\-\_\-declare\-External\-Interrupt}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-declare\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-declare\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Parms, }
+\item[{}]{mhv\-Function}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-declare\-External\-Interrupt(mhv\-Interrupt\-Parms, mhv\-Function)}}
+\label{_m_h_v__io_8h_a4645a034d7cc7ce9932088342a880d3e}
+\-Assign a function to be triggered by an external interrupt 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Interrupt\-Parms} & \-A \-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-$\ast$ \-Macro \\
+\hline
+{\em mhv\-Function} & a block to execute when the interrupt occurs \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 556 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a9472a0cb737739bd772445975647be3a}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-dir@{mhv\-\_\-dir}}
+\index{mhv\-\_\-dir@{mhv\-\_\-dir}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-dir(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-dir(mhv\-Parms)}}
+\label{_m_h_v__io_8h_a9472a0cb737739bd772445975647be3a}
+\-Grab the direction register of a pin declaration 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & \-A \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ \-Macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 534 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a4920d6b22bf37464759debaebfc2987e}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-enable\-External\-Interrupt@{mhv\-\_\-enable\-External\-Interrupt}}
+\index{mhv\-\_\-enable\-External\-Interrupt@{mhv\-\_\-enable\-External\-Interrupt}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-enable\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-enable\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Parms, }
+\item[{}]{mhv\-Interrupt\-Mode}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v__io_8h_a4920d6b22bf37464759debaebfc2987e}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+do { \
+                _mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode
+      ); \
+        } while (0)
+\end{DoxyCode}
+\-Enable an external interrupt 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Interrupt\-Parms} & \-A \-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-$\ast$ \-Macro \\
+\hline
+{\em mhv\-Interrupt\-Mode} & \-When to raise the interrupt (see \-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E) \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 579 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a029368f3cab1cc789b6cb95cb711bed7}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-in@{mhv\-\_\-in}}
+\index{mhv\-\_\-in@{mhv\-\_\-in}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-in(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-in(mhv\-Parms)}}
+\label{_m_h_v__io_8h_a029368f3cab1cc789b6cb95cb711bed7}
+\-Grab the input register of a pin declaration 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & a \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 514 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a7bd1629f93c9a87bfae9627bc8d793a0}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-@{\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-}}
+\index{\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-@{\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-I\-O\-\_\-\-H\-\_\-}}
+\label{_m_h_v__io_8h_a7bd1629f93c9a87bfae9627bc8d793a0}
+
+
+\-Definition at line 44 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_af993aeb5443128b44cf538670f01e3f4}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-make\-\_\-pin@{mhv\-\_\-make\-\_\-pin}}
+\index{mhv\-\_\-make\-\_\-pin@{mhv\-\_\-make\-\_\-pin}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-make\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-make\-\_\-pin(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-\_\-port, }
+\item[{}]{\-\_\-mhv\-\_\-bit}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-make\-\_\-pin(\-\_\-mhv\-\_\-port, \-\_\-mhv\-\_\-bit)}}
+\label{_m_h_v__io_8h_af993aeb5443128b44cf538670f01e3f4}
+\-Convert a literal port and pin into a pin macro 
+\begin{DoxyParams}{\-Parameters}
+{\em \-\_\-mhv\-\_\-port} & the port (eg, \-B) \\
+\hline
+{\em \-\_\-mhv\-\_\-bit} & the bit (eg, 3) \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 91 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ac59cdce37836e1922380801158ea6132}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-out@{mhv\-\_\-out}}
+\index{mhv\-\_\-out@{mhv\-\_\-out}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-out(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-out(mhv\-Parms)}}
+\label{_m_h_v__io_8h_ac59cdce37836e1922380801158ea6132}
+\-Grab the output register of a pin declaration 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & a \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 504 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pcint@{mhv\-\_\-pcint}}
+\index{mhv\-\_\-pcint@{mhv\-\_\-pcint}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pcint}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-pcint(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-pcint(mhv\-Parms)}}
+\label{_m_h_v__io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}
+\-Grab the pin change interrupt of a pin 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & \-A \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ \-Macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 544 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ab1eee3d9ad2bffb40285bcb444558305}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin@{mhv\-\_\-pin}}
+\index{mhv\-\_\-pin@{mhv\-\_\-pin}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define {\bf mhv\-\_\-pin}(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-pin(mhv\-Parms)}}
+\label{_m_h_v__io_8h_ab1eee3d9ad2bffb40285bcb444558305}
+\-Convert a pin declaration to a pin struct 
+\begin{DoxyParams}{\-Parameters}
+{\em mhv\-Parms} & a \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 101 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_aa1728270d73c5d1598de1fd691762eb1}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-N\-O\-R\-E\-T\-U\-R\-N@{\-N\-O\-R\-E\-T\-U\-R\-N}}
+\index{\-N\-O\-R\-E\-T\-U\-R\-N@{\-N\-O\-R\-E\-T\-U\-R\-N}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-N\-O\-R\-E\-T\-U\-R\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-N\-O\-R\-E\-T\-U\-R\-N~\-\_\-\-\_\-attribute\-\_\-\-\_\- ((noreturn))}}
+\label{_m_h_v__io_8h_aa1728270d73c5d1598de1fd691762eb1}
+
+
+\-Definition at line 54 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_acd42770aecb025cfac170d4d3ace4544}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-P\-U\-R\-E@{\-P\-U\-R\-E}}
+\index{\-P\-U\-R\-E@{\-P\-U\-R\-E}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-P\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-P\-U\-R\-E~\-\_\-\-\_\-attribute\-\_\-\-\_\- ((pure))}}
+\label{_m_h_v__io_8h_acd42770aecb025cfac170d4d3ace4544}
+
+
+\-Definition at line 57 of file \-M\-H\-V\-\_\-io.\-h.
+
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{_m_h_v__io_8h_a5904b6bedaf56a3f641c6ea2b6d8eae0}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}}
+\index{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf mhv\-\_\-interrupt\-Mode} {\bf \-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}}}
+\label{_m_h_v__io_8h_a5904b6bedaf56a3f641c6ea2b6d8eae0}
+
+
+\-Definition at line 571 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-P\-I\-N@{\-M\-H\-V\-\_\-\-P\-I\-N}}
+\index{\-M\-H\-V\-\_\-\-P\-I\-N@{\-M\-H\-V\-\_\-\-P\-I\-N}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-pin} {\bf \-M\-H\-V\-\_\-\-P\-I\-N}}}
+\label{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}
+
+
+\-Definition at line 84 of file \-M\-H\-V\-\_\-io.\-h.
+
+
+
+\subsection{\-Enumeration \-Type \-Documentation}
+\hypertarget{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-interrupt\-Mode@{mhv\-\_\-interrupt\-Mode}}
+\index{mhv\-\_\-interrupt\-Mode@{mhv\-\_\-interrupt\-Mode}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-interrupt\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mhv\-\_\-interrupt\-Mode}}}
+\label{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387}
+\-Situations that interrupts can be triggered on \begin{Desc}
+\item[\-Enumerator\-: ]\par
+\begin{description}
+\index{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W}!\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}}\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W}}\item[{\em 
+\hypertarget{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ab738dde69e0b1326c1bf61cf89244618}{
+\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W}
+\label{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ab738dde69e0b1326c1bf61cf89244618}
+}]\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W to level trigger when low. \index{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E}!\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}}\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E}}\item[{\em 
+\hypertarget{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a98a6b3473abe24abecde40eed20cab5f}{
+\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E}
+\label{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a98a6b3473abe24abecde40eed20cab5f}
+}]\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E to edge trigger on change. \index{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}!\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}}\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}}\item[{\em 
+\hypertarget{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ac662333d150bd4790bcf00a8d782f21f}{
+\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}
+\label{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387ac662333d150bd4790bcf00a8d782f21f}
+}]\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G to edge trigger when falling. \index{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G}!\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}}\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G@{\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G}}\item[{\em 
+\hypertarget{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a2f41c0a6fb3c97faa9e890d997a4d43d}{
+\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G}
+\label{_m_h_v__io_8h_a353a6f0b601d2bfe2606c87715c1c387a2f41c0a6fb3c97faa9e890d997a4d43d}
+}]\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G to edge trigger when rising. \end{description}
+\end{Desc}
+
+
+
+\-Definition at line 565 of file \-M\-H\-V\-\_\-io.\-h.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{_m_h_v__io_8h_ae6d3326bf7ddc3200466b85660016a84}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-mem\-Clear@{mhv\-\_\-mem\-Clear}}
+\index{mhv\-\_\-mem\-Clear@{mhv\-\_\-mem\-Clear}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-mem\-Clear}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-mem\-Clear (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buf\-In, }
+\item[{uint8\-\_\-t}]{len, }
+\item[{uint8\-\_\-t}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_ae6d3326bf7ddc3200466b85660016a84}
+\-Cheap memset to 0 
+\begin{DoxyParams}{\-Parameters}
+{\em buf\-In} & a pointer to the buffer \\
+\hline
+{\em len} & the length of an element in the buffer \\
+\hline
+{\em count} & the number of elements in the buffer \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 466 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a47418c80d7f73a0fa4e066d9a7b07081}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-mem\-Clear@{mhv\-\_\-mem\-Clear}}
+\index{mhv\-\_\-mem\-Clear@{mhv\-\_\-mem\-Clear}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-mem\-Clear}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-mem\-Clear (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buf\-In, }
+\item[{uint8\-\_\-t}]{len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a47418c80d7f73a0fa4e066d9a7b07081}
+\-Cheap memset to 0 
+\begin{DoxyParams}{\-Parameters}
+{\em buf\-In} & a pointer to the buffer \\
+\hline
+{\em len} & the length of an element in the buffer \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 481 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a09fb9ab4d81b04e5bd344b284e1897ae}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Off@{mhv\-\_\-pin\-Off}}
+\index{mhv\-\_\-pin\-Off@{mhv\-\_\-pin\-Off}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Off}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Off (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a09fb9ab4d81b04e5bd344b284e1897ae}
+\-Set an output pin off 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to turn off \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 159 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_af794108f9455bbf8a25dd23da8aa0397}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Off@{mhv\-\_\-pin\-Off}}
+\index{mhv\-\_\-pin\-Off@{mhv\-\_\-pin\-Off}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Off}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Off (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_af794108f9455bbf8a25dd23da8aa0397}
+\-Set an output pin off 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 182 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ab0b95a61cdd8e3916dd916c6846fbe41}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Off\-Atomic@{mhv\-\_\-pin\-Off\-Atomic}}
+\index{mhv\-\_\-pin\-Off\-Atomic@{mhv\-\_\-pin\-Off\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Off\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Off\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_ab0b95a61cdd8e3916dd916c6846fbe41}
+\-Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to turn off \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 167 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a292ee9c8cdae0081a1d4b0fb6e6cfdef}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Off\-Atomic@{mhv\-\_\-pin\-Off\-Atomic}}
+\index{mhv\-\_\-pin\-Off\-Atomic@{mhv\-\_\-pin\-Off\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Off\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Off\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a292ee9c8cdae0081a1d4b0fb6e6cfdef}
+\-Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 195 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a31128832d0b166b97a45871602706553}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-On@{mhv\-\_\-pin\-On}}
+\index{mhv\-\_\-pin\-On@{mhv\-\_\-pin\-On}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-On}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-On (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a31128832d0b166b97a45871602706553}
+\-Set an output pin on 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to turn on \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 111 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a298dbf5ac97d6b7a13c8e62b54b5f51b}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-On@{mhv\-\_\-pin\-On}}
+\index{mhv\-\_\-pin\-On@{mhv\-\_\-pin\-On}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-On}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-On (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a298dbf5ac97d6b7a13c8e62b54b5f51b}
+\-Set an output pin on 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 134 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a9a7888c9f40d31d4c63e0990073f05df}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-On\-Atomic@{mhv\-\_\-pin\-On\-Atomic}}
+\index{mhv\-\_\-pin\-On\-Atomic@{mhv\-\_\-pin\-On\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-On\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-On\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a9a7888c9f40d31d4c63e0990073f05df}
+\-Set an output pin on atomically (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to turn on \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 119 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a4be059228397a83d2bd4090af1e067ef}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-On\-Atomic@{mhv\-\_\-pin\-On\-Atomic}}
+\index{mhv\-\_\-pin\-On\-Atomic@{mhv\-\_\-pin\-On\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-On\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-On\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a4be059228397a83d2bd4090af1e067ef}
+\-Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 147 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a7865c800ceb654a95b780149d18fc8de}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Read@{mhv\-\_\-pin\-Read}}
+\index{mhv\-\_\-pin\-Read@{mhv\-\_\-pin\-Read}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Read}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-pin\-Read (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a7865c800ceb654a95b780149d18fc8de}
+\-Read a pin 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to read \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 441 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a2c59a917e6be5552276f7ac34dfd09a7}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Read@{mhv\-\_\-pin\-Read}}
+\index{mhv\-\_\-pin\-Read@{mhv\-\_\-pin\-Read}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Read}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-pin\-Read (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a2c59a917e6be5552276f7ac34dfd09a7}
+\-Read a pin 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 454 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a4e9100b3baf8d128d34eb442cde2b989}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Set@{mhv\-\_\-pin\-Set}}
+\index{mhv\-\_\-pin\-Set@{mhv\-\_\-pin\-Set}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Set}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Set (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int, }
+\item[{bool}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a4e9100b3baf8d128d34eb442cde2b989}
+\-Set an output pin on or off (state should really be constant for optimal performance) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em state} & true to turn the pin on \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 212 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_acb7afcea912bbe34926d457bda65e152}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Set\-Atomic@{mhv\-\_\-pin\-Set\-Atomic}}
+\index{mhv\-\_\-pin\-Set\-Atomic@{mhv\-\_\-pin\-Set\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Set\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Set\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int, }
+\item[{bool}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_acb7afcea912bbe34926d457bda65e152}
+\-Set an output pin on or off (state should really be constant for optimal performance) (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em state} & true to turn the pin on \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 231 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a21b64bb618c8b164e27846400c68bac6}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Toggle@{mhv\-\_\-pin\-Toggle}}
+\index{mhv\-\_\-pin\-Toggle@{mhv\-\_\-pin\-Toggle}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Toggle}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Toggle (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a21b64bb618c8b164e27846400c68bac6}
+\-Toggle a pin 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to toggle \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 393 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_acf1bdc19a8ea7ff2083c684a945fb04e}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Toggle@{mhv\-\_\-pin\-Toggle}}
+\index{mhv\-\_\-pin\-Toggle@{mhv\-\_\-pin\-Toggle}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Toggle}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Toggle (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_acf1bdc19a8ea7ff2083c684a945fb04e}
+\-Toggle a pin 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 416 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a9bb35c0e624021b9abae2c1d7e0f7c3f}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Toggle\-Atomic@{mhv\-\_\-pin\-Toggle\-Atomic}}
+\index{mhv\-\_\-pin\-Toggle\-Atomic@{mhv\-\_\-pin\-Toggle\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Toggle\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Toggle\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a9bb35c0e624021b9abae2c1d7e0f7c3f}
+\-Toggle a pin (used if the state of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to toggle \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 401 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a23923bc452d75836def42d5ec31c5e16}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-pin\-Toggle\-Atomic@{mhv\-\_\-pin\-Toggle\-Atomic}}
+\index{mhv\-\_\-pin\-Toggle\-Atomic@{mhv\-\_\-pin\-Toggle\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-pin\-Toggle\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-pin\-Toggle\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a23923bc452d75836def42d5ec31c5e16}
+\-Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 429 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a0f549923b6d324681eb0b10b4a1b57a2}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input@{mhv\-\_\-set\-Input}}
+\index{mhv\-\_\-set\-Input@{mhv\-\_\-set\-Input}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a0f549923b6d324681eb0b10b4a1b57a2}
+\-Set a pin to be an input 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 292 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_aa51f75e0355a551519ee2e149aafb039}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input@{mhv\-\_\-set\-Input}}
+\index{mhv\-\_\-set\-Input@{mhv\-\_\-set\-Input}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_aa51f75e0355a551519ee2e149aafb039}
+\-Set a pin to be an input 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 316 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a6146ee7a65cae427fc8ec75d7e20792c}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Atomic@{mhv\-\_\-set\-Input\-Atomic}}
+\index{mhv\-\_\-set\-Input\-Atomic@{mhv\-\_\-set\-Input\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a6146ee7a65cae427fc8ec75d7e20792c}
+\-Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 301 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_aed7e8cf52e4430ea84f5328ad3f58ff4}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Atomic@{mhv\-\_\-set\-Input\-Atomic}}
+\index{mhv\-\_\-set\-Input\-Atomic@{mhv\-\_\-set\-Input\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_aed7e8cf52e4430ea84f5328ad3f58ff4}
+\-Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 330 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_aafbe3f43159d310906612b6bf48aa688}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Pullup@{mhv\-\_\-set\-Input\-Pullup}}
+\index{mhv\-\_\-set\-Input\-Pullup@{mhv\-\_\-set\-Input\-Pullup}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Pullup}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Pullup (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_aafbe3f43159d310906612b6bf48aa688}
+\-Set a pin to be an input, with the internal pullup enabled 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 343 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ac414b135acd1acfe550f7a01bcbb079e}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Pullup@{mhv\-\_\-set\-Input\-Pullup}}
+\index{mhv\-\_\-set\-Input\-Pullup@{mhv\-\_\-set\-Input\-Pullup}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Pullup}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Pullup (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_ac414b135acd1acfe550f7a01bcbb079e}
+\-Set a pin to be an input, with the internal pullup enabled 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 368 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ac8bf7a5842bfb8fa6e464e52abb3afdd}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Pullup\-Atomic@{mhv\-\_\-set\-Input\-Pullup\-Atomic}}
+\index{mhv\-\_\-set\-Input\-Pullup\-Atomic@{mhv\-\_\-set\-Input\-Pullup\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Pullup\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Pullup\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_ac8bf7a5842bfb8fa6e464e52abb3afdd}
+\-Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 352 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_ac9feb945b6a0690c30e011d18b3d1ce7}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Input\-Pullup\-Atomic@{mhv\-\_\-set\-Input\-Pullup\-Atomic}}
+\index{mhv\-\_\-set\-Input\-Pullup\-Atomic@{mhv\-\_\-set\-Input\-Pullup\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Input\-Pullup\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Input\-Pullup\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_ac9feb945b6a0690c30e011d18b3d1ce7}
+\-Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 382 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a0d9b0efcf453876cbec27c7e5e487102}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Output@{mhv\-\_\-set\-Output}}
+\index{mhv\-\_\-set\-Output@{mhv\-\_\-set\-Output}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Output (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a0d9b0efcf453876cbec27c7e5e487102}
+\-Set a pin to be an output 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 245 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_aa0e6d65dd96fb2651742101c420edbf5}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Output@{mhv\-\_\-set\-Output}}
+\index{mhv\-\_\-set\-Output@{mhv\-\_\-set\-Output}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Output (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_aa0e6d65dd96fb2651742101c420edbf5}
+\-Set a pin to be an output 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 268 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a94535934938c6903ef2d7ac209a29f25}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Output\-Atomic@{mhv\-\_\-set\-Output\-Atomic}}
+\index{mhv\-\_\-set\-Output\-Atomic@{mhv\-\_\-set\-Output\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Output\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Output\-Atomic (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{pin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a94535934938c6903ef2d7ac209a29f25}
+\-Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em pin} & the pin to become an output \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 253 of file \-M\-H\-V\-\_\-io.\-h.
+
+\hypertarget{_m_h_v__io_8h_a0175f71671a7a87396bc4c8176bd3bbf}{
+\index{\-M\-H\-V\-\_\-io.\-h@{\-M\-H\-V\-\_\-io.\-h}!mhv\-\_\-set\-Output\-Atomic@{mhv\-\_\-set\-Output\-Atomic}}
+\index{mhv\-\_\-set\-Output\-Atomic@{mhv\-\_\-set\-Output\-Atomic}!MHV_io.h@{\-M\-H\-V\-\_\-io.\-h}}
+\subsubsection[{mhv\-\_\-set\-Output\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-set\-Output\-Atomic (
+\begin{DoxyParamCaption}
+\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
+\item[{volatile uint8\-\_\-t $\ast$}]{out, }
+\item[{volatile uint8\-\_\-t $\ast$}]{in, }
+\item[{uint8\-\_\-t}]{bit, }
+\item[{int8\-\_\-t}]{pc\-Int}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v__io_8h_a0175f71671a7a87396bc4c8176bd3bbf}
+\-Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler) 
+\begin{DoxyParams}{\-Parameters}
+{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em pc\-Int} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 281 of file \-M\-H\-V\-\_\-io.\-h.
+

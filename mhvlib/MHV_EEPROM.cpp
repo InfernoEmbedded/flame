@@ -155,9 +155,11 @@ int8_t MHV_EEPROM::busyWrite(void *buffer, uint16_t address, uint16_t length) {
 
 /**
  * Write a buffer to EEPROM
- * @param	buffer	the buffer to read from
- * @param	address	the address to write to
- * @param	length	the number of bytes to write (must be greater than 0)
+ * @param	buffer				the buffer to read from
+ * @param	address				the address to write to
+ * @param	length				the number of bytes to write (must be greater than 0)
+ * @param	doneCallback		A callback to call when the buffer has been written (can be NULL)
+ * @param	doneCallbackData	A pointer to pass to the callback
  */
 int8_t MHV_EEPROM::write(void *buffer, uint16_t address, uint16_t length,
 		void (*doneCallback)(void *buffer, void *data),

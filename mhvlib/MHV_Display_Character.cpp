@@ -190,7 +190,7 @@ void MHV_Display_Character::runTxBuffers() {
 
 /**
  * Render a frame of TX buffer animation - scrolls text from right to left, before moving to the next buffer
- * @param	offsetY		the vertical pixel offset to start writing at
+ * @param	row		the vertical pixel offset to start writing at
  * @return true if there are more frames to be rendered
  */
 bool MHV_Display_Character::txAnimation(uint16_t row) {
@@ -259,9 +259,9 @@ void MHV_Display_Character::setCursor(uint16_t col, uint16_t row) {
 /**
  * Write a character to the display
  * Will interpret the following special characters:
- * 	\b	Backspace
- * 	\t	Tab
- * 	\n	Newline
+ * 	\\b	Backspace
+ * 	\\t	Tab
+ * 	\\n	Newline
  *
  * @param	character	the character to write
  */

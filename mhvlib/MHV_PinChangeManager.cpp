@@ -86,8 +86,12 @@ void MHV_PinChangeManager::pinChange(uint8_t offset) {
 
 /**
  * Register interest for pinchange events
- * @param	pin*		an MHV_PIN declaration
- * @param	listener	a MHV_PinEventListener to notify when the pin changes
+ * @param	pinDir						A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt
+ * @param	pinOut						A member of the MHV_PIN_* macro
+ * @param	pinIn						A member of the MHV_PIN_* macro
+ * @param	pinBit						A member of the MHV_PIN_* macro
+ * @param	pinChangeInterrupt			A member of the MHV_PIN_* macro
+ * @param	listener					a MHV_PinEventListener to notify when the pin changes
  */
 void MHV_PinChangeManager::registerListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
 		volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt,
@@ -132,7 +136,11 @@ void MHV_PinChangeManager::registerListener(volatile uint8_t *pinDir, volatile u
 
 /**
  * Deregister interest for pinchange events
- * @param	pin*		an MHV_PIN declaration
+ * @param	pinDir						A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt
+ * @param	pinOut						A member of the MHV_PIN_* macro
+ * @param	pinIn						A member of the MHV_PIN_* macro
+ * @param	pinBit						A member of the MHV_PIN_* macro
+ * @param	pinChangeInterrupt			A member of the MHV_PIN_* macro
  */
 void MHV_PinChangeManager::deregisterListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
 		volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt) {

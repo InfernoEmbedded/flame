@@ -39,15 +39,22 @@
 
 /**
  *  Initialise the library
- * @param	data		the data pin (an MHV_PIN_*)
- * @param	write		the write pin (must be on the same port as the write pin)
- * @param	displayX	the width of a single display
- * @param	displayY	the height of a single display
- * @param	mode		What mode the displays should be run in
- * @param	arrayY		the height of the array in number of displays
- * @param	csCallback	A callback to select which display is active (lines must be active low, x & y select the display)
- * @param	frameBuffer	memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long
- * @param	txBuffers	A ringbuffer used for text printing
+ * @param	dataDir						A member of the MHV_PIN_* macro   the data pin
+ * @param	dataOut						A member of the MHV_PIN_* macro
+ * @param	dataIn						A member of the MHV_PIN_* macro
+ * @param	dataPin						A member of the MHV_PIN_* macro
+ * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	writeDir					A member of the MHV_PIN_* macro   the write pin
+ * @param	writeOut					A member of the MHV_PIN_* macro
+ * @param	writeIn						A member of the MHV_PIN_* macro
+ * @param	writePin					A member of the MHV_PIN_* macro
+ * @param	writePinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	mode						What mode the displays should be run in
+ * @param	arrayX						the width of the array in number of displays
+ * @param	arrayY						the height of the array in number of displays
+ * @param	csCallback					A callback to select which display is active (lines must be active low, x & y select the display)
+ * @param	frameBuffer					memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long
+ * @param	txBuffers					A ringbuffer used for text printing
  */
 MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
@@ -323,8 +330,8 @@ void MHV_Display_Holtek_HT1632::brightness(uint8_t moduleX, uint8_t moduleY, uin
 }
 
 /**
- *  Set the brightness of all modules
- * @param brightness	the brightness (from 0 to 15)
+ * Set the brightness of all modules
+ * @param brightness_in		the brightness (from 0 to 15)
  */
 void MHV_Display_Holtek_HT1632::brightness(uint8_t brightness_in) {
 	uint8_t x, y;
