@@ -42,6 +42,11 @@
 	char _mhvTxName ## Buf[_mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1]; \
 	MHV_RingBuffer _mhvTxName(_mhvTxName ## Buf, _mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1);
 
+#define MHV_DEBUG(__dbg_tx, __dbg_format, __dbg_args...) \
+do {\
+	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
+} while (0)
+
 struct mhv_tx_buffer {
 	const char	*data;
 	uint16_t	length;
@@ -70,6 +75,10 @@ public:
 	bool write(const char *buffer, uint16_t length, void (*completeFunction)(const char *));
 	bool write_P(PGM_P buffer);
 	bool write_P(PGM_P buffer, uint16_t length);
+	void debug(const char *file, int line, const char *function,
+			PGM_P format, ...);
 };
+
+
 
 #endif

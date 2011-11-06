@@ -266,28 +266,3 @@ void MHV_HardwareSerial::busyWrite(const char *buffer, uint16_t length) {
 bool MHV_HardwareSerial::busy(void) {
 	return !((*_ucsra) & (1 << _udre));
 }
-
-/**
- * Print a debug message
- * @param	file		the filename
- * @param	line		the line number
- * @param	function	the function name
- * @param	format		a printf format
- * @param	...			the printf parms
- */
-void MHV_HardwareSerial::debug(const char *file, int line, const char *function,
-		PGM_P format, ...) {
-	char	debugBuffer[80];
-	va_list	ap;
-	va_start(ap, format);
-
-	while (!canSendBusy()) {}
-
-	snprintf_P(debugBuffer, sizeof(debugBuffer), PSTR("%s:%d\t%s():\t\t"),
-			file, line, function);
-	busyWrite(debugBuffer);
-
-	vsnprintf_P(debugBuffer, sizeof(debugBuffer), format, ap);
-	busyWrite(debugBuffer);
-	busyWrite_P(PSTR("\r\n"));
-}

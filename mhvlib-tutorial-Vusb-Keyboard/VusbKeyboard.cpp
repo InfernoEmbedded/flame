@@ -80,8 +80,11 @@ void TypeString::alarm(MHV_ALARM *alarm) {
 	typist.write_P(PSTR("Greetings, program!"));
 }
 
+extern "C" {
+	#include <vusb/usbdrv.h>
+}
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 #ifdef ATTINY
@@ -92,12 +95,7 @@ int main(void) {
 #define PRESCALER	MHV_TIMER_PRESCALER_7_64
 #endif
 
-#ifdef ATTINY
-// Timer will not wake the ATtiny from power save
 	set_sleep_mode(SLEEP_MODE_IDLE);
-#else
-	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
-#endif
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(PRESCALER, 249, 0);

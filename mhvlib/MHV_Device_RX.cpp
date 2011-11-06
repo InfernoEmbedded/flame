@@ -111,7 +111,7 @@ void MHV_Device_RX::flush() {
 
 /**
  * Check if a line is ready, or the ringbuffer is full
- * @return true if either of the situations occur0
+ * @return true if either of the situations occurs
  */
 bool MHV_Device_RX::ready() {
 	if (_rxBuffer->full()) {

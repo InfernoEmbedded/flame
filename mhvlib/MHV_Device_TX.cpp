@@ -271,3 +271,44 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFu
 
 	return false;
 }
+
+/**
+ * Free a buffer allocated in debug
+ * @param
+ */
+void mhv_device_tx_debug_free(const char *buf) {
+	free((void *)buf);
+}
+
+/**
+ * Print a debug message
+ * @param	file		the filename
+ * @param	line		the line number
+ * @param	function	the function name
+ * @param	format		a printf format
+ * @param	...			the printf parms
+ */
+void MHV_Device_TX::debug(const char *file, int line, const char *function,
+		PGM_P format, ...) {
+	va_list	ap;
+	va_start(ap, format);
+
+	int length = sprintf_P(NULL, PSTR("%s:%d\t%s():\t\t"),
+			file, line, function);
+	length += vsprintf_P(NULL, format, ap);
+	length += 3; // "\r\n\0"
+
+	char *buf = (char *)malloc(length);
+	char *cur = buf;
+	if (NULL != cur) {
+		cur += sprintf_P(cur, PSTR("%s:%d\t%s():\t\t"),
+					file, line, function);
+		cur += vsprintf_P(cur, format, ap);
+		*(cur++) = '\r';
+		*(cur++) = '\n';
+		*cur = '\0';
+	}
+
+	write(buf, length, &mhv_device_tx_debug_free);
+}
+

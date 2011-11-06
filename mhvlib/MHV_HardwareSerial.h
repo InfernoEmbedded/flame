@@ -63,10 +63,7 @@ ISR(mhvTxVect) { \
 		MHV_HardwareSerial _mhvObjectName(&_mhvObjectName ## RX, &_mhvObjectName ## RX, _mhvSERIAL, _mhvBAUD); \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
-#define MHV_HARDWARESERIAL_DEBUG(__dbg_serial, __dbg_format, __dbg_args...) \
-do {\
-	__dbg_serial.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
-} while (0)
+#define MHV_HARDWARESERIAL_DEBUG MHV_DEBUG
 
 class MHV_HardwareSerial : public MHV_Device_TX, public MHV_Device_RX {
 private:
@@ -102,8 +99,6 @@ public:
 	void tx();
 	void echo(bool echoOn);
 	bool busy();
-	void debug(const char *file, int line, const char *function,
-			PGM_P format, ...);
 
 };
 
