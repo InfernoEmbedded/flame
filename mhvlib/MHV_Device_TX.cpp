@@ -277,7 +277,7 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFu
 
 /**
  * Free a buffer allocated in debug
- * @param
+ * @param buf	the buffer to free
  */
 void mhv_device_tx_free(const char *buf) {
 	free((void *)buf);

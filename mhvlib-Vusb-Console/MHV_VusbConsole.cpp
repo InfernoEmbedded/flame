@@ -138,6 +138,10 @@ unsigned char usbFunctionSetup(uchar data[8]) {
  * Provide a V-USB console using V-USB
  *   Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h)
  *   Uses pins B0/B2 for ATtiny25/45/85
+ *
+ * To view the output of the console on your computer, use HID Listen, available from:
+ * http://www.pjrc.com/teensy/hid_listen.html
+ *
  * @param	txBuffer	a ringbuffer to store data in
  * @param	rtc			an RTC to schedule jobs on
  */

@@ -16,8 +16,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* Demonstrates how to use the VUSB Keyboard driver
+/* Demonstrates how to use the VUSB Console driver
  * With GCC 4.5.2, Optimisation need to be disabled for this program to work (-O0)
+ *
+ * To view the output of this program on your computer, use HID Listen, available from:
+ * http://www.pjrc.com/teensy/hid_listen.html
  *
  */
 #define MHVLIB_NEED_PURE_VIRTUAL
