@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111011</span>
+   &#160;<span id="projectnumber">20111109</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -131,14 +131,13 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#a3674578dc6dce3ca7d32d6f3df9cd49f">tx</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#a815b6e92f32457c55c2808701f315ff2">echo</a> (bool echoOn)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#a8ea82d7e9d6958604ff94a55f331e9d5">busy</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#aa6f5253788861521668da888c9844594">debug</a> (const char *file, int line, const char *function, PGM_P format,...)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#a8801ff1e85b487e233737a9591131f02">runTxBuffers</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___hardware_serial_8h_source.html#l00071">71</a> of file <a class="el" href="_m_h_v___hardware_serial_8h_source.html">MHV_HardwareSerial.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___hardware_serial_8h_source.html#l00068">68</a> of file <a class="el" href="_m_h_v___hardware_serial_8h_source.html">MHV_HardwareSerial.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ac1a95bdefa81bae650979c7053901133"></a><!-- doxytag: member="MHV_HardwareSerial::MHV_HardwareSerial" ref="ac1a95bdefa81bae650979c7053901133" args="(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer, volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud)" -->
 <div class="memitem">
@@ -448,64 +447,6 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa6f5253788861521668da888c9844594"></a><!-- doxytag: member="MHV_HardwareSerial::debug" ref="aa6f5253788861521668da888c9844594" args="(const char *file, int line, const char *function, PGM_P format,...)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MHV_HardwareSerial::debug </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>file</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>function</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">PGM_P&#160;</td>
-          <td class="paramname"><em>format</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>...</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Print a debug message </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">file</td><td>the filename </td></tr>
-    <tr><td class="paramname">line</td><td>the line number </td></tr>
-    <tr><td class="paramname">function</td><td>the function name </td></tr>
-    <tr><td class="paramname">format</td><td>a printf format </td></tr>
-    <tr><td class="paramname">...</td><td>the printf parms </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p>Definition at line <a class="el" href="_m_h_v___hardware_serial_8cpp_source.html#l00278">278</a> of file <a class="el" href="_m_h_v___hardware_serial_8cpp_source.html">MHV_HardwareSerial.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a815b6e92f32457c55c2808701f315ff2"></a><!-- doxytag: member="MHV_HardwareSerial::echo" ref="a815b6e92f32457c55c2808701f315ff2" args="(bool echoOn)" -->
 <div class="memitem">
 <div class="memproto">
@@ -660,7 +601,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Oct 11 2011 22:26:44 for MHVLib by
+    <li class="footer">Generated on Wed Nov 9 2011 21:59:00 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

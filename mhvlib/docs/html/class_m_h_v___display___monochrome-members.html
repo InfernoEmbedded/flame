@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111011</span>
+   &#160;<span id="projectnumber">20111109</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -107,6 +107,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">_txPointers</a></td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a8fe33d10a27066c0f2e3f2339230692b">canWrite</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a25b062aefde440ad5c47dbca98b5b478">clear</a>(uint8_t value)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a22f48a92047d5358ff2b48834aa8d3cf">debug</a>(const char *file, int line, const char *function, PGM_P format,...)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a988a98e01d54b12d3dcecc2d7878a985">getHeight</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a80573e21b6b455fdd79c9d7d0a981492">getPixel</a>(uint16_t row, uint16_t col)=0</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a1ef9b1ddbc9e57007903076005335211">getWidth</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
@@ -114,6 +115,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a28ba8d0420841b820935e2102f977602">MHV_Display_Monochrome</a>(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a64cba701f06476b494a97620e1a26e86">moreTX</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a42c021c405f8f4b37db1a07a6853f8e8">printf</a>(PGM_P format,...)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a7abdfbe71e00421a4275760ab6632b4a">runTxBuffers</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td><code> [protected, virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a58a17e8662802e7f5d6ccd6f0bcc51a0">setPixel</a>(uint16_t row, uint16_t col, uint8_t value)=0</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#aae1f1c81f5cb08d6a318d9b3d1122d28">txAnimation</a>(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
@@ -121,6 +123,12 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a0f909191e9d73244be62d0b162f1567a">write</a>(const char *buffer, uint16_t length)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a26a2e5e2c013300f9d870c8007980825">write</a>(const char *buffer, void(*completeFunction)(const char *))</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#ae723c03cb89924b25c150b9a48e444dc">write</a>(const char *buffer, uint16_t length, void(*completeFunction)(const char *))</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#aad81a7d143bb26bab437a74569430c14">write</a>(uint8_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a2583c486a08d51847b167fd0a06d93f8">write</a>(uint16_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a985d3f2abde51de9c3fc634647830b03">write</a>(uint32_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a820eb384364698a2e96807d61be2da21">write</a>(int8_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#ab893b0a7ca8811b05b60cf71a75c1af3">write</a>(int16_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#abb8175f1eb385c08e154668957e3faf1">write</a>(int32_t value)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#ae3385162a92a95687c2021fe222748f1">write_P</a>(PGM_P buffer)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a24a8e3b10463bc08579f8707abb25fbe">write_P</a>(PGM_P buffer, uint16_t length)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#abe4588ca31be3759738e38922fe8d3ad">writeBuffer</a>(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
@@ -148,7 +156,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
 </div>
 
 
-    <li class="footer">Generated on Tue Oct 11 2011 22:26:43 for MHVLib by
+    <li class="footer">Generated on Wed Nov 9 2011 21:58:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -36,6 +36,7 @@ var NAVTREE =
       [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
       [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
+      [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
       [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", null ],
       [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
     ] ],
@@ -45,6 +46,7 @@ var NAVTREE =
       [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
       [ "mhv_alarm", "structmhv__alarm.html", null ],
       [ "MHV_AlarmListener", "class_m_h_v___alarm_listener.html", [
+        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
         [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", [
           [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
         ] ]
@@ -68,6 +70,7 @@ var NAVTREE =
           ] ]
         ] ],
         [ "MHV_HardwareSerial", "class_m_h_v___hardware_serial.html", null ],
+        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
         [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
       ] ],
       [ "MHV_EEPROM", "class_m_h_v___e_e_p_r_o_m.html", null ],
@@ -91,6 +94,8 @@ var NAVTREE =
     ] ],
     [ "Class Members", "functions.html", null ],
     [ "File List", "files.html", [
+      [ "A:/eclipse/mhvlib-Vusb-Console/MHV_VusbConsole.cpp", "_m_h_v___vusb_console_8cpp.html", null ],
+      [ "A:/eclipse/mhvlib-Vusb-Console/MHV_VusbConsole.h", "_m_h_v___vusb_console_8h.html", null ],
       [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbKeyboard.cpp", "_m_h_v___vusb_keyboard_8cpp.html", null ],
       [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbKeyboard.h", "_m_h_v___vusb_keyboard_8h.html", null ],
       [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbTypist.cpp", "_m_h_v___vusb_typist_8cpp.html", null ],

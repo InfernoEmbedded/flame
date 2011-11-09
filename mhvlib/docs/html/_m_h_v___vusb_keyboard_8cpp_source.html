@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111011</span>
+   &#160;<span id="projectnumber">20111109</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -122,7 +122,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00024"></a>00024 <span class="preprocessor">#include &lt;avr/pgmspace.h&gt;</span>
 <a name="l00025"></a>00025 <span class="preprocessor">#include &lt;util/delay.h&gt;</span>
 <a name="l00026"></a>00026 
-<a name="l00027"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a175a5031786130e9bdc09151854dac12">00027</a> <span class="preprocessor">#define MHV_OSCCAL_EEPROM_ADDRESS       0</span>
+<a name="l00027"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a175a5031786130e9bdc09151854dac12">00027</a> <span class="preprocessor">#define MHV_OSCCAL_EEPROM_ADDRESS       1022</span>
 <a name="l00028"></a>00028 <span class="preprocessor"></span>
 <a name="l00029"></a>00029 <span class="comment">/* We use a simplifed keyboard report descriptor which does not support the</span>
 <a name="l00030"></a>00030 <span class="comment"> * boot protocol. We don&#39;t allow setting status LEDs and but we do allow</span>
@@ -132,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00034"></a>00034 <span class="comment"> * Redundant entries (such as LOGICAL_MINIMUM and USAGE_PAGE) have been omitted</span>
 <a name="l00035"></a>00035 <span class="comment"> * for the second INPUT item.</span>
 <a name="l00036"></a>00036 <span class="comment"> */</span>
-<a name="l00037"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">00037</a> <a class="code" href="_m_h_v___gamma_correct_8cpp.html#a1becc72891d2ea00eb6bff5928e283c4">PROGMEM</a> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">usbHidReportDescriptor</a>[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { <span class="comment">/* USB report descriptor */</span>
+<a name="l00037"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">00037</a> <a class="code" href="_m_h_v___gamma_correct_8cpp.html#a1becc72891d2ea00eb6bff5928e283c4">PROGMEM</a> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_console_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">usbHidReportDescriptor</a>[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { <span class="comment">/* USB report descriptor */</span>
 <a name="l00038"></a>00038   0x05, 0x01,   <span class="comment">// USAGE_PAGE (Generic Desktop)</span>
 <a name="l00039"></a>00039   0x09, 0x06,   <span class="comment">// USAGE (Keyboard)</span>
 <a name="l00040"></a>00040   0xa1, 0x01,   <span class="comment">// COLLECTION (Application)</span>
@@ -226,7 +226,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00128"></a>00128 <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    mhv_vusbReportBuffer[2];        <span class="comment">/* buffer for HID reports */</span>
 <a name="l00129"></a>00129 <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    mhv_vusbIdleRate = 1;           <span class="comment">/* in 4 ms units */</span>
 <a name="l00130"></a>00130 
-<a name="l00131"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a4e641b4800eb0c0afcad37d69e688a0e">00131</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a4e641b4800eb0c0afcad37d69e688a0e">usbFunctionSetup</a>(uchar data[8]) {
+<a name="l00131"></a><a class="code" href="_m_h_v___vusb_keyboard_8cpp.html#a4e641b4800eb0c0afcad37d69e688a0e">00131</a> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_console_8cpp.html#a4e641b4800eb0c0afcad37d69e688a0e">usbFunctionSetup</a>(uchar data[8]) {
 <a name="l00132"></a>00132         usbRequest_t *rq = (usbRequest_t *) ((<span class="keywordtype">void</span> *) data);
 <a name="l00133"></a>00133 
 <a name="l00134"></a>00134         usbMsgPtr = mhv_vusbReportBuffer;
@@ -291,28 +291,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00212"></a>00212 }
 <a name="l00213"></a>00213 
 <a name="l00219"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a879506b2ef1622e09070a9ccf11fdd10">00219</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a879506b2ef1622e09070a9ccf11fdd10">MHV_VusbKeyboard::keyDown</a>(<a class="code" href="_m_h_v___vusb_keyboard_8h.html#a03702cf5dad1661f75eda7bd2e33acb6">MHV_VUSB_KEYBOARD_KEY</a> key, uint8_t modifiers) {
-<a name="l00220"></a>00220         mhv_vusbReportBuffer[0] = modifiers;
-<a name="l00221"></a>00221         mhv_vusbReportBuffer[1] = key;
-<a name="l00222"></a>00222 
-<a name="l00223"></a>00223         <span class="keywordflow">while</span> (!usbInterruptIsReady()) {}
-<a name="l00224"></a>00224         usbSetInterrupt(mhv_vusbReportBuffer, <span class="keyword">sizeof</span>(mhv_vusbReportBuffer));
-<a name="l00225"></a>00225 }
-<a name="l00226"></a>00226 
-<a name="l00231"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a0dd607bb70fe5f5354f407e8c4f12df1">00231</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">MHV_VusbKeyboard::keysUp</a>(uint8_t modifiers) {
-<a name="l00232"></a>00232         <span class="keywordflow">while</span> (!usbInterruptIsReady()) {}
-<a name="l00233"></a>00233 
-<a name="l00234"></a>00234         mhv_vusbReportBuffer[0] = modifiers;
-<a name="l00235"></a>00235         mhv_vusbReportBuffer[1] = 0;
-<a name="l00236"></a>00236         usbSetInterrupt(mhv_vusbReportBuffer, <span class="keyword">sizeof</span>(mhv_vusbReportBuffer));
-<a name="l00237"></a>00237 }
-<a name="l00238"></a>00238 
-<a name="l00242"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">00242</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">MHV_VusbKeyboard::keysUp</a>() {
-<a name="l00243"></a>00243         <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">keysUp</a>(0);
-<a name="l00244"></a>00244 }
-<a name="l00245"></a>00245 
-<a name="l00249"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a3f320339da1b79feb100374bbf688900">00249</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a3f320339da1b79feb100374bbf688900">MHV_VusbKeyboard::alarm</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> *alarm) {
-<a name="l00250"></a>00250         usbPoll();
-<a name="l00251"></a>00251 }
+<a name="l00220"></a>00220         <span class="keywordflow">while</span> (!usbInterruptIsReady()) {}
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222         mhv_vusbReportBuffer[0] = modifiers;
+<a name="l00223"></a>00223         mhv_vusbReportBuffer[1] = key;
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225         usbSetInterrupt(mhv_vusbReportBuffer, <span class="keyword">sizeof</span>(mhv_vusbReportBuffer));
+<a name="l00226"></a>00226 }
+<a name="l00227"></a>00227 
+<a name="l00232"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a0dd607bb70fe5f5354f407e8c4f12df1">00232</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">MHV_VusbKeyboard::keysUp</a>(uint8_t modifiers) {
+<a name="l00233"></a>00233         <span class="keywordflow">while</span> (!usbInterruptIsReady()) {}
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235         mhv_vusbReportBuffer[0] = modifiers;
+<a name="l00236"></a>00236         mhv_vusbReportBuffer[1] = 0;
+<a name="l00237"></a>00237         usbSetInterrupt(mhv_vusbReportBuffer, <span class="keyword">sizeof</span>(mhv_vusbReportBuffer));
+<a name="l00238"></a>00238 }
+<a name="l00239"></a>00239 
+<a name="l00243"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">00243</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">MHV_VusbKeyboard::keysUp</a>() {
+<a name="l00244"></a>00244         <a class="code" href="class_m_h_v___vusb_keyboard.html#a02ac5757295595e455ef3103d2ccc1de">keysUp</a>(0);
+<a name="l00245"></a>00245 }
+<a name="l00246"></a>00246 
+<a name="l00250"></a><a class="code" href="class_m_h_v___vusb_keyboard.html#a3f320339da1b79feb100374bbf688900">00250</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_keyboard.html#a3f320339da1b79feb100374bbf688900">MHV_VusbKeyboard::alarm</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> *alarm) {
+<a name="l00251"></a>00251         usbPoll();
+<a name="l00252"></a>00252 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -333,7 +334,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Oct 11 2011 22:26:37 for MHVLib by
+    <li class="footer">Generated on Wed Nov 9 2011 21:58:52 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

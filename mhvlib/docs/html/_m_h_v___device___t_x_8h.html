@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111011</span>
+   &#160;<span id="projectnumber">20111109</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -117,11 +117,50 @@ Classes</h2></td></tr>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___device___t_x_8h.html#a93297871599244e349991d161d4ea34b">MHVLIB_NEED_PURE_VIRTUAL</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___device___t_x_8h.html#a34d7ebba366c003751c9b18d3964d69e">MHV_TX_BUFFER_CREATE</a>(_mhvTxName, _mhvTxElementCount)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___device___t_x_8h.html#a3417b193cfcd9086523b77849483f84b">MHV_DEBUG</a>(__dbg_tx, __dbg_format, __dbg_args...)</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmhv__tx__buffer.html">mhv_tx_buffer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___device___t_x_8h.html#a8f969362e45e1a805a4a189101bd1f97">MHV_TX_BUFFER</a></td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a3417b193cfcd9086523b77849483f84b"></a><!-- doxytag: member="MHV_Device_TX.h::MHV_DEBUG" ref="a3417b193cfcd9086523b77849483f84b" args="(__dbg_tx, __dbg_format, __dbg_args...)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dbg_tx, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dbg_format, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__dbg_args...&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> {\
+        __dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
+} <span class="keywordflow">while</span> (0)
+</pre></div>
+<p>Definition at line <a class="el" href="_m_h_v___device___t_x_8h_source.html#l00045">45</a> of file <a class="el" href="_m_h_v___device___t_x_8h_source.html">MHV_Device_TX.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a34d7ebba366c003751c9b18d3964d69e"></a><!-- doxytag: member="MHV_Device_TX.h::MHV_TX_BUFFER_CREATE" ref="a34d7ebba366c003751c9b18d3964d69e" args="(_mhvTxName, _mhvTxElementCount)" -->
 <div class="memitem">
 <div class="memproto">
@@ -180,7 +219,7 @@ Typedefs</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___device___t_x_8h_source.html#l00052">52</a> of file <a class="el" href="_m_h_v___device___t_x_8h_source.html">MHV_Device_TX.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___device___t_x_8h_source.html#l00057">57</a> of file <a class="el" href="_m_h_v___device___t_x_8h_source.html">MHV_Device_TX.h</a>.</p>
 
 </div>
 </div>
@@ -204,7 +243,7 @@ Typedefs</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Oct 11 2011 22:26:38 for MHVLib by
+    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

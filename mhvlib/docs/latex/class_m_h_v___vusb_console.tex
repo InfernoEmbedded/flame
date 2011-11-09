@@ -1,0 +1,119 @@
+\hypertarget{class_m_h_v___vusb_console}{
+\section{\-M\-H\-V\-\_\-\-Vusb\-Console \-Class \-Reference}
+\label{class_m_h_v___vusb_console}\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Vusb\-Console.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Vusb\-Console\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m_h_v___vusb_console}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___vusb_console_a2ad2bc9f11e009fd7f653b998e732524}{\-M\-H\-V\-\_\-\-Vusb\-Console} (\hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffer, \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} $\ast$rtc)
+\item 
+void \hyperlink{class_m_h_v___vusb_console_a686f9fdcdf6884351996e9adc1fa6114}{alarm} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$alarm)
+\item 
+void \hyperlink{class_m_h_v___vusb_console_a00956c69813f5a0cbdf0a5cb0555bbbf}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} $\ast$ \hyperlink{class_m_h_v___vusb_console_a185c110b91f513e6588534b0e8a0a221}{\-\_\-rtc}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 25 of file \-M\-H\-V\-\_\-\-Vusb\-Console.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___vusb_console_a2ad2bc9f11e009fd7f653b998e732524}{
+\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}!\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}!MHV_VusbConsole@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Vusb\-Console}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Vusb\-Console\-::\-M\-H\-V\-\_\-\-Vusb\-Console (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-T\-C} $\ast$}]{rtc}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___vusb_console_a2ad2bc9f11e009fd7f653b998e732524}
+\-Provide a \-V-\/\-U\-S\-B console using \-V-\/\-U\-S\-B \-Uses pins \-D4/\-D2 for \-A\-Tmega (can be changed in \-V\-U\-S\-B\-Keyboard/usbconfig.\-h) \-Uses pins \-B0/\-B2 for \-A\-Ttiny25/45/85 
+\begin{DoxyParams}{\-Parameters}
+{\em tx\-Buffer} & a ringbuffer to store data in \\
+\hline
+{\em rtc} & an \-R\-T\-C to schedule jobs on \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 144 of file \-M\-H\-V\-\_\-\-Vusb\-Console.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___vusb_console_a686f9fdcdf6884351996e9adc1fa6114}{
+\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}!alarm@{alarm}}
+\index{alarm@{alarm}!MHV_VusbConsole@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Vusb\-Console\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___vusb_console_a686f9fdcdf6884351996e9adc1fa6114}
+\-Periodically called to maintain \-U\-S\-B comms 
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm that triggered the call \\
+\hline
+\end{DoxyParams}
+
+
+\-Implements \hyperlink{class_m_h_v___alarm_listener_ae2b93b59b59e39ba0f80d4e8690cfaea}{\-M\-H\-V\-\_\-\-Alarm\-Listener}.
+
+
+
+\-Definition at line 183 of file \-M\-H\-V\-\_\-\-Vusb\-Console.\-cpp.
+
+\hypertarget{class_m_h_v___vusb_console_a00956c69813f5a0cbdf0a5cb0555bbbf}{
+\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!MHV_VusbConsole@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Vusb\-Console\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___vusb_console_a00956c69813f5a0cbdf0a5cb0555bbbf}
+\-Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
+
+\-Implements \hyperlink{class_m_h_v___device___t_x_a3a86067d417c3d5a1f64042ecfcefff7}{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}.
+
+
+
+\-Definition at line 212 of file \-M\-H\-V\-\_\-\-Vusb\-Console.\-cpp.
+
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{class_m_h_v___vusb_console_a185c110b91f513e6588534b0e8a0a221}{
+\index{\-M\-H\-V\-\_\-\-Vusb\-Console@{\-M\-H\-V\-\_\-\-Vusb\-Console}!\-\_\-rtc@{\-\_\-rtc}}
+\index{\-\_\-rtc@{\-\_\-rtc}!MHV_VusbConsole@{\-M\-H\-V\-\_\-\-Vusb\-Console}}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-R\-T\-C}$\ast$ {\bf \-M\-H\-V\-\_\-\-Vusb\-Console\-::\-\_\-rtc}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___vusb_console_a185c110b91f513e6588534b0e8a0a221}
+
+
+\-Definition at line 27 of file \-M\-H\-V\-\_\-\-Vusb\-Console.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib-\/\-Vusb-\/\-Console/\hyperlink{_m_h_v___vusb_console_8h}{\-M\-H\-V\-\_\-\-Vusb\-Console.\-h}\item 
+\-A\-:/eclipse/mhvlib-\/\-Vusb-\/\-Console/\hyperlink{_m_h_v___vusb_console_8cpp}{\-M\-H\-V\-\_\-\-Vusb\-Console.\-cpp}\end{DoxyCompactItemize}

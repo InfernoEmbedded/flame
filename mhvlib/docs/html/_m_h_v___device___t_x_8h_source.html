@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111011</span>
+   &#160;<span id="projectnumber">20111109</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -140,37 +140,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00042"></a>00042 <span class="preprocessor">        char _mhvTxName ## Buf[_mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1]; \</span>
 <a name="l00043"></a>00043 <span class="preprocessor">        MHV_RingBuffer _mhvTxName(_mhvTxName ## Buf, _mhvTxElementCount * sizeof(MHV_TX_BUFFER) + 1);</span>
 <a name="l00044"></a>00044 <span class="preprocessor"></span>
-<a name="l00045"></a><a class="code" href="structmhv__tx__buffer.html">00045</a> <span class="keyword">struct </span><a class="code" href="structmhv__tx__buffer.html">mhv_tx_buffer</a> {
-<a name="l00046"></a><a class="code" href="structmhv__tx__buffer.html#a7523481b7a0b1d4972a79a4de6e528af">00046</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>      *<a class="code" href="structmhv__tx__buffer.html#a7523481b7a0b1d4972a79a4de6e528af">data</a>;
-<a name="l00047"></a><a class="code" href="structmhv__tx__buffer.html#ac05ef0da2f6fce474bec691e8e1fb4e2">00047</a>         uint16_t        <a class="code" href="structmhv__tx__buffer.html#ac05ef0da2f6fce474bec691e8e1fb4e2">length</a>;
-<a name="l00048"></a><a class="code" href="structmhv__tx__buffer.html#a1a50cf4d4aba22fe7d519832fa1d61ff">00048</a>         void            (*<a class="code" href="structmhv__tx__buffer.html#a1a50cf4d4aba22fe7d519832fa1d61ff">completeFunction</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span> *);
-<a name="l00049"></a><a class="code" href="structmhv__tx__buffer.html#a0b9b692bdd3d83c9a53e19a5c951fb74">00049</a>         <span class="keywordtype">bool</span>            <a class="code" href="structmhv__tx__buffer.html#a0b9b692bdd3d83c9a53e19a5c951fb74">progmem</a>;
-<a name="l00050"></a><a class="code" href="structmhv__tx__buffer.html#a945fe73e41c397f3c4f7765c97469a35">00050</a>         <span class="keywordtype">bool</span>            <a class="code" href="structmhv__tx__buffer.html#a945fe73e41c397f3c4f7765c97469a35">isString</a>;
-<a name="l00051"></a>00051 };
-<a name="l00052"></a><a class="code" href="_m_h_v___device___t_x_8h.html#a8f969362e45e1a805a4a189101bd1f97">00052</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmhv__tx__buffer.html">mhv_tx_buffer</a> <a class="code" href="structmhv__tx__buffer.html">MHV_TX_BUFFER</a>;
-<a name="l00053"></a>00053 
-<a name="l00054"></a><a class="code" href="class_m_h_v___device___t_x.html">00054</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a> {
-<a name="l00055"></a>00055 <span class="keyword">protected</span>:
-<a name="l00056"></a><a class="code" href="class_m_h_v___device___t_x.html#af2764653ba9f0b2a59bbca39f3987a74">00056</a>         <a class="code" href="structmhv__tx__buffer.html">MHV_TX_BUFFER</a>   <a class="code" href="class_m_h_v___device___t_x.html#af2764653ba9f0b2a59bbca39f3987a74">_currentTx</a>;
-<a name="l00057"></a><a class="code" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">00057</a>         <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a>  *<a class="code" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">_txPointers</a>;
-<a name="l00058"></a><a class="code" href="class_m_h_v___device___t_x.html#ace8827a700dcc1a6a54e0bf80906085c">00058</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>              *<a class="code" href="class_m_h_v___device___t_x.html#ace8827a700dcc1a6a54e0bf80906085c">_tx</a>;
-<a name="l00059"></a>00059 
-<a name="l00060"></a>00060         <a class="code" href="class_m_h_v___device___t_x.html#a5d0f9d3e6d14e5d3edb48fdc0f668c95">MHV_Device_TX</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txPointers);
-<a name="l00061"></a>00061         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">runTxBuffers</a>()=0;
-<a name="l00062"></a>00062         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#a64cba701f06476b494a97620e1a26e86">moreTX</a>();
-<a name="l00063"></a>00063         <span class="keywordtype">int</span> <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
+<a name="l00045"></a><a class="code" href="_m_h_v___device___t_x_8h.html#a3417b193cfcd9086523b77849483f84b">00045</a> <span class="preprocessor">#define MHV_DEBUG(__dbg_tx, __dbg_format, __dbg_args...) \</span>
+<a name="l00046"></a>00046 <span class="preprocessor">do {\</span>
+<a name="l00047"></a>00047 <span class="preprocessor">        __dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \</span>
+<a name="l00048"></a>00048 <span class="preprocessor">} while (0)</span>
+<a name="l00049"></a>00049 <span class="preprocessor"></span>
+<a name="l00050"></a><a class="code" href="structmhv__tx__buffer.html">00050</a> <span class="keyword">struct </span><a class="code" href="structmhv__tx__buffer.html">mhv_tx_buffer</a> {
+<a name="l00051"></a><a class="code" href="structmhv__tx__buffer.html#a7523481b7a0b1d4972a79a4de6e528af">00051</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>      *<a class="code" href="structmhv__tx__buffer.html#a7523481b7a0b1d4972a79a4de6e528af">data</a>;
+<a name="l00052"></a><a class="code" href="structmhv__tx__buffer.html#ac05ef0da2f6fce474bec691e8e1fb4e2">00052</a>         uint16_t        <a class="code" href="structmhv__tx__buffer.html#ac05ef0da2f6fce474bec691e8e1fb4e2">length</a>;
+<a name="l00053"></a><a class="code" href="structmhv__tx__buffer.html#a1a50cf4d4aba22fe7d519832fa1d61ff">00053</a>         void            (*<a class="code" href="structmhv__tx__buffer.html#a1a50cf4d4aba22fe7d519832fa1d61ff">completeFunction</a>)(<span class="keyword">const</span> <span class="keywordtype">char</span> *);
+<a name="l00054"></a><a class="code" href="structmhv__tx__buffer.html#a0b9b692bdd3d83c9a53e19a5c951fb74">00054</a>         <span class="keywordtype">bool</span>            <a class="code" href="structmhv__tx__buffer.html#a0b9b692bdd3d83c9a53e19a5c951fb74">progmem</a>;
+<a name="l00055"></a><a class="code" href="structmhv__tx__buffer.html#a945fe73e41c397f3c4f7765c97469a35">00055</a>         <span class="keywordtype">bool</span>            <a class="code" href="structmhv__tx__buffer.html#a945fe73e41c397f3c4f7765c97469a35">isString</a>;
+<a name="l00056"></a>00056 };
+<a name="l00057"></a><a class="code" href="_m_h_v___device___t_x_8h.html#a8f969362e45e1a805a4a189101bd1f97">00057</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmhv__tx__buffer.html">mhv_tx_buffer</a> <a class="code" href="structmhv__tx__buffer.html">MHV_TX_BUFFER</a>;
+<a name="l00058"></a>00058 
+<a name="l00059"></a><a class="code" href="class_m_h_v___device___t_x.html">00059</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a> {
+<a name="l00060"></a>00060 <span class="keyword">protected</span>:
+<a name="l00061"></a><a class="code" href="class_m_h_v___device___t_x.html#af2764653ba9f0b2a59bbca39f3987a74">00061</a>         <a class="code" href="structmhv__tx__buffer.html">MHV_TX_BUFFER</a>   <a class="code" href="class_m_h_v___device___t_x.html#af2764653ba9f0b2a59bbca39f3987a74">_currentTx</a>;
+<a name="l00062"></a><a class="code" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">00062</a>         <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a>  *<a class="code" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">_txPointers</a>;
+<a name="l00063"></a><a class="code" href="class_m_h_v___device___t_x.html#ace8827a700dcc1a6a54e0bf80906085c">00063</a>         <span class="keyword">const</span> <span class="keywordtype">char</span>              *<a class="code" href="class_m_h_v___device___t_x.html#ace8827a700dcc1a6a54e0bf80906085c">_tx</a>;
 <a name="l00064"></a>00064 
-<a name="l00065"></a>00065 <span class="keyword">public</span>:
-<a name="l00066"></a>00066         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#a8fe33d10a27066c0f2e3f2339230692b">canWrite</a>();
-<a name="l00067"></a>00067         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer);
-<a name="l00068"></a>00068         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, uint16_t length);
-<a name="l00069"></a>00069         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, <span class="keywordtype">void</span> (*completeFunction)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
-<a name="l00070"></a>00070         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, uint16_t length, <span class="keywordtype">void</span> (*completeFunction)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
-<a name="l00071"></a>00071         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ae3385162a92a95687c2021fe222748f1">write_P</a>(PGM_P buffer);
-<a name="l00072"></a>00072         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ae3385162a92a95687c2021fe222748f1">write_P</a>(PGM_P buffer, uint16_t length);
-<a name="l00073"></a>00073 };
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="preprocessor">#endif</span>
+<a name="l00065"></a>00065         <a class="code" href="class_m_h_v___device___t_x.html#a5d0f9d3e6d14e5d3edb48fdc0f668c95">MHV_Device_TX</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txPointers);
+<a name="l00066"></a>00066         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">runTxBuffers</a>()=0;
+<a name="l00067"></a>00067         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#a64cba701f06476b494a97620e1a26e86">moreTX</a>();
+<a name="l00068"></a>00068         <span class="keywordtype">int</span> <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="keyword">public</span>:
+<a name="l00071"></a>00071         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#a8fe33d10a27066c0f2e3f2339230692b">canWrite</a>();
+<a name="l00072"></a>00072         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer);
+<a name="l00073"></a>00073         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, uint16_t length);
+<a name="l00074"></a>00074         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, <span class="keywordtype">void</span> (*completeFunction)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
+<a name="l00075"></a>00075         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, uint16_t length, <span class="keywordtype">void</span> (*completeFunction)(<span class="keyword">const</span> <span class="keywordtype">char</span> *));
+<a name="l00076"></a>00076         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ae3385162a92a95687c2021fe222748f1">write_P</a>(PGM_P buffer);
+<a name="l00077"></a>00077         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ae3385162a92a95687c2021fe222748f1">write_P</a>(PGM_P buffer, uint16_t length);
+<a name="l00078"></a>00078         <span class="keywordtype">bool</span>  <a class="code" href="class_m_h_v___device___t_x.html#a22f48a92047d5358ff2b48834aa8d3cf">debug</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *file, <span class="keywordtype">int</span> line, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">function</span>,
+<a name="l00079"></a>00079                         PGM_P format, ...);
+<a name="l00080"></a>00080         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#a42c021c405f8f4b37db1a07a6853f8e8">printf</a>(PGM_P format, ...);
+<a name="l00081"></a>00081         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(uint8_t value);
+<a name="l00082"></a>00082         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(uint16_t value);
+<a name="l00083"></a>00083         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(uint32_t value);
+<a name="l00084"></a>00084         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(int8_t value);
+<a name="l00085"></a>00085         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(int16_t value);
+<a name="l00086"></a>00086         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___device___t_x.html#ab24711b24c91592e0b86760820fd0d64">write</a>(int32_t value);
+<a name="l00087"></a>00087 };
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -191,7 +207,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Oct 11 2011 22:26:37 for MHVLib by
+    <li class="footer">Generated on Wed Nov 9 2011 21:58:52 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
