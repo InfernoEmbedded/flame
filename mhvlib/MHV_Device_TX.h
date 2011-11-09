@@ -75,8 +75,15 @@ public:
 	bool write(const char *buffer, uint16_t length, void (*completeFunction)(const char *));
 	bool write_P(PGM_P buffer);
 	bool write_P(PGM_P buffer, uint16_t length);
-	void debug(const char *file, int line, const char *function,
+	bool  debug(const char *file, int line, const char *function,
 			PGM_P format, ...);
+	bool printf(PGM_P format, ...);
+	bool write(uint8_t value);
+	bool write(uint16_t value);
+	bool write(uint32_t value);
+	bool write(int8_t value);
+	bool write(int16_t value);
+	bool write(int32_t value);
 };
 
 

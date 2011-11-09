@@ -1,0 +1,1064 @@
+Archive member included because of file (symbol)
+
+A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                              ./VusbKeyboard.o (MHV_Device_TX::write_P(char const*))
+A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                              ./VusbKeyboard.o (mhv_timestampIncrement(mhv_timestamp*, unsigned long, unsigned int))
+A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o) (MHV_RingBuffer::consume(void*, unsigned char))
+A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (MHV_Timer8::getPrescalerMultiplier())
+A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                              ./VusbKeyboard.o (MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer*, MHV_RTC*))
+A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o) (usbTxStatus1)
+A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o) (usbCrc16Append)
+A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o) (MHV_VusbKeyboard::alarm(mhv_alarm*))
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (__mulhi3)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (__mulsi3)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (__udivmodhi4)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (__udivmodsi4)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+                              c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o (exit)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+                              ./VusbKeyboard.o (__do_copy_data)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+                              ./VusbKeyboard.o (__do_clear_bss)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+                              ./VusbKeyboard.o (__do_global_ctors)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+                              c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o) (__tablejump__)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o) (memmove)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o) (__eerd_byte_tn85)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o) (__eewr_byte_tn85)
+c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+                              c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o) (memcpy)
+
+Allocating common symbols
+Common symbol       size              file
+
+usbTxBuf            0xb               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbTxStatus1        0xc               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDeviceAddr       0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbRxToken          0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbInputBufOffset   0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbMsgPtr           0x2               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbRxLen            0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbNewDeviceAddr    0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbCurrentTok       0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbConfiguration    0x1               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbRxBuf            0x16              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+
+Discarded input sections
+
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+ .text          0x00000000        0x0 ./VusbKeyboard.o
+ .data          0x00000000        0x0 ./VusbKeyboard.o
+ .bss           0x00000000        0x0 ./VusbKeyboard.o
+ .text          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX8canWriteEv
+                0x00000000       0x10 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX5writeEPKc
+                0x00000000       0x92 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX5writeEPKcPFvS1_E
+                0x00000000       0x9c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX7write_PEPKcj
+                0x00000000       0x9c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX5writeEPKcj
+                0x00000000       0x9a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text._ZN13MHV_Device_TX5writeEPKcjPFvS1_E
+                0x00000000       0xa4 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._Z14mhv_isLeapYearj
+                0x00000000       0x30 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._Z15mhv_daysInMonth9mhv_monthj
+                0x00000000       0x22 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC11synchroniseEv
+                0x00000000       0x62 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC7setTimeEmj
+                0x00000000       0x10 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC7setTimeEP13mhv_timestamp
+                0x00000000       0x24 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC4tickEv
+                0x00000000       0x40 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC19tick1msAndRunEventsEv
+                0x00000000       0x32 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC7elapsedEP13mhv_timestampS1_
+                0x00000000       0xa4 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC6toTimeEP8mhv_timeP13mhv_timestamp
+                0x00000000      0x206 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC11toTimestampEP13mhv_timestampP8mhv_time
+                0x00000000      0x182 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC16tickAndRunEventsEv
+                0x00000000       0x44 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC13alarmsPendingEv
+                0x00000000        0x6 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text._ZN7MHV_RTC11removeAlarmEP17MHV_AlarmListener
+                0x00000000       0x7a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .progmem.data  0x00000000       0x3c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .text._ZN14MHV_RingBuffer5flushEv
+                0x00000000        0x8 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .text._ZN14MHV_RingBuffer4sizeEv
+                0x00000000        0x6 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .text._ZN14MHV_RingBuffer4fullEv
+                0x00000000       0x24 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .text._ZN14MHV_RingBuffer8peekHeadEv
+                0x00000000       0x2c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer8C2Ev
+                0x00000000        0x2 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer87currentEv
+                0x00000000       0x14 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer818calculatePrescalerEmP19mhv_timer_prescalerPj
+                0x00000000      0x208 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer812calculateTopEPmj
+                0x00000000       0x38 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer812getPrescalerEv
+                0x00000000       0x10 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer822getPrescalerMultiplierEv
+                0x00000000       0x98 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer812setPrescalerE19mhv_timer_prescaler
+                0x00000000        0x6 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer810setPeriodsEmm
+                0x00000000       0xec A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer86getTopEv
+                0x00000000       0x26 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer86setTopEh
+                0x00000000       0x16 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer89setOutputEhh
+                0x00000000       0x20 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer810setOutput1Eh
+                0x00000000        0xe A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer810setOutput2Eh
+                0x00000000        0xe A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer89getOutputEh
+                0x00000000       0x22 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer810getOutput1Ev
+                0x00000000        0xe A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer810getOutput2Ev
+                0x00000000        0xe A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer814connectOutput1E22mhv_timer_connect_type
+                0x00000000       0x1a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer814connectOutput2E22mhv_timer_connect_type
+                0x00000000       0x16 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer87enabledEv
+                0x00000000       0x16 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer88trigger2Ev
+                0x00000000       0x1a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text._ZN10MHV_Timer87setModeE14mhv_timer_mode
+                0x00000000        0x6 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+ .text          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .data          0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .bss           0x00000000        0x0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .text._ZN16MHV_VusbKeyboard9keyStrokeE21mhv_vusb_keyboard_keyh
+                0x00000000       0x14 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .text._ZN16MHV_VusbKeyboard9keyStrokeE21mhv_vusb_keyboard_key
+                0x00000000        0x6 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .rodata._ZTV17MHV_AlarmListener
+                0x00000000        0x6 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+ .text.libgcc   0x00000000       0x32 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x00000000       0x28 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000       0x44 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+ .text.libgcc   0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+ .text          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+ .data          0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+ .bss           0x00000000        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+LOAD ./VusbKeyboard.o
+LOAD A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a
+LOAD A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libm.a
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a
+LOAD c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x16d4
+ *(.vectors)
+ .vectors       0x00000000       0x1e c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+                0x00000000                __vector_default
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x0000001e       0x14 ./VusbKeyboard.o
+ .progmem.data  0x00000032       0xb0 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x00000032                usbDescriptorConfiguration
+                0x00000054                usbDescriptorDevice
+                0x00000066                usbDescriptorStringSerialNumber
+                0x0000009c                usbDescriptorStringDevice
+                0x000000bc                usbDescriptorStringVendor
+                0x000000de                usbDescriptorString0
+ .progmem.data  0x000000e2       0x23 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x000000e2                usbDescriptorHidReport
+                0x00000106                . = ALIGN (0x2)
+ *fill*         0x00000105        0x1 00
+                0x00000106                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000106        0x0 linker stubs
+ *(.trampolines*)
+                0x00000106                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000106                __ctors_start = .
+ *(.ctors)
+ .ctors         0x00000106        0x2 ./VusbKeyboard.o
+                0x00000108                __ctors_end = .
+                0x00000108                __dtors_start = .
+ *(.dtors)
+                0x00000108                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000108        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+                0x00000108                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000108        0xc c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000114       0x16 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+                0x00000114                __do_copy_data
+ .init4         0x0000012a       0x10 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+                0x0000012a                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ .init6         0x0000013a       0x14 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+                0x0000013a                __do_global_ctors
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x0000014e        0x4 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+ *(.init9)
+ *(.text)
+ .text          0x00000152        0x2 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+                0x00000152                __vector_12
+                0x00000152                __bad_interrupt
+                0x00000152                __vector_6
+                0x00000152                __vector_3
+                0x00000152                __vector_11
+                0x00000152                __vector_13
+                0x00000152                __vector_7
+                0x00000152                __vector_5
+                0x00000152                __vector_4
+                0x00000152                __vector_9
+                0x00000152                __vector_2
+                0x00000152                __vector_8
+                0x00000152                __vector_14
+ .text          0x00000154      0x314 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                0x00000154                usbCrc16
+                0x0000017e                usbCrc16Append
+                0x00000186                usbMeasureFrameLength
+                0x000001ac                __vector_1
+                0x00000468                . = ALIGN (0x2)
+ *(.text.*)
+ .text.__cxa_pure_virtual
+                0x00000468        0xc ./VusbKeyboard.o
+                0x00000468                __cxa_pure_virtual
+ .text.__vector_10
+                0x00000474       0x56 ./VusbKeyboard.o
+                0x00000474                __vector_10
+ .text._Z10rtcTriggerPv
+                0x000004ca       0x1e ./VusbKeyboard.o
+                0x000004ca                rtcTrigger(void*)
+ .text._ZN10TypeString5alarmEP9mhv_alarm
+                0x000004e8       0x2e ./VusbKeyboard.o
+                0x000004e8                TypeString::alarm(mhv_alarm*)
+ .text._ZN17MHV_AlarmListenerC2Ev
+                0x00000516       0x26 ./VusbKeyboard.o
+                0x00000516                MHV_AlarmListener::MHV_AlarmListener()
+ .text._ZN10TypeStringC1Ev
+                0x0000053c       0x2c ./VusbKeyboard.o
+                0x0000053c                TypeString::TypeString()
+ .text.main     0x00000568       0xec ./VusbKeyboard.o
+                0x00000568                main
+ .text._Z41__static_initialization_and_destruction_0ii
+                0x00000654       0xce ./VusbKeyboard.o
+ .text._GLOBAL__sub_I___cxa_pure_virtual
+                0x00000722       0x18 ./VusbKeyboard.o
+ .text._ZN13MHV_Device_TXC2EP14MHV_RingBuffer
+                0x0000073a       0x20 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                0x0000073a                MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer*)
+                0x0000073a                MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer*)
+ .text._ZN13MHV_Device_TX6moreTXEv
+                0x0000075a       0x3e A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                0x0000075a                MHV_Device_TX::moreTX()
+ .text._ZN13MHV_Device_TX13nextCharacterEv
+                0x00000798       0x6c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                0x00000798                MHV_Device_TX::nextCharacter()
+ .text._ZN13MHV_Device_TX7write_PEPKc
+                0x00000804       0x92 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                0x00000804                MHV_Device_TX::write_P(char const*)
+ .text._Z21mhv_timestampLessThanP13mhv_timestampS0_
+                0x00000896       0x4a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000896                mhv_timestampLessThan(mhv_timestamp*, mhv_timestamp*)
+ .text._Z31mhv_timestampGreaterThanOrEqualP13mhv_timestampS0_
+                0x000008e0       0x4a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x000008e0                mhv_timestampGreaterThanOrEqual(mhv_timestamp*, mhv_timestamp*)
+ .text._Z22mhv_timestampIncrementP13mhv_timestampmj
+                0x0000092a       0x5e A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x0000092a                mhv_timestampIncrement(mhv_timestamp*, unsigned long, unsigned int)
+ .text._Z22mhv_timestampIncrementP13mhv_timestampS0_
+                0x00000988       0x62 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000988                mhv_timestampIncrement(mhv_timestamp*, mhv_timestamp*)
+ .text._ZN7MHV_RTCC2EP10MHV_Timer8P9mhv_alarmhi
+                0x000009ea       0x3a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x000009ea                MHV_RTC::MHV_RTC(MHV_Timer8*, mhv_alarm*, unsigned char, int)
+                0x000009ea                MHV_RTC::MHV_RTC(MHV_Timer8*, mhv_alarm*, unsigned char, int)
+ .text._ZN7MHV_RTC7tick1msEv
+                0x00000a24       0x32 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000a24                MHV_RTC::tick1ms()
+ .text._ZN7MHV_RTC7currentEP13mhv_timestamp
+                0x00000a56       0x26 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000a56                MHV_RTC::current(mhv_timestamp*)
+ .text._ZN7MHV_RTC8addAlarmEP9mhv_alarm
+                0x00000a7c       0xd8 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000a7c                MHV_RTC::addAlarm(mhv_alarm*)
+ .text._ZN7MHV_RTC12handleEventsEv
+                0x00000b54      0x146 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                0x00000b54                MHV_RTC::handleEvents()
+ .text._ZN14MHV_RingBufferC2EPch
+                0x00000c9a        0xe A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000c9a                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+                0x00000c9a                MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char)
+ .text._ZN14MHV_RingBuffer6appendEc
+                0x00000ca8       0x2a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000ca8                MHV_RingBuffer::append(char)
+ .text._ZN14MHV_RingBuffer7consumeEv
+                0x00000cd2       0x2a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000cd2                MHV_RingBuffer::consume()
+ .text._ZN14MHV_RingBuffer6lengthEv
+                0x00000cfc       0x28 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000cfc                MHV_RingBuffer::length()
+ .text._ZN14MHV_RingBuffer7consumeEPvh
+                0x00000d24       0x58 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000d24                MHV_RingBuffer::consume(void*, unsigned char)
+ .text._ZN14MHV_RingBuffer4fullEh
+                0x00000d7c       0x3e A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000d7c                MHV_RingBuffer::full(unsigned char)
+ .text._ZN14MHV_RingBuffer6appendEPKvh
+                0x00000dba       0x5a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                0x00000dba                MHV_RingBuffer::append(void const*, unsigned char)
+ .text._ZN10MHV_Timer8C2E14mhv_timer_typePVhS2_S2_S2_S2_S2_h
+                0x00000e14       0x6c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000e14                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
+                0x00000e14                MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char)
+ .text._ZN10MHV_Timer813_setPrescalerE19mhv_timer_prescaler
+                0x00000e80       0x14 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000e80                MHV_Timer8::_setPrescaler(mhv_timer_prescaler)
+ .text._ZN10MHV_Timer817setGenerationModeEv
+                0x00000e94       0x78 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000e94                MHV_Timer8::setGenerationMode()
+ .text._ZN10MHV_Timer810setPeriodsE19mhv_timer_prescalerhh
+                0x00000f0c       0x58 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000f0c                MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char)
+ .text._ZN10MHV_Timer86enableEv
+                0x00000f64       0x80 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000f64                MHV_Timer8::enable()
+ .text._ZN10MHV_Timer87disableEv
+                0x00000fe4       0x5a A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x00000fe4                MHV_Timer8::disable()
+ .text._ZN10MHV_Timer88trigger1Ev
+                0x0000103e       0x20 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x0000103e                MHV_Timer8::trigger1()
+ .text._ZN10MHV_Timer811setTriggersEPFvPvES0_S2_S0_
+                0x0000105e       0x1c A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                0x0000105e                MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*)
+ .text._ZThn4_N14MHV_VusbTypist12runTxBuffersEv
+                0x0000107a        0x2 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x0000107a                non-virtual thunk to MHV_VusbTypist::runTxBuffers()
+ .text._ZN14MHV_VusbTypist12runTxBuffersEv
+                0x0000107c        0x2 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x0000107c                MHV_VusbTypist::runTxBuffers()
+ .text._ZN14MHV_VusbTypistC2EP14MHV_RingBufferP7MHV_RTC
+                0x0000107e       0x32 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x0000107e                MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer*, MHV_RTC*)
+                0x0000107e                MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer*, MHV_RTC*)
+ .text._ZN14MHV_VusbTypist8typeCharEc
+                0x000010b0       0xfc A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x000010b0                MHV_VusbTypist::typeChar(char)
+ .text._ZN14MHV_VusbTypist5alarmEP9mhv_alarm
+                0x000011ac       0x3c A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x000011ac                MHV_VusbTypist::alarm(mhv_alarm*)
+ .text.usbSetInterrupt
+                0x000011e8       0x42 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x000011e8                usbSetInterrupt
+ .text.usbPoll  0x0000122a      0x23c A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x0000122a                usbPoll
+ .text.usbInit  0x00001466       0x1a A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x00001466                usbInit
+ .text._ZN16MHV_VusbKeyboard5alarmEP9mhv_alarm
+                0x00001480        0x4 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x00001480                MHV_VusbKeyboard::alarm(mhv_alarm*)
+ .text.usbEventResetReady
+                0x00001484       0x90 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x00001484                usbEventResetReady
+ .text.usbFunctionSetup
+                0x00001514       0x46 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x00001514                usbFunctionSetup
+ .text._ZN16MHV_VusbKeyboardC2EP7MHV_RTC
+                0x0000155a       0xac A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x0000155a                MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC*)
+                0x0000155a                MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC*)
+ .text._ZN16MHV_VusbKeyboard7keyDownE21mhv_vusb_keyboard_keyh
+                0x00001606       0x1a A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x00001606                MHV_VusbKeyboard::keyDown(mhv_vusb_keyboard_key, unsigned char)
+ .text._ZN16MHV_VusbKeyboard6keysUpEh
+                0x00001620       0x1a A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x00001620                MHV_VusbKeyboard::keysUp(unsigned char)
+ .text._ZN16MHV_VusbKeyboard6keysUpEv
+                0x0000163a        0x6 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x0000163a                MHV_VusbKeyboard::keysUp()
+ .text.libgcc   0x00001640       0x24 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+                0x00001640                __mulhi3
+ .text.libgcc   0x00001664        0xc c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+                0x00001664                __tablejump2__
+                0x00001668                __tablejump__
+ .text.avr-libc
+                0x00001670       0x22 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+                0x00001670                memmove
+ .text.avr-libc
+                0x00001692       0x10 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+                0x00001692                __eerd_byte_tn85
+ .text.avr-libc
+                0x000016a2       0x1c c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+                0x000016a2                __eewr_byte_tn85
+                0x000016a4                __eewr_r18_tn85
+ .text.avr-libc
+                0x000016be       0x12 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+                0x000016be                memcpy
+                0x000016d0                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000016d0        0x0 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+                0x000016d0                _exit
+                0x000016d0                exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000016d0        0x4 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+ *(.fini0)
+                0x000016d4                _etext = .
+
+.data           0x00800060       0x88 load address 0x000016d4
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ *(.data*)
+ .data.usbTxLen
+                0x00800060        0x1 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x00800060                usbTxLen
+ .data.usbMsgLen
+                0x00800061        0x1 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .data._ZL16mhv_vusbIdleRate
+                0x00800062        0x1 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ *(.rodata)
+ *(.rodata*)
+ .rodata._ZTV10TypeString
+                0x00800063        0x6 ./VusbKeyboard.o
+                0x00800063                vtable for TypeString
+ .rodata._ZTV17MHV_AlarmListener
+                0x00800069        0x6 ./VusbKeyboard.o
+                0x00800069                vtable for MHV_AlarmListener
+ .rodata._ZTV13MHV_Device_TX
+                0x0080006f        0x6 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                0x0080006f                vtable for MHV_Device_TX
+ .rodata._ZTV14MHV_VusbTypist
+                0x00800075        0xe A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                0x00800075                vtable for MHV_VusbTypist
+ .rodata.CSWTCH.2
+                0x00800083       0x5e A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+ .rodata._ZTV16MHV_VusbKeyboard
+                0x008000e1        0x6 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                0x008000e1                vtable for MHV_VusbKeyboard
+ *(.gnu.linkonce.d*)
+                0x008000e8                . = ALIGN (0x2)
+ *fill*         0x008000e7        0x1 00
+                0x008000e8                _edata = .
+                0x008000e8                PROVIDE (__data_end, .)
+
+.bss            0x008000e8       0xc5
+                0x008000e8                PROVIDE (__bss_start, .)
+ *(.bss)
+ *(.bss*)
+ .bss.tickTimer
+                0x008000e8       0x1a ./VusbKeyboard.o
+                0x008000e8                tickTimer
+ .bss.alarms    0x00800102       0x38 ./VusbKeyboard.o
+                0x00800102                alarms
+ .bss.rtc       0x0080013a       0x10 ./VusbKeyboard.o
+                0x0080013a                rtc
+ .bss.typistBufferBuf
+                0x0080014a       0x11 ./VusbKeyboard.o
+                0x0080014a                typistBufferBuf
+ .bss.typistBuffer
+                0x0080015b        0x5 ./VusbKeyboard.o
+                0x0080015b                typistBuffer
+ .bss.typist    0x00800160       0x13 ./VusbKeyboard.o
+                0x00800160                typist
+ .bss.usbMsgFlags
+                0x00800173        0x1 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .bss.wasReset.1535
+                0x00800174        0x1 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+ .bss._ZL20mhv_vusbReportBuffer
+                0x00800175        0x2 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+ *(COMMON)
+ COMMON         0x00800177       0x36 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                0x00800177                usbTxBuf
+                0x00800182                usbTxStatus1
+                0x0080018e                usbDeviceAddr
+                0x0080018f                usbRxToken
+                0x00800190                usbInputBufOffset
+                0x00800191                usbMsgPtr
+                0x00800193                usbRxLen
+                0x00800194                usbNewDeviceAddr
+                0x00800195                usbCurrentTok
+                0x00800196                usbConfiguration
+                0x00800197                usbRxBuf
+                0x008001ad                PROVIDE (__bss_end, .)
+                0x000016d4                __data_load_start = LOADADDR (.data)
+                0x0000175c                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008001ad        0x0
+                0x008001ad                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008001ad                PROVIDE (__noinit_end, .)
+                0x008001ad                _end = .
+                0x008001ad                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges
+ *(.debug_aranges)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info
+ *(.debug_info)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev
+ *(.debug_abbrev)
+
+.debug_line
+ *(.debug_line)
+
+.debug_frame
+ *(.debug_frame)
+
+.debug_str
+ *(.debug_str)
+
+.debug_loc
+ *(.debug_loc)
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(mhvlib-tutorial-Vusb-Keyboard.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+MHV_AlarmListener::MHV_AlarmListener()            ./VusbKeyboard.o
+MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer*)     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer*)     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_Device_TX::canWrite()                         A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::moreTX()                           A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::nextCharacter()                    A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_Device_TX::write(char const*)                 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::write(char const*, unsigned int)   A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::write(char const*, unsigned int, void (*)(char const*)) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::write(char const*, void (*)(char const*)) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_Device_TX::write_P(char const*)               A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                                                  ./VusbKeyboard.o
+MHV_Device_TX::write_P(char const*, unsigned int) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_RTC::MHV_RTC(MHV_Timer8*, mhv_alarm*, unsigned char, int) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::MHV_RTC(MHV_Timer8*, mhv_alarm*, unsigned char, int) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  ./VusbKeyboard.o
+MHV_RTC::addAlarm(mhv_alarm*)                     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  ./VusbKeyboard.o
+MHV_RTC::alarmsPending()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::current(mhv_timestamp*)                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  ./VusbKeyboard.o
+MHV_RTC::elapsed(mhv_timestamp*, mhv_timestamp*)  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::handleEvents()                           A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  ./VusbKeyboard.o
+MHV_RTC::removeAlarm(MHV_AlarmListener*)          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::setTime(mhv_timestamp*)                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::setTime(unsigned long, unsigned int)     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::synchronise()                            A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::tick()                                   A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::tick1ms()                                A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  ./VusbKeyboard.o
+MHV_RTC::tick1msAndRunEvents()                    A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::tickAndRunEvents()                       A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::toTime(mhv_time*, mhv_timestamp*)        A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RTC::toTimestamp(mhv_timestamp*, mhv_time*)   A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::MHV_RingBuffer(char*, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  ./VusbKeyboard.o
+MHV_RingBuffer::append(char)                      A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::append(void const*, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_RingBuffer::consume()                         A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::consume(void*, unsigned char)     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_RingBuffer::flush()                           A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::full()                            A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::full(unsigned char)               A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+MHV_RingBuffer::length()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::peekHead()                        A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_RingBuffer::size()                            A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::MHV_Timer8()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::MHV_Timer8(mhv_timer_type, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char volatile*, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  ./VusbKeyboard.o
+MHV_Timer8::_setPrescaler(mhv_timer_prescaler)    A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::calculatePrescaler(unsigned long, mhv_timer_prescaler*, unsigned int*) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::calculateTop(unsigned long*, unsigned int) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::connectOutput1(mhv_timer_connect_type) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::connectOutput2(mhv_timer_connect_type) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::current()                             A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::disable()                             A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::enable()                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  ./VusbKeyboard.o
+MHV_Timer8::enabled()                             A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getOutput(unsigned char)              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getOutput1()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getOutput2()                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getPrescaler()                        A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::getPrescalerMultiplier()              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_Timer8::getTop()                              A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+MHV_Timer8::setGenerationMode()                   A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setMode(mhv_timer_mode)               A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setOutput(unsigned char, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setOutput1(unsigned char)             A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setOutput2(unsigned char)             A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setPeriods(mhv_timer_prescaler, unsigned char, unsigned char) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  ./VusbKeyboard.o
+MHV_Timer8::setPeriods(unsigned long, unsigned long) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setPrescaler(mhv_timer_prescaler)     A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setTop(unsigned char)                 A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_Timer8::setTriggers(void (*)(void*), void*, void (*)(void*), void*) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  ./VusbKeyboard.o
+MHV_Timer8::trigger1()                            A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  ./VusbKeyboard.o
+MHV_Timer8::trigger2()                            A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC*)      A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC*)      A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+MHV_VusbKeyboard::alarm(mhv_alarm*)               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbKeyboard::keyDown(mhv_vusb_keyboard_key, unsigned char) A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbKeyboard::keyStroke(mhv_vusb_keyboard_key) A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+MHV_VusbKeyboard::keyStroke(mhv_vusb_keyboard_key, unsigned char) A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+MHV_VusbKeyboard::keysUp()                        A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbKeyboard::keysUp(unsigned char)           A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer*, MHV_RTC*) A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer*, MHV_RTC*) A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                                                  ./VusbKeyboard.o
+MHV_VusbTypist::alarm(mhv_alarm*)                 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbTypist::runTxBuffers()                    A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+MHV_VusbTypist::typeChar(char)                    A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+TypeString::TypeString()                          ./VusbKeyboard.o
+TypeString::alarm(mhv_alarm*)                     ./VusbKeyboard.o
+__bad_interrupt                                   c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__bss_end                                         c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+__bss_start                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+__ctors_end                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+__ctors_start                                     c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+__cxa_pure_virtual                                ./VusbKeyboard.o
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+__data_end                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+__data_load_start                                 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+__data_start                                      c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+__do_clear_bss                                    c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_clear_bss.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                                                  ./VusbKeyboard.o
+__do_copy_data                                    c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_copy_data.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RingBuffer.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+                                                  ./VusbKeyboard.o
+__do_global_ctors                                 c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+                                                  ./VusbKeyboard.o
+__eerd_byte_tn85                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eerd_byte_attiny85.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+__eewr_byte_tn85                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+__eewr_r18_tn85                                   c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(eewr_byte_attiny85.o)
+__heap_end                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__init                                            c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__mulhi3                                          c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulhi3.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+__mulsi3                                          c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_mulsi3.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+__stack                                           c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__tablejump2__                                    c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+__tablejump__                                     c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_tablejump.o)
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_ctors.o)
+__udivmodhi4                                      c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodhi4.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+__udivmodsi4                                      c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_udivmodsi4.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Timer8.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+__vector_1                                        A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_10                                       ./VusbKeyboard.o
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_11                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_12                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_13                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_14                                       c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_2                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_3                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_4                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_5                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_6                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_7                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_8                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_9                                        c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vector_default                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+__vectors                                         c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+_exit                                             c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+alarms                                            ./VusbKeyboard.o
+exit                                              c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/avr25\libgcc.a(_exit.o)
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+main                                              ./VusbKeyboard.o
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25/crttn85.o
+memcpy                                            c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memcpy.o)
+                                                  c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+memmove                                           c:/mhvavrtools/bin/../lib/gcc/avr/4.6.2/../../../../avr/lib/avr25\libc.a(memmove.o)
+                                                  A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+mhv_daysInMonth(mhv_month, unsigned int)          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+mhv_isLeapYear(unsigned int)                      A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+mhv_timestampGreaterThanOrEqual(mhv_timestamp*, mhv_timestamp*) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+mhv_timestampIncrement(mhv_timestamp*, mhv_timestamp*) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+mhv_timestampIncrement(mhv_timestamp*, unsigned long, unsigned int) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  ./VusbKeyboard.o
+mhv_timestampLessThan(mhv_timestamp*, mhv_timestamp*) A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_RTC.o)
+non-virtual thunk to MHV_VusbTypist::runTxBuffers() A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+rtc                                               ./VusbKeyboard.o
+rtcTrigger(void*)                                 ./VusbKeyboard.o
+tickTimer                                         ./VusbKeyboard.o
+typist                                            ./VusbKeyboard.o
+typistBuffer                                      ./VusbKeyboard.o
+typistBufferBuf                                   ./VusbKeyboard.o
+usbConfiguration                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbCrc16                                          A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+usbCrc16Append                                    A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbCurrentTok                                     A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorConfiguration                        A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorDevice                               A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorHidReport                            A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorString0                              A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorStringDevice                         A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorStringSerialNumber                   A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDescriptorStringVendor                         A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbDeviceAddr                                     A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbEventResetReady                                A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbFunctionSetup                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbInit                                           A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+usbInputBufOffset                                 A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbMeasureFrameLength                             A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+usbMsgPtr                                         A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbNewDeviceAddr                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbPoll                                           A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+usbRxBuf                                          A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbRxLen                                          A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbRxToken                                        A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbSetInterrupt                                   A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+usbTxBuf                                          A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+usbTxLen                                          A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+usbTxStatus1                                      A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrvasm.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(usbdrv.o)
+                                                  A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+vtable for MHV_AlarmListener                      ./VusbKeyboard.o
+vtable for MHV_Device_TX                          A:\eclipse\mhvlib/ATtiny85_16.5MHz\libmhvlib.a(MHV_Device_TX.o)
+vtable for MHV_VusbKeyboard                       A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbKeyboard.o)
+vtable for MHV_VusbTypist                         A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz\libmhvlib-vusb-keyboard.a(MHV_VusbTypist.o)
+vtable for TypeString                             ./VusbKeyboard.o

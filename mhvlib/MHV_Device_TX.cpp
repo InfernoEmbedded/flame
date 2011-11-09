@@ -111,7 +111,8 @@ int MHV_Device_TX::nextCharacter() {
 /**
  * Write a progmem string asynchronously
  * @param	buffer	the progmem string
- * @return false on success, true on failure
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write_P(PGM_P buffer) {
 	MHV_TX_BUFFER buf;
@@ -137,7 +138,8 @@ bool MHV_Device_TX::write_P(PGM_P buffer) {
 /**
  * Write a string asynchronously
  * @param	buffer	the string
- * @return false on success, true on failure
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write(const char *buffer) {
 	MHV_TX_BUFFER buf;
@@ -164,7 +166,8 @@ bool MHV_Device_TX::write(const char *buffer) {
  * Write a string asynchronously
  * @param	buffer				the string
  * @param	completeFunction	a function to call when the string has been written (the string is passed as a parameter)
- * @return false on success, true on failure
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write(const char *buffer, void (*completeFunction)(const char *)) {
 	MHV_TX_BUFFER buf;
@@ -191,8 +194,8 @@ bool MHV_Device_TX::write(const char *buffer, void (*completeFunction)(const cha
  * Write a buffer asynchronously
  * @param	buffer	the buffer
  * @param	length	the length of the buffer
- * @return 	0 on success
- * 			1 if there is already a string being sent
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write_P(PGM_P buffer, uint16_t length) {
 	MHV_TX_BUFFER buf;
@@ -219,8 +222,8 @@ bool MHV_Device_TX::write_P(PGM_P buffer, uint16_t length) {
  * Write a buffer asynchronously
  * @param	buffer	the buffer
  * @param	length	the length of the buffer
- * @return 	0 on success
- * 			1 if there is already a string being sent
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write(const char *buffer, uint16_t length) {
 	MHV_TX_BUFFER buf;
@@ -248,8 +251,8 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length) {
  * @param	buffer	the buffer
  * @param	length	the length of the buffer
  * @param	completeFunction	a function to call when the string has been written (the string is passed as a parameter)
- * @return 	0 on success
- * 			1 if there is already a string being sent
+ * @return 	false on success
+ * 			true if there is already a string being sent
  */
 bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) {
 	MHV_TX_BUFFER buf;
@@ -276,7 +279,7 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFu
  * Free a buffer allocated in debug
  * @param
  */
-void mhv_device_tx_debug_free(const char *buf) {
+void mhv_device_tx_free(const char *buf) {
 	free((void *)buf);
 }
 
@@ -287,28 +290,187 @@ void mhv_device_tx_debug_free(const char *buf) {
  * @param	function	the function name
  * @param	format		a printf format
  * @param	...			the printf parms
+ * @return 	false on success
+ * 			true if the message was not sent
  */
-void MHV_Device_TX::debug(const char *file, int line, const char *function,
+bool MHV_Device_TX::debug(const char *file, int line, const char *function,
 		PGM_P format, ...) {
 	va_list	ap;
 	va_start(ap, format);
 
-	int length = sprintf_P(NULL, PSTR("%s:%d\t%s():\t\t"),
+	int length = snprintf_P(NULL, 0, PSTR("%s:%d\t%s():\t\t"),
 			file, line, function);
-	length += vsprintf_P(NULL, format, ap);
+	length += vsnprintf_P(NULL, 0, format, ap);
 	length += 3; // "\r\n\0"
 
 	char *buf = (char *)malloc(length);
 	char *cur = buf;
 	if (NULL != cur) {
-		cur += sprintf_P(cur, PSTR("%s:%d\t%s():\t\t"),
+		cur += snprintf_P(cur, length, PSTR("%s:%d\t%s():\t\t"),
 					file, line, function);
-		cur += vsprintf_P(cur, format, ap);
+		length -= cur - buf;
+		cur += vsnprintf_P(cur, length, format, ap);
 		*(cur++) = '\r';
 		*(cur++) = '\n';
 		*cur = '\0';
+
+		if (write(buf, length, &mhv_device_tx_free)) {
+			mhv_device_tx_free(buf);
+			va_end(ap);
+			return true;
+		}
+
+		va_end(ap);
+		return false;
 	}
 
-	write(buf, length, &mhv_device_tx_debug_free);
+	va_end(ap);
+	return true;
 }
 
+/**
+ * Print a message
+ * @param	format		a printf format
+ * @param	...			the printf parms
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::printf(PGM_P format, ...) {
+	va_list	ap;
+	va_start(ap, format);
+
+	int length = vsnprintf_P(NULL, 0, format, ap);
+	length++; // "\0"
+
+	char *buf = (char *)malloc(length);
+	if (NULL != buf) {
+		vsnprintf_P(buf, length, format, ap);
+
+		if (write(buf, length, &mhv_device_tx_free)) {
+			mhv_device_tx_free(buf);
+			va_end(ap);
+			return true;
+		}
+
+		va_end(ap);
+		return false;
+	}
+
+	va_end(ap);
+	return true;
+
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(uint8_t value) {
+	char *buf = (char *)malloc(4);
+	if (NULL != buf) {
+		utoa((uint16_t)value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(uint16_t value) {
+	char *buf = (char *)malloc(6);
+	if (NULL != buf) {
+		utoa(value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(uint32_t value) {
+	char *buf = (char *)malloc(11);
+	if (NULL != buf) {
+		ultoa(value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(int8_t value) {
+	char *buf = (char *)malloc(5);
+	if (NULL != buf) {
+		itoa((uint16_t)value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(int16_t value) {
+	char *buf = (char *)malloc(7);
+	if (NULL != buf) {
+		itoa(value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Print an integer
+ * @param	value	the value to print
+ * @return 	false on success
+ * 			true if there is already a string being sent
+ */
+bool MHV_Device_TX::write(int32_t value) {
+	char *buf = (char *)malloc(13);
+	if (NULL != buf) {
+		ltoa(value, buf, 10);
+		if (write(buf)) {
+			mhv_device_tx_free(buf);
+			return true;
+		}
+		return false;
+	}
+	return true;
+}

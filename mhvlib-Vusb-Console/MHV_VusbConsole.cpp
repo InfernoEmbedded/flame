@@ -2,7 +2,7 @@
  * Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
  *
- *  License: GNU GPL v2 (see mhvlib-Vusb-Keyboard/vusb/License.txt)
+ *  License: GNU GPL v2 (see mhvlib-Vusb-Console/vusb/License.txt)
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -20,39 +20,26 @@ extern "C" {
 	#include <vusb/usbdrv.h>
 }
 
-#include <MHV_VusbKeyboard.h>
+#include <MHV_VusbConsole.h>
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
 #define MHV_OSCCAL_EEPROM_ADDRESS	1022
 
-/* We use a simplifed keyboard report descriptor which does not support the
- * boot protocol. We don't allow setting status LEDs and but we do allow
- * simultaneous key presses.
- * The report descriptor has been created with usb.org's "HID Descriptor Tool"
- * which can be downloaded from http://www.usb.org/developers/hidpage/.
- * Redundant entries (such as LOGICAL_MINIMUM and USAGE_PAGE) have been omitted
- * for the second INPUT item.
- */
+#define MAX_TX_SIZE		8
+
+// Taken from usb_debug_only.c:
 PROGMEM const char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /* USB report descriptor */
-  0x05, 0x01,	// USAGE_PAGE (Generic Desktop)
-  0x09, 0x06,	// USAGE (Keyboard)
-  0xa1, 0x01,	// COLLECTION (Application)
-  0x05, 0x07,	//   USAGE_PAGE (Keyboard)
-  0x19, 0xe0,	//   USAGE_MINIMUM (Keyboard LeftControl)
-  0x29, 0xe7,	//   USAGE_MAXIMUM (Keyboard Right GUI)
-  0x15, 0x00,	//   LOGICAL_MINIMUM (0)
-  0x25, 0x01,	//   LOGICAL_MAXIMUM (1)
-  0x75, 0x01,	//   REPORT_SIZE (1)
-  0x95, 0x08,	//   REPORT_COUNT (8)
-  0x81, 0x02,	//   INPUT (Data,Var,Abs)
-  0x95, 0x01,	//   REPORT_COUNT (1)
-  0x75, 0x08,	//   REPORT_SIZE (8)
-  0x25, 0x65,	//   LOGICAL_MAXIMUM (101)
-  0x19, 0x00,	//   USAGE_MINIMUM (Reserved (no event indicated))
-  0x29, 0x65,	//   USAGE_MAXIMUM (Keyboard Application)
-  0x81, 0x00,	//   INPUT (Data,Ary,Abs)
-  0xc0       	// END_COLLECTION
+		0x06, 0x31, 0xFF,		// Usage Page 0xFF31 (vendor defined)
+		0x09, 0x74,				// Usage 0x74
+		0xA1, 0x53,				// Collection 0x53
+		0x75, 0x08,				// report size = 8 bits
+		0x15, 0x00,				// logical minimum = 0
+		0x26, 0xFF, 0x00,		// logical maximum = 255
+		0x95, MAX_TX_SIZE,		// report count
+		0x09, 0x75,				// usage
+		0x81, 0x02,				// Input (array)
+		0xC0					// end collection
 };
 
 /* This code has been borrowed from Sparkfun's AVR Stick firmware
@@ -125,17 +112,15 @@ void    usbEventResetReady(void)
 }
 #endif
 
-static unsigned char	mhv_vusbReportBuffer[2];	/* buffer for HID reports */
 static unsigned char	mhv_vusbIdleRate = 1;		/* in 4 ms units */
 
 unsigned char usbFunctionSetup(uchar data[8]) {
 	usbRequest_t *rq = (usbRequest_t *) ((void *) data);
 
-	usbMsgPtr = mhv_vusbReportBuffer;
+	usbMsgPtr = NULL;
 	if ((rq->bmRequestType & USBRQ_TYPE_MASK) == USBRQ_TYPE_CLASS) { /* class request type */
 		if (rq->bRequest == USBRQ_HID_GET_REPORT) { /* wValue: ReportType (highbyte), ReportID (lowbyte) */
-			/* we only have one report type, so don't look at wValue */
-			return sizeof(mhv_vusbReportBuffer);
+			return 0;
 		} else if (rq->bRequest == USBRQ_HID_GET_IDLE) {
 			usbMsgPtr = &mhv_vusbIdleRate;
 			return 1;
@@ -150,12 +135,14 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 
 
 /**
- * Emulate a USB keyboard using V-USB
+ * Provide a V-USB console using V-USB
  *   Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h)
  *   Uses pins B0/B2 for ATtiny25/45/85
- * @param	rtc	an RTC to schedule jobs on
+ * @param	txBuffer	a ringbuffer to store data in
+ * @param	rtc			an RTC to schedule jobs on
  */
-MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
+MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) : MHV_Device_TX(txBuffer) {
+
 	_rtc = rtc;
 
 #if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
@@ -190,63 +177,38 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 }
 
 /**
- * Send a single keystroke
- * @param	key			the key to send
- * @param	modifiers	the key modifiers
- *
- * @return false if the keyStroke was not sent
- */
-void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
-	keyDown(key, modifiers);
-	keysUp(0);
-}
-
-/**
- * Send a single keystroke
- * @param	key		the key to send
- *
- * @return false if the keyStroke was not sent
- */
-void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key) {
-	return keyStroke(key, 0);
-}
-
-/**
- * Press a key
- * @param	key			the key to send
- * @param	modifiers	the key modifiers
- */
-void MHV_VusbKeyboard::keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
-	while (!usbInterruptIsReady()) {}
-
-	mhv_vusbReportBuffer[0] = modifiers;
-	mhv_vusbReportBuffer[1] = key;
-
-	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
-}
-
-/**
- * Release all keys
- * @param	modifiers	the key modifiers still held
- */
-void MHV_VusbKeyboard::keysUp(uint8_t modifiers) {
-	while (!usbInterruptIsReady()) {}
-
-	mhv_vusbReportBuffer[0] = modifiers;
-	mhv_vusbReportBuffer[1] = 0;
-	usbSetInterrupt(mhv_vusbReportBuffer, sizeof(mhv_vusbReportBuffer));
-}
-
-/**
- * Release all keys
- */
-void MHV_VusbKeyboard::keysUp() {
-	keysUp(0);
-}
-
-/**
  * Periodically called to maintain USB comms
+ * @param alarm	the alarm that triggered the call
  */
-void MHV_VusbKeyboard::alarm(MHV_ALARM *alarm) {
+void MHV_VusbConsole::alarm(MHV_ALARM *alarm) {
 	usbPoll();
+
+	if (usbInterruptIsReady()) {
+		int c;
+		unsigned char buf[MAX_TX_SIZE];
+		uint8_t bufSize;
+
+		for (bufSize = 0; bufSize < MAX_TX_SIZE; bufSize++) {
+			c = nextCharacter();
+			if (-1 == c) {
+				break;
+			}
+			buf[bufSize] = (unsigned char)c;
+		}
+
+		if (bufSize) {
+			for (; bufSize < MAX_TX_SIZE; bufSize++) {
+				buf[bufSize] = '\0';
+			}
+			usbSetInterrupt(buf, bufSize);
+		}
+	}
 }
+
+/**
+ * Start transmitting a new string
+ * (does nothing, alarm will immediately pick up the next character)
+ */
+void MHV_VusbConsole::runTxBuffers() {
+}
+

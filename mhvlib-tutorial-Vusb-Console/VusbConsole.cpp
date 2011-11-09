@@ -25,8 +25,8 @@
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
-// Bring in the USB Keyboard driver
-#include <MHV_VusbTypist.h>
+// Bring in the USB Console driver
+#include <MHV_VusbConsole.h>
 
 // Bring in the power management header
 #include <avr/power.h>
@@ -68,16 +68,30 @@ void rtcTrigger(void *data) {
 }
 
 // The USB Keyboard driver
-MHV_TX_BUFFER_CREATE(typistBuffer, 2);
-MHV_VusbTypist typist(&typistBuffer, &rtc);
+MHV_TX_BUFFER_CREATE(consoleBuffer, 16);
+MHV_VusbConsole console(&consoleBuffer, &rtc);
 
-class TypeString : public MHV_AlarmListener {
+class WriteString : public MHV_AlarmListener {
 public:
 	void alarm(MHV_ALARM *alarm);
 };
 
-void TypeString::alarm(MHV_ALARM *alarm) {
-	typist.write_P(PSTR("Greetings, program!"));
+void WriteString::alarm(MHV_ALARM *alarm) {
+	console.write_P(PSTR("Greetings, program!\n"));
+	console.printf(PSTR("This is a %s string\n"), "printf");
+	console.write("Here are some numbers: ");
+	console.write((uint8_t)1);
+	console.write(" ");
+	console.write((uint16_t)2);
+	console.write(" ");
+	console.write((uint32_t)3);
+	console.write(" ");
+	console.write((int8_t)4);
+	console.write(" ");
+	console.write((int16_t)5);
+	console.write(" ");
+	console.write((int32_t)6);
+	console.write("\n That about wraps up this demo.\n");
 }
 
 int NORETURN main(void) {
@@ -106,13 +120,13 @@ int NORETURN main(void) {
 	mhv_timestampIncrement(&(newAlarm.when), 10, 0);
 	newAlarm.repeat.timestamp = 0;
 	newAlarm.repeat.milliseconds = 0;
-	TypeString typeString;
-	newAlarm.listener = &typeString;
+	WriteString writeString;
+	newAlarm.listener = &writeString;
 	rtc.addAlarm(&newAlarm);
 
 	for (;;) {
 		/* All the interesting things happen in the events
-		 * See the Typist::alarm method
+		 * See the MHV_VusbConsole::alarm method
 		 */
 		rtc.handleEvents();
 
