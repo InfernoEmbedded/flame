@@ -45,7 +45,7 @@ private:
 	uint8_t			_vref;
 	float			_vrefVoltage;
 	uint16_t		_targetADC;
-	MHV_Timer16		*_timer;
+	MHV_Timer16		&_timer;
 	uint8_t			_adcChannel;
 	uint16_t		_pwm;	// The current PWM rate
 	bool			_lastMoveUp;
@@ -58,7 +58,7 @@ private:
 
 public:
 	MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, float vrefVoltage, uint8_t vref,
-			float divider, MHV_Timer16 *timer, uint8_t channel);
+			float divider, MHV_Timer16 &timer, uint8_t channel);
 	void enable();
 	void disable();
 	float getVoltage();

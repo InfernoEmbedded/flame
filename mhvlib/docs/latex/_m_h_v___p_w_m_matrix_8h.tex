@@ -9,6 +9,11 @@
 \item 
 class \hyperlink{class_m_h_v___p_w_m_matrix}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}
 \end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Rows, \-\_\-mhv\-Cols, \-\_\-mhv\-Tx\-Elements, \-\_\-mhv\-Matrix\-Row\-On, \-\_\-mhv\-Matrix\-Row\-Off, \-\_\-mhv\-Matrix\-Col\-On, \-\_\-mhv\-Matrix\-Col\-Off)
+\end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,6 +30,57 @@ enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\
 \end{DoxyCompactItemize}
 
 
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}{
+\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_PWMMatrix.h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Object\-Name, }
+\item[{}]{\-\_\-mhv\-Rows, }
+\item[{}]{\-\_\-mhv\-Cols, }
+\item[{}]{\-\_\-mhv\-Tx\-Elements, }
+\item[{}]{\-\_\-mhv\-Matrix\-Row\-On, }
+\item[{}]{\-\_\-mhv\-Matrix\-Row\-Off, }
+\item[{}]{\-\_\-mhv\-Matrix\-Col\-On, }
+\item[{}]{\-\_\-mhv\-Matrix\-Col\-Off}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
+        MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
+        MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## 
+      FrameBuffer, _mhvObjectName ## TX, \
+                        _mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, 
+      _mhvMatrixColOff);
+\end{DoxyCode}
+\-Create a new \-P\-W\-M \-Matrix object 
+\begin{DoxyParams}{\-Parameters}
+{\em \-\_\-mhv\-Object\-Name} & the variable name of the object \\
+\hline
+{\em \-\_\-mhv\-Rows} & the number of rows \\
+\hline
+{\em \-\_\-mhv\-Cols} & the number of columns \\
+\hline
+{\em \-\_\-mhv\-Tx\-Elements} & the number of elements to make available for async transmission \\
+\hline
+{\em \-\_\-mhv\-Matrix\-Row\-On} & function to call to turn a row on \\
+\hline
+{\em \-\_\-mhv\-Matrix\-Row\-Off} & function to call to turn a row off \\
+\hline
+{\em \-\_\-mhv\-Matrix\-Col\-On} & function to call to turn a row on \\
+\hline
+{\em \-\_\-mhv\-Matrix\-Col\-Off} & function to call to turn a row off \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 44 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+
+
+
 \subsection{\-Typedef \-Documentation}
 \hypertarget{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{
 \index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}
@@ -33,7 +89,7 @@ enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\
 \label{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}
 
 
-\-Definition at line 39 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+\-Definition at line 57 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 
 
 
@@ -67,5 +123,5 @@ enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\
 
 
 
-\-Definition at line 33 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+\-Definition at line 51 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 

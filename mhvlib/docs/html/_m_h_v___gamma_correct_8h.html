@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -94,7 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#define-members">Defines</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">A:/eclipse/mhvlib/MHV_GammaCorrect.h File Reference</div>  </div>
 </div>
@@ -107,29 +108,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___gamma_correct_8h.html#a26d18cf53b75a3849e7b9614a386d188">MHV_PRECALCULATED_GAMMA_CORRECT</a>(gammaValue)&#160;&#160;&#160;pgm_read_byte(mhv_gammaValues + gammaValue)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___gamma_correct_8h.html#ab35ca2a00d076f95bb73760542200034">MHV_PRECALCULATED_GAMMA_CORRECT</a>&#160;&#160;&#160;mhv_precalculatedGammaCorrect</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___gamma_correct_8h.html#a78ae78c6d77c5e00b99f553fffb5e789">mhv_calculatedGammaCorrect</a> (uint8_t value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___gamma_correct_8h.html#ae81cc61469e5fd453b273cc45b108ad8">mhv_precalculatedGammaCorrect</a> (uint8_t value)</td></tr>
+<tr><td colspan="2"><h2><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const uint8_t mhv_gammaValues[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___gamma_correct_8h.html#a1becc72891d2ea00eb6bff5928e283c4">PROGMEM</a></td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
-<a class="anchor" id="a26d18cf53b75a3849e7b9614a386d188"></a><!-- doxytag: member="MHV_GammaCorrect.h::MHV_PRECALCULATED_GAMMA_CORRECT" ref="a26d18cf53b75a3849e7b9614a386d188" args="(gammaValue)" -->
+<a class="anchor" id="ab35ca2a00d076f95bb73760542200034"></a><!-- doxytag: member="MHV_GammaCorrect.h::MHV_PRECALCULATED_GAMMA_CORRECT" ref="ab35ca2a00d076f95bb73760542200034" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MHV_PRECALCULATED_GAMMA_CORRECT</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">gammaValue</td><td>)</td>
-          <td>&#160;&#160;&#160;pgm_read_byte(mhv_gammaValues + gammaValue)</td>
+          <td class="memname">#define MHV_PRECALCULATED_GAMMA_CORRECT&#160;&#160;&#160;mhv_precalculatedGammaCorrect</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8h_source.html#l00037">37</a> of file <a class="el" href="_m_h_v___gamma_correct_8h_source.html">MHV_GammaCorrect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8h_source.html#l00081">81</a> of file <a class="el" href="_m_h_v___gamma_correct_8h_source.html">MHV_GammaCorrect.h</a>.</p>
 
 </div>
 </div>
@@ -149,7 +149,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html#l00071">71</a> of file <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html">MHV_GammaCorrect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html#l00035">35</a> of file <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html">MHV_GammaCorrect.cpp</a>.</p>
 
 </div>
 </div>
@@ -162,13 +162,29 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
-          <td></td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html#l00080">80</a> of file <a class="el" href="_m_h_v___gamma_correct_8cpp_source.html">MHV_GammaCorrect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8h_source.html#l00077">77</a> of file <a class="el" href="_m_h_v___gamma_correct_8h_source.html">MHV_GammaCorrect.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="a1becc72891d2ea00eb6bff5928e283c4"></a><!-- doxytag: member="MHV_GammaCorrect.h::PROGMEM" ref="a1becc72891d2ea00eb6bff5928e283c4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t mhv_gammaValues [] <a class="el" href="_m_h_v___stepper_motor_unipolar_8cpp.html#ac7b0e9759bb3e284f224e7afc27313bf">PROGMEM</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_m_h_v___gamma_correct_8h_source.html#l00034">34</a> of file <a class="el" href="_m_h_v___gamma_correct_8h_source.html">MHV_GammaCorrect.h</a>.</p>
 
 </div>
 </div>
@@ -192,7 +208,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

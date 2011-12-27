@@ -9,9 +9,9 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}{\-M\-H\-V\-\_\-\-R\-T\-C} (\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} $\ast$timer, \hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$event\-Buffer, uint8\-\_\-t event\-Count, int16\-\_\-t timezone)
+\hyperlink{class_m_h_v___r_t_c_a3c7a321e22e8788eb45ba6cb3d74286b}{\-M\-H\-V\-\_\-\-R\-T\-C} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} event\-Buffer\mbox{[}$\,$\mbox{]}, uint8\-\_\-t event\-Count, int16\-\_\-t timezone)
 \item 
-void \hyperlink{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}{synchronise} ()
+void \hyperlink{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}{synchronise} (\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} \&\-\_\-timer)
 \item 
 void \hyperlink{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{set\-Time} (uint32\-\_\-t timestamp, uint16\-\_\-t milliseconds)
 \item 
@@ -39,12 +39,12 @@ void \hyperlink{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{handle\-E
 \item 
 uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{alarms\-Pending} ()
 \item 
+void \hyperlink{class_m_h_v___r_t_c_a102c6e3d254e884d586ef3b9b885058b}{remove\-Alarm} (\hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener)
+\item 
 void \hyperlink{class_m_h_v___r_t_c_ad567f1efa0e4e108699d0895debc40dd}{remove\-Alarm} (\hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} $\ast$listener)
 \end{DoxyCompactItemize}
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
-\item 
-\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} $\ast$ \hyperlink{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}{\-\_\-timer}
 \item 
 \hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$ \hyperlink{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{\-\_\-alarms}
 \item 
@@ -67,27 +67,24 @@ int16\-\_\-t \hyperlink{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{\
 \subsection{\-Detailed \-Description}
 
 
-\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 112 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}{
+\hypertarget{class_m_h_v___r_t_c_a3c7a321e22e8788eb45ba6cb3d74286b}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-R\-T\-C\-::\-M\-H\-V\-\_\-\-R\-T\-C (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-Timer8} $\ast$}]{timer, }
-\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$}]{event\-Buffer, }
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}}]{event\-Buffer\mbox{[}$\,$\mbox{]}, }
 \item[{uint8\-\_\-t}]{event\-Count, }
 \item[{int16\-\_\-t}]{timezone}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___r_t_c_a6eb9e8d2ec831f69cdfbb65775893452}
+\label{class_m_h_v___r_t_c_a3c7a321e22e8788eb45ba6cb3d74286b}
 \-Create a new \-R\-T\-C 
 \begin{DoxyParams}{\-Parameters}
-{\em timer} & the timer this \-R\-T\-C is associated with \\
-\hline
 {\em event\-Buffer} & \-A buffer to store events until they are executed \\
 \hline
 {\em event\-Count} & \-The number of events that can be stored in the buffer \\
@@ -97,7 +94,7 @@ int16\-\_\-t \hyperlink{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{\
 \end{DoxyParams}
 
 
-\-Definition at line 167 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 166 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 
 
@@ -121,7 +118,7 @@ true if the event could not be added
 \end{DoxyReturn}
 
 
-\-Definition at line 443 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 435 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!alarms\-Pending@{alarms\-Pending}}
@@ -137,7 +134,7 @@ the number of events
 \end{DoxyReturn}
 
 
-\-Definition at line 508 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 500 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_aa4b7a93658ea4548520103f63d5897ec}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!current@{current}}
@@ -150,7 +147,7 @@ the number of events
 \label{class_m_h_v___r_t_c_aa4b7a93658ea4548520103f63d5897ec}
 \-Get the current timestamp 
 
-\-Definition at line 276 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 268 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a6bd66dbb9fd2229e3b229667e38adbf6}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!elapsed@{elapsed}}
@@ -171,7 +168,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 289 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 281 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!handle\-Events@{handle\-Events}}
@@ -184,7 +181,25 @@ the number of events
 \label{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}
 \-Check for events that are due, and run them \-Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
 
-\-Definition at line 474 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 466 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\hypertarget{class_m_h_v___r_t_c_a102c6e3d254e884d586ef3b9b885058b}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___r_t_c_a102c6e3d254e884d586ef3b9b885058b}
+\-Remove all matching events from the list of pending events 
+\begin{DoxyParams}{\-Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 508 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_ad567f1efa0e4e108699d0895debc40dd}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
@@ -202,7 +217,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 516 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 525 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
@@ -223,7 +238,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 195 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 192 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a7e4f42af3581cce6261f1c83d1e2b0c1}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
@@ -241,20 +256,25 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 206 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 203 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}{
+\hypertarget{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!synchronise@{synchronise}}
 \index{synchronise@{synchronise}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \subsubsection[{synchronise}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::synchronise (
 \begin{DoxyParamCaption}
-\item[{void}]{}
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer8} \&}]{timer}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___r_t_c_aa67e0d82c0ed27999d9154a7bf95e608}
+\label{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}
 \-Synchronise the ticks\-Per\-Millisecond with the timer (useful if you change the timer values) 
+\begin{DoxyParams}{\-Parameters}
+{\em timer} & the timer to sync with \\
+\hline
+\end{DoxyParams}
 
-\-Definition at line 185 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+\-Definition at line 182 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_af56442a6497ade702d8eb8ba935fb1ef}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick@{tick}}
@@ -267,7 +287,7 @@ the number of events
 \label{class_m_h_v___r_t_c_af56442a6497ade702d8eb8ba935fb1ef}
 \-Tick from the timer module 
 
-\-Definition at line 217 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 225 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a7149adf9da9e7209cd352eb67f40bf30}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick1ms@{tick1ms}}
@@ -280,7 +300,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a7149adf9da9e7209cd352eb67f40bf30}
 \-Tick from the timer module that is exactly 1ms 
 
-\-Definition at line 234 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 238 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a1e0b5a223fb74c10a30f7712c42081e2}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick1ms\-And\-Run\-Events@{tick1ms\-And\-Run\-Events}}
@@ -293,7 +313,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a1e0b5a223fb74c10a30f7712c42081e2}
 \-Tick from the timer module that is exactly 1ms, run any pending events 
 
-\-Definition at line 264 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 260 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_a7246016a7c37aefcdf2bb46f67bbb455}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!tick\-And\-Run\-Events@{tick\-And\-Run\-Events}}
@@ -327,7 +347,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 327 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 319 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{class_m_h_v___r_t_c_aaaf020893b6a5bd81f08371cd804a68b}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!to\-Timestamp@{to\-Timestamp}}
@@ -348,7 +368,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 396 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 388 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 
 
@@ -360,7 +380,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}
 
 
-\-Definition at line 106 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 118 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarm\-Max@{\-\_\-alarm\-Max}}
@@ -369,7 +389,7 @@ the number of events
 \label{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}
 
 
-\-Definition at line 107 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 119 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarms@{\-\_\-alarms}}
@@ -378,7 +398,7 @@ the number of events
 \label{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}
 
 
-\-Definition at line 105 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 117 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-milliseconds@{\-\_\-milliseconds}}
@@ -387,7 +407,7 @@ the number of events
 \label{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}
 
 
-\-Definition at line 109 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 121 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks@{\-\_\-ticks}}
@@ -396,7 +416,7 @@ the number of events
 \label{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}
 
 
-\-Definition at line 110 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 122 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}}
@@ -405,16 +425,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}
 
 
-\-Definition at line 111 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
-
-\hypertarget{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}{
-\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-timer@{\-\_\-timer}}
-\index{\-\_\-timer@{\-\_\-timer}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{\-\_\-timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-Timer8}$\ast$ {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-timer}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___r_t_c_a394402df903b8eb7e51c415c30cb7057}
-
-
-\-Definition at line 104 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 123 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-timestamp@{\-\_\-timestamp}}
@@ -423,7 +434,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}
 
 
-\-Definition at line 108 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 120 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-tz\-Offset@{\-\_\-tz\-Offset}}
@@ -432,7 +443,7 @@ the number of events
 \label{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}
 
 
-\-Definition at line 112 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 124 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 

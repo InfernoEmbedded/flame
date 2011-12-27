@@ -15,9 +15,9 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___debounce_a011b688e758752447a1b30ad7eae1563}{\-M\-H\-V\-\_\-\-Debounce} (\hyperlink{class_m_h_v___pin_change_manager}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} $\ast$pin\-Change\-Manager, \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} $\ast$rtc, uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time)
+\hyperlink{class_m_h_v___debounce_a68049104b4f0784dcd39658cbd0728ec}{\-M\-H\-V\-\_\-\-Debounce} (\hyperlink{class_m_h_v___pin_change_manager}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} \&pin\-Change\-Manager, \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} \&rtc, uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time)
 \item 
-void \hyperlink{class_m_h_v___debounce_abeae6c521b5998ea395dc70da54b58ec}{assign\-Key} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t pin, int8\-\_\-t pinchange\-Interrupt, \hyperlink{class_m_h_v___debounce_listener}{\-M\-H\-V\-\_\-\-Debounce\-Listener} $\ast$listener)
+void \hyperlink{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}{assign\-Key} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t pin, int8\-\_\-t pinchange\-Interrupt, \hyperlink{class_m_h_v___debounce_listener}{\-M\-H\-V\-\_\-\-Debounce\-Listener} \&listener)
 \item 
 void \hyperlink{class_m_h_v___debounce_a00f8ea47ef5e0b51a9169a162daa7338}{deassign\-Key} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t pin, int8\-\_\-t pinchange\-Interrupt)
 \item 
@@ -33,7 +33,7 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} $\ast$ \hyperlink{class_m_h_v___debounce_a33be0b2ba96f36fb920ad9f2dc27d4c8}{\-\_\-rtc}
+\hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} \& \hyperlink{class_m_h_v___debounce_a5594f588099ccfcff2b3b23b503e8f6d}{\-\_\-rtc}
 \item 
 \hyperlink{_m_h_v___debounce_8h_a1e51966b7fb269bd10a163734aa1ddfb}{\-M\-H\-V\-\_\-\-D\-E\-B\-O\-U\-N\-C\-E\-\_\-\-P\-I\-N} \hyperlink{class_m_h_v___debounce_a5cf65bfecfc0efd4d51e1506972d2796}{\-\_\-pins} \mbox{[}\-M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T\mbox{]}
 \item 
@@ -43,7 +43,7 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 \item 
 \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \hyperlink{class_m_h_v___debounce_a422167777e3bfcf6b7b46b992058950f}{\-\_\-repeat\-Time}
 \item 
-\hyperlink{class_m_h_v___pin_change_manager}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} $\ast$ \hyperlink{class_m_h_v___debounce_a2f9b551231f80bfa99603cae6c44e343}{\-\_\-pin\-Change\-Manager}
+\hyperlink{class_m_h_v___pin_change_manager}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} \& \hyperlink{class_m_h_v___debounce_a85d99fc351fbd791a4effe8bd8f76f6f}{\-\_\-pin\-Change\-Manager}
 \end{DoxyCompactItemize}
 
 
@@ -55,19 +55,19 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___debounce_a011b688e758752447a1b30ad7eae1563}{
+\hypertarget{class_m_h_v___debounce_a68049104b4f0784dcd39658cbd0728ec}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
 \subsubsection[{\-M\-H\-V\-\_\-\-Debounce}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Debounce\-::\-M\-H\-V\-\_\-\-Debounce (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-Pin\-Change\-Manager} $\ast$}]{pin\-Change\-Manager, }
-\item[{{\bf \-M\-H\-V\-\_\-\-R\-T\-C} $\ast$}]{rtc, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Pin\-Change\-Manager} \&}]{pin\-Change\-Manager, }
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-T\-C} \&}]{rtc, }
 \item[{uint16\-\_\-t}]{debounce\-Time, }
 \item[{uint16\-\_\-t}]{held\-Time, }
 \item[{uint16\-\_\-t}]{repeat\-Time}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___debounce_a011b688e758752447a1b30ad7eae1563}
+\label{class_m_h_v___debounce_a68049104b4f0784dcd39658cbd0728ec}
 \-Debouncing helper for buttons connected directly to \-P\-C\-I\-N\-T capable pins \-The user must pull the pin up, either externally (and initing the pin by calling mhv\-\_\-set\-Input), or internally by calling mhv\-\_\-set\-Input\-Pullup
 
 
@@ -90,7 +90,7 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 
 \subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___debounce_abeae6c521b5998ea395dc70da54b58ec}{
+\hypertarget{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!assign\-Key@{assign\-Key}}
 \index{assign\-Key@{assign\-Key}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
 \subsubsection[{assign\-Key}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Debounce\-::assign\-Key (
@@ -100,10 +100,10 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 \item[{volatile uint8\-\_\-t $\ast$}]{in, }
 \item[{uint8\-\_\-t}]{bit, }
 \item[{int8\-\_\-t}]{pinchange\-Interrupt, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Debounce\-Listener} $\ast$}]{listener}
+\item[{{\bf \-M\-H\-V\-\_\-\-Debounce\-Listener} \&}]{listener}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___debounce_abeae6c521b5998ea395dc70da54b58ec}
+\label{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}
 \-Assign a pin to debounce 
 \begin{DoxyParams}{\-Parameters}
 {\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
@@ -225,11 +225,11 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 \-Definition at line 75 of file \-M\-H\-V\-\_\-\-Debounce.\-h.
 
-\hypertarget{class_m_h_v___debounce_a2f9b551231f80bfa99603cae6c44e343}{
+\hypertarget{class_m_h_v___debounce_a85d99fc351fbd791a4effe8bd8f76f6f}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!\-\_\-pin\-Change\-Manager@{\-\_\-pin\-Change\-Manager}}
 \index{\-\_\-pin\-Change\-Manager@{\-\_\-pin\-Change\-Manager}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
-\subsubsection[{\-\_\-pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-Pin\-Change\-Manager}$\ast$ {\bf \-M\-H\-V\-\_\-\-Debounce\-::\-\_\-pin\-Change\-Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___debounce_a2f9b551231f80bfa99603cae6c44e343}
+\subsubsection[{\-\_\-pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-Pin\-Change\-Manager}\& {\bf \-M\-H\-V\-\_\-\-Debounce\-::\-\_\-pin\-Change\-Manager}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___debounce_a85d99fc351fbd791a4effe8bd8f76f6f}
 
 
 \-Definition at line 77 of file \-M\-H\-V\-\_\-\-Debounce.\-h.
@@ -252,11 +252,11 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 \-Definition at line 76 of file \-M\-H\-V\-\_\-\-Debounce.\-h.
 
-\hypertarget{class_m_h_v___debounce_a33be0b2ba96f36fb920ad9f2dc27d4c8}{
+\hypertarget{class_m_h_v___debounce_a5594f588099ccfcff2b3b23b503e8f6d}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!\-\_\-rtc@{\-\_\-rtc}}
 \index{\-\_\-rtc@{\-\_\-rtc}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
-\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-R\-T\-C}$\ast$ {\bf \-M\-H\-V\-\_\-\-Debounce\-::\-\_\-rtc}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___debounce_a33be0b2ba96f36fb920ad9f2dc27d4c8}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-R\-T\-C}\& {\bf \-M\-H\-V\-\_\-\-Debounce\-::\-\_\-rtc}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
+\label{class_m_h_v___debounce_a5594f588099ccfcff2b3b23b503e8f6d}
 
 
 \-Definition at line 72 of file \-M\-H\-V\-\_\-\-Debounce.\-h.

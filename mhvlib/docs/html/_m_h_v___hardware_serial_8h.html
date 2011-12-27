@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -235,7 +235,7 @@ ISR(mhvTxVect) { \
 <div class="memdoc">
 <b>Value:</b><div class="fragment"><pre class="fragment"><a class="code" href="_m_h_v___device___r_x_8h.html#ac84429c20d2e54881a1cb64815019f80">MHV_RX_BUFFER_CREATE</a>(_mhvObjectName ## RX, _mhvRXBUFLEN); \
                 MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTXBUFCOUNT); \
-                MHV_HardwareSerial _mhvObjectName(&amp;_mhvObjectName ## RX, &amp;_mhvObjectName ## RX, _mhvSERIAL, _mhvBAUD); \
+                MHV_HardwareSerial _mhvObjectName(_mhvObjectName ## RX, _mhvObjectName ## RX, _mhvSERIAL, _mhvBAUD); \
                 MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 </pre></div><p>Create a new serial object </p>
 <dl><dt><b>Parameters:</b></dt><dd>
@@ -288,7 +288,7 @@ ISR(mhvTxVect) { \
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

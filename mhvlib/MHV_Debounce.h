@@ -69,20 +69,20 @@ typedef struct mhv_debouncePin MHV_DEBOUNCE_PIN;
 
 class MHV_Debounce : MHV_PinEventListener {
 protected:
-	MHV_RTC					*_rtc;
+	MHV_RTC					&_rtc;
 	MHV_DEBOUNCE_PIN		_pins[MHV_PC_INT_COUNT];
 	MHV_TIMESTAMP			_debounceTime;
 	MHV_TIMESTAMP			_heldTime;
 	MHV_TIMESTAMP			_repeatTime;
-	MHV_PinChangeManager	*_pinChangeManager;
+	MHV_PinChangeManager	&_pinChangeManager;
 
 	void pinChanged(uint8_t pcInt, bool newState);
 	void initPin(uint8_t pinchangeInterrupt);
 
 public:
-	MHV_Debounce(MHV_PinChangeManager *pinChangeManager, MHV_RTC *rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
+	MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
 	void assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-			uint8_t pin, int8_t pinchangeInterrupt, MHV_DebounceListener *listener);
+			uint8_t pin, int8_t pinchangeInterrupt, MHV_DebounceListener &listener);
 	void deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
 		uint8_t pin, int8_t pinchangeInterrupt);
 	void checkHeld();

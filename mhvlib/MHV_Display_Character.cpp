@@ -38,7 +38,7 @@
  * @param	txBuffers	buffers to use for text writing
  */
 MHV_Display_Character::MHV_Display_Character(uint16_t colCount, uint16_t rowCount,
-		MHV_RingBuffer *txBuffers) :
+		MHV_RingBuffer &txBuffers) :
 			MHV_Device_TX(txBuffers){
 	_colCount = colCount;
 	_rowCount = rowCount;

@@ -15,7 +15,7 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___display___h_d44780___shift___register_a8c4ef3a31338b4e53153feeb94af16ec}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register} (volatile uint8\-\_\-t $\ast$data\-Dir, volatile uint8\-\_\-t $\ast$data\-Out, volatile uint8\-\_\-t $\ast$data\-In, uint8\-\_\-t data\-Pin, int8\-\_\-t data\-Pinchange\-Interrupt, volatile uint8\-\_\-t $\ast$enable\-Dir, volatile uint8\-\_\-t $\ast$enable\-Out, volatile uint8\-\_\-t $\ast$enable\-In, uint8\-\_\-t enable\-Pin, int8\-\_\-t enable\-Pinchange\-Interrupt, volatile uint8\-\_\-t $\ast$clock\-Dir, volatile uint8\-\_\-t $\ast$clock\-Out, volatile uint8\-\_\-t $\ast$clock\-In, uint8\-\_\-t clock\-Pin, int8\-\_\-t clock\-Pinchange\-Interrupt, uint8\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers)
+\hyperlink{class_m_h_v___display___h_d44780___shift___register_a6affa0526013aa4ef9229bf4d324fd8d}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock), uint8\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers)
 \item 
 void \hyperlink{class_m_h_v___display___h_d44780___shift___register_acb15d889b37de1be9f0f0b45dd5308d7}{init} (bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
 \end{DoxyCompactItemize}
@@ -57,32 +57,20 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___shift___register_a166
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___display___h_d44780___shift___register_a8c4ef3a31338b4e53153feeb94af16ec}{
+\hypertarget{class_m_h_v___display___h_d44780___shift___register_a6affa0526013aa4ef9229bf4d324fd8d}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!MHV_Display_HD44780_Shift_Register@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
 \subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register (
 \begin{DoxyParamCaption}
-\item[{volatile uint8\-\_\-t $\ast$}]{data\-Dir, }
-\item[{volatile uint8\-\_\-t $\ast$}]{data\-Out, }
-\item[{volatile uint8\-\_\-t $\ast$}]{data\-In, }
-\item[{uint8\-\_\-t}]{data\-Pin, }
-\item[{int8\-\_\-t}]{data\-Pinchange\-Interrupt, }
-\item[{volatile uint8\-\_\-t $\ast$}]{enable\-Dir, }
-\item[{volatile uint8\-\_\-t $\ast$}]{enable\-Out, }
-\item[{volatile uint8\-\_\-t $\ast$}]{enable\-In, }
-\item[{uint8\-\_\-t}]{enable\-Pin, }
-\item[{int8\-\_\-t}]{enable\-Pinchange\-Interrupt, }
-\item[{volatile uint8\-\_\-t $\ast$}]{clock\-Dir, }
-\item[{volatile uint8\-\_\-t $\ast$}]{clock\-Out, }
-\item[{volatile uint8\-\_\-t $\ast$}]{clock\-In, }
-\item[{uint8\-\_\-t}]{clock\-Pin, }
-\item[{int8\-\_\-t}]{clock\-Pinchange\-Interrupt, }
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data)}]{, }
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable)}]{, }
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock)}]{, }
 \item[{uint8\-\_\-t}]{col\-Count, }
 \item[{uint16\-\_\-t}]{row\-Count, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers}
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffers}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___display___h_d44780___shift___register_a8c4ef3a31338b4e53153feeb94af16ec}
+\label{class_m_h_v___display___h_d44780___shift___register_a6affa0526013aa4ef9229bf4d324fd8d}
 \-A class for operating \-H\-D44780 based \-L\-C\-D displays via a shift register such as a 74\-H\-C164
 
 

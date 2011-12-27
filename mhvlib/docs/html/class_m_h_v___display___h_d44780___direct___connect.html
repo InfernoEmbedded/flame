@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -120,8 +120,8 @@ Inheritance diagram for MHV_Display_HD44780_Direct_Connect:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#aff6a1573f1a8645a063db20eb6e25d4b">MHV_Display_HD44780_Direct_Connect</a> (volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt, volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a79d76076ec6c495387f0d36bbeb7d2ab">MHV_Display_HD44780_Direct_Connect</a> (volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#aecd4894b4044fde51b75ef609904036f">MHV_Display_HD44780_Direct_Connect</a> (MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), MHV_DECLARE_PIN(visual), uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#aea26b842b0f5ed5e8568620354c4021e">MHV_Display_HD44780_Direct_Connect</a> (MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a11b8f4c551c0c622874b4242154d9d67">setBacklight</a> (uint8_t value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a5d890e072d56c818442b209b9d4851d8">setContrast</a> (uint8_t value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">tickPWM</a> ()</td></tr>
@@ -152,99 +152,27 @@ Protected Attributes</h2></td></tr>
 <div class="textblock">
 <p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00032">32</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aff6a1573f1a8645a063db20eb6e25d4b"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect" ref="aff6a1573f1a8645a063db20eb6e25d4b" args="(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt, volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers)" -->
+<a class="anchor" id="aecd4894b4044fde51b75ef609904036f"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect" ref="aecd4894b4044fde51b75ef609904036f" args="(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), MHV_DECLARE_PIN(visual), uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataDir</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(data)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataOut</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(control)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dataPinchangeInterrupt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>controlPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>controlPinchangeInterrupt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>visualDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>visualOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>visualIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>visualPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>visualPinchangeInterrupt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(visual)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -261,7 +189,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffers</em>&#160;</td>
         </tr>
         <tr>
@@ -277,21 +205,9 @@ Protected Attributes</h2></td></tr>
 <p>Visual port layout: n Contrast (V0) n+1 LED Positive</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dataDir</td><td>A member of the MHV_PIN_* macro pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit) </td></tr>
-    <tr><td class="paramname">dataOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataPin</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataPinchangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlDir</td><td>A member of the MHV_PIN_* macro pin declaration for the first bit of the control port (will use 3 bits) </td></tr>
-    <tr><td class="paramname">controlOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlPin</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlPinchangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">visualDir</td><td>A member of the MHV_PIN_* macro pin declaration for the first bit of the visual port (will use 2 bits) </td></tr>
-    <tr><td class="paramname">visualOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">visualIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">visualPin</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">visualPinchangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">data</td><td>pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit) </td></tr>
+    <tr><td class="paramname">control</td><td>pin declaration for the first bit of the control port (will use 3 bits) </td></tr>
+    <tr><td class="paramname">visual</td><td>pin declaration for the first bit of the visual port (will use 2 bits) </td></tr>
     <tr><td class="paramname">colCount</td><td>the number of columns on the display </td></tr>
     <tr><td class="paramname">rowCount</td><td>the number of rows on the display </td></tr>
     <tr><td class="paramname">txBuffers</td><td>buffers for async writing </td></tr>
@@ -299,73 +215,25 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00089">89</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00077">77</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a79d76076ec6c495387f0d36bbeb7d2ab"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect" ref="a79d76076ec6c495387f0d36bbeb7d2ab" args="(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers)" -->
+<a class="anchor" id="aea26b842b0f5ed5e8568620354c4021e"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect" ref="aea26b842b0f5ed5e8568620354c4021e" args="(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataDir</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(data)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dataPinchangeInterrupt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>controlIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>controlPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>controlPinchangeInterrupt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(control)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -382,7 +250,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffers</em>&#160;</td>
         </tr>
         <tr>
@@ -396,16 +264,8 @@ Protected Attributes</h2></td></tr>
 <p>An alternate constructor without visual pins - if this constructor is used, tickPWM behaviour is undefined and will like overwrite random bits of memory, so don't call it</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dataDir</td><td>A member of the MHV_PIN_* macro pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit) </td></tr>
-    <tr><td class="paramname">dataOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataPin</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">dataPinchangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlDir</td><td>A member of the MHV_PIN_* macro pin declaration for the first bit of the control port (will use 3 bits) </td></tr>
-    <tr><td class="paramname">controlOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlPin</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">controlPinchangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">data</td><td>pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit) </td></tr>
+    <tr><td class="paramname">control</td><td>pin declaration for the first bit of the control port (will use 3 bits) </td></tr>
     <tr><td class="paramname">colCount</td><td>the number of columns on the display </td></tr>
     <tr><td class="paramname">rowCount</td><td>the number of rows on the display </td></tr>
     <tr><td class="paramname">txBuffers</td><td>buffers for async writing </td></tr>
@@ -413,7 +273,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00139">139</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00119">119</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -436,7 +296,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___h_d44780.html#a8a6017accb4910deb470ce2d1a5b5fc5">MHV_Display_HD44780</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00299">299</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00279">279</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -501,7 +361,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00312">312</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00292">292</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -523,7 +383,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___h_d44780.html#a667d9f8ca08b3021fea77a47cf6c1965">MHV_Display_HD44780</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00234">234</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00214">214</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -551,7 +411,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___h_d44780.html#a5f35b3083cca3fb405b4f56a631cbc63">MHV_Display_HD44780</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00200">200</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00180">180</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -577,7 +437,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00212">212</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00192">192</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -603,7 +463,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00255">255</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00235">235</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -629,7 +489,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00266">266</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00246">246</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -648,7 +508,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Tick the display for PWM - this should be called every 500 microseconds </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00278">278</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00258">258</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -687,7 +547,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___h_d44780.html#ad1691510b6d35301e4182edcf11d81db">MHV_Display_HD44780</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00167">167</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00147">147</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -724,7 +584,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00179">179</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00159">159</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -918,7 +778,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:58 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:38 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

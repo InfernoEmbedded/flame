@@ -47,10 +47,10 @@ public:
 
 class MHV_Device_RX {
 protected:
-	MHV_RingBuffer		*_rxBuffer;
+	MHV_RingBuffer		&_rxBuffer;
 	MHV_RXListener		*_listener;
 
-	MHV_Device_RX(MHV_RingBuffer *rxBuffer);
+	MHV_Device_RX(MHV_RingBuffer &rxBuffer);
 
 public:
 	int asyncReadLine(char *buffer, uint8_t bufferLength);
@@ -58,7 +58,7 @@ public:
 	int read();
 	void flush();
 	bool ready();
-	void registerListener(MHV_RXListener *listener);
+	void registerListener(MHV_RXListener &listener);
 	void deregisterListener();
 
 	void handleEvents();

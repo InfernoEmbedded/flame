@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -118,31 +118,31 @@ Inheritance diagram for MHV_VusbConsole:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a2ad2bc9f11e009fd7f653b998e732524">MHV_VusbConsole</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffer, <a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> *rtc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a686f9fdcdf6884351996e9adc1fa6114">alarm</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> *alarm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a1731128afca55ab0450da54b7d2568a6">MHV_VusbConsole</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer, <a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;rtc)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#acf757e9707869b60a308425f794a9dd0">alarm</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;alarm)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">runTxBuffers</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a185c110b91f513e6588534b0e8a0a221">_rtc</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="_m_h_v___vusb_console_8h_source.html#l00025">25</a> of file <a class="el" href="_m_h_v___vusb_console_8h_source.html">MHV_VusbConsole.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2ad2bc9f11e009fd7f653b998e732524"></a><!-- doxytag: member="MHV_VusbConsole::MHV_VusbConsole" ref="a2ad2bc9f11e009fd7f653b998e732524" args="(MHV_RingBuffer *txBuffer, MHV_RTC *rtc)" -->
+<a class="anchor" id="a1731128afca55ab0450da54b7d2568a6"></a><!-- doxytag: member="MHV_VusbConsole::MHV_VusbConsole" ref="a1731128afca55ab0450da54b7d2568a6" args="(MHV_RingBuffer &amp;txBuffer, MHV_RTC &amp;rtc)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_VusbConsole::MHV_VusbConsole </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;&#160;</td>
           <td class="paramname"><em>rtc</em>&#160;</td>
         </tr>
         <tr>
@@ -153,7 +153,8 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Provide a V-USB console using V-USB Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h) Uses pins B0/B2 for ATtiny25/45/85 </p>
+<p>Provide a V-USB console using V-USB Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h) Uses pins B0/B2 for ATtiny25/45/85</p>
+<p>To view the output of the console on your computer, use HID Listen, available from: <a href="http://www.pjrc.com/teensy/hid_listen.html">http://www.pjrc.com/teensy/hid_listen.html</a></p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">txBuffer</td><td>a ringbuffer to store data in </td></tr>
@@ -162,19 +163,19 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00144">144</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00148">148</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a686f9fdcdf6884351996e9adc1fa6114"></a><!-- doxytag: member="MHV_VusbConsole::alarm" ref="a686f9fdcdf6884351996e9adc1fa6114" args="(MHV_ALARM *alarm)" -->
+<a class="anchor" id="acf757e9707869b60a308425f794a9dd0"></a><!-- doxytag: member="MHV_VusbConsole::alarm" ref="acf757e9707869b60a308425f794a9dd0" args="(const MHV_ALARM &amp;alarm)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_VusbConsole::alarm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;&#160;</td>
           <td class="paramname"><em>alarm</em></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
@@ -189,9 +190,9 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_m_h_v___alarm_listener.html#ae2b93b59b59e39ba0f80d4e8690cfaea">MHV_AlarmListener</a>.</p>
+<p>Implements <a class="el" href="class_m_h_v___alarm_listener.html#a59516fb8f83aa8b1e7b3d566ad19528b">MHV_AlarmListener</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00183">183</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00186">186</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
 
 </div>
 </div>
@@ -212,17 +213,17 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">MHV_Device_TX</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00212">212</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_console_8cpp_source.html#l00215">215</a> of file <a class="el" href="_m_h_v___vusb_console_8cpp_source.html">MHV_VusbConsole.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
-<a class="anchor" id="a185c110b91f513e6588534b0e8a0a221"></a><!-- doxytag: member="MHV_VusbConsole::_rtc" ref="a185c110b91f513e6588534b0e8a0a221" args="" -->
+<a class="anchor" id="a0ccd1ee48d53ee1871f8d1d1ba068825"></a><!-- doxytag: member="MHV_VusbConsole::_rtc" ref="a0ccd1ee48d53ee1871f8d1d1ba068825" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a>* <a class="el" href="class_m_h_v___vusb_console.html#a185c110b91f513e6588534b0e8a0a221">MHV_VusbConsole::_rtc</a><code> [protected]</code></td>
+          <td class="memname"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a>&amp; <a class="el" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">MHV_VusbConsole::_rtc</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -256,7 +257,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:59:01 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:41 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

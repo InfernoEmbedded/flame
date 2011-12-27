@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Defines</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -112,6 +113,9 @@ Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structmhv__alarm.html">mhv_alarm</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8h.html#a9c45316f7976573eaca9e13a2e098cbe">MHV_RTC_CREATE</a>(_mhvObjectName, _mhvEventCount, _mhvTimezone)</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structmhv__timestamp.html">mhv_timestamp</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a></td></tr>
@@ -158,6 +162,53 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8h.html#a07bec3ce9065e29b79b661680d3d830a">mhv_timestampLessThan</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *first, <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *second)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8h.html#abd7e3066894c2ec91b7552f992cdaebd">mhv_daysInMonth</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a> month, uint16_t year)</td></tr>
 </table>
+<hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a9c45316f7976573eaca9e13a2e098cbe"></a><!-- doxytag: member="MHV_RTC.h::MHV_RTC_CREATE" ref="a9c45316f7976573eaca9e13a2e098cbe" args="(_mhvObjectName, _mhvEventCount, _mhvTimezone)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_RTC_CREATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvObjectName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvEventCount, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvTimezone&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><a class="code" href="structmhv__alarm.html">MHV_ALARM</a> _mhvObjectName ## Alarms[_mhvEventCount]; \
+                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount,_mhvTimezone);
+</pre></div><p>Create a new RTC </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mhvObjectName</td><td>the name of the RTC to create </td></tr>
+    <tr><td class="paramname">_mhvEventCount</td><td>the number of events </td></tr>
+    <tr><td class="paramname">_mhvTimezone</td><td>the timezone </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00108">108</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="af13307658f41fba330ffae04dd5cbce6"></a><!-- doxytag: member="MHV_RTC.h::MHV_ALARM" ref="af13307658f41fba330ffae04dd5cbce6" args="" -->
 <div class="memitem">
@@ -549,7 +600,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

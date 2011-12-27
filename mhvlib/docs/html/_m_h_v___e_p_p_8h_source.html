@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -152,24 +152,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00057"></a>00057 
 <a name="l00058"></a>00058 <span class="keyword">public</span>:
 <a name="l00059"></a>00059         MHV_EPP(MHV_EPP_MODE mode,
-<a name="l00060"></a>00060                         <span class="keyword">volatile</span> uint8_t *dataDir, <span class="keyword">volatile</span> uint8_t *dataInput, <span class="keyword">volatile</span> uint8_t *dataOutput,
-<a name="l00061"></a>00061                         uint8_t dataBit, uint8_t dataPcInt,
-<a name="l00062"></a>00062                         <span class="keyword">volatile</span> uint8_t *controlDir, <span class="keyword">volatile</span> uint8_t *controlInput, <span class="keyword">volatile</span> uint8_t *controlOutput,
-<a name="l00063"></a>00063                         uint8_t controlBit, uint8_t controlPcInt);
-<a name="l00064"></a>00064         <span class="keywordtype">void</span> interruptReset();
-<a name="l00065"></a>00065         <span class="keywordtype">void</span> interruptStrobe(<span class="keywordtype">bool</span> address);
-<a name="l00066"></a>00066         <span class="keywordtype">void</span> releaseStrobe(<span class="keywordtype">bool</span> address);
-<a name="l00067"></a>00067         <span class="keywordtype">void</span> poll();
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="keyword">protected</span>:
-<a name="l00070"></a>00070         <span class="comment">// Subclasses must implement these</span>
-<a name="l00071"></a>00071         <span class="keyword">virtual</span> <span class="keywordtype">void</span> _reset()=0;
-<a name="l00072"></a>00072         <span class="keyword">virtual</span> uint8_t _read(<span class="keywordtype">bool</span> address)=0;
-<a name="l00073"></a>00073         <span class="keyword">virtual</span> <span class="keywordtype">void</span> _write(<span class="keywordtype">bool</span> address, uint8_t data)=0;
-<a name="l00074"></a>00074 };
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076 <span class="preprocessor">#endif </span><span class="comment">/* MHV_EPP_H_ */</span>
-<a name="l00077"></a>00077 <span class="preprocessor">#endif</span>
+<a name="l00060"></a>00060                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(data),
+<a name="l00061"></a>00061                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(control));
+<a name="l00062"></a>00062         <span class="keywordtype">void</span> interruptReset();
+<a name="l00063"></a>00063         <span class="keywordtype">void</span> interruptStrobe(<span class="keywordtype">bool</span> address);
+<a name="l00064"></a>00064         <span class="keywordtype">void</span> releaseStrobe(<span class="keywordtype">bool</span> address);
+<a name="l00065"></a>00065         <span class="keywordtype">void</span> poll();
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067 <span class="keyword">protected</span>:
+<a name="l00068"></a>00068         <span class="comment">// Subclasses must implement these</span>
+<a name="l00069"></a>00069         <span class="keyword">virtual</span> <span class="keywordtype">void</span> _reset()=0;
+<a name="l00070"></a>00070         <span class="keyword">virtual</span> uint8_t _read(<span class="keywordtype">bool</span> address)=0;
+<a name="l00071"></a>00071         <span class="keyword">virtual</span> <span class="keywordtype">void</span> _write(<span class="keywordtype">bool</span> address, uint8_t data)=0;
+<a name="l00072"></a>00072 };
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074 <span class="preprocessor">#endif </span><span class="comment">/* MHV_EPP_H_ */</span>
+<a name="l00075"></a>00075 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -190,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -29,16 +29,22 @@ var NAVTREE =
       [ "MHV_PinChangeManager", "class_m_h_v___pin_change_manager.html", null ],
       [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", null ],
       [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
+      [ "mhv_rgb", "structmhv__rgb.html", null ],
       [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
       [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
       [ "MHV_RXListener", "class_m_h_v___r_x_listener.html", null ],
+      [ "MHV_Shifter", "class_m_h_v___shifter.html", null ],
+      [ "MHV_StepperListener", "class_m_h_v___stepper_listener.html", null ],
+      [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", null ],
+      [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ],
       [ "mhv_time", "structmhv__time.html", null ],
       [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
       [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
       [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
       [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", null ],
-      [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
+      [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ],
+      [ "MHV_WS2801", "class_m_h_v___w_s2801.html", null ]
     ] ],
     [ "Class Index", "classes.html", null ],
     [ "Class Hierarchy", "hierarchy.html", [
@@ -46,6 +52,9 @@ var NAVTREE =
       [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
       [ "mhv_alarm", "structmhv__alarm.html", null ],
       [ "MHV_AlarmListener", "class_m_h_v___alarm_listener.html", [
+        [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", [
+          [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ]
+        ] ],
         [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
         [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", [
           [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
@@ -84,13 +93,17 @@ var NAVTREE =
       [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", [
         [ "MHV_Debounce", "class_m_h_v___debounce.html", null ]
       ] ],
+      [ "mhv_rgb", "structmhv__rgb.html", null ],
       [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
       [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
       [ "MHV_RXListener", "class_m_h_v___r_x_listener.html", null ],
+      [ "MHV_Shifter", "class_m_h_v___shifter.html", null ],
+      [ "MHV_StepperListener", "class_m_h_v___stepper_listener.html", null ],
       [ "mhv_time", "structmhv__time.html", null ],
       [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
-      [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ]
+      [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
+      [ "MHV_WS2801", "class_m_h_v___w_s2801.html", null ]
     ] ],
     [ "Class Members", "functions.html", null ],
     [ "File List", "files.html", [
@@ -149,6 +162,8 @@ var NAVTREE =
       [ "A:/eclipse/mhvlib/MHV_PinChangeManager.h", "_m_h_v___pin_change_manager_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_PWMMatrix.cpp", "_m_h_v___p_w_m_matrix_8cpp.html", null ],
       [ "A:/eclipse/mhvlib/MHV_PWMMatrix.h", "_m_h_v___p_w_m_matrix_8h.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_RGB.cpp", "_m_h_v___r_g_b_8cpp.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_RGB.h", "_m_h_v___r_g_b_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_RingBuffer.cpp", "_m_h_v___ring_buffer_8cpp.html", null ],
       [ "A:/eclipse/mhvlib/MHV_RingBuffer.h", "_m_h_v___ring_buffer_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_RTC.cpp", "_m_h_v___r_t_c_8cpp.html", null ],
@@ -159,12 +174,18 @@ var NAVTREE =
       [ "A:/eclipse/mhvlib/MHV_Shifter.h", "_m_h_v___shifter_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_SoftwareHBridge.cpp", "_m_h_v___software_h_bridge_8cpp.html", null ],
       [ "A:/eclipse/mhvlib/MHV_SoftwareHBridge.h", "_m_h_v___software_h_bridge_8h.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_StepperMotor.cpp", "_m_h_v___stepper_motor_8cpp.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_StepperMotor.h", "_m_h_v___stepper_motor_8h.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_StepperMotorUnipolar.cpp", "_m_h_v___stepper_motor_unipolar_8cpp.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_StepperMotorUnipolar.h", "_m_h_v___stepper_motor_unipolar_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_Timer16.cpp", "_m_h_v___timer16_8cpp.html", null ],
       [ "A:/eclipse/mhvlib/MHV_Timer16.h", "_m_h_v___timer16_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_Timer8.cpp", "_m_h_v___timer8_8cpp.html", null ],
       [ "A:/eclipse/mhvlib/MHV_Timer8.h", "_m_h_v___timer8_8h.html", null ],
       [ "A:/eclipse/mhvlib/MHV_VoltageRegulator.cpp", "_m_h_v___voltage_regulator_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_VoltageRegulator.h", "_m_h_v___voltage_regulator_8h.html", null ]
+      [ "A:/eclipse/mhvlib/MHV_VoltageRegulator.h", "_m_h_v___voltage_regulator_8h.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_WS2801.cpp", "_m_h_v___w_s2801_8cpp.html", null ],
+      [ "A:/eclipse/mhvlib/MHV_WS2801.h", "_m_h_v___w_s2801_8h.html", null ]
     ] ],
     [ "File Members", "globals.html", null ]
   ] ]

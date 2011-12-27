@@ -30,6 +30,24 @@
 #include <inttypes.h>
 #include <MHV_Display_Monochrome_Buffered.h>
 
+/**
+ * Create a new PWM Matrix object
+ * @param	_mhvObjectName		the variable name of the object
+ * @param	_mhvRows			the number of rows
+ * @param	_mhvCols			the number of columns
+ * @param	_mhvTxElements		the number of elements to make available for async transmission
+ * @param	_mhvMatrixRowOn		function to call to turn a row on
+ * @param	_mhvMatrixRowOff	function to call to turn a row off
+ * @param	_mhvMatrixColOn		function to call to turn a row on
+ * @param	_mhvMatrixColOff	function to call to turn a row off
+ */
+#define MHV_PWMMATRIX_CREATE(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, \
+		_mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff) \
+	uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
+	MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
+	MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## FrameBuffer, _mhvObjectName ## TX, \
+			_mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff);
+
 enum MHV_PWMMatrix_Mode {
 	MHV_PWMMATRIX_MODE_AUTO,
 	MHV_PWMMATRIX_MODE_ROWS,
@@ -54,7 +72,7 @@ private:
 	void tickPixel();
 
 public:
-	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers,
+	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &txBuffers,
 		void (*rowOn)(uint16_t row),
 		void (*rowOff)(uint16_t row),
 		void (*colOn)(uint16_t column),

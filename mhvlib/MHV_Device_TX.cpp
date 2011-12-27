@@ -38,9 +38,8 @@
  * Constructor
  * @param	txPointers	A ringbuffer to store tx pointers in
  */
-MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer *txPointers) {
-	_txPointers = txPointers;
-
+MHV_Device_TX::MHV_Device_TX(MHV_RingBuffer &txPointers) :
+		_txPointers(txPointers){
 	_currentTx.data = NULL;
 	_currentTx.length = 0;
 	_currentTx.completeFunction = NULL;
@@ -58,7 +57,7 @@ bool MHV_Device_TX::moreTX() {
 		_currentTx.completeFunction(_currentTx.data);
 	}
 
-	if (_txPointers->consume(&_currentTx, sizeof(_currentTx))) {
+	if (_txPointers.consume(&_currentTx, sizeof(_currentTx))) {
 		_tx = NULL;
 		return false;
 	}
@@ -71,7 +70,7 @@ bool MHV_Device_TX::moreTX() {
 /* Can we accept another buffer?
  */
 bool MHV_Device_TX::canWrite() {
-	return !(_txPointers->full(sizeof(MHV_TX_BUFFER)));
+	return !(_txPointers.full(sizeof(MHV_TX_BUFFER)));
 }
 
 /**
@@ -117,7 +116,7 @@ int MHV_Device_TX::nextCharacter() {
 bool MHV_Device_TX::write_P(PGM_P buffer) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -127,7 +126,7 @@ bool MHV_Device_TX::write_P(PGM_P buffer) {
 	buf.progmem = true;
 	buf.isString = true;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}
@@ -144,7 +143,7 @@ bool MHV_Device_TX::write_P(PGM_P buffer) {
 bool MHV_Device_TX::write(const char *buffer) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -154,7 +153,7 @@ bool MHV_Device_TX::write(const char *buffer) {
 	buf.progmem = false;
 	buf.isString = true;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}
@@ -172,7 +171,7 @@ bool MHV_Device_TX::write(const char *buffer) {
 bool MHV_Device_TX::write(const char *buffer, void (*completeFunction)(const char *)) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -182,7 +181,7 @@ bool MHV_Device_TX::write(const char *buffer, void (*completeFunction)(const cha
 	buf.progmem = false;
 	buf.isString = true;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}
@@ -200,7 +199,7 @@ bool MHV_Device_TX::write(const char *buffer, void (*completeFunction)(const cha
 bool MHV_Device_TX::write_P(PGM_P buffer, uint16_t length) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -210,7 +209,7 @@ bool MHV_Device_TX::write_P(PGM_P buffer, uint16_t length) {
 	buf.progmem = true;
 	buf.isString = false;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}
@@ -228,7 +227,7 @@ bool MHV_Device_TX::write_P(PGM_P buffer, uint16_t length) {
 bool MHV_Device_TX::write(const char *buffer, uint16_t length) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -238,7 +237,7 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length) {
 	buf.progmem = false;
 	buf.isString = false;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}
@@ -257,7 +256,7 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length) {
 bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) {
 	MHV_TX_BUFFER buf;
 
-	if (_txPointers->full(sizeof(buf))) {
+	if (_txPointers.full(sizeof(buf))) {
 		return true;
 	}
 
@@ -267,7 +266,7 @@ bool MHV_Device_TX::write(const char *buffer, uint16_t length, void (*completeFu
 	buf.progmem = false;
 	buf.isString = false;
 
-	_txPointers->append(&buf, sizeof(buf));
+	_txPointers.append(&buf, sizeof(buf));
 	if (!_tx) {
 		runTxBuffers();
 	}

@@ -67,30 +67,18 @@
  * n	Contrast (V0)
  * n+1	LED Positive
  *
- * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
- * @param	dataOut						A member of the MHV_PIN_* macro
- * @param	dataIn						A member of the MHV_PIN_* macro
- * @param	dataPin						A member of the MHV_PIN_* macro
- * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
- * @param	controlDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the control port (will use 3 bits)
- * @param	controlOut					A member of the MHV_PIN_* macro
- * @param	controlIn					A member of the MHV_PIN_* macro
- * @param	controlPin					A member of the MHV_PIN_* macro
- * @param	controlPinchangeInterrupt	A member of the MHV_PIN_* macro
- * @param	visualDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the visual port (will use 2 bits)
- * @param	visualOut					A member of the MHV_PIN_* macro
- * @param	visualIn					A member of the MHV_PIN_* macro
- * @param	visualPin					A member of the MHV_PIN_* macro
- * @param	visualPinchangeInterrupt	A member of the MHV_PIN_* macro
- * @param	colCount					the number of columns on the display
- * @param	rowCount					the number of rows on the display
- * @param	txBuffers					buffers for async writing
+ * @param	data			pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
+ * @param	control			pin declaration for the first bit of the control port (will use 3 bits)
+ * @param	visual			pin declaration for the first bit of the visual port (will use 2 bits)
+ * @param	colCount		the number of columns on the display
+ * @param	rowCount		the number of rows on the display
+ * @param	txBuffers		buffers for async writing
  */
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
-		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-		volatile uint8_t *visualDir, volatile uint8_t *visualOut, volatile uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt,
-		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
+		MHV_DECLARE_PIN(data),
+		MHV_DECLARE_PIN(control),
+		MHV_DECLARE_PIN(visual),
+		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers) :
 		MHV_Display_HD44780(colCount, rowCount, txBuffers) {
 	_dataDir = dataDir;
 	_dataOut = dataOut;
@@ -122,24 +110,16 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
  * An alternate constructor without visual pins - if this constructor is used, tickPWM behaviour is
  * undefined and will like overwrite random bits of memory, so don't call it
  *
- * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
- * @param	dataOut						A member of the MHV_PIN_* macro
- * @param	dataIn						A member of the MHV_PIN_* macro
- * @param	dataPin						A member of the MHV_PIN_* macro
- * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
- * @param	controlDir					A member of the MHV_PIN_* macro   pin declaration for the first bit of the control port (will use 3 bits)
- * @param	controlOut					A member of the MHV_PIN_* macro
- * @param	controlIn					A member of the MHV_PIN_* macro
- * @param	controlPin					A member of the MHV_PIN_* macro
- * @param	controlPinchangeInterrupt	A member of the MHV_PIN_* macro
- * @param	colCount					the number of columns on the display
- * @param	rowCount					the number of rows on the display
- * @param	txBuffers					buffers for async writing
+ * @param	data			pin declaration for the first bit of the data port DB4..DB7 (will use a nibble starting at this bit)
+ * @param	control			pin declaration for the first bit of the control port (will use 3 bits)
+ * @param	colCount		the number of columns on the display
+ * @param	rowCount		the number of rows on the display
+ * @param	txBuffers		buffers for async writing
  */
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
-		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *controlDir, volatile uint8_t *controlOut, volatile uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
+		MHV_DECLARE_PIN(data),
+		MHV_DECLARE_PIN(control),
+		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers) :
 		MHV_Display_HD44780(colCount, rowCount, txBuffers) {
 	_dataDir = dataDir;
 	_dataOut = dataOut;

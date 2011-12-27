@@ -38,8 +38,8 @@
  * Constructor
  * @param	rxBuffer	a buffer to read into
  */
-MHV_Device_RX::MHV_Device_RX(MHV_RingBuffer *rxBuffer) {
-	_rxBuffer = rxBuffer;
+MHV_Device_RX::MHV_Device_RX(MHV_RingBuffer &rxBuffer) :
+		_rxBuffer(rxBuffer) {
 	_listener = NULL;
 }
 
@@ -52,9 +52,9 @@ MHV_Device_RX::MHV_Device_RX(MHV_RingBuffer *rxBuffer) {
  */
 int MHV_Device_RX::asyncReadLine(char *buffer, uint8_t bufferLength) {
 	// Peek at the last character & see if its a newline
-	int last = _rxBuffer->peekHead();
+	int last = _rxBuffer.peekHead();
 
-	bool isFull = _rxBuffer->full();
+	bool isFull = _rxBuffer.full();
 	if (!isFull) {
 		if ('\r' != last && '\n' != last) {
 			return -1;
@@ -63,7 +63,7 @@ int MHV_Device_RX::asyncReadLine(char *buffer, uint8_t bufferLength) {
 
 	uint8_t i = 0;
 	int byte;
-	while (-1 != (byte = _rxBuffer->consume())) {
+	while (-1 != (byte = _rxBuffer.consume())) {
 		if (i == bufferLength - 1) {
 			buffer[i] = '\0';
 			return -2;
@@ -99,14 +99,14 @@ int MHV_Device_RX::busyReadLine(char *buffer, uint8_t bufferLength) {
  * @return the byte, or -1 if there is nothing to read
  */
 int MHV_Device_RX::read(void) {
-	return _rxBuffer->consume();
+	return _rxBuffer.consume();
 }
 
 /**
  * Discard remaining data in the receive buffer
  */
 void MHV_Device_RX::flush() {
-	_rxBuffer->flush();
+	_rxBuffer.flush();
 }
 
 /**
@@ -114,12 +114,12 @@ void MHV_Device_RX::flush() {
  * @return true if either of the situations occurs
  */
 bool MHV_Device_RX::ready() {
-	if (_rxBuffer->full()) {
+	if (_rxBuffer.full()) {
 		return true;
 	}
 
 	// Peek at the last character & see if its a newline
-	int last = _rxBuffer->peekHead();
+	int last = _rxBuffer.peekHead();
 	if ('\r' == last || '\n' == last) {
 		return true;
 	}
@@ -131,8 +131,8 @@ bool MHV_Device_RX::ready() {
  * Register interest for lines/overflows from an RX device
  * @param	listener	an MHV_RXListener to notify that the device is ready
  */
-void MHV_Device_RX::registerListener(MHV_RXListener *listener) {
-	_listener = listener;
+void MHV_Device_RX::registerListener(MHV_RXListener &listener) {
+	_listener = &listener;
 }
 
 /**

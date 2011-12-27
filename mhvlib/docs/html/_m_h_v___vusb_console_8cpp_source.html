@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -127,7 +127,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a><a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">00029</a> <span class="preprocessor">#define MAX_TX_SIZE             8</span>
 <a name="l00030"></a>00030 <span class="preprocessor"></span>
 <a name="l00031"></a>00031 <span class="comment">// Taken from usb_debug_only.c:</span>
-<a name="l00032"></a><a class="code" href="_m_h_v___vusb_console_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">00032</a> <a class="code" href="_m_h_v___gamma_correct_8cpp.html#a1becc72891d2ea00eb6bff5928e283c4">PROGMEM</a> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_console_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">usbHidReportDescriptor</a>[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { <span class="comment">/* USB report descriptor */</span>
+<a name="l00032"></a><a class="code" href="_m_h_v___vusb_console_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">00032</a> <a class="code" href="_m_h_v___gamma_correct_8h.html#a1becc72891d2ea00eb6bff5928e283c4">PROGMEM</a> <span class="keyword">const</span> <span class="keywordtype">char</span> <a class="code" href="_m_h_v___vusb_console_8cpp.html#a15aa13fbfaa191fad8a6908bf8ad25a0">usbHidReportDescriptor</a>[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { <span class="comment">/* USB report descriptor */</span>
 <a name="l00033"></a>00033                 0x06, 0x31, 0xFF,               <span class="comment">// Usage Page 0xFF31 (vendor defined)</span>
 <a name="l00034"></a>00034                 0x09, 0x74,                             <span class="comment">// Usage 0x74</span>
 <a name="l00035"></a>00035                 0xA1, 0x53,                             <span class="comment">// Collection 0x53</span>
@@ -232,69 +232,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00134"></a>00134 }
 <a name="l00135"></a>00135 
 <a name="l00136"></a>00136 
-<a name="l00144"></a><a class="code" href="class_m_h_v___vusb_console.html#a2ad2bc9f11e009fd7f653b998e732524">00144</a> <a class="code" href="class_m_h_v___vusb_console.html#a2ad2bc9f11e009fd7f653b998e732524">MHV_VusbConsole::MHV_VusbConsole</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffer, <a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a> *rtc) : <a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a>(txBuffer) {
-<a name="l00145"></a>00145 
-<a name="l00146"></a>00146         <a class="code" href="class_m_h_v___vusb_console.html#a185c110b91f513e6588534b0e8a0a221">_rtc</a> = rtc;
-<a name="l00147"></a>00147 
-<a name="l00148"></a>00148 <span class="preprocessor">#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH</span>
-<a name="l00149"></a>00149 <span class="preprocessor"></span>        uchar calibrationValue;
-<a name="l00150"></a>00150 
-<a name="l00151"></a>00151         calibrationValue = eeprom_read_byte(<a class="code" href="_m_h_v___vusb_console_8cpp.html#a175a5031786130e9bdc09151854dac12">MHV_OSCCAL_EEPROM_ADDRESS</a>); <span class="comment">/* calibration value from last time */</span>
-<a name="l00152"></a>00152         <span class="keywordflow">if</span> (calibrationValue != 0xff) {
-<a name="l00153"></a>00153                 OSCCAL = calibrationValue;
-<a name="l00154"></a>00154         }
-<a name="l00155"></a>00155 <span class="preprocessor">#endif</span>
-<a name="l00156"></a>00156 <span class="preprocessor"></span>
-<a name="l00157"></a>00157         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#af993aeb5443128b44cf538670f01e3f4">mhv_make_pin</a>(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-<a name="l00158"></a>00158         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#af993aeb5443128b44cf538670f01e3f4">mhv_make_pin</a>(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160         usbDeviceDisconnect();
-<a name="l00161"></a>00161     <span class="keywordflow">for</span>(uint8_t i=0;i&lt;20;i++){  <span class="comment">/* 300 ms disconnect */</span>
-<a name="l00162"></a>00162         _delay_ms(15);
-<a name="l00163"></a>00163     }
-<a name="l00164"></a>00164         usbDeviceConnect();
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166         usbInit();
-<a name="l00167"></a>00167 
-<a name="l00168"></a>00168         <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> newAlarm;
-<a name="l00169"></a>00169 
-<a name="l00170"></a>00170         <a class="code" href="class_m_h_v___vusb_console.html#a185c110b91f513e6588534b0e8a0a221">_rtc</a>-&gt;<a class="code" href="class_m_h_v___r_t_c.html#aa4b7a93658ea4548520103f63d5897ec">current</a>(&amp;(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>));
-<a name="l00171"></a>00171         <a class="code" href="_m_h_v___r_t_c_8cpp.html#a520cf7e59854be56ee03002c13c88da5">mhv_timestampIncrement</a>(&amp;(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>), 0, 5);
-<a name="l00172"></a>00172         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 5;
-<a name="l00173"></a>00173         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
-<a name="l00174"></a>00174         newAlarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = <span class="keyword">this</span>;
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176         <a class="code" href="class_m_h_v___vusb_console.html#a185c110b91f513e6588534b0e8a0a221">_rtc</a>-&gt;<a class="code" href="class_m_h_v___r_t_c.html#a2d58b554a2ff0eb2cf9f7fccc29e5738">addAlarm</a>(&amp;newAlarm);
-<a name="l00177"></a>00177 }
+<a name="l00148"></a><a class="code" href="class_m_h_v___vusb_console.html#a1731128afca55ab0450da54b7d2568a6">00148</a> <a class="code" href="class_m_h_v___vusb_console.html#a1731128afca55ab0450da54b7d2568a6">MHV_VusbConsole::MHV_VusbConsole</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer, <a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;rtc) :
+<a name="l00149"></a>00149                                 <a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a>(txBuffer),
+<a name="l00150"></a>00150                                 _rtc(rtc) {
+<a name="l00151"></a>00151 <span class="preprocessor">#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH</span>
+<a name="l00152"></a>00152 <span class="preprocessor"></span>        uchar calibrationValue;
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154         calibrationValue = eeprom_read_byte(<a class="code" href="_m_h_v___vusb_console_8cpp.html#a175a5031786130e9bdc09151854dac12">MHV_OSCCAL_EEPROM_ADDRESS</a>); <span class="comment">/* calibration value from last time */</span>
+<a name="l00155"></a>00155         <span class="keywordflow">if</span> (calibrationValue != 0xff) {
+<a name="l00156"></a>00156                 OSCCAL = calibrationValue;
+<a name="l00157"></a>00157         }
+<a name="l00158"></a>00158 <span class="preprocessor">#endif</span>
+<a name="l00159"></a>00159 <span class="preprocessor"></span>
+<a name="l00160"></a>00160         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+<a name="l00161"></a>00161         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+<a name="l00162"></a>00162 
+<a name="l00163"></a>00163         usbDeviceDisconnect();
+<a name="l00164"></a>00164     <span class="keywordflow">for</span>(uint8_t i=0;i&lt;20;i++){  <span class="comment">/* 300 ms disconnect */</span>
+<a name="l00165"></a>00165         _delay_ms(15);
+<a name="l00166"></a>00166     }
+<a name="l00167"></a>00167         usbDeviceConnect();
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169         usbInit();
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171         <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> newAlarm;
+<a name="l00172"></a>00172 
+<a name="l00173"></a>00173         <a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>.<a class="code" href="class_m_h_v___r_t_c.html#aa4b7a93658ea4548520103f63d5897ec">current</a>(&amp;(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>));
+<a name="l00174"></a>00174         <a class="code" href="_m_h_v___r_t_c_8cpp.html#a520cf7e59854be56ee03002c13c88da5">mhv_timestampIncrement</a>(&amp;(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>), 0, 5);
+<a name="l00175"></a>00175         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 5;
+<a name="l00176"></a>00176         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
+<a name="l00177"></a>00177         newAlarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = <span class="keyword">this</span>;
 <a name="l00178"></a>00178 
-<a name="l00183"></a><a class="code" href="class_m_h_v___vusb_console.html#a686f9fdcdf6884351996e9adc1fa6114">00183</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a686f9fdcdf6884351996e9adc1fa6114">MHV_VusbConsole::alarm</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> *alarm) {
-<a name="l00184"></a>00184         usbPoll();
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186         <span class="keywordflow">if</span> (usbInterruptIsReady()) {
-<a name="l00187"></a>00187                 <span class="keywordtype">int</span> c;
-<a name="l00188"></a>00188                 <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[<a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>];
-<a name="l00189"></a>00189                 uint8_t bufSize;
-<a name="l00190"></a>00190 
-<a name="l00191"></a>00191                 <span class="keywordflow">for</span> (bufSize = 0; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
-<a name="l00192"></a>00192                         c = <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
-<a name="l00193"></a>00193                         <span class="keywordflow">if</span> (-1 == c) {
-<a name="l00194"></a>00194                                 <span class="keywordflow">break</span>;
-<a name="l00195"></a>00195                         }
-<a name="l00196"></a>00196                         buf[bufSize] = (<span class="keywordtype">unsigned</span> char)c;
-<a name="l00197"></a>00197                 }
-<a name="l00198"></a>00198 
-<a name="l00199"></a>00199                 <span class="keywordflow">if</span> (bufSize) {
-<a name="l00200"></a>00200                         <span class="keywordflow">for</span> (; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
-<a name="l00201"></a>00201                                 buf[bufSize] = <span class="charliteral">&#39;\0&#39;</span>;
-<a name="l00202"></a>00202                         }
-<a name="l00203"></a>00203                         usbSetInterrupt(buf, bufSize);
-<a name="l00204"></a>00204                 }
-<a name="l00205"></a>00205         }
-<a name="l00206"></a>00206 }
-<a name="l00207"></a>00207 
-<a name="l00212"></a><a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">00212</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole::runTxBuffers</a>() {
-<a name="l00213"></a>00213 }
-<a name="l00214"></a>00214 
+<a name="l00179"></a>00179         <a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>.<a class="code" href="class_m_h_v___r_t_c.html#a2d58b554a2ff0eb2cf9f7fccc29e5738">addAlarm</a>(&amp;newAlarm);
+<a name="l00180"></a>00180 }
+<a name="l00181"></a>00181 
+<a name="l00186"></a><a class="code" href="class_m_h_v___vusb_console.html#acf757e9707869b60a308425f794a9dd0">00186</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#acf757e9707869b60a308425f794a9dd0">MHV_VusbConsole::alarm</a>(<span class="keyword">const</span> <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm) {
+<a name="l00187"></a>00187         usbPoll();
+<a name="l00188"></a>00188 
+<a name="l00189"></a>00189         <span class="keywordflow">if</span> (usbInterruptIsReady()) {
+<a name="l00190"></a>00190                 <span class="keywordtype">int</span> c;
+<a name="l00191"></a>00191                 <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[<a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>];
+<a name="l00192"></a>00192                 uint8_t bufSize;
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194                 <span class="keywordflow">for</span> (bufSize = 0; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
+<a name="l00195"></a>00195                         c = <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
+<a name="l00196"></a>00196                         <span class="keywordflow">if</span> (-1 == c) {
+<a name="l00197"></a>00197                                 <span class="keywordflow">break</span>;
+<a name="l00198"></a>00198                         }
+<a name="l00199"></a>00199                         buf[bufSize] = (<span class="keywordtype">unsigned</span> char)c;
+<a name="l00200"></a>00200                 }
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202                 <span class="keywordflow">if</span> (bufSize) {
+<a name="l00203"></a>00203                         <span class="keywordflow">for</span> (; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
+<a name="l00204"></a>00204                                 buf[bufSize] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00205"></a>00205                         }
+<a name="l00206"></a>00206                         usbSetInterrupt(buf, bufSize);
+<a name="l00207"></a>00207                 }
+<a name="l00208"></a>00208         }
+<a name="l00209"></a>00209 }
+<a name="l00210"></a>00210 
+<a name="l00215"></a><a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">00215</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole::runTxBuffers</a>() {
+<a name="l00216"></a>00216 }
+<a name="l00217"></a>00217 
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -315,7 +314,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:52 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

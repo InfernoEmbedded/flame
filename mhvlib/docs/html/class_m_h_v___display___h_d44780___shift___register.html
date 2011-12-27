@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -120,7 +120,7 @@ Inheritance diagram for MHV_Display_HD44780_Shift_Register:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___shift___register.html#a8c4ef3a31338b4e53153feeb94af16ec">MHV_Display_HD44780_Shift_Register</a> (volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn, uint8_t enablePin, int8_t enablePinchangeInterrupt, volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn, uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___shift___register.html#a6affa0526013aa4ef9229bf4d324fd8d">MHV_Display_HD44780_Shift_Register</a> (MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(enable), MHV_DECLARE_PIN(clock), uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___shift___register.html#acb15d889b37de1be9f0f0b45dd5308d7">init</a> (bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink, bool left2right, bool scroll)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -142,99 +142,27 @@ Protected Attributes</h2></td></tr>
 <div class="textblock">
 <p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___shift___register_8h_source.html#l00032">32</a> of file <a class="el" href="_m_h_v___display___h_d44780___shift___register_8h_source.html">MHV_Display_HD44780_Shift_Register.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a8c4ef3a31338b4e53153feeb94af16ec"></a><!-- doxytag: member="MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register" ref="a8c4ef3a31338b4e53153feeb94af16ec" args="(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt, volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn, uint8_t enablePin, int8_t enablePinchangeInterrupt, volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn, uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers)" -->
+<a class="anchor" id="a6affa0526013aa4ef9229bf4d324fd8d"></a><!-- doxytag: member="MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register" ref="a6affa0526013aa4ef9229bf4d324fd8d" args="(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(enable), MHV_DECLARE_PIN(clock), uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataDir</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(data)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataOut</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(enable)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dataIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>dataPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>dataPinchangeInterrupt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>enableDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>enableOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>enableIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>enablePin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>enablePinchangeInterrupt</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>clockDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>clockOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>clockIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>clockPin</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>clockPinchangeInterrupt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(clock)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -251,7 +179,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffers</em>&#160;</td>
         </tr>
         <tr>
@@ -620,7 +548,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:58 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:38 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

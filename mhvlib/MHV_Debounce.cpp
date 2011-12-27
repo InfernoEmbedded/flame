@@ -37,10 +37,10 @@
  * @param	heldTime			the minimum amount of time to consider a button held down
  * @param	repeatTime			the time after which the held call repeats
  */
-MHV_Debounce::MHV_Debounce(MHV_PinChangeManager *pinChangeManager, MHV_RTC *rtc,
-		uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime) {
-	_pinChangeManager = pinChangeManager;
-	_rtc = rtc;
+MHV_Debounce::MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc,
+		uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime) :
+			_rtc(rtc),
+			_pinChangeManager(pinChangeManager) {
 	_debounceTime.timestamp = 0;
 	_debounceTime.milliseconds = debounceTime;
 
@@ -58,7 +58,7 @@ MHV_Debounce::MHV_Debounce(MHV_PinChangeManager *pinChangeManager, MHV_RTC *rtc,
 }
 
 void MHV_Debounce::initPin(uint8_t pinchangeInterrupt) {
-	mhv_memClear(_pins + pinchangeInterrupt, sizeof(*_pins), 1);
+	mhv_memClear(_pins + pinchangeInterrupt, MHV_BYTESIZEOF(*_pins), (uint8_t)1);
 }
 
 /**
@@ -73,15 +73,15 @@ void MHV_Debounce::checkHeld() {
 		if (pin->timestamp.timestamp && !pin->previous) {
 // Pin is currently held down
 			MHV_TIMESTAMP heldFor;
-			_rtc->elapsed(&(pin->timestamp), &heldFor);
+			_rtc.elapsed(&(pin->timestamp), &heldFor);
 
 			if (!pin->held && mhv_timestampGreaterThanOrEqual(&heldFor, &_heldTime)) {
 				pin->held = true;
 				pin->listener->heldDown(pin - _pins, &heldFor);
-				_rtc->current(&(pin->timestamp));
+				_rtc.current(&(pin->timestamp));
 			} else if (pin->held && mhv_timestampGreaterThanOrEqual(&heldFor, &_repeatTime)) {
 				pin->listener->heldDown(pin - _pins, &heldFor);
-				_rtc->current(&(pin->timestamp));
+				_rtc.current(&(pin->timestamp));
 			}
 		}
 	}
@@ -100,7 +100,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
 /* Call the singlePress function if the time is greater than the debounce time,
  * and the button has not been held down
  */
-		_rtc->elapsed(&(_pins[pcInt].timestamp), &heldFor);
+		_rtc.elapsed(&(_pins[pcInt].timestamp), &heldFor);
 		if (!_pins[pcInt].held && mhv_timestampGreaterThanOrEqual(&heldFor, &_debounceTime)) {
 			_pins[pcInt].listener->singlePress(pcInt, &heldFor);
 		}
@@ -109,7 +109,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
 		_pins[pcInt].timestamp.timestamp = 0;
 	} else {
 // Pin has been pressed
-		_rtc->current(&(_pins[pcInt].timestamp));
+		_rtc.current(&(_pins[pcInt].timestamp));
 	}
 }
 
@@ -124,19 +124,19 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
  * @param	listener				a class to call when the button is pressed or held down
  */
 void MHV_Debounce::assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t bit, int8_t pinchangeInterrupt, MHV_DebounceListener *listener) {
+		uint8_t bit, int8_t pinchangeInterrupt, MHV_DebounceListener &listener) {
 	_pins[pinchangeInterrupt].previous = *in & _BV(bit);
 	_pins[pinchangeInterrupt].timestamp.milliseconds = 0;
 	_pins[pinchangeInterrupt].timestamp.timestamp = 0;
-	_pins[pinchangeInterrupt].listener = listener;
+	_pins[pinchangeInterrupt].listener = &listener;
 	_pins[pinchangeInterrupt].held = false;
 
 	if (!_pins[pinchangeInterrupt].previous) {
 // Pin started off held down
-		_rtc->current(&(_pins[pinchangeInterrupt].timestamp));
+		_rtc.current(&(_pins[pinchangeInterrupt].timestamp));
 	}
 
-	_pinChangeManager->registerListener(dir, out, in, bit, pinchangeInterrupt, this);
+	_pinChangeManager.registerListener(dir, out, in, bit, pinchangeInterrupt, this);
 }
 
 /**

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -118,7 +118,7 @@ Inheritance diagram for MHV_HardwareSerial:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#ac1a95bdefa81bae650979c7053901133">MHV_HardwareSerial</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *rxBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffer, volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#ad9d87e6449c9c1d29912ca6218b11931">MHV_HardwareSerial</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;rxBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer, volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#af8d170e311447db775b308a3ba882b91">setSpeed</a> (unsigned long baud)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#a1cc98a306711c95770df293def48dd9b">end</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___hardware_serial.html#aa4c2fa65afae88e4d3854a35955705ee">busyWrite</a> (char c)</td></tr>
@@ -139,20 +139,20 @@ Protected Member Functions</h2></td></tr>
 <div class="textblock">
 <p>Definition at line <a class="el" href="_m_h_v___hardware_serial_8h_source.html#l00068">68</a> of file <a class="el" href="_m_h_v___hardware_serial_8h_source.html">MHV_HardwareSerial.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac1a95bdefa81bae650979c7053901133"></a><!-- doxytag: member="MHV_HardwareSerial::MHV_HardwareSerial" ref="ac1a95bdefa81bae650979c7053901133" args="(MHV_RingBuffer *rxBuffer, MHV_RingBuffer *txBuffer, volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud)" -->
+<a class="anchor" id="ad9d87e6449c9c1d29912ca6218b11931"></a><!-- doxytag: member="MHV_HardwareSerial::MHV_HardwareSerial" ref="ad9d87e6449c9c1d29912ca6218b11931" args="(MHV_RingBuffer &amp;rxBuffer, MHV_RingBuffer &amp;txBuffer, volatile uint16_t *ubrr, volatile uint8_t *ucsra, volatile uint8_t *ucsrb, volatile uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie, uint8_t txcie, uint8_t udre, uint8_t u2x, unsigned long baud)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_HardwareSerial::MHV_HardwareSerial </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>rxBuffer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffer</em>, </td>
         </tr>
         <tr>
@@ -601,7 +601,7 @@ Protected Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:59:00 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:39 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -79,14 +79,12 @@ class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome
 
   public:
     MHV_Display_Holtek_HT1632(
-    		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
-    			uint8_t dataPin, int8_t dataPinchangeInterrupt,
-    		volatile uint8_t *writeDir, volatile uint8_t *writeOut, volatile uint8_t *writeIn,
-				uint8_t writePin, int8_t writePinchangeInterrupt,
+			MHV_DECLARE_PIN(data),
+			MHV_DECLARE_PIN(write),
 			MHV_HT1632_MODE mode,
 			uint8_t arrayX, uint8_t arrayY,
 			void (*csCallback)(uint8_t x, uint8_t y, bool active),
-			uint8_t *frameBuffer, MHV_RingBuffer *txBuffers);
+			uint8_t *frameBuffer, MHV_RingBuffer &txBuffers);
     void brightness(uint8_t brightness);
     void poweroff();
     void poweron();

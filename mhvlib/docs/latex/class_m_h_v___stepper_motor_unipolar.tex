@@ -1,0 +1,89 @@
+\hypertarget{class_m_h_v___stepper_motor_unipolar}{
+\section{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar \-Class \-Reference}
+\label{class_m_h_v___stepper_motor_unipolar}\index{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_m_h_v___stepper_motor_unipolar}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___stepper_motor_unipolar_ae2a28f4c01aeb049426bbd0b8eeee5be}{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar} (\hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} \&rtc, \hyperlink{_m_h_v___stepper_motor_unipolar_8h_a8983820d139e34ae75009f48ec2e6b83}{\-M\-H\-V\-\_\-\-S\-T\-E\-P\-P\-E\-R\-\_\-\-M\-O\-D\-E} mode, \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(phase\-A))
+\item 
+virtual void \hyperlink{class_m_h_v___stepper_motor_unipolar_a11b7cc8dc9782b73ae93c70354158076}{step} (bool forwards)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___stepper_motor_unipolar_ae2a28f4c01aeb049426bbd0b8eeee5be}{
+\index{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}!\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}}
+\index{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}!MHV_StepperMotorUnipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar\-::\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-T\-C} \&}]{rtc, }
+\item[{{\bf \-M\-H\-V\-\_\-\-S\-T\-E\-P\-P\-E\-R\-\_\-\-M\-O\-D\-E}}]{mode, }
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(phase\-A)}]{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___stepper_motor_unipolar_ae2a28f4c01aeb049426bbd0b8eeee5be}
+\-Create a driver for a unipolar stepper motor
+
+\-Phase output is active high, so if you are using transistors to buffer the motor, you will need to pull the common line high and use the transistors to pull the phases to ground.
+
+\-Phases \-A \& \-C share a common ground, as does \-B \& \-D
+
+\-Phases \-B, \-C and \-D use consecutive pins on the same port as \-A
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em rtc} & the \-R\-T\-C used for stepper movements \\
+\hline
+{\em mode} & the mode of the stepper driver \\
+\hline
+{\em phase\-A} & the pin for the \-A phase \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 66 of file \-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___stepper_motor_unipolar_a11b7cc8dc9782b73ae93c70354158076}{
+\index{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}!step@{step}}
+\index{step@{step}!MHV_StepperMotorUnipolar@{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar\-::step (
+\begin{DoxyParamCaption}
+\item[{bool}]{forwards}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___stepper_motor_unipolar_a11b7cc8dc9782b73ae93c70354158076}
+
+
+\-Implements \hyperlink{class_m_h_v___stepper_motor_a86dd84a2cd353e64b618f6f8dcb6d1e0}{\-M\-H\-V\-\_\-\-Stepper\-Motor}.
+
+
+
+\-Definition at line 105 of file \-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___stepper_motor_unipolar_8h}{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___stepper_motor_unipolar_8cpp}{\-M\-H\-V\-\_\-\-Stepper\-Motor\-Unipolar.\-cpp}\end{DoxyCompactItemize}

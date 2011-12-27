@@ -46,7 +46,7 @@ protected:
 	void runTxBuffers();
 
 public:
-	MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers);
 	uint16_t getWidth();
 	uint16_t getHeight();
 	void clear(uint8_t value);

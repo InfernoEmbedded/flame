@@ -159,31 +159,28 @@ uint8_t mhv_daysInMonth(MHV_MONTH month, uint16_t year) {
 
 /**
  * Create a new RTC
- * @param	timer		the timer this RTC is associated with
  * @param	eventBuffer	A buffer to store events until they are executed
  * @param	eventCount	The number of events that can be stored in the buffer
  * @param	timezone	minutes offset from UTC
  */
-MHV_RTC::MHV_RTC(MHV_Timer8 *timer, MHV_ALARM *eventBuffer, uint8_t eventCount, int16_t timezone) {
-	_timer = timer;
-
-	_ticks = 0;
-	_ticksPerMillisecond = 1;
-
-	_tzOffset = timezone;
-
+MHV_RTC::MHV_RTC(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone) :
+		_alarms(eventBuffer),
+		_alarmCount(0),
+		_alarmMax(eventCount),
+		_milliseconds(0),
+		_ticks(0),
+		_ticksPerMillisecond(1),
+		_tzOffset(timezone) {
 	mhv_memClear (eventBuffer, sizeof(*eventBuffer), eventCount);
 
-	_alarms = eventBuffer;
-	_alarmMax = eventCount;
-	_alarmCount = 0;
 }
 
 /**
  *  Synchronise the ticksPerMillisecond with the timer (useful if you change the timer values)
+ *  @param	timer	the timer to sync with
  */
-void MHV_RTC::synchronise(void) {
-	uint32_t ticksPerMillisecond = F_CPU / _timer->getPrescalerMultiplier() / (_timer->getTop() + 1) / 1000;
+void MHV_RTC::synchronise(MHV_Timer8 &timer) {
+	uint32_t ticksPerMillisecond = F_CPU / timer.getPrescalerMultiplier() / (timer.getTop() + 1) / 1000;
 	_ticksPerMillisecond = ticksPerMillisecond;
 }
 
@@ -210,6 +207,17 @@ void MHV_RTC::setTime(MHV_TIMESTAMP *timestamp) {
 	} while (timestamp->milliseconds != _milliseconds); // Retry if the value changed while updating
 }
 
+/**
+ * Increment milliseconds by 1
+ */
+inline void MHV_RTC::incrementMilliseconds() {
+	_milliseconds++;
+
+	if (_milliseconds > 999) {
+		_milliseconds = 0;
+		_timestamp++;
+	}
+}
 
 /**
  *  Tick from the timer module
@@ -221,22 +229,14 @@ void MHV_RTC::tick(void) {
 
 	_ticks = 0;
 
-	_milliseconds++;
-	if (_milliseconds > 999) {
-		_milliseconds = 0;
-		_timestamp++;
-	}
+	incrementMilliseconds();
 }
 
 /**
  *  Tick from the timer module that is exactly 1ms
  */
 void MHV_RTC::tick1ms(void) {
-	_milliseconds++;
-	if (_milliseconds > 999) {
-		_milliseconds = 0;
-		_timestamp++;
-	}
+	incrementMilliseconds();
 }
 
 /**
@@ -249,11 +249,7 @@ void MHV_RTC::tickAndRunEvents(void) {
 
 	_ticks = 0;
 
-	_milliseconds++;
-	if (_milliseconds > 999) {
-		_milliseconds = 0;
-		_timestamp++;
-	}
+	incrementMilliseconds();
 
 	handleEvents();
 }
@@ -262,11 +258,7 @@ void MHV_RTC::tickAndRunEvents(void) {
  * Tick from the timer module that is exactly 1ms, run any pending events
  */
 void MHV_RTC::tick1msAndRunEvents(void) {
-	_milliseconds++;
-	if (_milliseconds > 999) {
-		_milliseconds = 0;
-		_timestamp++;
-	}
+	incrementMilliseconds();
 }
 
 
@@ -479,7 +471,7 @@ void MHV_RTC::handleEvents(void) {
 	// Run any events pending
 	for (i = 0; i < _alarmCount && mhv_timestampGreaterThanOrEqual(&timestamp, &(_alarms[i].when));
 			i++, current(&timestamp)) {
-		_alarms[i].listener->alarm(&(_alarms[i]));
+		_alarms[i].listener->alarm(_alarms[i]);
 
 		// Repeat the event if necessary
 		if (0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {
@@ -513,7 +505,24 @@ uint8_t MHV_RTC::alarmsPending() {
  * Remove all matching events from the list of pending events
  * @param	listener		the listener for the event to remove
  */
- void MHV_RTC::removeAlarm(MHV_AlarmListener *listener) {
+void MHV_RTC::removeAlarm(MHV_AlarmListener &listener) {
+	for (uint8_t i = 0; i < _alarmCount; i++) {
+		if (_alarms[i].listener == &listener) {
+			// Shift remaining events down
+			if (i < _alarmCount) {
+				memmove(_alarms, &(_alarms[i]), (_alarmCount - i) * sizeof(*_alarms));
+			}
+
+			_alarmCount -= i;
+		}
+	}
+}
+
+/**
+ * Remove all matching events from the list of pending events
+ * @param	listener		the listener for the event to remove
+ */
+void MHV_RTC::removeAlarm(MHV_AlarmListener *listener) {
 	for (uint8_t i = 0; i < _alarmCount; i++) {
 		if (_alarms[i].listener == listener) {
 			// Shift remaining events down

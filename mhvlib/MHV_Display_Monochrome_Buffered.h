@@ -37,7 +37,7 @@ protected:
 
 public:
 	MHV_Display_Monochrome_Buffered(uint16_t colCount, uint16_t rowCount, uint8_t *frameBuffer,
-			MHV_RingBuffer *txBuffers);
+			MHV_RingBuffer &txBuffers);
 	void setPixel(uint16_t col, uint16_t row, uint8_t value);
 	uint8_t getPixel(uint16_t col, uint16_t row);
 };

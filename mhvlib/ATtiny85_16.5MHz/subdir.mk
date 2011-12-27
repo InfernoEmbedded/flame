@@ -24,14 +24,18 @@ CPP_SRCS += \
 ../MHV_PID.cpp \
 ../MHV_PWMMatrix.cpp \
 ../MHV_PinChangeManager.cpp \
+../MHV_RGB.cpp \
 ../MHV_RTC.cpp \
 ../MHV_RingBuffer.cpp \
 ../MHV_ServoControl.cpp \
 ../MHV_Shifter.cpp \
 ../MHV_SoftwareHBridge.cpp \
+../MHV_StepperMotor.cpp \
+../MHV_StepperMotorUnipolar.cpp \
 ../MHV_Timer16.cpp \
 ../MHV_Timer8.cpp \
-../MHV_VoltageRegulator.cpp 
+../MHV_VoltageRegulator.cpp \
+../MHV_WS2801.cpp 
 
 OBJS += \
 ./MHV_AD.o \
@@ -54,14 +58,18 @@ OBJS += \
 ./MHV_PID.o \
 ./MHV_PWMMatrix.o \
 ./MHV_PinChangeManager.o \
+./MHV_RGB.o \
 ./MHV_RTC.o \
 ./MHV_RingBuffer.o \
 ./MHV_ServoControl.o \
 ./MHV_Shifter.o \
 ./MHV_SoftwareHBridge.o \
+./MHV_StepperMotor.o \
+./MHV_StepperMotorUnipolar.o \
 ./MHV_Timer16.o \
 ./MHV_Timer8.o \
-./MHV_VoltageRegulator.o 
+./MHV_VoltageRegulator.o \
+./MHV_WS2801.o 
 
 CPP_DEPS += \
 ./MHV_AD.d \
@@ -84,21 +92,25 @@ CPP_DEPS += \
 ./MHV_PID.d \
 ./MHV_PWMMatrix.d \
 ./MHV_PinChangeManager.d \
+./MHV_RGB.d \
 ./MHV_RTC.d \
 ./MHV_RingBuffer.d \
 ./MHV_ServoControl.d \
 ./MHV_Shifter.d \
 ./MHV_SoftwareHBridge.d \
+./MHV_StepperMotor.d \
+./MHV_StepperMotorUnipolar.d \
 ./MHV_Timer16.d \
 ./MHV_Timer8.d \
-./MHV_VoltageRegulator.d 
+./MHV_VoltageRegulator.d \
+./MHV_WS2801.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"A:\eclipse\mhvlib" -DMHVLIB_CORE -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=attiny85 -DF_CPU=16500000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
+	avr-g++ -I"A:\eclipse\mhvlib" -DMHVLIB_CORE=1 -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=attiny85 -DF_CPU=16500000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

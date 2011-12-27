@@ -103,11 +103,8 @@ public:
 	void pinChange2();
 #endif
 	void pinChange(uint8_t offset);
-	void registerListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
-			volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt,
-			MHV_PinEventListener *listener);
-	void deregisterListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
-			volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt);
+	void registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener);
+	void deregisterListener(MHV_DECLARE_PIN(pin));
 
 	void handleEvents();
 

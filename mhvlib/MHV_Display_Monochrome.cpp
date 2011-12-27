@@ -40,7 +40,7 @@
  * @param	txBuffers	buffers to use for text writing
  */
 MHV_Display_Monochrome::MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCount,
-		MHV_RingBuffer *txBuffers) :
+		MHV_RingBuffer &txBuffers) :
 			MHV_Device_TX(txBuffers){
 	_colCount = colCount;
 	_rowCount = rowCount;

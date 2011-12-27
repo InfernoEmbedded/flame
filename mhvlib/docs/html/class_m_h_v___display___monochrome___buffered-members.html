@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -105,16 +105,16 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a></td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#ace8827a700dcc1a6a54e0bf80906085c">_tx</a></td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a75607cd77067ab059e8962e666593d4e">_txOffset</a></td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a54a8220b648f9e89a11e8273f91e75fb">_txPointers</a></td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a36768491def5fdb4936e918c0ea097cd">_txPointers</a></td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a8fe33d10a27066c0f2e3f2339230692b">canWrite</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a25b062aefde440ad5c47dbca98b5b478">clear</a>(uint8_t value)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a22f48a92047d5358ff2b48834aa8d3cf">debug</a>(const char *file, int line, const char *function, PGM_P format,...)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a988a98e01d54b12d3dcecc2d7878a985">getHeight</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html#a134f42819a667a3aafb60a3fd432ef12">getPixel</a>(uint16_t col, uint16_t row)</td><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html">MHV_Display_Monochrome_Buffered</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a1ef9b1ddbc9e57007903076005335211">getWidth</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a5d0f9d3e6d14e5d3edb48fdc0f668c95">MHV_Device_TX</a>(MHV_RingBuffer *txPointers)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a28ba8d0420841b820935e2102f977602">MHV_Display_Monochrome</a>(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html#afe84158d5520297439830f2baedc44d6">MHV_Display_Monochrome_Buffered</a>(uint16_t colCount, uint16_t rowCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html">MHV_Display_Monochrome_Buffered</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a71cca6bdbc5f56f9ca161abe4d46e888">MHV_Device_TX</a>(MHV_RingBuffer &amp;txPointers)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#ae9bac3772b5baa006b04121c0caf0d8b">MHV_Display_Monochrome</a>(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html#a6420db3c367f7487273184b7e0d8ba70">MHV_Display_Monochrome_Buffered</a>(uint16_t colCount, uint16_t rowCount, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome___buffered.html">MHV_Display_Monochrome_Buffered</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a64cba701f06476b494a97620e1a26e86">moreTX</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a42c021c405f8f4b37db1a07a6853f8e8">printf</a>(PGM_P format,...)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td></td></tr>
@@ -158,7 +158,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:59 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:39 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

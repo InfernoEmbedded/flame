@@ -56,11 +56,11 @@ void MHV_ADC::adc() {
  * @param	channel		the ADC channel
  * @param	listener	an MHV_ADCListener to notify when an ADC reading has been completed
  */
-void MHV_ADC::registerListener(uint8_t channel, MHV_ADCListener *listener) {
+void MHV_ADC::registerListener(uint8_t channel, MHV_ADCListener &listener) {
 	for (uint8_t i = 0; i < _adcCount; i++) {
 		if (_adcs[i].channel == -1) {
 			_adcs[i].channel = channel;
-			_adcs[i].listener = listener;
+			_adcs[i].listener = &listener;
 			break;
 		}
 	}

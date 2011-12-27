@@ -67,7 +67,7 @@ public:
 
 // ADC
 	void adc();
-	void registerListener(uint8_t channel, MHV_ADCListener *listener);
+	void registerListener(uint8_t channel, MHV_ADCListener &listener);
 	void deregisterListener(uint8_t channel);
 	void enable();
 	void disable();

@@ -1,0 +1,289 @@
+\hypertarget{class_m_h_v___w_s2801}{
+\section{\-M\-H\-V\-\_\-\-W\-S2801 \-Class \-Reference}
+\label{class_m_h_v___w_s2801}\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-W\-S2801.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___w_s2801_aa211bc6c3537fc071f1aaa30146283c0}{\-M\-H\-V\-\_\-\-W\-S2801} (\hyperlink{_m_h_v___r_g_b_8h_a17bc0cb27c702aac95873e5aab2ead87}{\-M\-H\-V\-\_\-\-R\-G\-B} buf\mbox{[}$\,$\mbox{]}, uint16\-\_\-t length, \hyperlink{class_m_h_v___shifter}{\-M\-H\-V\-\_\-\-Shifter} \&shifter)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a04ed0736017e78051b6b978711a702f7}{set\-Pixel} (uint16\-\_\-t pixel, uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a705c1c3ea1fe8fe9e4c37d2ced60592b}{set\-Pixel} (uint16\-\_\-t pixel, \hyperlink{_m_h_v___r_g_b_8h_a17bc0cb27c702aac95873e5aab2ead87}{\-M\-H\-V\-\_\-\-R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a00d491482a75792edc2c51d7ee909a48}{set\-All} (uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_abaf0a7f398f3c0fb3d079717f93c8966}{set\-All} (\hyperlink{_m_h_v___r_g_b_8h_a17bc0cb27c702aac95873e5aab2ead87}{\-M\-H\-V\-\_\-\-R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a68788050aebca01edb4e7c8ed09603bb}{set\-Pixel\-Gamma} (uint16\-\_\-t pixel, uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a37a33b628bcd6a99e3797ade67956786}{set\-Pixel\-Gamma} (uint16\-\_\-t pixel, \hyperlink{_m_h_v___r_g_b_8h_a17bc0cb27c702aac95873e5aab2ead87}{\-M\-H\-V\-\_\-\-R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_ac18e04e627235d3728ff3a760c73e6d3}{set\-All\-Gamma} (uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a4cb616870d842a25f044ca272367eb50}{set\-All\-Gamma} (\hyperlink{_m_h_v___r_g_b_8h_a17bc0cb27c702aac95873e5aab2ead87}{\-M\-H\-V\-\_\-\-R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a75c36c7e1cfc0ebc60ea9f2a8256d781}{rotate} (bool forwards)
+\item 
+void \hyperlink{class_m_h_v___w_s2801_a74dd828bce3b4473aac272a5791b03b3}{flush} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 53 of file \-M\-H\-V\-\_\-\-W\-S2801.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___w_s2801_aa211bc6c3537fc071f1aaa30146283c0}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{\-M\-H\-V\-\_\-\-W\-S2801}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-W\-S2801\-::\-M\-H\-V\-\_\-\-W\-S2801 (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-G\-B}}]{buf\mbox{[}$\,$\mbox{]}, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Shifter} \&}]{shifter}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_aa211bc6c3537fc071f1aaa30146283c0}
+\-Create a new driver for a string of \-W\-S2801 chips \-See the datasheet at\-: \href{http://www.adafruit.com/datasheets/WS2801.pdf}{\tt http\-://www.\-adafruit.\-com/datasheets/\-W\-S2801.\-pdf}
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em buf} & memory to buffer the data into \\
+\hline
+{\em length} & the length of the string of controllers \\
+\hline
+{\em shifter} & the shifter to use to speak to the string \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 38 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___w_s2801_a74dd828bce3b4473aac272a5791b03b3}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!flush@{flush}}
+\index{flush@{flush}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a74dd828bce3b4473aac272a5791b03b3}
+\-Write the current buffer to the string of chips 
+
+\-Definition at line 159 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a75c36c7e1cfc0ebc60ea9f2a8256d781}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!rotate@{rotate}}
+\index{rotate@{rotate}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::rotate (
+\begin{DoxyParamCaption}
+\item[{bool}]{forwards}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a75c36c7e1cfc0ebc60ea9f2a8256d781}
+\-Rotate the string by 1 pixel 
+\begin{DoxyParams}{\-Parameters}
+{\em forwards} & true for forwards, false for backwards \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 167 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a00d491482a75792edc2c51d7ee909a48}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-All@{set\-All}}
+\index{set\-All@{set\-All}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-All}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-All (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a00d491482a75792edc2c51d7ee909a48}
+\-Set the strip to a particular value 
+\begin{DoxyParams}{\-Parameters}
+{\em red} & the red value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+{\em green} & the green value \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 73 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_abaf0a7f398f3c0fb3d079717f93c8966}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-All@{set\-All}}
+\index{set\-All@{set\-All}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-All}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-All (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_abaf0a7f398f3c0fb3d079717f93c8966}
+\-Set the strip to a particular value 
+\begin{DoxyParams}{\-Parameters}
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 89 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_ac18e04e627235d3728ff3a760c73e6d3}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-All\-Gamma@{set\-All\-Gamma}}
+\index{set\-All\-Gamma@{set\-All\-Gamma}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-All\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-All\-Gamma (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_ac18e04e627235d3728ff3a760c73e6d3}
+\-Set the strip to a gamma corrected value 
+\begin{DoxyParams}{\-Parameters}
+{\em red} & the red value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+{\em green} & the green value \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 129 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a4cb616870d842a25f044ca272367eb50}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-All\-Gamma@{set\-All\-Gamma}}
+\index{set\-All\-Gamma@{set\-All\-Gamma}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-All\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-All\-Gamma (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a4cb616870d842a25f044ca272367eb50}
+\-Set the strip to a gamma corrected value 
+\begin{DoxyParams}{\-Parameters}
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 145 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a04ed0736017e78051b6b978711a702f7}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{pixel, }
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a04ed0736017e78051b6b978711a702f7}
+\-Set a pixel to a particular value 
+\begin{DoxyParams}{\-Parameters}
+{\em pixel} & the pixel to set \\
+\hline
+{\em red} & the red value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+{\em green} & the green value \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a705c1c3ea1fe8fe9e4c37d2ced60592b}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{pixel, }
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a705c1c3ea1fe8fe9e4c37d2ced60592b}
+\-Set a pixel to a particular value 
+\begin{DoxyParams}{\-Parameters}
+{\em pixel} & the pixel to set \\
+\hline
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 63 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a68788050aebca01edb4e7c8ed09603bb}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-Pixel\-Gamma@{set\-Pixel\-Gamma}}
+\index{set\-Pixel\-Gamma@{set\-Pixel\-Gamma}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-Pixel\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-Pixel\-Gamma (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{pixel, }
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a68788050aebca01edb4e7c8ed09603bb}
+\-Set a pixel to a gamma corrected value 
+\begin{DoxyParams}{\-Parameters}
+{\em pixel} & the pixel to set \\
+\hline
+{\em red} & the red value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+{\em green} & the green value \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 102 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+\hypertarget{class_m_h_v___w_s2801_a37a33b628bcd6a99e3797ade67956786}{
+\index{\-M\-H\-V\-\_\-\-W\-S2801@{\-M\-H\-V\-\_\-\-W\-S2801}!set\-Pixel\-Gamma@{set\-Pixel\-Gamma}}
+\index{set\-Pixel\-Gamma@{set\-Pixel\-Gamma}!MHV_WS2801@{\-M\-H\-V\-\_\-\-W\-S2801}}
+\subsubsection[{set\-Pixel\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-W\-S2801\-::set\-Pixel\-Gamma (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{pixel, }
+\item[{{\bf \-M\-H\-V\-\_\-\-R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___w_s2801_a37a33b628bcd6a99e3797ade67956786}
+\-Set a pixel to a gamma corrected value 
+\begin{DoxyParams}{\-Parameters}
+{\em pixel} & the pixel to set \\
+\hline
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 115 of file \-M\-H\-V\-\_\-\-W\-S2801.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___w_s2801_8h}{\-M\-H\-V\-\_\-\-W\-S2801.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___w_s2801_8cpp}{\-M\-H\-V\-\_\-\-W\-S2801.\-cpp}\end{DoxyCompactItemize}

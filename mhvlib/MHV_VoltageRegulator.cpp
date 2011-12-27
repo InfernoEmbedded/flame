@@ -59,11 +59,11 @@
  * @param adcChannel	the ADC channel
  */
 MHV_VoltageRegulator::MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, float vrefVoltage, uint8_t vref,
-		float divider, MHV_Timer16 *timer, uint8_t channel) {
+		float divider, MHV_Timer16 &timer, uint8_t channel) :
+			_timer(timer) {
 	_targetADC = (uint16_t)(voltage * divider * MHV_AD_RESOLUTION / vrefVoltage);
 	_vref = vref;
 	_vrefVoltage = vrefVoltage;
-	_timer = timer;
 	_adcChannel = channel;
 	_mode = mode;
 	_pwm = 1;
@@ -90,12 +90,12 @@ inline void MHV_VoltageRegulator::regulateBoost() {
 	// set a minimum on and off time - boost regulators are useless if the transistor is always on or off
 	if (newPWM < 1) {
 		newPWM = 1;
-	} else if (newPWM + 1 > _timer->getTop()) {
-		newPWM = _timer->getTop() - 1;
+	} else if (newPWM + 1 > _timer.getTop()) {
+		newPWM = _timer.getTop() - 1;
 	}
 
 	_pwm = newPWM;
-	_timer->setOutput2(_pwm);
+	_timer.setOutput2(_pwm);
 
 	_lastADC = adc;
 }
@@ -124,12 +124,12 @@ inline void MHV_VoltageRegulator::regulateBuck() {
 // set a minimum on and off time
 		if (newPWM < 1) {
 			newPWM = 1;
-		} else if (newPWM > uint16_t(_timer->getTop() - 1)) {
-			newPWM = _timer->getTop() - 1;
+		} else if (newPWM > uint16_t(_timer.getTop() - 1)) {
+			newPWM = _timer.getTop() - 1;
 		}
 
 		_pwm = newPWM;
-		_timer->setOutput2(_pwm);
+		_timer.setOutput2(_pwm);
 	}
 
 	_lastADC = adc;
@@ -154,8 +154,8 @@ void MHV_VoltageRegulator::regulate() {
  * Start regulating
  */
 void MHV_VoltageRegulator::enable() {
-	_timer->enable();
-	_timer->setOutput2(1);
+	_timer.enable();
+	_timer.setOutput2(1);
 
 	MHV_AD_ENABLE;
 }
@@ -164,8 +164,8 @@ void MHV_VoltageRegulator::enable() {
  * Stop regulating
  */
 void MHV_VoltageRegulator::disable() {
-	_timer->setOutput2(0);
-	_timer->disable();
+	_timer.setOutput2(0);
+	_timer.disable();
 }
 
 /**

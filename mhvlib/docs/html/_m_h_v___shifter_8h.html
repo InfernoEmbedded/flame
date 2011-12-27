@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -93,6 +93,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div id="doc-content">
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Defines</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -103,8 +104,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <p><a href="_m_h_v___shifter_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html">MHV_Shifter</a></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a2f4f482aa20414028355f66010d07e50">MHV_SHIFT_DELAY</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#ae8524b0e106007cfef0def2112f5bf7f">SHIFTOUT_BYTE_LOOP</a>&#160;&#160;&#160;(mhv_shift_i = 0; mhv_shift_i &lt; 8; mhv_shift_i++)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#aedd45c50f913b95905beebd36a58cf8a">MHV_BIT_1</a>&#160;&#160;&#160;_BV(0)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a38f7965772e648657760476f6117acee">MHV_BIT_2</a>&#160;&#160;&#160;_BV(1)</td></tr>
@@ -114,9 +119,8 @@ Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a206d23120dba2746a0000d24d9f57f73">MHV_BIT_6</a>&#160;&#160;&#160;_BV(5)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a751cd84024cd8ff277118858b70d9508">MHV_BIT_7</a>&#160;&#160;&#160;_BV(6)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#ad905d94dc30caa1665486e7b62977e86">MHV_BIT_8</a>&#160;&#160;&#160;_BV(7)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a15b4ced05f1430edec69cb8ed97b38ad">MHV_SHIFTOUT_BYTE</a>(mhv_data)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#af8857a51ce82d19e69321bf950fa2972">MHV_SHIFTOUT_ARRAY_CLOCKED_RISING</a>(mhv_data, mhv_dataLength)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a6eab4928b7eac028288802277ced1f6e">MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING</a>(mhv_data, mhv_dataLength)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#a7ffab0ab7f8d2e8e71c6e5ba55c20fc5">MHV_SHIFTER_CLOCKED_RISING_CREATE</a>(name)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#ae400697c1b5b144d4e57d0e0cbe17b88">MHV_SHIFTER_CLOCKED_FALLING_CREATE</a>(name)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___shifter_8h.html#abe0858ebc0d0e1fb7af752438a51baba">mhv_shiftout_byte_lsb</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *data, <a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *clock, uint8_t byte)</td></tr>
@@ -134,7 +138,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00054">54</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00058">58</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -149,7 +153,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00055">55</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00059">59</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -164,7 +168,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00056">56</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00060">60</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -179,7 +183,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00057">57</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00061">61</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -194,7 +198,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00058">58</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00062">62</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -209,7 +213,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00059">59</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00063">63</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -224,7 +228,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00060">60</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00064">64</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -239,97 +243,106 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00061">61</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00065">65</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6eab4928b7eac028288802277ced1f6e"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING" ref="a6eab4928b7eac028288802277ced1f6e" args="(mhv_data, mhv_dataLength)" -->
+<a class="anchor" id="a2f4f482aa20414028355f66010d07e50"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFT_DELAY" ref="a2f4f482aa20414028355f66010d07e50" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">mhv_data, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">mhv_dataLength&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">#define MHV_SHIFT_DELAY</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00180">180</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00043">43</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af8857a51ce82d19e69321bf950fa2972"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFTOUT_ARRAY_CLOCKED_RISING" ref="af8857a51ce82d19e69321bf950fa2972" args="(mhv_data, mhv_dataLength)" -->
+<a class="anchor" id="ae400697c1b5b144d4e57d0e0cbe17b88"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFTER_CLOCKED_FALLING_CREATE" ref="ae400697c1b5b144d4e57d0e0cbe17b88" args="(name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MHV_SHIFTOUT_ARRAY_CLOCKED_RISING</td>
+          <td class="memname">#define MHV_SHIFTER_CLOCKED_FALLING_CREATE</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname">mhv_data, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">mhv_dataLength&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00094">94</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a15b4ced05f1430edec69cb8ed97b38ad"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFTOUT_BYTE" ref="a15b4ced05f1430edec69cb8ed97b38ad" args="(mhv_data)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MHV_SHIFTOUT_BYTE</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">mhv_data</td><td>)</td>
+          <td class="paramname">name</td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">do</span> { \
-        int8_t          mhv_shift_i; \
-\
-for <a class="code" href="_m_h_v___shifter_8h.html#ae8524b0e106007cfef0def2112f5bf7f">SHIFTOUT_BYTE_LOOP</a> { \
-                if ((mhv_data &gt;&gt; mhv_shift_i) &amp; 0x01) { \
-                        mhv_pinOn(<a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#aac2b99e7a09172c8e995dd31e22a7eec">MHV_SHIFT_WRITEDATA</a>); \
-                } <span class="keywordflow">else</span> { \
-                        mhv_pinOff(<a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#aac2b99e7a09172c8e995dd31e22a7eec">MHV_SHIFT_WRITEDATA</a>); \
-                } \
-                mhv_pinOn(<a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#aa3f4f54b6d2a3f2e6b93a19666bd8c2c">MHV_SHIFT_WRITECLOCK</a>); \
-                mhv_pinOff(<a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#aa3f4f54b6d2a3f2e6b93a19666bd8c2c">MHV_SHIFT_WRITECLOCK</a>); \
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keyword">class </span>MHV_Shifter_ ## name : <span class="keyword">public</span> <a class="code" href="class_m_h_v___shifter.html">MHV_Shifter</a> { \
+                public: \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint8_t shiftLength); \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint16_t shiftLength); \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
+        }; \
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
+                MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
         } \
-} <span class="keywordflow">while</span> (0)
-</pre></div>
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00067">67</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t shiftLength) { \
+                MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
+        } \
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements) { \
+                MHV_SHIFTOUT_ELEMENTS_CLOCKED_FALLING(shiftData, dataLength, elements); \
+        } \
+        MHV_Shifter_ ## name name;
+</pre></div><p>Create a new shifter for devices that read on the falling edge The MHV_SHIFT_WRITECLOCK &amp; MHV_SHIFT_WRITEDATA macros should be defined in advance </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the object to create </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00510">510</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7ffab0ab7f8d2e8e71c6e5ba55c20fc5"></a><!-- doxytag: member="MHV_Shifter.h::MHV_SHIFTER_CLOCKED_RISING_CREATE" ref="a7ffab0ab7f8d2e8e71c6e5ba55c20fc5" args="(name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_SHIFTER_CLOCKED_RISING_CREATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keyword">class </span>MHV_Shifter_ ## name : <span class="keyword">public</span> <a class="code" href="class_m_h_v___shifter.html">MHV_Shifter</a> { \
+                public: \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint8_t shiftLength); \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint16_t shiftLength); \
+                        void <a class="code" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a>(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
+        }; \
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
+                MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
+        } \
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t shiftLength) { \
+                MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
+        } \
+        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements) { \
+                MHV_SHIFTOUT_ELEMENTS_CLOCKED_RISING(shiftData, dataLength, elements); \
+        } \
+        MHV_Shifter_ ## name name;
+</pre></div><p>Create a new shifter for devices that read on the rising edge The MHV_SHIFT_WRITECLOCK &amp; MHV_SHIFT_WRITEDATA macros should be defined in advance </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>the name of the object to create </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00487">487</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -344,7 +357,7 @@ for <a class="code" href="_m_h_v___shifter_8h.html#ae8524b0e106007cfef0def2112f5
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00053">53</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00057">57</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +452,7 @@ for <a class="code" href="_m_h_v___shifter_8h.html#ae8524b0e106007cfef0def2112f5
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -38,7 +38,7 @@
  */
 MHV_Display_Monochrome_Buffered::MHV_Display_Monochrome_Buffered(
 		uint16_t colCount, uint16_t rowCount,
-		uint8_t *frameBuffer, MHV_RingBuffer *txBuffers) :
+		uint8_t *frameBuffer, MHV_RingBuffer &txBuffers) :
 			MHV_Display_Monochrome(rowCount, colCount, txBuffers) {
 	_frameBuffer = frameBuffer;
 	memset(_frameBuffer, 0, rowCount * colCount);

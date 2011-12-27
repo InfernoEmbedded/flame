@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -111,8 +111,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a0f53c32cf969c858e7c0f5127f8ed760">MHV_PinChangeManager</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a2e13f1107ef9406dd224f404176e4fde">pinChange0</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#af607081980ab2858f718f6ed0ae0f9f1">pinChange</a> (uint8_t offset)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a62db8a613954f815542ac81e33d482bd">registerListener</a> (volatile uint8_t *pinDir, volatile uint8_t *pinOut, volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt, <a class="el" href="class_m_h_v___pin_event_listener.html">MHV_PinEventListener</a> *listener)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#ae4ca58d0c791dc7223d38d09e1b1b885">deregisterListener</a> (volatile uint8_t *pinDir, volatile uint8_t *pinOut, volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a98acb7ef6fb6eab4cf35701e856de955">registerListener</a> (MHV_DECLARE_PIN(pin), <a class="el" href="class_m_h_v___pin_event_listener.html">MHV_PinEventListener</a> *listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a0178ee5bb5a493985a507e8aaf3e8263">deregisterListener</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___pin_change_manager.html#a241ab368e927b544737adadc2c4b45d0">handleEvents</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -142,44 +142,16 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae4ca58d0c791dc7223d38d09e1b1b885"></a><!-- doxytag: member="MHV_PinChangeManager::deregisterListener" ref="ae4ca58d0c791dc7223d38d09e1b1b885" args="(volatile uint8_t *pinDir, volatile uint8_t *pinOut, volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt)" -->
+<a class="anchor" id="a0178ee5bb5a493985a507e8aaf3e8263"></a><!-- doxytag: member="MHV_PinChangeManager::deregisterListener" ref="a0178ee5bb5a493985a507e8aaf3e8263" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_PinChangeManager::deregisterListener </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>pinBit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pinChangeInterrupt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div>
@@ -187,16 +159,12 @@ Protected Attributes</h2></td></tr>
 <p>Deregister interest for pinchange events </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">pinDir</td><td>A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt </td></tr>
-    <tr><td class="paramname">pinOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinBit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinChangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00145">145</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00135">135</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -215,7 +183,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Call from the main loop to handle any events </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00179">179</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00168">168</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,39 +232,15 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a62db8a613954f815542ac81e33d482bd"></a><!-- doxytag: member="MHV_PinChangeManager::registerListener" ref="a62db8a613954f815542ac81e33d482bd" args="(volatile uint8_t *pinDir, volatile uint8_t *pinOut, volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt, MHV_PinEventListener *listener)" -->
+<a class="anchor" id="a98acb7ef6fb6eab4cf35701e856de955"></a><!-- doxytag: member="MHV_PinChangeManager::registerListener" ref="a98acb7ef6fb6eab4cf35701e856de955" args="(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_PinChangeManager::registerListener </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinDir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinOut</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>pinIn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>pinBit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pinChangeInterrupt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -315,17 +259,13 @@ Protected Attributes</h2></td></tr>
 <p>Register interest for pinchange events </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">pinDir</td><td>A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt </td></tr>
-    <tr><td class="paramname">pinOut</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinIn</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinBit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pinChangeInterrupt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt </td></tr>
     <tr><td class="paramname">listener</td><td>a <a class="el" href="class_m_h_v___pin_event_listener.html">MHV_PinEventListener</a> to notify when the pin changes </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00096">96</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html#l00092">92</a> of file <a class="el" href="_m_h_v___pin_change_manager_8cpp_source.html">MHV_PinChangeManager.cpp</a>.</p>
 
 </div>
 </div>
@@ -369,7 +309,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:59:00 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:39 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

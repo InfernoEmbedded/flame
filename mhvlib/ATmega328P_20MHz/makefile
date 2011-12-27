@@ -70,7 +70,7 @@ libmhvlib.lss: libmhvlib.a
 
 sizedummy: libmhvlib.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p libmhvlib.a
+	-avr-size --format=avr --mcu=${AVRTARGETMCU} libmhvlib.a
 	@echo 'Finished building: $@'
 	@echo ' '
 

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -118,14 +118,14 @@ Inheritance diagram for MHV_PWMMatrix:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#a769edbbde18d15e559b2af6a0b0e07b7">MHV_PWMMatrix</a> (uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a6cc1d016b3af074f35a0248396cf6b73">MHV_PWMMATRIX_MODE</a> mode=MHV_PWMMATRIX_MODE_AUTO)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#a3b522fc139f39df9e7de32954c12058d">MHV_PWMMatrix</a> (uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a6cc1d016b3af074f35a0248396cf6b73">MHV_PWMMATRIX_MODE</a> mode=MHV_PWMMATRIX_MODE_AUTO)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#ae2f403a7f4f290f78752dfc4e85cde20">tick</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00059">59</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a769edbbde18d15e559b2af6a0b0e07b7"></a><!-- doxytag: member="MHV_PWMMatrix::MHV_PWMMatrix" ref="a769edbbde18d15e559b2af6a0b0e07b7" args="(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer *txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), MHV_PWMMATRIX_MODE mode=MHV_PWMMATRIX_MODE_AUTO)" -->
+<a class="anchor" id="a3b522fc139f39df9e7de32954c12058d"></a><!-- doxytag: member="MHV_PWMMatrix::MHV_PWMMatrix" ref="a3b522fc139f39df9e7de32954c12058d" args="(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), MHV_PWMMATRIX_MODE mode=MHV_PWMMATRIX_MODE_AUTO)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -150,7 +150,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>txBuffers</em>, </td>
         </tr>
         <tr>
@@ -255,7 +255,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:59:00 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:40 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

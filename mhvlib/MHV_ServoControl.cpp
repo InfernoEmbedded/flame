@@ -118,14 +118,14 @@ MHV_ServoControl::MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *co
 /**
  * Add a servo to be controlled
  * @param	servo	an index to address the servo by
- * @param	pin*	the pin the servo is connected to
+ * @param	pin	the pin the servo is connected to
  */
-void MHV_ServoControl::addServo(uint8_t servo, volatile uint8_t *pinDir, volatile uint8_t *pinOut, volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt) {
-	_controlBlocks[servo].pin = pinBit;
+void MHV_ServoControl::addServo(uint8_t servo, MHV_DECLARE_PIN(pin)) {
+	_controlBlocks[servo].pin = pinPin;
 	_controlBlocks[servo].port = pinOut;
 	_controlBlocks[servo].position = (MHV_SERVO_MIN + MHV_SERVO_MAX) / 2;
 
-	mhv_setOutput(pinDir, pinOut, pinIn, pinBit, -1);
+	mhv_setOutput(pinDir, pinOut, pinIn, pinPin, -1);
 
 	if (_timer->enabled()) {
 		sortServos();

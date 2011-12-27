@@ -51,7 +51,7 @@
  * @param	rowCount	the number of rows on the display
  * @param	txBuffers	buffers for async writing
  */
-MHV_Display_HD44780::MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers) :
+MHV_Display_HD44780::MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers) :
 		MHV_Display_Character(colCount, rowCount, txBuffers) {
 	_ticks = 0;
 	_animateTicks = 64;

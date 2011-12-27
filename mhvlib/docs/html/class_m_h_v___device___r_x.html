@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -123,29 +123,29 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#ab823ad1f27ec0a659ba3ab896e936b2c">read</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a046e51e8d7b47e084fea8f2508e93ae9">flush</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a6d9d253544c30aff62bdcae14f9b2705">ready</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a0a663d6511e7c27abdefc6e7d413e66a">registerListener</a> (<a class="el" href="class_m_h_v___r_x_listener.html">MHV_RXListener</a> *listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a2797697f3b03274f06da79eb5c4e62be">registerListener</a> (<a class="el" href="class_m_h_v___r_x_listener.html">MHV_RXListener</a> &amp;listener)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#aeaeee691f88b5895a09afbb1c47d83d1">deregisterListener</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a13adea72a323b7debc5985e5bba21e58">handleEvents</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a6e1edac6be7992790c1d81c0b9f7303b">MHV_Device_RX</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *rxBuffer)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a7e170355a69743ca2f80ff4abca3fb53">MHV_Device_RX</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;rxBuffer)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a153f8f4c4f8bb0c9e71c86be0e90b15d">_rxBuffer</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a868bacb2136afc4d3dad8d06f93847da">_rxBuffer</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___r_x_listener.html">MHV_RXListener</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___device___r_x.html#a7f95636c0225ca0316f45e5e7ac466b0">_listener</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
 <p>Definition at line <a class="el" href="_m_h_v___device___r_x_8h_source.html#l00048">48</a> of file <a class="el" href="_m_h_v___device___r_x_8h_source.html">MHV_Device_RX.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a6e1edac6be7992790c1d81c0b9f7303b"></a><!-- doxytag: member="MHV_Device_RX::MHV_Device_RX" ref="a6e1edac6be7992790c1d81c0b9f7303b" args="(MHV_RingBuffer *rxBuffer)" -->
+<a class="anchor" id="a7e170355a69743ca2f80ff4abca3fb53"></a><!-- doxytag: member="MHV_Device_RX::MHV_Device_RX" ref="a7e170355a69743ca2f80ff4abca3fb53" args="(MHV_RingBuffer &amp;rxBuffer)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_Device_RX::MHV_Device_RX </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;&#160;</td>
           <td class="paramname"><em>rxBuffer</em></td><td>)</td>
           <td><code> [protected]</code></td>
         </tr>
@@ -328,14 +328,14 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0a663d6511e7c27abdefc6e7d413e66a"></a><!-- doxytag: member="MHV_Device_RX::registerListener" ref="a0a663d6511e7c27abdefc6e7d413e66a" args="(MHV_RXListener *listener)" -->
+<a class="anchor" id="a2797697f3b03274f06da79eb5c4e62be"></a><!-- doxytag: member="MHV_Device_RX::registerListener" ref="a2797697f3b03274f06da79eb5c4e62be" args="(MHV_RXListener &amp;listener)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_Device_RX::registerListener </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_m_h_v___r_x_listener.html">MHV_RXListener</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___r_x_listener.html">MHV_RXListener</a> &amp;&#160;</td>
           <td class="paramname"><em>listener</em></td><td>)</td>
           <td></td>
         </tr>
@@ -370,12 +370,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a153f8f4c4f8bb0c9e71c86be0e90b15d"></a><!-- doxytag: member="MHV_Device_RX::_rxBuffer" ref="a153f8f4c4f8bb0c9e71c86be0e90b15d" args="" -->
+<a class="anchor" id="a868bacb2136afc4d3dad8d06f93847da"></a><!-- doxytag: member="MHV_Device_RX::_rxBuffer" ref="a868bacb2136afc4d3dad8d06f93847da" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a>* <a class="el" href="class_m_h_v___device___r_x.html#a153f8f4c4f8bb0c9e71c86be0e90b15d">MHV_Device_RX::_rxBuffer</a><code> [protected]</code></td>
+          <td class="memname"><a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a>&amp; <a class="el" href="class_m_h_v___device___r_x.html#a868bacb2136afc4d3dad8d06f93847da">MHV_Device_RX::_rxBuffer</a><code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -409,7 +409,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:56 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:36 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

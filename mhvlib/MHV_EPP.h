@@ -57,10 +57,8 @@ private:
 
 public:
 	MHV_EPP(MHV_EPP_MODE mode,
-			volatile uint8_t *dataDir, volatile uint8_t *dataInput, volatile uint8_t *dataOutput,
-			uint8_t dataBit, uint8_t dataPcInt,
-			volatile uint8_t *controlDir, volatile uint8_t *controlInput, volatile uint8_t *controlOutput,
-			uint8_t controlBit, uint8_t controlPcInt);
+			MHV_DECLARE_PIN(data),
+			MHV_DECLARE_PIN(control));
 	void interruptReset();
 	void interruptStrobe(bool address);
 	void releaseStrobe(bool address);

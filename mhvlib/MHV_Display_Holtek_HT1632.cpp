@@ -39,32 +39,22 @@
 
 /**
  *  Initialise the library
- * @param	dataDir						A member of the MHV_PIN_* macro   the data pin
- * @param	dataOut						A member of the MHV_PIN_* macro
- * @param	dataIn						A member of the MHV_PIN_* macro
- * @param	dataPin						A member of the MHV_PIN_* macro
- * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
- * @param	writeDir					A member of the MHV_PIN_* macro   the write pin
- * @param	writeOut					A member of the MHV_PIN_* macro
- * @param	writeIn						A member of the MHV_PIN_* macro
- * @param	writePin					A member of the MHV_PIN_* macro
- * @param	writePinchangeInterrupt		A member of the MHV_PIN_* macro
- * @param	mode						What mode the displays should be run in
- * @param	arrayX						the width of the array in number of displays
- * @param	arrayY						the height of the array in number of displays
- * @param	csCallback					A callback to select which display is active (lines must be active low, x & y select the display)
- * @param	frameBuffer					memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long
- * @param	txBuffers					A ringbuffer used for text printing
+ * @param	data			the data pin
+ * @param	writeDir		the write pin
+ * @param	mode			What mode the displays should be run in
+ * @param	arrayX			the width of the array in number of displays
+ * @param	arrayY			the height of the array in number of displays
+ * @param	csCallback		A callback to select which display is active (lines must be active low, x & y select the display)
+ * @param	frameBuffer		memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long
+ * @param	txBuffers		A ringbuffer used for text printing
  */
 MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
-		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
-			uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *writeDir, volatile uint8_t *writeOut, volatile uint8_t *writeIn,
-					uint8_t writePin, int8_t writePinchangeInterrupt,
+		MHV_DECLARE_PIN(data),
+		MHV_DECLARE_PIN(write),
 		MHV_HT1632_MODE mode,
 		uint8_t arrayX, uint8_t arrayY,
 		void (*csCallback)(uint8_t x, uint8_t y, bool active),
-		uint8_t *frameBuffer, MHV_RingBuffer *txBuffers) :
+		uint8_t *frameBuffer, MHV_RingBuffer &txBuffers) :
 			MHV_Display_Monochrome(
 					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 32 : 24) * arrayX,
 					((MHV_HT1632_NMOS_32x8 == mode || MHV_HT1632_PMOS_32x8 == mode) ? 8 : 16) * arrayY,

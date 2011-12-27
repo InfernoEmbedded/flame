@@ -88,7 +88,7 @@ typedef struct mhv_alarm MHV_ALARM;
 
 class MHV_AlarmListener {
 public:
-	virtual void alarm(MHV_ALARM *alarm) =0;
+	virtual void alarm(const MHV_ALARM &alarm) =0;
 };
 
 
@@ -99,9 +99,21 @@ bool mhv_timestampGreaterThanOrEqual(MHV_TIMESTAMP *first, MHV_TIMESTAMP *second
 bool mhv_timestampLessThan(MHV_TIMESTAMP *first, MHV_TIMESTAMP *second);
 uint8_t mhv_daysInMonth(MHV_MONTH month, uint16_t year);
 
+/**
+ * Create a new RTC
+ * @param	_mhvObjectName	the name of the RTC to create
+ * @param	_mhvEventCount	the number of events
+ * @param	_mhvTimezone	the timezone
+ */
+#define MHV_RTC_CREATE(_mhvObjectName,_mhvEventCount,_mhvTimezone) \
+		MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
+		MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount,_mhvTimezone);
+
 class MHV_RTC {
+private:
+	inline void incrementMilliseconds();
+
 protected:
-	MHV_Timer8				*_timer;
 	MHV_ALARM				*_alarms;
 	volatile uint8_t		_alarmCount;
 	uint8_t					_alarmMax;
@@ -113,8 +125,8 @@ protected:
 
 
 public:
-	MHV_RTC(MHV_Timer8 *timer, MHV_ALARM *eventBuffer, uint8_t eventCount, int16_t timezone);
-	void synchronise();
+	MHV_RTC(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone);
+	void synchronise(MHV_Timer8 &_timer);
 	void setTime(uint32_t timestamp, uint16_t milliseconds);
 	void setTime(MHV_TIMESTAMP *timestamp);
 	void tick();
@@ -128,6 +140,7 @@ public:
 	bool addAlarm(MHV_ALARM *alarm);
 	void handleEvents();
 	uint8_t alarmsPending();
+	void removeAlarm(MHV_AlarmListener &listener);
 	void removeAlarm(MHV_AlarmListener *listener);
 
 

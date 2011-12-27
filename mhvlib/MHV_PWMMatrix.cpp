@@ -43,7 +43,7 @@
  * @param	colOff		callback to turn a column off
  */
 MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer,
-		MHV_RingBuffer *txBuffers,
+		MHV_RingBuffer &txBuffers,
 		void (*rowOn)(uint16_t row),
 		void (*rowOff)(uint16_t row),
 		void (*colOn)(uint16_t column),

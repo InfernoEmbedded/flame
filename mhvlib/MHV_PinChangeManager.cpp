@@ -86,36 +86,30 @@ void MHV_PinChangeManager::pinChange(uint8_t offset) {
 
 /**
  * Register interest for pinchange events
- * @param	pinDir						A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt
- * @param	pinOut						A member of the MHV_PIN_* macro
- * @param	pinIn						A member of the MHV_PIN_* macro
- * @param	pinBit						A member of the MHV_PIN_* macro
- * @param	pinChangeInterrupt			A member of the MHV_PIN_* macro
- * @param	listener					a MHV_PinEventListener to notify when the pin changes
+ * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
+ * @param	listener	a MHV_PinEventListener to notify when the pin changes
  */
-void MHV_PinChangeManager::registerListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
-		volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt,
-		MHV_PinEventListener *listener) {
+void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener) {
 
-	mhv_setInput(pinDir, pinOut, pinIn, pinBit, pinChangeInterrupt);
+	mhv_setInput(MHV_PIN_PARMS(pin));
 
-	_pins[pinChangeInterrupt].port = pinIn;
-	_pins[pinChangeInterrupt].mask = _BV(pinBit);
-	_pins[pinChangeInterrupt].listener = listener;
-	_pins[pinChangeInterrupt].previous = mhv_pinRead(pinDir, pinOut, pinIn, pinBit, pinChangeInterrupt);
-	_pins[pinChangeInterrupt].changed = false;
+	_pins[pinPinchangeInterrupt].port = pinIn;
+	_pins[pinPinchangeInterrupt].mask = _BV(pinPin);
+	_pins[pinPinchangeInterrupt].listener = listener;
+	_pins[pinPinchangeInterrupt].previous = mhv_pinRead(MHV_PIN_PARMS(pin));
+	_pins[pinPinchangeInterrupt].changed = false;
 
 	// Enable the interrupt
-	uint8_t bit = pinChangeInterrupt;
+	uint8_t bit = pinPinchangeInterrupt;
 #if MHV_PC_INT_COUNT > 15
-	if (pinChangeInterrupt > 15) {
+	if (pinPinchangeInterrupt > 15) {
 		bit -= 16;
 		PCMSK2 |= _BV(bit);
 		PCICR |= _BV(PCIE2);
 	} else
 #endif
 #if MHV_PC_INT_COUNT > 7
-	if (pinChangeInterrupt > 7) {
+	if (pinPinchangeInterrupt > 7) {
 		bit -= 8;
 		PCMSK1 |= _BV(bit);
 		PCICR |= _BV(PCIE1);
@@ -136,28 +130,23 @@ void MHV_PinChangeManager::registerListener(volatile uint8_t *pinDir, volatile u
 
 /**
  * Deregister interest for pinchange events
- * @param	pinDir						A member of the MHV_PIN_* macro, must have a valid pinchangeInterrupt
- * @param	pinOut						A member of the MHV_PIN_* macro
- * @param	pinIn						A member of the MHV_PIN_* macro
- * @param	pinBit						A member of the MHV_PIN_* macro
- * @param	pinChangeInterrupt			A member of the MHV_PIN_* macro
+ * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
  */
-void MHV_PinChangeManager::deregisterListener(volatile uint8_t *pinDir, volatile uint8_t *pinOut,
-		volatile uint8_t *pinIn, uint8_t pinBit, int8_t pinChangeInterrupt) {
+void MHV_PinChangeManager::deregisterListener(MHV_DECLARE_PIN(pin)) {
 
-	_pins[pinChangeInterrupt].listener = NULL;
-	_pins[pinChangeInterrupt].changed = false;
+	_pins[pinPinchangeInterrupt].listener = NULL;
+	_pins[pinPinchangeInterrupt].changed = false;
 
 // Disable the interrupt
-	uint8_t bit = pinChangeInterrupt;
+	uint8_t bit = pinPinchangeInterrupt;
 #if MHV_PC_INT_COUNT > 15
-	if (pinChangeInterrupt > 15) {
+	if (pinPinchangeInterrupt > 15) {
 		bit -= 16;
 		PCMSK2 &= ~_BV(bit);
 	} else
 #endif
 #if MHV_PC_INT_COUNT > 7
-	if (pinChangeInterrupt > 7) {
+	if (pinPinchangeInterrupt > 7) {
 		bit -= 8;
 		PCMSK1 &= ~_BV(bit);
 	} else

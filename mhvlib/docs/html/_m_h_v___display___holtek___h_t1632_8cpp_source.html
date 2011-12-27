@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -130,290 +130,288 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00037"></a><a class="code" href="_m_h_v___display___holtek___h_t1632_8cpp.html#a3d8797ea6d489b7fed21e59ea57843d2">00037</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_SHIFT_ORDER_MSB</span>
 <a name="l00038"></a>00038 <span class="preprocessor"></span><span class="preprocessor">#include &lt;<a class="code" href="_m_h_v___shifter_8h.html">MHV_Shifter.h</a>&gt;</span>
 <a name="l00039"></a>00039 
-<a name="l00059"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a60d764947891119adbee7951a72c5ffc">00059</a> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a60d764947891119adbee7951a72c5ffc">MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632</a>(
-<a name="l00060"></a>00060                 <span class="keyword">volatile</span> uint8_t *dataDir, <span class="keyword">volatile</span> uint8_t *dataOut, <span class="keyword">volatile</span> uint8_t *dataIn,
-<a name="l00061"></a>00061                         uint8_t dataPin, int8_t dataPinchangeInterrupt,
-<a name="l00062"></a>00062                 <span class="keyword">volatile</span> uint8_t *writeDir, <span class="keyword">volatile</span> uint8_t *writeOut, <span class="keyword">volatile</span> uint8_t *writeIn,
-<a name="l00063"></a>00063                                         uint8_t writePin, int8_t writePinchangeInterrupt,
-<a name="l00064"></a>00064                 <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode,
-<a name="l00065"></a>00065                 uint8_t arrayX, uint8_t arrayY,
-<a name="l00066"></a>00066                 <span class="keywordtype">void</span> (*csCallback)(uint8_t x, uint8_t y, <span class="keywordtype">bool</span> active),
-<a name="l00067"></a>00067                 uint8_t *frameBuffer, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers) :
-<a name="l00068"></a>00068                         <a class="code" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a>(
-<a name="l00069"></a>00069                                         ((<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == mode) ? 32 : 24) * arrayX,
-<a name="l00070"></a>00070                                         ((<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == mode) ? 8 : 16) * arrayY,
-<a name="l00071"></a>00071                                         txBuffers) {
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073         <a class="code" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a>(dataDir, dataOut, dataIn, dataPin, dataPinchangeInterrupt);
-<a name="l00074"></a>00074         <a class="code" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a>(writeDir, writeOut, writeIn, writePin, writePinchangeInterrupt);
-<a name="l00075"></a>00075 
-<a name="l00076"></a>00076         _port = dataOut;
-<a name="l00077"></a>00077         _data = _BV(dataPin);
-<a name="l00078"></a>00078         _dataPin = dataPin;
-<a name="l00079"></a>00079         _write = _BV(writePin);
-<a name="l00080"></a>00080         _writePin = writePin;
-<a name="l00081"></a>00081         _csCallback = csCallback;
-<a name="l00082"></a>00082         _arrayX = arrayX;
-<a name="l00083"></a>00083         _arrayY = arrayY;
-<a name="l00084"></a>00084         _frameBuffer = frameBuffer;
-<a name="l00085"></a>00085         _mode = mode;
-<a name="l00086"></a>00086 
-<a name="l00087"></a>00087         uint8_t x, y;
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00090"></a>00090                 <span class="comment">// Set the first module to be the master, rest will be slaves</span>
-<a name="l00091"></a>00091                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00092"></a>00092                         _csCallback(x, y, 0);
-<a name="l00093"></a>00093 
-<a name="l00094"></a>00094                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">poweron</a>(x, y);
-<a name="l00095"></a>00095                         <span class="keywordflow">if</span> (!x &amp;&amp; !y) {
-<a name="l00096"></a>00096                                 master(x, y);
-<a name="l00097"></a>00097                         } <span class="keywordflow">else</span> {
-<a name="l00098"></a>00098                                 slave(x, y);
-<a name="l00099"></a>00099                         }
-<a name="l00100"></a>00100 
-<a name="l00101"></a>00101                         <span class="comment">// Set the display mode</span>
-<a name="l00102"></a>00102                         setMode(x, y, mode);
-<a name="l00103"></a>00103                 }
-<a name="l00104"></a>00104         }
-<a name="l00105"></a>00105 
-<a name="l00106"></a>00106         <span class="comment">// Clear the framebuffer</span>
-<a name="l00107"></a>00107         uint16_t bufSize = arrayX * arrayY;
-<a name="l00108"></a>00108         <span class="keywordflow">switch</span> (mode) {
-<a name="l00109"></a>00109                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
-<a name="l00110"></a>00110                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
-<a name="l00111"></a>00111                         _displayX = 32;
-<a name="l00112"></a>00112                         _displayY = 8;
-<a name="l00113"></a>00113                         _displayBytes = 32 * 8 / 8;
-<a name="l00114"></a>00114                         <span class="keywordflow">break</span>;
-<a name="l00115"></a>00115                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
-<a name="l00116"></a>00116                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
-<a name="l00117"></a>00117                         _displayX = 24;
-<a name="l00118"></a>00118                         _displayY = 16;
-<a name="l00119"></a>00119                         _displayBytes = 24 * 16 / 8;
-<a name="l00120"></a>00120                         <span class="keywordflow">break</span>;
-<a name="l00121"></a>00121         }
-<a name="l00122"></a>00122         bufSize *= _displayBytes;
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124         <span class="keywordflow">for</span> (uint16_t i = 0; i &lt; bufSize; i++) {
-<a name="l00125"></a>00125                 _frameBuffer[i] = 0x0;
-<a name="l00126"></a>00126         }
-<a name="l00127"></a>00127 }
-<a name="l00128"></a>00128 
-<a name="l00135"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a664e9a5744bed3fa50a6adc9fcf80206">00135</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a664e9a5744bed3fa50a6adc9fcf80206">MHV_Display_Holtek_HT1632::setPixel</a>(uint16_t col, uint16_t row, uint8_t value) {
-<a name="l00136"></a>00136         <span class="keywordflow">if</span> (row &lt; <a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a> &amp;&amp; col &lt; <a class="code" href="class_m_h_v___display___monochrome.html#ae34bd61b8cffa2ee240bfe29f49a99d2">_colCount</a>) {
+<a name="l00051"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#ac3491073aa40004666aae9cefbffd14c">00051</a> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#ac3491073aa40004666aae9cefbffd14c">MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632</a>(
+<a name="l00052"></a>00052                 <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(data),
+<a name="l00053"></a>00053                 <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(write),
+<a name="l00054"></a>00054                 <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode,
+<a name="l00055"></a>00055                 uint8_t arrayX, uint8_t arrayY,
+<a name="l00056"></a>00056                 <span class="keywordtype">void</span> (*csCallback)(uint8_t x, uint8_t y, <span class="keywordtype">bool</span> active),
+<a name="l00057"></a>00057                 uint8_t *frameBuffer, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers) :
+<a name="l00058"></a>00058                         <a class="code" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a>(
+<a name="l00059"></a>00059                                         ((<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == mode) ? 32 : 24) * arrayX,
+<a name="l00060"></a>00060                                         ((<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == mode) ? 8 : 16) * arrayY,
+<a name="l00061"></a>00061                                         txBuffers) {
+<a name="l00062"></a>00062 
+<a name="l00063"></a>00063         <a class="code" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a>(dataDir, dataOut, dataIn, dataPin, dataPinchangeInterrupt);
+<a name="l00064"></a>00064         <a class="code" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a>(writeDir, writeOut, writeIn, writePin, writePinchangeInterrupt);
+<a name="l00065"></a>00065 
+<a name="l00066"></a>00066         _port = dataOut;
+<a name="l00067"></a>00067         _data = _BV(dataPin);
+<a name="l00068"></a>00068         _dataPin = dataPin;
+<a name="l00069"></a>00069         _write = _BV(writePin);
+<a name="l00070"></a>00070         _writePin = writePin;
+<a name="l00071"></a>00071         _csCallback = csCallback;
+<a name="l00072"></a>00072         _arrayX = arrayX;
+<a name="l00073"></a>00073         _arrayY = arrayY;
+<a name="l00074"></a>00074         _frameBuffer = frameBuffer;
+<a name="l00075"></a>00075         _mode = mode;
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077         uint8_t x, y;
+<a name="l00078"></a>00078 
+<a name="l00079"></a>00079         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00080"></a>00080                 <span class="comment">// Set the first module to be the master, rest will be slaves</span>
+<a name="l00081"></a>00081                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00082"></a>00082                         _csCallback(x, y, 0);
+<a name="l00083"></a>00083 
+<a name="l00084"></a>00084                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">poweron</a>(x, y);
+<a name="l00085"></a>00085                         <span class="keywordflow">if</span> (!x &amp;&amp; !y) {
+<a name="l00086"></a>00086                                 master(x, y);
+<a name="l00087"></a>00087                         } <span class="keywordflow">else</span> {
+<a name="l00088"></a>00088                                 slave(x, y);
+<a name="l00089"></a>00089                         }
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091                         <span class="comment">// Set the display mode</span>
+<a name="l00092"></a>00092                         setMode(x, y, mode);
+<a name="l00093"></a>00093                 }
+<a name="l00094"></a>00094         }
+<a name="l00095"></a>00095 
+<a name="l00096"></a>00096         <span class="comment">// Clear the framebuffer</span>
+<a name="l00097"></a>00097         uint16_t bufSize = arrayX * arrayY;
+<a name="l00098"></a>00098         <span class="keywordflow">switch</span> (mode) {
+<a name="l00099"></a>00099                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
+<a name="l00100"></a>00100                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
+<a name="l00101"></a>00101                         _displayX = 32;
+<a name="l00102"></a>00102                         _displayY = 8;
+<a name="l00103"></a>00103                         _displayBytes = 32 * 8 / 8;
+<a name="l00104"></a>00104                         <span class="keywordflow">break</span>;
+<a name="l00105"></a>00105                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
+<a name="l00106"></a>00106                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
+<a name="l00107"></a>00107                         _displayX = 24;
+<a name="l00108"></a>00108                         _displayY = 16;
+<a name="l00109"></a>00109                         _displayBytes = 24 * 16 / 8;
+<a name="l00110"></a>00110                         <span class="keywordflow">break</span>;
+<a name="l00111"></a>00111         }
+<a name="l00112"></a>00112         bufSize *= _displayBytes;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         <span class="keywordflow">for</span> (uint16_t i = 0; i &lt; bufSize; i++) {
+<a name="l00115"></a>00115                 _frameBuffer[i] = 0x0;
+<a name="l00116"></a>00116         }
+<a name="l00117"></a>00117 }
+<a name="l00118"></a>00118 
+<a name="l00125"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a664e9a5744bed3fa50a6adc9fcf80206">00125</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a664e9a5744bed3fa50a6adc9fcf80206">MHV_Display_Holtek_HT1632::setPixel</a>(uint16_t col, uint16_t row, uint8_t value) {
+<a name="l00126"></a>00126         <span class="keywordflow">if</span> (row &lt; <a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a> &amp;&amp; col &lt; <a class="code" href="class_m_h_v___display___monochrome.html#ae34bd61b8cffa2ee240bfe29f49a99d2">_colCount</a>) {
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128                 <span class="comment">// Coordinates of the display module</span>
+<a name="l00129"></a>00129                 uint8_t moduleX, moduleY;
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131                 moduleX = col / _displayX;
+<a name="l00132"></a>00132                 moduleY = row / _displayY;
+<a name="l00133"></a>00133 
+<a name="l00134"></a>00134                 <span class="comment">// offsets within the module</span>
+<a name="l00135"></a>00135                 col -= moduleX * _displayX;
+<a name="l00136"></a>00136                 row -= moduleY * _displayY;
 <a name="l00137"></a>00137 
-<a name="l00138"></a>00138                 <span class="comment">// Coordinates of the display module</span>
-<a name="l00139"></a>00139                 uint8_t moduleX, moduleY;
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141                 moduleX = col / _displayX;
-<a name="l00142"></a>00142                 moduleY = row / _displayY;
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144                 <span class="comment">// offsets within the module</span>
-<a name="l00145"></a>00145                 col -= moduleX * _displayX;
-<a name="l00146"></a>00146                 row -= moduleY * _displayY;
-<a name="l00147"></a>00147 
-<a name="l00148"></a>00148                 uint8_t offset = col;
-<a name="l00149"></a>00149                 uint8_t bit = row;
-<a name="l00150"></a>00150                 <span class="keywordflow">switch</span> (_mode) {
-<a name="l00151"></a>00151                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
-<a name="l00152"></a>00152                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
-<a name="l00153"></a>00153                         <span class="keywordflow">break</span>;
-<a name="l00154"></a>00154                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
-<a name="l00155"></a>00155                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
-<a name="l00156"></a>00156                         offset *= 2;
-<a name="l00157"></a>00157                         <span class="keywordflow">if</span> (bit &gt; 7) {
-<a name="l00158"></a>00158                                 bit -= 8;
-<a name="l00159"></a>00159                                 offset++;
-<a name="l00160"></a>00160                         }
-<a name="l00161"></a>00161                         <span class="keywordflow">break</span>;
-<a name="l00162"></a>00162                 }
-<a name="l00163"></a>00163 
-<a name="l00164"></a>00164                 <span class="comment">// Change offset from the start of the display to the start of the framebuffer</span>
-<a name="l00165"></a>00165                 offset += (moduleY * _arrayX + moduleX) * _displayBytes;
-<a name="l00166"></a>00166 
-<a name="l00167"></a>00167                 <span class="keywordflow">if</span> (value) {
-<a name="l00168"></a>00168                         _frameBuffer[offset] |= 1 &lt;&lt; bit;
-<a name="l00169"></a>00169                 } <span class="keywordflow">else</span> {
-<a name="l00170"></a>00170                         _frameBuffer[offset] &amp;= ~(1 &lt;&lt; bit);
-<a name="l00171"></a>00171                 }
-<a name="l00172"></a>00172         }
-<a name="l00173"></a>00173 }
-<a name="l00174"></a>00174 
-<a name="l00181"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">00181</a> uint8_t <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">MHV_Display_Holtek_HT1632::getPixel</a>(uint16_t col, uint16_t row) {
-<a name="l00182"></a>00182         <span class="keywordflow">if</span> (row &lt; <a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a> &amp;&amp; col &lt; <a class="code" href="class_m_h_v___display___monochrome.html#ae34bd61b8cffa2ee240bfe29f49a99d2">_colCount</a>) {
-<a name="l00183"></a>00183                 <span class="comment">// Coordinates of the display module</span>
-<a name="l00184"></a>00184                 uint8_t moduleX, moduleY;
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186                 moduleX = row / _displayX;
-<a name="l00187"></a>00187                 moduleY = col / _displayY;
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189                 <span class="comment">// offsets within the module</span>
-<a name="l00190"></a>00190                 row -= moduleX * _displayX;
-<a name="l00191"></a>00191                 col -= moduleY * _displayY;
-<a name="l00192"></a>00192 
-<a name="l00193"></a>00193                 uint8_t offset, bit;
-<a name="l00194"></a>00194                 <span class="keywordflow">switch</span> (_mode) {
-<a name="l00195"></a>00195                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
-<a name="l00196"></a>00196                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
-<a name="l00197"></a>00197                         offset = col;
-<a name="l00198"></a>00198                         bit = row;
-<a name="l00199"></a>00199                         <span class="keywordflow">break</span>;
-<a name="l00200"></a>00200                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
-<a name="l00201"></a>00201                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
-<a name="l00202"></a>00202                         offset = col * 2;
-<a name="l00203"></a>00203                         bit = row;
-<a name="l00204"></a>00204                         <span class="keywordflow">if</span> (bit &gt; 7) {
-<a name="l00205"></a>00205                                 bit -= 8;
-<a name="l00206"></a>00206                                 offset++;
-<a name="l00207"></a>00207                         }
-<a name="l00208"></a>00208                         <span class="keywordflow">break</span>;
-<a name="l00209"></a>00209                 }
-<a name="l00210"></a>00210 
-<a name="l00211"></a>00211                 <span class="comment">// Change offset from the start of the display to the start of the framebuffer</span>
-<a name="l00212"></a>00212                 offset += (moduleY * _arrayX + moduleX) * _displayBytes;
-<a name="l00213"></a>00213 
-<a name="l00214"></a>00214                 <span class="keywordflow">if</span> (_frameBuffer[offset] &amp; (1 &lt;&lt; bit)) {
-<a name="l00215"></a>00215                         <span class="keywordflow">return</span> 1;
-<a name="l00216"></a>00216                 }
-<a name="l00217"></a>00217         }
-<a name="l00218"></a>00218 
-<a name="l00219"></a>00219         <span class="keywordflow">return</span> 0;
-<a name="l00220"></a>00220 }
-<a name="l00221"></a>00221 
-<a name="l00227"></a>00227 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::writeData(uint8_t data, uint8_t length) {
-<a name="l00228"></a>00228         <span class="keywordflow">while</span> (0 != length) {
-<a name="l00229"></a>00229                 <span class="keywordflow">if</span> (data &amp; 1 &lt;&lt; (--length)) {
-<a name="l00230"></a>00230                 *_port |= _data;
-<a name="l00231"></a>00231                 } <span class="keywordflow">else</span> {
-<a name="l00232"></a>00232                         *_port &amp;= ~_data;
-<a name="l00233"></a>00233                 }
-<a name="l00234"></a>00234 
-<a name="l00235"></a>00235                 *_port &amp;= ~_write;
-<a name="l00236"></a>00236                 *_port |= _write;
-<a name="l00237"></a>00237         }
-<a name="l00238"></a>00238 }
-<a name="l00239"></a>00239 
-<a name="l00246"></a>00246 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::sendCommand(uint8_t moduleX, uint8_t moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a21da7a8c673d061604ebb292b4397dc8">MHV_HT1632_COMMAND</a> command) {
-<a name="l00247"></a>00247         _csCallback(moduleX, moduleY, 1);
-<a name="l00248"></a>00248         writeData(command, 3);
-<a name="l00249"></a>00249 }
-<a name="l00250"></a>00250 
-<a name="l00256"></a>00256 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::commandComplete(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00257"></a>00257         _csCallback(moduleX, moduleY, 0);
+<a name="l00138"></a>00138                 uint8_t offset = col;
+<a name="l00139"></a>00139                 uint8_t bit = row;
+<a name="l00140"></a>00140                 <span class="keywordflow">switch</span> (_mode) {
+<a name="l00141"></a>00141                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
+<a name="l00142"></a>00142                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
+<a name="l00143"></a>00143                         <span class="keywordflow">break</span>;
+<a name="l00144"></a>00144                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
+<a name="l00145"></a>00145                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
+<a name="l00146"></a>00146                         offset *= 2;
+<a name="l00147"></a>00147                         <span class="keywordflow">if</span> (bit &gt; 7) {
+<a name="l00148"></a>00148                                 bit -= 8;
+<a name="l00149"></a>00149                                 offset++;
+<a name="l00150"></a>00150                         }
+<a name="l00151"></a>00151                         <span class="keywordflow">break</span>;
+<a name="l00152"></a>00152                 }
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154                 <span class="comment">// Change offset from the start of the display to the start of the framebuffer</span>
+<a name="l00155"></a>00155                 offset += (moduleY * _arrayX + moduleX) * _displayBytes;
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157                 <span class="keywordflow">if</span> (value) {
+<a name="l00158"></a>00158                         _frameBuffer[offset] |= 1 &lt;&lt; bit;
+<a name="l00159"></a>00159                 } <span class="keywordflow">else</span> {
+<a name="l00160"></a>00160                         _frameBuffer[offset] &amp;= ~(1 &lt;&lt; bit);
+<a name="l00161"></a>00161                 }
+<a name="l00162"></a>00162         }
+<a name="l00163"></a>00163 }
+<a name="l00164"></a>00164 
+<a name="l00171"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">00171</a> uint8_t <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">MHV_Display_Holtek_HT1632::getPixel</a>(uint16_t col, uint16_t row) {
+<a name="l00172"></a>00172         <span class="keywordflow">if</span> (row &lt; <a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a> &amp;&amp; col &lt; <a class="code" href="class_m_h_v___display___monochrome.html#ae34bd61b8cffa2ee240bfe29f49a99d2">_colCount</a>) {
+<a name="l00173"></a>00173                 <span class="comment">// Coordinates of the display module</span>
+<a name="l00174"></a>00174                 uint8_t moduleX, moduleY;
+<a name="l00175"></a>00175 
+<a name="l00176"></a>00176                 moduleX = row / _displayX;
+<a name="l00177"></a>00177                 moduleY = col / _displayY;
+<a name="l00178"></a>00178 
+<a name="l00179"></a>00179                 <span class="comment">// offsets within the module</span>
+<a name="l00180"></a>00180                 row -= moduleX * _displayX;
+<a name="l00181"></a>00181                 col -= moduleY * _displayY;
+<a name="l00182"></a>00182 
+<a name="l00183"></a>00183                 uint8_t offset, bit;
+<a name="l00184"></a>00184                 <span class="keywordflow">switch</span> (_mode) {
+<a name="l00185"></a>00185                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a>:
+<a name="l00186"></a>00186                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a>:
+<a name="l00187"></a>00187                         offset = col;
+<a name="l00188"></a>00188                         bit = row;
+<a name="l00189"></a>00189                         <span class="keywordflow">break</span>;
+<a name="l00190"></a>00190                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a0c87f56b107597f5d3d1c3105cae39ea">MHV_HT1632_NMOS_24x16</a>:
+<a name="l00191"></a>00191                 <span class="keywordflow">case</span> <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a83174d415f83a69412f5e9a64650f3f3">MHV_HT1632_PMOS_24x16</a>:
+<a name="l00192"></a>00192                         offset = col * 2;
+<a name="l00193"></a>00193                         bit = row;
+<a name="l00194"></a>00194                         <span class="keywordflow">if</span> (bit &gt; 7) {
+<a name="l00195"></a>00195                                 bit -= 8;
+<a name="l00196"></a>00196                                 offset++;
+<a name="l00197"></a>00197                         }
+<a name="l00198"></a>00198                         <span class="keywordflow">break</span>;
+<a name="l00199"></a>00199                 }
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201                 <span class="comment">// Change offset from the start of the display to the start of the framebuffer</span>
+<a name="l00202"></a>00202                 offset += (moduleY * _arrayX + moduleX) * _displayBytes;
+<a name="l00203"></a>00203 
+<a name="l00204"></a>00204                 <span class="keywordflow">if</span> (_frameBuffer[offset] &amp; (1 &lt;&lt; bit)) {
+<a name="l00205"></a>00205                         <span class="keywordflow">return</span> 1;
+<a name="l00206"></a>00206                 }
+<a name="l00207"></a>00207         }
+<a name="l00208"></a>00208 
+<a name="l00209"></a>00209         <span class="keywordflow">return</span> 0;
+<a name="l00210"></a>00210 }
+<a name="l00211"></a>00211 
+<a name="l00217"></a>00217 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::writeData(uint8_t data, uint8_t length) {
+<a name="l00218"></a>00218         <span class="keywordflow">while</span> (0 != length) {
+<a name="l00219"></a>00219                 <span class="keywordflow">if</span> (data &amp; 1 &lt;&lt; (--length)) {
+<a name="l00220"></a>00220                 *_port |= _data;
+<a name="l00221"></a>00221                 } <span class="keywordflow">else</span> {
+<a name="l00222"></a>00222                         *_port &amp;= ~_data;
+<a name="l00223"></a>00223                 }
+<a name="l00224"></a>00224 
+<a name="l00225"></a>00225                 *_port &amp;= ~_write;
+<a name="l00226"></a>00226                 *_port |= _write;
+<a name="l00227"></a>00227         }
+<a name="l00228"></a>00228 }
+<a name="l00229"></a>00229 
+<a name="l00236"></a>00236 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::sendCommand(uint8_t moduleX, uint8_t moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a21da7a8c673d061604ebb292b4397dc8">MHV_HT1632_COMMAND</a> command) {
+<a name="l00237"></a>00237         _csCallback(moduleX, moduleY, 1);
+<a name="l00238"></a>00238         writeData(command, 3);
+<a name="l00239"></a>00239 }
+<a name="l00240"></a>00240 
+<a name="l00246"></a>00246 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::commandComplete(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00247"></a>00247         _csCallback(moduleX, moduleY, 0);
+<a name="l00248"></a>00248 }
+<a name="l00249"></a>00249 
+<a name="l00255"></a>00255 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::outputStart(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00256"></a>00256         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba600df2e5f314b64f3865035b172e7cad">MHV_HT1632_COMMAND_WRITE</a>);
+<a name="l00257"></a>00257         writeData(0, 7);
 <a name="l00258"></a>00258 }
 <a name="l00259"></a>00259 
-<a name="l00265"></a>00265 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::outputStart(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00266"></a>00266         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba600df2e5f314b64f3865035b172e7cad">MHV_HT1632_COMMAND_WRITE</a>);
-<a name="l00267"></a>00267         writeData(0, 7);
-<a name="l00268"></a>00268 }
-<a name="l00269"></a>00269 
-<a name="l00273"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#aeeb460d8c5ba0d8d43fb18779e50258e">00273</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#aeeb460d8c5ba0d8d43fb18779e50258e">MHV_Display_Holtek_HT1632::flush</a>() {
-<a name="l00274"></a>00274         uint8_t x, y;
-<a name="l00275"></a>00275         uint8_t bytes;
-<a name="l00276"></a>00276         uint8_t bytesCopy;
-<a name="l00277"></a>00277         uint8_t *data;
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279         bytes = (<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == _mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == _mode) ? 32 : 48;
-<a name="l00280"></a>00280 
-<a name="l00281"></a>00281         <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00282"></a>00282                 <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00283"></a>00283                         data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
+<a name="l00263"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#aeeb460d8c5ba0d8d43fb18779e50258e">00263</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#aeeb460d8c5ba0d8d43fb18779e50258e">MHV_Display_Holtek_HT1632::flush</a>() {
+<a name="l00264"></a>00264         uint8_t x, y;
+<a name="l00265"></a>00265         uint8_t bytes;
+<a name="l00266"></a>00266         uint8_t bytesCopy;
+<a name="l00267"></a>00267         uint8_t *data;
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269         bytes = (<a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a42e725fa61ad56c176b9a336a782189d">MHV_HT1632_NMOS_32x8</a> == _mode || <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011a3004662d40b42cb5fa793ca5db9ceb27">MHV_HT1632_PMOS_32x8</a> == _mode) ? 32 : 48;
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271         <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00272"></a>00272                 <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00273"></a>00273                         data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
+<a name="l00274"></a>00274                 }
+<a name="l00275"></a>00275         }
+<a name="l00276"></a>00276 
+<a name="l00277"></a>00277         <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00278"></a>00278                 <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00279"></a>00279                         bytesCopy = bytes;
+<a name="l00280"></a>00280                         data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
+<a name="l00281"></a>00281                         outputStart(x, y);
+<a name="l00282"></a>00282                         MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(data, bytesCopy);
+<a name="l00283"></a>00283                         commandComplete(x, y);
 <a name="l00284"></a>00284                 }
 <a name="l00285"></a>00285         }
-<a name="l00286"></a>00286 
-<a name="l00287"></a>00287         <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00288"></a>00288                 <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00289"></a>00289                         bytesCopy = bytes;
-<a name="l00290"></a>00290                         data = _frameBuffer + (uint16_t)bytes * (y * _arrayY + x);
-<a name="l00291"></a>00291                         outputStart(x, y);
-<a name="l00292"></a>00292                         <a class="code" href="_m_h_v___shifter_8h.html#af8857a51ce82d19e69321bf950fa2972">MHV_SHIFTOUT_ARRAY_CLOCKED_RISING</a>(data, bytesCopy);
-<a name="l00293"></a>00293                         commandComplete(x, y);
-<a name="l00294"></a>00294                 }
-<a name="l00295"></a>00295         }
-<a name="l00296"></a>00296 }
-<a name="l00297"></a>00297 
-<a name="l00302"></a>00302 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00303"></a>00303         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00304"></a>00304         writeData(0b00010100, 8);
-<a name="l00305"></a>00305         writeData(0x0, 1);
-<a name="l00306"></a>00306         commandComplete(moduleX, moduleY);
-<a name="l00307"></a>00307 }
-<a name="l00308"></a>00308 
-<a name="l00313"></a>00313 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00314"></a>00314         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00315"></a>00315         writeData(0b00010000, 8);
-<a name="l00316"></a>00316         writeData(0x0, 1);
-<a name="l00317"></a>00317         commandComplete(moduleX, moduleY);
-<a name="l00318"></a>00318 }
-<a name="l00319"></a>00319 
-<a name="l00325"></a>00325 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness) {
-<a name="l00326"></a>00326         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00327"></a>00327         writeData(0b1010, 4);
-<a name="l00328"></a>00328         writeData(brightness &lt;&lt; 1, 5);
-<a name="l00329"></a>00329         commandComplete(moduleX, moduleY);
-<a name="l00330"></a>00330 }
-<a name="l00331"></a>00331 
-<a name="l00336"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a60620705276f1713dead13a4b440fed4">00336</a> <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::brightness(uint8_t brightness_in) {
-<a name="l00337"></a>00337         uint8_t x, y;
-<a name="l00338"></a>00338 
-<a name="l00339"></a>00339         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00340"></a>00340                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00341"></a>00341                         brightness(x, y, brightness_in);
-<a name="l00342"></a>00342                 }
-<a name="l00343"></a>00343         }
-<a name="l00344"></a>00344 }
-<a name="l00345"></a>00345 
-<a name="l00351"></a>00351 <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">MHV_Display_Holtek_HT1632::poweroff</a>(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00352"></a>00352         <span class="comment">// Shut down the oscillator &amp; PWM generator</span>
-<a name="l00353"></a>00353         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00354"></a>00354         writeData(0b00000000, 8);
-<a name="l00355"></a>00355         writeData(0x0, 1);
-<a name="l00356"></a>00356         commandComplete(moduleX, moduleY);
-<a name="l00357"></a>00357 }
-<a name="l00358"></a>00358 
-<a name="l00364"></a>00364 <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">MHV_Display_Holtek_HT1632::poweron</a>(uint8_t moduleX, uint8_t moduleY) {
-<a name="l00365"></a>00365 <span class="comment">// Turn on the oscillator</span>
-<a name="l00366"></a>00366         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00367"></a>00367         writeData(0b00000001, 8);
-<a name="l00368"></a>00368         writeData(0x0, 1);
-<a name="l00369"></a>00369         commandComplete(moduleX, moduleY);
-<a name="l00370"></a>00370 
-<a name="l00371"></a>00371 <span class="comment">// Turn on the PWM generator</span>
-<a name="l00372"></a>00372         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00373"></a>00373         writeData(0b00000011, 8);
-<a name="l00374"></a>00374         writeData(0x0, 1);
-<a name="l00375"></a>00375         commandComplete(moduleX, moduleY);
-<a name="l00376"></a>00376 }
-<a name="l00377"></a>00377 
-<a name="l00384"></a>00384 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::setMode(uint8_t moduleX, uint8_t moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode) {
-<a name="l00385"></a>00385         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
-<a name="l00386"></a>00386         writeData(0b0010, 4);
-<a name="l00387"></a>00387         writeData(mode, 2);
-<a name="l00388"></a>00388         writeData(0b000, 3);
-<a name="l00389"></a>00389         commandComplete(moduleX, moduleY);
-<a name="l00390"></a>00390 }
-<a name="l00391"></a>00391 
-<a name="l00392"></a>00392 
-<a name="l00396"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">00396</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">MHV_Display_Holtek_HT1632::poweroff</a>() {
-<a name="l00397"></a>00397         uint8_t x, y;
-<a name="l00398"></a>00398 
-<a name="l00399"></a>00399         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00400"></a>00400                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00401"></a>00401                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">poweroff</a>(x, y);
-<a name="l00402"></a>00402                 }
-<a name="l00403"></a>00403         }
-<a name="l00404"></a>00404 }
-<a name="l00405"></a>00405 
-<a name="l00409"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">00409</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">MHV_Display_Holtek_HT1632::poweron</a>() {
-<a name="l00410"></a>00410         uint8_t x, y;
-<a name="l00411"></a>00411 
-<a name="l00412"></a>00412         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
-<a name="l00413"></a>00413                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
-<a name="l00414"></a>00414                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">poweron</a>(x, y);
-<a name="l00415"></a>00415                 }
-<a name="l00416"></a>00416         }
-<a name="l00417"></a>00417 }
+<a name="l00286"></a>00286 }
+<a name="l00287"></a>00287 
+<a name="l00292"></a>00292 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00293"></a>00293         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00294"></a>00294         writeData(0b00010100, 8);
+<a name="l00295"></a>00295         writeData(0x0, 1);
+<a name="l00296"></a>00296         commandComplete(moduleX, moduleY);
+<a name="l00297"></a>00297 }
+<a name="l00298"></a>00298 
+<a name="l00303"></a>00303 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00304"></a>00304         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00305"></a>00305         writeData(0b00010000, 8);
+<a name="l00306"></a>00306         writeData(0x0, 1);
+<a name="l00307"></a>00307         commandComplete(moduleX, moduleY);
+<a name="l00308"></a>00308 }
+<a name="l00309"></a>00309 
+<a name="l00315"></a>00315 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness) {
+<a name="l00316"></a>00316         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00317"></a>00317         writeData(0b1010, 4);
+<a name="l00318"></a>00318         writeData(brightness &lt;&lt; 1, 5);
+<a name="l00319"></a>00319         commandComplete(moduleX, moduleY);
+<a name="l00320"></a>00320 }
+<a name="l00321"></a>00321 
+<a name="l00326"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a60620705276f1713dead13a4b440fed4">00326</a> <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::brightness(uint8_t brightness_in) {
+<a name="l00327"></a>00327         uint8_t x, y;
+<a name="l00328"></a>00328 
+<a name="l00329"></a>00329         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00330"></a>00330                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00331"></a>00331                         brightness(x, y, brightness_in);
+<a name="l00332"></a>00332                 }
+<a name="l00333"></a>00333         }
+<a name="l00334"></a>00334 }
+<a name="l00335"></a>00335 
+<a name="l00341"></a>00341 <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">MHV_Display_Holtek_HT1632::poweroff</a>(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00342"></a>00342         <span class="comment">// Shut down the oscillator &amp; PWM generator</span>
+<a name="l00343"></a>00343         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00344"></a>00344         writeData(0b00000000, 8);
+<a name="l00345"></a>00345         writeData(0x0, 1);
+<a name="l00346"></a>00346         commandComplete(moduleX, moduleY);
+<a name="l00347"></a>00347 }
+<a name="l00348"></a>00348 
+<a name="l00354"></a>00354 <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">MHV_Display_Holtek_HT1632::poweron</a>(uint8_t moduleX, uint8_t moduleY) {
+<a name="l00355"></a>00355 <span class="comment">// Turn on the oscillator</span>
+<a name="l00356"></a>00356         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00357"></a>00357         writeData(0b00000001, 8);
+<a name="l00358"></a>00358         writeData(0x0, 1);
+<a name="l00359"></a>00359         commandComplete(moduleX, moduleY);
+<a name="l00360"></a>00360 
+<a name="l00361"></a>00361 <span class="comment">// Turn on the PWM generator</span>
+<a name="l00362"></a>00362         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00363"></a>00363         writeData(0b00000011, 8);
+<a name="l00364"></a>00364         writeData(0x0, 1);
+<a name="l00365"></a>00365         commandComplete(moduleX, moduleY);
+<a name="l00366"></a>00366 }
+<a name="l00367"></a>00367 
+<a name="l00374"></a>00374 <span class="keywordtype">void</span> MHV_Display_Holtek_HT1632::setMode(uint8_t moduleX, uint8_t moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode) {
+<a name="l00375"></a>00375         sendCommand(moduleX, moduleY, <a class="code" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eba8c424ca88c2f5de73914e3d84002caa4">MHV_HT1632_COMMAND_CMD</a>);
+<a name="l00376"></a>00376         writeData(0b0010, 4);
+<a name="l00377"></a>00377         writeData(mode, 2);
+<a name="l00378"></a>00378         writeData(0b000, 3);
+<a name="l00379"></a>00379         commandComplete(moduleX, moduleY);
+<a name="l00380"></a>00380 }
+<a name="l00381"></a>00381 
+<a name="l00382"></a>00382 
+<a name="l00386"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">00386</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">MHV_Display_Holtek_HT1632::poweroff</a>() {
+<a name="l00387"></a>00387         uint8_t x, y;
+<a name="l00388"></a>00388 
+<a name="l00389"></a>00389         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00390"></a>00390                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00391"></a>00391                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">poweroff</a>(x, y);
+<a name="l00392"></a>00392                 }
+<a name="l00393"></a>00393         }
+<a name="l00394"></a>00394 }
+<a name="l00395"></a>00395 
+<a name="l00399"></a><a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">00399</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">MHV_Display_Holtek_HT1632::poweron</a>() {
+<a name="l00400"></a>00400         uint8_t x, y;
+<a name="l00401"></a>00401 
+<a name="l00402"></a>00402         <span class="keywordflow">for</span> (y = 0; y &lt; _arrayY; y++) {
+<a name="l00403"></a>00403                 <span class="keywordflow">for</span> (x = 0; x &lt; _arrayX; x++) {
+<a name="l00404"></a>00404                         <a class="code" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">poweron</a>(x, y);
+<a name="l00405"></a>00405                 }
+<a name="l00406"></a>00406         }
+<a name="l00407"></a>00407 }
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -434,7 +432,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

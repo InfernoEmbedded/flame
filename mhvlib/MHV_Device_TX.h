@@ -59,10 +59,10 @@ typedef struct mhv_tx_buffer MHV_TX_BUFFER;
 class MHV_Device_TX {
 protected:
 	MHV_TX_BUFFER	_currentTx;
-	MHV_RingBuffer	*_txPointers;
+	MHV_RingBuffer	&_txPointers;
 	const char		*_tx;
 
-	MHV_Device_TX(MHV_RingBuffer *txPointers);
+	MHV_Device_TX(MHV_RingBuffer &txPointers);
 	virtual void runTxBuffers()=0;
 	bool moreTX();
 	int nextCharacter();

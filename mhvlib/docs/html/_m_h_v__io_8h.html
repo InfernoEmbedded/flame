@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -116,12 +116,16 @@ Classes</h2></td></tr>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a7bd1629f93c9a87bfae9627bc8d793a0">MHV_IO_H_</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aa1728270d73c5d1598de1fd691762eb1">NORETURN</a>&#160;&#160;&#160;__attribute__ ((noreturn))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a3af99897b60119951af8961dbd52dd3f">UNREACHABLE</a>&#160;&#160;&#160;__builtin_unreachable();</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#acd42770aecb025cfac170d4d3ace4544">PURE</a>&#160;&#160;&#160;__attribute__ ((pure))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#adbba0f726fc66d7100916c683b7568ae">GCC_VERSION</a>&#160;&#160;&#160;(__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#af993aeb5443128b44cf538670f01e3f4">mhv_make_pin</a>(_mhv_port, _mhv_bit)&#160;&#160;&#160;_mhv_make_pin(_mhv_port, _mhv_bit)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6930b0ef9bd49825eea4615474847977">_mhv_make_pin</a>(_mhv_port, _mhv_bit)&#160;&#160;&#160;MHV_PIN_ ## _mhv_port ## _mhv_bit</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(_mhv_port, _mhv_bit)&#160;&#160;&#160;_MHV_MAKE_PIN(_mhv_port, _mhv_bit)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aa9c24052e3e6bd7256130b8c5cdfce42">_MHV_MAKE_PIN</a>(_mhv_port, _mhv_bit)&#160;&#160;&#160;MHV_PIN_ ## _mhv_port ## _mhv_bit</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(_mhvPrefix)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#add203d01207ff98c001d8ce187c42427">MHV_PIN_PARMS</a>(_mhvPrefix)&#160;&#160;&#160;_mhvPrefix ## Dir, _mhvPrefix ## Out, _mhvPrefix ## In, _mhvPrefix ## Pin, _mhvPrefix ## PinchangeInterrupt</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ab1eee3d9ad2bffb40285bcb444558305">mhv_pin</a>(mhvParms)&#160;&#160;&#160;_mhv_pin(mhvParms)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a35c2bc661161826f95bdb11cacc53d6c">_mhv_pin</a>(mhvDir, mhvOutput, mhvInput, mhvBit, mhvPCInt)&#160;&#160;&#160;{mhvDir, mhvOutput, mhvInput, _BV(mhvBit), mhvPCInt}</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a5955925df1268646f14dab966d454c21">MHV_BYTESIZEOF</a>(_mhvItem)&#160;&#160;&#160;(uint8_t)(sizeof(_mhvItem))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ac59cdce37836e1922380801158ea6132">mhv_out</a>(mhvParms)&#160;&#160;&#160;_mhv_out(mhvParms)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6ef71c38d4504fc9421faf82af54df29">_mhv_out</a>(mhvDir, mhvOutput, mhvInput, mhvBit, mhvPCInt)&#160;&#160;&#160;mhvOutput</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a029368f3cab1cc789b6cb95cb711bed7">mhv_in</a>(mhvParms)&#160;&#160;&#160;_mhv_in(mhvParms)</td></tr>
@@ -151,34 +155,44 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a31128832d0b166b97a45871602706553">mhv_pinOn</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a9a7888c9f40d31d4c63e0990073f05df">mhv_pinOnAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a298dbf5ac97d6b7a13c8e62b54b5f51b">mhv_pinOn</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a4be059228397a83d2bd4090af1e067ef">mhv_pinOnAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a166de090fa41669e18aa640ede126211">mhv_pinOn</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a51a9aa1b197da7ba9670a0505b8be40d">mhv_pinOnAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a09fb9ab4d81b04e5bd344b284e1897ae">mhv_pinOff</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ab0b95a61cdd8e3916dd916c6846fbe41">mhv_pinOffAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#af794108f9455bbf8a25dd23da8aa0397">mhv_pinOff</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a292ee9c8cdae0081a1d4b0fb6e6cfdef">mhv_pinOffAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a4e9100b3baf8d128d34eb442cde2b989">mhv_pinSet</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt, bool state)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#acb7afcea912bbe34926d457bda65e152">mhv_pinSetAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt, bool state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a28a3525c667202e44587f530b00ffd38">mhv_pinOff</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a2e36e24489ac495738d47fc945498a4f">mhv_pinOffAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a1587c5f96be5e614583c475c65c52576">mhv_pinSet</a> (MHV_DECLARE_PIN(pin), bool state)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#abf109a563d813a4db91c73fd459446af">mhv_pinSetAtomic</a> (MHV_DECLARE_PIN(pin), bool state)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a94535934938c6903ef2d7ac209a29f25">mhv_setOutputAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aa0e6d65dd96fb2651742101c420edbf5">mhv_setOutput</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a0175f71671a7a87396bc4c8176bd3bbf">mhv_setOutputAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a8ba3c18883189e172101dd1c7327cff8">mhv_setOutput</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a5f9ba24508c31c76a4153fe1a2405347">mhv_setOutputAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6146ee7a65cae427fc8ec75d7e20792c">mhv_setInputAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aa51f75e0355a551519ee2e149aafb039">mhv_setInput</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aed7e8cf52e4430ea84f5328ad3f58ff4">mhv_setInputAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a97cec6c6b993d80176d1ca59aaf4b9e5">mhv_setInput</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a4c7ea8594aa0a455820feaafeb2a52a1">mhv_setInputAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aafbe3f43159d310906612b6bf48aa688">mhv_setInputPullup</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ac8bf7a5842bfb8fa6e464e52abb3afdd">mhv_setInputPullupAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ac414b135acd1acfe550f7a01bcbb079e">mhv_setInputPullup</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ac9feb945b6a0690c30e011d18b3d1ce7">mhv_setInputPullupAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#aafd6019a37825b77ef321a019ef6f812">mhv_setInputPullup</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a689e4b4f7e13d3cb0b04be5ab07fa112">mhv_setInputPullupAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a21b64bb618c8b164e27846400c68bac6">mhv_pinToggle</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a9bb35c0e624021b9abae2c1d7e0f7c3f">mhv_pinToggleAtomic</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#acf1bdc19a8ea7ff2083c684a945fb04e">mhv_pinToggle</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a23923bc452d75836def42d5ec31c5e16">mhv_pinToggleAtomic</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a1ae79ccef5dce696b504d8c15370b1c7">mhv_pinToggle</a> (MHV_DECLARE_PIN(pin))</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#af62cee5a71dc8ec02a98225a6b4bd48f">mhv_pinToggleAtomic</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a7865c800ceb654a95b780149d18fc8de">mhv_pinRead</a> (<a class="el" href="_m_h_v__io_8h.html#abbc6653affbd7b00c4a4caff8fdb6998">MHV_PIN</a> *pin)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a2c59a917e6be5552276f7ac34dfd09a7">mhv_pinRead</a> (volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a21005c48e5042a30ff01fd3eb5fcd71f">mhv_pinRead</a> (MHV_DECLARE_PIN(pin))</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ae6d3326bf7ddc3200466b85660016a84">mhv_memClear</a> (void *bufIn, uint8_t len, uint8_t count)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a47418c80d7f73a0fa4e066d9a7b07081">mhv_memClear</a> (void *bufIn, uint8_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a8394f3d45b702d2089784e2e38929ed3">mhv_memClear</a> (void *bufIn, uint8_t len, uint16_t count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6674fc92a797d3b850856946366aed26">mhv_memClear</a> (void *bufIn, uint16_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a8c368f85fad5ac1f72a86d245d3c0cef">mhv_memcpy</a> (void *bufOut, void *bufIn, uint8_t len, uint8_t count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ae0100b84930141f455d39f0f549bdf79">mhv_memcpy</a> (void *bufOut, void *bufIn, uint8_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#ab5150db308116bf5dc55e204ca9c254c">mhv_memcpy</a> (void *bufOut, void *bufIn, uint8_t len, uint16_t count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6cb657148092e4bbd856695753495b55">mhv_memcpy</a> (void *bufOut, void *bufIn, uint16_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a7bb4234a0a506dbe024358c21f633a62">mhv_memcpyTailFirst</a> (void *bufOut, void *bufIn, uint8_t len, uint8_t count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a6a667e8ce3bc0aea70b9380a39f37af7">mhv_memcpyTailFirst</a> (void *bufOut, void *bufIn, uint8_t len)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a82d4abeaa9d8d6cd235482fda3842890">mhv_memcpyTailFirst</a> (void *bufOut, void *bufIn, uint8_t len, uint16_t count)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v__io_8h.html#a606c5b02d7f8197b02f435dc8adbc44d">mhv_memcpyTailFirst</a> (void *bufOut, void *bufIn, uint16_t len)</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="a97dc692dcb015db1b1b7c0ed5b77067b"></a><!-- doxytag: member="MHV_io.h::_mhv_bit" ref="a97dc692dcb015db1b1b7c0ed5b77067b" args="(mhvDir, mhvOutput, mhvInput, mhvBit, mhvPCInt)" -->
@@ -224,7 +238,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00527">527</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00643">643</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -265,7 +279,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00559">559</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00675">675</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -312,7 +326,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00537">537</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00653">653</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -353,7 +367,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00584">584</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00700">700</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -400,16 +414,16 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00517">517</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00633">633</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6930b0ef9bd49825eea4615474847977"></a><!-- doxytag: member="MHV_io.h::_mhv_make_pin" ref="a6930b0ef9bd49825eea4615474847977" args="(_mhv_port, _mhv_bit)" -->
+<a class="anchor" id="aa9c24052e3e6bd7256130b8c5cdfce42"></a><!-- doxytag: member="MHV_io.h::_MHV_MAKE_PIN" ref="aa9c24052e3e6bd7256130b8c5cdfce42" args="(_mhv_port, _mhv_bit)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define _mhv_make_pin</td>
+          <td class="memname">#define _MHV_MAKE_PIN</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">_mhv_port, </td>
@@ -429,7 +443,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00094">94</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00097">97</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -476,7 +490,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00507">507</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00623">623</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -523,7 +537,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00547">547</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00663">663</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -570,7 +584,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00104">104</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00123">123</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -585,7 +599,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00074">74</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00077">77</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -611,7 +625,63 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00524">524</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00640">640</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5955925df1268646f14dab966d454c21"></a><!-- doxytag: member="MHV_io.h::MHV_BYTESIZEOF" ref="a5955925df1268646f14dab966d454c21" args="(_mhvItem)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_BYTESIZEOF</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvItem</td><td>)</td>
+          <td>&#160;&#160;&#160;(uint8_t)(sizeof(_mhvItem))</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the size of an item as a byte </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mhvItem</td><td>the item to get the size of </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the size of the item </dd></dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00407">407</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afb172d17be3890bb07e5ceec5a014b91"></a><!-- doxytag: member="MHV_io.h::MHV_DECLARE_PIN" ref="afb172d17be3890bb07e5ceec5a014b91" args="(_mhvPrefix)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_DECLARE_PIN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvPrefix</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment"><span class="keyword">volatile</span> uint8_t *_mhvPrefix ## Dir, <span class="keyword">volatile</span> uint8_t *_mhvPrefix ## Out, \
+        volatile uint8_t *_mhvPrefix ## In, uint8_t _mhvPrefix ## Pin, \
+        int8_t _mhvPrefix ## PinchangeInterrupt
+</pre></div><p>Get the list of parms for a pin declaration </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mhvPrefix</td><td>the prefix to use for the variable names </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00104">104</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -648,7 +718,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00556">556</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00672">672</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -674,7 +744,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00534">534</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00650">650</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -714,7 +784,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00579">579</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00695">695</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -740,7 +810,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00514">514</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00630">630</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -759,12 +829,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af993aeb5443128b44cf538670f01e3f4"></a><!-- doxytag: member="MHV_io.h::mhv_make_pin" ref="af993aeb5443128b44cf538670f01e3f4" args="(_mhv_port, _mhv_bit)" -->
+<a class="anchor" id="aec65536f7b46b621e10ad31cfb13cf4e"></a><!-- doxytag: member="MHV_io.h::MHV_MAKE_PIN" ref="aec65536f7b46b621e10ad31cfb13cf4e" args="(_mhv_port, _mhv_bit)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define mhv_make_pin</td>
+          <td class="memname">#define MHV_MAKE_PIN</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">_mhv_port, </td>
@@ -778,7 +848,7 @@ Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;_mhv_make_pin(_mhv_port, _mhv_bit)</td>
+          <td></td><td>&#160;&#160;&#160;_MHV_MAKE_PIN(_mhv_port, _mhv_bit)</td>
         </tr>
       </table>
 </div>
@@ -792,7 +862,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00091">91</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00094">94</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -818,7 +888,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00504">504</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00620">620</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -844,7 +914,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00544">544</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00660">660</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -870,7 +940,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00101">101</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00120">120</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="add203d01207ff98c001d8ce187c42427"></a><!-- doxytag: member="MHV_io.h::MHV_PIN_PARMS" ref="add203d01207ff98c001d8ce187c42427" args="(_mhvPrefix)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_PIN_PARMS</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvPrefix</td><td>)</td>
+          <td>&#160;&#160;&#160;_mhvPrefix ## Dir, _mhvPrefix ## Out, _mhvPrefix ## In, _mhvPrefix ## Pin, _mhvPrefix ## PinchangeInterrupt</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Get the parameter list for a pin </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mhvPrefix</td><td>the prefix to use for the variable names </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00113">113</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -900,6 +996,21 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00060">60</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3af99897b60119951af8961dbd52dd3f"></a><!-- doxytag: member="MHV_io.h::UNREACHABLE" ref="a3af99897b60119951af8961dbd52dd3f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UNREACHABLE&#160;&#160;&#160;__builtin_unreachable();</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00057">57</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
@@ -916,7 +1027,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00571">571</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00687">687</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -931,7 +1042,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00084">84</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00087">87</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -964,7 +1075,7 @@ Functions</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00565">565</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00681">681</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1009,7 +1120,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00466">466</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00415">415</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1041,12 +1152,473 @@ Functions</h2></td></tr>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">bufIn</td><td>a pointer to the buffer </td></tr>
-    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00481">481</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00430">430</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8394f3d45b702d2089784e2e38929ed3"></a><!-- doxytag: member="MHV_io.h::mhv_memClear" ref="a8394f3d45b702d2089784e2e38929ed3" args="(void *bufIn, uint8_t len, uint16_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memClear </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memset to 0 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufIn</td><td>a pointer to the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">count</td><td>the number of elements in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00445">445</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6674fc92a797d3b850856946366aed26"></a><!-- doxytag: member="MHV_io.h::mhv_memClear" ref="a6674fc92a797d3b850856946366aed26" args="(void *bufIn, uint16_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memClear </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memset to 0 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufIn</td><td>a pointer to the buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00460">460</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8c368f85fad5ac1f72a86d245d3c0cef"></a><!-- doxytag: member="MHV_io.h::mhv_memcpy" ref="a8c368f85fad5ac1f72a86d245d3c0cef" args="(void *bufOut, void *bufIn, uint8_t len, uint8_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpy </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">count</td><td>the number of elements in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00476">476</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae0100b84930141f455d39f0f549bdf79"></a><!-- doxytag: member="MHV_io.h::mhv_memcpy" ref="ae0100b84930141f455d39f0f549bdf79" args="(void *bufOut, void *bufIn, uint8_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpy </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00493">493</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5150db308116bf5dc55e204ca9c254c"></a><!-- doxytag: member="MHV_io.h::mhv_memcpy" ref="ab5150db308116bf5dc55e204ca9c254c" args="(void *bufOut, void *bufIn, uint8_t len, uint16_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpy </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">count</td><td>the number of elements in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00510">510</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6cb657148092e4bbd856695753495b55"></a><!-- doxytag: member="MHV_io.h::mhv_memcpy" ref="a6cb657148092e4bbd856695753495b55" args="(void *bufOut, void *bufIn, uint16_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpy </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00527">527</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7bb4234a0a506dbe024358c21f633a62"></a><!-- doxytag: member="MHV_io.h::mhv_memcpyTailFirst" ref="a7bb4234a0a506dbe024358c21f633a62" args="(void *bufOut, void *bufIn, uint8_t len, uint8_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpyTailFirst </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy, starting from the tail </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">count</td><td>the number of elements in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00543">543</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6a667e8ce3bc0aea70b9380a39f37af7"></a><!-- doxytag: member="MHV_io.h::mhv_memcpyTailFirst" ref="a6a667e8ce3bc0aea70b9380a39f37af7" args="(void *bufOut, void *bufIn, uint8_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpyTailFirst </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy, starting from the tail </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00561">561</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a82d4abeaa9d8d6cd235482fda3842890"></a><!-- doxytag: member="MHV_io.h::mhv_memcpyTailFirst" ref="a82d4abeaa9d8d6cd235482fda3842890" args="(void *bufOut, void *bufIn, uint8_t len, uint16_t count)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpyTailFirst </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy, starting from the tail </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of an element in the buffer </td></tr>
+    <tr><td class="paramname">count</td><td>the number of elements in the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00578">578</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a606c5b02d7f8197b02f435dc8adbc44d"></a><!-- doxytag: member="MHV_io.h::mhv_memcpyTailFirst" ref="a606c5b02d7f8197b02f435dc8adbc44d" args="(void *bufOut, void *bufIn, uint16_t len)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mhv_memcpyTailFirst </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufOut</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>bufIn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Cheap memcpy, starting from the tail </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bufOut</td><td>a pointer to the destination buffer </td></tr>
+    <tr><td class="paramname">bufIn</td><td>a pointer to the source buffer </td></tr>
+    <tr><td class="paramname">len</td><td>the length of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00596">596</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1072,48 +1644,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00159">159</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00168">168</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af794108f9455bbf8a25dd23da8aa0397"></a><!-- doxytag: member="MHV_io.h::mhv_pinOff" ref="af794108f9455bbf8a25dd23da8aa0397" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a28a3525c667202e44587f530b00ffd38"></a><!-- doxytag: member="MHV_io.h::mhv_pinOff" ref="a28a3525c667202e44587f530b00ffd38" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinOff </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1121,16 +1665,12 @@ Functions</h2></td></tr>
 <p>Set an output pin off </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00182">182</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00187">187</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1156,48 +1696,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00167">167</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00176">176</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a292ee9c8cdae0081a1d4b0fb6e6cfdef"></a><!-- doxytag: member="MHV_io.h::mhv_pinOffAtomic" ref="a292ee9c8cdae0081a1d4b0fb6e6cfdef" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a2e36e24489ac495738d47fc945498a4f"></a><!-- doxytag: member="MHV_io.h::mhv_pinOffAtomic" ref="a2e36e24489ac495738d47fc945498a4f" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinOffAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1205,11 +1717,7 @@ Functions</h2></td></tr>
 <p>Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
@@ -1240,48 +1748,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00111">111</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00130">130</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a298dbf5ac97d6b7a13c8e62b54b5f51b"></a><!-- doxytag: member="MHV_io.h::mhv_pinOn" ref="a298dbf5ac97d6b7a13c8e62b54b5f51b" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a166de090fa41669e18aa640ede126211"></a><!-- doxytag: member="MHV_io.h::mhv_pinOn" ref="a166de090fa41669e18aa640ede126211" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinOn </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1289,16 +1769,12 @@ Functions</h2></td></tr>
 <p>Set an output pin on </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00134">134</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00149">149</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1324,48 +1800,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00119">119</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00138">138</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4be059228397a83d2bd4090af1e067ef"></a><!-- doxytag: member="MHV_io.h::mhv_pinOnAtomic" ref="a4be059228397a83d2bd4090af1e067ef" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a51a9aa1b197da7ba9670a0505b8be40d"></a><!-- doxytag: member="MHV_io.h::mhv_pinOnAtomic" ref="a51a9aa1b197da7ba9670a0505b8be40d" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinOnAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1373,16 +1821,12 @@ Functions</h2></td></tr>
 <p>Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00147">147</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00157">157</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1408,48 +1852,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00441">441</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00388">388</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2c59a917e6be5552276f7ac34dfd09a7"></a><!-- doxytag: member="MHV_io.h::mhv_pinRead" ref="a2c59a917e6be5552276f7ac34dfd09a7" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a21005c48e5042a30ff01fd3eb5fcd71f"></a><!-- doxytag: member="MHV_io.h::mhv_pinRead" ref="a21005c48e5042a30ff01fd3eb5fcd71f" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool mhv_pinRead </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1457,52 +1873,24 @@ Functions</h2></td></tr>
 <p>Read a pin </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00454">454</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00397">397</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a4e9100b3baf8d128d34eb442cde2b989"></a><!-- doxytag: member="MHV_io.h::mhv_pinSet" ref="a4e9100b3baf8d128d34eb442cde2b989" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt, bool state)" -->
+<a class="anchor" id="a1587c5f96be5e614583c475c65c52576"></a><!-- doxytag: member="MHV_io.h::mhv_pinSet" ref="a1587c5f96be5e614583c475c65c52576" args="(MHV_DECLARE_PIN(pin), bool state)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinSet </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1521,53 +1909,25 @@ Functions</h2></td></tr>
 <p>Set an output pin on or off (state should really be constant for optimal performance) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
     <tr><td class="paramname">state</td><td>true to turn the pin on </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00212">212</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00207">207</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acb7afcea912bbe34926d457bda65e152"></a><!-- doxytag: member="MHV_io.h::mhv_pinSetAtomic" ref="acb7afcea912bbe34926d457bda65e152" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt, bool state)" -->
+<a class="anchor" id="abf109a563d813a4db91c73fd459446af"></a><!-- doxytag: member="MHV_io.h::mhv_pinSetAtomic" ref="abf109a563d813a4db91c73fd459446af" args="(MHV_DECLARE_PIN(pin), bool state)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinSetAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>, </td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1586,17 +1946,13 @@ Functions</h2></td></tr>
 <p>Set an output pin on or off (state should really be constant for optimal performance) (used if the state of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
     <tr><td class="paramname">state</td><td>true to turn the pin on </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00231">231</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00221">221</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1622,48 +1978,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00393">393</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00350">350</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="acf1bdc19a8ea7ff2083c684a945fb04e"></a><!-- doxytag: member="MHV_io.h::mhv_pinToggle" ref="acf1bdc19a8ea7ff2083c684a945fb04e" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a1ae79ccef5dce696b504d8c15370b1c7"></a><!-- doxytag: member="MHV_io.h::mhv_pinToggle" ref="a1ae79ccef5dce696b504d8c15370b1c7" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinToggle </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1671,16 +1999,12 @@ Functions</h2></td></tr>
 <p>Toggle a pin </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00416">416</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00369">369</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1706,48 +2030,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00401">401</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00358">358</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a23923bc452d75836def42d5ec31c5e16"></a><!-- doxytag: member="MHV_io.h::mhv_pinToggleAtomic" ref="a23923bc452d75836def42d5ec31c5e16" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="af62cee5a71dc8ec02a98225a6b4bd48f"></a><!-- doxytag: member="MHV_io.h::mhv_pinToggleAtomic" ref="af62cee5a71dc8ec02a98225a6b4bd48f" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_pinToggleAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1755,16 +2051,12 @@ Functions</h2></td></tr>
 <p>Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00429">429</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00377">377</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1790,48 +2082,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00292">292</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00271">271</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa51f75e0355a551519ee2e149aafb039"></a><!-- doxytag: member="MHV_io.h::mhv_setInput" ref="aa51f75e0355a551519ee2e149aafb039" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a97cec6c6b993d80176d1ca59aaf4b9e5"></a><!-- doxytag: member="MHV_io.h::mhv_setInput" ref="a97cec6c6b993d80176d1ca59aaf4b9e5" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setInput </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1839,16 +2103,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an input </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00316">316</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00290">290</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1874,48 +2134,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00301">301</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00280">280</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aed7e8cf52e4430ea84f5328ad3f58ff4"></a><!-- doxytag: member="MHV_io.h::mhv_setInputAtomic" ref="aed7e8cf52e4430ea84f5328ad3f58ff4" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a4c7ea8594aa0a455820feaafeb2a52a1"></a><!-- doxytag: member="MHV_io.h::mhv_setInputAtomic" ref="a4c7ea8594aa0a455820feaafeb2a52a1" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setInputAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -1923,16 +2155,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00330">330</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00299">299</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -1958,48 +2186,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00343">343</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00310">310</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac414b135acd1acfe550f7a01bcbb079e"></a><!-- doxytag: member="MHV_io.h::mhv_setInputPullup" ref="ac414b135acd1acfe550f7a01bcbb079e" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="aafd6019a37825b77ef321a019ef6f812"></a><!-- doxytag: member="MHV_io.h::mhv_setInputPullup" ref="aafd6019a37825b77ef321a019ef6f812" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setInputPullup </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -2007,16 +2207,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an input, with the internal pullup enabled </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00368">368</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00330">330</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -2042,48 +2238,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00352">352</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00319">319</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ac9feb945b6a0690c30e011d18b3d1ce7"></a><!-- doxytag: member="MHV_io.h::mhv_setInputPullupAtomic" ref="ac9feb945b6a0690c30e011d18b3d1ce7" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a689e4b4f7e13d3cb0b04be5ab07fa112"></a><!-- doxytag: member="MHV_io.h::mhv_setInputPullupAtomic" ref="a689e4b4f7e13d3cb0b04be5ab07fa112" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setInputPullupAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -2091,16 +2259,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00382">382</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00339">339</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -2126,48 +2290,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00245">245</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00234">234</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa0e6d65dd96fb2651742101c420edbf5"></a><!-- doxytag: member="MHV_io.h::mhv_setOutput" ref="aa0e6d65dd96fb2651742101c420edbf5" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a8ba3c18883189e172101dd1c7327cff8"></a><!-- doxytag: member="MHV_io.h::mhv_setOutput" ref="a8ba3c18883189e172101dd1c7327cff8" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setOutput </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -2175,16 +2311,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an output </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00268">268</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00253">253</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -2210,48 +2342,20 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00253">253</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00242">242</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0175f71671a7a87396bc4c8176bd3bbf"></a><!-- doxytag: member="MHV_io.h::mhv_setOutputAtomic" ref="a0175f71671a7a87396bc4c8176bd3bbf" args="(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t bit, int8_t pcInt)" -->
+<a class="anchor" id="a5f9ba24508c31c76a4153fe1a2405347"></a><!-- doxytag: member="MHV_io.h::mhv_setOutputAtomic" ref="a5f9ba24508c31c76a4153fe1a2405347" args="(MHV_DECLARE_PIN(pin))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void mhv_setOutputAtomic </td>
           <td>(</td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>dir</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">volatile uint8_t *&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int8_t&#160;</td>
-          <td class="paramname"><em>pcInt</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [inline]</code></td>
+          <td class="paramtype">MHV_DECLARE_PIN(pin)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -2259,16 +2363,12 @@ Functions</h2></td></tr>
 <p>Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler) </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">dir</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">out</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">in</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">bit</td><td>A member of the MHV_PIN_* macro </td></tr>
-    <tr><td class="paramname">pcInt</td><td>A member of the MHV_PIN_* macro </td></tr>
+    <tr><td class="paramname">pin</td><td>an MHV_PIN_* macro </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00281">281</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v__io_8h_source.html#l00261">261</a> of file <a class="el" href="_m_h_v__io_8h_source.html">MHV_io.h</a>.</p>
 
 </div>
 </div>
@@ -2292,7 +2392,7 @@ Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

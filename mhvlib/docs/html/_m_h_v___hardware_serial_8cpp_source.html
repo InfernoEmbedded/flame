@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -133,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00035"></a>00035 
 <a name="l00036"></a>00036 <span class="preprocessor">#include &quot;<a class="code" href="_m_h_v___hardware_serial_8h.html">MHV_HardwareSerial.h</a>&quot;</span>
 <a name="l00037"></a>00037 
-<a name="l00054"></a><a class="code" href="class_m_h_v___hardware_serial.html#ac1a95bdefa81bae650979c7053901133">00054</a> <a class="code" href="class_m_h_v___hardware_serial.html#ac1a95bdefa81bae650979c7053901133">MHV_HardwareSerial::MHV_HardwareSerial</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *rxBuffer, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffer,
+<a name="l00054"></a><a class="code" href="class_m_h_v___hardware_serial.html#ad9d87e6449c9c1d29912ca6218b11931">00054</a> <a class="code" href="class_m_h_v___hardware_serial.html#ad9d87e6449c9c1d29912ca6218b11931">MHV_HardwareSerial::MHV_HardwareSerial</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;rxBuffer, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer,
 <a name="l00055"></a>00055                 <span class="keyword">volatile</span> uint16_t *ubrr, <span class="keyword">volatile</span> uint8_t *ucsra, <span class="keyword">volatile</span> uint8_t *ucsrb,
 <a name="l00056"></a>00056                 <span class="keyword">volatile</span> uint8_t *udr, uint8_t rxen, uint8_t txen, uint8_t rxcie,
 <a name="l00057"></a>00057                 uint8_t txcie, uint8_t udre, uint8_t u2x, <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> baud) :
@@ -156,7 +156,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00074"></a>00074 
 <a name="l00078"></a><a class="code" href="class_m_h_v___hardware_serial.html#aab993847fb6369e666495000d94196a3">00078</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___hardware_serial.html#aab993847fb6369e666495000d94196a3">MHV_HardwareSerial::rx</a>() {
 <a name="l00079"></a>00079         <span class="keywordtype">char</span> c = *_udr;
-<a name="l00080"></a>00080         <a class="code" href="class_m_h_v___device___r_x.html#a153f8f4c4f8bb0c9e71c86be0e90b15d">_rxBuffer</a>-&gt;<a class="code" href="class_m_h_v___ring_buffer.html#ae9fb1751555f666d4d7dd9ff5b8d4684">append</a>(c);
+<a name="l00080"></a>00080         <a class="code" href="class_m_h_v___device___r_x.html#a868bacb2136afc4d3dad8d06f93847da">_rxBuffer</a>.<a class="code" href="class_m_h_v___ring_buffer.html#ae9fb1751555f666d4d7dd9ff5b8d4684">append</a>(c);
 <a name="l00081"></a>00081 
 <a name="l00082"></a>00082         <span class="keywordflow">if</span> (_echo &amp;&amp; ((*_ucsra) &amp; (1 &lt;&lt; _udre))) {
 <a name="l00083"></a>00083                 *_udr = c;
@@ -310,7 +310,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -137,14 +137,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a><a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#aa384bf862b79d4aeec579c8d2a4c0eaf">00039</a> <span class="preprocessor"></span><span class="preprocessor">#define HD44780_TW              (450 * 1000000 / F_CPU / 3 + 1)</span>
 <a name="l00040"></a>00040 <span class="preprocessor"></span>
 <a name="l00041"></a>00041 
-<a name="l00064"></a><a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#a8c4ef3a31338b4e53153feeb94af16ec">00064</a> <a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#a8c4ef3a31338b4e53153feeb94af16ec">MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register</a>(
+<a name="l00064"></a><a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#a6affa0526013aa4ef9229bf4d324fd8d">00064</a> <a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#a6affa0526013aa4ef9229bf4d324fd8d">MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register</a>(
 <a name="l00065"></a>00065                 <span class="keyword">volatile</span> uint8_t *dataDir, <span class="keyword">volatile</span> uint8_t *dataOut, <span class="keyword">volatile</span> uint8_t *dataIn,
 <a name="l00066"></a>00066                 uint8_t dataPin, int8_t dataPinchangeInterrupt,
 <a name="l00067"></a>00067                 <span class="keyword">volatile</span> uint8_t *enableDir, <span class="keyword">volatile</span> uint8_t *enableOut, <span class="keyword">volatile</span> uint8_t *enableIn,
 <a name="l00068"></a>00068                 uint8_t enablePin, int8_t enablePinchangeInterrupt,
 <a name="l00069"></a>00069                 <span class="keyword">volatile</span> uint8_t *clockDir, <span class="keyword">volatile</span> uint8_t *clockOut, <span class="keyword">volatile</span> uint8_t *clockIn,
 <a name="l00070"></a>00070                 uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount,
-<a name="l00071"></a>00071                 uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers) :
+<a name="l00071"></a>00071                 uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers) :
 <a name="l00072"></a>00072         <a class="code" href="class_m_h_v___display___h_d44780.html">MHV_Display_HD44780</a>(colCount, rowCount, txBuffers) {
 <a name="l00073"></a>00073         <a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#a1ef9590349f13740a07da6cde46f7501">_dataOut</a> = dataOut;
 <a name="l00074"></a>00074         <a class="code" href="class_m_h_v___display___h_d44780___shift___register.html#aaaa37dbda3bf202fb52c9a3f56a2ebe8">_dataPin</a> = dataPin;
@@ -165,7 +165,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00094"></a>00094         byte |= (rs ? 0x01 : 0x00);
 <a name="l00095"></a>00095 
 <a name="l00096"></a>00096 <span class="comment">// Load the byte into the shift register</span>
-<a name="l00097"></a>00097         <a class="code" href="_m_h_v___shifter_8h.html#a15b4ced05f1430edec69cb8ed97b38ad">MHV_SHIFTOUT_BYTE</a>(byte);
+<a name="l00097"></a>00097         MHV_SHIFTOUT_BYTE(byte);
 <a name="l00098"></a>00098 
 <a name="l00099"></a>00099 <span class="comment">// strobe Enable pin</span>
 <a name="l00100"></a>00100         _delay_loop_1(<a class="code" href="_m_h_v___display___h_d44780___shift___register_8cpp.html#a910e6cbd5b8a18460d2e98088da54212">HD44780_TSU1</a>);
@@ -239,7 +239,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

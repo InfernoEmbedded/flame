@@ -41,7 +41,7 @@ protected:
 
 
 public:
-	MHV_Display_Character(uint16_t cols, uint16_t rows, MHV_RingBuffer *txBuffer);
+	MHV_Display_Character(uint16_t cols, uint16_t rows, MHV_RingBuffer &txBuffer);
 	void writeChar(char character);
 	void scrollVertically();
 	void setCursor(uint16_t col, uint16_t row);

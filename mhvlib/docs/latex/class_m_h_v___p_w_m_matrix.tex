@@ -15,7 +15,7 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix} (uint16\-\_\-t row\-Count, uint16\-\_\-t col\-Count, uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$tx\-Buffers, void($\ast$row\-On)(uint16\-\_\-t row), void($\ast$row\-Off)(uint16\-\_\-t row), void($\ast$col\-On)(uint16\-\_\-t column), void($\ast$col\-Off)(uint16\-\_\-t column), \hyperlink{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E} mode=\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O)
+\hyperlink{class_m_h_v___p_w_m_matrix_a3b522fc139f39df9e7de32954c12058d}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix} (uint16\-\_\-t row\-Count, uint16\-\_\-t col\-Count, uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers, void($\ast$row\-On)(uint16\-\_\-t row), void($\ast$row\-Off)(uint16\-\_\-t row), void($\ast$col\-On)(uint16\-\_\-t column), void($\ast$col\-Off)(uint16\-\_\-t column), \hyperlink{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E} mode=\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O)
 \item 
 void \hyperlink{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{tick} ()
 \end{DoxyCompactItemize}
@@ -24,12 +24,12 @@ void \hyperlink{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{ti
 \subsection{\-Detailed \-Description}
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+\-Definition at line 59 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}{
+\hypertarget{class_m_h_v___p_w_m_matrix_a3b522fc139f39df9e7de32954c12058d}{
 \index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
 \index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}!MHV_PWMMatrix@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}}
 \subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-::\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix (
@@ -37,7 +37,7 @@ void \hyperlink{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{ti
 \item[{uint16\-\_\-t}]{row\-Count, }
 \item[{uint16\-\_\-t}]{col\-Count, }
 \item[{uint8\-\_\-t $\ast$}]{frame\-Buffer, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} $\ast$}]{tx\-Buffers, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffers, }
 \item[{void($\ast$)(uint16\-\_\-t row)}]{row\-On, }
 \item[{void($\ast$)(uint16\-\_\-t row)}]{row\-Off, }
 \item[{void($\ast$)(uint16\-\_\-t column)}]{col\-On, }
@@ -45,7 +45,7 @@ void \hyperlink{class_m_h_v___p_w_m_matrix_ae2f403a7f4f290f78752dfc4e85cde20}{ti
 \item[{{\bf \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}]{mode = {\ttfamily \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___p_w_m_matrix_a769edbbde18d15e559b2af6a0b0e07b7}
+\label{class_m_h_v___p_w_m_matrix_a3b522fc139f39df9e7de32954c12058d}
 \-Establish a new matrix 
 \begin{DoxyParams}{\-Parameters}
 {\em mode} & whether to scan rows, cols, individual pixels or auto \\

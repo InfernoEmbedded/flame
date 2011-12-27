@@ -16,6 +16,11 @@ class \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener}
 \item 
 class \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C}
 \end{DoxyCompactItemize}
+\subsection*{\-Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)
+\end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -75,6 +80,39 @@ bool \hyperlink{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}{mhv\-\_\-ti
 \item 
 uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
 \end{DoxyCompactItemize}
+
+
+\subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Object\-Name, }
+\item[{}]{\-\_\-mhv\-Event\-Count, }
+\item[{}]{\-\_\-mhv\-Timezone}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
+                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount
+      ,_mhvTimezone);
+\end{DoxyCode}
+\-Create a new \-R\-T\-C 
+\begin{DoxyParams}{\-Parameters}
+{\em \-\_\-mhv\-Object\-Name} & the name of the \-R\-T\-C to create \\
+\hline
+{\em \-\_\-mhv\-Event\-Count} & the number of events \\
+\hline
+{\em \-\_\-mhv\-Timezone} & the timezone \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 108 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
 
 
 \subsection{\-Typedef \-Documentation}

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -150,21 +150,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a0446739e0eebe70e9c1e7b2d5aa74532">delay</a>(<a class="code" href="_m_h_v___display___h_d44780_8h.html#a76bff68a0c366080486a09e3beec77e1">MHV_HD44780_COMMAND</a> command);
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054 <span class="keyword">public</span>:
-<a name="l00055"></a>00055         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#aff6a1573f1a8645a063db20eb6e25d4b">MHV_Display_HD44780_Direct_Connect</a>(<span class="keyword">volatile</span> uint8_t *dataDir, <span class="keyword">volatile</span> uint8_t *dataOut, <span class="keyword">volatile</span> uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-<a name="l00056"></a>00056                         <span class="keyword">volatile</span> uint8_t *controlDir, <span class="keyword">volatile</span> uint8_t *controlOut, <span class="keyword">volatile</span> uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-<a name="l00057"></a>00057                         <span class="keyword">volatile</span> uint8_t *visualDir, <span class="keyword">volatile</span> uint8_t *visualOut, <span class="keyword">volatile</span> uint8_t *visualIn, uint8_t visualPin, int8_t visualPinchangeInterrupt,
-<a name="l00058"></a>00058                         uint8_t colCount, uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers);
-<a name="l00059"></a>00059         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#aff6a1573f1a8645a063db20eb6e25d4b">MHV_Display_HD44780_Direct_Connect</a>(<span class="keyword">volatile</span> uint8_t *dataDir, <span class="keyword">volatile</span> uint8_t *dataOut, <span class="keyword">volatile</span> uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-<a name="l00060"></a>00060                         <span class="keyword">volatile</span> uint8_t *controlDir, <span class="keyword">volatile</span> uint8_t *controlOut, <span class="keyword">volatile</span> uint8_t *controlIn, uint8_t controlPin, int8_t controlPinchangeInterrupt,
-<a name="l00061"></a>00061                         uint8_t colCount, uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> *txBuffers);
-<a name="l00062"></a>00062         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a11b8f4c551c0c622874b4242154d9d67">setBacklight</a>(uint8_t value);
-<a name="l00063"></a>00063         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a5d890e072d56c818442b209b9d4851d8">setContrast</a>(uint8_t value);
-<a name="l00064"></a>00064         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">tickPWM</a>();
-<a name="l00065"></a>00065         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">init</a>(<span class="keywordtype">bool</span> multiLine, <span class="keywordtype">bool</span> bigFont, <span class="keywordtype">bool</span> cursorOn, <span class="keywordtype">bool</span> cursorBlink,
-<a name="l00066"></a>00066                                 <span class="keywordtype">bool</span> left2right, <span class="keywordtype">bool</span> scroll);
-<a name="l00067"></a>00067 };
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 <span class="preprocessor">#endif </span><span class="comment">/* MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_ */</span>
+<a name="l00055"></a>00055         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#aecd4894b4044fde51b75ef609904036f">MHV_Display_HD44780_Direct_Connect</a>(
+<a name="l00056"></a>00056                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(data),
+<a name="l00057"></a>00057                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(<a class="code" href="class_m_h_v___display___h_d44780.html#ada0c9ee4be9958c59e02bc55e4033511">control</a>),
+<a name="l00058"></a>00058                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(visual),
+<a name="l00059"></a>00059                         uint8_t colCount, uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers);
+<a name="l00060"></a>00060         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#aecd4894b4044fde51b75ef609904036f">MHV_Display_HD44780_Direct_Connect</a>(
+<a name="l00061"></a>00061                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(data),
+<a name="l00062"></a>00062                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(<a class="code" href="class_m_h_v___display___h_d44780.html#ada0c9ee4be9958c59e02bc55e4033511">control</a>),
+<a name="l00063"></a>00063                         uint8_t colCount, uint16_t rowCount, <a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers);
+<a name="l00064"></a>00064         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a11b8f4c551c0c622874b4242154d9d67">setBacklight</a>(uint8_t value);
+<a name="l00065"></a>00065         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a5d890e072d56c818442b209b9d4851d8">setContrast</a>(uint8_t value);
+<a name="l00066"></a>00066         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">tickPWM</a>();
+<a name="l00067"></a>00067         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">init</a>(<span class="keywordtype">bool</span> multiLine, <span class="keywordtype">bool</span> bigFont, <span class="keywordtype">bool</span> cursorOn, <span class="keywordtype">bool</span> cursorBlink,
+<a name="l00068"></a>00068                                 <span class="keywordtype">bool</span> left2right, <span class="keywordtype">bool</span> scroll);
+<a name="l00069"></a>00069 };
+<a name="l00070"></a>00070 
+<a name="l00071"></a>00071 <span class="preprocessor">#endif </span><span class="comment">/* MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_ */</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -185,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:53 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

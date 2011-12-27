@@ -63,7 +63,7 @@ protected:
 	virtual void delay(MHV_HD44780_COMMAND command)=0;
 
 public:
-	MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers);
 	void init(bool byteMode, bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 			bool left2right, bool scroll);
 	void clear();

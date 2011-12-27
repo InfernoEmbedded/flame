@@ -48,12 +48,13 @@ protected:
 	void delay(MHV_HD44780_COMMAND command);
 
 public:
-	MHV_Display_HD44780_Shift_Register(volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn, uint8_t dataPin, int8_t dataPinchangeInterrupt,
-					volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn, uint8_t enablePin, int8_t enablePinchangeInterrupt,
-					volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn, uint8_t clockPin, int8_t clockPinchangeInterrupt,
-					uint8_t colCount, uint16_t rowCount, MHV_RingBuffer *txBuffers);
+	MHV_Display_HD44780_Shift_Register(
+			MHV_DECLARE_PIN(data),
+			MHV_DECLARE_PIN(enable),
+			MHV_DECLARE_PIN(clock),
+			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers);
 	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
-				bool left2right, bool scroll);
+			bool left2right, bool scroll);
 };
 
 #endif /* MHV_DISPLAY_HD44780_SHIFT_REGISTER_H_ */

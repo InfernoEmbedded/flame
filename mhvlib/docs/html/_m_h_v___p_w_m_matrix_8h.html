@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -94,6 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Defines</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
@@ -108,6 +109,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html">MHV_PWMMatrix</a></td></tr>
+<tr><td colspan="2"><h2><a name="define-members"></a>
+Defines</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a502235de4fc8181af1c33f0b7b478a05">MHV_PWMMATRIX_CREATE</a>(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, _mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff)</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a5425ef4f50d495d1b093a548b9f4819f">MHV_PWMMatrix_Mode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a6cc1d016b3af074f35a0248396cf6b73">MHV_PWMMATRIX_MODE</a></td></tr>
@@ -119,6 +123,90 @@ Enumerations</h2></td></tr>
 <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a">MHV_PWMMATRIX_MODE_INDIVIDUAL</a>
  }</td></tr>
 </table>
+<hr/><h2>Define Documentation</h2>
+<a class="anchor" id="a502235de4fc8181af1c33f0b7b478a05"></a><!-- doxytag: member="MHV_PWMMatrix.h::MHV_PWMMATRIX_CREATE" ref="a502235de4fc8181af1c33f0b7b478a05" args="(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, _mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_PWMMATRIX_CREATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvObjectName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvRows, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvCols, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvTxElements, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvMatrixRowOn, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvMatrixRowOff, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvMatrixColOn, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">_mhvMatrixColOff&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment">uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
+        MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
+        MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## FrameBuffer, _mhvObjectName ## TX, \
+                        _mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff);
+</pre></div><p>Create a new PWM Matrix object </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_mhvObjectName</td><td>the variable name of the object </td></tr>
+    <tr><td class="paramname">_mhvRows</td><td>the number of rows </td></tr>
+    <tr><td class="paramname">_mhvCols</td><td>the number of columns </td></tr>
+    <tr><td class="paramname">_mhvTxElements</td><td>the number of elements to make available for async transmission </td></tr>
+    <tr><td class="paramname">_mhvMatrixRowOn</td><td>function to call to turn a row on </td></tr>
+    <tr><td class="paramname">_mhvMatrixRowOff</td><td>function to call to turn a row off </td></tr>
+    <tr><td class="paramname">_mhvMatrixColOn</td><td>function to call to turn a row on </td></tr>
+    <tr><td class="paramname">_mhvMatrixColOff</td><td>function to call to turn a row off </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00044">44</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="a6cc1d016b3af074f35a0248396cf6b73"></a><!-- doxytag: member="MHV_PWMMatrix.h::MHV_PWMMATRIX_MODE" ref="a6cc1d016b3af074f35a0248396cf6b73" args="" -->
 <div class="memitem">
@@ -131,7 +219,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00039">39</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00057">57</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
 
 </div>
 </div>
@@ -159,7 +247,7 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00033">33</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00051">51</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
 
 </div>
 </div>
@@ -183,7 +271,7 @@ Enumerations</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:54 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

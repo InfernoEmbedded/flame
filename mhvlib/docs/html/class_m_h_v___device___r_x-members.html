@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111109</span>
+   &#160;<span id="projectnumber">20111227</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -100,16 +100,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 This is the complete list of members for <a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a7f95636c0225ca0316f45e5e7ac466b0">_listener</a></td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a153f8f4c4f8bb0c9e71c86be0e90b15d">_rxBuffer</a></td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a868bacb2136afc4d3dad8d06f93847da">_rxBuffer</a></td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#ad8da50a37b9f5e84428ce7920f6c7153">asyncReadLine</a>(char *buffer, uint8_t bufferLength)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a872dd2a1c97d5e1bb962df0d93c7c3cc">busyReadLine</a>(char *buffer, uint8_t bufferLength)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#aeaeee691f88b5895a09afbb1c47d83d1">deregisterListener</a>()</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a046e51e8d7b47e084fea8f2508e93ae9">flush</a>()</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a13adea72a323b7debc5985e5bba21e58">handleEvents</a>()</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a6e1edac6be7992790c1d81c0b9f7303b">MHV_Device_RX</a>(MHV_RingBuffer *rxBuffer)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a7e170355a69743ca2f80ff4abca3fb53">MHV_Device_RX</a>(MHV_RingBuffer &amp;rxBuffer)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#ab823ad1f27ec0a659ba3ab896e936b2c">read</a>()</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a6d9d253544c30aff62bdcae14f9b2705">ready</a>()</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a0a663d6511e7c27abdefc6e7d413e66a">registerListener</a>(MHV_RXListener *listener)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___device___r_x.html#a2797697f3b03274f06da79eb5c4e62be">registerListener</a>(MHV_RXListener &amp;listener)</td><td><a class="el" href="class_m_h_v___device___r_x.html">MHV_Device_RX</a></td><td></td></tr>
 </table></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -129,7 +129,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___devic
 </div>
 
 
-    <li class="footer">Generated on Wed Nov 9 2011 21:58:56 for MHVLib by
+    <li class="footer">Generated on Tue Dec 27 2011 20:46:36 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
