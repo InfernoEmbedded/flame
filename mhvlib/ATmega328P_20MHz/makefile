@@ -58,7 +58,7 @@ all: libmhvlib.a secondary-outputs
 libmhvlib.a: $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
-	avr-ar -r "libmhvlib.a" $(OBJS) $(LIBS)
+	avr-ar -r  "libmhvlib.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,7 +70,7 @@ libmhvlib.lss: libmhvlib.a
 
 sizedummy: libmhvlib.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=${AVRTARGETMCU} libmhvlib.a
+	-avr-size --format=avr --mcu=atmega328p libmhvlib.a
 	@echo 'Finished building: $@'
 	@echo ' '
 

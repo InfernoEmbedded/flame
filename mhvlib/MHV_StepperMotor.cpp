@@ -79,7 +79,7 @@ void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
 // Register the alarm with the RTC
 	MHV_ALARM newAlarm;
 	newAlarm.listener = this;
-	_rtc.current(&(newAlarm.when));
+	_rtc.current(newAlarm.when);
 	_started.milliseconds = newAlarm.when.milliseconds;
 	_started.timestamp = newAlarm.when.timestamp;
 	newAlarm.repeat.milliseconds = 1;
@@ -89,7 +89,7 @@ void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
 
 	_moving = true;
 
-	_rtc.addAlarm(&newAlarm);
+	_rtc.addAlarm(newAlarm);
 }
 
 /**
@@ -101,7 +101,7 @@ void MHV_StepperMotor::alarm(const MHV_ALARM &alarm) {
 	}
 
 	MHV_TIMESTAMP elapsed;
-	_rtc.elapsed(&_started, &elapsed);
+	_rtc.elapsed(_started, elapsed);
 // Reuse elapsed.timestamp to represent milliseconds elapsed
 	elapsed.timestamp *= 1000;
 	elapsed.timestamp += elapsed.milliseconds;

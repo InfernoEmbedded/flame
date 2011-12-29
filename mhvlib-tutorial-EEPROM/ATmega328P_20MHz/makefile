@@ -45,56 +45,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-RTC.lss \
+mhvlib-tutorial-EEPROM.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-RTC.hex \
+mhvlib-tutorial-EEPROM.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-RTC.eep \
+mhvlib-tutorial-EEPROM.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: mhvlib-tutorial-RTC.elf secondary-outputs
+all: mhvlib-tutorial-EEPROM.elf secondary-outputs
 
 # Tool invocations
-mhvlib-tutorial-RTC.elf: $(OBJS) $(USER_OBJS)
+mhvlib-tutorial-EEPROM.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-RTC.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o"mhvlib-tutorial-RTC.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-EEPROM.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o "mhvlib-tutorial-EEPROM.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-RTC.lss: mhvlib-tutorial-RTC.elf
+mhvlib-tutorial-EEPROM.lss: mhvlib-tutorial-EEPROM.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-RTC.elf  >"mhvlib-tutorial-RTC.lss"
+	-avr-objdump -h -S mhvlib-tutorial-EEPROM.elf  >"mhvlib-tutorial-EEPROM.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-RTC.hex: mhvlib-tutorial-RTC.elf
+mhvlib-tutorial-EEPROM.hex: mhvlib-tutorial-EEPROM.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-RTC.elf  "mhvlib-tutorial-RTC.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-EEPROM.elf  "mhvlib-tutorial-EEPROM.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-RTC.eep: mhvlib-tutorial-RTC.elf
+mhvlib-tutorial-EEPROM.eep: mhvlib-tutorial-EEPROM.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-RTC.elf  "mhvlib-tutorial-RTC.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-EEPROM.elf  "mhvlib-tutorial-EEPROM.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-RTC.elf
+sizedummy: mhvlib-tutorial-EEPROM.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-RTC.elf
+	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-EEPROM.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-RTC.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-EEPROM.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)

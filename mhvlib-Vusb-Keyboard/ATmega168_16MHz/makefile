@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include vusb/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -45,38 +46,38 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-libmhvlib.lss \
+libmhvlib-Vusb-Keyboard.lss \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: libmhvlib.a secondary-outputs
+all: libmhvlib-Vusb-Keyboard.a secondary-outputs
 
 # Tool invocations
-libmhvlib.a: $(OBJS)
+libmhvlib-Vusb-Keyboard.a: $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
-	avr-ar -r "libmhvlib.a" $(OBJS) $(LIBS)
+	avr-ar -r  "libmhvlib-Vusb-Keyboard.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-libmhvlib.lss: libmhvlib.a
+libmhvlib-Vusb-Keyboard.lss: libmhvlib-Vusb-Keyboard.a
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S libmhvlib.a  >"libmhvlib.lss"
+	-avr-objdump -h -S libmhvlib-Vusb-Keyboard.a  >"libmhvlib-Vusb-Keyboard.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: libmhvlib.a
+sizedummy: libmhvlib-Vusb-Keyboard.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega168 libmhvlib.a
+	-avr-size --format=avr --mcu=atmega168 libmhvlib-Vusb-Keyboard.a
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) libmhvlib.a
+	-$(RM) $(OBJS)$(C_DEPS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) libmhvlib-Vusb-Keyboard.a
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(SIZEDUMMY)

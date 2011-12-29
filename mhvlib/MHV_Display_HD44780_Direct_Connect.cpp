@@ -255,21 +255,23 @@ void MHV_Display_HD44780_Direct_Connect::setContrast(uint8_t value) {
 /**
  * Tick the display for PWM - this should be called every 500 microseconds
  */
-void MHV_Display_HD44780_Direct_Connect::tickPWM() {
-	if (0 == _ticks % 16) {
+void MHV_Display_HD44780_Direct_Connect::alarm() {
+	if (0 == _ticks) {
 		*_visualOut |= HD44780_LED;
 		*_visualOut |= HD44780_CONTRAST;
 	}
 
-	if (_brightness == _ticks % 16) {
+	if (_brightness == _ticks) {
 		*_visualOut &= ~HD44780_LED;
 	}
 
-	if (_contrast == _ticks % 16) {
+	if (_contrast == _ticks) {
 		*_visualOut &= ~HD44780_CONTRAST;
 	}
 
-	_ticks++;
+	if (++_ticks = 16) {
+		_ticks = 0;
+	}
 }
 
 /**

@@ -64,7 +64,7 @@ all: mhvlib-test-ringbuffer.elf secondary-outputs
 mhvlib-test-ringbuffer.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-test-ringbuffer.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega168_16MHz" -mmcu=atmega168 -o"mhvlib-test-ringbuffer.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-test-ringbuffer.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega168_16MHz" -mmcu=atmega168 -o "mhvlib-test-ringbuffer.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

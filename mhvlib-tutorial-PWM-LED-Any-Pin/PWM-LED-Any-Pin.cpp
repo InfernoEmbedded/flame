@@ -77,7 +77,12 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
  *
  * This will fade the LED up to 50% and back down to 0
  */
-void animationTrigger(void *data) {
+class Animation : public MHV_TimerListener {
+public:
+	void alarm();
+};
+
+void Animation::alarm() {
 /* static variables are initialised once at boot, and persist between calls
  * What is the next action to take
  */
@@ -103,17 +108,35 @@ void animationTrigger(void *data) {
 	}
 }
 
-// Callbacks for the PWM timer
-void ledOn(void *data) {
+Animation animation;
+
+
+// More listeners to toggle the LED on and off
+class LEDOn : public MHV_TimerListener {
+public:
+	void alarm();
+};
+
+class LEDOff : public MHV_TimerListener {
+public:
+	void alarm();
+};
+
+
+void LEDOn::alarm() {
 	mhv_pinOn(OUTPUT_PIN);
 }
 
-void ledOff(void *data) {
-	mhv_pinOff(OUTPUT_PIN);
+void LEDOff::alarm() {
+	mhv_pinOn(OUTPUT_PIN);
 }
 
+// Instantiate the LED toggling listeners
+LEDOn ledOn;
+LEDOff ledOff;
 
-int main(void) {
+
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -129,13 +152,14 @@ int main(void) {
 	(void) animationTimer.setPeriods(20000UL, 0);
 
 	// Tell the timer to call our trigger function
-	animationTimer.setTriggers(animationTrigger, 0, 0, 0);
+	animationTimer.setListener1(animation);
 
 	// Set the PWM mode to FAST PWM
 	//pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
 
 	// Tell the pwmTimer which functions to use when times elapse
-	pwmTimer.setTriggers(ledOn, 0, ledOff, 0, 0, 0);
+	pwmTimer.setListener1(ledOn);
+	pwmTimer.setListener2(ledOff);
 
 	// Set the PWM prescaler to 1 (no prescaler)
 	pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
@@ -154,7 +178,7 @@ int main(void) {
 	pwmTimer.setOutput1(PWM_TOP);
 
 	// Start with the PWM duty cycle set to 0
-	pwmTimer.setOutput2(20);
+	pwmTimer.setOutput2(0);
 
 	// Start the timers
 	animationTimer.enable();
@@ -170,6 +194,5 @@ int main(void) {
 		sleep_mode();
 	}
 
-	// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

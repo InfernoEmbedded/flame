@@ -45,56 +45,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-PWM-LED.lss \
+mhvlib-tutorial-Vusb-Console.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-PWM-LED.hex \
+mhvlib-tutorial-Vusb-Console.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-PWM-LED.eep \
+mhvlib-tutorial-Vusb-Console.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: mhvlib-tutorial-PWM-LED.elf secondary-outputs
+all: mhvlib-tutorial-Vusb-Console.elf secondary-outputs
 
 # Tool invocations
-mhvlib-tutorial-PWM-LED.elf: $(OBJS) $(USER_OBJS)
+mhvlib-tutorial-Vusb-Console.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-PWM-LED.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_16MHz" -mmcu=atmega328p -o"mhvlib-tutorial-PWM-LED.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-Vusb-Console.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_16MHz" -L"A:\eclipse\mhvlib-Vusb-Console/ATmega328P_16MHz" -mmcu=atmega328p -o "mhvlib-tutorial-Vusb-Console.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-PWM-LED.lss: mhvlib-tutorial-PWM-LED.elf
+mhvlib-tutorial-Vusb-Console.lss: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-PWM-LED.elf  >"mhvlib-tutorial-PWM-LED.lss"
+	-avr-objdump -h -S mhvlib-tutorial-Vusb-Console.elf  >"mhvlib-tutorial-Vusb-Console.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-PWM-LED.hex: mhvlib-tutorial-PWM-LED.elf
+mhvlib-tutorial-Vusb-Console.hex: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-PWM-LED.elf  "mhvlib-tutorial-PWM-LED.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-Vusb-Console.elf  "mhvlib-tutorial-Vusb-Console.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-PWM-LED.eep: mhvlib-tutorial-PWM-LED.elf
+mhvlib-tutorial-Vusb-Console.eep: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-PWM-LED.elf  "mhvlib-tutorial-PWM-LED.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-Vusb-Console.elf  "mhvlib-tutorial-Vusb-Console.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-PWM-LED.elf
+sizedummy: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-PWM-LED.elf
+	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-PWM-LED.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-Vusb-Console.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)

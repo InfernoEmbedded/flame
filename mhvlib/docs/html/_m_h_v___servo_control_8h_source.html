@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -138,51 +138,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00040"></a>00040 <span class="preprocessor"></span>
 <a name="l00041"></a>00041 <span class="preprocessor">#define MHV_MAX_SERVO_COUNT     254</span>
 <a name="l00042"></a>00042 <span class="preprocessor"></span>
-<a name="l00043"></a>00043 <span class="preprocessor">#define MHV_SERVOCONTROL_DECLARE_TRIGGER(mhvTimer16,mhvServo) \</span>
-<a name="l00044"></a>00044 <span class="preprocessor">void mhvServo##Trigger(void *data) { \</span>
-<a name="l00045"></a>00045 <span class="preprocessor">        mhvServo.refreshServos(data);\</span>
-<a name="l00046"></a>00046 <span class="preprocessor">}</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span>
-<a name="l00048"></a>00048 <span class="preprocessor">#define MHV_SERVOCONTROL_ASSIGN_TRIGGER(mhvTimer16,mhvServo) \</span>
-<a name="l00049"></a>00049 <span class="preprocessor">                mhvTimer16.setTriggers(&amp;(mhvServo##Trigger), 0, 0, 0, 0, 0)</span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span>
-<a name="l00051"></a>00051 <span class="comment">/* The servoOrder member is not really part of the control block, but instead is an easy way</span>
-<a name="l00052"></a>00052 <span class="comment"> * to have an array of N things we can use to specify the order the servos should be serviced</span>
-<a name="l00053"></a>00053 <span class="comment"> */</span>
-<a name="l00054"></a>00054 <span class="keyword">struct </span>MHV_ServoControlBlock {
-<a name="l00055"></a>00055         <span class="keyword">volatile</span> uint8_t        *port;
-<a name="l00056"></a>00056         uint8_t                         pin;
-<a name="l00057"></a>00057         uint16_t                        position;
-<a name="l00058"></a>00058         int16_t                         clockMinOffset;
-<a name="l00059"></a>00059         int16_t                         clockMaxOffset;
-<a name="l00060"></a>00060         uint8_t                         servoOrder; <span class="comment">// This isn&#39;t really a member of the control structure</span>
-<a name="l00061"></a>00061 };
-<a name="l00062"></a>00062 <span class="keyword">typedef</span> <span class="keyword">struct </span>MHV_ServoControlBlock MHV_SERVOCONTROLBLOCK;
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064 <span class="keyword">class </span>MHV_ServoControl {
-<a name="l00065"></a>00065 <span class="keyword">private</span>:
-<a name="l00066"></a>00066         MHV_Timer16                     *_timer;
-<a name="l00067"></a>00067         MHV_SERVOCONTROLBLOCK   *_controlBlocks;
-<a name="l00068"></a>00068         uint8_t                                 _count;
-<a name="l00069"></a>00069         <span class="keyword">volatile</span> uint8_t                _nextServoIndex;
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071         <span class="keywordtype">void</span> sortServos();
-<a name="l00072"></a>00072 
-<a name="l00073"></a>00073 <span class="keyword">public</span>:
-<a name="l00074"></a>00074         MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *controlBlocks, uint8_t count);
-<a name="l00075"></a>00075         <span class="keywordtype">void</span> addServo(uint8_t servo, <span class="keyword">volatile</span> uint8_t *dir, <span class="keyword">volatile</span> uint8_t *out, <span class="keyword">volatile</span> uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt);
-<a name="l00076"></a>00076         <span class="keywordtype">void</span> tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
-<a name="l00077"></a>00077         <span class="keywordtype">void</span> positionServo(uint8_t servo, uint16_t position);
-<a name="l00078"></a>00078         <span class="keywordtype">bool</span> canPosition();
-<a name="l00079"></a>00079         <span class="keywordtype">void</span> positionServoBusyWait(uint8_t servo, uint16_t position);
-<a name="l00080"></a>00080         <span class="keywordtype">void</span> refreshServos(<span class="keywordtype">void</span> *data);
-<a name="l00081"></a>00081         <span class="keywordtype">void</span> enable();
-<a name="l00082"></a>00082         <span class="keywordtype">void</span> disable();
-<a name="l00083"></a>00083 };
-<a name="l00084"></a>00084 
-<a name="l00085"></a>00085 <span class="preprocessor">#endif</span>
-<a name="l00086"></a>00086 <span class="preprocessor"></span>
-<a name="l00087"></a>00087 <span class="preprocessor">#endif </span><span class="comment">/* MHV_SERVOCONTROL_H_ */</span>
+<a name="l00049"></a>00049 <span class="preprocessor">#define MHV_SERVOCONTROL_CREATE(_mhvObjName, _mhvServoTimer, _mhvServoCount) \</span>
+<a name="l00050"></a>00050 <span class="preprocessor">        MHV_SERVOCONTROLBLOCK _mhvObjName ## ControlBlocks[_mhvServoCount]; \</span>
+<a name="l00051"></a>00051 <span class="preprocessor">        MHV_ServoControl _mhvObjName(_mhvServoTimer, _mhvObjName ## ControlBlocks, _mhvServoCount);</span>
+<a name="l00052"></a>00052 <span class="preprocessor"></span>
+<a name="l00053"></a>00053 
+<a name="l00054"></a>00054 
+<a name="l00055"></a>00055 <span class="comment">/* The servoOrder member is not really part of the control block, but instead is an easy way</span>
+<a name="l00056"></a>00056 <span class="comment"> * to have an array of N things we can use to specify the order the servos should be serviced</span>
+<a name="l00057"></a>00057 <span class="comment"> */</span>
+<a name="l00058"></a>00058 <span class="keyword">struct </span>MHV_ServoControlBlock {
+<a name="l00059"></a>00059         <span class="keyword">volatile</span> uint8_t        *port;
+<a name="l00060"></a>00060         uint8_t                         pin;
+<a name="l00061"></a>00061         uint16_t                        position;
+<a name="l00062"></a>00062         int16_t                         clockMinOffset;
+<a name="l00063"></a>00063         int16_t                         clockMaxOffset;
+<a name="l00064"></a>00064         uint8_t                         servoOrder; <span class="comment">// This isn&#39;t really a member of the control structure</span>
+<a name="l00065"></a>00065 };
+<a name="l00066"></a>00066 <span class="keyword">typedef</span> <span class="keyword">struct </span>MHV_ServoControlBlock MHV_SERVOCONTROLBLOCK;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068 <span class="keyword">class </span>MHV_ServoControl : <span class="keyword">public</span> <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> {
+<a name="l00069"></a>00069 <span class="keyword">private</span>:
+<a name="l00070"></a>00070         MHV_Timer16                     &amp;_timer;
+<a name="l00071"></a>00071         MHV_SERVOCONTROLBLOCK   *_controlBlocks;
+<a name="l00072"></a>00072         uint8_t                                 _count;
+<a name="l00073"></a>00073         <span class="keyword">volatile</span> uint8_t                _nextServoIndex;
+<a name="l00074"></a>00074 
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> sortServos();
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="keyword">public</span>:
+<a name="l00078"></a>00078         MHV_ServoControl(MHV_Timer16 &amp;timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
+<a name="l00079"></a>00079         <span class="keywordtype">void</span> addServo(uint8_t servo, <span class="keyword">volatile</span> uint8_t *dir, <span class="keyword">volatile</span> uint8_t *out, <span class="keyword">volatile</span> uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt);
+<a name="l00080"></a>00080         <span class="keywordtype">void</span> tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
+<a name="l00081"></a>00081         <span class="keywordtype">void</span> positionServo(uint8_t servo, uint16_t position);
+<a name="l00082"></a>00082         <span class="keywordtype">bool</span> canPosition();
+<a name="l00083"></a>00083         <span class="keywordtype">void</span> positionServoBusyWait(uint8_t servo, uint16_t position);
+<a name="l00084"></a>00084         <span class="keywordtype">void</span> enable();
+<a name="l00085"></a>00085         <span class="keywordtype">void</span> disable();
+<a name="l00086"></a>00086         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">alarm</a>();
+<a name="l00087"></a>00087 };
+<a name="l00088"></a>00088 
+<a name="l00089"></a>00089 <span class="preprocessor">#endif</span>
+<a name="l00090"></a>00090 <span class="preprocessor"></span>
+<a name="l00091"></a>00091 <span class="preprocessor">#endif </span><span class="comment">/* MHV_SERVOCONTROL_H_ */</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -203,7 +201,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

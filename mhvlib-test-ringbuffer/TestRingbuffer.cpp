@@ -59,7 +59,7 @@ MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 char testBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer testRingBuffer(testBuf, TX_BUFFER_SIZE);
 
-int main(void) {
+int NORETURN main(void) {
 // Enable interrupts
 	sei();
 
@@ -135,8 +135,7 @@ int main(void) {
 		serial.busyWrite(buffer);
 	}
 
-	while (1) {}
+	for (;;) {}
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

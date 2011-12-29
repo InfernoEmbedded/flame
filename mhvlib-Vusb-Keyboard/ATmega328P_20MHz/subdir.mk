@@ -20,7 +20,7 @@ CPP_DEPS += \
 %.o: ../%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"A:\eclipse\mhvlib" -I"A:\eclipse\mhvlib-Vusb-Keyboard" -DMHVLIB_CORE -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -funsigned-char -funsigned-bitfields -fno-exceptions -fpermissive -mmcu=atmega328p -DF_CPU=20000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o"$@" "$<"
+	avr-g++ -I"A:\eclipse\mhvlib" -I"A:\eclipse\mhvlib-Vusb-Keyboard" -DMHVLIB_CORE -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -funsigned-char -funsigned-bitfields -fno-exceptions -fpermissive -mmcu=atmega328p -DF_CPU=20000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

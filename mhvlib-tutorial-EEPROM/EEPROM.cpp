@@ -77,7 +77,7 @@ uint16_t calculateCRC(uint16_t length) {
 }
 
 
-int main(void) {
+int NORETURN main(void) {
 	// Get the current length of the string in EEPROM
 	uint16_t 	length;
 	uint16_t 	crc;
@@ -90,7 +90,7 @@ int main(void) {
 	// Enable interrupts
 	sei();
 
-	while (1) {
+	for (;;) {
 		eeprom.read(&length, LENGTH_ADDRESS, (uint16_t) sizeof(length));
 
 		if (length > DATA_MAX_LENGTH) {
@@ -139,5 +139,5 @@ int main(void) {
 		eeprom.busyWrite(&calculatedCRC, CRC_ADDRESS, sizeof(calculatedCRC));
 	}
 
-	return 0;
+	UNREACHABLE;
 }

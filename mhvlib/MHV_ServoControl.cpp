@@ -44,9 +44,9 @@
 
 /**
  * Start a servo cycle
- * @param	data	unused
+ * @param	timer	the timer that triggered us (unused)
  */
-void MHV_ServoControl::refreshServos(void *data) {
+void MHV_ServoControl::alarm() {
 	if (255 == _nextServoIndex) {
 		// Start of the servo pulse
 		for (uint8_t i = 0; i < _count; i++) {
@@ -58,9 +58,9 @@ void MHV_ServoControl::refreshServos(void *data) {
 		_nextServoIndex = 0;
 		// Set up the timer to end the first servo pulse
 		// Note that the timer is reset to 0 when the interrupt is triggered, so the current value is how long to reach this point
-		_timer->setPeriods(MHV_TIMER_PRESCALER_5_1,
-				_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer->current(), 0, 0);
-		_timer->enable();
+		_timer.setPeriods(MHV_TIMER_PRESCALER_5_1,
+				_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer.current(), 0, 0);
+		_timer.enable();
 		return;
 	}
 
@@ -73,18 +73,18 @@ void MHV_ServoControl::refreshServos(void *data) {
 		if (_nextServoIndex >= _count || 255 == SERVO_ORDER(_nextServoIndex)) {
 			_nextServoIndex = 255;
 			// sleep for 20ms to the next servo pass
-			_timer->setPeriods(20000UL, 0UL, 0UL); // sleep for 20ms
-			_timer->enable();
+			_timer.setPeriods(20000UL, 0UL, 0UL); // sleep for 20ms
+			_timer.enable();
 			return;
 		}
 
 		// Set up the next servo if it is sufficiently far away from the current one
 		if ((uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex)].position >
-				(uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer->current()) {
+				(uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer.current()) {
 
-			_timer->setPeriods(MHV_TIMER_PRESCALER_5_1,
-					_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer->current(), 0, 0);
-			_timer->enable();
+			_timer.setPeriods(MHV_TIMER_PRESCALER_5_1,
+					_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer.current(), 0, 0);
+			_timer.enable();
 			return;
 		}
 	}
@@ -96,12 +96,11 @@ void MHV_ServoControl::refreshServos(void *data) {
  * @param	controlblocks	storage for servo information, must store count MHV_SERVOCONTROLBLOCKs
  * @param	count			the number of servos to control
  */
-MHV_ServoControl::MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *controlBlocks, uint8_t count) {
-	_timer = timer;
-	_controlBlocks = controlBlocks;
-	_count = count;
-	_nextServoIndex = 255;
-
+MHV_ServoControl::MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count) :
+		_timer(timer),
+		_controlBlocks(controlBlocks),
+		_count(count),
+		_nextServoIndex(255) {
 	uint8_t i;
 	for (i = 0; i < count; i++) {
 		controlBlocks[i].clockMaxOffset = 0;
@@ -112,7 +111,8 @@ MHV_ServoControl::MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *co
 		controlBlocks[i].servoOrder = 255;
 	}
 
-	_timer->setMode(MHV_TIMER_ONE_SHOT);
+	_timer.setMode(MHV_TIMER_ONE_SHOT);
+	_timer.setListener1(this);
 }
 
 /**
@@ -127,7 +127,7 @@ void MHV_ServoControl::addServo(uint8_t servo, MHV_DECLARE_PIN(pin)) {
 
 	mhv_setOutput(pinDir, pinOut, pinIn, pinPin, -1);
 
-	if (_timer->enabled()) {
+	if (_timer.enabled()) {
 		sortServos();
 	}
 }
@@ -151,7 +151,7 @@ void MHV_ServoControl::positionServo(uint8_t servo, uint16_t newPosition) {
 	_controlBlocks[servo].position = ((uint32_t)newPosition) * (MHV_SERVO_MAX + _controlBlocks[servo].clockMaxOffset -
 			(MHV_SERVO_MIN + _controlBlocks[servo].clockMinOffset) ) / 65535 + MHV_SERVO_MIN + _controlBlocks[servo].clockMinOffset;
 
-	if (_timer->enabled()) {
+	if (_timer.enabled()) {
 		sortServos();
 	}
 }
@@ -189,14 +189,14 @@ void MHV_ServoControl::enable() {
 
 	_nextServoIndex = 0;
 	sortServos();
-	refreshServos(0);
+	alarm();
 }
 
 /**
  * Disable the controller
  */
 void MHV_ServoControl::disable() {
-	_timer->disable();
+	_timer.disable();
 }
 
 /**

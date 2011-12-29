@@ -23,7 +23,7 @@ void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a11b8f4c551c
 \item 
 void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a5d890e072d56c818442b209b9d4851d8}{set\-Contrast} (uint8\-\_\-t value)
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a37c4c7d338ce1a335f18649d302dc6a5}{tick\-P\-W\-M} ()
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}{alarm} ()
 \item 
 void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a82d09a64c377a8b25751a9b21d9cee93}{init} (bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
 \end{DoxyCompactItemize}
@@ -72,7 +72,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 \subsection{\-Detailed \-Description}
 
 
-\-Definition at line 32 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 
 
@@ -151,6 +151,23 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 
 
 \subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!alarm@{alarm}}
+\index{alarm@{alarm}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}
+\-Tick the display for \-P\-W\-M -\/ this should be called every 500 microseconds 
+
+\-Implements \hyperlink{class_m_h_v___timer_listener_a27e243f8df77035eca626beab5b3e60a}{\-M\-H\-V\-\_\-\-Timer\-Listener}.
+
+
+
+\-Definition at line 258 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_a0446739e0eebe70e9c1e7b2d5aa74532}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!delay@{delay}}
 \index{delay@{delay}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
@@ -166,7 +183,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 
 
 
-\-Definition at line 279 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+\-Definition at line 281 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_a82d09a64c377a8b25751a9b21d9cee93}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!init@{init}}
@@ -199,7 +216,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 \end{DoxyParams}
 
 
-\-Definition at line 292 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+\-Definition at line 294 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_af91e71543df100ec60594c9094cbd444}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!is\-Busy@{is\-Busy}}
@@ -297,19 +314,6 @@ true if the display is busy
 
 \-Definition at line 246 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a37c4c7d338ce1a335f18649d302dc6a5}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!tick\-P\-W\-M@{tick\-P\-W\-M}}
-\index{tick\-P\-W\-M@{tick\-P\-W\-M}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{tick\-P\-W\-M}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::tick\-P\-W\-M (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a37c4c7d338ce1a335f18649d302dc6a5}
-\-Tick the display for \-P\-W\-M -\/ this should be called every 500 microseconds 
-
-\-Definition at line 258 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
-
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_ac61f7b7429e954bbb418ec6f2a7942f8}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!write\-Byte@{write\-Byte}}
 \index{write\-Byte@{write\-Byte}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
@@ -366,7 +370,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_ab5af02b6c4a31228b8cba9793270fe79}
 
 
-\-Definition at line 44 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 45 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_ae7c1f3a285e1ed271227fb68a5f83c38}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-contrast@{\-\_\-contrast}}
@@ -375,7 +379,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_ae7c1f3a285e1ed271227fb68a5f83c38}
 
 
-\-Definition at line 45 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 46 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_a3d308de0a3d1f48dc28ec3a0cd416373}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-control\-Out@{\-\_\-control\-Out}}
@@ -384,7 +388,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_a3d308de0a3d1f48dc28ec3a0cd416373}
 
 
-\-Definition at line 39 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_aa40764017ac7a0c213736c761e6db379}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-control\-Pin@{\-\_\-control\-Pin}}
@@ -393,7 +397,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_aa40764017ac7a0c213736c761e6db379}
 
 
-\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_a03135ac9561c3b8c58f00f9888d02526}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Dir@{\-\_\-data\-Dir}}
@@ -402,7 +406,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_a03135ac9561c3b8c58f00f9888d02526}
 
 
-\-Definition at line 34 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 35 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_af08537a357d3e09e268f193f87242180}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-In@{\-\_\-data\-In}}
@@ -411,7 +415,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_af08537a357d3e09e268f193f87242180}
 
 
-\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 37 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_afbadbde61cef93fe49e29e4b4de37ea2}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Mask@{\-\_\-data\-Mask}}
@@ -420,7 +424,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_afbadbde61cef93fe49e29e4b4de37ea2}
 
 
-\-Definition at line 38 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 39 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_aebdad9827430f3471e92c96ac162a0e8}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Out@{\-\_\-data\-Out}}
@@ -429,7 +433,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_aebdad9827430f3471e92c96ac162a0e8}
 
 
-\-Definition at line 35 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_a9a2cf1d983db8d70a196cbf6d36140b8}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Pin@{\-\_\-data\-Pin}}
@@ -438,7 +442,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_a9a2cf1d983db8d70a196cbf6d36140b8}
 
 
-\-Definition at line 37 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 38 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_ae69106ff6193c454881e09cfa322be8c}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-visual\-Out@{\-\_\-visual\-Out}}
@@ -447,7 +451,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_ae69106ff6193c454881e09cfa322be8c}
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{class_m_h_v___display___h_d44780___direct___connect_aab09401fa30a20f1e082d09d1c20e959}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-visual\-Pin@{\-\_\-visual\-Pin}}
@@ -456,7 +460,7 @@ true if the display is busy
 \label{class_m_h_v___display___h_d44780___direct___connect_aab09401fa30a20f1e082d09d1c20e959}
 
 
-\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 
 

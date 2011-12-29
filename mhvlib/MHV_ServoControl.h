@@ -40,13 +40,17 @@
 
 #define MHV_MAX_SERVO_COUNT	254
 
-#define MHV_SERVOCONTROL_DECLARE_TRIGGER(mhvTimer16,mhvServo) \
-void mhvServo##Trigger(void *data) { \
-	mhvServo.refreshServos(data);\
-}
+/**
+ * Create a new servo controller
+ * @param	_mhvObjName		the name of the object to create
+ * @param	_mhvServoTimer	the 16 bit timer to use for servo control
+ * @param	_mhvServoCount	the number of servos that need to be controlled
+ */
+#define MHV_SERVOCONTROL_CREATE(_mhvObjName, _mhvServoTimer, _mhvServoCount) \
+	MHV_SERVOCONTROLBLOCK _mhvObjName ## ControlBlocks[_mhvServoCount]; \
+	MHV_ServoControl _mhvObjName(_mhvServoTimer, _mhvObjName ## ControlBlocks, _mhvServoCount);
 
-#define MHV_SERVOCONTROL_ASSIGN_TRIGGER(mhvTimer16,mhvServo) \
-		mhvTimer16.setTriggers(&(mhvServo##Trigger), 0, 0, 0, 0, 0)
+
 
 /* The servoOrder member is not really part of the control block, but instead is an easy way
  * to have an array of N things we can use to specify the order the servos should be serviced
@@ -61,9 +65,9 @@ struct MHV_ServoControlBlock {
 };
 typedef struct MHV_ServoControlBlock MHV_SERVOCONTROLBLOCK;
 
-class MHV_ServoControl {
+class MHV_ServoControl : public MHV_TimerListener {
 private:
-	MHV_Timer16 			*_timer;
+	MHV_Timer16 			&_timer;
 	MHV_SERVOCONTROLBLOCK 	*_controlBlocks;
 	uint8_t					_count;
 	volatile uint8_t		_nextServoIndex;
@@ -71,15 +75,15 @@ private:
 	void sortServos();
 
 public:
-	MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *controlBlocks, uint8_t count);
+	MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
 	void addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt);
 	void tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
 	void positionServo(uint8_t servo, uint16_t position);
 	bool canPosition();
 	void positionServoBusyWait(uint8_t servo, uint16_t position);
-	void refreshServos(void *data);
 	void enable();
 	void disable();
+	void alarm();
 };
 
 #endif

@@ -45,13 +45,13 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-Vusb-Keyboard.lss \
+mhvlib-tutorial-StepperMotor.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-Vusb-Keyboard.hex \
+mhvlib-tutorial-StepperMotor.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-Vusb-Keyboard.eep \
+mhvlib-tutorial-StepperMotor.eep \
 
 SIZEDUMMY += \
 sizedummy \
@@ -61,60 +61,60 @@ avrdudedummy \
 
 
 # All Target
-all: mhvlib-tutorial-Vusb-Keyboard.elf secondary-outputs
+all: mhvlib-tutorial-StepperMotor.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega328P_20MHz && $(MAKE) all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega328P_20MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
-mhvlib-tutorial-Vusb-Keyboard.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega328P_20MHz/libmhvlib-vusb-keyboard.a
+mhvlib-tutorial-StepperMotor.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-Vusb-Keyboard.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATtiny85_16.5MHz" -L"A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz" -mmcu=attiny85 -o"mhvlib-tutorial-Vusb-Keyboard.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-StepperMotor.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATtiny85_16.5MHz" -L"A:\eclipse\mhvlib-Vusb-Keyboard/ATtiny85_16.5MHz" -mmcu=attiny85 -o "mhvlib-tutorial-StepperMotor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.lss: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-StepperMotor.lss: mhvlib-tutorial-StepperMotor.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-Vusb-Keyboard.elf  >"mhvlib-tutorial-Vusb-Keyboard.lss"
+	-avr-objdump -h -S mhvlib-tutorial-StepperMotor.elf  >"mhvlib-tutorial-StepperMotor.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.hex: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-StepperMotor.hex: mhvlib-tutorial-StepperMotor.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-Vusb-Keyboard.elf  "mhvlib-tutorial-Vusb-Keyboard.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-StepperMotor.elf  "mhvlib-tutorial-StepperMotor.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.eep: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-StepperMotor.eep: mhvlib-tutorial-StepperMotor.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-Vusb-Keyboard.elf  "mhvlib-tutorial-Vusb-Keyboard.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-StepperMotor.elf  "mhvlib-tutorial-StepperMotor.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-Vusb-Keyboard.elf
+sizedummy: mhvlib-tutorial-StepperMotor.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=attiny85 mhvlib-tutorial-Vusb-Keyboard.elf
+	-avr-size --format=avr --mcu=attiny85 mhvlib-tutorial-StepperMotor.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-avrdudedummy: mhvlib-tutorial-Vusb-Keyboard.elf
+avrdudedummy: mhvlib-tutorial-StepperMotor.elf
 	@echo 'Invoking: AVRDude'
-	c:\mhvavrtools\bin\avrdude -pt85 -cusbasp -Uflash:w:mhvlib-tutorial-Vusb-Keyboard.hex:a
+	C:\Program Files (x86)\MHV AVR Tools\bin\avrdude -pt85 -cusbasp -Uflash:w:mhvlib-tutorial-StepperMotor.hex:a
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(AVRDUDEDUMMY)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-Vusb-Keyboard.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(AVRDUDEDUMMY)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-StepperMotor.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY) $(AVRDUDEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a:
-A:/eclipse/mhvlib-Vusb-Keyboard/ATmega328P_20MHz/libmhvlib-vusb-keyboard.a:
+A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a:
+A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a:
 
 -include ../makefile.targets

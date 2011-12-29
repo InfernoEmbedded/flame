@@ -37,7 +37,6 @@
  * *******************************
  *
  * A timer is required for magnitude control.
- * If this is not required, a NULL may be passed
  *
  * If the H-bridge voltage is greater than VCC of the microcontroller:
  *   * resistors R1 & R2 and diodes D1 & D2 must be installed
@@ -51,27 +50,25 @@
  *
  * The initial state is coasting
  */
-MHV_SoftwareHBridge::MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 *timer, uint8_t timerChannel,
+MHV_SoftwareHBridge::MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 &timer,
 		MHV_DECLARE_PIN(dir1Top),
 		MHV_DECLARE_PIN(dir1Bottom),
 		MHV_DECLARE_PIN(dir2Top),
-		MHV_DECLARE_PIN(dir2Bottom)) {
-	_type = type;
-	_timer = timer;
-	_timerChannel = timerChannel;
-
-	_dir1Top = dir1Top;
-	_out1Top = out1Top;
-	_pin1Top = pin1Top;
-	_out1Bottom = out1Bottom;
-	_pin1Bottom = pin1Bottom;
-	_dir2Top = dir2Top;
-	_out2Top = out2Top;
-	_pin2Top = pin2Top;
-	_out2Bottom = out2Bottom;
-	_pin2Bottom = pin2Bottom;
-
-	_direction = MHV_SOFTWAREHBRIDGE_DIR_COAST;
+		MHV_DECLARE_PIN(dir2Bottom)) :
+		_type(type),
+		_timer(timer),
+		_dir1Top(dir1Top),
+		_out1Top(out1Top),
+		_pin1Top(pin1Top),
+		_out1Bottom(out1Bottom),
+		_pin1Bottom(pin1Bottom),
+		_dir2Top(dir2Top),
+		_out2Top(out2Top),
+		_pin2Top(pin2Top),
+		_out2Bottom(out2Bottom),
+		_pin2Bottom(pin2Bottom),
+		_direction(MHV_SOFTWAREHBRIDGE_DIR_COAST) {
+	_timer.setListener1(this);
 }
 
 /* Set up for a new timer pass
@@ -148,7 +145,7 @@ void MHV_SoftwareHBridge::reset() {
 /* Set the H bridge to coasting after the end of a timer cycle for PWM
  * This should be called from the trigger of the associated timer
  */
-void MHV_SoftwareHBridge::update() {
+void MHV_SoftwareHBridge::alarm() {
 	// Set to coasting until the next reset
 	switch (_type) {
 	case MHV_SOFTWAREHBRIDGE_TYPE_PULLUP:

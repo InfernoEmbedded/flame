@@ -84,18 +84,18 @@ void MHV_Display_Monochrome::clear(uint8_t value) {
  * @param	character	the character to write
  * @return	true if a character was written
  */
-bool MHV_Display_Monochrome::writeChar(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeChar(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue, char character) {
 	uint8_t c = (uint8_t)character;
-	if (c < font->firstChar || c >= font->firstChar + font->charCount) {
-		c = font->unknown;
+	if (c < font.firstChar || c >= font.firstChar + font.charCount) {
+		c = font.unknown;
 	}
 
 // Normalize character to font
-	c -= font->firstChar;
-	uint8_t charWidth = pgm_read_byte(font->widths + c);
+	c -= font.firstChar;
+	uint8_t charWidth = pgm_read_byte(font.widths + c);
 
-	const uint8_t *fontChar = font->fontData + pgm_read_word(font->offsets + c);
+	const uint8_t *fontChar = font.fontData + pgm_read_word(font.offsets + c);
 
 // Render each column
 	bool ret = false;
@@ -106,7 +106,7 @@ bool MHV_Display_Monochrome::writeChar(const MHV_FONT *font, int16_t *offsetX, i
 
 		if (*offsetX >= 0) {
 // Start at the bottom of the column and work up
-			for (; y < font->maxHeight; y++, bit--) {
+			for (; y < font.maxHeight; y++, bit--) {
 				ret = true;
 
 				if (data & (1 << bit)) {
@@ -116,7 +116,7 @@ bool MHV_Display_Monochrome::writeChar(const MHV_FONT *font, int16_t *offsetX, i
 				}
 
 // Support multiple-byte font images - fetch the next byte of data if we exhaust the current one
-				if (-1 == bit && (font->maxHeight - y) > 0) {
+				if (-1 == bit && (font.maxHeight - y) > 0) {
 					bit = 7;
 					data = pgm_read_byte(fontChar++);
 				}
@@ -138,7 +138,7 @@ bool MHV_Display_Monochrome::writeChar(const MHV_FONT *font, int16_t *offsetX, i
  * @param	offValue	the pixel value to use for off
  * @return true if the seperator was written
  */
-bool MHV_Display_Monochrome::writeSeperator(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeSeperator(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue) {
 	bool ret = false;
 
@@ -147,7 +147,7 @@ bool MHV_Display_Monochrome::writeSeperator(const MHV_FONT *font, int16_t *offse
 		uint8_t y = 0;
 		uint8_t row;
 
-		while (y++ < font->maxHeight) {
+		while (y++ < font.maxHeight) {
 			row = offsetY + y;
 			if (row < _rowCount) {
 				setPixel(*offsetX, row, offValue);
@@ -170,7 +170,7 @@ bool MHV_Display_Monochrome::writeSeperator(const MHV_FONT *font, int16_t *offse
  * @param	string		the string to write
  * @return true if anything was written
  */
-bool MHV_Display_Monochrome::writeString(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeString(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue, const char *string) {
 	const char *p = string;
 
@@ -196,7 +196,7 @@ bool MHV_Display_Monochrome::writeString(const MHV_FONT *font, int16_t *offsetX,
  * @param	length		the length of the buffer
  * @return true if anything was written
  */
-bool MHV_Display_Monochrome::writeBuffer(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeBuffer(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length) {
 	bool ret = false;
 	uint16_t i = 0;
@@ -221,7 +221,7 @@ bool MHV_Display_Monochrome::writeBuffer(const MHV_FONT *font, int16_t *offsetX,
  * @param	string		the string to write
  * @return true if anything was written
  */
-bool MHV_Display_Monochrome::writeString_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeString_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue, PGM_P string) {
 	const char *p = string;
 	char val;
@@ -250,7 +250,7 @@ bool MHV_Display_Monochrome::writeString_P(const MHV_FONT *font, int16_t *offset
  * @param	length		the length of the buffer
  * @return true if anything was written
  */
-bool MHV_Display_Monochrome::writeBuffer_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+bool MHV_Display_Monochrome::writeBuffer_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 		uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length) {
 
 	bool ret = false;
@@ -281,7 +281,7 @@ void MHV_Display_Monochrome::runTxBuffers() {
  * @param	offValue	the pixel value for off pixels
  * @return true if there are more frames to be rendered
  */
-bool MHV_Display_Monochrome::txAnimation(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
+bool MHV_Display_Monochrome::txAnimation(const MHV_FONT &font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
 	int16_t offsetX = _txOffset--;
 
 	clear(offValue);

@@ -177,16 +177,16 @@ typedef enum mhv_vusb_keyboard_key MHV_VUSB_KEYBOARD_KEY;
 
 class MHV_VusbKeyboard : public MHV_AlarmListener {
 protected:
-	MHV_RTC		*_rtc;
+	MHV_RTC		&_rtc;
 
 public:
-	MHV_VusbKeyboard(MHV_RTC *rtc);
+	MHV_VusbKeyboard(MHV_RTC &rtc);
 	void keyStroke(MHV_VUSB_KEYBOARD_KEY key);
 	void keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keysUp(uint8_t modifiers);
 	void keysUp();
-	void alarm(MHV_ALARM *alarm);
+	void alarm(const MHV_ALARM &alarm);
 };
 
 #endif /* MHV_VUSBKEYBOARD_H_ */

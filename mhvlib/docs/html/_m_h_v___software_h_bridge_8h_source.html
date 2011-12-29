@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -146,40 +146,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a>00048 };
 <a name="l00049"></a>00049 <span class="keyword">typedef</span> <span class="keyword">enum</span> mhv_SoftwareHBridge_type MHV_SOFTWAREHBRIDGE_TYPE;
 <a name="l00050"></a>00050 
-<a name="l00051"></a>00051 <span class="keyword">class </span>MHV_SoftwareHBridge {
+<a name="l00051"></a>00051 <span class="keyword">class </span>MHV_SoftwareHBridge : <span class="keyword">public</span> <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> {
 <a name="l00052"></a>00052 <span class="keyword">protected</span>:
 <a name="l00053"></a>00053         MHV_SOFTWAREHBRIDGE_TYPE        _type;
-<a name="l00054"></a>00054         MHV_Timer16                                     *_timer;
-<a name="l00055"></a>00055         uint8_t                                         _timerChannel;
-<a name="l00056"></a>00056 
-<a name="l00057"></a>00057         <span class="keyword">volatile</span> uint8_t                        *_dir1Top;
-<a name="l00058"></a>00058         <span class="keyword">volatile</span> uint8_t                        *_out1Top;
-<a name="l00059"></a>00059         uint8_t                                         _pin1Top;
-<a name="l00060"></a>00060         <span class="keyword">volatile</span> uint8_t                        *_out1Bottom;
-<a name="l00061"></a>00061         uint8_t                                         _pin1Bottom;
-<a name="l00062"></a>00062         <span class="keyword">volatile</span> uint8_t                        *_dir2Top;
-<a name="l00063"></a>00063         <span class="keyword">volatile</span> uint8_t                        *_out2Top;
-<a name="l00064"></a>00064         uint8_t                                         _pin2Top;
-<a name="l00065"></a>00065         <span class="keyword">volatile</span> uint8_t                        *_out2Bottom;
-<a name="l00066"></a>00066         uint8_t                                         _pin2Bottom;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068         MHV_SOFTWAREHBRIDGE_DIRECTION _direction;
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070 <span class="keyword">public</span>:
-<a name="l00071"></a>00071         MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 *timer, uint8_t timerChannel,
-<a name="l00072"></a>00072                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir1Top),
-<a name="l00073"></a>00073                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir1Bottom),
-<a name="l00074"></a>00074                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir2Top),
-<a name="l00075"></a>00075                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir2Bottom));
-<a name="l00076"></a>00076         <span class="keywordtype">void</span> reset();
-<a name="l00077"></a>00077         <span class="keywordtype">void</span> update();
-<a name="l00078"></a>00078         <span class="keywordtype">void</span> <span class="keyword">set</span>(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);
-<a name="l00079"></a>00079         <span class="keywordtype">void</span> <span class="keyword">set</span>(MHV_SOFTWAREHBRIDGE_DIRECTION direction);
-<a name="l00080"></a>00080 };
-<a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="preprocessor">#endif // MHV_TIMER16_1</span>
-<a name="l00083"></a>00083 <span class="preprocessor"></span>
-<a name="l00084"></a>00084 <span class="preprocessor">#endif </span><span class="comment">/* MHV_SOFTWAREHBRIDGE_H_ */</span>
+<a name="l00054"></a>00054         MHV_Timer16                                     &amp;_timer;
+<a name="l00055"></a>00055 
+<a name="l00056"></a>00056         <span class="keyword">volatile</span> uint8_t                        *_dir1Top;
+<a name="l00057"></a>00057         <span class="keyword">volatile</span> uint8_t                        *_out1Top;
+<a name="l00058"></a>00058         uint8_t                                         _pin1Top;
+<a name="l00059"></a>00059         <span class="keyword">volatile</span> uint8_t                        *_out1Bottom;
+<a name="l00060"></a>00060         uint8_t                                         _pin1Bottom;
+<a name="l00061"></a>00061         <span class="keyword">volatile</span> uint8_t                        *_dir2Top;
+<a name="l00062"></a>00062         <span class="keyword">volatile</span> uint8_t                        *_out2Top;
+<a name="l00063"></a>00063         uint8_t                                         _pin2Top;
+<a name="l00064"></a>00064         <span class="keyword">volatile</span> uint8_t                        *_out2Bottom;
+<a name="l00065"></a>00065         uint8_t                                         _pin2Bottom;
+<a name="l00066"></a>00066 
+<a name="l00067"></a>00067         MHV_SOFTWAREHBRIDGE_DIRECTION _direction;
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="keyword">public</span>:
+<a name="l00070"></a>00070         MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 &amp;timer, uint8_t timerChannel,
+<a name="l00071"></a>00071                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir1Top),
+<a name="l00072"></a>00072                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir1Bottom),
+<a name="l00073"></a>00073                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir2Top),
+<a name="l00074"></a>00074                         <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(dir2Bottom));
+<a name="l00075"></a>00075         <span class="keywordtype">void</span> reset();
+<a name="l00076"></a>00076         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">alarm</a>();
+<a name="l00077"></a>00077         <span class="keywordtype">void</span> <span class="keyword">set</span>(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);
+<a name="l00078"></a>00078         <span class="keywordtype">void</span> <span class="keyword">set</span>(MHV_SOFTWAREHBRIDGE_DIRECTION direction);
+<a name="l00079"></a>00079 };
+<a name="l00080"></a>00080 
+<a name="l00081"></a>00081 <span class="preprocessor">#endif // MHV_TIMER16_1</span>
+<a name="l00082"></a>00082 <span class="preprocessor"></span>
+<a name="l00083"></a>00083 <span class="preprocessor">#endif </span><span class="comment">/* MHV_SOFTWAREHBRIDGE_H_ */</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -200,7 +199,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

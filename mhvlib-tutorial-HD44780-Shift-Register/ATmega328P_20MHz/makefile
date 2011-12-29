@@ -45,56 +45,56 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-HD44780.lss \
+mhvlib-tutorial-HD44780-Shift-Register.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-HD44780.hex \
+mhvlib-tutorial-HD44780-Shift-Register.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-HD44780.eep \
+mhvlib-tutorial-HD44780-Shift-Register.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: mhvlib-tutorial-HD44780.elf secondary-outputs
+all: mhvlib-tutorial-HD44780-Shift-Register.elf secondary-outputs
 
 # Tool invocations
-mhvlib-tutorial-HD44780.elf: $(OBJS) $(USER_OBJS)
+mhvlib-tutorial-HD44780-Shift-Register.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-HD44780.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o"mhvlib-tutorial-HD44780.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-HD44780-Shift-Register.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -mmcu=atmega328p -o "mhvlib-tutorial-HD44780-Shift-Register.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-HD44780.lss: mhvlib-tutorial-HD44780.elf
+mhvlib-tutorial-HD44780-Shift-Register.lss: mhvlib-tutorial-HD44780-Shift-Register.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-HD44780.elf  >"mhvlib-tutorial-HD44780.lss"
+	-avr-objdump -h -S mhvlib-tutorial-HD44780-Shift-Register.elf  >"mhvlib-tutorial-HD44780-Shift-Register.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-HD44780.hex: mhvlib-tutorial-HD44780.elf
+mhvlib-tutorial-HD44780-Shift-Register.hex: mhvlib-tutorial-HD44780-Shift-Register.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-HD44780.elf  "mhvlib-tutorial-HD44780.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-HD44780-Shift-Register.elf  "mhvlib-tutorial-HD44780-Shift-Register.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-HD44780.eep: mhvlib-tutorial-HD44780.elf
+mhvlib-tutorial-HD44780-Shift-Register.eep: mhvlib-tutorial-HD44780-Shift-Register.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-HD44780.elf  "mhvlib-tutorial-HD44780.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-HD44780-Shift-Register.elf  "mhvlib-tutorial-HD44780-Shift-Register.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-HD44780.elf
+sizedummy: mhvlib-tutorial-HD44780-Shift-Register.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-HD44780.elf
+	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-HD44780-Shift-Register.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HD44780.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HD44780-Shift-Register.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)

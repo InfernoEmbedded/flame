@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -139,7 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a><a class="code" href="_m_h_v___w_s2801_8h.html#acfa915c7b3ac090209147d6d4b5ff763">00048</a> <span class="preprocessor">#define MHV_WS2801_CREATE(__mhvObjectName,__mhvLength) \</span>
 <a name="l00049"></a>00049 <span class="preprocessor">        MHV_RGB __mhvObjectName ## _Buffer[__mhvLength]; \</span>
 <a name="l00050"></a>00050 <span class="preprocessor">        MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \</span>
-<a name="l00051"></a>00051 <span class="preprocessor">        MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, (MHV_Shifter *)&amp;__mhvObjectName ## _Shifter);</span>
+<a name="l00051"></a>00051 <span class="preprocessor">        MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, __mhvObjectName ## _Shifter);</span>
 <a name="l00052"></a>00052 <span class="preprocessor"></span>
 <a name="l00053"></a><a class="code" href="class_m_h_v___w_s2801.html">00053</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___w_s2801.html">MHV_WS2801</a> {
 <a name="l00054"></a>00054 <span class="keyword">private</span>:
@@ -184,7 +184,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:35 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:00 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

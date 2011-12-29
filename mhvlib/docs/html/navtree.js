@@ -29,6 +29,7 @@ var NAVTREE =
       [ "MHV_PinChangeManager", "class_m_h_v___pin_change_manager.html", null ],
       [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", null ],
       [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
+      [ "MHV_PWMMatrixDriver", "class_m_h_v___p_w_m_matrix_driver.html", null ],
       [ "mhv_rgb", "structmhv__rgb.html", null ],
       [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
       [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
@@ -39,6 +40,7 @@ var NAVTREE =
       [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ],
       [ "mhv_time", "structmhv__time.html", null ],
       [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
+      [ "MHV_TimerListener", "class_m_h_v___timer_listener.html", null ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
       [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
       [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
@@ -93,14 +95,19 @@ var NAVTREE =
       [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", [
         [ "MHV_Debounce", "class_m_h_v___debounce.html", null ]
       ] ],
+      [ "MHV_PWMMatrixDriver", "class_m_h_v___p_w_m_matrix_driver.html", null ],
       [ "mhv_rgb", "structmhv__rgb.html", null ],
       [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
-      [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
       [ "MHV_RXListener", "class_m_h_v___r_x_listener.html", null ],
       [ "MHV_Shifter", "class_m_h_v___shifter.html", null ],
       [ "MHV_StepperListener", "class_m_h_v___stepper_listener.html", null ],
       [ "mhv_time", "structmhv__time.html", null ],
       [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
+      [ "MHV_TimerListener", "class_m_h_v___timer_listener.html", [
+        [ "MHV_Display_HD44780_Direct_Connect", "class_m_h_v___display___h_d44780___direct___connect.html", null ],
+        [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
+        [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ]
+      ] ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
       [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
       [ "MHV_WS2801", "class_m_h_v___w_s2801.html", null ]

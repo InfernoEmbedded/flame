@@ -30,34 +30,38 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-/* Create a new timer
- * @param: time the time in microseconds
+/**
+ * Create a new timer
+ * @param	timer	an MHV_TIMER_* macro providing the appropriate details of the timer hardware
  */
 MHV_Timer8::MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volatile uint8_t *controlRegB,
 		volatile uint8_t *overflowReg1, volatile uint8_t *overflowReg2, volatile uint8_t *counter,
-		volatile uint8_t *interrupt, uint8_t interruptEnableA) {
-	_controlRegA = controlRegA;
-	_controlRegB = controlRegB;
-	_outputCompare1 = overflowReg1;
-	_outputCompare2 = overflowReg2;
-	_counter = counter;
-	_interrupt = interrupt;
-	_interruptEnableA = interruptEnableA;
-	_mode = MHV_TIMER_REPETITIVE;
-	_type = type;
-	_counterSize = 8;
-	_prescaler = MHV_TIMER_PRESCALER_DISABLED;
+		volatile uint8_t *interrupt, uint8_t interruptEnableA) :
+		_controlRegA(controlRegA),
+	_controlRegB(controlRegB),
+	_outputCompare1(overflowReg1),
+	_outputCompare2(overflowReg2),
+	_counter(counter),
+	_interrupt(interrupt),
+	_interruptEnableA(interruptEnableA),
+	_prescaler(MHV_TIMER_PRESCALER_DISABLED),
+	_mode(MHV_TIMER_REPETITIVE),
+	_type(type),
+	_counterSize(8),
+	_haveTime2(false),
+	_listener1(NULL),
+	_listener2(NULL) {}
 
-	_haveTime2 = false;
-	_triggerData1 = NULL;
-	_triggerData2 = NULL;
-	_triggerFunction1 = NULL;
-	_triggerFunction2 = NULL;
-}
+/**
+ * Create a new timer (only for use by MHV_Timer16)
+ */
+MHV_Timer8::MHV_Timer8() {}
 
-MHV_Timer8::MHV_Timer8() {};
-
-uint8_t MHV_Timer8::current(void) {
+/**
+ * Get the current value of the timer
+ * @return the current value of the timer
+ */
+uint8_t MHV_Timer8::current() {
 	uint8_t ret;
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		ret = *_counter;
@@ -66,7 +70,8 @@ uint8_t MHV_Timer8::current(void) {
 }
 
 
-/* Set the prescaler
+/**
+ * Set the prescaler
  * @param	time		the time in timer ticks
  * @param	prescaler	the prescaler to set
  * @param	factor		the prescale factor
@@ -133,7 +138,8 @@ uint8_t MHV_Timer8::calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *presc
 	return 0;
 }
 
-/* Calculate the top register
+/**
+ * Calculate the top register
  * @param	time 		input: the time in timer ticks, output: the scaled timer ticks
  * @param	factor		the prescaler factor
  */
@@ -142,7 +148,8 @@ void MHV_Timer8::calculateTop(uint32_t *time, uint16_t factor) {
 	return;
 }
 
-/* Set the periods for channels 1 and 2
+/**
+ * Set the periods for channels 1 and 2
  * Times are in microseconds
  * @param	usec1	the period for channel 1
  * @param	usec2	the period for channel 2
@@ -176,23 +183,26 @@ bool MHV_Timer8::setPeriods(uint32_t usec1, uint32_t usec2) {
 
 
 
-/* Set the prescaler (internal use only)
+/**
+ * Set the prescaler (internal use only)
  * @param	prescaler	the prescaler value (only the lowest 3 bits may be set)
  */
 void MHV_Timer8::_setPrescaler(MHV_TIMER_PRESCALER prescaler) {
 	*_controlRegB = (*_controlRegB & 0xf8) | prescaler;
 }
 
-/* Get the prescaler
+/**
+ * Get the prescaler
  * @return the prescaler value
  */
-MHV_TIMER_PRESCALER MHV_Timer8::getPrescaler(void) {
+MHV_TIMER_PRESCALER MHV_Timer8::getPrescaler() {
 	return (MHV_TIMER_PRESCALER)(*_controlRegB & 0x07);
 }
 
-/* Get the prescaler multiplier
+/**
+ * Get the prescaler multiplier
  */
-uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
+uint16_t MHV_Timer8::getPrescalerMultiplier() {
 	switch (_type) {
 	case MHV_TIMER_TYPE_5_PRESCALERS:
 		switch (getPrescaler()) {
@@ -235,14 +245,16 @@ uint16_t MHV_Timer8::getPrescalerMultiplier(void) {
 	return 0;
 }
 
-/* set the prescaler
+/**
+ * set the prescaler
  * @param 	prescaler	the prescaler value
  */
 void MHV_Timer8::setPrescaler(MHV_TIMER_PRESCALER prescaler) {
 	_prescaler = prescaler;
 }
 
-/* Set the generation mode
+/**
+ * Set the generation mode
  */
 void MHV_Timer8::setGenerationMode() {
 	switch (_mode) {
@@ -272,7 +284,8 @@ void MHV_Timer8::setGenerationMode() {
 	}
 }
 
-/* Set the overflow periods
+/**
+ * Set the overflow periods
  * @param	prescaler	the prescaler to use
  * @param	time1		the first time in prescaled timer ticks
  * @param	time2		the second time in prescaled timer ticks
@@ -288,9 +301,11 @@ void MHV_Timer8::setPeriods(MHV_TIMER_PRESCALER prescaler, uint8_t time1, uint8_
 	}
 }
 
-/* Get the number of timer cycles available
+/**
+ * Get the number of timer cycles available
+ * @return the number of cycles in an iteration of the timer
  */
-uint8_t MHV_Timer8::getTop(void) {
+uint8_t MHV_Timer8::getTop() {
 	switch (_mode) {
 	case MHV_TIMER_ONE_SHOT:
 	case MHV_TIMER_REPETITIVE:
@@ -305,7 +320,9 @@ uint8_t MHV_Timer8::getTop(void) {
 	}
 }
 
-/* Set the number of timer cycles available
+/**
+ * Set the number of timer cycles available
+ * @param	value	the number of cycles in an iteration of the timer
 */
 void MHV_Timer8::setTop(uint8_t value) {
 	switch (_mode) {
@@ -320,6 +337,11 @@ void MHV_Timer8::setTop(uint8_t value) {
 	}
 }
 
+/**
+ * Set the current value of a channel
+ * @param channel	the channel to set
+ * @param value		the new value of the channel
+ */
 void MHV_Timer8::setOutput(uint8_t channel, uint8_t value) {
 	switch (channel) {
 	case 1:
@@ -331,14 +353,27 @@ void MHV_Timer8::setOutput(uint8_t channel, uint8_t value) {
 	}
 }
 
+/**
+ * Set the current value of channel 1
+ * @param value	the new value of channel 1
+ */
 void MHV_Timer8::setOutput1(uint8_t value) {
 	*_outputCompare1 = value;
 }
 
+/**
+ * Set the current value of channel 2
+ * @param value	the new value of channel 2
+ */
 void MHV_Timer8::setOutput2(uint8_t value) {
 	*_outputCompare2 = value;
 }
 
+/**
+ * Get the current value of a channel
+ * @param	channel	the channel to get
+ * @return the current value of the selected channel
+ */
 uint8_t MHV_Timer8::getOutput(uint8_t channel) {
 	switch (channel) {
 	case 1:
@@ -352,36 +387,52 @@ uint8_t MHV_Timer8::getOutput(uint8_t channel) {
 	}
 }
 
-
-uint8_t MHV_Timer8::getOutput1(void) {
+/**
+ * Return the current value of channel 1
+ * @return the current value of channel 1
+ */
+uint8_t MHV_Timer8::getOutput1() {
 	return *_outputCompare1;
 }
 
-uint8_t MHV_Timer8::getOutput2(void) {
+/**
+ * Return the current value of channel 2
+ * @return the current value of channel 2
+ */
+uint8_t MHV_Timer8::getOutput2() {
 	return *_outputCompare2;
 }
 
+/**
+ * Connect channel 1 to an output pin
+ * @param type	the method of connection
+ */
 void MHV_Timer8::connectOutput1(MHV_TIMER_CONNECT_TYPE type) {
 	*_controlRegA = (*_controlRegA & 0x3F) | (type << 6);
 }
 
+/**
+ * Connect channel 2 to an output pin
+ * @param type	the method of connection
+ */
 void MHV_Timer8::connectOutput2(MHV_TIMER_CONNECT_TYPE type) {
 	*_controlRegA = (*_controlRegA & 0xCF) | (type << 4);
 }
 
 
-/* Enable the timer module
+/**
+ * Enable the timer module
  */
-void MHV_Timer8::enable(void) {
+void MHV_Timer8::enable() {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 
 		*_counter = 0;
 		_setPrescaler(_prescaler);
 		setGenerationMode();
-		if (_triggerFunction1) {
+		if (_listener1) {
 			*_interrupt |= _BV(_interruptEnableA);
 		}
-		if (*_outputCompare2 && _triggerFunction2) {
+		if (*_outputCompare2 && _listener2) {
 			*_interrupt |= _BV(_interruptEnableA + 1);
 			_haveTime2 = true;
 		} else {
@@ -390,7 +441,10 @@ void MHV_Timer8::enable(void) {
 	}
 }
 
-void MHV_Timer8::disable(void) {
+/**
+ * Disable the timer
+ */
+void MHV_Timer8::disable() {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		_setPrescaler(MHV_TIMER_PRESCALER_DISABLED);
 		*_interrupt &= ~_BV(_interruptEnableA);
@@ -400,32 +454,70 @@ void MHV_Timer8::disable(void) {
 	}
 }
 
-bool MHV_Timer8::enabled(void) {
+/**
+ * Check if the timer is enabled
+ * @return	true if the timer is enabled
+ */
+bool MHV_Timer8::enabled() {
 	return getPrescaler();
 }
 
+/**
+ * Trigger the listener for channel 1
+ */
 void MHV_Timer8::trigger1() {
 	if (MHV_TIMER_ONE_SHOT == _mode) {
 		disable();
 	}
-	_triggerFunction1(_triggerData1);
+	_listener1->alarm();
 }
 
+/**
+ * Trigger the listener for channel 2
+ */
 void MHV_Timer8::trigger2() {
-	if (_triggerFunction2) {
-		_triggerFunction2(_triggerData2);
+	if (_listener2) {
+		_listener2->alarm();
 	}
 }
 
-void MHV_Timer8::setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
-		void (*triggerFunction2)(void *triggerData), void *triggerData2) {
-	_triggerFunction1 = triggerFunction1;
-	_triggerData1 = triggerData1;
-
-	_triggerFunction2 = triggerFunction2;
-	_triggerData2 = triggerData2;
+/**
+ * Attach a listener to channel 1
+ * @param listener	the listener to attach
+ */
+void MHV_Timer8::setListener1(MHV_TimerListener &listener) {
+	_listener1 = &listener;
 }
 
+/**
+ * Attach a listener to channel 2
+ * @param listener	the listener to attach
+ */
+void MHV_Timer8::setListener2(MHV_TimerListener &listener) {
+	_listener2 = &listener;
+}
+
+/**
+ * Attach a listener to channel 1
+ * @param listener	the listener to attach
+ */
+void MHV_Timer8::setListener1(MHV_TimerListener *listener) {
+	_listener1 = listener;
+}
+
+/**
+ * Attach a listener to channel 2
+ * @param listener	the listener to attach
+ */
+void MHV_Timer8::setListener2(MHV_TimerListener *listener) {
+	_listener2 = listener;
+}
+
+
+/**
+ * Configure the mode of the timer module
+ * @param mode	the mode the timer module should operate in
+ */
 void MHV_Timer8::setMode(MHV_TIMER_MODE mode) {
 	_mode = mode;
 }

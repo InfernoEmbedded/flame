@@ -64,7 +64,7 @@ all: mhvlib-tutorial-VoltageRegulator.elf secondary-outputs
 mhvlib-tutorial-VoltageRegulator.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-VoltageRegulator.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -mmcu=${AVRTARGETMCU} -o"mhvlib-tutorial-VoltageRegulator.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-VoltageRegulator.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-VoltageRegulator.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -88,7 +88,7 @@ mhvlib-tutorial-VoltageRegulator.eep: mhvlib-tutorial-VoltageRegulator.elf
 
 sizedummy: mhvlib-tutorial-VoltageRegulator.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=${AVRTARGETMCU} mhvlib-tutorial-VoltageRegulator.elf
+	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-VoltageRegulator.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

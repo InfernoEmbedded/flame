@@ -8,8 +8,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include subdir.mk
 -include vusb/subdir.mk
+-include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -59,7 +59,7 @@ all: libmhvlib-Vusb-Console.a secondary-outputs
 libmhvlib-Vusb-Console.a: $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
-	avr-ar -r "libmhvlib-Vusb-Console.a" $(OBJS) $(LIBS)
+	avr-ar -r  "libmhvlib-Vusb-Console.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

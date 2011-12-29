@@ -8,8 +8,8 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include subdir.mk
 -include vusb/subdir.mk
+-include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -46,43 +46,47 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-libmhvlib-vusb-keyboard.lss \
+libmhvlib-Vusb-Console.lss \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: libmhvlib-vusb-keyboard.a secondary-outputs
+all: libmhvlib-Vusb-Console.a secondary-outputs
+
+dependents:
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
 
 # Tool invocations
-libmhvlib-vusb-keyboard.a: $(OBJS)
+libmhvlib-Vusb-Console.a: $(OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
-	avr-ar -r "libmhvlib-vusb-keyboard.a" $(OBJS) $(LIBS)
+	avr-ar -r  "libmhvlib-Vusb-Console.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-libmhvlib-vusb-keyboard.lss: libmhvlib-vusb-keyboard.a
+libmhvlib-Vusb-Console.lss: libmhvlib-Vusb-Console.a
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S libmhvlib-vusb-keyboard.a  >"libmhvlib-vusb-keyboard.lss"
+	-avr-objdump -h -S libmhvlib-Vusb-Console.a  >"libmhvlib-Vusb-Console.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: libmhvlib-vusb-keyboard.a
+sizedummy: libmhvlib-Vusb-Console.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 libmhvlib-vusb-keyboard.a
+	-avr-size --format=avr --mcu=atmega1280 libmhvlib-Vusb-Console.a
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) libmhvlib-vusb-keyboard.a
+	-$(RM) $(OBJS)$(C_DEPS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(ARCHIVES)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) libmhvlib-Vusb-Console.a
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
+A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a:
 
 -include ../makefile.targets

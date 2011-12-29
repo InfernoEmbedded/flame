@@ -98,6 +98,13 @@ ISR(mhvTimerVect2) { \
 	mhvTimer.trigger2(); \
 }
 
+class MHV_Timer8;
+
+class MHV_TimerListener {
+public:
+	virtual void alarm() =0;
+};
+
 class MHV_Timer8 {
 protected:
 	volatile uint8_t	*_controlRegA;
@@ -112,10 +119,8 @@ protected:
 	MHV_TIMER_TYPE		_type;
 	uint8_t				_counterSize;
 	bool				_haveTime2;
-	void (*_triggerFunction1)(void *data);
-	void *_triggerData1;
-	void (*_triggerFunction2)(void *data);
-	void *_triggerData2;
+	MHV_TimerListener	*_listener1;
+	MHV_TimerListener	*_listener2;
 
 	uint8_t calculatePrescaler(uint32_t time, MHV_TIMER_PRESCALER *prescaler, uint16_t *factor);
 	void calculateTop(uint32_t *time, uint16_t factor);
@@ -149,8 +154,12 @@ public:
 	bool enabled();
 	void trigger1();
 	void trigger2();
-	void setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
-			void (*triggerFunction2)(void *triggerData), void *triggerData2);
+	void setListener1(MHV_TimerListener &listener);
+	void setListener2(MHV_TimerListener &listener);
+	void setListener1(MHV_TimerListener *listener);
+	void setListener2(MHV_TimerListener *listener);
+	void setListener(uint8_t channel, MHV_TimerListener &listener);
+	void setListener(uint8_t channel, MHV_TimerListener *listener);
 	void setMode(MHV_TIMER_MODE mode);
 };
 

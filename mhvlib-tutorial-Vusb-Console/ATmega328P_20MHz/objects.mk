@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -lmhvlib -lmhvlib-vusb-console
+LIBS := -lmhvlib -lmhvlib-Vusb-Console
 

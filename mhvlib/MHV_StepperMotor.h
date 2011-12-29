@@ -33,7 +33,7 @@
 
 class MHV_StepperListener {
 public:
-	virtual void moveComplete(int32_t position);
+	virtual void moveComplete(int32_t position) =0;
 };
 
 class MHV_StepperMotor : public MHV_AlarmListener {

@@ -30,8 +30,8 @@ protected:
 	void typeChar(char c);
 
 public:
-	MHV_VusbTypist(MHV_RingBuffer *txBuffer, MHV_RTC *rtc);
-	void alarm(MHV_ALARM *alarm);
+	MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
+	void alarm(const MHV_ALARM &alarm);
 };
 
 #endif /* MHV_VUSBTYPIST_H_ */

@@ -39,9 +39,9 @@ protected:
 	uint16_t		_rowCount;
 	int16_t			_txOffset;
 
-	bool writeChar(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeChar(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, char character);
-	bool writeSeperator(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeSeperator(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue);
 	void runTxBuffers();
 
@@ -50,15 +50,15 @@ public:
 	uint16_t getWidth();
 	uint16_t getHeight();
 	void clear(uint8_t value);
-	bool writeString(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeString(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, const char *string);
-	bool writeString_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeString_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, PGM_P string);
-	bool writeBuffer(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeBuffer(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length);
-	bool writeBuffer_P(const MHV_FONT *font, int16_t *offsetX, int16_t offsetY,
+	bool writeBuffer_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length);
-	bool txAnimation(const MHV_FONT *font, int16_t offsetY, uint8_t onValue, uint8_t offValue);
+	bool txAnimation(const MHV_FONT &font, int16_t offsetY, uint8_t onValue, uint8_t offValue);
 
 	virtual void setPixel(uint16_t row, uint16_t col, uint8_t value)=0;
 	virtual uint8_t getPixel(uint16_t row, uint16_t col)=0;

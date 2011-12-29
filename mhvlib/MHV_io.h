@@ -580,7 +580,7 @@ inline void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint16_t
 	char *src = (char *)bufIn + offset;
 	char *dst = (char *)bufOut + offset;
 
-	for (uint8_t i = 0; i < count; i++) {
+	for (uint16_t i = 0; i < count; i++) {
 		for (uint8_t j = 0; j < len; j++,  --src, --dst) {
 			*dst = *src;
 		}
@@ -597,7 +597,7 @@ inline void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint16_t len) {
 	char *src = (char *)bufIn + len;
 	char *dst = (char *)bufOut + len;
 
-	for (uint8_t i = 0; i < len; i++,  --src, --dst) {
+	for (uint16_t i = 0; i < len; i++,  --src, --dst) {
 		*dst = *src;
 	}
 }

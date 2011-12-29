@@ -30,7 +30,7 @@ extern "C" {
  *  @param	txBuffer	a ringbuffer to store data in
  *  @param	rtc			an RTC to trigger events from
  */
-MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) :
+MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
 		MHV_VusbKeyboard(rtc), MHV_Device_TX(txBuffer) {
 	_isTyping = false;
 }
@@ -39,7 +39,7 @@ MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) :
  * Periodically called to maintain USB comms
  * @param alarm	the alarm that triggered the call
  */
-void MHV_VusbTypist::alarm(MHV_ALARM *alarm) {
+void MHV_VusbTypist::alarm(const MHV_ALARM &alarm) {
 	MHV_VusbKeyboard::alarm(alarm);
 	if (usbInterruptIsReady()) {
 		int c = nextCharacter();

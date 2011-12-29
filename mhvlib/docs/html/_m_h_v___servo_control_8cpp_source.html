@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00042"></a>00042 <span class="preprocessor">#define SERVO_ORDER(mhvServoIndex) \</span>
 <a name="l00043"></a>00043 <span class="preprocessor">        (_controlBlocks[mhvServoIndex].servoOrder)</span>
 <a name="l00044"></a>00044 <span class="preprocessor"></span>
-<a name="l00049"></a>00049 <span class="keywordtype">void</span> MHV_ServoControl::refreshServos(<span class="keywordtype">void</span> *data) {
+<a name="l00049"></a>00049 <span class="keywordtype">void</span> MHV_ServoControl::alarm() {
 <a name="l00050"></a>00050         <span class="keywordflow">if</span> (255 == _nextServoIndex) {
 <a name="l00051"></a>00051                 <span class="comment">// Start of the servo pulse</span>
 <a name="l00052"></a>00052                 <span class="keywordflow">for</span> (uint8_t i = 0; i &lt; _count; i++) {
@@ -152,9 +152,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00058"></a>00058                 _nextServoIndex = 0;
 <a name="l00059"></a>00059                 <span class="comment">// Set up the timer to end the first servo pulse</span>
 <a name="l00060"></a>00060                 <span class="comment">// Note that the timer is reset to 0 when the interrupt is triggered, so the current value is how long to reach this point</span>
-<a name="l00061"></a>00061                 _timer-&gt;setPeriods(<a class="code" href="_m_h_v___timer8_8h.html#ad44e2e11c05a9ec7c92c44c6829fa44da250867e58efcce1f5c849f7216c243c5">MHV_TIMER_PRESCALER_5_1</a>,
-<a name="l00062"></a>00062                                 _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer-&gt;current(), 0, 0);
-<a name="l00063"></a>00063                 _timer-&gt;enable();
+<a name="l00061"></a>00061                 _timer.setPeriods(<a class="code" href="_m_h_v___timer8_8h.html#ad44e2e11c05a9ec7c92c44c6829fa44da250867e58efcce1f5c849f7216c243c5">MHV_TIMER_PRESCALER_5_1</a>,
+<a name="l00062"></a>00062                                 _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer.current(), 0, 0);
+<a name="l00063"></a>00063                 _timer.enable();
 <a name="l00064"></a>00064                 <span class="keywordflow">return</span>;
 <a name="l00065"></a>00065         }
 <a name="l00066"></a>00066 
@@ -167,40 +167,40 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00073"></a>00073                 <span class="keywordflow">if</span> (_nextServoIndex &gt;= _count || 255 == SERVO_ORDER(_nextServoIndex)) {
 <a name="l00074"></a>00074                         _nextServoIndex = 255;
 <a name="l00075"></a>00075                         <span class="comment">// sleep for 20ms to the next servo pass</span>
-<a name="l00076"></a>00076                         _timer-&gt;setPeriods(20000UL, 0UL, 0UL); <span class="comment">// sleep for 20ms</span>
-<a name="l00077"></a>00077                         _timer-&gt;enable();
+<a name="l00076"></a>00076                         _timer.setPeriods(20000UL, 0UL, 0UL); <span class="comment">// sleep for 20ms</span>
+<a name="l00077"></a>00077                         _timer.enable();
 <a name="l00078"></a>00078                         <span class="keywordflow">return</span>;
 <a name="l00079"></a>00079                 }
 <a name="l00080"></a>00080 
 <a name="l00081"></a>00081                 <span class="comment">// Set up the next servo if it is sufficiently far away from the current one</span>
 <a name="l00082"></a>00082                 <span class="keywordflow">if</span> ((uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex)].position &gt;
-<a name="l00083"></a>00083                                 (uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer-&gt;current()) {
+<a name="l00083"></a>00083                                 (uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer.current()) {
 <a name="l00084"></a>00084 
-<a name="l00085"></a>00085                         _timer-&gt;setPeriods(<a class="code" href="_m_h_v___timer8_8h.html#ad44e2e11c05a9ec7c92c44c6829fa44da250867e58efcce1f5c849f7216c243c5">MHV_TIMER_PRESCALER_5_1</a>,
-<a name="l00086"></a>00086                                         _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer-&gt;current(), 0, 0);
-<a name="l00087"></a>00087                         _timer-&gt;enable();
+<a name="l00085"></a>00085                         _timer.setPeriods(<a class="code" href="_m_h_v___timer8_8h.html#ad44e2e11c05a9ec7c92c44c6829fa44da250867e58efcce1f5c849f7216c243c5">MHV_TIMER_PRESCALER_5_1</a>,
+<a name="l00086"></a>00086                                         _controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer.current(), 0, 0);
+<a name="l00087"></a>00087                         _timer.enable();
 <a name="l00088"></a>00088                         <span class="keywordflow">return</span>;
 <a name="l00089"></a>00089                 }
 <a name="l00090"></a>00090         }
 <a name="l00091"></a>00091 }
 <a name="l00092"></a>00092 
-<a name="l00099"></a>00099 MHV_ServoControl::MHV_ServoControl(MHV_Timer16 *timer, MHV_SERVOCONTROLBLOCK *controlBlocks, uint8_t count) {
-<a name="l00100"></a>00100         _timer = timer;
-<a name="l00101"></a>00101         _controlBlocks = controlBlocks;
-<a name="l00102"></a>00102         _count = count;
-<a name="l00103"></a>00103         _nextServoIndex = 255;
-<a name="l00104"></a>00104 
-<a name="l00105"></a>00105         uint8_t i;
-<a name="l00106"></a>00106         <span class="keywordflow">for</span> (i = 0; i &lt; count; i++) {
-<a name="l00107"></a>00107                 controlBlocks[i].clockMaxOffset = 0;
-<a name="l00108"></a>00108                 controlBlocks[i].clockMinOffset = 0;
-<a name="l00109"></a>00109                 controlBlocks[i].pin = 0;
-<a name="l00110"></a>00110                 controlBlocks[i].port = 0;
-<a name="l00111"></a>00111                 controlBlocks[i].position = 0;
-<a name="l00112"></a>00112                 controlBlocks[i].servoOrder = 255;
-<a name="l00113"></a>00113         }
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115         _timer-&gt;setMode(<a class="code" href="_m_h_v___timer8_8h.html#aecad6e3e75653c38a2ce4160c9973ef5a25b3ce7e7892f61f52b46b9e418e9490">MHV_TIMER_ONE_SHOT</a>);
+<a name="l00099"></a>00099 MHV_ServoControl::MHV_ServoControl(MHV_Timer16 &amp;timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count) :
+<a name="l00100"></a>00100                 _timer(timer),
+<a name="l00101"></a>00101                 _controlBlocks(controlBlocks),
+<a name="l00102"></a>00102                 _count(count),
+<a name="l00103"></a>00103                 _nextServoIndex(255) {
+<a name="l00104"></a>00104         uint8_t i;
+<a name="l00105"></a>00105         <span class="keywordflow">for</span> (i = 0; i &lt; count; i++) {
+<a name="l00106"></a>00106                 controlBlocks[i].clockMaxOffset = 0;
+<a name="l00107"></a>00107                 controlBlocks[i].clockMinOffset = 0;
+<a name="l00108"></a>00108                 controlBlocks[i].pin = 0;
+<a name="l00109"></a>00109                 controlBlocks[i].port = 0;
+<a name="l00110"></a>00110                 controlBlocks[i].position = 0;
+<a name="l00111"></a>00111                 controlBlocks[i].servoOrder = 255;
+<a name="l00112"></a>00112         }
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114         _timer.setMode(<a class="code" href="_m_h_v___timer8_8h.html#aecad6e3e75653c38a2ce4160c9973ef5a25b3ce7e7892f61f52b46b9e418e9490">MHV_TIMER_ONE_SHOT</a>);
+<a name="l00115"></a>00115         _timer.setListener1(<span class="keyword">this</span>);
 <a name="l00116"></a>00116 }
 <a name="l00117"></a>00117 
 <a name="l00123"></a>00123 <span class="keywordtype">void</span> MHV_ServoControl::addServo(uint8_t servo, <a class="code" href="_m_h_v__io_8h.html#afb172d17be3890bb07e5ceec5a014b91">MHV_DECLARE_PIN</a>(pin)) {
@@ -210,7 +210,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00127"></a>00127 
 <a name="l00128"></a>00128         <a class="code" href="_m_h_v__io_8h.html#a0d9b0efcf453876cbec27c7e5e487102">mhv_setOutput</a>(pinDir, pinOut, pinIn, pinPin, -1);
 <a name="l00129"></a>00129 
-<a name="l00130"></a>00130         <span class="keywordflow">if</span> (_timer-&gt;enabled()) {
+<a name="l00130"></a>00130         <span class="keywordflow">if</span> (_timer.enabled()) {
 <a name="l00131"></a>00131                 sortServos();
 <a name="l00132"></a>00132         }
 <a name="l00133"></a>00133 }
@@ -224,7 +224,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00151"></a>00151         _controlBlocks[servo].position = ((uint32_t)newPosition) * (MHV_SERVO_MAX + _controlBlocks[servo].clockMaxOffset -
 <a name="l00152"></a>00152                         (MHV_SERVO_MIN + _controlBlocks[servo].clockMinOffset) ) / 65535 + MHV_SERVO_MIN + _controlBlocks[servo].clockMinOffset;
 <a name="l00153"></a>00153 
-<a name="l00154"></a>00154         <span class="keywordflow">if</span> (_timer-&gt;enabled()) {
+<a name="l00154"></a>00154         <span class="keywordflow">if</span> (_timer.enabled()) {
 <a name="l00155"></a>00155                 sortServos();
 <a name="l00156"></a>00156         }
 <a name="l00157"></a>00157 }
@@ -250,11 +250,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00189"></a>00189 
 <a name="l00190"></a>00190         _nextServoIndex = 0;
 <a name="l00191"></a>00191         sortServos();
-<a name="l00192"></a>00192         refreshServos(0);
+<a name="l00192"></a>00192         alarm();
 <a name="l00193"></a>00193 }
 <a name="l00194"></a>00194 
 <a name="l00198"></a>00198 <span class="keywordtype">void</span> MHV_ServoControl::disable() {
-<a name="l00199"></a>00199         _timer-&gt;disable();
+<a name="l00199"></a>00199         _timer.disable();
 <a name="l00200"></a>00200 }
 <a name="l00201"></a>00201 
 <a name="l00205"></a>00205 <span class="keywordtype">void</span> MHV_ServoControl::sortServos() {
@@ -298,7 +298,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

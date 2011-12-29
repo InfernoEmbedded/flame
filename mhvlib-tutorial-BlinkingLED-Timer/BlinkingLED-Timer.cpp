@@ -28,9 +28,6 @@
 /* A blinking LED on Arduino pin 13 - uses a timer to toggle the LED
  */
 
-// Bring in *int*_t types
-#include <inttypes.h>
-
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -61,31 +58,30 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(tickTimer, MHV_TIMER2_INTERRUPTS);
  * Since we want a timer triggered every 333ms, but the hardware is incapable
  * of this, we will instead trigger every 1ms and maintain a counter instead
  */
-void timerTrigger(void *data) {
+class LEDBlinker : public MHV_TimerListener {
+	void alarm();
+};
+
+void LEDBlinker::alarm() {
 // static variables are initialised once at boot, and persist between calls
 
 // A counter to keep track of how many times we are called
 	static uint16_t count = 0;
 
-// What is the next action to take
-	static bool turnOn = true;
-
 /* Increment count, and if it is the 333rd time, toggle the LED and reset the
  * counter
  */
 	if (333 == ++count) {
-		if (turnOn) {
-			mhv_pinOn(MHV_ARDUINO_PIN_13);
-		} else {
-			mhv_pinOff(MHV_ARDUINO_PIN_13);
-		}
+			mhv_pinToggle(MHV_ARDUINO_PIN_13);
 
-		turnOn = !turnOn;
 		count = 0;
 	}
 }
 
-int main() {
+// Instantiate the blinker class
+LEDBlinker blinker;
+
+int NORETURN main() {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -103,7 +99,7 @@ int main() {
 	tickTimer.setPeriods(1000UL, 0);
 
 // Tell the timer to call our trigger function
-	tickTimer.setTriggers(timerTrigger, 0, 0, 0);
+	tickTimer.setListener1(blinker);
 
 // Start the timer
 	tickTimer.enable();
@@ -116,6 +112,5 @@ int main() {
 		sleep_mode();
 	}
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

@@ -29,6 +29,7 @@
 
 #include <inttypes.h>
 #include <MHV_Display_Monochrome_Buffered.h>
+#include <MHV_Timer8.h>
 
 /**
  * Create a new PWM Matrix object
@@ -36,17 +37,16 @@
  * @param	_mhvRows			the number of rows
  * @param	_mhvCols			the number of columns
  * @param	_mhvTxElements		the number of elements to make available for async transmission
- * @param	_mhvMatrixRowOn		function to call to turn a row on
+ * @param	_mhvMatrixDriver	the handler to drive rows & cols
  * @param	_mhvMatrixRowOff	function to call to turn a row off
  * @param	_mhvMatrixColOn		function to call to turn a row on
  * @param	_mhvMatrixColOff	function to call to turn a row off
  */
-#define MHV_PWMMATRIX_CREATE(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, \
-		_mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff) \
+#define MHV_PWMMATRIX_CREATE(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, _mhvMatrixDriver) \
 	uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
 	MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
 	MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## FrameBuffer, _mhvObjectName ## TX, \
-			_mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, _mhvMatrixColOff);
+			_mhvMatrixDriver);
 
 enum MHV_PWMMatrix_Mode {
 	MHV_PWMMATRIX_MODE_AUTO,
@@ -56,16 +56,21 @@ enum MHV_PWMMatrix_Mode {
 };
 typedef enum MHV_PWMMatrix_Mode MHV_PWMMATRIX_MODE;
 
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered {
+class MHV_PWMMatrixDriver {
+public:
+	virtual void rowOn(uint16_t row) =0;
+	virtual void rowOff(uint16_t row) =0;
+	virtual void colOn(uint16_t col) =0;
+	virtual void colOff(uint16_t col) =0;
+};
+
+class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered, public MHV_TimerListener {
 private:
 	uint16_t				_currentRow;
 	uint16_t				_currentCol;
 	uint8_t					_currentLevel;
 	MHV_PWMMATRIX_MODE		_mode;
-	void					(*_rowOn)(uint16_t row);
-	void 					(*_rowOff)(uint16_t row);
-	void 					(*_colOn)(uint16_t column);
-	void 					(*_colOff)(uint16_t column);
+	MHV_PWMMatrixDriver		&_driver;
 
 	void tickRow();
 	void tickCol();
@@ -73,12 +78,8 @@ private:
 
 public:
 	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &txBuffers,
-		void (*rowOn)(uint16_t row),
-		void (*rowOff)(uint16_t row),
-		void (*colOn)(uint16_t column),
-		void (*colOff)(uint16_t column),
-		MHV_PWMMATRIX_MODE mode = MHV_PWMMATRIX_MODE_AUTO);
-	void tick();
+		MHV_PWMMatrixDriver &driver, MHV_PWMMATRIX_MODE mode = MHV_PWMMATRIX_MODE_AUTO);
+	void alarm();
 };
 
 #endif /* MHV_PWMMATRIX_H_ */

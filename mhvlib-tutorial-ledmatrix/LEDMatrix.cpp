@@ -37,7 +37,9 @@
 
 // Bring in the timers we need for animation and PWM
 #include <MHV_Timer8.h>
-#include <MHV_Timer16.h>
+
+// Bring in the RTC
+#include <MHV_RTC.h>
 
 // Bring in the PWM Matrix core
 #include <MHV_PWMMatrix.h>
@@ -49,13 +51,18 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-// A timer we will use for animation
-MHV_Timer8 animateTimer(MHV_TIMER8_2);
-MHV_TIMER_ASSIGN_2INTERRUPTS(animateTimer, MHV_TIMER2_INTERRUPTS);
+// A timer we will use to tick the RTC
+MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
-// A timer we will use for the PWM Matrix
-MHV_Timer16 ledMatrixTimer(MHV_TIMER16_1);
-MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER1_INTERRUPTS);
+// A timer we will use to tick the LED Matrix
+MHV_Timer8 ledMatrixTimer(MHV_TIMER8_0);
+MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
+
+#define ALARM_COUNT	4
+// The RTC object we will use
+MHV_RTC_CREATE(rtc, ALARM_COUNT);
+
 
 /* 4 LED matrix
  * rows are on pins 8 & 9 and are active low
@@ -64,11 +71,19 @@ MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER1_INTERRUPTS);
 #define LED_MATRIX_ROWS	2
 #define LED_MATRIX_COLS	2
 
-/* Callbacks that the PWM Matrix will use to manipulate the LEDs
- * These are implemented as callbacks to allow us to replace directly driven
+/* The driver that the PWM Matrix will use to manipulate the LEDs
+ * These are implemented as a driver class to allow us to replace directly driven
  * LEDs with shift registers
  */
-void matrixRowOn(uint16_t row) {
+class LEDDriver : public MHV_PWMMatrixDriver {
+public:
+	void rowOn(uint16_t row);
+	void rowOff(uint16_t row);
+	void colOn(uint16_t col);
+	void colOff(uint16_t col);
+};
+
+void LEDDriver::rowOn(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_8);
@@ -79,7 +94,7 @@ void matrixRowOn(uint16_t row) {
 	}
 }
 
-void matrixRowOff(uint16_t row) {
+void LEDDriver::rowOff(uint16_t row) {
 	switch (row) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_8);
@@ -90,7 +105,7 @@ void matrixRowOff(uint16_t row) {
 	}
 }
 
-void matrixColOn(uint16_t col) {
+void LEDDriver::colOn(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOn(MHV_ARDUINO_PIN_10);
@@ -101,7 +116,7 @@ void matrixColOn(uint16_t col) {
 	}
 }
 
-void matrixColOff(uint16_t col) {
+void LEDDriver::colOff(uint16_t col) {
 	switch (col) {
 	case 0:
 		mhv_pinOff(MHV_ARDUINO_PIN_10);
@@ -112,79 +127,90 @@ void matrixColOff(uint16_t col) {
 	}
 }
 
-// The framebuffer for the matrix
-uint8_t ledMatrixFrameBuffer[LED_MATRIX_ROWS * LED_MATRIX_COLS];
+LEDDriver ledDriver;
 
-// Create the matrix
-MHV_PWMMatrix ledMatrix(LED_MATRIX_ROWS, LED_MATRIX_COLS, ledMatrixFrameBuffer, NULL,
-		matrixRowOn, matrixRowOff, matrixColOn, matrixColOff);
+MHV_PWMMATRIX_CREATE(ledMatrix, LED_MATRIX_ROWS, LED_MATRIX_COLS, 1, ledDriver);
 
 /* Animation routine for the LED matrix
  * brings up each LED in turn, then takes then down in turn
  */
+class Animation : public MHV_TimerListener {
+private:
+	uint8_t		_led;
 #define FADERMAX 255
+	uint8_t		_fader;
+	bool		_direction;
 
-uint8_t led = 0;
-uint8_t fader = 0;
-bool direction = 1;
+public:
+	Animation();
+	void alarm();
+};
 
-void animateMatrix(void *data) {
-	if (direction) {
-		fader++;
+Animation::Animation() :
+	_led(0),
+	_fader(0),
+	_direction(true) {}
+
+void Animation::alarm() {
+	if (_direction) {
+		_fader++;
 	} else {
-		fader--;
+		_fader--;
 	}
 
-	switch (led) {
+	switch (_led) {
 	case 4:
-		led = 0;
-		direction = !direction;
-		if (direction) {
-			fader = 0;
+		_led = 0;
+		_direction = !_direction;
+		if (_direction) {
+			_fader = 0;
 		} else {
-			fader = FADERMAX;
+			_fader = FADERMAX;
 		}
 // Drop through
 	case 0:
 		ledMatrix.setPixel(0, 0,
-				mhv_precalculatedGammaCorrect(fader));
+				mhv_precalculatedGammaCorrect(_fader));
 		break;
 	case 1:
 		ledMatrix.setPixel(1, 0,
-				mhv_precalculatedGammaCorrect(fader));
+				mhv_precalculatedGammaCorrect(_fader));
 		break;
 	case 2:
 		ledMatrix.setPixel(1, 1,
-				mhv_precalculatedGammaCorrect(fader));
+				mhv_precalculatedGammaCorrect(_fader));
 		break;
 	case 3:
 		ledMatrix.setPixel(0, 1,
-				mhv_precalculatedGammaCorrect(fader));
+				mhv_precalculatedGammaCorrect(_fader));
 		break;
 	}
 
-	if (direction && FADERMAX == fader) {
-		fader = 0;
-		led++;
-	} else if (!direction && 0 == fader) {
-		fader = FADERMAX;
-		led++;
+	if (_direction && FADERMAX == _fader) {
+		_fader = 0;
+		_led++;
+	} else if (!_direction && 0 == _fader) {
+		_fader = FADERMAX;
+		_led++;
 	}
 }
 
+class LEDMatrixTicker : public MHV_TimerListener {
+public:
+	void alarm();
+};
 
-volatile bool tick = false;
+bool tick = false;
 
-/* Timer tick for the LED matrix
- * Set a flag here to notify the main loop to go out and do the work
- * This keeps the matrix code (which is loopy) out of the interrupt
- * context
- */
-void ledMatrixTick(void *data) {
+// Notify the main loop that the PWM status of the LED matrix should be refreshed
+void LEDMatrixTicker::alarm() {
 	tick = true;
 }
 
-int main(void) {
+LEDMatrixTicker ledMatrixTicker;
+
+
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -192,9 +218,6 @@ int main(void) {
 	set_sleep_mode(SLEEP_MODE_IDLE);
 
 	sei();
-
-	animateTimer.setTriggers(&animateMatrix, 0, 0, 0);
-	animateTimer.setPeriods(30000UL, 0UL); // 30ms - max an 8 bit timer can count is 32768us @ 16MHz
 
 	/* Set up LED matrix - 2 rows of 2 columns
 	 * We want a framerate of 30fps, and the software will spend half its time on each column
@@ -207,24 +230,28 @@ int main(void) {
 	mhv_setOutput(MHV_ARDUINO_PIN_10);
 	mhv_setOutput(MHV_ARDUINO_PIN_11);
 
-	ledMatrixTimer.setTriggers(ledMatrixTick, 0, 0, 0, 0, 0);
-	ledMatrixTimer.setPeriods(64, 0, 0);
+	// Configure the tick timer to tick every 1 millisecond
+	tickTimer.setPeriods(1000, 0);
+	tickTimer.setListener1(rtc);
+	tickTimer.enable();
 
+	// Configure the tick timer to tick every 64 microseconds
+	ledMatrixTimer.setPeriods(64, 0);
+	ledMatrixTimer.setListener1(ledMatrixTicker);
 	ledMatrixTimer.enable();
-	animateTimer.enable();
 
 	for (;;) {
-		/* Timer tick for the LED matrix
-		 * Note that we call this within the main loop, to avoid delaying interrupts
-		 */
+/* Timer tick for the LED matrix
+ * Note that we call this within the main loop, to avoid delaying interrupts
+ */
 		if (tick) {
-			ledMatrix.tick();
+			ledMatrix.alarm();
 			tick = false;
 		}
 
 		sleep_mode();
 	}
 
-	return 0;
+	UNREACHABLE;
 }
 

@@ -57,8 +57,7 @@ protected:
 	bool				_haveTime3;
 	volatile uint16_t	*_inputCapture1;
 
-	void (*_triggerFunction3)(void *data);
-	void *_triggerData3;
+	MHV_TimerListener	*_listener3;
 
 	void setGenerationMode();
 
@@ -85,9 +84,8 @@ public:
 	void enable();
 	void disable();
 	void trigger3();
-	void setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
-			void (*triggerFunction2)(void *triggerData), void *triggerData2,
-			void (*triggerFunction3)(void *triggerData), void *triggerData3);
+	void setListener3(MHV_TimerListener &listener);
+	void setListener3(MHV_TimerListener *listener);
 	uint16_t current();
 };
 

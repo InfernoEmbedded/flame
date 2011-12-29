@@ -29,6 +29,8 @@
  *
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <MHV_io.h>
 #include <MHV_Timer8.h>
 #include <MHV_RTC.h>
@@ -41,26 +43,10 @@
 MHV_Timer8 tickTimer(MHV_TIMER8_2);
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
-/* A buffer the RTC will use to store events - this determines how many events
- * can be registered simultaneously
- */
 #define ALARM_COUNT	10
-MHV_ALARM alarms[ALARM_COUNT];
-
-#define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTC rtc(&tickTimer, alarms, ALARM_COUNT, TIMEZONE);
-
-// A timer trigger that will tick the RTC
-void rtcTrigger(void *data) {
-	/* We can call tick1ms here because we have been careful to configure the
-	 * timer for exactly 1ms. If the timer was faster, we would call tick()
-	 * instead, which is slightly more expensive.
-	 */
-	rtc.tick1ms();
-}
-
+MHV_RTC_CREATE(rtc, ALARM_COUNT);
 
 // Triggers for button presses
 class ButtonHandler : public MHV_DebounceListener {
@@ -90,9 +76,9 @@ MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 // Time to repeat the held down call while the button is held down (milliseconds)
 #define REPEAT_TIME		100
 
-MHV_Debounce debouncer(&pinChangeManager, &rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
+MHV_Debounce debouncer(pinChangeManager, rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -104,17 +90,17 @@ int main(void) {
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
-	tickTimer.setTriggers(rtcTrigger, 0, 0, 0);
+	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	// B0 is pin 53 on the Arduino Mega, pin 8 on the Diecimilla
 	mhv_setInputPullup(MHV_PIN_B0);
-	debouncer.assignKey(MHV_PIN_B0, &buttonHandler);
+	debouncer.assignKey(MHV_PIN_B0, buttonHandler);
 
 	// Enable global interrupts
 	sei();
 
-	while (1) {
+	for (;;) {
 		pinChangeManager.handleEvents();
 		debouncer.checkHeld();
 // Sleep until the next interrupt
@@ -122,5 +108,5 @@ int main(void) {
 	}
 
 // Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

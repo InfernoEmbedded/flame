@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include ATtiny85_16.5MHz/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -45,60 +46,60 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-mhvlib-tutorial-Vusb-Keyboard.lss \
+mhvlib-tutorial-Vusb-Console.lss \
 
 FLASH_IMAGE += \
-mhvlib-tutorial-Vusb-Keyboard.hex \
+mhvlib-tutorial-Vusb-Console.hex \
 
 EEPROM_IMAGE += \
-mhvlib-tutorial-Vusb-Keyboard.eep \
+mhvlib-tutorial-Vusb-Console.eep \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: mhvlib-tutorial-Vusb-Keyboard.elf secondary-outputs
+all: mhvlib-tutorial-Vusb-Console.elf secondary-outputs
 
 dependents:
 	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
 	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
-mhvlib-tutorial-Vusb-Keyboard.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-vusb-keyboard.a
+mhvlib-tutorial-Vusb-Console.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-Vusb-Keyboard.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -L"A:\eclipse\mhvlib-Vusb-Keyboard/ATmega1280_16MHz" -mmcu=atmega1280 -o"mhvlib-tutorial-Vusb-Keyboard.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-Vusb-Console.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -L"A:\eclipse\mhvlib-Vusb-Console/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-Vusb-Console.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.lss: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-Vusb-Console.lss: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S mhvlib-tutorial-Vusb-Keyboard.elf  >"mhvlib-tutorial-Vusb-Keyboard.lss"
+	-avr-objdump -h -S mhvlib-tutorial-Vusb-Console.elf  >"mhvlib-tutorial-Vusb-Console.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.hex: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-Vusb-Console.hex: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-Vusb-Keyboard.elf  "mhvlib-tutorial-Vusb-Keyboard.hex"
+	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-Vusb-Console.elf  "mhvlib-tutorial-Vusb-Console.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-Vusb-Keyboard.eep: mhvlib-tutorial-Vusb-Keyboard.elf
+mhvlib-tutorial-Vusb-Console.eep: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Create eeprom image (ihex format)'
-	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-Vusb-Keyboard.elf  "mhvlib-tutorial-Vusb-Keyboard.eep"
+	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-Vusb-Console.elf  "mhvlib-tutorial-Vusb-Console.eep"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: mhvlib-tutorial-Vusb-Keyboard.elf
+sizedummy: mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-Vusb-Keyboard.elf
+	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-Vusb-Console.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-Vusb-Keyboard.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-Vusb-Console.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
@@ -106,6 +107,6 @@ secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 .PHONY: all clean dependents
 .SECONDARY:
 A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a:
-A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-vusb-keyboard.a:
+A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a:
 
 -include ../makefile.targets

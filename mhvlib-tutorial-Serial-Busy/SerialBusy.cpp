@@ -59,7 +59,7 @@
  */
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
-int main(void) {
+int NORETURN main(void) {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_usart0_enable();
@@ -67,7 +67,7 @@ int main(void) {
 // Enable interrupts
 	sei();
 
-	while (1) {
+	for (;;) {
 /* Write a literal string out
  * If there is no possibility of the write failing, you can cast it to void
  * instead
@@ -132,6 +132,5 @@ int main(void) {
 		serial.busyWrite("'\r\n");
 	} // Loop
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

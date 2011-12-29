@@ -79,18 +79,18 @@ void displaySelect(uint8_t moduleX, uint8_t moduleY, bool active) {
  *  Fill up the display column by column, starting from the bottom left
  *  @param	display	the display to draw on
  */
-void slowFill(MHV_Display_Holtek_HT1632 *display) {
-	uint8_t height = display->getHeight();
-	uint8_t width = display->getWidth();
+void slowFill(MHV_Display_Holtek_HT1632 &display) {
+	uint8_t height = display.getHeight();
+	uint8_t width = display.getWidth();
 
-	display->brightness(MHV_HT1632_BRIGHTNESS_MAX);
-	display->clear(0);
-	display->flush();
+	display.brightness(MHV_HT1632_BRIGHTNESS_MAX);
+	display.clear(0);
+	display.flush();
 
 	for (uint8_t x = 0; x < width; x++) {
 		for (uint8_t y = 0; y < height; y++) {
-			display->setPixel(x, y, 1);
-			display->flush();
+			display.setPixel(x, y, 1);
+			display.flush();
 			_delay_ms(40);
 		}
 	}
@@ -100,21 +100,21 @@ void slowFill(MHV_Display_Holtek_HT1632 *display) {
  * Fade the display in and out
  *  @param	display	the display to draw on
  */
-void fader(MHV_Display_Holtek_HT1632 *display) {
-	display->brightness(0);
-	display->clear(1);
-	display->flush();
+void fader(MHV_Display_Holtek_HT1632 &display) {
+	display.brightness(0);
+	display.clear(1);
+	display.flush();
 
 	uint8_t i;
 	uint8_t brightness;
 
 	for (i = 0; i < 3; i++) {
 		for (brightness = 0; brightness < MHV_HT1632_BRIGHTNESS_MAX; brightness++) {
-			display->brightness(brightness);
+			display.brightness(brightness);
 			_delay_ms(200);
 		}
 		for (; brightness > 0; brightness--) {
-			display->brightness(brightness);
+			display.brightness(brightness);
 			_delay_ms(200);
 		}
 	}
@@ -124,38 +124,38 @@ void fader(MHV_Display_Holtek_HT1632 *display) {
  * Render travelling horizontal & vertical lines
  *  @param	display	the display to draw on
  */
-void lines(MHV_Display_Holtek_HT1632 *display) {
-	uint8_t height = display->getHeight();
-	uint8_t width = display->getWidth();
+void lines(MHV_Display_Holtek_HT1632 &display) {
+	uint8_t height = display.getHeight();
+	uint8_t width = display.getWidth();
 
-	display->brightness(MHV_HT1632_BRIGHTNESS_MAX);
-	display->clear(0);
-	display->flush();
+	display.brightness(MHV_HT1632_BRIGHTNESS_MAX);
+	display.clear(0);
+	display.flush();
 
 	uint16_t x, y;
 
 	for (y = 0; y < height; y++) {
 // Draw a horizontal line
 		for (x = 0; x < width; x++) {
-			display->setPixel(x, y, 1);
+			display.setPixel(x, y, 1);
 		}
-		display->flush();
+		display.flush();
 		_delay_ms(200);
 // Draw the inverse of the line - cheaper than blanking the whole display
 		for (x = 0; x < width; x++) {
-			display->setPixel(x, y, 0);
+			display.setPixel(x, y, 0);
 		}
 	}
 	for (x = 0; x < width; x++) {
 // Draw a vertical line
 		for (y = 0; y < height; y++) {
-			display->setPixel(x, y, 1);
+			display.setPixel(x, y, 1);
 		}
-		display->flush();
+		display.flush();
 		_delay_ms(200);
 // Draw the inverse of the line - cheaper than blanking the whole display
 		for (y = 0; y < height; y++) {
-			display->setPixel(x, y, 0);
+			display.setPixel(x, y, 0);
 		}
 	}
 }
@@ -164,104 +164,104 @@ void lines(MHV_Display_Holtek_HT1632 *display) {
  * Render text - a homage to Portal
  *  @param	display	the display to draw on
  */
-void manualTextAnimation(MHV_Display_Holtek_HT1632 *display) {
-	display->brightness(MHV_HT1632_BRIGHTNESS_MAX);
-	display->clear(0);
-	display->flush();
+void manualTextAnimation(MHV_Display_Holtek_HT1632 &display) {
+	display.brightness(MHV_HT1632_BRIGHTNESS_MAX);
+	display.clear(0);
+	display.flush();
 
-	int16_t offsetX = display->getWidth() - 1;
+	int16_t offsetX = display.getWidth() - 1;
 	int16_t offsetY = 0;
 
 	int16_t startPos = offsetX;
 
-	while (display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("This was a triumph!"))) {
-		display->flush();
+	while (display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("This was a triumph!"))) {
+		display.flush();
 		_delay_ms(80);
-		display->clear(0);
+		display.clear(0);
 		offsetX = startPos--;
 	}
 
-	offsetX = display->getWidth() - 1;
+	offsetX = display.getWidth() - 1;
 	startPos = offsetX;
 
 	bool toggle = true;
 	bool more = true;
 	while (more) {
-		more = display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("I'm making a note here: "));
+		more = display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("I'm making a note here: "));
 
 		if (toggle) {
-			display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS"));
+			display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS"));
 		}
 		toggle = !toggle;
 		offsetX = startPos--;
 
-		display->flush();
+		display.flush();
 		_delay_ms(80);
-		display->clear(0);
+		display.clear(0);
 	}
 
 	for (uint8_t i = 0; i < 25; i++) {
 		offsetX = 0;
 		if (toggle) {
-			display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS!!"));
+			display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS!!"));
 		}
 
-		display->flush();
+		display.flush();
 		_delay_ms(80);
-		display->clear(0);
+		display.clear(0);
 
 		toggle = !toggle;
 	}
 
 	for (offsetY = -7; offsetY < 16; ++offsetY) {
 		offsetX = 0;
-		display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("It's hard to"));
+		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("It's hard to"));
 		offsetX = 0;
-		display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY - 8, 1, 0, PSTR("overstate my"));
+		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY - 8, 1, 0, PSTR("overstate my"));
 		offsetX = 0;
-		display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, offsetY - 16, 1, 0, PSTR("satisfaction"));
-		display->flush();
+		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY - 16, 1, 0, PSTR("satisfaction"));
+		display.flush();
 		_delay_ms(100);
-		display->clear(0);
+		display.clear(0);
 	}
 
 	offsetX = 0;
-	display->writeString_P(&mhv_fontSansSerif8x10, &offsetX, 0, 1, 0, PSTR("satisfaction"));
-	display->flush();
+	display.writeString_P(mhv_fontSansSerif8x10, &offsetX, 0, 1, 0, PSTR("satisfaction"));
+	display.flush();
 	for (uint8_t i = 0; i < 3; i++) {
 		uint8_t brightness;
 
 		for (brightness = MHV_HT1632_BRIGHTNESS_MAX; brightness > 0 ; brightness--) {
-			display->brightness(brightness);
+			display.brightness(brightness);
 			_delay_ms(70);
 		}
 		for (; brightness < MHV_HT1632_BRIGHTNESS_MAX; brightness++) {
-			display->brightness(brightness);
+			display.brightness(brightness);
 			_delay_ms(70);
 		}
 	}
 
 
-	display->clear(0);
+	display.clear(0);
 }
 
 /**
  * Render text using the asynchronous buffers
  *  @param	display	the display to draw on
  */
-void textAnimation(MHV_Display_Holtek_HT1632 *display) {
-	display->write("1. Here is a string of text");
-	display->write_P(PSTR("2. Here is string of text in PROGMEM"));
-	display->write("3. Here is a buffer containing some data//This will not show", 40);
-	display->write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
-	while (display->txAnimation(&mhv_fontSansSerif8x10, 0, 1, 0)) {
-		display->flush();
+void textAnimation(MHV_Display_Holtek_HT1632 &display) {
+	display.write("1. Here is a string of text");
+	display.write_P(PSTR("2. Here is string of text in PROGMEM"));
+	display.write("3. Here is a buffer containing some data//This will not show", 40);
+	display.write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
+	while (display.txAnimation(mhv_fontSansSerif8x10, 0, 1, 0)) {
+		display.flush();
 		_delay_ms(40);
 	}
-	display->flush();
+	display.flush();
 }
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 
@@ -276,16 +276,15 @@ int main(void) {
 
 	uint8_t frameBuffer[2 * 1 * 32 * 8 / 8];
 	MHV_Display_Holtek_HT1632 display(MHV_ARDUINO_PIN_A0, MHV_ARDUINO_PIN_A1,
-			MHV_HT1632_PMOS_32x8, 2, 1, &displaySelect, frameBuffer, &txBuffer);
+			MHV_HT1632_PMOS_32x8, 2, 1, &displaySelect, frameBuffer, txBuffer);
 
-	while (1) {
-		lines(&display);
-		textAnimation(&display);
-		fader(&display);
-		manualTextAnimation(&display);
-		slowFill(&display);
+	for (;;) {
+		lines(display);
+		textAnimation(display);
+		fader(display);
+		manualTextAnimation(display);
+		slowFill(display);
 	}
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

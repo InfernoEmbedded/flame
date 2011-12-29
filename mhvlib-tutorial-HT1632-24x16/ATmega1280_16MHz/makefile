@@ -64,7 +64,7 @@ all: mhvlib-tutorial-HT1632-24x16.elf secondary-outputs
 mhvlib-tutorial-HT1632-24x16.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-HT1632-24x16.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -mmcu=${AVRTARGETMCU} -o"mhvlib-tutorial-HT1632-24x16.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-HT1632-24x16.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-HT1632-24x16.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -88,7 +88,7 @@ mhvlib-tutorial-HT1632-24x16.eep: mhvlib-tutorial-HT1632-24x16.elf
 
 sizedummy: mhvlib-tutorial-HT1632-24x16.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=${AVRTARGETMCU} mhvlib-tutorial-HT1632-24x16.elf
+	-avr-size --format=avr --mcu=atmega1280 mhvlib-tutorial-HT1632-24x16.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

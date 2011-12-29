@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -131,7 +131,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a28aa46400cf8c1f279e9588f1a912b65">enabled</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a29d11c49e658ba8d2936b62f0fa75806">trigger1</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a4c99d0b6b3b546fcb73b59540f7f88c4">trigger2</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a6baeeb61a53f8156cde82b348a421093">setTriggers</a> (void(*triggerFunction1)(void *triggerData), void *triggerData1, void(*triggerFunction2)(void *triggerData), void *triggerData2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#aca7400805427d1d8704af3c946533fa3">setListener1</a> (<a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a4f2de1b24428ba53f0a6b26555ec4c7b">setListener2</a> (<a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a78e53f842413e37b52c24c5f774ecfc0">setListener1</a> (<a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#ae0bd4c33cd0b6bb3cd345ceb7cbe3d71">setListener2</a> (<a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#ad4123058efb7779e2103816ead251326">setListener</a> (uint8_t channel, <a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#af5b356d46f9cb39b7fe9352214557d95">setListener</a> (uint8_t channel, <a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#ad18f37f37ce07f2d39b8f3cac4b2fb82">setMode</a> (<a class="el" href="_m_h_v___timer8_8h.html#ae9de6a07a79f63ce9eeb6ba2bc9b053d">MHV_TIMER_MODE</a> mode)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -154,14 +159,12 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_h_v___timer8_8h.html#aec9828462529f91a09d74c9abb33b611">MHV_TIMER_TYPE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a10c0fdfbbe901b923ea7fb1c0fc9690c">_type</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a25827d35452ab31f1f0e1beb232a259b">_counterSize</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#adffeb4bbdd699814b5d0abd9cf59b3a9">_haveTime2</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a0129830ac565811db27e07a31d635ec9">_triggerFunction1</a> )(void *data)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a1e3fc760ea6b757afb648804750bca93">_triggerData1</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a114593dd16cb46412e97c1e8a07bbc6c">_triggerFunction2</a> )(void *data)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a4b78acf417bc2f051cdec4025c57d15b">_triggerData2</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a055679c1951c9667749f71e549eb8ccf">_listener1</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer8.html#a3e44a703c1e5c578fb98294f560337b3">_listener2</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00101">101</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00108">108</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a2df9d6ab1036772eeea2037f6ad68ab0"></a><!-- doxytag: member="MHV_Timer8::MHV_Timer8" ref="a2df9d6ab1036772eeea2037f6ad68ab0" args="()" -->
 <div class="memitem">
@@ -176,6 +179,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Create a new timer (only for use by MHV_Timer16) </p>
 
 <p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00058">58</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
@@ -241,8 +245,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Create a new timer </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timer</td><td>an MHV_TIMER_* macro providing the appropriate details of the timer hardware </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00036">36</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00037">37</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,8 +272,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the prescaler (internal use only) </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prescaler</td><td>the prescaler value (only the lowest 3 bits may be set) </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00182">182</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00190">190</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -296,8 +314,17 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the prescaler </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>the time in timer ticks </td></tr>
+    <tr><td class="paramname">prescaler</td><td>the prescaler to set </td></tr>
+    <tr><td class="paramname">factor</td><td>the prescale factor return 0 on success </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00075">75</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00080">80</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -325,8 +352,16 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Calculate the top register </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time</td><td>input: the time in timer ticks, output: the scaled timer ticks </td></tr>
+    <tr><td class="paramname">factor</td><td>the prescaler factor </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00140">140</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00146">146</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -344,8 +379,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Connect channel 1 to an output pin </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the method of connection </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00364">364</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00410">410</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -363,8 +405,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Connect channel 2 to an output pin </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>the method of connection </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00368">368</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00418">418</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -375,15 +424,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">uint8_t MHV_Timer8::current </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the current value of the timer </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the current value of the timer </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00060">60</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00064">64</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -394,15 +444,15 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void MHV_Timer8::disable </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Disable the timer </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00393">393</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00447">447</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -413,15 +463,15 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void MHV_Timer8::enable </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Enable the timer module </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00375">375</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00426">426</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -432,15 +482,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">bool MHV_Timer8::enabled </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Check if the timer is enabled </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>true if the timer is enabled </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00403">403</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00461">461</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -458,8 +509,16 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the current value of a channel </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>the channel to get </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the current value of the selected channel </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00342">342</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00377">377</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -470,15 +529,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">uint8_t MHV_Timer8::getOutput1 </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Return the current value of channel 1 </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the current value of channel 1 </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00356">356</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00394">394</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -489,15 +549,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">uint8_t MHV_Timer8::getOutput2 </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Return the current value of channel 2 </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the current value of channel 2 </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00360">360</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00402">402</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -508,15 +569,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="_m_h_v___timer8_8h.html#a2e7ef9dbc200586bf55b0003896de599">MHV_TIMER_PRESCALER</a> MHV_Timer8::getPrescaler </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the prescaler </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the prescaler value </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00189">189</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00198">198</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -527,15 +589,15 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">uint16_t MHV_Timer8::getPrescalerMultiplier </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the prescaler multiplier </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00195">195</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00205">205</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -546,15 +608,16 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">uint8_t MHV_Timer8::getTop </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Get the number of timer cycles available </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>the number of cycles in an iteration of the timer </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00293">293</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00308">308</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -571,8 +634,167 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the generation mode </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00247">247</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00259">259</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4123058efb7779e2103816ead251326"></a><!-- doxytag: member="MHV_Timer8::setListener" ref="ad4123058efb7779e2103816ead251326" args="(uint8_t channel, MHV_TimerListener &amp;listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af5b356d46f9cb39b7fe9352214557d95"></a><!-- doxytag: member="MHV_Timer8::setListener" ref="af5b356d46f9cb39b7fe9352214557d95" args="(uint8_t channel, MHV_TimerListener *listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aca7400805427d1d8704af3c946533fa3"></a><!-- doxytag: member="MHV_Timer8::setListener1" ref="aca7400805427d1d8704af3c946533fa3" args="(MHV_TimerListener &amp;listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Attach a listener to channel 1 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the listener to attach </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00488">488</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a78e53f842413e37b52c24c5f774ecfc0"></a><!-- doxytag: member="MHV_Timer8::setListener1" ref="a78e53f842413e37b52c24c5f774ecfc0" args="(MHV_TimerListener *listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Attach a listener to channel 1 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the listener to attach </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00504">504</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a4f2de1b24428ba53f0a6b26555ec4c7b"></a><!-- doxytag: member="MHV_Timer8::setListener2" ref="a4f2de1b24428ba53f0a6b26555ec4c7b" args="(MHV_TimerListener &amp;listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Attach a listener to channel 2 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the listener to attach </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00496">496</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae0bd4c33cd0b6bb3cd345ceb7cbe3d71"></a><!-- doxytag: member="MHV_Timer8::setListener2" ref="ae0bd4c33cd0b6bb3cd345ceb7cbe3d71" args="(MHV_TimerListener *listener)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Timer8::setListener2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Attach a listener to channel 2 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the listener to attach </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00512">512</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -590,8 +812,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Configure the mode of the timer module </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>the mode the timer module should operate in </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00429">429</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00521">521</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -619,8 +848,16 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the current value of a channel </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>the channel to set </td></tr>
+    <tr><td class="paramname">value</td><td>the new value of the channel </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00323">323</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00345">345</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -638,8 +875,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the current value of channel 1 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the new value of channel 1 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00334">334</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00360">360</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -657,8 +901,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the current value of channel 2 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the new value of channel 2 </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00338">338</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00368">368</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -686,8 +937,17 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the periods for channels 1 and 2 Times are in microseconds </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">usec1</td><td>the period for channel 1 </td></tr>
+    <tr><td class="paramname">usec2</td><td>the period for channel 2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>false on success </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00151">151</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00158">158</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -721,8 +981,17 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the overflow periods </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prescaler</td><td>the prescaler to use </td></tr>
+    <tr><td class="paramname">time1</td><td>the first time in prescaled timer ticks </td></tr>
+    <tr><td class="paramname">time2</td><td>the second time in prescaled timer ticks </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00280">280</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00293">293</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -740,8 +1009,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>set the prescaler </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prescaler</td><td>the prescaler value </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00241">241</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00252">252</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -759,49 +1035,15 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Set the number of timer cycles available </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the number of cycles in an iteration of the timer </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00310">310</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6baeeb61a53f8156cde82b348a421093"></a><!-- doxytag: member="MHV_Timer8::setTriggers" ref="a6baeeb61a53f8156cde82b348a421093" args="(void(*triggerFunction1)(void *triggerData), void *triggerData1, void(*triggerFunction2)(void *triggerData), void *triggerData2)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MHV_Timer8::setTriggers </td>
-          <td>(</td>
-          <td class="paramtype">void(*)(void *triggerData)&#160;</td>
-          <td class="paramname"><em>triggerFunction1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>triggerData1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(void *triggerData)&#160;</td>
-          <td class="paramname"><em>triggerFunction2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>triggerData2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00420">420</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00327">327</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -818,8 +1060,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Trigger the listener for channel 1 </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00407">407</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00468">468</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -836,8 +1079,9 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Trigger the listener for channel 2 </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00414">414</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8cpp_source.html#l00478">478</a> of file <a class="el" href="_m_h_v___timer8_8cpp_source.html">MHV_Timer8.cpp</a>.</p>
 
 </div>
 </div>
@@ -853,7 +1097,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00103">103</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00110">110</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +1112,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00104">104</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00111">111</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -883,7 +1127,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00107">107</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00114">114</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -898,7 +1142,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00113">113</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00120">120</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -913,7 +1157,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00114">114</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00121">121</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -928,7 +1172,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00108">108</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00115">115</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -943,7 +1187,37 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00109">109</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00116">116</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a055679c1951c9667749f71e549eb8ccf"></a><!-- doxytag: member="MHV_Timer8::_listener1" ref="a055679c1951c9667749f71e549eb8ccf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a>* <a class="el" href="class_m_h_v___timer8.html#a055679c1951c9667749f71e549eb8ccf">MHV_Timer8::_listener1</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00122">122</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e44a703c1e5c578fb98294f560337b3"></a><!-- doxytag: member="MHV_Timer8::_listener2" ref="a3e44a703c1e5c578fb98294f560337b3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a>* <a class="el" href="class_m_h_v___timer8.html#a3e44a703c1e5c578fb98294f560337b3">MHV_Timer8::_listener2</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00123">123</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -958,7 +1232,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00111">111</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00118">118</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -973,7 +1247,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00105">105</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00112">112</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -988,7 +1262,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00106">106</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00113">113</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -998,66 +1272,6 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="_m_h_v___timer8_8h.html#a2e7ef9dbc200586bf55b0003896de599">MHV_TIMER_PRESCALER</a> <a class="el" href="class_m_h_v___timer8.html#a2d610b4bbd5aef2db6a4062dbd063aba">MHV_Timer8::_prescaler</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00110">110</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1e3fc760ea6b757afb648804750bca93"></a><!-- doxytag: member="MHV_Timer8::_triggerData1" ref="a1e3fc760ea6b757afb648804750bca93" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* <a class="el" href="class_m_h_v___timer8.html#a1e3fc760ea6b757afb648804750bca93">MHV_Timer8::_triggerData1</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00116">116</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4b78acf417bc2f051cdec4025c57d15b"></a><!-- doxytag: member="MHV_Timer8::_triggerData2" ref="a4b78acf417bc2f051cdec4025c57d15b" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void* <a class="el" href="class_m_h_v___timer8.html#a4b78acf417bc2f051cdec4025c57d15b">MHV_Timer8::_triggerData2</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00118">118</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0129830ac565811db27e07a31d635ec9"></a><!-- doxytag: member="MHV_Timer8::_triggerFunction1" ref="a0129830ac565811db27e07a31d635ec9" args=")(void *data)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(* <a class="el" href="class_m_h_v___timer8.html#a0129830ac565811db27e07a31d635ec9">MHV_Timer8::_triggerFunction1</a>)(void *data)<code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00115">115</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a114593dd16cb46412e97c1e8a07bbc6c"></a><!-- doxytag: member="MHV_Timer8::_triggerFunction2" ref="a114593dd16cb46412e97c1e8a07bbc6c" args=")(void *data)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void(* <a class="el" href="class_m_h_v___timer8.html#a114593dd16cb46412e97c1e8a07bbc6c">MHV_Timer8::_triggerFunction2</a>)(void *data)<code> [protected]</code></td>
         </tr>
       </table>
 </div>
@@ -1078,7 +1292,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00112">112</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00119">119</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1320,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:41 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:06 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -37,24 +37,17 @@
  * @param	colCount	the number of columns
  * @param	frameBuffer	memory to use for the framebuffer, must be at least rows * cols * uint8_t
  * @param	txBuffers	buffers used for text transmission
- * @param	rowOn		callback to turn a row on
- * @param	rowOff		callback to turn a row off
- * @param	colOn		callback to turn a column on
- * @param	colOff		callback to turn a column off
+ * @param	driver		the driver to turn on/off rows and columns
  */
 MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer,
-		MHV_RingBuffer &txBuffers,
-		void (*rowOn)(uint16_t row),
-		void (*rowOff)(uint16_t row),
-		void (*colOn)(uint16_t column),
-		void (*colOff)(uint16_t column),
+		MHV_RingBuffer &txBuffers, MHV_PWMMatrixDriver &driver,
 		MHV_PWMMATRIX_MODE mode) :
-			MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer, txBuffers) {
+			MHV_Display_Monochrome_Buffered (rowCount, colCount, frameBuffer, txBuffers),
+			_currentRow(0),
+			_currentCol(0),
+			_currentLevel(0),
+			_driver(driver) {
 	uint8_t	i;
-
-	_currentRow = 0;
-	_currentCol = 0;
-	_currentLevel = 0;
 
 	if (MHV_PWMMATRIX_MODE_AUTO == mode) {
 		_mode = (rowCount <= colCount) ? MHV_PWMMATRIX_MODE_ROWS : MHV_PWMMATRIX_MODE_COLS;
@@ -62,16 +55,11 @@ MHV_PWMMatrix::MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *fram
 		_mode = mode;
 	}
 
-	_rowOn = rowOn;
-	_rowOff = rowOff;
-	_colOn = colOn;
-	_colOff = colOff;
-
 	for (i = 0; i < _rowCount; i++) {
-		_rowOff(i);
+		_driver.rowOff(i);
 	}
 	for (i = 0; i < _colCount; i++) {
-		_colOff(i);
+		_driver.colOff(i);
 	}
 }
 
@@ -83,24 +71,24 @@ inline void MHV_PWMMatrix::tickRow(void) {
 
 	if (0 == _currentLevel) {
 		// Turn on the current row
-		_rowOn(_currentRow);
+		_driver.rowOn(_currentRow);
 		for (i = 0; i < _colCount; i++) {
 			if (pixel(i, _currentRow) > 0) {
-				_colOn(i);
+				_driver.colOn(i);
 			}
 		}
 	} else {
 		// Turn off pixels that get switched off on this pass
 		for (i = 0; i < _colCount; i++) {
 			if (pixel(i, _currentRow) <= _currentLevel) {
-				_colOff(i);
+				_driver.colOff(i);
 			}
 		}
 	}
 
 	if (255 == ++_currentLevel) {
 		// Turn off the current row & advance
-		_rowOff(_currentRow);
+		_driver.rowOff(_currentRow);
 
 		_currentLevel = 0;
 		if (++_currentRow == _rowCount) {
@@ -117,24 +105,24 @@ inline void MHV_PWMMatrix::tickCol(void) {
 
 	if (0 == _currentLevel) {
 		// Turn on the current column
-		_colOn(_currentCol);
+		_driver.colOn(_currentCol);
 		for (i = 0; i < _rowCount; i++) {
 			if (pixel(_currentCol, i) > 0) {
-				_rowOn(i);
+				_driver.rowOn(i);
 			}
 		}
 	} else {
 		// Turn off pixels that get switched off on this pass
 		for (i = 0; i < _rowCount; i++) {
 			if (pixel(_currentCol, i) <= _currentLevel) {
-				_rowOff(i);
+				_driver.rowOff(i);
 			}
 		}
 	}
 
 	if (255 == ++_currentLevel) {
 		// Turn off the current column & advance
-		_colOff(_currentCol);
+		_driver.colOff(_currentCol);
 
 		_currentLevel = 0;
 		if (++_currentCol == _colCount) {
@@ -149,12 +137,12 @@ inline void MHV_PWMMatrix::tickCol(void) {
 inline void MHV_PWMMatrix::tickPixel(void) {
 	if (0 == _currentLevel) {
 		// Turn on the pixel at the current row & column
-		_colOn(_currentCol);
-		_rowOn(_currentRow);
+		_driver.colOn(_currentCol);
+		_driver.rowOn(_currentRow);
 	} else if (pixel(_currentRow, _currentCol) <= _currentLevel) {
 		// Turn off the pixel
-		_colOff(_currentCol);
-		_rowOff(_currentRow);
+		_driver.colOff(_currentCol);
+		_driver.rowOff(_currentRow);
 	}
 
 	if (255 == ++_currentLevel) {
@@ -173,7 +161,7 @@ inline void MHV_PWMMatrix::tickPixel(void) {
 
 /* Process a timer tick
  */
-void MHV_PWMMatrix::tick(void) {
+void MHV_PWMMatrix::alarm() {
 	switch (_mode) {
 	case MHV_PWMMATRIX_MODE_ROWS:
 		tickRow();

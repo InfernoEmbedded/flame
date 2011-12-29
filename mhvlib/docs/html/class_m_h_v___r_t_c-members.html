@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -107,23 +107,30 @@ This is the complete list of members for <a class="el" href="class_m_h_v___r_t_c
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a48e7d03e90e78881ed8833d6e4f77b36">_ticksPerMillisecond</a></td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a6ac0d6f1b8985cd6113249693da50104">_timestamp</a></td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#af9e544307713892ec196261247213490">_tzOffset</a></td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a2d58b554a2ff0eb2cf9f7fccc29e5738">addAlarm</a>(MHV_ALARM *alarm)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(MHV_ALARM &amp;alarm)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a3e8a1a5a2b302997025c9b28f104c9f7">addAlarm</a>(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ab3b8f4a19caf565bdf85ba863c07a801">addAlarm</a>(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a0ce5325c293c19525ad25bfa372b4b49">addAlarm</a>(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ac5a3dadf50236eb3034eeac887a9317e">addAlarm</a>(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ac2dac753e3931ff1bc82f70aef5017ce">addAlarm</a>(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ab1c18cf07c95ec40a456229a89d39375">addAlarm</a>(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#adf08714bae5d1352bebc5b1aaba333bc">addAlarm</a>(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a2a945db4d8a832acfdc90276a6b5b377">addAlarm</a>(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a78c9916568b91c43ba000a8fa851e3e5">alarmsPending</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#aa4b7a93658ea4548520103f63d5897ec">current</a>(MHV_TIMESTAMP *timestamp)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a6bd66dbb9fd2229e3b229667e38adbf6">elapsed</a>(MHV_TIMESTAMP *since, MHV_TIMESTAMP *elapsed)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ad01b7a3e8049fb64bf9f490e97b89696">current</a>(MHV_TIMESTAMP &amp;timestamp)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a>(const MHV_TIMESTAMP &amp;since, MHV_TIMESTAMP &amp;elapsed)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#abebdf394ea6ed2c48f80cc02d4371a90">handleEvents</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a3c7a321e22e8788eb45ba6cb3d74286b">MHV_RTC</a>(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#aacb9ee506e1e18672a821b44f5138d2b">MHV_RTC</a>(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone=0)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a102c6e3d254e884d586ef3b9b885058b">removeAlarm</a>(MHV_AlarmListener &amp;listener)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#ad567f1efa0e4e108699d0895debc40dd">removeAlarm</a>(MHV_AlarmListener *listener)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a>(uint32_t timestamp, uint16_t milliseconds)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a7e4f42af3581cce6261f1c83d1e2b0c1">setTime</a>(MHV_TIMESTAMP *timestamp)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a9eba3cfa73969390764bea958ed276ab">setTime</a>(MHV_TIMESTAMP &amp;timestamp)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a97308259a62550d63eaf677190fa5581">synchronise</a>(MHV_Timer8 &amp;_timer)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#af56442a6497ade702d8eb8ba935fb1ef">tick</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a7149adf9da9e7209cd352eb67f40bf30">tick1ms</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a1e0b5a223fb74c10a30f7712c42081e2">tick1msAndRunEvents</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a7246016a7c37aefcdf2bb46f67bbb455">tickAndRunEvents</a>()</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#af8e273e8cc911c8f355299416e7a7db2">toTime</a>(MHV_TIME *to, MHV_TIMESTAMP *from)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#aaaf020893b6a5bd81f08371cd804a68b">toTimestamp</a>(MHV_TIMESTAMP *to, MHV_TIME *from)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a>(MHV_TIMESTAMP &amp;timestamp, const MHV_TIMESTAMP &amp;timestamp2)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a286a1504182064b5f8168669ac5f46c1">timestampIncrement</a>(MHV_TIMESTAMP &amp;timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#aa0a908785e5445b1ab5d3bdb20f5fc62">toTime</a>(MHV_TIME &amp;to, const MHV_TIMESTAMP &amp;from)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___r_t_c.html#a3aecb460c309ca773933e0c82bbd7819">toTimestamp</a>(MHV_TIMESTAMP &amp;to, const MHV_TIME &amp;from)</td><td><a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a></td><td></td></tr>
 </table></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -143,7 +150,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___r_t_c
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:40 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:05 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

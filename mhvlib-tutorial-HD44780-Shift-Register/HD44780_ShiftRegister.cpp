@@ -77,7 +77,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define	SCROLL		false
 
 MHV_Display_HD44780_Shift_Register display(MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2,
-		COLUMNS, ROWS, &txBuffer);
+		COLUMNS, ROWS, txBuffer);
 
 /**
  * Render text using the asynchronous buffers
@@ -90,7 +90,7 @@ void textAnimation(MHV_Display_Character *display) {
 	display->write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
 }
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -117,8 +117,7 @@ int main(void) {
 		sleep_mode();
 	};
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }
 
 

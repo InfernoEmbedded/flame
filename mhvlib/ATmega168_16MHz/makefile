@@ -58,7 +58,7 @@ all: libmhvlib.a secondary-outputs
 libmhvlib.a: $(OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
-	avr-ar -r "libmhvlib.a" $(OBJS) $(LIBS)
+	avr-ar -r  "libmhvlib.a" $(OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

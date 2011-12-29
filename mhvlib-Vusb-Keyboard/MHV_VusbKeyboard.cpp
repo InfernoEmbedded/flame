@@ -155,9 +155,8 @@ unsigned char usbFunctionSetup(uchar data[8]) {
  *   Uses pins B0/B2 for ATtiny25/45/85
  * @param	rtc	an RTC to schedule jobs on
  */
-MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
-	_rtc = rtc;
-
+MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC &rtc) :
+		_rtc(rtc) {
 #if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 	uchar calibrationValue;
 
@@ -167,8 +166,8 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 	}
 #endif
 
-	mhv_setInput(mhv_make_pin(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-	mhv_setInput(mhv_make_pin(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 
 	usbDeviceDisconnect();
     for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
@@ -178,15 +177,7 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC *rtc) {
 
 	usbInit();
 
-	MHV_ALARM newAlarm;
-
-	_rtc->current(&(newAlarm.when));
-	mhv_timestampIncrement(&(newAlarm.when), 0, 5);
-	newAlarm.repeat.milliseconds = 5;
-	newAlarm.repeat.timestamp = 0;
-	newAlarm.listener = this;
-
-	_rtc->addAlarm(&newAlarm);
+	_rtc.addAlarm(this, 0, 5, 0, 5);
 }
 
 /**
@@ -247,6 +238,6 @@ void MHV_VusbKeyboard::keysUp() {
 /**
  * Periodically called to maintain USB comms
  */
-void MHV_VusbKeyboard::alarm(MHV_ALARM *alarm) {
+void MHV_VusbKeyboard::alarm(const MHV_ALARM &alarm) {
 	usbPoll();
 }

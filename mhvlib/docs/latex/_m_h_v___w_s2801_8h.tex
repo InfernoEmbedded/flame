@@ -65,8 +65,8 @@ class \hyperlink{class_m_h_v___w_s2801}{\-M\-H\-V\-\_\-\-W\-S2801}
 \begin{DoxyCode}
 MHV_RGB __mhvObjectName ## _Buffer[__mhvLength]; \
         MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
-        MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, (
-      MHV_Shifter *)&__mhvObjectName ## _Shifter);
+        MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, 
+      __mhvObjectName ## _Shifter);
 \end{DoxyCode}
 \-Create a new \-W\-S2801 object to control a string of \-L\-E\-D drivers \-The \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-C\-L\-O\-C\-K \& \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-D\-A\-T\-A macros should be defined in advance
 

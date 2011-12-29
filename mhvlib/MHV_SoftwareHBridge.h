@@ -48,11 +48,10 @@ enum mhv_SoftwareHBridge_type {
 };
 typedef enum mhv_SoftwareHBridge_type MHV_SOFTWAREHBRIDGE_TYPE;
 
-class MHV_SoftwareHBridge {
+class MHV_SoftwareHBridge : public MHV_TimerListener {
 protected:
 	MHV_SOFTWAREHBRIDGE_TYPE	_type;
-	MHV_Timer16					*_timer;
-	uint8_t						_timerChannel;
+	MHV_Timer16					&_timer;
 
 	volatile uint8_t			*_dir1Top;
 	volatile uint8_t			*_out1Top;
@@ -68,13 +67,13 @@ protected:
 	MHV_SOFTWAREHBRIDGE_DIRECTION _direction;
 
 public:
-	MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 *timer, uint8_t timerChannel,
+	MHV_SoftwareHBridge(MHV_SOFTWAREHBRIDGE_TYPE type, MHV_Timer16 &timer, uint8_t timerChannel,
 			MHV_DECLARE_PIN(dir1Top),
 			MHV_DECLARE_PIN(dir1Bottom),
 			MHV_DECLARE_PIN(dir2Top),
 			MHV_DECLARE_PIN(dir2Bottom));
 	void reset();
-	void update();
+	void alarm();
 	void set(MHV_SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);
 	void set(MHV_SOFTWAREHBRIDGE_DIRECTION direction);
 };

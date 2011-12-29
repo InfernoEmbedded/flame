@@ -48,7 +48,7 @@
 #define MHV_WS2801_CREATE(__mhvObjectName,__mhvLength) \
 	MHV_RGB __mhvObjectName ## _Buffer[__mhvLength]; \
 	MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
-	MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, (MHV_Shifter *)&__mhvObjectName ## _Shifter);
+	MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, __mhvObjectName ## _Shifter);
 
 class MHV_WS2801 {
 private:

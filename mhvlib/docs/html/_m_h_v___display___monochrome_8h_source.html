@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -137,9 +137,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00039"></a><a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">00039</a>         uint16_t                <a class="code" href="class_m_h_v___display___monochrome.html#a29a7a7b8ceaf0ce0087002b9458d5074">_rowCount</a>;
 <a name="l00040"></a><a class="code" href="class_m_h_v___display___monochrome.html#a75607cd77067ab059e8962e666593d4e">00040</a>         int16_t                 <a class="code" href="class_m_h_v___display___monochrome.html#a75607cd77067ab059e8962e666593d4e">_txOffset</a>;
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a271af24e97bbf0e7c8df0d4e15853473">writeChar</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00042"></a>00042         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#ad0321aa7b9fa5a0de26ad5e4ff17f006">writeChar</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00043"></a>00043                         uint8_t onValue, uint8_t offValue, <span class="keywordtype">char</span> character);
-<a name="l00044"></a>00044         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a232ae179856cab71ed0f1a73f6312af5">writeSeperator</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00044"></a>00044         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#ad82b9b17a337cb193e5385cf212bbfb3">writeSeperator</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00045"></a>00045                         uint8_t onValue, uint8_t offValue);
 <a name="l00046"></a>00046         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___monochrome.html#a7abdfbe71e00421a4275760ab6632b4a">runTxBuffers</a>();
 <a name="l00047"></a>00047 
@@ -148,15 +148,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00050"></a>00050         uint16_t <a class="code" href="class_m_h_v___display___monochrome.html#a1ef9b1ddbc9e57007903076005335211">getWidth</a>();
 <a name="l00051"></a>00051         uint16_t <a class="code" href="class_m_h_v___display___monochrome.html#a988a98e01d54b12d3dcecc2d7878a985">getHeight</a>();
 <a name="l00052"></a>00052         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___monochrome.html#a25b062aefde440ad5c47dbca98b5b478">clear</a>(uint8_t value);
-<a name="l00053"></a>00053         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#aaf243ab4abd9bc1c3a298a10dc178d99">writeString</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00053"></a>00053         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a4f56f6dd2d51352e527f53bb244e3543">writeString</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00054"></a>00054                         uint8_t onValue, uint8_t offValue, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>);
-<a name="l00055"></a>00055         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a3942e2c4facd80affaeef8c7b8e6dcfb">writeString_P</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00055"></a>00055         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#acacf2c72fd60a1a7cbdcf25e1cd93920">writeString_P</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00056"></a>00056                         uint8_t onValue, uint8_t offValue, PGM_P <span class="keywordtype">string</span>);
-<a name="l00057"></a>00057         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#abe4588ca31be3759738e38922fe8d3ad">writeBuffer</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00057"></a>00057         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a68bf57213233e288474c9b51491452df">writeBuffer</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00058"></a>00058                         uint8_t onValue, uint8_t offValue, <span class="keyword">const</span> <span class="keywordtype">char</span> *buffer, uint16_t length);
-<a name="l00059"></a>00059         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a8e71ea1bf003d91679892f20389e851b">writeBuffer_P</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t *offsetX, int16_t offsetY,
+<a name="l00059"></a>00059         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#ad2318af5f3a5f7db01debd52a5bc4bc1">writeBuffer_P</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY,
 <a name="l00060"></a>00060                         uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length);
-<a name="l00061"></a>00061         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#aae1f1c81f5cb08d6a318d9b3d1122d28">txAnimation</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> *font, int16_t offsetY, uint8_t onValue, uint8_t offValue);
+<a name="l00061"></a>00061         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___display___monochrome.html#a2a2a31b95c62535cd378880f27e0a148">txAnimation</a>(<span class="keyword">const</span> <a class="code" href="structmhv__font.html">MHV_FONT</a> &amp;font, int16_t offsetY, uint8_t onValue, uint8_t offValue);
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___monochrome.html#a58a17e8662802e7f5d6ccd6f0bcc51a0">setPixel</a>(uint16_t row, uint16_t col, uint8_t value)=0;
 <a name="l00064"></a>00064         <span class="keyword">virtual</span> uint8_t <a class="code" href="class_m_h_v___display___monochrome.html#a80573e21b6b455fdd79c9d7d0a981492">getPixel</a>(uint16_t row, uint16_t col)=0;
@@ -183,7 +183,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

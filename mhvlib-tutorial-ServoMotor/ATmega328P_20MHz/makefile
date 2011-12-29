@@ -64,7 +64,7 @@ all: mhvlib-tutorial-ServoMotor.elf secondary-outputs
 mhvlib-tutorial-ServoMotor.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-ServoMotor.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -L"A:\eclipse\mhvlib-Vusb-Console/ATmega328P_20MHz" -mmcu=${AVRTARGETMCU} -o"mhvlib-tutorial-ServoMotor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-ServoMotor.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega328P_20MHz" -L"A:\eclipse\mhvlib-Vusb-Console/ATmega328P_20MHz" -mmcu=atmega328p -o "mhvlib-tutorial-ServoMotor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -88,7 +88,7 @@ mhvlib-tutorial-ServoMotor.eep: mhvlib-tutorial-ServoMotor.elf
 
 sizedummy: mhvlib-tutorial-ServoMotor.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=${AVRTARGETMCU} mhvlib-tutorial-ServoMotor.elf
+	-avr-size --format=avr --mcu=atmega328p mhvlib-tutorial-ServoMotor.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 

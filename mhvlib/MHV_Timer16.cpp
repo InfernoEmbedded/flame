@@ -50,14 +50,11 @@ MHV_Timer16::MHV_Timer16(volatile uint8_t *controlRegA, volatile uint8_t *contro
 	_counterSize = 16;
 	_mode = MHV_TIMER_REPETITIVE;
 	_type = MHV_TIMER_TYPE_5_PRESCALERS;
-
 	_haveTime3 = false;
-	_triggerData3 = NULL;
-	_triggerFunction3 = NULL;
-
+	_listener3 = NULL;
 }
 
-uint16_t MHV_Timer16::current(void) {
+uint16_t MHV_Timer16::current() {
 	uint16_t ret;
 
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -257,10 +254,10 @@ void MHV_Timer16::enable(void) {
 		*_counter = 0;
 		_setPrescaler(_prescaler);
 		setGenerationMode();
-		if (_triggerFunction1) {
+		if (_listener1) {
 			*_interrupt |= _BV(OCIE1A);
 		}
-		if (*_outputCompare2 && _triggerFunction2) {
+		if (*_outputCompare2 && _listener2) {
 			*_interrupt |= _BV(OCIE1B);
 			_haveTime2 = true;
 		} else {
@@ -268,7 +265,7 @@ void MHV_Timer16::enable(void) {
 		}
 
 #ifdef OCIE1C
-		if (*_outputCompare3 && _triggerFunction3) {
+		if (*_outputCompare3 && _listener3) {
 			*_interrupt |= _BV(OCIE1C);
 			_haveTime3 = true;
 		} else {
@@ -323,21 +320,18 @@ void MHV_Timer16::setPeriods(uint32_t usec1, uint32_t usec2, uint32_t usec3) {
 	setPeriods(prescaler, usec1, usec2, usec3);
 }
 
-void MHV_Timer16::setTriggers(void (*triggerFunction1)(void *triggerData), void *triggerData1,
-		void (*triggerFunction2)(void *triggerData), void *triggerData2,
-		void (*triggerFunction3)(void *triggerData), void *triggerData3) {
-	_triggerFunction1 = triggerFunction1;
-	_triggerData1 = triggerData1;
-	_triggerFunction2 = triggerFunction2;
-	_triggerData2 = triggerData2;
-	_triggerFunction3 = triggerFunction3;
-	_triggerData3 = triggerData3;
+void MHV_Timer16::setListener3(MHV_TimerListener &listener) {
+	_listener3 = &listener;
+}
+
+void MHV_Timer16::setListener3(MHV_TimerListener *listener) {
+	_listener3 = listener;
 }
 
 
 void MHV_Timer16::trigger3() {
-	if (_triggerFunction3) {
-		_triggerFunction3(_triggerData3);
+	if (_listener3) {
+		_listener3->alarm();
 	}
 }
 

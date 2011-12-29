@@ -77,7 +77,12 @@ MHV_Timer16 pwmTimer(MHV_TIMER16_1);
  *
  * This will fade the LED up to 50% and back down to 0
  */
-void animationTrigger(void *data) {
+class Animation : public MHV_TimerListener {
+public:
+	void alarm();
+};
+
+void Animation::alarm() {
 /* static variables are initialised once at boot, and persist between calls
  * What is the next action to take
  */
@@ -103,7 +108,9 @@ void animationTrigger(void *data) {
 	}
 }
 
-int main(void) {
+Animation animation;
+
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -119,7 +126,7 @@ int main(void) {
 	(void) animationTimer.setPeriods(20000UL, 0);
 
 	// Tell the timer to call our trigger function
-	animationTimer.setTriggers(animationTrigger, 0, 0, 0);
+	animationTimer.setListener1(animation);
 
 	// Set the PWM mode to FAST PWM
 	pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
@@ -163,6 +170,5 @@ int main(void) {
 		sleep_mode();
 	}
 
-	// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

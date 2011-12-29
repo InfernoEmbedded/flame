@@ -35,14 +35,14 @@
 #include <util/delay.h>
 #include <avr/power.h>
 
-int main(void) {
+int NORETURN main() {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 
-	while (1) {
+	for (;;) {
 // Turn off the LED
 		mhv_pinOff(MHV_ARDUINO_PIN_13);
 
@@ -56,6 +56,5 @@ int main(void) {
 		_delay_ms(333);
 	}
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

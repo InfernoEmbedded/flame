@@ -19,7 +19,9 @@ class \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C}
 \subsection*{\-Defines}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)
+\#define \hyperlink{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)
+\item 
+\#define \hyperlink{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count)
 \end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
@@ -68,32 +70,65 @@ enum \hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}{mhv\-\_\-mo
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
+void \hyperlink{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$timestamp2)
+void \hyperlink{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds)
+\item 
+void \hyperlink{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+\item 
+void \hyperlink{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds)
+\item 
+void \hyperlink{_m_h_v___r_t_c_8h_a4612d3f9e00ed01b4fd761e99eb9d054}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
 \item 
 bool \hyperlink{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}{mhv\-\_\-is\-Leap\-Year} (uint16\-\_\-t year)
 \item 
-bool \hyperlink{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$first, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$second)
+bool \hyperlink{_m_h_v___r_t_c_8h_a858279f2a451fd8a80d4f3885dc328f3}{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
 \item 
-bool \hyperlink{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}{mhv\-\_\-timestamp\-Less\-Than} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$first, \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$second)
+bool \hyperlink{_m_h_v___r_t_c_8h_a8b370d6f324996a97860bffd8087cb16}{mhv\-\_\-timestamp\-Less\-Than} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
 \item 
 uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
 \end{DoxyCompactItemize}
 
 
 \subsection{\-Define \-Documentation}
-\hypertarget{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}{
+\hypertarget{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}}
 \index{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Object\-Name, }
+\item[{}]{\-\_\-mhv\-Event\-Count}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
+                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount
+      );
+\end{DoxyCode}
+\-Create a new \-R\-T\-C 
+\begin{DoxyParams}{\-Parameters}
+{\em \-\_\-mhv\-Object\-Name} & the name of the \-R\-T\-C to create \\
+\hline
+{\em \-\_\-mhv\-Event\-Count} & the number of events \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 202 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}}
+\index{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z(
 \begin{DoxyParamCaption}
 \item[{}]{\-\_\-mhv\-Object\-Name, }
 \item[{}]{\-\_\-mhv\-Event\-Count, }
 \item[{}]{\-\_\-mhv\-Timezone}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8h_a9c45316f7976573eaca9e13a2e098cbe}
+\label{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}
 {\bfseries \-Value\-:}
 \begin{DoxyCode}
 MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
@@ -111,7 +146,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 108 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 193 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -123,7 +158,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}
 
 
-\-Definition at line 87 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 88 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H@{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}
@@ -132,7 +167,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}
 
 
-\-Definition at line 64 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 65 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E@{\-M\-H\-V\-\_\-\-T\-I\-M\-E}}
@@ -141,7 +176,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}
 
 
-\-Definition at line 79 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 80 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P@{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}}
@@ -150,7 +185,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}
 
 
-\-Definition at line 36 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 37 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}}
@@ -159,7 +194,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}
 
 
-\-Definition at line 48 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 49 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -225,7 +260,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 
 
 
-\-Definition at line 50 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 51 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-weekday@{mhv\-\_\-weekday}}
@@ -268,11 +303,148 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 
 
 
-\-Definition at line 39 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 40 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
 \subsection{\-Function \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
+\index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Timestamp, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks, }
+\item[{uint32\-\_\-t}]{repeat\-Timestamp, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
+\item[{uint8\-\_\-t}]{repeat\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}
+\-Initialise an alarm struct with tick resolution and repeats
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm to initialise \\
+\hline
+{\em listener} & the listener to execute when the alarm fires \\
+\hline
+{\em when\-Timestamp} & the timestamp the alarm should fire at \\
+\hline
+{\em when\-Milliseconds} & the milliseconds past the timestamp the alarm should fire at \\
+\hline
+{\em when\-Ticks} & the ticks past the millisecond the alarm should fire at \\
+\hline
+{\em repeat\-Timestamp} & the number of seconds to repeat the alarm \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds to repeat the alarm \\
+\hline
+{\em repeat\-Ticks} & the number of ticks to repeat the alarm \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
+\index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Timestamp, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint32\-\_\-t}]{repeat\-Timestamp, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}
+\-Initialise an alarm struct with millisecond resolution and repeats
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm to initialise \\
+\hline
+{\em listener} & the listener to execute when the alarm fires \\
+\hline
+{\em when\-Timestamp} & the timestamp the alarm should fire at \\
+\hline
+{\em when\-Milliseconds} & the milliseconds past the timestamp the alarm should fire at \\
+\hline
+{\em repeat\-Timestamp} & the number of seconds to repeat the alarm \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds to repeat the alarm \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 124 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
+\index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Timestamp, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}
+\-Initialise an alarm struct with tick resolution
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm to initialise \\
+\hline
+{\em listener} & the listener to execute when the alarm fires \\
+\hline
+{\em when\-Timestamp} & the timestamp the alarm should fire at \\
+\hline
+{\em when\-Milliseconds} & the milliseconds past the timestamp the alarm should fire at \\
+\hline
+{\em when\-Ticks} & the ticks past the millisecond the alarm should fire at \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 145 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
+\index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Timestamp, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}
+\-Initialise an alarm struct with millisecond resolution
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm to initialise \\
+\hline
+{\em listener} & the listener to execute when the alarm fires \\
+\hline
+{\em when\-Timestamp} & the timestamp the alarm should fire at \\
+\hline
+{\em when\-Milliseconds} & the milliseconds past the timestamp the alarm should fire at \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 164 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
 \hypertarget{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}}
 \index{mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
@@ -295,7 +467,7 @@ the number of days
 \end{DoxyReturn}
 
 
-\-Definition at line 151 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 192 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}}
@@ -308,18 +480,18 @@ the number of days
 \label{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}
 \-Determine if a year is a leap year 
 
-\-Definition at line 89 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 100 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}{
+\hypertarget{_m_h_v___r_t_c_8h_a858279f2a451fd8a80d4f3885dc328f3}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}}
 \index{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{first, }
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{second}
+\item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{first, }
+\item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{second}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8h_ad722ffbb3127d0ce903612820f9c44d9}
+\label{_m_h_v___r_t_c_8h_a858279f2a451fd8a80d4f3885dc328f3}
 \-Compare 2 timestamps 
 \begin{DoxyParams}{\-Parameters}
 {\em first} & the first timestamp \\
@@ -332,19 +504,19 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyReturn}
 
 
-\-Definition at line 72 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 79 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}{
+\hypertarget{_m_h_v___r_t_c_8h_a4612d3f9e00ed01b4fd761e99eb9d054}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
 \index{mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-timestamp\-Increment (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp, }
+\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
 \item[{uint32\-\_\-t}]{seconds, }
 \item[{uint16\-\_\-t}]{milliseconds}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8h_a520cf7e59854be56ee03002c13c88da5}
+\label{_m_h_v___r_t_c_8h_a4612d3f9e00ed01b4fd761e99eb9d054}
 \-Increment a timestamp 
 \begin{DoxyParams}{\-Parameters}
 {\em timestamp} & the timestamp to increment \\
@@ -356,39 +528,18 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyParams}
 
 
-\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 113 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}{
-\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
-\index{mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
-\subsubsection[{mhv\-\_\-timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-timestamp\-Increment (
-\begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp, }
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{timestamp2}
-\end{DoxyParamCaption}
-)}}
-\label{_m_h_v___r_t_c_8h_a00c8b2826a77e336ea0224128f29883e}
-\-Increment a timestamp 
-\begin{DoxyParams}{\-Parameters}
-{\em timestamp} & the timestamp to increment \\
-\hline
-{\em timestamp2} & the timestamp to increment by \\
-\hline
-\end{DoxyParams}
-
-
-\-Definition at line 118 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
-
-\hypertarget{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}{
+\hypertarget{_m_h_v___r_t_c_8h_a8b370d6f324996a97860bffd8087cb16}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}}
 \index{mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-timestamp\-Less\-Than}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Less\-Than (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{first, }
-\item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} $\ast$}]{second}
+\item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{first, }
+\item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{second}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8h_a07bec3ce9065e29b79b661680d3d830a}
+\label{_m_h_v___r_t_c_8h_a8b370d6f324996a97860bffd8087cb16}
 \-A \-Realtime clock
 
 \-Takes a trigger from a timer, and keeps time.
@@ -405,5 +556,5 @@ true if the first timestamp is less than the second
 \end{DoxyReturn}
 
 
-\-Definition at line 52 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 53 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 

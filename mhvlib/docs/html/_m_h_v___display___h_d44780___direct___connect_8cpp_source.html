@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -285,32 +285,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00252"></a>00252         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae7c1f3a285e1ed271227fb68a5f83c38">_contrast</a> = value;
 <a name="l00253"></a>00253 }
 <a name="l00254"></a>00254 
-<a name="l00258"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">00258</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">MHV_Display_HD44780_Direct_Connect::tickPWM</a>() {
-<a name="l00259"></a>00259         <span class="keywordflow">if</span> (0 == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a> % 16) {
+<a name="l00258"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#afde566730348a32f1699e92d2e887240">00258</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#afde566730348a32f1699e92d2e887240">MHV_Display_HD44780_Direct_Connect::alarm</a>() {
+<a name="l00259"></a>00259         <span class="keywordflow">if</span> (0 == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a>) {
 <a name="l00260"></a>00260                 *<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae69106ff6193c454881e09cfa322be8c">_visualOut</a> |= <a class="code" href="_m_h_v___display___h_d44780___direct___connect_8cpp.html#af13190c155cd155d3c7ee1fa2df243b5">HD44780_LED</a>;
 <a name="l00261"></a>00261                 *<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae69106ff6193c454881e09cfa322be8c">_visualOut</a> |= <a class="code" href="_m_h_v___display___h_d44780___direct___connect_8cpp.html#a692927c797dbb727ee4107e6da377c75">HD44780_CONTRAST</a>;
 <a name="l00262"></a>00262         }
 <a name="l00263"></a>00263 
-<a name="l00264"></a>00264         <span class="keywordflow">if</span> (<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ab5af02b6c4a31228b8cba9793270fe79">_brightness</a> == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a> % 16) {
+<a name="l00264"></a>00264         <span class="keywordflow">if</span> (<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ab5af02b6c4a31228b8cba9793270fe79">_brightness</a> == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a>) {
 <a name="l00265"></a>00265                 *<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae69106ff6193c454881e09cfa322be8c">_visualOut</a> &amp;= ~<a class="code" href="_m_h_v___display___h_d44780___direct___connect_8cpp.html#af13190c155cd155d3c7ee1fa2df243b5">HD44780_LED</a>;
 <a name="l00266"></a>00266         }
 <a name="l00267"></a>00267 
-<a name="l00268"></a>00268         <span class="keywordflow">if</span> (<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae7c1f3a285e1ed271227fb68a5f83c38">_contrast</a> == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a> % 16) {
+<a name="l00268"></a>00268         <span class="keywordflow">if</span> (<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae7c1f3a285e1ed271227fb68a5f83c38">_contrast</a> == <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a>) {
 <a name="l00269"></a>00269                 *<a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#ae69106ff6193c454881e09cfa322be8c">_visualOut</a> &amp;= ~<a class="code" href="_m_h_v___display___h_d44780___direct___connect_8cpp.html#a692927c797dbb727ee4107e6da377c75">HD44780_CONTRAST</a>;
 <a name="l00270"></a>00270         }
 <a name="l00271"></a>00271 
-<a name="l00272"></a>00272         <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a>++;
-<a name="l00273"></a>00273 }
-<a name="l00274"></a>00274 
-<a name="l00279"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a0446739e0eebe70e9c1e7b2d5aa74532">00279</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a0446739e0eebe70e9c1e7b2d5aa74532">MHV_Display_HD44780_Direct_Connect::delay</a>(<a class="code" href="_m_h_v___display___h_d44780_8h.html#a76bff68a0c366080486a09e3beec77e1">MHV_HD44780_COMMAND</a> command) {
-<a name="l00280"></a>00280         <span class="keywordflow">return</span>;
-<a name="l00281"></a>00281 }
-<a name="l00282"></a>00282 
-<a name="l00292"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">00292</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">MHV_Display_HD44780_Direct_Connect::init</a>(<span class="keywordtype">bool</span> multiLine, <span class="keywordtype">bool</span> bigFont, <span class="keywordtype">bool</span> cursorOn, <span class="keywordtype">bool</span> cursorBlink,
-<a name="l00293"></a>00293                                 <span class="keywordtype">bool</span> left2right, <span class="keywordtype">bool</span> scroll) {
-<a name="l00294"></a>00294         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">MHV_Display_HD44780::init</a>(<span class="keyword">false</span>, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
-<a name="l00295"></a>00295 }
-<a name="l00296"></a>00296 
+<a name="l00272"></a>00272         <span class="keywordflow">if</span> (++<a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a> = 16) {
+<a name="l00273"></a>00273                 <a class="code" href="class_m_h_v___display___h_d44780.html#a5dac9510b7fc9e79e5fbf8b07eeaa661">_ticks</a> = 0;
+<a name="l00274"></a>00274         }
+<a name="l00275"></a>00275 }
+<a name="l00276"></a>00276 
+<a name="l00281"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a0446739e0eebe70e9c1e7b2d5aa74532">00281</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a0446739e0eebe70e9c1e7b2d5aa74532">MHV_Display_HD44780_Direct_Connect::delay</a>(<a class="code" href="_m_h_v___display___h_d44780_8h.html#a76bff68a0c366080486a09e3beec77e1">MHV_HD44780_COMMAND</a> command) {
+<a name="l00282"></a>00282         <span class="keywordflow">return</span>;
+<a name="l00283"></a>00283 }
+<a name="l00284"></a>00284 
+<a name="l00294"></a><a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">00294</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">MHV_Display_HD44780_Direct_Connect::init</a>(<span class="keywordtype">bool</span> multiLine, <span class="keywordtype">bool</span> bigFont, <span class="keywordtype">bool</span> cursorOn, <span class="keywordtype">bool</span> cursorBlink,
+<a name="l00295"></a>00295                                 <span class="keywordtype">bool</span> left2right, <span class="keywordtype">bool</span> scroll) {
+<a name="l00296"></a>00296         <a class="code" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">MHV_Display_HD44780::init</a>(<span class="keyword">false</span>, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
+<a name="l00297"></a>00297 }
+<a name="l00298"></a>00298 
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -331,7 +333,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:34 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

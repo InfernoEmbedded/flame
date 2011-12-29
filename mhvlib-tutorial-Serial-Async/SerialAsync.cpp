@@ -69,7 +69,7 @@ void writeFailed(void) {
 	for (;;);
 }
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_usart0_enable();
@@ -77,7 +77,7 @@ int main(void) {
 // Enable interrupts
 	sei();
 
-	while (1) {
+	for (;;) {
 // Wait until there is space to send
 		while (!serial.canWrite()) {}
 
@@ -121,6 +121,5 @@ int main(void) {
 				41);
 	} // Loop
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }

@@ -3,6 +3,7 @@
 	<name>mhvlib-Vusb-Console</name>
 	<comment></comment>
 	<projects>
+		<project>mhvlib</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

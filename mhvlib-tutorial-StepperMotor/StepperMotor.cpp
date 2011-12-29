@@ -16,12 +16,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* Demonstrates how to use the VUSB Console driver
- * With GCC 4.5.2, Optimisation need to be disabled for this program to work (-O0)
- *
- * To view the output of this program on your computer, use HID Listen, available from:
- * http://www.pjrc.com/teensy/hid_listen.html
- *
+/* Demonstrates how to use the stepper driver
  */
 #define MHVLIB_NEED_PURE_VIRTUAL
 
@@ -59,12 +54,6 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define ALARM_COUNT	4
 // The RTC object we will use
 MHV_RTC_CREATE (rtc, ALARM_COUNT);
-
-// A timer trigger that will tick the RTC
-void rtcTrigger(void *data) {
-	rtc.tick1ms();
-}
-
 
 /* We have a hard limit of 1000 steps/second due to the 1ms resolution of the RTC class
  * The motor & control circuitry have a lower limit due to their electrical & mechanical properties
@@ -141,7 +130,7 @@ int NORETURN main(void) {
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(PRESCALER, 249, 0);
-	tickTimer.setTriggers(rtcTrigger, 0, 0, 0);
+	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	sei();

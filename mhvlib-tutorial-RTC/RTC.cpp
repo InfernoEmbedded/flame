@@ -51,39 +51,27 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
  * can be registered simultaneously
  */
 #define ALARM_COUNT	10
-MHV_ALARM alarms[ALARM_COUNT];
-
 #define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTC rtc(&tickTimer, alarms, ALARM_COUNT, TIMEZONE);
-
-// A timer trigger that will tick the RTC
-void rtcTrigger(void *data) {
-	/* We can call tick1ms here because we have been careful to configure the
-	 * timer for exactly 1ms. If the timer was faster, we would call tick()
-	 * instead, which is slightly more expensive.
-	 */
-	rtc.tick1ms();
-}
-
+MHV_RTC_CREATE_TZ(rtc, ALARM_COUNT, TIMEZONE);
 
 class OncePerSecond : public MHV_AlarmListener {
-	void alarm(MHV_ALARM *alarm);
+	void alarm(const MHV_ALARM &alarm);
 };
 
 /* An event that we will trigger every second
  * We will be passed the event that triggered us - we can have parameters
  * passed through the actionData member of the event
  */
-void OncePerSecond::alarm(MHV_ALARM *alarm) {
+void OncePerSecond::alarm(const MHV_ALARM &alarm) {
 	// Get the current timestamp
 	MHV_TIMESTAMP timestamp;
-	rtc.current(&timestamp);
+	rtc.current(timestamp);
 
 	// Convert the timestamp to human readable time
 	MHV_TIME time;
-	rtc.toTime(&time, &timestamp);
+	rtc.toTime(time, timestamp);
 
 	static char buf[90];
 	snprintf_P(buf, sizeof(buf), PSTR("The current time is %02u:%02u:%02u %u-%02u-%02u  (%lu.%03u)\r\n"),
@@ -94,22 +82,8 @@ void OncePerSecond::alarm(MHV_ALARM *alarm) {
 
 OncePerSecond oncePerSecond;
 
-// Insert an alarm to be triggered on the next second
-inline void insertAlarm(MHV_TIMESTAMP *timestamp) {
-	MHV_ALARM newAlarm;
-	newAlarm.when.milliseconds = 0;
-	newAlarm.when.timestamp = timestamp->timestamp + 1;
-	newAlarm.repeat.milliseconds = 0;
-	newAlarm.repeat.timestamp = 1;
-	newAlarm.listener = &oncePerSecond;
-	if (rtc.addAlarm(&newAlarm)) {
-		serial.write_P(PSTR("Adding alarm failed\r\n"));
-	}
-}
-
-
 // Program main
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer0_enable();
@@ -121,12 +95,12 @@ int main(void) {
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
-	tickTimer.setTriggers(rtcTrigger, 0, 0, 0);
+	tickTimer.setListener1(rtc);
 
 	// Prompt the user for the current time
 	MHV_TIME time;
 
-	while (true) {
+	for (;;) {
 		bool error = false;
 
 		serial.write_P(PSTR("Please enter the current time in YYYY MM DD HH MM SS:\r\n"));
@@ -186,12 +160,12 @@ int main(void) {
 	}
 
 	MHV_TIMESTAMP timestamp;
-	rtc.toTimestamp(&timestamp, &time);
+	rtc.toTimestamp(timestamp, time);
 
 	// Set the RTC
-	rtc.setTime(&timestamp);
+	rtc.setTime(timestamp);
 
-	rtc.current(&timestamp);
+	rtc.current(timestamp);
 	char buf[80];
 	snprintf_P(buf, sizeof(buf), PSTR("\r\nThe current unix timestamp is %lu\r\n"), timestamp.timestamp);
 	serial.write(buf);
@@ -202,7 +176,11 @@ int main(void) {
 	tickTimer.enable();
 
 	// Insert the initial alarm
-	insertAlarm(&timestamp);
+	if (rtc.addAlarm(oncePerSecond,
+			1, 0,	// When (seconds, milliseconds)
+			1, 0)) { // Repeat (seconds, milliseconds)
+		serial.write_P(PSTR("Adding alarm failed\r\n"));
+	}
 
 	// main loop
 	for (;;) {
@@ -210,5 +188,5 @@ int main(void) {
 		sleep_mode();
 	}
 
-	return 0;
+	UNREACHABLE;
 }

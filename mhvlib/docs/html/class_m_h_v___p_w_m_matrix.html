@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MHV_PWMMatrix Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="MHV_PWMMatrix" --><!-- doxytag: inherits="MHV_Display_Monochrome_Buffered" -->
+<!-- doxytag: class="MHV_PWMMatrix" --><!-- doxytag: inherits="MHV_Display_Monochrome_Buffered,MHV_TimerListener" -->
 <p><code>#include &lt;<a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MHV_PWMMatrix:</div>
@@ -109,6 +109,7 @@ Inheritance diagram for MHV_PWMMatrix:</div>
   <img src="class_m_h_v___p_w_m_matrix.png" usemap="#MHV_PWMMatrix_map" alt=""/>
   <map id="MHV_PWMMatrix_map" name="MHV_PWMMatrix_map">
 <area href="class_m_h_v___display___monochrome___buffered.html" alt="MHV_Display_Monochrome_Buffered" shape="rect" coords="0,112,227,136"/>
+<area href="class_m_h_v___timer_listener.html" alt="MHV_TimerListener" shape="rect" coords="237,112,464,136"/>
 <area href="class_m_h_v___display___monochrome.html" alt="MHV_Display_Monochrome" shape="rect" coords="0,56,227,80"/>
 <area href="class_m_h_v___device___t_x.html" alt="MHV_Device_TX" shape="rect" coords="0,0,227,24"/>
 </map>
@@ -118,14 +119,14 @@ Inheritance diagram for MHV_PWMMatrix:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#a3b522fc139f39df9e7de32954c12058d">MHV_PWMMatrix</a> (uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a6cc1d016b3af074f35a0248396cf6b73">MHV_PWMMATRIX_MODE</a> mode=MHV_PWMMATRIX_MODE_AUTO)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#ae2f403a7f4f290f78752dfc4e85cde20">tick</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#a7e7b0712beb8f0e43c9c7e806b08e88f">MHV_PWMMatrix</a> (uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers, <a class="el" href="class_m_h_v___p_w_m_matrix_driver.html">MHV_PWMMatrixDriver</a> &amp;driver, <a class="el" href="_m_h_v___p_w_m_matrix_8h.html#a6cc1d016b3af074f35a0248396cf6b73">MHV_PWMMATRIX_MODE</a> mode=MHV_PWMMATRIX_MODE_AUTO)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_w_m_matrix.html#a15a8c45e7736a53cb2e19a7c2070bb0d">alarm</a> ()</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00059">59</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html#l00067">67</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8h_source.html">MHV_PWMMatrix.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a3b522fc139f39df9e7de32954c12058d"></a><!-- doxytag: member="MHV_PWMMatrix::MHV_PWMMatrix" ref="a3b522fc139f39df9e7de32954c12058d" args="(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers, void(*rowOn)(uint16_t row), void(*rowOff)(uint16_t row), void(*colOn)(uint16_t column), void(*colOff)(uint16_t column), MHV_PWMMATRIX_MODE mode=MHV_PWMMATRIX_MODE_AUTO)" -->
+<a class="anchor" id="a7e7b0712beb8f0e43c9c7e806b08e88f"></a><!-- doxytag: member="MHV_PWMMatrix::MHV_PWMMatrix" ref="a7e7b0712beb8f0e43c9c7e806b08e88f" args="(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers, MHV_PWMMatrixDriver &amp;driver, MHV_PWMMATRIX_MODE mode=MHV_PWMMATRIX_MODE_AUTO)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -156,26 +157,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*)(uint16_t row)&#160;</td>
-          <td class="paramname"><em>rowOn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(uint16_t row)&#160;</td>
-          <td class="paramname"><em>rowOff</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(uint16_t column)&#160;</td>
-          <td class="paramname"><em>colOn</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">void(*)(uint16_t column)&#160;</td>
-          <td class="paramname"><em>colOff</em>, </td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___p_w_m_matrix_driver.html">MHV_PWMMatrixDriver</a> &amp;&#160;</td>
+          <td class="paramname"><em>driver</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -199,35 +182,33 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">colCount</td><td>the number of columns </td></tr>
     <tr><td class="paramname">frameBuffer</td><td>memory to use for the framebuffer, must be at least rows * cols * uint8_t </td></tr>
     <tr><td class="paramname">txBuffers</td><td>buffers used for text transmission </td></tr>
-    <tr><td class="paramname">rowOn</td><td>callback to turn a row on </td></tr>
-    <tr><td class="paramname">rowOff</td><td>callback to turn a row off </td></tr>
-    <tr><td class="paramname">colOn</td><td>callback to turn a column on </td></tr>
-    <tr><td class="paramname">colOff</td><td>callback to turn a column off </td></tr>
+    <tr><td class="paramname">driver</td><td>the driver to turn on/off rows and columns </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html#l00045">45</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html">MHV_PWMMatrix.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html">MHV_PWMMatrix.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ae2f403a7f4f290f78752dfc4e85cde20"></a><!-- doxytag: member="MHV_PWMMatrix::tick" ref="ae2f403a7f4f290f78752dfc4e85cde20" args="()" -->
+<a class="anchor" id="a15a8c45e7736a53cb2e19a7c2070bb0d"></a><!-- doxytag: member="MHV_PWMMatrix::alarm" ref="a15a8c45e7736a53cb2e19a7c2070bb0d" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MHV_PWMMatrix::tick </td>
+          <td class="memname">void MHV_PWMMatrix::alarm </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html#l00176">176</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html">MHV_PWMMatrix.cpp</a>.</p>
+<p>Implements <a class="el" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">MHV_TimerListener</a>.</p>
+
+<p>Definition at line <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html#l00164">164</a> of file <a class="el" href="_m_h_v___p_w_m_matrix_8cpp_source.html">MHV_PWMMatrix.cpp</a>.</p>
 
 </div>
 </div>
@@ -255,7 +236,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:40 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:05 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

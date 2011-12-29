@@ -69,12 +69,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define	SCROLL		false
 
 MHV_Display_HD44780_Direct_Connect display(MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3,
-		COLUMNS, ROWS, &txBuffer);
-
-// A timer trigger that will tick the display PWM
-void displayTrigger(void *data) {
-	display.tickPWM();
-}
+		COLUMNS, ROWS, txBuffer);
 
 /**
  * Render text using the asynchronous buffers
@@ -87,7 +82,7 @@ void textAnimation(MHV_Display_Character *display) {
 	display->write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
 }
 
-int main(void) {
+int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -106,9 +101,9 @@ int main(void) {
 
 	display.init(MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
 
-	// Configure the tick timer to tick every 0.5ms (at 20MHz)
+	// Configure the tick timer to tick every 0.5ms (at 20MHz) to drive the backlight intensity and animation
 	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_256, 36, 0);
-	tickTimer.setTriggers(displayTrigger, 0, 0, 0);
+	tickTimer.setListener1(display);
 	tickTimer.enable();
 
 	textAnimation(&display);
@@ -126,8 +121,7 @@ int main(void) {
 		sleep_mode();
 	};
 
-// Main must return an int, even though we never get here
-	return 0;
+	UNREACHABLE;
 }
 
 

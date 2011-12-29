@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MHV_Display_HD44780_Direct_Connect Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="MHV_Display_HD44780_Direct_Connect" --><!-- doxytag: inherits="MHV_Display_HD44780" -->
+<!-- doxytag: class="MHV_Display_HD44780_Direct_Connect" --><!-- doxytag: inherits="MHV_Display_HD44780,MHV_TimerListener" -->
 <p><code>#include &lt;<a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MHV_Display_HD44780_Direct_Connect:</div>
@@ -111,6 +111,7 @@ Inheritance diagram for MHV_Display_HD44780_Direct_Connect:</div>
   <img src="class_m_h_v___display___h_d44780___direct___connect.png" usemap="#MHV_Display_HD44780_Direct_Connect_map" alt=""/>
   <map id="MHV_Display_HD44780_Direct_Connect_map" name="MHV_Display_HD44780_Direct_Connect_map">
 <area href="class_m_h_v___display___h_d44780.html" alt="MHV_Display_HD44780" shape="rect" coords="0,112,245,136"/>
+<area href="class_m_h_v___timer_listener.html" alt="MHV_TimerListener" shape="rect" coords="255,112,500,136"/>
 <area href="class_m_h_v___display___character.html" alt="MHV_Display_Character" shape="rect" coords="0,56,245,80"/>
 <area href="class_m_h_v___device___t_x.html" alt="MHV_Device_TX" shape="rect" coords="0,0,245,24"/>
 </map>
@@ -124,7 +125,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#aea26b842b0f5ed5e8568620354c4021e">MHV_Display_HD44780_Direct_Connect</a> (MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), uint8_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a11b8f4c551c0c622874b4242154d9d67">setBacklight</a> (uint8_t value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a5d890e072d56c818442b209b9d4851d8">setContrast</a> (uint8_t value)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a37c4c7d338ce1a335f18649d302dc6a5">tickPWM</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#afde566730348a32f1699e92d2e887240">alarm</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a82d09a64c377a8b25751a9b21d9cee93">init</a> (bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink, bool left2right, bool scroll)</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -150,7 +151,7 @@ Protected Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00032">32</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00033">33</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aecd4894b4044fde51b75ef609904036f"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect" ref="aecd4894b4044fde51b75ef609904036f" args="(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(control), MHV_DECLARE_PIN(visual), uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)" -->
 <div class="memitem">
@@ -278,6 +279,27 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="afde566730348a32f1699e92d2e887240"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::alarm" ref="afde566730348a32f1699e92d2e887240" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_Display_HD44780_Direct_Connect::alarm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Tick the display for PWM - this should be called every 500 microseconds </p>
+
+<p>Implements <a class="el" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">MHV_TimerListener</a>.</p>
+
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00258">258</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0446739e0eebe70e9c1e7b2d5aa74532"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::delay" ref="a0446739e0eebe70e9c1e7b2d5aa74532" args="(MHV_HD44780_COMMAND command)" -->
 <div class="memitem">
 <div class="memproto">
@@ -296,7 +318,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___h_d44780.html#a8a6017accb4910deb470ce2d1a5b5fc5">MHV_Display_HD44780</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00279">279</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00281">281</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +383,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00292">292</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00294">294</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
 
 </div>
 </div>
@@ -493,25 +515,6 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a37c4c7d338ce1a335f18649d302dc6a5"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::tickPWM" ref="a37c4c7d338ce1a335f18649d302dc6a5" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void MHV_Display_HD44780_Direct_Connect::tickPWM </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Tick the display for PWM - this should be called every 500 microseconds </p>
-
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html#l00258">258</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8cpp_source.html">MHV_Display_HD44780_Direct_Connect.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="ac61f7b7429e954bbb418ec6f2a7942f8"></a><!-- doxytag: member="MHV_Display_HD44780_Direct_Connect::writeByte" ref="ac61f7b7429e954bbb418ec6f2a7942f8" args="(uint8_t byte, bool rs)" -->
 <div class="memitem">
 <div class="memproto">
@@ -600,7 +603,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00044">44</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00045">45</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -615,7 +618,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00045">45</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00046">46</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -630,7 +633,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00039">39</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00040">40</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -645,7 +648,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00040">40</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -660,7 +663,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00034">34</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00035">35</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -675,7 +678,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00036">36</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00037">37</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -690,7 +693,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00038">38</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00039">39</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -705,7 +708,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00035">35</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00036">36</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -720,7 +723,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00037">37</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00038">38</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -735,7 +738,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -750,7 +753,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html#l00043">43</a> of file <a class="el" href="_m_h_v___display___h_d44780___direct___connect_8h_source.html">MHV_Display_HD44780_Direct_Connect.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +781,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:38 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:03 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

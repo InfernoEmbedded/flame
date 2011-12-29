@@ -4,15 +4,18 @@
 }
 {\ttfamily \#include $<$inttypes.\-h$>$}\*
 {\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Timer8.\-h$>$}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_m_h_v___p_w_m_matrix_driver}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-Driver}
 \item 
 class \hyperlink{class_m_h_v___p_w_m_matrix}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}
 \end{DoxyCompactItemize}
 \subsection*{\-Defines}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Rows, \-\_\-mhv\-Cols, \-\_\-mhv\-Tx\-Elements, \-\_\-mhv\-Matrix\-Row\-On, \-\_\-mhv\-Matrix\-Row\-Off, \-\_\-mhv\-Matrix\-Col\-On, \-\_\-mhv\-Matrix\-Col\-Off)
+\#define \hyperlink{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Rows, \-\_\-mhv\-Cols, \-\_\-mhv\-Tx\-Elements, \-\_\-mhv\-Matrix\-Driver)
 \end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
@@ -31,7 +34,7 @@ enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\
 
 
 \subsection{\-Define \-Documentation}
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}{
+\hypertarget{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}{
 \index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}}
 \index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_PWMMatrix.h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
 \subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E(
@@ -40,21 +43,17 @@ enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\
 \item[{}]{\-\_\-mhv\-Rows, }
 \item[{}]{\-\_\-mhv\-Cols, }
 \item[{}]{\-\_\-mhv\-Tx\-Elements, }
-\item[{}]{\-\_\-mhv\-Matrix\-Row\-On, }
-\item[{}]{\-\_\-mhv\-Matrix\-Row\-Off, }
-\item[{}]{\-\_\-mhv\-Matrix\-Col\-On, }
-\item[{}]{\-\_\-mhv\-Matrix\-Col\-Off}
+\item[{}]{\-\_\-mhv\-Matrix\-Driver}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___p_w_m_matrix_8h_a502235de4fc8181af1c33f0b7b478a05}
+\label{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}
 {\bfseries \-Value\-:}
 \begin{DoxyCode}
 uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
         MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
         MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## 
       FrameBuffer, _mhvObjectName ## TX, \
-                        _mhvMatrixRowOn, _mhvMatrixRowOff, _mhvMatrixColOn, 
-      _mhvMatrixColOff);
+                        _mhvMatrixDriver);
 \end{DoxyCode}
 \-Create a new \-P\-W\-M \-Matrix object 
 \begin{DoxyParams}{\-Parameters}
@@ -66,7 +65,7 @@ uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
 \hline
 {\em \-\_\-mhv\-Tx\-Elements} & the number of elements to make available for async transmission \\
 \hline
-{\em \-\_\-mhv\-Matrix\-Row\-On} & function to call to turn a row on \\
+{\em \-\_\-mhv\-Matrix\-Driver} & the handler to drive rows \& cols \\
 \hline
 {\em \-\_\-mhv\-Matrix\-Row\-Off} & function to call to turn a row off \\
 \hline
@@ -77,7 +76,7 @@ uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
 \end{DoxyParams}
 
 
-\-Definition at line 44 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+\-Definition at line 45 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 
 
 

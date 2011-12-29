@@ -145,10 +145,9 @@ unsigned char usbFunctionSetup(uchar data[8]) {
  * @param	txBuffer	a ringbuffer to store data in
  * @param	rtc			an RTC to schedule jobs on
  */
-MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) : MHV_Device_TX(txBuffer) {
-
-	_rtc = rtc;
-
+MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
+				MHV_Device_TX(txBuffer),
+				_rtc(rtc) {
 #if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 	uchar calibrationValue;
 
@@ -158,8 +157,8 @@ MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) : MHV_D
 	}
 #endif
 
-	mhv_setInput(mhv_make_pin(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-	mhv_setInput(mhv_make_pin(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 
 	usbDeviceDisconnect();
     for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
@@ -171,20 +170,20 @@ MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer *txBuffer, MHV_RTC *rtc) : MHV_D
 
 	MHV_ALARM newAlarm;
 
-	_rtc->current(&(newAlarm.when));
-	mhv_timestampIncrement(&(newAlarm.when), 0, 5);
+	_rtc.current(newAlarm.when);
+	mhv_timestampIncrement(newAlarm.when, 0, 5);
 	newAlarm.repeat.milliseconds = 5;
 	newAlarm.repeat.timestamp = 0;
 	newAlarm.listener = this;
 
-	_rtc->addAlarm(&newAlarm);
+	_rtc.addAlarm(newAlarm);
 }
 
 /**
  * Periodically called to maintain USB comms
  * @param alarm	the alarm that triggered the call
  */
-void MHV_VusbConsole::alarm(MHV_ALARM *alarm) {
+void MHV_VusbConsole::alarm(const MHV_ALARM &alarm) {
 	usbPoll();
 
 	if (usbInterruptIsReady()) {

@@ -24,11 +24,11 @@
 
 class MHV_VusbConsole : public MHV_AlarmListener, public MHV_Device_TX {
 protected:
-	MHV_RTC		*_rtc;
+	MHV_RTC		&_rtc;
 
 public:
-	MHV_VusbConsole(MHV_RingBuffer *txBuffer, MHV_RTC *rtc);
-	void alarm(MHV_ALARM *alarm);
+	MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
+	void alarm(const MHV_ALARM &alarm);
 	void runTxBuffers();
 };
 

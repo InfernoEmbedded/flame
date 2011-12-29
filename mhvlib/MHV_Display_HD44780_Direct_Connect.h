@@ -28,8 +28,9 @@
 #define MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_
 
 #include <MHV_Display_HD44780.h>
+#include <MHV_Timer8.h>
 
-class MHV_Display_HD44780_Direct_Connect : public MHV_Display_HD44780 {
+class MHV_Display_HD44780_Direct_Connect : public MHV_Display_HD44780, public MHV_TimerListener {
 protected:
 	volatile uint8_t	*_dataDir;
 	volatile uint8_t	*_dataOut;
@@ -63,7 +64,7 @@ public:
 			uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers);
 	void setBacklight(uint8_t value);
 	void setContrast(uint8_t value);
-	void tickPWM();
+	void alarm();
 	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 				bool left2right, bool scroll);
 };

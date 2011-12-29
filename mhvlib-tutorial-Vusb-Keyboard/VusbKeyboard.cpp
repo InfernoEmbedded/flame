@@ -55,30 +55,23 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
  * can be registered simultaneously
  */
 #define ALARM_COUNT	4
-MHV_ALARM alarms[ALARM_COUNT];
-
-#define TIMEZONE 600 // UTC+10
-
 // The RTC object we will use
-MHV_RTC rtc(&tickTimer, alarms, ALARM_COUNT, TIMEZONE);
-
-// A timer trigger that will tick the RTC
-void rtcTrigger(void *data) {
-	rtc.tick1ms();
-}
+MHV_RTC_CREATE(rtc, ALARM_COUNT);
 
 // The USB Keyboard driver
 MHV_TX_BUFFER_CREATE(typistBuffer, 2);
-MHV_VusbTypist typist(&typistBuffer, &rtc);
+MHV_VusbTypist typist(typistBuffer, rtc);
 
 class TypeString : public MHV_AlarmListener {
 public:
-	void alarm(MHV_ALARM *alarm);
+	void alarm(const MHV_ALARM &alarm);
 };
 
-void TypeString::alarm(MHV_ALARM *alarm) {
+void TypeString::alarm(const MHV_ALARM &alarm) {
 	typist.write_P(PSTR("Greetings, program!"));
 }
+
+TypeString typeString;
 
 int NORETURN main(void) {
 	// Disable all peripherals and enable just what we need
@@ -95,20 +88,13 @@ int NORETURN main(void) {
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(PRESCALER, 249, 0);
-	tickTimer.setTriggers(rtcTrigger, 0, 0, 0);
+	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	sei();
 
 	// Set up the string to be typed after 10 seconds
-	MHV_ALARM newAlarm;
-	rtc.current(&(newAlarm.when));
-	mhv_timestampIncrement(&(newAlarm.when), 10, 0);
-	newAlarm.repeat.timestamp = 0;
-	newAlarm.repeat.milliseconds = 0;
-	TypeString typeString;
-	newAlarm.listener = &typeString;
-	rtc.addAlarm(&newAlarm);
+	rtc.addAlarm(typeString, 10, 0);
 
 	for (;;) {
 		/* All the interesting things happen in the events
@@ -119,4 +105,6 @@ int NORETURN main(void) {
 		// Sleep until an interrupt occurs
 		sleep_mode();
 	}
+
+	UNREACHABLE;
 }

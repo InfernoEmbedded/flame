@@ -139,7 +139,7 @@ inline void MHV_VoltageRegulator::regulateBuck() {
  * Adjust the duty cycle to bring the voltage closer to what we want
  * Call this function periodically to ensure regulation
  */
-void MHV_VoltageRegulator::regulate() {
+inline void MHV_VoltageRegulator::regulate() {
 	switch (_mode) {
 	case MHV_VREG_MODE_BOOST:
 		regulateBoost();
@@ -148,6 +148,20 @@ void MHV_VoltageRegulator::regulate() {
 		regulateBuck();
 		break;
 	}
+}
+
+/**
+ * Initiate regulation as a MHV_TimerListener
+ */
+void MHV_VoltageRegulator::alarm() {
+	regulate();
+}
+
+/**
+ * Initiate regulation as a MHV_AlarmListener
+ */
+void MHV_VoltageRegulator::alarm(const MHV_ALARM &alarm) {
+	regulate();
 }
 
 /**

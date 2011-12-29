@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111227</span>
+   &#160;<span id="projectnumber">20111229</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -101,30 +101,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MHV_RTC Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="MHV_RTC" -->
+<!-- doxytag: class="MHV_RTC" --><!-- doxytag: inherits="MHV_TimerListener" -->
 <p><code>#include &lt;<a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for MHV_RTC:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_m_h_v___r_t_c.png" usemap="#MHV_RTC_map" alt=""/>
+  <map id="MHV_RTC_map" name="MHV_RTC_map">
+<area href="class_m_h_v___timer_listener.html" alt="MHV_TimerListener" shape="rect" coords="0,0,124,24"/>
+</map>
+ </div></div>
 
 <p><a href="class_m_h_v___r_t_c-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a3c7a321e22e8788eb45ba6cb3d74286b">MHV_RTC</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> eventBuffer[], uint8_t eventCount, int16_t timezone)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#aacb9ee506e1e18672a821b44f5138d2b">MHV_RTC</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> eventBuffer[], uint8_t eventCount, int16_t timezone=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a286a1504182064b5f8168669ac5f46c1">timestampIncrement</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a97308259a62550d63eaf677190fa5581">synchronise</a> (<a class="el" href="class_m_h_v___timer8.html">MHV_Timer8</a> &amp;_timer)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a> (uint32_t timestamp, uint16_t milliseconds)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a7e4f42af3581cce6261f1c83d1e2b0c1">setTime</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *timestamp)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#af56442a6497ade702d8eb8ba935fb1ef">tick</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a7149adf9da9e7209cd352eb67f40bf30">tick1ms</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a7246016a7c37aefcdf2bb46f67bbb455">tickAndRunEvents</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a1e0b5a223fb74c10a30f7712c42081e2">tick1msAndRunEvents</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#aa4b7a93658ea4548520103f63d5897ec">current</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *timestamp)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a6bd66dbb9fd2229e3b229667e38adbf6">elapsed</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *since, <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *elapsed)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#af8e273e8cc911c8f355299416e7a7db2">toTime</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> *to, <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *from)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#aaaf020893b6a5bd81f08371cd804a68b">toTimestamp</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *to, <a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> *from)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a2d58b554a2ff0eb2cf9f7fccc29e5738">addAlarm</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> *alarm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a9eba3cfa73969390764bea958ed276ab">setTime</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ad01b7a3e8049fb64bf9f490e97b89696">current</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;since, <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;elapsed)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#aa0a908785e5445b1ab5d3bdb20f5fc62">toTime</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> &amp;to, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;from)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a3aecb460c309ca773933e0c82bbd7819">toTimestamp</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;to, const <a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> &amp;from)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;alarm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a3e8a1a5a2b302997025c9b28f104c9f7">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ab3b8f4a19caf565bdf85ba863c07a801">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a0ce5325c293c19525ad25bfa372b4b49">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ac5a3dadf50236eb3034eeac887a9317e">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ac2dac753e3931ff1bc82f70aef5017ce">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ab1c18cf07c95ec40a456229a89d39375">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#adf08714bae5d1352bebc5b1aaba333bc">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a2a945db4d8a832acfdc90276a6b5b377">addAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener, uint32_t whenSeconds, uint16_t whenMilliseconds)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#abebdf394ea6ed2c48f80cc02d4371a90">handleEvents</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a78c9916568b91c43ba000a8fa851e3e5">alarmsPending</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a102c6e3d254e884d586ef3b9b885058b">removeAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#ad567f1efa0e4e108699d0895debc40dd">removeAlarm</a> (<a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___r_t_c.html#afaaed6deea21b52f8bde5f8ebc0abf70">_alarms</a></td></tr>
@@ -138,9 +154,9 @@ Protected Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00112">112</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00206">206</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a3c7a321e22e8788eb45ba6cb3d74286b"></a><!-- doxytag: member="MHV_RTC::MHV_RTC" ref="a3c7a321e22e8788eb45ba6cb3d74286b" args="(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone)" -->
+<a class="anchor" id="aacb9ee506e1e18672a821b44f5138d2b"></a><!-- doxytag: member="MHV_RTC::MHV_RTC" ref="aacb9ee506e1e18672a821b44f5138d2b" args="(MHV_ALARM eventBuffer[], uint8_t eventCount, int16_t timezone=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -160,7 +176,7 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int16_t&#160;</td>
-          <td class="paramname"><em>timezone</em>&#160;</td>
+          <td class="paramname"><em>timezone</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -180,35 +196,506 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00166">166</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00207">207</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a2d58b554a2ff0eb2cf9f7fccc29e5738"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="a2d58b554a2ff0eb2cf9f7fccc29e5738" args="(MHV_ALARM *alarm)" -->
+<a class="anchor" id="ac58061c6f016d665a9027f8d55b9d5c0"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="ac58061c6f016d665a9027f8d55b9d5c0" args="(MHV_ALARM &amp;alarm)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">bool MHV_RTC::addAlarm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;&#160;</td>
           <td class="paramname"><em>alarm</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Insert an alarm, to be triggered at a later date </p>
+<p>Insert an alarm, to be triggered at a later time </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">alarm</td><td>the alarm, consisting of: when it should be triggered what should be called (it will be passed a pointer to the event) a pointer to user-defined data </td></tr>
+    <tr><td class="paramname">alarm</td><td>the alarm, consisting of: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the event could not be added </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00435">435</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00460">460</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3e8a1a5a2b302997025c9b28f104c9f7"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="a3e8a1a5a2b302997025c9b28f104c9f7" args="(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>whenTicks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>repeatSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>repeatMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>repeatTicks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00495">495</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab3b8f4a19caf565bdf85ba863c07a801"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="ab3b8f4a19caf565bdf85ba863c07a801" args="(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>repeatSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>repeatMilliseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00518">518</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ce5325c293c19525ad25bfa372b4b49"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="a0ce5325c293c19525ad25bfa372b4b49" args="(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>whenTicks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00540">540</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac5a3dadf50236eb3034eeac887a9317e"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="ac5a3dadf50236eb3034eeac887a9317e" args="(MHV_AlarmListener &amp;listener, uint32_t whenSeconds, uint16_t whenMilliseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00560">560</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2dac753e3931ff1bc82f70aef5017ce"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="ac2dac753e3931ff1bc82f70aef5017ce" args="(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks, uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>whenTicks</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>repeatSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>repeatMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>repeatTicks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00584">584</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab1c18cf07c95ec40a456229a89d39375"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="ab1c18cf07c95ec40a456229a89d39375" args="(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint32_t repeatSeconds, uint16_t repeatMilliseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>repeatSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>repeatMilliseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">repeatMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00607">607</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adf08714bae5d1352bebc5b1aaba333bc"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="adf08714bae5d1352bebc5b1aaba333bc" args="(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>whenTicks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenTicks</td><td>the number of ticks past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00629">629</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a945db4d8a832acfdc90276a6b5b377"></a><!-- doxytag: member="MHV_RTC::addAlarm" ref="a2a945db4d8a832acfdc90276a6b5b377" args="(MHV_AlarmListener *listener, uint32_t whenSeconds, uint16_t whenMilliseconds)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool MHV_RTC::addAlarm </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *&#160;</td>
+          <td class="paramname"><em>listener</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>whenSeconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>whenMilliseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Insert an alarm to be triggered at a later time </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">listener</td><td>the alarm listener to be called when the alarm is triggered </td></tr>
+    <tr><td class="paramname">whenSeconds</td><td>the number of seconds past current that the alarm will be executed </td></tr>
+    <tr><td class="paramname">whenMilliseconds</td><td>the number of milliseconds past current that the alarm will be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00649">649</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a949570f89977560cc68dc909e7d0a805"></a><!-- doxytag: member="MHV_RTC::alarm" ref="a949570f89977560cc68dc909e7d0a805" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MHV_RTC::alarm </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Alarm handler from the timer </p>
+
+<p>Implements <a class="el" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">MHV_TimerListener</a>.</p>
+
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00267">267</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,18 +715,18 @@ Protected Attributes</h2></td></tr>
 <p>How many events are left in the queue </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the number of events </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00500">500</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00704">704</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa4b7a93658ea4548520103f63d5897ec"></a><!-- doxytag: member="MHV_RTC::current" ref="aa4b7a93658ea4548520103f63d5897ec" args="(MHV_TIMESTAMP *timestamp)" -->
+<a class="anchor" id="ad01b7a3e8049fb64bf9f490e97b89696"></a><!-- doxytag: member="MHV_RTC::current" ref="ad01b7a3e8049fb64bf9f490e97b89696" args="(MHV_TIMESTAMP &amp;timestamp)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_RTC::current </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>timestamp</em></td><td>)</td>
           <td></td>
         </tr>
@@ -247,25 +734,31 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Get the current timestamp </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>the timestamp to write into </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00268">268</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00288">288</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6bd66dbb9fd2229e3b229667e38adbf6"></a><!-- doxytag: member="MHV_RTC::elapsed" ref="a6bd66dbb9fd2229e3b229667e38adbf6" args="(MHV_TIMESTAMP *since, MHV_TIMESTAMP *elapsed)" -->
+<a class="anchor" id="ac29cd961ae085c0b19e439f6a41c2941"></a><!-- doxytag: member="MHV_RTC::elapsed" ref="ac29cd961ae085c0b19e439f6a41c2941" args="(const MHV_TIMESTAMP &amp;since, MHV_TIMESTAMP &amp;elapsed)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_RTC::elapsed </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>since</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>elapsed</em>&#160;</td>
         </tr>
         <tr>
@@ -276,7 +769,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Determine how long has elapsed since the supplied timestamp </p>
+<p>Determine how long has elapsed since the supplied timestamp Fixme: Does not deal with ticks</p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">since</td><td>the timestamp to measure against </td></tr>
@@ -285,7 +778,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00281">281</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00304">304</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -296,7 +789,6 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void MHV_RTC::handleEvents </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -305,7 +797,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Check for events that are due, and run them Run this from your main loop if you have no blocking calls, otherwise, call tickAndRunEvents instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00466">466</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00670">670</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,7 +823,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00508">508</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00712">712</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -357,7 +849,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00525">525</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00729">729</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -394,18 +886,18 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00192">192</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00233">233</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7e4f42af3581cce6261f1c83d1e2b0c1"></a><!-- doxytag: member="MHV_RTC::setTime" ref="a7e4f42af3581cce6261f1c83d1e2b0c1" args="(MHV_TIMESTAMP *timestamp)" -->
+<a class="anchor" id="a9eba3cfa73969390764bea958ed276ab"></a><!-- doxytag: member="MHV_RTC::setTime" ref="a9eba3cfa73969390764bea958ed276ab" args="(MHV_TIMESTAMP &amp;timestamp)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_RTC::setTime </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>timestamp</em></td><td>)</td>
           <td></td>
         </tr>
@@ -420,7 +912,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00203">203</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00244">244</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -438,7 +930,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Synchronise the ticksPerMillisecond with the timer (useful if you change the timer values) </p>
+<p>Synchronise the ticksPerMillisecond with the timer This is useful if you change the timer values, or if you are are running the timer faster than 1ms </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">timer</td><td>the timer to sync with </td></tr>
@@ -446,104 +938,112 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00182">182</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00223">223</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af56442a6497ade702d8eb8ba935fb1ef"></a><!-- doxytag: member="MHV_RTC::tick" ref="af56442a6497ade702d8eb8ba935fb1ef" args="()" -->
+<a class="anchor" id="a666d907f0699c61337891adb040d5114"></a><!-- doxytag: member="MHV_RTC::timestampIncrement" ref="a666d907f0699c61337891adb040d5114" args="(MHV_TIMESTAMP &amp;timestamp, const MHV_TIMESTAMP &amp;timestamp2)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MHV_RTC::tick </td>
+          <td class="memname">void MHV_RTC::timestampIncrement </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
+          <td class="paramname"><em>timestamp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
+          <td class="paramname"><em>timestamp2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Tick from the timer module </p>
+<p>Increment a timestamp </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>the timestamp to increment </td></tr>
+    <tr><td class="paramname">timestamp2</td><td>the timestamp to increment by </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00225">225</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00129">129</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7149adf9da9e7209cd352eb67f40bf30"></a><!-- doxytag: member="MHV_RTC::tick1ms" ref="a7149adf9da9e7209cd352eb67f40bf30" args="()" -->
+<a class="anchor" id="a286a1504182064b5f8168669ac5f46c1"></a><!-- doxytag: member="MHV_RTC::timestampIncrement" ref="a286a1504182064b5f8168669ac5f46c1" args="(MHV_TIMESTAMP &amp;timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MHV_RTC::tick1ms </td>
+          <td class="memname">void MHV_RTC::timestampIncrement </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
+          <td class="paramname"><em>timestamp</em>, </td>
         </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Tick from the timer module that is exactly 1ms </p>
-
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00238">238</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a1e0b5a223fb74c10a30f7712c42081e2"></a><!-- doxytag: member="MHV_RTC::tick1msAndRunEvents" ref="a1e0b5a223fb74c10a30f7712c42081e2" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void MHV_RTC::tick1msAndRunEvents </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>seconds</em>, </td>
         </tr>
-      </table>
-</div>
-<div class="memdoc">
-<p>Tick from the timer module that is exactly 1ms, run any pending events </p>
-
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00260">260</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a7246016a7c37aefcdf2bb46f67bbb455"></a><!-- doxytag: member="MHV_RTC::tickAndRunEvents" ref="a7246016a7c37aefcdf2bb46f67bbb455" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void MHV_RTC::tickAndRunEvents </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>milliseconds</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ticks</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Tick from the timer module, and run any pending events </p>
+<p>Increment a timestamp </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>the timestamp to increment </td></tr>
+    <tr><td class="paramname">seconds</td><td>the number of seconds to increment by </td></tr>
+    <tr><td class="paramname">milliseconds</td><td>the number of milliseconds to increment by </td></tr>
+    <tr><td class="paramname">ticks</td><td>the number of ticks to increment by </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00245">245</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00153">153</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af8e273e8cc911c8f355299416e7a7db2"></a><!-- doxytag: member="MHV_RTC::toTime" ref="af8e273e8cc911c8f355299416e7a7db2" args="(MHV_TIME *to, MHV_TIMESTAMP *from)" -->
+<a class="anchor" id="aa0a908785e5445b1ab5d3bdb20f5fc62"></a><!-- doxytag: member="MHV_RTC::toTime" ref="aa0a908785e5445b1ab5d3bdb20f5fc62" args="(MHV_TIME &amp;to, const MHV_TIMESTAMP &amp;from)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_RTC::toTime </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> &amp;&#160;</td>
           <td class="paramname"><em>to</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>from</em>&#160;</td>
         </tr>
         <tr>
@@ -563,24 +1063,24 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00319">319</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00343">343</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aaaf020893b6a5bd81f08371cd804a68b"></a><!-- doxytag: member="MHV_RTC::toTimestamp" ref="aaaf020893b6a5bd81f08371cd804a68b" args="(MHV_TIMESTAMP *to, MHV_TIME *from)" -->
+<a class="anchor" id="a3aecb460c309ca773933e0c82bbd7819"></a><!-- doxytag: member="MHV_RTC::toTimestamp" ref="a3aecb460c309ca773933e0c82bbd7819" args="(MHV_TIMESTAMP &amp;to, const MHV_TIME &amp;from)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_RTC::toTimestamp </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>to</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">MHV_TIME</a> &amp;&#160;</td>
           <td class="paramname"><em>from</em>&#160;</td>
         </tr>
         <tr>
@@ -600,7 +1100,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00388">388</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00412">412</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -616,7 +1116,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00118">118</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00212">212</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -631,7 +1131,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00119">119</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00213">213</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -646,7 +1146,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00117">117</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00211">211</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -661,7 +1161,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00121">121</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00215">215</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -676,7 +1176,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00122">122</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00216">216</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -691,7 +1191,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00123">123</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00217">217</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -706,7 +1206,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00120">120</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00214">214</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -721,7 +1221,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00124">124</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8h_source.html#l00218">218</a> of file <a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>.</p>
 
 </div>
 </div>
@@ -749,7 +1249,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Dec 27 2011 20:46:40 for MHVLib by
+    <li class="footer">Generated on Thu Dec 29 2011 14:37:05 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

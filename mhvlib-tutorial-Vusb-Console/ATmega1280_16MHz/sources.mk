@@ -32,4 +32,5 @@ SIZEDUMMY :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 . \
+ATtiny85_16.5MHz \
 

@@ -31,6 +31,7 @@
 #ifdef MHV_AD_RESOLUTION
 #ifdef MHV_TIMER16_1
 #include <MHV_Timer16.h>
+#include <MHV_RTC.h>
 
 enum mhv_vreg_modes {
 	MHV_VREG_MODE_BUCK,
@@ -39,7 +40,7 @@ enum mhv_vreg_modes {
 typedef enum mhv_vreg_modes MHV_VREG_MODES;
 
 
-class MHV_VoltageRegulator {
+class MHV_VoltageRegulator : public MHV_TimerListener, public MHV_AlarmListener {
 private:
 	MHV_VREG_MODES	_mode;
 	uint8_t			_vref;
@@ -53,8 +54,9 @@ private:
 	uint16_t		_lastADC;
 	float			_divider;
 
-	void regulateBoost();
-	void regulateBuck();
+	inline void regulateBoost();
+	inline void regulateBuck();
+	inline void regulate();
 
 public:
 	MHV_VoltageRegulator(MHV_VREG_MODES mode, float voltage, float vrefVoltage, uint8_t vref,
@@ -62,7 +64,8 @@ public:
 	void enable();
 	void disable();
 	float getVoltage();
-	void regulate();
+	void alarm();
+	void alarm(const MHV_ALARM &alarm);
 };
 
 #endif // MHV_TIMER16_1
