@@ -53,12 +53,12 @@ MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER1_INTERRUPTS);
 #define SERVO_COUNT 1
 MHV_SERVOCONTROL_CREATE(servos, servoTimer, SERVO_COUNT);
 
-class MoveServos : public MHV_AlarmListener {
-	void alarm(const MHV_ALARM &alarm);
+class MoveServos : public MHV_TimerListener {
+	void alarm();
 };
 
 #define SERVO_INCREMENT 1000
-void MoveServos::alarm(const MHV_ALARM &alarm) {
+void MoveServos::alarm() {
 	static uint16_t position = 0;
 
 // Increment the servo, we don't mind if it wraps, the motor will just move back to the start

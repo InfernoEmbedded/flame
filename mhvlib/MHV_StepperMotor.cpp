@@ -95,7 +95,7 @@ void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
 /**
  * Called periodically to move the motor
  */
-void MHV_StepperMotor::alarm(const MHV_ALARM &alarm) {
+void MHV_StepperMotor::alarm() {
 	if (!_moving) {
 		return;
 	}

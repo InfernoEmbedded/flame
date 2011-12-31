@@ -62,12 +62,12 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
 MHV_TX_BUFFER_CREATE(typistBuffer, 2);
 MHV_VusbTypist typist(typistBuffer, rtc);
 
-class TypeString : public MHV_AlarmListener {
+class TypeString : public MHV_TimerListener {
 public:
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 };
 
-void TypeString::alarm(const MHV_ALARM &alarm) {
+void TypeString::alarm() {
 	typist.write_P(PSTR("Greetings, program!"));
 }
 

@@ -62,12 +62,12 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
 MHV_TX_BUFFER_CREATE(consoleBuffer, 16);
 MHV_VusbConsole console(consoleBuffer, rtc);
 
-class WriteString : public MHV_AlarmListener {
+class WriteString : public MHV_TimerListener {
 public:
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 };
 
-void WriteString::alarm(const MHV_ALARM &alarm) {
+void WriteString::alarm() {
 	console.write_P(PSTR("Greetings, program!\n"));
 	console.printf(PSTR("This is a %s string\n"), "printf");
 	console.write("Here are some numbers: ");

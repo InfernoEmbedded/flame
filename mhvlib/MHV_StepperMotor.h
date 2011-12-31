@@ -36,7 +36,7 @@ public:
 	virtual void moveComplete(int32_t position) =0;
 };
 
-class MHV_StepperMotor : public MHV_AlarmListener {
+class MHV_StepperMotor : public MHV_TimerListener {
 private:
 	int32_t				_position;
 	MHV_RTC				&_rtc;
@@ -55,7 +55,7 @@ public:
 	bool isMoving();
 	int32_t	getPosition();
 	void rotate(bool forward, float speed, int32_t until);
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 	void registerListener(MHV_StepperListener &listener);
 	void deregisterListener();
 };

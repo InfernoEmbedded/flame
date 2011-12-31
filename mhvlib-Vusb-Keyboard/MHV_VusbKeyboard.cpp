@@ -238,6 +238,6 @@ void MHV_VusbKeyboard::keysUp() {
 /**
  * Periodically called to maintain USB comms
  */
-void MHV_VusbKeyboard::alarm(const MHV_ALARM &alarm) {
+void MHV_VusbKeyboard::alarm() {
 	usbPoll();
 }

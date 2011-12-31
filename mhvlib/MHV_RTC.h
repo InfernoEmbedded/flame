@@ -79,11 +79,10 @@ struct mhv_time {
 };
 typedef struct mhv_time MHV_TIME;
 
-class MHV_AlarmListener;
 struct mhv_alarm {
 	MHV_TIMESTAMP		when;
 	MHV_TIMESTAMP		repeat;
-	MHV_AlarmListener	*listener;
+	MHV_TimerListener	*listener;
 };
 typedef struct mhv_alarm MHV_ALARM;
 
@@ -99,7 +98,7 @@ typedef struct mhv_alarm MHV_ALARM;
  * @param repeatMilliseconds	the number of milliseconds to repeat the alarm
  * @param repeatTicks			the number of ticks to repeat the alarm
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
+inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks,
 		uint32_t repeatTimestamp, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
 	alarm.listener = &listener;
@@ -121,7 +120,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
  * @param repeatTimestamp		the number of seconds to repeat the alarm
  * @param repeatMilliseconds	the number of milliseconds to repeat the alarm
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
+inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds,
 		uint32_t repeatTimestamp, uint16_t repeatMilliseconds) {
 	alarm.listener = &listener;
@@ -142,7 +141,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
  * @param whenMilliseconds		the milliseconds past the timestamp the alarm should fire at
  * @param whenTicks				the ticks past the millisecond the alarm should fire at
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
+inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks) {
 	alarm.listener = &listener;
 	alarm.when.timestamp = whenTimestamp;
@@ -161,7 +160,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
  * @param whenTimestamp			the timestamp the alarm should fire at
  * @param whenMilliseconds		the milliseconds past the timestamp the alarm should fire at
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
+inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds) {
 	alarm.listener = &listener;
 	alarm.when.timestamp = whenTimestamp;
@@ -171,12 +170,6 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_AlarmListener &listener,
 	alarm.repeat.milliseconds = 0;
 	alarm.repeat.ticks = 0;
 }
-
-class MHV_AlarmListener {
-public:
-	virtual void alarm(const MHV_ALARM &alarm) =0;
-};
-
 
 void mhv_timestampIncrement(MHV_TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds);
 bool mhv_isLeapYear(uint16_t year);
@@ -230,30 +223,30 @@ public:
 	void toTime(MHV_TIME &to, const MHV_TIMESTAMP &from);
 	void toTimestamp(MHV_TIMESTAMP &to, const MHV_TIME &from);
 	bool addAlarm(MHV_ALARM &alarm);
-	bool addAlarm(MHV_AlarmListener &listener,
+	bool addAlarm(MHV_TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
-	bool addAlarm(MHV_AlarmListener &listener,
+	bool addAlarm(MHV_TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds);
-	bool addAlarm(MHV_AlarmListener &listener,
+	bool addAlarm(MHV_TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
-	bool addAlarm(MHV_AlarmListener &listener,
+	bool addAlarm(MHV_TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds);
-	bool addAlarm(MHV_AlarmListener *listener,
+	bool addAlarm(MHV_TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
-	bool addAlarm(MHV_AlarmListener *listener,
+	bool addAlarm(MHV_TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds);
-	bool addAlarm(MHV_AlarmListener *listener,
+	bool addAlarm(MHV_TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
-	bool addAlarm(MHV_AlarmListener *listener,
+	bool addAlarm(MHV_TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds);
 	void handleEvents();
 	uint8_t alarmsPending();
-	void removeAlarm(MHV_AlarmListener &listener);
-	void removeAlarm(MHV_AlarmListener *listener);
+	void removeAlarm(MHV_TimerListener &listener);
+	void removeAlarm(MHV_TimerListener *listener);
 // from MHV_TimerListener
 	void alarm();
 

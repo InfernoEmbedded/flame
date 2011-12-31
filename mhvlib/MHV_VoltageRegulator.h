@@ -40,7 +40,7 @@ enum mhv_vreg_modes {
 typedef enum mhv_vreg_modes MHV_VREG_MODES;
 
 
-class MHV_VoltageRegulator : public MHV_TimerListener, public MHV_AlarmListener {
+class MHV_VoltageRegulator : public MHV_TimerListener {
 private:
 	MHV_VREG_MODES	_mode;
 	uint8_t			_vref;
@@ -65,7 +65,6 @@ public:
 	void disable();
 	float getVoltage();
 	void alarm();
-	void alarm(const MHV_ALARM &alarm);
 };
 
 #endif // MHV_TIMER16_1

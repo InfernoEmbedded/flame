@@ -8,7 +8,6 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include ATtiny85_16.5MHz/subdir.mk
 -include subdir.mk
 -include objects.mk
 
@@ -62,8 +61,8 @@ sizedummy \
 all: mhvlib-tutorial-Vusb-Console.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) all
 
 # Tool invocations
 mhvlib-tutorial-Vusb-Console.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a

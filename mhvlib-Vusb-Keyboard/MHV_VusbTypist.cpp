@@ -39,8 +39,8 @@ MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
  * Periodically called to maintain USB comms
  * @param alarm	the alarm that triggered the call
  */
-void MHV_VusbTypist::alarm(const MHV_ALARM &alarm) {
-	MHV_VusbKeyboard::alarm(alarm);
+void MHV_VusbTypist::alarm() {
+	MHV_VusbKeyboard::alarm();
 	if (usbInterruptIsReady()) {
 		int c = nextCharacter();
 

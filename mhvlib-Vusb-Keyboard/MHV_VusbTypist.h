@@ -31,7 +31,7 @@ protected:
 
 public:
 	MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 };
 
 #endif /* MHV_VUSBTYPIST_H_ */

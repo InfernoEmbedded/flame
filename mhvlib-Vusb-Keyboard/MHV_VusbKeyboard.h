@@ -175,7 +175,7 @@ enum mhv_vusb_keyboard_key {
 
 typedef enum mhv_vusb_keyboard_key MHV_VUSB_KEYBOARD_KEY;
 
-class MHV_VusbKeyboard : public MHV_AlarmListener {
+class MHV_VusbKeyboard : public MHV_TimerListener {
 protected:
 	MHV_RTC		&_rtc;
 
@@ -186,7 +186,7 @@ public:
 	void keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keysUp(uint8_t modifiers);
 	void keysUp();
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 };
 
 #endif /* MHV_VUSBKEYBOARD_H_ */

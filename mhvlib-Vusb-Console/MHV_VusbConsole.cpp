@@ -181,9 +181,8 @@ MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
 
 /**
  * Periodically called to maintain USB comms
- * @param alarm	the alarm that triggered the call
  */
-void MHV_VusbConsole::alarm(const MHV_ALARM &alarm) {
+void MHV_VusbConsole::alarm() {
 	usbPoll();
 
 	if (usbInterruptIsReady()) {

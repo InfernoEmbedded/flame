@@ -492,7 +492,7 @@ bool MHV_RTC::addAlarm(MHV_ALARM &alarm) {
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatTicks			the number of ticks past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 		uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
 	MHV_ALARM alarm;
@@ -515,7 +515,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds,
 		uint32_t repeatSeconds, uint16_t repeatMilliseconds) {
 	MHV_ALARM alarm;
@@ -537,7 +537,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	whenTicks			the number of ticks past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
 	MHV_ALARM alarm;
 
@@ -557,7 +557,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds) {
 	MHV_ALARM alarm;
 
@@ -581,7 +581,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener &listener,
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatTicks			the number of ticks past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 		uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
 	MHV_ALARM alarm;
@@ -604,7 +604,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds,
 		uint32_t repeatSeconds, uint16_t repeatMilliseconds) {
 	MHV_ALARM alarm;
@@ -626,7 +626,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	whenTicks			the number of ticks past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
 	MHV_ALARM alarm;
 
@@ -646,7 +646,7 @@ bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  */
-bool MHV_RTC::addAlarm(MHV_AlarmListener *listener,
+bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds) {
 	MHV_ALARM alarm;
 
@@ -675,7 +675,7 @@ void MHV_RTC::handleEvents() {
 	// Run any events pending
 	for (i = 0; i < _alarmCount && mhv_timestampGreaterThanOrEqual(timestamp, _alarms[i].when);
 			i++, current(timestamp)) {
-		_alarms[i].listener->alarm(_alarms[i]);
+		_alarms[i].listener->alarm();
 
 		// Repeat the event if necessary
 		if (0 != _alarms[i].repeat.ticks || 0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {
@@ -709,7 +709,7 @@ uint8_t MHV_RTC::alarmsPending() {
  * Remove all matching events from the list of pending events
  * @param	listener		the listener for the event to remove
  */
-void MHV_RTC::removeAlarm(MHV_AlarmListener &listener) {
+void MHV_RTC::removeAlarm(MHV_TimerListener &listener) {
 	for (uint8_t i = 0; i < _alarmCount; i++) {
 		if (_alarms[i].listener == &listener) {
 			// Shift remaining events down
@@ -726,7 +726,7 @@ void MHV_RTC::removeAlarm(MHV_AlarmListener &listener) {
  * Remove all matching events from the list of pending events
  * @param	listener		the listener for the event to remove
  */
-void MHV_RTC::removeAlarm(MHV_AlarmListener *listener) {
+void MHV_RTC::removeAlarm(MHV_TimerListener *listener) {
 	for (uint8_t i = 0; i < _alarmCount; i++) {
 		if (_alarms[i].listener == listener) {
 			// Shift remaining events down

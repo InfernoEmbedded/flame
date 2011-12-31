@@ -22,13 +22,13 @@
 #include <MHV_Device_TX.h>
 #include <MHV_RTC.h>
 
-class MHV_VusbConsole : public MHV_AlarmListener, public MHV_Device_TX {
+class MHV_VusbConsole : public MHV_TimerListener, public MHV_Device_TX {
 protected:
 	MHV_RTC		&_rtc;
 
 public:
 	MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
-	void alarm(const MHV_ALARM &alarm);
+	void alarm();
 	void runTxBuffers();
 };
 

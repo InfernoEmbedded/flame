@@ -158,13 +158,6 @@ void MHV_VoltageRegulator::alarm() {
 }
 
 /**
- * Initiate regulation as a MHV_AlarmListener
- */
-void MHV_VoltageRegulator::alarm(const MHV_ALARM &alarm) {
-	regulate();
-}
-
-/**
  * Start regulating
  */
 void MHV_VoltageRegulator::enable() {

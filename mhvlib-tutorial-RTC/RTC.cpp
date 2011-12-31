@@ -56,15 +56,15 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 // The RTC object we will use
 MHV_RTC_CREATE_TZ(rtc, ALARM_COUNT, TIMEZONE);
 
-class OncePerSecond : public MHV_AlarmListener {
-	void alarm(const MHV_ALARM &alarm);
+class OncePerSecond : public MHV_TimerListener {
+	void alarm();
 };
 
 /* An event that we will trigger every second
  * We will be passed the event that triggered us - we can have parameters
  * passed through the actionData member of the event
  */
-void OncePerSecond::alarm(const MHV_ALARM &alarm) {
+void OncePerSecond::alarm() {
 	// Get the current timestamp
 	MHV_TIMESTAMP timestamp;
 	rtc.current(timestamp);
