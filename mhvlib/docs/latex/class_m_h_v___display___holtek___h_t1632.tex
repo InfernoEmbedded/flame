@@ -15,7 +15,7 @@
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___display___holtek___h_t1632_ac3491073aa40004666aae9cefbffd14c}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(write), \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83f5359011}{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E} mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, void($\ast$cs\-Callback)(uint8\-\_\-t x, uint8\-\_\-t y, bool active), uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers)
+\hyperlink{class_m_h_v___display___holtek___h_t1632_a584fae17d4902a8464a30f3b06e86811}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632} (\hyperlink{class_m_h_v___shifter}{\-M\-H\-V\-\_\-\-Shifter} \&shifter, \hyperlink{class_m_h_v___display___selector}{\-M\-H\-V\-\_\-\-Display\-\_\-\-Selector} \&selector, \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83f5359011}{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E} mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t $\ast$frame\-Buffer, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers)
 \item 
 void \hyperlink{class_m_h_v___display___holtek___h_t1632_a60620705276f1713dead13a4b440fed4}{brightness} (uint8\-\_\-t brightness)
 \item 
@@ -34,40 +34,35 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55
 \subsection{\-Detailed \-Description}
 
 
-\-Definition at line 50 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 70 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___display___holtek___h_t1632_ac3491073aa40004666aae9cefbffd14c}{
+\hypertarget{class_m_h_v___display___holtek___h_t1632_a584fae17d4902a8464a30f3b06e86811}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!MHV_Display_Holtek_HT1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
 \subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632 (
 \begin{DoxyParamCaption}
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data)}]{, }
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(write)}]{, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Shifter} \&}]{shifter, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-Selector} \&}]{selector, }
 \item[{{\bf \-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E}}]{mode, }
 \item[{uint8\-\_\-t}]{array\-X, }
 \item[{uint8\-\_\-t}]{array\-Y, }
-\item[{void($\ast$)(uint8\-\_\-t x, uint8\-\_\-t y, bool active)}]{cs\-Callback, }
 \item[{uint8\-\_\-t $\ast$}]{frame\-Buffer, }
 \item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffers}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___display___holtek___h_t1632_ac3491073aa40004666aae9cefbffd14c}
-\-Initialise the library 
+\label{class_m_h_v___display___holtek___h_t1632_a584fae17d4902a8464a30f3b06e86811}
+\-Todo\-: \-Use callbacks for writes to the display to allow the \-S\-H\-I\-F\-T\-E\-R macros to be called directly on ports, instead of indirecting -\/ this will save clocks \-Initialise the library 
 \begin{DoxyParams}{\-Parameters}
-{\em data} & the data pin \\
-\hline
-{\em write\-Dir} & the write pin \\
+{\em shifter} & \-The shifter to output to \\
 \hline
 {\em mode} & \-What mode the displays should be run in \\
 \hline
 {\em array\-X} & the width of the array in number of displays \\
 \hline
 {\em array\-Y} & the height of the array in number of displays \\
-\hline
-{\em cs\-Callback} & \-A callback to select which display is active (lines must be active low, x \& y select the display) \\
 \hline
 {\em frame\-Buffer} & memory for a framebuffer, must be at least array\-X $\ast$ array\-Y $\ast$ display\-X $\ast$ display\-Y / 8 bytes long \\
 \hline
@@ -76,7 +71,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55
 \end{DoxyParams}
 
 
-\-Definition at line 51 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 44 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 
 
@@ -97,7 +92,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55
 \end{DoxyParams}
 
 
-\-Definition at line 326 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 291 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 \hypertarget{class_m_h_v___display___holtek___h_t1632_aeeb460d8c5ba0d8d43fb18779e50258e}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!flush@{flush}}
@@ -110,7 +105,7 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55
 \label{class_m_h_v___display___holtek___h_t1632_aeeb460d8c5ba0d8d43fb18779e50258e}
 \-Flush the framebuffer to the displays 
 
-\-Definition at line 263 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 230 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 \hypertarget{class_m_h_v___display___holtek___h_t1632_a32fe510b3bfa55a32e02a9570e67639d}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!get\-Pixel@{get\-Pixel}}
@@ -138,7 +133,7 @@ the value of the pixel
 
 
 
-\-Definition at line 171 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 155 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 \hypertarget{class_m_h_v___display___holtek___h_t1632_a224e7f735441e8d381fb6148f2b64dda}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweroff@{poweroff}}
@@ -151,7 +146,7 @@ the value of the pixel
 \label{class_m_h_v___display___holtek___h_t1632_a224e7f735441e8d381fb6148f2b64dda}
 \-Put all modules to sleep 
 
-\-Definition at line 386 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 351 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 \hypertarget{class_m_h_v___display___holtek___h_t1632_a2a9586d4c16483b4223a2fad453bc6bf}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweron@{poweron}}
@@ -164,7 +159,7 @@ the value of the pixel
 \label{class_m_h_v___display___holtek___h_t1632_a2a9586d4c16483b4223a2fad453bc6bf}
 \-Wake all modules up 
 
-\-Definition at line 399 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 364 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 \hypertarget{class_m_h_v___display___holtek___h_t1632_a664e9a5744bed3fa50a6adc9fcf80206}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!set\-Pixel@{set\-Pixel}}
@@ -192,7 +187,7 @@ the value of the pixel
 
 
 
-\-Definition at line 125 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
+\-Definition at line 109 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-cpp.
 
 
 

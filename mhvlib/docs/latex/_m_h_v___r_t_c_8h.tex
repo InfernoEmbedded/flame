@@ -12,8 +12,6 @@ struct \hyperlink{structmhv__time}{mhv\-\_\-time}
 \item 
 struct \hyperlink{structmhv__alarm}{mhv\-\_\-alarm}
 \item 
-class \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener}
-\item 
 class \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C}
 \end{DoxyCompactItemize}
 \subsection*{\-Defines}
@@ -70,13 +68,13 @@ enum \hyperlink{_m_h_v___r_t_c_8h_ad6de9e39b43a7e68859ac6fa62209575}{mhv\-\_\-mo
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+void \hyperlink{_m_h_v___r_t_c_8h_a1666f14436bc271cb087f59b809e3fa7}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds)
+void \hyperlink{_m_h_v___r_t_c_8h_a74bf112d3f941f6086b48051aa901528}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds)
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+void \hyperlink{_m_h_v___r_t_c_8h_a21bc55cd0aba213ee2948529d3e49caf}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
 \item 
-void \hyperlink{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___alarm_listener}{\-M\-H\-V\-\_\-\-Alarm\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds)
+void \hyperlink{_m_h_v___r_t_c_8h_ab3d6ca9fd272828e5275f9f3d2b789bb}{mhv\-\_\-alarm\-Init} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm, \hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds)
 \item 
 void \hyperlink{_m_h_v___r_t_c_8h_a4612d3f9e00ed01b4fd761e99eb9d054}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
 \item 
@@ -116,7 +114,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 202 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 195 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}}
@@ -146,7 +144,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 193 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 186 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -158,7 +156,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}
 
 
-\-Definition at line 88 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 87 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H@{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}
@@ -308,13 +306,13 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 
 
 \subsection{\-Function \-Documentation}
-\hypertarget{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}{
+\hypertarget{_m_h_v___r_t_c_8h_a1666f14436bc271cb087f59b809e3fa7}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
 \index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} \&}]{listener, }
 \item[{uint32\-\_\-t}]{when\-Timestamp, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds, }
 \item[{uint8\-\_\-t}]{when\-Ticks, }
@@ -323,7 +321,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \item[{uint8\-\_\-t}]{repeat\-Ticks}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
-\label{_m_h_v___r_t_c_8h_a0698651988bc2db85e374ea2d0cef503}
+\label{_m_h_v___r_t_c_8h_a1666f14436bc271cb087f59b809e3fa7}
 \-Initialise an alarm struct with tick resolution and repeats
 
 
@@ -347,22 +345,22 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 102 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 101 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
-\hypertarget{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}{
+\hypertarget{_m_h_v___r_t_c_8h_a74bf112d3f941f6086b48051aa901528}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
 \index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} \&}]{listener, }
 \item[{uint32\-\_\-t}]{when\-Timestamp, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds, }
 \item[{uint32\-\_\-t}]{repeat\-Timestamp, }
 \item[{uint16\-\_\-t}]{repeat\-Milliseconds}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
-\label{_m_h_v___r_t_c_8h_adf33164f2ff727b594feae918c9ecedb}
+\label{_m_h_v___r_t_c_8h_a74bf112d3f941f6086b48051aa901528}
 \-Initialise an alarm struct with millisecond resolution and repeats
 
 
@@ -382,21 +380,21 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 124 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 123 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
-\hypertarget{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}{
+\hypertarget{_m_h_v___r_t_c_8h_a21bc55cd0aba213ee2948529d3e49caf}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
 \index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} \&}]{listener, }
 \item[{uint32\-\_\-t}]{when\-Timestamp, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds, }
 \item[{uint8\-\_\-t}]{when\-Ticks}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
-\label{_m_h_v___r_t_c_8h_a1564eded07103ea76d7ea807786230c5}
+\label{_m_h_v___r_t_c_8h_a21bc55cd0aba213ee2948529d3e49caf}
 \-Initialise an alarm struct with tick resolution
 
 
@@ -414,20 +412,20 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 145 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 144 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
-\hypertarget{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}{
+\hypertarget{_m_h_v___r_t_c_8h_ab3d6ca9fd272828e5275f9f3d2b789bb}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
 \index{mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 \subsubsection[{mhv\-\_\-alarm\-Init}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-alarm\-Init (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Alarm\-Listener} \&}]{listener, }
+\item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} \&}]{listener, }
 \item[{uint32\-\_\-t}]{when\-Timestamp, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
-\label{_m_h_v___r_t_c_8h_ab7702b74c33ee3c9f862057c7dd1631f}
+\label{_m_h_v___r_t_c_8h_ab3d6ca9fd272828e5275f9f3d2b789bb}
 \-Initialise an alarm struct with millisecond resolution
 
 
@@ -443,7 +441,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 164 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 163 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}}

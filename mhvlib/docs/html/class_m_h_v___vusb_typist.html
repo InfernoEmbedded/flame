@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -112,7 +112,7 @@ Inheritance diagram for MHV_VusbTypist:</div>
   <map id="MHV_VusbTypist_map" name="MHV_VusbTypist_map">
 <area href="class_m_h_v___vusb_keyboard.html" alt="MHV_VusbKeyboard" shape="rect" coords="0,56,132,80"/>
 <area href="class_m_h_v___device___t_x.html" alt="MHV_Device_TX" shape="rect" coords="142,56,274,80"/>
-<area href="class_m_h_v___alarm_listener.html" alt="MHV_AlarmListener" shape="rect" coords="0,0,132,24"/>
+<area href="class_m_h_v___timer_listener.html" alt="MHV_TimerListener" shape="rect" coords="0,0,132,24"/>
 </map>
  </div></div>
 
@@ -121,7 +121,7 @@ Inheritance diagram for MHV_VusbTypist:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_typist.html#abec936c0ca44586fec7bd76430feac71">MHV_VusbTypist</a> (<a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer, <a class="el" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;rtc)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_typist.html#a03207239279498b3bd39de8760d4ba09">alarm</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;alarm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_typist.html#a90c805aafa38fb78df184c26fd4e0967">alarm</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___vusb_typist.html#a171cec2829ab07c838ffda3e7c3b9871">runTxBuffers</a> ()</td></tr>
@@ -172,31 +172,24 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a03207239279498b3bd39de8760d4ba09"></a><!-- doxytag: member="MHV_VusbTypist::alarm" ref="a03207239279498b3bd39de8760d4ba09" args="(const MHV_ALARM &amp;alarm)" -->
+<a class="anchor" id="a90c805aafa38fb78df184c26fd4e0967"></a><!-- doxytag: member="MHV_VusbTypist::alarm" ref="a90c805aafa38fb78df184c26fd4e0967" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_VusbTypist::alarm </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;&#160;</td>
-          <td class="paramname"><em>alarm</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 <p>Periodically called to maintain USB comms </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname">alarm</td><td>the alarm that triggered the call </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p>Reimplemented from <a class="el" href="class_m_h_v___vusb_keyboard.html#a254b92012ed2a8b5b5549dc4c99a81e4">MHV_VusbKeyboard</a>.</p>
+<p>Reimplemented from <a class="el" href="class_m_h_v___vusb_keyboard.html#a9d59ac54f1b17ece17c038dc3f5bd026">MHV_VusbKeyboard</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
 
 </div>
 </div>
@@ -217,7 +210,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">MHV_Device_TX</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00064">64</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00063">63</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
 
 </div>
 </div>
@@ -237,7 +230,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Type a single character on the keyboard </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00070">70</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html#l00069">69</a> of file <a class="el" href="_m_h_v___vusb_typist_8cpp_source.html">MHV_VusbTypist.cpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +274,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:07 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:43 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

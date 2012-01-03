@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">MHV_StepperMotor Class Reference</div>  </div>
 </div>
 <div class="contents">
-<!-- doxytag: class="MHV_StepperMotor" --><!-- doxytag: inherits="MHV_AlarmListener" -->
+<!-- doxytag: class="MHV_StepperMotor" --><!-- doxytag: inherits="MHV_TimerListener" -->
 <p><code>#include &lt;<a class="el" href="_m_h_v___stepper_motor_8h_source.html">MHV_StepperMotor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MHV_StepperMotor:</div>
@@ -108,7 +108,7 @@ Inheritance diagram for MHV_StepperMotor:</div>
  <div class="center">
   <img src="class_m_h_v___stepper_motor.png" usemap="#MHV_StepperMotor_map" alt=""/>
   <map id="MHV_StepperMotor_map" name="MHV_StepperMotor_map">
-<area href="class_m_h_v___alarm_listener.html" alt="MHV_AlarmListener" shape="rect" coords="0,0,172,24"/>
+<area href="class_m_h_v___timer_listener.html" alt="MHV_TimerListener" shape="rect" coords="0,0,172,24"/>
 <area href="class_m_h_v___stepper_motor_unipolar.html" alt="MHV_StepperMotorUnipolar" shape="rect" coords="0,112,172,136"/>
 </map>
  </div></div>
@@ -123,7 +123,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#a4841a6579cbe6a76f9e1c424674fb633">isMoving</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#a7721897d995212e79af8a6701dbd6abb">getPosition</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#a921e5aaac1a60eade58b8c29edfda53d">rotate</a> (bool forward, float speed, int32_t until)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#aa2be497715473018cac225732b995b5d">alarm</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;alarm)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#a97826114693f3e3d3ada782ee0e35b22">alarm</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#aa8a40a53160fed20a1c5cd3bd9436dc1">registerListener</a> (<a class="el" href="class_m_h_v___stepper_listener.html">MHV_StepperListener</a> &amp;listener)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___stepper_motor.html#aa162df6dc479e27449cf394b083e759c">deregisterListener</a> ()</td></tr>
 </table>
@@ -158,15 +158,14 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="aa2be497715473018cac225732b995b5d"></a><!-- doxytag: member="MHV_StepperMotor::alarm" ref="aa2be497715473018cac225732b995b5d" args="(const MHV_ALARM &amp;alarm)" -->
+<a class="anchor" id="a97826114693f3e3d3ada782ee0e35b22"></a><!-- doxytag: member="MHV_StepperMotor::alarm" ref="a97826114693f3e3d3ada782ee0e35b22" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void MHV_StepperMotor::alarm </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">MHV_ALARM</a> &amp;&#160;</td>
-          <td class="paramname"><em>alarm</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td><code> [virtual]</code></td>
         </tr>
       </table>
@@ -174,7 +173,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 <p>Called periodically to move the motor </p>
 
-<p>Implements <a class="el" href="class_m_h_v___alarm_listener.html#a59516fb8f83aa8b1e7b3d566ad19528b">MHV_AlarmListener</a>.</p>
+<p>Implements <a class="el" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">MHV_TimerListener</a>.</p>
 
 <p>Definition at line <a class="el" href="_m_h_v___stepper_motor_8cpp_source.html#l00098">98</a> of file <a class="el" href="_m_h_v___stepper_motor_8cpp_source.html">MHV_StepperMotor.cpp</a>.</p>
 
@@ -378,7 +377,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:06 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:41 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

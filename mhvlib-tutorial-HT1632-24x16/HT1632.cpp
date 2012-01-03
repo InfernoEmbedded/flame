@@ -31,10 +31,15 @@
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
-#include <MHV_Display_Holtek_HT1632.h>
 #include <MHV_Font_SansSerif_10x8.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
+
+#define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A0
+#define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A1
+#define MHV_SHIFT_ORDER_MSB
+#include <MHV_Display_Holtek_HT1632.h>
+
 
 /* We will use the following pins to communicate with the display
  * Signal	328	1280		Arduino
@@ -46,18 +51,18 @@
 
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
-#define TX_BUFFER_SIZE TX_ELEMENTS_COUNT * sizeof(MHV_TX_BUFFER) + 1
-// A buffer for the display to send data, it only contains pointers
-char txBuf[TX_BUFFER_SIZE];
-MHV_RingBuffer txBuffer(txBuf, TX_BUFFER_SIZE);
 
+class DisplaySelector : public MHV_Display_Selector {
+public:
+	void select(uint8_t moduleX, uint8_t moduleY, bool active);
+};
 
 /**
  * Callback for the display selection - sets CS lines appropriately
  * @param moduleX	the x coordinate of the module
  * @param moduleY	the y coordinate of the module
  */
-void displaySelect(uint8_t moduleX, uint8_t moduleY, bool active) {
+void DisplaySelector::select(uint8_t moduleX, uint8_t moduleY, bool active) {
 	if (active) {
 		switch (moduleX) {
 		case 0:
@@ -74,6 +79,10 @@ void displaySelect(uint8_t moduleX, uint8_t moduleY, bool active) {
 		mhv_pinOn(MHV_ARDUINO_PIN_A3);
 	}
 }
+
+DisplaySelector displaySelector;
+
+MHV_HOLTEK_HT1632_CREATE(display, MHV_HT1632_PMOS_24x16, 24 * 16, 2, 1, displaySelector, TX_ELEMENTS_COUNT);
 
 /**
  *  Fill up the display column by column, starting from the bottom left
@@ -272,10 +281,6 @@ int NORETURN main(void) {
 
 	// Enable global interrupts
 	sei();
-
-	uint8_t frameBuffer[1 * 1 * 24 * 16 / 8];
-	MHV_Display_Holtek_HT1632 display(MHV_ARDUINO_PIN_A0, MHV_ARDUINO_PIN_A1,
-			MHV_HT1632_NMOS_24x16, 1, 1, &displaySelect, frameBuffer, txBuffer);
 
 	for (;;) {
 		display.setPixel(0, 0, 1);

@@ -3,6 +3,7 @@
 \label{_m_h_v___display___holtek___h_t1632_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}}
 }
 {\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome.\-h$>$}\*
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Shifter.\-h$>$}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -16,6 +17,8 @@ class \hyperlink{class_m_h_v___display___holtek___h_t1632}{\-M\-H\-V\-\_\-\-Disp
 \#define \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a4ba01db79dcbda834a7b99961119ce73}{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-E\-D}~7
 \item 
 \#define \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a87ab373c3a9bf221ad140b806e03fe82}{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-A\-X}~15
+\item 
+\#define \hyperlink{_m_h_v___display___holtek___h_t1632_8h_aa30f1c37fae03ff136f0ddb7aac814a2}{\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-\-\_\-mhv\-Object\-Name, \-\_\-\-\_\-mhv\-Mode, \-\_\-\-\_\-mhv\-Display\-Bytes, \-\_\-\-\_\-mhv\-Array\-X, \-\_\-\-\_\-mhv\-Array\-Y, \-\_\-\-\_\-mhv\-Selector, \-\_\-\-\_\-mhv\-Tx\-Buffer\-Count)
 \end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
@@ -41,6 +44,55 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 
 
 \subsection{\-Define \-Documentation}
+\hypertarget{_m_h_v___display___holtek___h_t1632_8h_aa30f1c37fae03ff136f0ddb7aac814a2}{
+\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_Display_Holtek_HT1632.h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}}
+\subsubsection[{\-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-H\-O\-L\-T\-E\-K\-\_\-\-H\-T1632\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-mhv\-Object\-Name, }
+\item[{}]{\-\_\-\-\_\-mhv\-Mode, }
+\item[{}]{\-\_\-\-\_\-mhv\-Display\-Bytes, }
+\item[{}]{\-\_\-\-\_\-mhv\-Array\-X, }
+\item[{}]{\-\_\-\-\_\-mhv\-Array\-Y, }
+\item[{}]{\-\_\-\-\_\-mhv\-Selector, }
+\item[{}]{\-\_\-\-\_\-mhv\-Tx\-Buffer\-Count}
+\end{DoxyParamCaption}
+)}}
+\label{_m_h_v___display___holtek___h_t1632_8h_aa30f1c37fae03ff136f0ddb7aac814a2}
+{\bfseries \-Value\-:}
+\begin{DoxyCode}
+uint8_t __mhvObjectName ## _Buffer[__mhvDisplayBytes * __mhvArrayX * 
+      __mhvArrayY]; \
+        MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
+        MHV_TX_BUFFER_CREATE(__mhvObjectName ## TX, __mhvTxBufferCount); \
+        MHV_Display_Holtek_HT1632 __mhvObjectName(__mhvObjectName ## _Shifter, 
+      __mhvSelector, \
+                        __mhvMode, __mhvArrayX, __mhvArrayY, __mhvObjectName ##
+       _Buffer, __mhvObjectName ## TX);
+\end{DoxyCode}
+\-Create a new \-H\-T1632 driver to control an array of displays \-The \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-C\-L\-O\-C\-K \& \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-D\-A\-T\-A macros should be defined in advance
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em \-\_\-\-\_\-mhv\-Object\-Name} & the variable name of the object \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Mode} & the \-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E of the displays \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Display\-Bytes} & the number of bytes in a single display \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Array\-X} & the number of displays in the \-X axis \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Array\-Y} & the number of displays in the \-Y axis \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Selector} & the selector to choose the active display \\
+\hline
+{\em \-\_\-\-\_\-mhv\-Tx\-Buffer\-Count} & the number of \-T\-X buffers \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 63 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
 \hypertarget{_m_h_v___display___holtek___h_t1632_8h_a87ab373c3a9bf221ad140b806e03fe82}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-A\-X@{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-A\-X}}
 \index{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-A\-X@{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-A\-X}!MHV_Display_Holtek_HT1632.h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}}
@@ -48,7 +100,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 \label{_m_h_v___display___holtek___h_t1632_8h_a87ab373c3a9bf221ad140b806e03fe82}
 
 
-\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 34 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 \hypertarget{_m_h_v___display___holtek___h_t1632_8h_a4ba01db79dcbda834a7b99961119ce73}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-E\-D@{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-E\-D}}
@@ -57,7 +109,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 \label{_m_h_v___display___holtek___h_t1632_8h_a4ba01db79dcbda834a7b99961119ce73}
 
 
-\-Definition at line 32 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 \hypertarget{_m_h_v___display___holtek___h_t1632_8h_aaf707505ef9669d0f5d93c5c6ac02d45}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-I\-N@{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-B\-R\-I\-G\-H\-T\-N\-E\-S\-S\-\_\-\-M\-I\-N}}
@@ -66,7 +118,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 \label{_m_h_v___display___holtek___h_t1632_8h_aaf707505ef9669d0f5d93c5c6ac02d45}
 
 
-\-Definition at line 31 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 32 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 
 
@@ -78,7 +130,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 \label{_m_h_v___display___holtek___h_t1632_8h_a21da7a8c673d061604ebb292b4397dc8}
 
 
-\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 \hypertarget{_m_h_v___display___holtek___h_t1632_8h_acd40cb080ad115073ac334c8e29615d3}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-H\-T1632\-\_\-\-M\-O\-D\-E}}
@@ -87,7 +139,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 \label{_m_h_v___display___holtek___h_t1632_8h_acd40cb080ad115073ac334c8e29615d3}
 
 
-\-Definition at line 48 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 49 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 
 
@@ -117,7 +169,7 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 
 
 
-\-Definition at line 35 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 
 \hypertarget{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83f5359011}{
 \index{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h@{\-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}!mhv\-\_\-ht1632\-\_\-mode@{mhv\-\_\-ht1632\-\_\-mode}}
@@ -148,5 +200,5 @@ enum \hyperlink{_m_h_v___display___holtek___h_t1632_8h_a49097ad6362d784be39f7e83
 
 
 
-\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
 

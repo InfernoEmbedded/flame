@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -177,138 +177,131 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00079"></a>00079 };
 <a name="l00080"></a><a class="code" href="_m_h_v___r_t_c_8h.html#adace8912943ac21c837360427880df71">00080</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmhv__time.html">mhv_time</a> <a class="code" href="structmhv__time.html">MHV_TIME</a>;
 <a name="l00081"></a>00081 
-<a name="l00082"></a>00082 <span class="keyword">class </span><a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a>;
-<a name="l00083"></a><a class="code" href="structmhv__alarm.html">00083</a> <span class="keyword">struct </span><a class="code" href="structmhv__alarm.html">mhv_alarm</a> {
-<a name="l00084"></a><a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">00084</a>         <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a>           <a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>;
-<a name="l00085"></a><a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">00085</a>         <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a>           <a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>;
-<a name="l00086"></a><a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">00086</a>         <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a>       *<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>;
-<a name="l00087"></a>00087 };
-<a name="l00088"></a><a class="code" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">00088</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmhv__alarm.html">mhv_alarm</a> <a class="code" href="structmhv__alarm.html">MHV_ALARM</a>;
-<a name="l00089"></a>00089 
-<a name="l00102"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a0698651988bc2db85e374ea2d0cef503">00102</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a0698651988bc2db85e374ea2d0cef503">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>,
-<a name="l00103"></a>00103                 uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks,
-<a name="l00104"></a>00104                 uint32_t repeatTimestamp, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
-<a name="l00105"></a>00105         alarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>;
-<a name="l00106"></a>00106         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
-<a name="l00107"></a>00107         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
-<a name="l00108"></a>00108         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = whenTicks;
-<a name="l00109"></a>00109         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = repeatTimestamp;
-<a name="l00110"></a>00110         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = repeatMilliseconds;
-<a name="l00111"></a>00111         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = repeatTicks;
-<a name="l00112"></a>00112 }
-<a name="l00113"></a>00113 
-<a name="l00124"></a><a class="code" href="_m_h_v___r_t_c_8h.html#adf33164f2ff727b594feae918c9ecedb">00124</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a0698651988bc2db85e374ea2d0cef503">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>,
-<a name="l00125"></a>00125                 uint32_t whenTimestamp, uint16_t whenMilliseconds,
-<a name="l00126"></a>00126                 uint32_t repeatTimestamp, uint16_t repeatMilliseconds) {
-<a name="l00127"></a>00127         alarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>;
-<a name="l00128"></a>00128         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
-<a name="l00129"></a>00129         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
-<a name="l00130"></a>00130         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
-<a name="l00131"></a>00131         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = repeatTimestamp;
-<a name="l00132"></a>00132         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = repeatMilliseconds;
-<a name="l00133"></a>00133         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
-<a name="l00134"></a>00134 }
-<a name="l00135"></a>00135 
-<a name="l00145"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a1564eded07103ea76d7ea807786230c5">00145</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a0698651988bc2db85e374ea2d0cef503">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>,
-<a name="l00146"></a>00146                 uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks) {
-<a name="l00147"></a>00147         alarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>;
-<a name="l00148"></a>00148         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
-<a name="l00149"></a>00149         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
-<a name="l00150"></a>00150         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = whenTicks;
-<a name="l00151"></a>00151         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
-<a name="l00152"></a>00152         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 0;
-<a name="l00153"></a>00153         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
-<a name="l00154"></a>00154 }
-<a name="l00155"></a>00155 
-<a name="l00164"></a><a class="code" href="_m_h_v___r_t_c_8h.html#ab7702b74c33ee3c9f862057c7dd1631f">00164</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a0698651988bc2db85e374ea2d0cef503">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>,
-<a name="l00165"></a>00165                 uint32_t whenTimestamp, uint16_t whenMilliseconds) {
-<a name="l00166"></a>00166         alarm.<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a6186f7bbb237eebe47cc16a5a94272fb">listener</a>;
-<a name="l00167"></a>00167         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
-<a name="l00168"></a>00168         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
-<a name="l00169"></a>00169         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
-<a name="l00170"></a>00170         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
-<a name="l00171"></a>00171         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 0;
-<a name="l00172"></a>00172         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
-<a name="l00173"></a>00173 }
-<a name="l00174"></a>00174 
-<a name="l00175"></a><a class="code" href="class_m_h_v___alarm_listener.html">00175</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> {
-<a name="l00176"></a>00176 <span class="keyword">public</span>:
-<a name="l00177"></a>00177         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___alarm_listener.html#a59516fb8f83aa8b1e7b3d566ad19528b">alarm</a>(<span class="keyword">const</span> <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;<a class="code" href="class_m_h_v___alarm_listener.html#a59516fb8f83aa8b1e7b3d566ad19528b">alarm</a>) =0;
-<a name="l00178"></a>00178 };
+<a name="l00082"></a><a class="code" href="structmhv__alarm.html">00082</a> <span class="keyword">struct </span><a class="code" href="structmhv__alarm.html">mhv_alarm</a> {
+<a name="l00083"></a><a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">00083</a>         <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a>           <a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>;
+<a name="l00084"></a><a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">00084</a>         <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a>           <a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>;
+<a name="l00085"></a><a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">00085</a>         <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a>       *<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>;
+<a name="l00086"></a>00086 };
+<a name="l00087"></a><a class="code" href="_m_h_v___r_t_c_8h.html#af13307658f41fba330ffae04dd5cbce6">00087</a> <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structmhv__alarm.html">mhv_alarm</a> <a class="code" href="structmhv__alarm.html">MHV_ALARM</a>;
+<a name="l00088"></a>00088 
+<a name="l00101"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a1666f14436bc271cb087f59b809e3fa7">00101</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a1666f14436bc271cb087f59b809e3fa7">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>,
+<a name="l00102"></a>00102                 uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks,
+<a name="l00103"></a>00103                 uint32_t repeatTimestamp, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
+<a name="l00104"></a>00104         alarm.<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>;
+<a name="l00105"></a>00105         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
+<a name="l00106"></a>00106         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
+<a name="l00107"></a>00107         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = whenTicks;
+<a name="l00108"></a>00108         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = repeatTimestamp;
+<a name="l00109"></a>00109         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = repeatMilliseconds;
+<a name="l00110"></a>00110         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = repeatTicks;
+<a name="l00111"></a>00111 }
+<a name="l00112"></a>00112 
+<a name="l00123"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a74bf112d3f941f6086b48051aa901528">00123</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a1666f14436bc271cb087f59b809e3fa7">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>,
+<a name="l00124"></a>00124                 uint32_t whenTimestamp, uint16_t whenMilliseconds,
+<a name="l00125"></a>00125                 uint32_t repeatTimestamp, uint16_t repeatMilliseconds) {
+<a name="l00126"></a>00126         alarm.<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>;
+<a name="l00127"></a>00127         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
+<a name="l00128"></a>00128         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
+<a name="l00129"></a>00129         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
+<a name="l00130"></a>00130         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = repeatTimestamp;
+<a name="l00131"></a>00131         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = repeatMilliseconds;
+<a name="l00132"></a>00132         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
+<a name="l00133"></a>00133 }
+<a name="l00134"></a>00134 
+<a name="l00144"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a21bc55cd0aba213ee2948529d3e49caf">00144</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a1666f14436bc271cb087f59b809e3fa7">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>,
+<a name="l00145"></a>00145                 uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks) {
+<a name="l00146"></a>00146         alarm.<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>;
+<a name="l00147"></a>00147         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
+<a name="l00148"></a>00148         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
+<a name="l00149"></a>00149         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = whenTicks;
+<a name="l00150"></a>00150         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
+<a name="l00151"></a>00151         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 0;
+<a name="l00152"></a>00152         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
+<a name="l00153"></a>00153 }
+<a name="l00154"></a>00154 
+<a name="l00163"></a><a class="code" href="_m_h_v___r_t_c_8h.html#ab3d6ca9fd272828e5275f9f3d2b789bb">00163</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8h.html#a1666f14436bc271cb087f59b809e3fa7">mhv_alarmInit</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;alarm, <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>,
+<a name="l00164"></a>00164                 uint32_t whenTimestamp, uint16_t whenMilliseconds) {
+<a name="l00165"></a>00165         alarm.<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a> = &amp;<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a>;
+<a name="l00166"></a>00166         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = whenTimestamp;
+<a name="l00167"></a>00167         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = whenMilliseconds;
+<a name="l00168"></a>00168         alarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
+<a name="l00169"></a>00169         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
+<a name="l00170"></a>00170         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 0;
+<a name="l00171"></a>00171         alarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a9580508b8bfb37df0713ad6b4ad58636">ticks</a> = 0;
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00174"></a>00174 <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a4612d3f9e00ed01b4fd761e99eb9d054">mhv_timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds);
+<a name="l00175"></a>00175 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a2a1b0d31d6746568ddbd62176c72b6ef">mhv_isLeapYear</a>(uint16_t year);
+<a name="l00176"></a>00176 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a858279f2a451fd8a80d4f3885dc328f3">mhv_timestampGreaterThanOrEqual</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;first, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;second);
+<a name="l00177"></a>00177 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a8b370d6f324996a97860bffd8087cb16">mhv_timestampLessThan</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;first, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;second);
+<a name="l00178"></a>00178 uint8_t <a class="code" href="_m_h_v___r_t_c_8cpp.html#abd7e3066894c2ec91b7552f992cdaebd">mhv_daysInMonth</a>(<a class="code" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a> month, uint16_t year);
 <a name="l00179"></a>00179 
-<a name="l00180"></a>00180 
-<a name="l00181"></a>00181 <span class="keywordtype">void</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a4612d3f9e00ed01b4fd761e99eb9d054">mhv_timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds);
-<a name="l00182"></a>00182 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a2a1b0d31d6746568ddbd62176c72b6ef">mhv_isLeapYear</a>(uint16_t year);
-<a name="l00183"></a>00183 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a858279f2a451fd8a80d4f3885dc328f3">mhv_timestampGreaterThanOrEqual</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;first, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;second);
-<a name="l00184"></a>00184 <span class="keywordtype">bool</span> <a class="code" href="_m_h_v___r_t_c_8cpp.html#a8b370d6f324996a97860bffd8087cb16">mhv_timestampLessThan</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;first, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;second);
-<a name="l00185"></a>00185 uint8_t <a class="code" href="_m_h_v___r_t_c_8cpp.html#abd7e3066894c2ec91b7552f992cdaebd">mhv_daysInMonth</a>(<a class="code" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a> month, uint16_t year);
-<a name="l00186"></a>00186 
-<a name="l00193"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a87fe8a9eaa30bd8e9eb507db54a02284">00193</a> <span class="preprocessor">#define MHV_RTC_CREATE_TZ(_mhvObjectName,_mhvEventCount,_mhvTimezone) \</span>
-<a name="l00194"></a>00194 <span class="preprocessor">                MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \</span>
-<a name="l00195"></a>00195 <span class="preprocessor">                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount,_mhvTimezone);</span>
-<a name="l00196"></a>00196 <span class="preprocessor"></span>
-<a name="l00202"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a3a0cd83cccff5a23621b1117da967527">00202</a> <span class="preprocessor">#define MHV_RTC_CREATE(_mhvObjectName,_mhvEventCount) \</span>
-<a name="l00203"></a>00203 <span class="preprocessor">                MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \</span>
-<a name="l00204"></a>00204 <span class="preprocessor">                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount);</span>
-<a name="l00205"></a>00205 <span class="preprocessor"></span>
-<a name="l00206"></a><a class="code" href="class_m_h_v___r_t_c.html">00206</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a> : <span class="keyword">public</span> <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> {
-<a name="l00207"></a>00207 <span class="keyword">private</span>:
-<a name="l00208"></a>00208         <span class="keyword">inline</span> <span class="keywordtype">void</span> incrementMilliseconds();
-<a name="l00209"></a>00209 
-<a name="l00210"></a>00210 <span class="keyword">protected</span>:
-<a name="l00211"></a><a class="code" href="class_m_h_v___r_t_c.html#afaaed6deea21b52f8bde5f8ebc0abf70">00211</a>         <a class="code" href="structmhv__alarm.html">MHV_ALARM</a>                               *<a class="code" href="class_m_h_v___r_t_c.html#afaaed6deea21b52f8bde5f8ebc0abf70">_alarms</a>;
-<a name="l00212"></a><a class="code" href="class_m_h_v___r_t_c.html#a953a79952c9fa5fde5d1dacbc03d3b46">00212</a>         <span class="keyword">volatile</span> uint8_t                <a class="code" href="class_m_h_v___r_t_c.html#a953a79952c9fa5fde5d1dacbc03d3b46">_alarmCount</a>;
-<a name="l00213"></a><a class="code" href="class_m_h_v___r_t_c.html#aed7d37466a99362b78dd9ccf1390d35c">00213</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#aed7d37466a99362b78dd9ccf1390d35c">_alarmMax</a>;
-<a name="l00214"></a><a class="code" href="class_m_h_v___r_t_c.html#a6ac0d6f1b8985cd6113249693da50104">00214</a>         uint32_t                                <a class="code" href="class_m_h_v___r_t_c.html#a6ac0d6f1b8985cd6113249693da50104">_timestamp</a>;
-<a name="l00215"></a><a class="code" href="class_m_h_v___r_t_c.html#acd3e486b5e5ee1d8cf9d961c0fdbde57">00215</a>         uint16_t                                <a class="code" href="class_m_h_v___r_t_c.html#acd3e486b5e5ee1d8cf9d961c0fdbde57">_milliseconds</a>;
-<a name="l00216"></a><a class="code" href="class_m_h_v___r_t_c.html#ab29c30f80f7234394299476c73f36baf">00216</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#ab29c30f80f7234394299476c73f36baf">_ticks</a>;
-<a name="l00217"></a><a class="code" href="class_m_h_v___r_t_c.html#a48e7d03e90e78881ed8833d6e4f77b36">00217</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#a48e7d03e90e78881ed8833d6e4f77b36">_ticksPerMillisecond</a>;
-<a name="l00218"></a><a class="code" href="class_m_h_v___r_t_c.html#af9e544307713892ec196261247213490">00218</a>         int16_t                                 <a class="code" href="class_m_h_v___r_t_c.html#af9e544307713892ec196261247213490">_tzOffset</a>; <span class="comment">// Timezone offset in minutes +/- GMT</span>
-<a name="l00219"></a>00219 
-<a name="l00220"></a>00220 
-<a name="l00221"></a>00221 <span class="keyword">public</span>:
-<a name="l00222"></a>00222         <a class="code" href="class_m_h_v___r_t_c.html#aacb9ee506e1e18672a821b44f5138d2b">MHV_RTC</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> eventBuffer[], uint8_t eventCount, int16_t timezone = 0);
-<a name="l00223"></a>00223         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp2);
-<a name="l00224"></a>00224         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks);
-<a name="l00225"></a>00225         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a97308259a62550d63eaf677190fa5581">synchronise</a>(<a class="code" href="class_m_h_v___timer8.html">MHV_Timer8</a> &amp;_timer);
-<a name="l00226"></a>00226         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a>(uint32_t timestamp, uint16_t milliseconds);
-<a name="l00227"></a>00227         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp);
-<a name="l00228"></a>00228         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#ad01b7a3e8049fb64bf9f490e97b89696">current</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp);
-<a name="l00229"></a>00229         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;since, <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;<a class="code" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a>);
-<a name="l00230"></a>00230         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#aa0a908785e5445b1ab5d3bdb20f5fc62">toTime</a>(<a class="code" href="structmhv__time.html">MHV_TIME</a> &amp;to, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;from);
-<a name="l00231"></a>00231         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a3aecb460c309ca773933e0c82bbd7819">toTimestamp</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;to, <span class="keyword">const</span> <a class="code" href="structmhv__time.html">MHV_TIME</a> &amp;from);
-<a name="l00232"></a>00232         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;<a class="code" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a>);
-<a name="l00233"></a>00233         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener,
-<a name="l00234"></a>00234                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
-<a name="l00235"></a>00235                         uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
-<a name="l00236"></a>00236         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener,
-<a name="l00237"></a>00237                         uint32_t whenSeconds, uint16_t whenMilliseconds,
-<a name="l00238"></a>00238                         uint32_t repeatSeconds, uint16_t repeatMilliseconds);
-<a name="l00239"></a>00239         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener,
-<a name="l00240"></a>00240                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
-<a name="l00241"></a>00241         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener,
-<a name="l00242"></a>00242                         uint32_t whenSeconds, uint16_t whenMilliseconds);
-<a name="l00243"></a>00243         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener,
-<a name="l00244"></a>00244                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
-<a name="l00245"></a>00245                         uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
-<a name="l00246"></a>00246         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener,
-<a name="l00247"></a>00247                         uint32_t whenSeconds, uint16_t whenMilliseconds,
-<a name="l00248"></a>00248                         uint32_t repeatSeconds, uint16_t repeatMilliseconds);
-<a name="l00249"></a>00249         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener,
-<a name="l00250"></a>00250                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
-<a name="l00251"></a>00251         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener,
-<a name="l00252"></a>00252                         uint32_t whenSeconds, uint16_t whenMilliseconds);
-<a name="l00253"></a>00253         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#abebdf394ea6ed2c48f80cc02d4371a90">handleEvents</a>();
-<a name="l00254"></a>00254         uint8_t <a class="code" href="class_m_h_v___r_t_c.html#a78c9916568b91c43ba000a8fa851e3e5">alarmsPending</a>();
-<a name="l00255"></a>00255         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a102c6e3d254e884d586ef3b9b885058b">removeAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> &amp;listener);
-<a name="l00256"></a>00256         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a102c6e3d254e884d586ef3b9b885058b">removeAlarm</a>(<a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a> *listener);
-<a name="l00257"></a>00257 <span class="comment">// from MHV_TimerListener</span>
-<a name="l00258"></a>00258         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a>();
-<a name="l00259"></a>00259 
-<a name="l00260"></a>00260 
-<a name="l00261"></a>00261 };
-<a name="l00262"></a>00262 
-<a name="l00263"></a>00263 <span class="preprocessor">#endif </span><span class="comment">/* MHV_RTC_H_ */</span>
+<a name="l00186"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a87fe8a9eaa30bd8e9eb507db54a02284">00186</a> <span class="preprocessor">#define MHV_RTC_CREATE_TZ(_mhvObjectName,_mhvEventCount,_mhvTimezone) \</span>
+<a name="l00187"></a>00187 <span class="preprocessor">                MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \</span>
+<a name="l00188"></a>00188 <span class="preprocessor">                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount,_mhvTimezone);</span>
+<a name="l00189"></a>00189 <span class="preprocessor"></span>
+<a name="l00195"></a><a class="code" href="_m_h_v___r_t_c_8h.html#a3a0cd83cccff5a23621b1117da967527">00195</a> <span class="preprocessor">#define MHV_RTC_CREATE(_mhvObjectName,_mhvEventCount) \</span>
+<a name="l00196"></a>00196 <span class="preprocessor">                MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \</span>
+<a name="l00197"></a>00197 <span class="preprocessor">                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount);</span>
+<a name="l00198"></a>00198 <span class="preprocessor"></span>
+<a name="l00199"></a><a class="code" href="class_m_h_v___r_t_c.html">00199</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a> : <span class="keyword">public</span> <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> {
+<a name="l00200"></a>00200 <span class="keyword">private</span>:
+<a name="l00201"></a>00201         <span class="keyword">inline</span> <span class="keywordtype">void</span> incrementMilliseconds();
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203 <span class="keyword">protected</span>:
+<a name="l00204"></a><a class="code" href="class_m_h_v___r_t_c.html#afaaed6deea21b52f8bde5f8ebc0abf70">00204</a>         <a class="code" href="structmhv__alarm.html">MHV_ALARM</a>                               *<a class="code" href="class_m_h_v___r_t_c.html#afaaed6deea21b52f8bde5f8ebc0abf70">_alarms</a>;
+<a name="l00205"></a><a class="code" href="class_m_h_v___r_t_c.html#a953a79952c9fa5fde5d1dacbc03d3b46">00205</a>         <span class="keyword">volatile</span> uint8_t                <a class="code" href="class_m_h_v___r_t_c.html#a953a79952c9fa5fde5d1dacbc03d3b46">_alarmCount</a>;
+<a name="l00206"></a><a class="code" href="class_m_h_v___r_t_c.html#aed7d37466a99362b78dd9ccf1390d35c">00206</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#aed7d37466a99362b78dd9ccf1390d35c">_alarmMax</a>;
+<a name="l00207"></a><a class="code" href="class_m_h_v___r_t_c.html#a6ac0d6f1b8985cd6113249693da50104">00207</a>         uint32_t                                <a class="code" href="class_m_h_v___r_t_c.html#a6ac0d6f1b8985cd6113249693da50104">_timestamp</a>;
+<a name="l00208"></a><a class="code" href="class_m_h_v___r_t_c.html#acd3e486b5e5ee1d8cf9d961c0fdbde57">00208</a>         uint16_t                                <a class="code" href="class_m_h_v___r_t_c.html#acd3e486b5e5ee1d8cf9d961c0fdbde57">_milliseconds</a>;
+<a name="l00209"></a><a class="code" href="class_m_h_v___r_t_c.html#ab29c30f80f7234394299476c73f36baf">00209</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#ab29c30f80f7234394299476c73f36baf">_ticks</a>;
+<a name="l00210"></a><a class="code" href="class_m_h_v___r_t_c.html#a48e7d03e90e78881ed8833d6e4f77b36">00210</a>         uint8_t                                 <a class="code" href="class_m_h_v___r_t_c.html#a48e7d03e90e78881ed8833d6e4f77b36">_ticksPerMillisecond</a>;
+<a name="l00211"></a><a class="code" href="class_m_h_v___r_t_c.html#af9e544307713892ec196261247213490">00211</a>         int16_t                                 <a class="code" href="class_m_h_v___r_t_c.html#af9e544307713892ec196261247213490">_tzOffset</a>; <span class="comment">// Timezone offset in minutes +/- GMT</span>
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214 <span class="keyword">public</span>:
+<a name="l00215"></a>00215         <a class="code" href="class_m_h_v___r_t_c.html#aacb9ee506e1e18672a821b44f5138d2b">MHV_RTC</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> eventBuffer[], uint8_t eventCount, int16_t timezone = 0);
+<a name="l00216"></a>00216         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp2);
+<a name="l00217"></a>00217         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a666d907f0699c61337891adb040d5114">timestampIncrement</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks);
+<a name="l00218"></a>00218         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a97308259a62550d63eaf677190fa5581">synchronise</a>(<a class="code" href="class_m_h_v___timer8.html">MHV_Timer8</a> &amp;_timer);
+<a name="l00219"></a>00219         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a>(uint32_t timestamp, uint16_t milliseconds);
+<a name="l00220"></a>00220         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a426e7a34e8a3957d378a634c2c2d00d8">setTime</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp);
+<a name="l00221"></a>00221         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#ad01b7a3e8049fb64bf9f490e97b89696">current</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;timestamp);
+<a name="l00222"></a>00222         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a>(<span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;since, <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;<a class="code" href="class_m_h_v___r_t_c.html#ac29cd961ae085c0b19e439f6a41c2941">elapsed</a>);
+<a name="l00223"></a>00223         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#aa0a908785e5445b1ab5d3bdb20f5fc62">toTime</a>(<a class="code" href="structmhv__time.html">MHV_TIME</a> &amp;to, <span class="keyword">const</span> <a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;from);
+<a name="l00224"></a>00224         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a3aecb460c309ca773933e0c82bbd7819">toTimestamp</a>(<a class="code" href="structmhv__timestamp.html">MHV_TIMESTAMP</a> &amp;to, <span class="keyword">const</span> <a class="code" href="structmhv__time.html">MHV_TIME</a> &amp;from);
+<a name="l00225"></a>00225         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;<a class="code" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a>);
+<a name="l00226"></a>00226         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener,
+<a name="l00227"></a>00227                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
+<a name="l00228"></a>00228                         uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
+<a name="l00229"></a>00229         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener,
+<a name="l00230"></a>00230                         uint32_t whenSeconds, uint16_t whenMilliseconds,
+<a name="l00231"></a>00231                         uint32_t repeatSeconds, uint16_t repeatMilliseconds);
+<a name="l00232"></a>00232         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener,
+<a name="l00233"></a>00233                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
+<a name="l00234"></a>00234         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener,
+<a name="l00235"></a>00235                         uint32_t whenSeconds, uint16_t whenMilliseconds);
+<a name="l00236"></a>00236         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener,
+<a name="l00237"></a>00237                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
+<a name="l00238"></a>00238                         uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks);
+<a name="l00239"></a>00239         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener,
+<a name="l00240"></a>00240                         uint32_t whenSeconds, uint16_t whenMilliseconds,
+<a name="l00241"></a>00241                         uint32_t repeatSeconds, uint16_t repeatMilliseconds);
+<a name="l00242"></a>00242         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener,
+<a name="l00243"></a>00243                         uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks);
+<a name="l00244"></a>00244         <span class="keywordtype">bool</span> <a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener,
+<a name="l00245"></a>00245                         uint32_t whenSeconds, uint16_t whenMilliseconds);
+<a name="l00246"></a>00246         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#abebdf394ea6ed2c48f80cc02d4371a90">handleEvents</a>();
+<a name="l00247"></a>00247         uint8_t <a class="code" href="class_m_h_v___r_t_c.html#a78c9916568b91c43ba000a8fa851e3e5">alarmsPending</a>();
+<a name="l00248"></a>00248         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a255a2beeb975fe84bd667a4ee0f42e5d">removeAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> &amp;listener);
+<a name="l00249"></a>00249         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a255a2beeb975fe84bd667a4ee0f42e5d">removeAlarm</a>(<a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a> *listener);
+<a name="l00250"></a>00250 <span class="comment">// from MHV_TimerListener</span>
+<a name="l00251"></a>00251         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">alarm</a>();
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253 
+<a name="l00254"></a>00254 };
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256 <span class="preprocessor">#endif </span><span class="comment">/* MHV_RTC_H_ */</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -329,7 +322,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

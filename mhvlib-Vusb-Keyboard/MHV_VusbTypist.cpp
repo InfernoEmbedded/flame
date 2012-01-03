@@ -37,7 +37,6 @@ MHV_VusbTypist::MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
 
 /**
  * Periodically called to maintain USB comms
- * @param alarm	the alarm that triggered the call
  */
 void MHV_VusbTypist::alarm() {
 	MHV_VusbKeyboard::alarm();

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -114,7 +114,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">getPixel</a>(uint16_t row, uint16_t col)</td><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html">MHV_Display_Holtek_HT1632</a></td><td><code> [virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#a1ef9b1ddbc9e57007903076005335211">getWidth</a>()</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a71cca6bdbc5f56f9ca161abe4d46e888">MHV_Device_TX</a>(MHV_RingBuffer &amp;txPointers)</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#ac3491073aa40004666aae9cefbffd14c">MHV_Display_Holtek_HT1632</a>(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(write), MHV_HT1632_MODE mode, uint8_t arrayX, uint8_t arrayY, void(*csCallback)(uint8_t x, uint8_t y, bool active), uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers)</td><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html">MHV_Display_Holtek_HT1632</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a584fae17d4902a8464a30f3b06e86811">MHV_Display_Holtek_HT1632</a>(MHV_Shifter &amp;shifter, MHV_Display_Selector &amp;selector, MHV_HT1632_MODE mode, uint8_t arrayX, uint8_t arrayY, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers)</td><td><a class="el" href="class_m_h_v___display___holtek___h_t1632.html">MHV_Display_Holtek_HT1632</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___display___monochrome.html#ae9bac3772b5baa006b04121c0caf0d8b">MHV_Display_Monochrome</a>(uint16_t colCount, uint16_t rowCount, MHV_RingBuffer &amp;txBuffers)</td><td><a class="el" href="class_m_h_v___display___monochrome.html">MHV_Display_Monochrome</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a64cba701f06476b494a97620e1a26e86">moreTX</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>()</td><td><a class="el" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a></td><td><code> [protected]</code></td></tr>
@@ -161,7 +161,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___displ
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:03 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:39 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

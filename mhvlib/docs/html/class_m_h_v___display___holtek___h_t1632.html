@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -117,7 +117,7 @@ Inheritance diagram for MHV_Display_Holtek_HT1632:</div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#ac3491073aa40004666aae9cefbffd14c">MHV_Display_Holtek_HT1632</a> (MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(write), <a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode, uint8_t arrayX, uint8_t arrayY, void(*csCallback)(uint8_t x, uint8_t y, bool active), uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a584fae17d4902a8464a30f3b06e86811">MHV_Display_Holtek_HT1632</a> (<a class="el" href="class_m_h_v___shifter.html">MHV_Shifter</a> &amp;shifter, <a class="el" href="class_m_h_v___display___selector.html">MHV_Display_Selector</a> &amp;selector, <a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a49097ad6362d784be39f7e83f5359011">MHV_HT1632_MODE</a> mode, uint8_t arrayX, uint8_t arrayY, uint8_t *frameBuffer, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a60620705276f1713dead13a4b440fed4">brightness</a> (uint8_t brightness)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a224e7f735441e8d381fb6148f2b64dda">poweroff</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a2a9586d4c16483b4223a2fad453bc6bf">poweron</a> ()</td></tr>
@@ -127,23 +127,23 @@ Public Member Functions</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00050">50</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00070">70</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac3491073aa40004666aae9cefbffd14c"></a><!-- doxytag: member="MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632" ref="ac3491073aa40004666aae9cefbffd14c" args="(MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(write), MHV_HT1632_MODE mode, uint8_t arrayX, uint8_t arrayY, void(*csCallback)(uint8_t x, uint8_t y, bool active), uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers)" -->
+<a class="anchor" id="a584fae17d4902a8464a30f3b06e86811"></a><!-- doxytag: member="MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632" ref="a584fae17d4902a8464a30f3b06e86811" args="(MHV_Shifter &amp;shifter, MHV_Display_Selector &amp;selector, MHV_HT1632_MODE mode, uint8_t arrayX, uint8_t arrayY, uint8_t *frameBuffer, MHV_RingBuffer &amp;txBuffers)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632 </td>
           <td>(</td>
-          <td class="paramtype">MHV_DECLARE_PIN(data)&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___shifter.html">MHV_Shifter</a> &amp;&#160;</td>
+          <td class="paramname"><em>shifter</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">MHV_DECLARE_PIN(write)&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype"><a class="el" href="class_m_h_v___display___selector.html">MHV_Display_Selector</a> &amp;&#160;</td>
+          <td class="paramname"><em>selector</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -166,12 +166,6 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void(*)(uint8_t x, uint8_t y, bool active)&#160;</td>
-          <td class="paramname"><em>csCallback</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>frameBuffer</em>, </td>
         </tr>
@@ -189,22 +183,20 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
-<p>Initialise the library </p>
+<p>Todo: Use callbacks for writes to the display to allow the SHIFTER macros to be called directly on ports, instead of indirecting - this will save clocks Initialise the library </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>the data pin </td></tr>
-    <tr><td class="paramname">writeDir</td><td>the write pin </td></tr>
+    <tr><td class="paramname">shifter</td><td>The shifter to output to </td></tr>
     <tr><td class="paramname">mode</td><td>What mode the displays should be run in </td></tr>
     <tr><td class="paramname">arrayX</td><td>the width of the array in number of displays </td></tr>
     <tr><td class="paramname">arrayY</td><td>the height of the array in number of displays </td></tr>
-    <tr><td class="paramname">csCallback</td><td>A callback to select which display is active (lines must be active low, x &amp; y select the display) </td></tr>
     <tr><td class="paramname">frameBuffer</td><td>memory for a framebuffer, must be at least arrayX * arrayY * displayX * displayY / 8 bytes long </td></tr>
     <tr><td class="paramname">txBuffers</td><td>A ringbuffer used for text printing </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00051">51</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00044">44</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -231,7 +223,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00326">326</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00291">291</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -250,7 +242,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 <p>Flush the framebuffer to the displays </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00263">263</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00230">230</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -290,7 +282,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___monochrome.html#a80573e21b6b455fdd79c9d7d0a981492">MHV_Display_Monochrome</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00171">171</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00155">155</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -309,7 +301,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 <p>Put all modules to sleep </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00386">386</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00351">351</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,7 +320,7 @@ Public Member Functions</h2></td></tr>
 <div class="memdoc">
 <p>Wake all modules up </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00399">399</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00364">364</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -374,7 +366,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___display___monochrome.html#a58a17e8662802e7f5d6ccd6f0bcc51a0">MHV_Display_Monochrome</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00125">125</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html#l00109">109</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8cpp_source.html">MHV_Display_Holtek_HT1632.cpp</a>.</p>
 
 </div>
 </div>
@@ -402,7 +394,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:03 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:39 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

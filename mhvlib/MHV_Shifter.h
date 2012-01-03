@@ -45,6 +45,7 @@
 
 #ifdef MHV_SHIFT_ORDER_MSB
 #define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 7; mhv_shift_i >= 0; mhv_shift_i--)
+#define SHIFTOUT_BITS_LOOP (mhv_shift_i = bits - 1; mhv_shift_i >= 0; mhv_shift_i--)
 #define MHV_BIT_1 _BV(7)
 #define MHV_BIT_2 _BV(6)
 #define MHV_BIT_3 _BV(5)
@@ -55,6 +56,7 @@
 #define MHV_BIT_8 _BV(0)
 #else
 #define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 0; mhv_shift_i < 8; mhv_shift_i++)
+#define SHIFTOUT_BITS_LOOP (mhv_shift_i = 0; mhv_shift_i < bits; mhv_shift_i++)
 #define MHV_BIT_1 _BV(0)
 #define MHV_BIT_2 _BV(1)
 #define MHV_BIT_3 _BV(2)
@@ -66,10 +68,11 @@
 #endif
 
 #if defined(MHV_SHIFT_WRITECLOCK) && defined(MHV_SHIFT_WRITEDATA)
+
 /* Shift a byte out, works both for devices that read on rising clock
  * & falling clock
+ * @param	data	the byte to shift out
  */
-
 #define MHV_SHIFTOUT_BYTE(data) \
 do { \
 	int8_t		mhv_shift_i; \
@@ -80,9 +83,35 @@ do { \
 			mhv_pinOff(MHV_SHIFT_WRITEDATA); \
 		} \
 		mhv_pinOn(MHV_SHIFT_WRITECLOCK); \
+		MHV_SHIFT_DELAY; \
 		mhv_pinOff(MHV_SHIFT_WRITECLOCK); \
+		MHV_SHIFT_DELAY; \
 	} \
 } while (0);
+
+
+/* Shift the lowest N bits out, works both for devices that read on rising clock
+ * & falling clock
+ * @param	data	the byte to shift out
+ * @param	bits	the number of bits to shift out
+ *
+ */
+#define MHV_SHIFTOUT_BITS(data,bits) \
+do { \
+	int8_t		mhv_shift_i; \
+	for SHIFTOUT_BITS_LOOP { \
+		if ((data >> mhv_shift_i) & 0x01) { \
+			mhv_pinOn(MHV_SHIFT_WRITEDATA); \
+		} else { \
+			mhv_pinOff(MHV_SHIFT_WRITEDATA); \
+		} \
+		mhv_pinOn(MHV_SHIFT_WRITECLOCK); \
+		MHV_SHIFT_DELAY; \
+		mhv_pinOff(MHV_SHIFT_WRITECLOCK); \
+		MHV_SHIFT_DELAY; \
+	} \
+} while (0);
+
 
 /* Write an array of data as clocked serial, where the reading device
  * reads data when the clock rises
@@ -487,10 +516,18 @@ void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
 #define MHV_SHIFTER_CLOCKED_RISING_CREATE(name) \
 	class MHV_Shifter_ ## name : public MHV_Shifter { \
 		public: \
+			void shiftOut(uint8_t shiftData, uint8_t bits); \
+			void shiftOut(uint8_t shiftData); \
 			void shiftOut(uint8_t *shiftData, uint8_t shiftLength); \
 			void shiftOut(uint8_t *shiftData, uint16_t shiftLength); \
 			void shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
 	}; \
+	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { \
+		MHV_SHIFTOUT_BITS(shiftData, bits); \
+	} \
+	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
+		MHV_SHIFTOUT_BYTE(shiftData); \
+	} \
 	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
 		MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
 	} \
@@ -510,10 +547,18 @@ void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
 #define MHV_SHIFTER_CLOCKED_FALLING_CREATE(name) \
 	class MHV_Shifter_ ## name : public MHV_Shifter { \
 		public: \
+			void shiftOut(uint8_t shiftData, uint8_t bits); \
+			void shiftOut(uint8_t shiftData); \
 			void shiftOut(uint8_t *shiftData, uint8_t shiftLength); \
 			void shiftOut(uint8_t *shiftData, uint16_t shiftLength); \
 			void shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
 	}; \
+	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { \
+		MHV_SHIFTOUT_BITS(shiftData, bits); \
+	} \
+	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
+		MHV_SHIFTOUT_BYTE(shiftData); \
+	} \
 	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
 		MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
 	} \
@@ -528,9 +573,11 @@ void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
 
 class MHV_Shifter {
 public:
-	virtual void shiftOut(uint8_t *data, uint8_t length);
-	virtual void shiftOut(uint8_t *data, uint16_t length);
-	virtual void shiftOut(uint8_t *data, uint8_t length, uint16_t elements);
+	virtual void shiftOut(uint8_t data, uint8_t bits) =0;
+	virtual void shiftOut(uint8_t data) =0;
+	virtual void shiftOut(uint8_t *data, uint8_t length) =0;
+	virtual void shiftOut(uint8_t *data, uint16_t length) =0;
+	virtual void shiftOut(uint8_t *data, uint8_t length, uint16_t elements) =0;
 };
 
 #endif /* MHV_SHIFTER_H_ */

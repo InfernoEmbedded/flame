@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -120,13 +120,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022 <span class="preprocessor">#include &lt;<a class="code" href="_m_h_v___device___t_x_8h.html">MHV_Device_TX.h</a>&gt;</span>
 <a name="l00023"></a>00023 <span class="preprocessor">#include &lt;<a class="code" href="_m_h_v___r_t_c_8h.html">MHV_RTC.h</a>&gt;</span>
 <a name="l00024"></a>00024 
-<a name="l00025"></a><a class="code" href="class_m_h_v___vusb_console.html">00025</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___vusb_console.html">MHV_VusbConsole</a> : <span class="keyword">public</span> <a class="code" href="class_m_h_v___alarm_listener.html">MHV_AlarmListener</a>, <span class="keyword">public</span> <a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a> {
+<a name="l00025"></a><a class="code" href="class_m_h_v___vusb_console.html">00025</a> <span class="keyword">class </span><a class="code" href="class_m_h_v___vusb_console.html">MHV_VusbConsole</a> : <span class="keyword">public</span> <a class="code" href="class_m_h_v___timer_listener.html">MHV_TimerListener</a>, <span class="keyword">public</span> <a class="code" href="class_m_h_v___device___t_x.html">MHV_Device_TX</a> {
 <a name="l00026"></a>00026 <span class="keyword">protected</span>:
 <a name="l00027"></a><a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">00027</a>         <a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a>         &amp;<a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>;
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029 <span class="keyword">public</span>:
 <a name="l00030"></a>00030         <a class="code" href="class_m_h_v___vusb_console.html#a1731128afca55ab0450da54b7d2568a6">MHV_VusbConsole</a>(<a class="code" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffer, <a class="code" href="class_m_h_v___r_t_c.html">MHV_RTC</a> &amp;rtc);
-<a name="l00031"></a>00031         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#acf757e9707869b60a308425f794a9dd0">alarm</a>(<span class="keyword">const</span> <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> &amp;<a class="code" href="class_m_h_v___vusb_console.html#acf757e9707869b60a308425f794a9dd0">alarm</a>);
+<a name="l00031"></a>00031         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">alarm</a>();
 <a name="l00032"></a>00032         <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">runTxBuffers</a>();
 <a name="l00033"></a>00033 };
 <a name="l00034"></a>00034 
@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:36:59 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:35 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

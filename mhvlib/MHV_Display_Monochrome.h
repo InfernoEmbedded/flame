@@ -33,6 +33,11 @@
 #include <MHV_io.h>
 #include <MHV_Font.h>
 
+class MHV_Display_Selector {
+public:
+	virtual void select(uint8_t displayX, uint8_t displayY, bool active) =0;
+};
+
 class MHV_Display_Monochrome : public MHV_Device_TX {
 protected:
 	uint16_t		_colCount;

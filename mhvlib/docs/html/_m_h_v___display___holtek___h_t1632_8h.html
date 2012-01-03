@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -102,6 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="_m_h_v___display___monochrome_8h_source.html">MHV_Display_Monochrome.h</a>&gt;</code><br/>
+<code>#include &lt;<a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>&gt;</code><br/>
 </div>
 <p><a href="_m_h_v___display___holtek___h_t1632_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -113,6 +114,7 @@ Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#aaf707505ef9669d0f5d93c5c6ac02d45">MHV_HT1632_BRIGHTNESS_MIN</a>&#160;&#160;&#160;0</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a4ba01db79dcbda834a7b99961119ce73">MHV_HT1632_BRIGHTNESS_MED</a>&#160;&#160;&#160;7</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a87ab373c3a9bf221ad140b806e03fe82">MHV_HT1632_BRIGHTNESS_MAX</a>&#160;&#160;&#160;15</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#aa30f1c37fae03ff136f0ddb7aac814a2">MHV_HOLTEK_HT1632_CREATE</a>(__mhvObjectName, __mhvMode, __mhvDisplayBytes, __mhvArrayX, __mhvArrayY, __mhvSelector, __mhvTxBufferCount)</td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef enum <a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a72eac1f4e7f4e2f5f5f58803641321eb">mhv_ht1632_command</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___display___holtek___h_t1632_8h.html#a21da7a8c673d061604ebb292b4397dc8">MHV_HT1632_COMMAND</a></td></tr>
@@ -130,6 +132,83 @@ Enumerations</h2></td></tr>
  }</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
+<a class="anchor" id="aa30f1c37fae03ff136f0ddb7aac814a2"></a><!-- doxytag: member="MHV_Display_Holtek_HT1632.h::MHV_HOLTEK_HT1632_CREATE" ref="aa30f1c37fae03ff136f0ddb7aac814a2" args="(__mhvObjectName, __mhvMode, __mhvDisplayBytes, __mhvArrayX, __mhvArrayY, __mhvSelector, __mhvTxBufferCount)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MHV_HOLTEK_HT1632_CREATE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvObjectName, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvMode, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvDisplayBytes, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvArrayX, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvArrayY, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvSelector, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__mhvTxBufferCount&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<b>Value:</b><div class="fragment"><pre class="fragment">uint8_t __mhvObjectName ## _Buffer[__mhvDisplayBytes * __mhvArrayX * __mhvArrayY]; \
+        MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
+        MHV_TX_BUFFER_CREATE(__mhvObjectName ## TX, __mhvTxBufferCount); \
+        MHV_Display_Holtek_HT1632 __mhvObjectName(__mhvObjectName ## _Shifter, __mhvSelector, \
+                        __mhvMode, __mhvArrayX, __mhvArrayY, __mhvObjectName ## _Buffer, __mhvObjectName ## TX);
+</pre></div><p>Create a new HT1632 driver to control an array of displays The MHV_SHIFT_WRITECLOCK &amp; MHV_SHIFT_WRITEDATA macros should be defined in advance</p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">__mhvObjectName</td><td>the variable name of the object </td></tr>
+    <tr><td class="paramname">__mhvMode</td><td>the MHV_HT1632_MODE of the displays </td></tr>
+    <tr><td class="paramname">__mhvDisplayBytes</td><td>the number of bytes in a single display </td></tr>
+    <tr><td class="paramname">__mhvArrayX</td><td>the number of displays in the X axis </td></tr>
+    <tr><td class="paramname">__mhvArrayY</td><td>the number of displays in the Y axis </td></tr>
+    <tr><td class="paramname">__mhvSelector</td><td>the selector to choose the active display </td></tr>
+    <tr><td class="paramname">__mhvTxBufferCount</td><td>the number of TX buffers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00063">63</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a87ab373c3a9bf221ad140b806e03fe82"></a><!-- doxytag: member="MHV_Display_Holtek_HT1632.h::MHV_HT1632_BRIGHTNESS_MAX" ref="a87ab373c3a9bf221ad140b806e03fe82" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -141,7 +220,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00033">33</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00034">34</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -156,7 +235,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00032">32</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00033">33</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -171,7 +250,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00031">31</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00032">32</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -187,7 +266,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00040">40</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -202,7 +281,7 @@ Enumerations</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00048">48</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00049">49</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -228,7 +307,7 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00035">35</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00036">36</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +334,7 @@ Enumerations</h2></td></tr>
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html#l00043">43</a> of file <a class="el" href="_m_h_v___display___holtek___h_t1632_8h_source.html">MHV_Display_Holtek_HT1632.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +358,7 @@ Enumerations</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:00 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:36 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

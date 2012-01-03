@@ -5,7 +5,6 @@ var NAVTREE =
       [ "MHV_ADC", "class_m_h_v___a_d_c.html", null ],
       [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
       [ "mhv_alarm", "structmhv__alarm.html", null ],
-      [ "MHV_AlarmListener", "class_m_h_v___alarm_listener.html", null ],
       [ "MHV_Debounce", "class_m_h_v___debounce.html", null ],
       [ "MHV_DebounceListener", "class_m_h_v___debounce_listener.html", null ],
       [ "mhv_debouncePin", "structmhv__debounce_pin.html", null ],
@@ -18,6 +17,7 @@ var NAVTREE =
       [ "MHV_Display_Holtek_HT1632", "class_m_h_v___display___holtek___h_t1632.html", null ],
       [ "MHV_Display_Monochrome", "class_m_h_v___display___monochrome.html", null ],
       [ "MHV_Display_Monochrome_Buffered", "class_m_h_v___display___monochrome___buffered.html", null ],
+      [ "MHV_Display_Selector", "class_m_h_v___display___selector.html", null ],
       [ "MHV_EEPROM", "class_m_h_v___e_e_p_r_o_m.html", null ],
       [ "mhv_eventADC", "structmhv__event_a_d_c.html", null ],
       [ "mhv_eventPin", "structmhv__event_pin.html", null ],
@@ -53,15 +53,6 @@ var NAVTREE =
       [ "MHV_ADC", "class_m_h_v___a_d_c.html", null ],
       [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
       [ "mhv_alarm", "structmhv__alarm.html", null ],
-      [ "MHV_AlarmListener", "class_m_h_v___alarm_listener.html", [
-        [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", [
-          [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ]
-        ] ],
-        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
-        [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", [
-          [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
-        ] ]
-      ] ],
       [ "MHV_DebounceListener", "class_m_h_v___debounce_listener.html", null ],
       [ "mhv_debouncePin", "structmhv__debounce_pin.html", null ],
       [ "MHV_Device_RX", "class_m_h_v___device___r_x.html", [
@@ -84,6 +75,7 @@ var NAVTREE =
         [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
         [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
       ] ],
+      [ "MHV_Display_Selector", "class_m_h_v___display___selector.html", null ],
       [ "MHV_EEPROM", "class_m_h_v___e_e_p_r_o_m.html", null ],
       [ "mhv_eventADC", "structmhv__event_a_d_c.html", null ],
       [ "mhv_eventPin", "structmhv__event_pin.html", null ],
@@ -106,7 +98,14 @@ var NAVTREE =
       [ "MHV_TimerListener", "class_m_h_v___timer_listener.html", [
         [ "MHV_Display_HD44780_Direct_Connect", "class_m_h_v___display___h_d44780___direct___connect.html", null ],
         [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
-        [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ]
+        [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
+        [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", [
+          [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ]
+        ] ],
+        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
+        [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", [
+          [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
+        ] ]
       ] ],
       [ "mhv_timestamp", "structmhv__timestamp.html", null ],
       [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],

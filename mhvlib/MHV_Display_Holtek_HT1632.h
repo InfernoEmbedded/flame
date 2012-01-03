@@ -27,6 +27,7 @@
 #define MHV_DISPLAY_HOLTEK_HT1632_H_
 
 #include <MHV_Display_Monochrome.h>
+#include <MHV_Shifter.h>
 
 #define MHV_HT1632_BRIGHTNESS_MIN	0
 #define MHV_HT1632_BRIGHTNESS_MED	7
@@ -47,48 +48,55 @@ enum mhv_ht1632_mode {
 };
 typedef mhv_ht1632_mode MHV_HT1632_MODE;
 
+/**
+ * Create a new HT1632 driver to control an array of displays
+ * The MHV_SHIFT_WRITECLOCK & MHV_SHIFT_WRITEDATA macros should be defined in advance
+ *
+ * @param	__mhvObjectName			the variable name of the object
+ * @param	__mhvMode				the MHV_HT1632_MODE of the displays
+ * @param	__mhvDisplayBytes		the number of bytes in a single display
+ * @param	__mhvArrayX				the number of displays in the X axis
+ * @param	__mhvArrayY				the number of displays in the Y axis
+ * @param	__mhvSelector			the selector to choose the active display
+ * @param	__mhvTxBufferCount		the number of TX buffers
+ */
+#define MHV_HOLTEK_HT1632_CREATE(__mhvObjectName,__mhvMode, __mhvDisplayBytes, __mhvArrayX, __mhvArrayY, __mhvSelector, __mhvTxBufferCount) \
+	uint8_t __mhvObjectName ## _Buffer[__mhvDisplayBytes * __mhvArrayX * __mhvArrayY]; \
+	MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
+	MHV_TX_BUFFER_CREATE(__mhvObjectName ## TX, __mhvTxBufferCount); \
+	MHV_Display_Holtek_HT1632 __mhvObjectName(__mhvObjectName ## _Shifter, __mhvSelector, \
+			__mhvMode, __mhvArrayX, __mhvArrayY, __mhvObjectName ## _Buffer, __mhvObjectName ## TX);
+
 class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome
 {
-  private:
-	volatile uint8_t	*_port;
-// Masks on the port
-	uint8_t				_data;
-	uint8_t				_write;
-// The bits for the pins (used for the SHIFTER macros)
-	uint8_t				_dataPin;
-	uint8_t				_writePin;
-	void 				(*_csCallback)(uint8_t x, uint8_t y, bool active);
-	MHV_HT1632_MODE		_mode;
-	uint8_t				_arrayX;
-	uint8_t				_arrayY;
-	uint8_t				_displayX;
-	uint8_t				_displayY;
-	uint8_t				_displayBytes;
-	uint8_t				*_frameBuffer;
+private:
+	MHV_Shifter				&_shifter;
+	MHV_Display_Selector	&_selector;
+	MHV_HT1632_MODE			_mode;
+	uint8_t					_arrayX;
+	uint8_t					_arrayY;
+	uint8_t					_displayX;
+	uint8_t					_displayY;
+	uint8_t					_displayBytes;
+	uint8_t					*_frameBuffer;
 
-    void writeData(uint8_t data, uint8_t length);
-    void sendCommand(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_COMMAND command);
-    void commandComplete(uint8_t moduleX, uint8_t moduleY);
-    void outputStart(uint8_t moduleX, uint8_t moduleY);
-    void master(uint8_t moduleX, uint8_t moduleY);
-    void slave(uint8_t moduleX, uint8_t moduleY);
-    void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness);
-    void poweroff(uint8_t moduleX, uint8_t moduleY);
-    void poweron(uint8_t moduleX, uint8_t moduleY);
-    void setMode(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_MODE mode);
+	void sendCommand(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_COMMAND command);
+	void commandComplete(uint8_t moduleX, uint8_t moduleY);
+	void outputStart(uint8_t moduleX, uint8_t moduleY);
+	void master(uint8_t moduleX, uint8_t moduleY);
+	void slave(uint8_t moduleX, uint8_t moduleY);
+	void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness);
+	void poweroff(uint8_t moduleX, uint8_t moduleY);
+	void poweron(uint8_t moduleX, uint8_t moduleY);
+	void setMode(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_MODE mode);
 
-  public:
-    MHV_Display_Holtek_HT1632(
-			MHV_DECLARE_PIN(data),
-			MHV_DECLARE_PIN(write),
-			MHV_HT1632_MODE mode,
-			uint8_t arrayX, uint8_t arrayY,
-			void (*csCallback)(uint8_t x, uint8_t y, bool active),
-			uint8_t *frameBuffer, MHV_RingBuffer &txBuffers);
-    void brightness(uint8_t brightness);
-    void poweroff();
-    void poweron();
-    void flush();
+public:
+	MHV_Display_Holtek_HT1632(MHV_Shifter &shifter, MHV_Display_Selector &selector,
+			MHV_HT1632_MODE mode, uint8_t arrayX, uint8_t arrayY, uint8_t *frameBuffer, MHV_RingBuffer &txBuffers);
+	void brightness(uint8_t brightness);
+	void poweroff();
+	void poweron();
+	void flush();
 
 // Implements MHV_Display_Monochrome
 	void setPixel(uint16_t row, uint16_t col, uint8_t value);

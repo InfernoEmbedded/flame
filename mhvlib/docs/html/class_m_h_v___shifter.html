@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20111229</span>
+   &#160;<span id="projectnumber">20120103</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -107,15 +107,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a1f28dce58f9b2740ca3e398a8fa01030">shiftOut</a> (uint8_t *data, uint8_t length)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a259e0a8c7273fd79fb48675dad7843e6">shiftOut</a> (uint8_t *data, uint16_t length)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#ade6314278768732410611bad1615d093">shiftOut</a> (uint8_t *data, uint8_t length, uint16_t elements)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a4e0972d0c8471a4f53ba8e683a8436f7">shiftOut</a> (uint8_t data, uint8_t bits)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a6c1cc1bc7adb72bfcc7482e1731898d4">shiftOut</a> (uint8_t data)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a51636cdb41c763615ec27800275ae4dd">shiftOut</a> (uint8_t *data, uint8_t length)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#a9ee15658e944ba4258121c59a71c30e5">shiftOut</a> (uint8_t *data, uint16_t length)=0</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___shifter.html#aa923b774e68afb5ec9d58a4eac30ab34">shiftOut</a> (uint8_t *data, uint8_t length, uint16_t elements)=0</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00529">529</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___shifter_8h_source.html#l00574">574</a> of file <a class="el" href="_m_h_v___shifter_8h_source.html">MHV_Shifter.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="a1f28dce58f9b2740ca3e398a8fa01030"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a1f28dce58f9b2740ca3e398a8fa01030" args="(uint8_t *data, uint8_t length)" -->
+<a class="anchor" id="a4e0972d0c8471a4f53ba8e683a8436f7"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a4e0972d0c8471a4f53ba8e683a8436f7" args="(uint8_t data, uint8_t bits)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void MHV_Shifter::shiftOut </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bits</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a6c1cc1bc7adb72bfcc7482e1731898d4"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a6c1cc1bc7adb72bfcc7482e1731898d4" args="(uint8_t data)=0" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void MHV_Shifter::shiftOut </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td><code> [pure virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a51636cdb41c763615ec27800275ae4dd"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a51636cdb41c763615ec27800275ae4dd" args="(uint8_t *data, uint8_t length)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -134,7 +180,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [virtual]</code></td>
+          <td></td><td><code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -142,7 +188,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a259e0a8c7273fd79fb48675dad7843e6"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a259e0a8c7273fd79fb48675dad7843e6" args="(uint8_t *data, uint16_t length)" -->
+<a class="anchor" id="a9ee15658e944ba4258121c59a71c30e5"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="a9ee15658e944ba4258121c59a71c30e5" args="(uint8_t *data, uint16_t length)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -161,7 +207,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [virtual]</code></td>
+          <td></td><td><code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -169,7 +215,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ade6314278768732410611bad1615d093"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="ade6314278768732410611bad1615d093" args="(uint8_t *data, uint8_t length, uint16_t elements)" -->
+<a class="anchor" id="aa923b774e68afb5ec9d58a4eac30ab34"></a><!-- doxytag: member="MHV_Shifter::shiftOut" ref="aa923b774e68afb5ec9d58a4eac30ab34" args="(uint8_t *data, uint8_t length, uint16_t elements)=0" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -194,7 +240,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td><code> [virtual]</code></td>
+          <td></td><td><code> [pure virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -225,7 +271,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Thu Dec 29 2011 14:37:05 for MHVLib by
+    <li class="footer">Generated on Tue Jan 3 2012 11:37:41 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>
