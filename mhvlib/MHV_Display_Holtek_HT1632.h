@@ -67,8 +67,7 @@ typedef mhv_ht1632_mode MHV_HT1632_MODE;
 	MHV_Display_Holtek_HT1632 __mhvObjectName(__mhvObjectName ## _Shifter, __mhvSelector, \
 			__mhvMode, __mhvArrayX, __mhvArrayY, __mhvObjectName ## _Buffer, __mhvObjectName ## TX);
 
-class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome
-{
+class MHV_Display_Holtek_HT1632 : public MHV_Display_Monochrome {
 private:
 	MHV_Shifter				&_shifter;
 	MHV_Display_Selector	&_selector;

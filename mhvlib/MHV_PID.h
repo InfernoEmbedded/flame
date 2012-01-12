@@ -1,8 +1,7 @@
 /*
- * Based on Arduino PID Library - Version 1
+ * Inspired by the Arduino PID Library - Version 1
  *		by Brett Beauregard <br3ttb@gmail.com> brettbeauregard.com
- *
- * Original code is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+ * 		licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
  *
  * MHV version Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
@@ -36,15 +35,15 @@
 #include <MHV_io.h>
 
 class MHV_PID {
-  protected:
+protected:
 	float	_kP;
-    float	_kI;
-    float	_kD;
+	float	_kI;
+	float	_kD;
 
 	bool	_reverse;
 	bool	_enabled;
 
-    float	_setpoint;
+	float	_setpoint;
 	float	_integral;
 	float	_lastInput;
 	float	_lastOutput;
@@ -54,14 +53,14 @@ class MHV_PID {
 
 	inline void clampIntegral();
 
-  public:
+public:
 	MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
 			bool reverse, uint16_t min, uint16_t max);
 	void setDirection(bool reverse);
 	void enable(bool enable);
 	float compute(float input);
 	void setTuning(float kP, float kI, float kD, uint16_t period);
-    void setOutputLimits(float, float);
+	void setOutputLimits(float, float);
 };
 #endif
 

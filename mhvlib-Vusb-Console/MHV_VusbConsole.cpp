@@ -68,28 +68,28 @@ uchar       step = 128;
 uchar       trialValue = 0, optimumValue;
 int         x, optimumDev, targetValue = (unsigned)(1499 * (double)F_CPU / 10.5e6 + 0.5);
 
-    /* do a binary search: */
-    do{
-        OSCCAL = trialValue + step;
-        x = usbMeasureFrameLength();    /* proportional to current real frequency */
-        if(x < targetValue)             /* frequency still too low */
-            trialValue += step;
-        step >>= 1;
-    }while(step > 0);
-    /* We have a precision of +/- 1 for optimum OSCCAL here */
-    /* now do a neighborhood search for optimum value */
-    optimumValue = trialValue;
-    optimumDev = x; /* this is certainly far away from optimum */
-    for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
-        x = usbMeasureFrameLength() - targetValue;
-        if(x < 0)
-            x = -x;
-        if(x < optimumDev){
-            optimumDev = x;
-            optimumValue = OSCCAL;
-        }
-    }
-    OSCCAL = optimumValue;
+	/* do a binary search: */
+	do{
+		OSCCAL = trialValue + step;
+		x = usbMeasureFrameLength();    /* proportional to current real frequency */
+		if(x < targetValue)             /* frequency still too low */
+			trialValue += step;
+		step >>= 1;
+	}while(step > 0);
+	/* We have a precision of +/- 1 for optimum OSCCAL here */
+	/* now do a neighborhood search for optimum value */
+	optimumValue = trialValue;
+	optimumDev = x; /* this is certainly far away from optimum */
+	for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
+		x = usbMeasureFrameLength() - targetValue;
+		if(x < 0)
+			x = -x;
+		if(x < optimumDev){
+			optimumDev = x;
+			optimumValue = OSCCAL;
+		}
+	}
+	OSCCAL = optimumValue;
 }
 /*
 Note: This calibration algorithm may try OSCCAL values of up to 192 even if
@@ -104,7 +104,7 @@ both regions.
 
 void    usbEventResetReady(void)
 {
-    calibrateOscillator();
+	calibrateOscillator();
 	uchar calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS);
 	if (calibrationValue != OSCCAL) {
 		eeprom_write_byte(MHV_OSCCAL_EEPROM_ADDRESS, OSCCAL);
@@ -161,22 +161,14 @@ MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
 	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 
 	usbDeviceDisconnect();
-    for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
-        _delay_ms(15);
-    }
+	for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
+		_delay_ms(15);
+	}
 	usbDeviceConnect();
 
 	usbInit();
 
-	MHV_ALARM newAlarm;
-
-	_rtc.current(newAlarm.when);
-	mhv_timestampIncrement(newAlarm.when, 0, 5);
-	newAlarm.repeat.milliseconds = 5;
-	newAlarm.repeat.timestamp = 0;
-	newAlarm.listener = this;
-
-	_rtc.addAlarm(newAlarm);
+	_rtc.addAlarm(this, 0, 5, 0, 5);
 }
 
 /**

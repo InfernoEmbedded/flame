@@ -4,8 +4,10 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../MHVWaveGenerator.cpp \
 ../MHV_AD.cpp \
 ../MHV_ADC.cpp \
+../MHV_DAC.cpp \
 ../MHV_Debounce.cpp \
 ../MHV_Device_RX.cpp \
 ../MHV_Device_TX.cpp \
@@ -38,8 +40,10 @@ CPP_SRCS += \
 ../MHV_WS2801.cpp 
 
 OBJS += \
+./MHVWaveGenerator.o \
 ./MHV_AD.o \
 ./MHV_ADC.o \
+./MHV_DAC.o \
 ./MHV_Debounce.o \
 ./MHV_Device_RX.o \
 ./MHV_Device_TX.o \
@@ -72,8 +76,10 @@ OBJS += \
 ./MHV_WS2801.o 
 
 CPP_DEPS += \
+./MHVWaveGenerator.d \
 ./MHV_AD.d \
 ./MHV_ADC.d \
+./MHV_DAC.d \
 ./MHV_Debounce.d \
 ./MHV_Device_RX.d \
 ./MHV_Device_TX.d \

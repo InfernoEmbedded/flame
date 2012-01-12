@@ -334,7 +334,9 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="mhvlib-tutorial-PWM-LED.de.innot.avreclipse.project.winavr.elf_2.1.0.1629716635" name="AVR Cross Target Application" projectType="de.innot.avreclipse.project.winavr.elf_2.1.0"/>
 	</storageModule>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="1">
+		<resource resourceType="PROJECT" workspacePath="/mhvlib-tutorial-Vusb-Console"/>
+	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
 		<profile id="org.eclipse.cdt.make.core.GCCStandardMakePerProjectProfile">

@@ -41,6 +41,9 @@
 
 #ifndef MHV_SHIFT_DELAY
 #define MHV_SHIFT_DELAY
+#ifndef MHV_CORE
+#warning Defaulting delay to 0
+#endif
 #endif
 
 #ifdef MHV_SHIFT_ORDER_MSB
@@ -136,7 +139,7 @@ do { \
 	uint8_t dataOnClockOn = *mhv_out(MHV_SHIFT_WRITEDATA) | \
 		_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
 	uint8_t mhv_dataCopy; \
- \
+\
 	while (len--) { \
 		mhv_dataCopy = *data++; \
 		if ((mhv_dataCopy & MHV_BIT_1)) { \
@@ -261,59 +264,91 @@ do { \
 			mhv_dataCopy = *data++; \
 			if ((mhv_dataCopy & MHV_BIT_1)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_2)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_3)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_4)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_5)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_6)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_7)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_8)) { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 			} \
 		} \
 	} \
@@ -352,59 +387,91 @@ do { \
 			mhv_dataCopy = *data++;\
 			if ((mhv_dataCopy & MHV_BIT_1)) {\
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_2)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_3)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_4)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_5)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_6)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_7)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 			if ((mhv_dataCopy & MHV_BIT_8)) { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+				MHV_SHIFT_DELAY; \
 			} else { \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+				MHV_SHIFT_DELAY; \
 				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+				MHV_SHIFT_DELAY; \
 			} \
 		} \
 	} \
@@ -441,59 +508,91 @@ do { \
 		mhv_dataCopy = *data++;\
 		if ((mhv_dataCopy & MHV_BIT_1)) {\
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_2)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_3)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_4)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_5)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_6)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_7)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 		if ((mhv_dataCopy & MHV_BIT_8)) { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
+			MHV_SHIFT_DELAY; \
 		} else { \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
+			MHV_SHIFT_DELAY; \
 			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
+			MHV_SHIFT_DELAY; \
 		} \
 	} \
 	*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \

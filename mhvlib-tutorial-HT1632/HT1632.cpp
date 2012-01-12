@@ -28,6 +28,8 @@
  * Sure Electronics DE-DP105 displays
  */
 
+#define MHV_NEED_PURE_VIRTUAL
+
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
@@ -35,8 +37,8 @@
 #include <avr/interrupt.h>
 #include <avr/power.h>
 
-#define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A0
-#define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A1
+#define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A1
+#define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A0
 #define MHV_SHIFT_ORDER_MSB
 #include <MHV_Display_Holtek_HT1632.h>
 

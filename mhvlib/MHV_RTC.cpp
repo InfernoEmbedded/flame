@@ -320,9 +320,9 @@ void MHV_RTC::elapsed(const MHV_TIMESTAMP &since, MHV_TIMESTAMP &elapsed) {
 
 // Used in toTime: Cumulative totals at the end of the month in a normal year
 const uint32_t mhv_secondsFromYearStart[] PROGMEM = {
-		 2678400, 	// Jan
-		 5097600,	// Feb
-		 7776000,	// Mar
+		2678400, 	// Jan
+		5097600,	// Feb
+		7776000,	// Mar
 		10368000,	// Apr
 		13046400,	// May
 		15638400,	// Jun
@@ -491,6 +491,7 @@ bool MHV_RTC::addAlarm(MHV_ALARM &alarm) {
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatTicks			the number of ticks past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
@@ -504,7 +505,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 	alarm.repeat.milliseconds = repeatMilliseconds;
 	alarm.repeat.ticks = repeatTicks;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -514,6 +515,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds,
@@ -527,7 +529,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 	alarm.repeat.milliseconds = repeatMilliseconds;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -536,6 +538,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	whenTicks			the number of ticks past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
@@ -548,7 +551,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 	alarm.repeat.milliseconds = 0;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -556,6 +559,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
  * @param	listener			the alarm listener to be called when the alarm is triggered
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds) {
@@ -568,7 +572,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
 	alarm.repeat.milliseconds = 0;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -580,6 +584,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener &listener,
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatTicks			the number of ticks past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
@@ -593,7 +598,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 	alarm.repeat.milliseconds = repeatMilliseconds;
 	alarm.repeat.ticks = repeatTicks;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -603,6 +608,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	repeatSeconds		the number of seconds past current that the alarm will be executed
  * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds,
@@ -616,7 +622,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 	alarm.repeat.milliseconds = repeatMilliseconds;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -625,6 +631,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
  * @param	whenTicks			the number of ticks past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
@@ -637,7 +644,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 	alarm.repeat.milliseconds = 0;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 /**
@@ -645,6 +652,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
  * @param	listener			the alarm listener to be called when the alarm is triggered
  * @param	whenSeconds			the number of seconds past current that the alarm will be executed
  * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
+ * @return	true if the event could not be added
  */
 bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 		uint32_t whenSeconds, uint16_t whenMilliseconds) {
@@ -657,7 +665,7 @@ bool MHV_RTC::addAlarm(MHV_TimerListener *listener,
 	alarm.repeat.milliseconds = 0;
 	alarm.repeat.ticks = 0;
 
-	addAlarm(alarm);
+	return addAlarm(alarm);
 }
 
 

@@ -36,7 +36,6 @@ struct mhv_timestamp {
 };
 typedef struct mhv_timestamp MHV_TIMESTAMP;
 
-
 enum mhv_weekday {
 	MHV_SUNDAY,
 	MHV_MONDAY,

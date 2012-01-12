@@ -100,8 +100,14 @@ ISR(mhvTimerVect2) { \
 
 class MHV_Timer8;
 
+/**
+ * A class which will be notified when an alarm goes off
+ */
 class MHV_TimerListener {
 public:
+	/**
+	 * Called when an alarm goes off
+	 */
 	virtual void alarm() =0;
 };
 

@@ -24,11 +24,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/**
- * Todo: Use callbacks for writes to the display to allow the SHIFTER macros to be called
- * directly on ports, instead of indirecting - this will save clocks
- */
-
 #include <stdio.h>
 #include <MHV_Display_Holtek_HT1632.h>
 
@@ -164,18 +159,15 @@ uint8_t MHV_Display_Holtek_HT1632::getPixel(uint16_t col, uint16_t row) {
 		row -= moduleX * _displayX;
 		col -= moduleY * _displayY;
 
-		uint8_t offset;
-		uint8_t bit;
+		uint8_t offset = col;
+		uint8_t bit = row;
 		switch (_mode) {
 		case MHV_HT1632_NMOS_32x8:
 		case MHV_HT1632_PMOS_32x8:
-			offset = col;
-			bit = row;
 			break;
 		case MHV_HT1632_NMOS_24x16:
 		case MHV_HT1632_PMOS_24x16:
-			offset = col * 2;
-			bit = row;
+			offset *= 2;
 			if (bit > 7) {
 				bit -= 8;
 				offset++;
@@ -256,7 +248,7 @@ void MHV_Display_Holtek_HT1632::flush() {
  */
 void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	_shifter.shiftOut(0b00010100, 8);
+	_shifter.shiftOut(0b00010100);
 	_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
 	commandComplete(moduleX, moduleY);
 }
@@ -267,7 +259,7 @@ void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
  */
 void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	_shifter.shiftOut(0b00010000, 8);
+	_shifter.shiftOut(0b00010000);
 	_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
 	commandComplete(moduleX, moduleY);
 }
@@ -319,13 +311,13 @@ void MHV_Display_Holtek_HT1632::poweroff(uint8_t moduleX, uint8_t moduleY) {
 void MHV_Display_Holtek_HT1632::poweron(uint8_t moduleX, uint8_t moduleY) {
 // Turn on the oscillator
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	_shifter.shiftOut(0b00000001, 8);
+	_shifter.shiftOut(0b00000001);
 	_shifter.shiftOut((uint8_t)0b0, 1);
 	commandComplete(moduleX, moduleY);
 
 // Turn on the PWM generator
 	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
-	_shifter.shiftOut(0b00000011, 8);
+	_shifter.shiftOut(0b00000011);
 	_shifter.shiftOut((uint8_t)0b0, 1);
 	commandComplete(moduleX, moduleY);
 }
