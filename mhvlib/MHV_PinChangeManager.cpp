@@ -132,6 +132,7 @@ void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventLi
  * Deregister interest for pinchange events
  * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void MHV_PinChangeManager::deregisterListener(MHV_DECLARE_PIN(pin)) {
 
 	_pins[pinPinchangeInterrupt].listener = NULL;
@@ -161,6 +162,7 @@ void MHV_PinChangeManager::deregisterListener(MHV_DECLARE_PIN(pin)) {
 	}
 #endif
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 /**
  * Call from the main loop to handle any events

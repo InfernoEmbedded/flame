@@ -41,24 +41,30 @@
  * @param	period		the period that compute() is called, in ms
  * @param	reverse		true if there is an inverse relationship between the output and the input (eg. running a cooler to reduce temperature)
  * @param	min			the minimum value for output
- * @param	max			the maximum value four output
+ * @param	max			the maximum value for output
  */
 MHV_PID::MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
-		bool reverse, uint16_t min, uint16_t max) {
+		bool reverse, uint16_t min, uint16_t max) :
+		_enabled(false),
+		_setpoint(setpoint),
+		_integral(0),
+		_lastInput(0),
+		_lastOutput(min),
+		_outMin(min),
+		_outMax(max) {
 	_setpoint = setpoint;
 
 	setDirection(reverse);
     setTuning(kP, kI, kD, period);
-
-    _enabled = false;
+    clampIntegral();
 }
 
 
 inline void MHV_PID::clampIntegral() {
-	if (_integral > outMax) {
-		_integral = outMax;
-	} else if (_integral < outMin) {
-		_integral = outMin;
+	if (_integral > _outMax) {
+		_integral = _outMax;
+	} else if (_integral < _outMin) {
+		_integral = _outMin;
 	}
 }
 
@@ -75,10 +81,10 @@ float MHV_PID::compute(float input) {
 
 	float output = _kP * error + _integral - _kD * (input - _lastInput);
 
-	if (output > outMax)
-		output = outMax;
-	else if (output < outMin)
-		output = outMin;
+	if (output > _outMax)
+		output = _outMax;
+	else if (output < _outMin)
+		output = _outMin;
 
 	_lastInput = input;
 	_lastOutput = output;
@@ -115,8 +121,8 @@ void MHV_PID::setTuning(float kP, float kI, float kD, uint16_t period) {
  * @param	max		the new maximum output value
  */
 void MHV_PID::setOutputLimits(float min, float max) {
-	outMin = min;
-	outMax = max;
+	_outMin = min;
+	_outMax = max;
 
 	clampIntegral();
 }

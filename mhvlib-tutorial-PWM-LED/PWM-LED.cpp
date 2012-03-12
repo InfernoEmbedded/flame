@@ -110,7 +110,7 @@ void Animation::alarm() {
 
 Animation animation;
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -169,6 +169,4 @@ int NORETURN main(void) {
 	for (;;) {
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

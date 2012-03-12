@@ -136,7 +136,7 @@ LEDOn ledOn;
 LEDOff ledOff;
 
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -153,9 +153,6 @@ int NORETURN main(void) {
 
 	// Tell the timer to call our trigger function
 	animationTimer.setListener1(animation);
-
-	// Set the PWM mode to FAST PWM
-	//pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
 
 	// Tell the pwmTimer which functions to use when times elapse
 	pwmTimer.setListener1(ledOn);
@@ -193,6 +190,4 @@ int NORETURN main(void) {
 	for (;;) {
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

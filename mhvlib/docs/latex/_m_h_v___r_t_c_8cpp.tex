@@ -3,41 +3,38 @@
 \label{_m_h_v___r_t_c_8cpp}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
 }
 {\ttfamily \#include $<$\-M\-H\-V\-\_\-\-R\-T\-C.\-h$>$}\*
-{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\*
-{\ttfamily \#include $<$string.\-h$>$}\*
-{\ttfamily \#include $<$util/atomic.\-h$>$}\*
 \subsection*{\-Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{_m_h_v___r_t_c_8cpp_a8b370d6f324996a97860bffd8087cb16}{mhv\-\_\-timestamp\-Less\-Than} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
+bool \-P\-U\-R\-E \hyperlink{_m_h_v___r_t_c_8cpp_afb69abc0cb1231fc562978ba5c117dd0}{mhv\-\_\-timestamp\-Less\-Than} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
 \item 
-bool \hyperlink{_m_h_v___r_t_c_8cpp_a858279f2a451fd8a80d4f3885dc328f3}{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
+bool \-P\-U\-R\-E \hyperlink{_m_h_v___r_t_c_8cpp_a35566c1875e5d3342f560ba95dc6f7df}{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal} (const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&first, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&second)
 \item 
-bool \hyperlink{_m_h_v___r_t_c_8cpp_a2a1b0d31d6746568ddbd62176c72b6ef}{mhv\-\_\-is\-Leap\-Year} (uint16\-\_\-t year)
+bool \-C\-O\-N\-S\-T \hyperlink{_m_h_v___r_t_c_8cpp_adbbe05ff4304797a24d6ce43a3b06be1}{mhv\-\_\-is\-Leap\-Year} (uint16\-\_\-t year)
 \item 
 void \hyperlink{_m_h_v___r_t_c_8cpp_a4612d3f9e00ed01b4fd761e99eb9d054}{mhv\-\_\-timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
 \item 
-uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8cpp_abd7e3066894c2ec91b7552f992cdaebd}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
+uint8\-\_\-t \-C\-O\-N\-S\-T \hyperlink{_m_h_v___r_t_c_8cpp_aaeff086c8b7a17643510a3da6499e18d}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
 \end{DoxyCompactItemize}
 \subsection*{\-Variables}
 \begin{DoxyCompactItemize}
 \item 
 const uint8\-\_\-t \*
-mhv\-\_\-days\-In\-Month\-Array\mbox{[}$\,$\mbox{]} \hyperlink{_m_h_v___r_t_c_8cpp_adfd8a213b889871d0fb4b50b2d7b875d}{\-P\-R\-O\-G\-M\-E\-M}
+mhv\-\_\-days\-In\-Month\-Array\mbox{[}$\,$\mbox{]} \hyperlink{_m_h_v___r_t_c_8cpp_ab0115810e7508e24b9206d01ff3be913}{\-P\-R\-O\-G\-M\-E\-M}
 \end{DoxyCompactItemize}
 
 
 \subsection{\-Function \-Documentation}
-\hypertarget{_m_h_v___r_t_c_8cpp_abd7e3066894c2ec91b7552f992cdaebd}{
+\hypertarget{_m_h_v___r_t_c_8cpp_aaeff086c8b7a17643510a3da6499e18d}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}}
 \index{mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}!MHV_RTC.cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
-\subsubsection[{mhv\-\_\-days\-In\-Month}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhv\-\_\-days\-In\-Month (
+\subsubsection[{mhv\-\_\-days\-In\-Month}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-C\-O\-N\-S\-T mhv\-\_\-days\-In\-Month (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}]{month, }
 \item[{uint16\-\_\-t}]{year}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8cpp_abd7e3066894c2ec91b7552f992cdaebd}
+\label{_m_h_v___r_t_c_8cpp_aaeff086c8b7a17643510a3da6499e18d}
 \-Get the number of days in a month 
 \begin{DoxyParams}{\-Parameters}
 {\em month} & the month \\
@@ -50,31 +47,31 @@ the number of days
 \end{DoxyReturn}
 
 
-\-Definition at line 192 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 143 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8cpp_a2a1b0d31d6746568ddbd62176c72b6ef}{
+\hypertarget{_m_h_v___r_t_c_8cpp_adbbe05ff4304797a24d6ce43a3b06be1}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}}
 \index{mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}!MHV_RTC.cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
-\subsubsection[{mhv\-\_\-is\-Leap\-Year}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-is\-Leap\-Year (
+\subsubsection[{mhv\-\_\-is\-Leap\-Year}]{\setlength{\rightskip}{0pt plus 5cm}bool \-C\-O\-N\-S\-T mhv\-\_\-is\-Leap\-Year (
 \begin{DoxyParamCaption}
 \item[{uint16\-\_\-t}]{year}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8cpp_a2a1b0d31d6746568ddbd62176c72b6ef}
+\label{_m_h_v___r_t_c_8cpp_adbbe05ff4304797a24d6ce43a3b06be1}
 \-Determine if a year is a leap year 
 
-\-Definition at line 100 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 97 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8cpp_a858279f2a451fd8a80d4f3885dc328f3}{
+\hypertarget{_m_h_v___r_t_c_8cpp_a35566c1875e5d3342f560ba95dc6f7df}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}}
 \index{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}!MHV_RTC.cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
-\subsubsection[{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal (
+\subsubsection[{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}]{\setlength{\rightskip}{0pt plus 5cm}bool \-P\-U\-R\-E mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal (
 \begin{DoxyParamCaption}
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{first, }
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{second}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8cpp_a858279f2a451fd8a80d4f3885dc328f3}
+\label{_m_h_v___r_t_c_8cpp_a35566c1875e5d3342f560ba95dc6f7df}
 \-Compare 2 timestamps 
 \begin{DoxyParams}{\-Parameters}
 {\em first} & the first timestamp \\
@@ -87,7 +84,7 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyReturn}
 
 
-\-Definition at line 79 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 76 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8cpp_a4612d3f9e00ed01b4fd761e99eb9d054}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
@@ -111,18 +108,18 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyParams}
 
 
-\-Definition at line 113 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 110 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
-\hypertarget{_m_h_v___r_t_c_8cpp_a8b370d6f324996a97860bffd8087cb16}{
+\hypertarget{_m_h_v___r_t_c_8cpp_afb69abc0cb1231fc562978ba5c117dd0}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}}
 \index{mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}!MHV_RTC.cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
-\subsubsection[{mhv\-\_\-timestamp\-Less\-Than}]{\setlength{\rightskip}{0pt plus 5cm}bool mhv\-\_\-timestamp\-Less\-Than (
+\subsubsection[{mhv\-\_\-timestamp\-Less\-Than}]{\setlength{\rightskip}{0pt plus 5cm}bool \-P\-U\-R\-E mhv\-\_\-timestamp\-Less\-Than (
 \begin{DoxyParamCaption}
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{first, }
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{second}
 \end{DoxyParamCaption}
 )}}
-\label{_m_h_v___r_t_c_8cpp_a8b370d6f324996a97860bffd8087cb16}
+\label{_m_h_v___r_t_c_8cpp_afb69abc0cb1231fc562978ba5c117dd0}
 \-A \-Realtime clock
 
 \-Takes a trigger from a timer, and keeps time.
@@ -139,16 +136,16 @@ true if the first timestamp is less than the second
 \end{DoxyReturn}
 
 
-\-Definition at line 53 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 
 
 \subsection{\-Variable \-Documentation}
-\hypertarget{_m_h_v___r_t_c_8cpp_adfd8a213b889871d0fb4b50b2d7b875d}{
+\hypertarget{_m_h_v___r_t_c_8cpp_ab0115810e7508e24b9206d01ff3be913}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}!\-P\-R\-O\-G\-M\-E\-M@{\-P\-R\-O\-G\-M\-E\-M}}
 \index{\-P\-R\-O\-G\-M\-E\-M@{\-P\-R\-O\-G\-M\-E\-M}!MHV_RTC.cpp@{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}}
-\subsubsection[{\-P\-R\-O\-G\-M\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}const uint32\-\_\-t mhv\-\_\-seconds\-From\-Year\-Start \mbox{[}$\,$\mbox{]} {\bf \-P\-R\-O\-G\-M\-E\-M}}}
-\label{_m_h_v___r_t_c_8cpp_adfd8a213b889871d0fb4b50b2d7b875d}
+\subsubsection[{\-P\-R\-O\-G\-M\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}const uint8\-\_\-t mhv\-\_\-days\-In\-Month\-Array \mbox{[}$\,$\mbox{]} {\bf \-P\-R\-O\-G\-M\-E\-M}}}
+\label{_m_h_v___r_t_c_8cpp_ab0115810e7508e24b9206d01ff3be913}
 {\bfseries \-Initial value\-:}
 \begin{DoxyCode}
  {
@@ -168,5 +165,5 @@ true if the first timestamp is less than the second
 \end{DoxyCode}
 
 
-\-Definition at line 171 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 121 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 

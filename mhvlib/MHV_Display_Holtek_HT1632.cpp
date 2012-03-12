@@ -62,7 +62,7 @@ MHV_Display_Holtek_HT1632::MHV_Display_Holtek_HT1632(
 
 			poweron(x, y);
 			if (!x && !y) {
-				master(x, y);
+				rcMaster(x, y);
 			} else {
 				slave(x, y);
 			}
@@ -147,7 +147,7 @@ void MHV_Display_Holtek_HT1632::setPixel(uint16_t col, uint16_t row, uint8_t val
  * @param	row		the row of the pixel
  * @return the value of the pixel
  */
-uint8_t MHV_Display_Holtek_HT1632::getPixel(uint16_t col, uint16_t row) {
+uint8_t PURE MHV_Display_Holtek_HT1632::getPixel(uint16_t col, uint16_t row) {
 	if (row < _rowCount && col < _colCount) {
 		// Coordinates of the display module
 		uint8_t moduleX, moduleY;
@@ -254,7 +254,18 @@ void MHV_Display_Holtek_HT1632::master(uint8_t moduleX, uint8_t moduleY) {
 }
 
 /**
- * Set a module to be a salve
+ * Set a module to be an RC master (HT1632C chips)
+ * @param module the module
+ */
+void MHV_Display_Holtek_HT1632::rcMaster(uint8_t moduleX, uint8_t moduleY) {
+	sendCommand(moduleX, moduleY, MHV_HT1632_COMMAND_CMD);
+	_shifter.shiftOut(0b00011000);
+	_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
+	commandComplete(moduleX, moduleY);
+}
+
+/**
+ * Set a module to be a slave
  * @param module the module
  */
 void MHV_Display_Holtek_HT1632::slave(uint8_t moduleX, uint8_t moduleY) {

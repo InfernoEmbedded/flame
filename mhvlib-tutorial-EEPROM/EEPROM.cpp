@@ -77,7 +77,7 @@ uint16_t calculateCRC(uint16_t length) {
 }
 
 
-int NORETURN main(void) {
+MAIN {
 	// Get the current length of the string in EEPROM
 	uint16_t 	length;
 	uint16_t 	crc;
@@ -138,6 +138,4 @@ int NORETURN main(void) {
 		serial.busyWrite_P(PSTR("Writing CRC\r\n"));
 		eeprom.busyWrite(&calculatedCRC, CRC_ADDRESS, sizeof(calculatedCRC));
 	}
-
-	UNREACHABLE;
 }

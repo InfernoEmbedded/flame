@@ -51,6 +51,8 @@
  * LCD pin 6 (E) to AVR (PD7) (Enable)
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
@@ -90,7 +92,7 @@ void textAnimation(MHV_Display_Character *display) {
 	display->write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
 }
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -116,8 +118,6 @@ int NORETURN main(void) {
 	for (;;) {
 		sleep_mode();
 	};
-
-	UNREACHABLE;
 }
 
 

@@ -56,7 +56,8 @@ void MHV_ADC::adc() {
  * @param	channel		the ADC channel
  * @param	listener	an MHV_ADCListener to notify when an ADC reading has been completed
  */
-void MHV_ADC::registerListener(uint8_t channel, MHV_ADCListener &listener) {
+#pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
+void MHV_ADC::registerListener(int8_t channel, MHV_ADCListener &listener) {
 	for (uint8_t i = 0; i < _adcCount; i++) {
 		if (_adcs[i].channel == -1) {
 			_adcs[i].channel = channel;
@@ -65,12 +66,13 @@ void MHV_ADC::registerListener(uint8_t channel, MHV_ADCListener &listener) {
 		}
 	}
 }
+#pragma GCC diagnostic warning "-Wsuggest-attribute=const"
 
 /**
  * Deregister interest for an ADC channel
  * @param	channel		the ADC channel
  */
-void MHV_ADC::deregisterListener(uint8_t channel) {
+void MHV_ADC::deregisterListener(int8_t channel) {
 	for (uint8_t i = 0; i < _adcCount; i++) {
 		if (_adcs[i].channel == channel) {
 			_adcs[i].channel = -1;
@@ -84,7 +86,7 @@ void MHV_ADC::deregisterListener(uint8_t channel) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-uint16_t MHV_ADC::busyRead(uint8_t channel, uint8_t reference) {
+uint16_t MHV_ADC::busyRead(int8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -104,7 +106,7 @@ uint16_t MHV_ADC::busyRead(uint8_t channel, uint8_t reference) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-void MHV_ADC::asyncRead(uint8_t channel, uint8_t reference) {
+void MHV_ADC::asyncRead(int8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5

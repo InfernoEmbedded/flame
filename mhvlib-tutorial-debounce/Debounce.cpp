@@ -46,7 +46,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define ALARM_COUNT	10
 
 // The RTC object we will use
-MHV_RTC_CREATE(rtc, ALARM_COUNT);
+MHV_RTCTemplate<ALARM_COUNT> rtc;
 
 // Triggers for button presses
 class ButtonHandler : public MHV_DebounceListener {
@@ -54,6 +54,7 @@ class ButtonHandler : public MHV_DebounceListener {
 	void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
 };
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void ButtonHandler::singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
@@ -61,6 +62,7 @@ void ButtonHandler::singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
 void ButtonHandler::heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 ButtonHandler buttonHandler;
 
@@ -78,7 +80,7 @@ MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 
 MHV_Debounce debouncer(pinChangeManager, rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -106,7 +108,4 @@ int NORETURN main(void) {
 // Sleep until the next interrupt
 		sleep_mode();
 	}
-
-// Main must return an int, even though we never get here
-	UNREACHABLE;
 }

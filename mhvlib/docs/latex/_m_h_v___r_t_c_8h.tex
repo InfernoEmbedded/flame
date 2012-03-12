@@ -3,6 +3,9 @@
 \label{_m_h_v___r_t_c_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
 }
 {\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Timer8.\-h$>$}\*
+{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\*
+{\ttfamily \#include $<$string.\-h$>$}\*
+{\ttfamily \#include $<$util/atomic.\-h$>$}\*
 \subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -13,13 +16,15 @@ struct \hyperlink{structmhv__time}{mhv\-\_\-time}
 struct \hyperlink{structmhv__alarm}{mhv\-\_\-alarm}
 \item 
 class \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C}
+\item 
+class \hyperlink{class_m_h_v___r_t_c_template}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template$<$ alarm\-Max $>$}
 \end{DoxyCompactItemize}
 \subsection*{\-Defines}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)
+\#define \hyperlink{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)~\hyperlink{class_m_h_v___r_t_c_template}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template}$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name(\-\_\-mhv\-Timezone);
 \item 
-\#define \hyperlink{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count)
+\#define \hyperlink{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count)~\hyperlink{class_m_h_v___r_t_c_template}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template}$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name;
 \end{DoxyCompactItemize}
 \subsection*{\-Typedefs}
 \begin{DoxyCompactItemize}
@@ -86,6 +91,12 @@ bool \hyperlink{_m_h_v___r_t_c_8h_a8b370d6f324996a97860bffd8087cb16}{mhv\-\_\-ti
 \item 
 uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{mhv\-\_\-days\-In\-Month} (\hyperlink{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H} month, uint16\-\_\-t year)
 \end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint32\-\_\-t \*
+mhv\-\_\-seconds\-From\-Year\-Start\mbox{[}$\,$\mbox{]} \hyperlink{_m_h_v___r_t_c_8h_adfd8a213b889871d0fb4b50b2d7b875d}{\-P\-R\-O\-G\-M\-E\-M}
+\end{DoxyCompactItemize}
 
 
 \subsection{\-Define \-Documentation}
@@ -97,14 +108,8 @@ uint8\-\_\-t \hyperlink{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{mhv
 \item[{}]{\-\_\-mhv\-Object\-Name, }
 \item[{}]{\-\_\-mhv\-Event\-Count}
 \end{DoxyParamCaption}
-)}}
+)~{\bf \-M\-H\-V\-\_\-\-R\-T\-C\-Template}$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name;}}
 \label{_m_h_v___r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}
-{\bfseries \-Value\-:}
-\begin{DoxyCode}
-MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
-                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount
-      );
-\end{DoxyCode}
 \-Create a new \-R\-T\-C 
 \begin{DoxyParams}{\-Parameters}
 {\em \-\_\-mhv\-Object\-Name} & the name of the \-R\-T\-C to create \\
@@ -114,7 +119,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 195 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 215 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{\-M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}}
@@ -125,14 +130,8 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \item[{}]{\-\_\-mhv\-Event\-Count, }
 \item[{}]{\-\_\-mhv\-Timezone}
 \end{DoxyParamCaption}
-)}}
+)~{\bf \-M\-H\-V\-\_\-\-R\-T\-C\-Template}$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name(\-\_\-mhv\-Timezone);}}
 \label{_m_h_v___r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}
-{\bfseries \-Value\-:}
-\begin{DoxyCode}
-MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
-                MHV_RTC _mhvObjectName(_mhvObjectName ## Alarms, _mhvEventCount
-      ,_mhvTimezone);
-\end{DoxyCode}
 \-Create a new \-R\-T\-C 
 \begin{DoxyParams}{\-Parameters}
 {\em \-\_\-mhv\-Object\-Name} & the name of the \-R\-T\-C to create \\
@@ -144,7 +143,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 186 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 207 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -156,7 +155,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}
 
 
-\-Definition at line 87 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 90 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H@{\-M\-H\-V\-\_\-\-M\-O\-N\-T\-H}}
@@ -165,7 +164,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a98c5fb7fa4cf35056e932e294af7cbb5}
 
 
-\-Definition at line 65 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 68 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E@{\-M\-H\-V\-\_\-\-T\-I\-M\-E}}
@@ -174,7 +173,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}
 
 
-\-Definition at line 80 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 83 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P@{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P}}
@@ -183,7 +182,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}
 
 
-\-Definition at line 37 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 41 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y@{\-M\-H\-V\-\_\-\-W\-E\-E\-K\-D\-A\-Y}}
@@ -192,7 +191,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \label{_m_h_v___r_t_c_8h_a8a674e84caab9d1e25099ce0624125ad}
 
 
-\-Definition at line 49 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 52 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -258,7 +257,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 
 
 
-\-Definition at line 51 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 54 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_afde1539fd19b4ce2c27a8faaaa0929ff}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-weekday@{mhv\-\_\-weekday}}
@@ -301,7 +300,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 
 
 
-\-Definition at line 40 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 43 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -345,7 +344,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 101 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 104 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a74bf112d3f941f6086b48051aa901528}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
@@ -380,7 +379,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 123 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 126 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_a21bc55cd0aba213ee2948529d3e49caf}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
@@ -412,7 +411,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 144 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 147 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_ab3d6ca9fd272828e5275f9f3d2b789bb}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-alarm\-Init@{mhv\-\_\-alarm\-Init}}
@@ -441,7 +440,7 @@ MHV_ALARM _mhvObjectName ## Alarms[_mhvEventCount]; \
 \end{DoxyParams}
 
 
-\-Definition at line 163 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 166 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{_m_h_v___r_t_c_8h_abd7e3066894c2ec91b7552f992cdaebd}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-days\-In\-Month@{mhv\-\_\-days\-In\-Month}}
@@ -465,7 +464,7 @@ the number of days
 \end{DoxyReturn}
 
 
-\-Definition at line 192 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 143 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-is\-Leap\-Year@{mhv\-\_\-is\-Leap\-Year}}
@@ -478,7 +477,7 @@ the number of days
 \label{_m_h_v___r_t_c_8h_a2a1b0d31d6746568ddbd62176c72b6ef}
 \-Determine if a year is a leap year 
 
-\-Definition at line 100 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 97 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8h_a858279f2a451fd8a80d4f3885dc328f3}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal@{mhv\-\_\-timestamp\-Greater\-Than\-Or\-Equal}}
@@ -502,7 +501,7 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyReturn}
 
 
-\-Definition at line 79 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 76 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8h_a4612d3f9e00ed01b4fd761e99eb9d054}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Increment@{mhv\-\_\-timestamp\-Increment}}
@@ -526,7 +525,7 @@ true if the first timestamp is greater than or equal to the second
 \end{DoxyParams}
 
 
-\-Definition at line 113 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 110 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
 
 \hypertarget{_m_h_v___r_t_c_8h_a8b370d6f324996a97860bffd8087cb16}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!mhv\-\_\-timestamp\-Less\-Than@{mhv\-\_\-timestamp\-Less\-Than}}
@@ -554,5 +553,34 @@ true if the first timestamp is less than the second
 \end{DoxyReturn}
 
 
-\-Definition at line 53 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 50 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{_m_h_v___r_t_c_8h_adfd8a213b889871d0fb4b50b2d7b875d}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C.\-h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}!\-P\-R\-O\-G\-M\-E\-M@{\-P\-R\-O\-G\-M\-E\-M}}
+\index{\-P\-R\-O\-G\-M\-E\-M@{\-P\-R\-O\-G\-M\-E\-M}!MHV_RTC.h@{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}}
+\subsubsection[{\-P\-R\-O\-G\-M\-E\-M}]{\setlength{\rightskip}{0pt plus 5cm}const uint32\-\_\-t mhv\-\_\-seconds\-From\-Year\-Start \mbox{[}$\,$\mbox{]} {\bf \-P\-R\-O\-G\-M\-E\-M}}}
+\label{_m_h_v___r_t_c_8h_adfd8a213b889871d0fb4b50b2d7b875d}
+{\bfseries \-Initial value\-:}
+\begin{DoxyCode}
+ {
+                2678400,        
+                5097600,        
+                7776000,        
+                10368000,       
+                13046400,       
+                15638400,       
+                18316800,       
+                20995200,       
+                23587200,       
+                26265600,       
+                28857600,       
+                31536000        
+}
+\end{DoxyCode}
+
+
+\-Definition at line 185 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 

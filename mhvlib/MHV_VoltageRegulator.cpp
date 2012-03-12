@@ -178,7 +178,7 @@ void MHV_VoltageRegulator::disable() {
 /**
  * Get the voltage as of when regulate was last called
  */
-float MHV_VoltageRegulator::getVoltage() {
+float PURE MHV_VoltageRegulator::getVoltage() {
 	return (float)(_lastADC * _vrefVoltage) / (_divider * MHV_AD_RESOLUTION);
 }
 

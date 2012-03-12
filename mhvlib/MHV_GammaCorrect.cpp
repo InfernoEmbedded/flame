@@ -32,7 +32,7 @@
  * param	value	the value to gamma correct
  * return the gamma corrected value
  */
-uint8_t mhv_calculatedGammaCorrect(uint8_t value) {
+uint8_t CONST mhv_calculatedGammaCorrect(uint8_t value) {
 	return (uint8_t) round(255 * pow(value / 256, 2.5));
 }
 

@@ -74,6 +74,7 @@
  * @param	rowCount		the number of rows on the display
  * @param	txBuffers		buffers for async writing
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 		MHV_DECLARE_PIN(data),
 		MHV_DECLARE_PIN(control),
@@ -105,6 +106,7 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 	_brightness = 5;
 	_contrast = 6;
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 /**
  * An alternate constructor without visual pins - if this constructor is used, tickPWM behaviour is
@@ -116,6 +118,7 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
  * @param	rowCount		the number of rows on the display
  * @param	txBuffers		buffers for async writing
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 		MHV_DECLARE_PIN(data),
 		MHV_DECLARE_PIN(control),
@@ -137,6 +140,7 @@ MHV_Display_HD44780_Direct_Connect::MHV_Display_HD44780_Direct_Connect(
 	*controlDir |= mask;
 	*_controlOut &= ~mask;
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 
 /**
@@ -269,7 +273,7 @@ void MHV_Display_HD44780_Direct_Connect::alarm() {
 		*_visualOut &= ~HD44780_CONTRAST;
 	}
 
-	if (++_ticks = 16) {
+	if (++_ticks == 16) {
 		_ticks = 0;
 	}
 }
@@ -278,9 +282,12 @@ void MHV_Display_HD44780_Direct_Connect::alarm() {
  * Delay function
  * No delays required as we can check whether the display is busy
  */
-void MHV_Display_HD44780_Direct_Connect::delay(MHV_HD44780_COMMAND command) {
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+void CONST MHV_Display_HD44780_Direct_Connect::delay(MHV_HD44780_COMMAND command) {
 	return;
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
+
 
 /**
  * Initialise the display

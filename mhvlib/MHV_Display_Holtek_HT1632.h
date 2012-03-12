@@ -82,6 +82,7 @@ private:
 	void sendCommand(uint8_t moduleX, uint8_t moduleY, MHV_HT1632_COMMAND command);
 	void commandComplete(uint8_t moduleX, uint8_t moduleY);
 	void outputStart(uint8_t moduleX, uint8_t moduleY);
+	void rcMaster(uint8_t moduleX, uint8_t moduleY);
 	void master(uint8_t moduleX, uint8_t moduleY);
 	void slave(uint8_t moduleX, uint8_t moduleY);
 	void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness);

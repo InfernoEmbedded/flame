@@ -48,11 +48,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1471161432" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1471161432" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1212147422" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.189496068" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.189496068" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.668830681" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.134696254" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -99,7 +99,7 @@
 							<tool id="de.innot.avreclipse.tool.compiler.winavr.lib.release.585594109" name="AVR Compiler" superClass="de.innot.avreclipse.tool.compiler.winavr.lib.release">
 								<option id="de.innot.avreclipse.compiler.option.debug.level.1716863072" name="Generate Debugging Info" superClass="de.innot.avreclipse.compiler.option.debug.level" value="de.innot.avreclipse.compiler.option.debug.level.none" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.compiler.option.optimize.400122963" name="Optimization Level" superClass="de.innot.avreclipse.compiler.option.optimize" value="de.innot.avreclipse.compiler.optimize.size" valueType="enumerated"/>
-								<option id="de.innot.avreclipse.compiler.option.incpath.804566306" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
+								<option id="de.innot.avreclipse.compiler.option.incpath.804.7.006" name="Include Paths (-I)" superClass="de.innot.avreclipse.compiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;/${ProjName}&quot;"/>
@@ -114,11 +114,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.719287852" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.719287852" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.519376877" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1905165081" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1905165081" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.489499579" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1269073437" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -178,11 +178,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1329090848" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.535494230" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.535494230" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.1862290180" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.220794924" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -242,11 +242,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.384518180" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.384518180" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.651756960" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.631315712" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.631315712" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.874436386" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1533073610" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -281,7 +281,7 @@
 							<targetPlatform id="de.innot.avreclipse.targetplatform.winavr.lib.release.1986427620" name="AVR Cross-Target" superClass="de.innot.avreclipse.targetplatform.winavr.lib.release"/>
 							<builder buildPath="${workspace_loc:/mhvlib/Release}" enableAutoBuild="true" id="de.innot.avreclipse.target.builder.winavr.lib.release.1950724912" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="AVR GNU Make Builder" parallelBuildOn="true" parallelizationNumber="-1" superClass="de.innot.avreclipse.target.builder.winavr.lib.release"/>
 							<tool id="de.innot.avreclipse.tool.assembler.winavr.lib.release.2051660706" name="AVR Assembler" superClass="de.innot.avreclipse.tool.assembler.winavr.lib.release">
-								<option id="de.innot.avreclipse.assembler.option.debug.level.1511466236" name="Generate Debugging Info" superClass="de.innot.avreclipse.assembler.option.debug.level" value="de.innot.avreclipse.assembler.option.debug.level.none" valueType="enumerated"/>
+								<option id="de.innot.avreclipse.assembler.option.debug.level.15114.7.06" name="Generate Debugging Info" superClass="de.innot.avreclipse.assembler.option.debug.level" value="de.innot.avreclipse.assembler.option.debug.level.none" valueType="enumerated"/>
 								<option id="de.innot.avreclipse.asm.option.include.paths.1414163829" name="#include paths for preprocessor(-I)" superClass="de.innot.avreclipse.asm.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
@@ -307,11 +307,11 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.391984688" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.391984688" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.33036460" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1143702773" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1143702773" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.51723959" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1912918150" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>

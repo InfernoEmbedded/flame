@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -110,12 +110,12 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a55648511cbc03ac09ddc8e9c2a7d96ec">MHV_RingBuffer</a> (char *buffer, uint8_t length)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#ae9fb1751555f666d4d7dd9ff5b8d4684">append</a> (char c)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a71e1ef04975d8884fc70d6ea80f6c22f">append</a> (const void *p, uint8_t pLength)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a750505bbe97b6a2fc307f8c947a187c9">length</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a2935a046213f670d986a82a25e2a0fc3">size</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#aa876ab27b4e578ccdef251976def01b0">full</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a3bfc37ec8232fe0f2016232951ee67ee">full</a> (uint8_t blockLength)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a0f83a4149c40b8ab7eca9712b37d14fe">length</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a52243d7e19970b121ca8623dd662cb43">size</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a72eb6f83c4ddb6a23275cdd3f1030d07">full</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#aaaa5e7fff0c1b7e748c4278096a8b5b1">full</a> (uint8_t blockLength)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#aa9e34685f3881cc967493e3e8c9b839e">flush</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a8577d7eb16e192771fd2af14d667ffc6">peekHead</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a4537605236df3aa7c91fff9d95d50d05">peekHead</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#addec99c97519a0241e7d4be65e432df6">consume</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#af4d35b76c16bd42d9c5568b084310eeb">consume</a> (void *p, uint8_t length)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___ring_buffer.html#a8232f22addc138be447ada8393554961">copyLine</a> (char *, uint8_t length)</td></tr>
@@ -324,12 +324,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa876ab27b4e578ccdef251976def01b0"></a><!-- doxytag: member="MHV_RingBuffer::full" ref="aa876ab27b4e578ccdef251976def01b0" args="()" -->
+<a class="anchor" id="a72eb6f83c4ddb6a23275cdd3f1030d07"></a><!-- doxytag: member="MHV_RingBuffer::full" ref="a72eb6f83c4ddb6a23275cdd3f1030d07" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool MHV_RingBuffer::full </td>
+          <td class="memname">PURE bool MHV_RingBuffer::full </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -344,12 +344,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3bfc37ec8232fe0f2016232951ee67ee"></a><!-- doxytag: member="MHV_RingBuffer::full" ref="a3bfc37ec8232fe0f2016232951ee67ee" args="(uint8_t blockLength)" -->
+<a class="anchor" id="aaaa5e7fff0c1b7e748c4278096a8b5b1"></a><!-- doxytag: member="MHV_RingBuffer::full" ref="aaaa5e7fff0c1b7e748c4278096a8b5b1" args="(uint8_t blockLength)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool MHV_RingBuffer::full </td>
+          <td class="memname">PURE bool MHV_RingBuffer::full </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>blockLength</em></td><td>)</td>
@@ -371,12 +371,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a750505bbe97b6a2fc307f8c947a187c9"></a><!-- doxytag: member="MHV_RingBuffer::length" ref="a750505bbe97b6a2fc307f8c947a187c9" args="()" -->
+<a class="anchor" id="a0f83a4149c40b8ab7eca9712b37d14fe"></a><!-- doxytag: member="MHV_RingBuffer::length" ref="a0f83a4149c40b8ab7eca9712b37d14fe" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t MHV_RingBuffer::length </td>
+          <td class="memname">PURE uint8_t MHV_RingBuffer::length </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -390,12 +390,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8577d7eb16e192771fd2af14d667ffc6"></a><!-- doxytag: member="MHV_RingBuffer::peekHead" ref="a8577d7eb16e192771fd2af14d667ffc6" args="()" -->
+<a class="anchor" id="a4537605236df3aa7c91fff9d95d50d05"></a><!-- doxytag: member="MHV_RingBuffer::peekHead" ref="a4537605236df3aa7c91fff9d95d50d05" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int MHV_RingBuffer::peekHead </td>
+          <td class="memname">PURE int MHV_RingBuffer::peekHead </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -410,12 +410,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2935a046213f670d986a82a25e2a0fc3"></a><!-- doxytag: member="MHV_RingBuffer::size" ref="a2935a046213f670d986a82a25e2a0fc3" args="()" -->
+<a class="anchor" id="a52243d7e19970b121ca8623dd662cb43"></a><!-- doxytag: member="MHV_RingBuffer::size" ref="a52243d7e19970b121ca8623dd662cb43" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t MHV_RingBuffer::size </td>
+          <td class="memname">PURE uint8_t MHV_RingBuffer::size </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -454,7 +454,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:41 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:11 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

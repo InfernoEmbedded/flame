@@ -60,7 +60,7 @@ void MHV_Display_Monochrome_Buffered::setPixel(uint16_t col, uint16_t row, uint8
  * param:	row		the row
  * return	the intensity of the pixel
  */
-uint8_t MHV_Display_Monochrome_Buffered::getPixel(uint16_t col, uint16_t row) {
+PURE uint8_t MHV_Display_Monochrome_Buffered::getPixel(uint16_t col, uint16_t row) {
 	if (row < _rowCount && col < _colCount) {
 		return pixel(row, col);
 	} else {

@@ -46,7 +46,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1981286227" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1162367930" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1162367930" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1904116237" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.2111995801" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.358537433" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
@@ -120,7 +121,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1190795251" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.2076872753" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.2076872753" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1047119643" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.791319214" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.1062277816" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
@@ -194,7 +196,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.568576184" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.2129743935" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.2129743935" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1657797102" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.298289430" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.1343932085" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>
@@ -268,7 +271,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.645729506" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1334762274" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1334762274" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.224020183" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.1658504530" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.app.release.611106767" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.app.release"/>

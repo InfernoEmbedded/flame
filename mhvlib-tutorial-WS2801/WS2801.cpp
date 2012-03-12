@@ -28,6 +28,8 @@
 /* Drive a string of WS2801 controlled LEDs,
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -50,7 +52,7 @@
 // Instantiate the driver
 MHV_WS2801_CREATE(ws2801, LEDS);
 
-int NORETURN main(void) {
+MAIN {
 	mhv_setOutput(MHV_SHIFT_WRITECLOCK);
 	mhv_setOutput(MHV_SHIFT_WRITEDATA);
 
@@ -120,7 +122,5 @@ int NORETURN main(void) {
 			ws2801.rotate(false);
 		}
 	}
-
-	UNREACHABLE;
 }
 

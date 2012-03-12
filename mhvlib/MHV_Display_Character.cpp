@@ -51,14 +51,14 @@ MHV_Display_Character::MHV_Display_Character(uint16_t colCount, uint16_t rowCoun
 /**
  * Get the width of the display
  */
-uint8_t MHV_Display_Character::getWidth() {
+PURE uint8_t MHV_Display_Character::getWidth() {
 	return _colCount;
 }
 
 /**
  * Get the width of the display
  */
-uint8_t MHV_Display_Character::getHeight() {
+PURE uint8_t MHV_Display_Character::getHeight() {
 	return _rowCount;
 }
 
@@ -83,7 +83,7 @@ bool MHV_Display_Character::writeString(int16_t *offsetX, uint16_t offsetY, cons
 	setCursor((uint16_t)*offsetX, offsetY);
 
 	bool ret = false;
-	if (offsetY >= 0 && offsetY < _rowCount) {
+	if (offsetY < _rowCount) {
 		while (*p != '\0' && (*offsetX)++ < (int16_t)_colCount) {
 			ret = true;
 			writeChar(*p++);
@@ -143,7 +143,7 @@ bool MHV_Display_Character::writeString_P(int16_t *offsetX, uint16_t offsetY, PG
 	setCursor((uint16_t)*offsetX, offsetY);
 
 	bool ret = false;
-	if (offsetY >= 0 && offsetY < _rowCount) {
+	if (offsetY < _rowCount) {
 		while ('\0' != (c = pgm_read_byte(p++)) && (*offsetX)++ < (int16_t)_colCount) {
 			ret = true;
 			writeChar(c);
@@ -316,6 +316,7 @@ void MHV_Display_Character::writeChar(char character) {
 			}
 		}
 		_writeChar(character);
+		break;
 	}
 }
 

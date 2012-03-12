@@ -81,10 +81,8 @@ protected:
 
 public:
 	MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
-	void assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-			uint8_t pin, int8_t pinchangeInterrupt, MHV_DebounceListener &listener);
-	void deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t pin, int8_t pinchangeInterrupt);
+	void assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener);
+	void deassignKey(MHV_DECLARE_PIN(pin));
 	void checkHeld();
 };
 

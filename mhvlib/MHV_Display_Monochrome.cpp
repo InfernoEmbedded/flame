@@ -49,14 +49,14 @@ MHV_Display_Monochrome::MHV_Display_Monochrome(uint16_t colCount, uint16_t rowCo
 /**
  * Get the width of the display
  */
-uint16_t MHV_Display_Monochrome::getWidth() {
+PURE uint16_t MHV_Display_Monochrome::getWidth() {
 	return _colCount;
 }
 
 /**
  * Get the width of the display
  */
-uint16_t MHV_Display_Monochrome::getHeight() {
+PURE uint16_t MHV_Display_Monochrome::getHeight() {
 	return _rowCount;
 }
 
@@ -134,12 +134,11 @@ bool MHV_Display_Monochrome::writeChar(const MHV_FONT &font, int16_t *offsetX, i
  * @param	font		the font to use
  * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
  * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
- * @param	onValue		the pixel value to use for on
  * @param	offValue	the pixel value to use for off
  * @return true if the seperator was written
  */
 bool MHV_Display_Monochrome::writeSeperator(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
-		uint8_t onValue, uint8_t offValue) {
+		uint8_t offValue) {
 	bool ret = false;
 
 	if (*offsetX >= 0 && *offsetX < (int16_t)_colCount) {
@@ -178,7 +177,7 @@ bool MHV_Display_Monochrome::writeString(const MHV_FONT &font, int16_t *offsetX,
 	while (*p != '\0' && *offsetX < (int16_t)_colCount) {
 		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, *p);
 		if (*(++p) != '\0') {
-			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+			ret |= writeSeperator(font, offsetX, offsetY, offValue);
 		}
 	}
 
@@ -203,7 +202,7 @@ bool MHV_Display_Monochrome::writeBuffer(const MHV_FONT &font, int16_t *offsetX,
 	while (i < length && *offsetX < (int16_t)_colCount) {
 		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, buffer[i++]);
 		if (i != length) {
-			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+			ret |= writeSeperator(font, offsetX, offsetY, offValue);
 		}
 	}
 
@@ -232,7 +231,7 @@ bool MHV_Display_Monochrome::writeString_P(const MHV_FONT &font, int16_t *offset
 		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, val);
 		val = pgm_read_byte(++p);
 		if (val != '\0') {
-			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+			ret |= writeSeperator(font, offsetX, offsetY, offValue);
 		}
 	}
 
@@ -258,7 +257,7 @@ bool MHV_Display_Monochrome::writeBuffer_P(const MHV_FONT &font, int16_t *offset
 	while (i < length && *offsetX < (int16_t)_colCount) {
 		ret |= writeChar(font, offsetX, offsetY, onValue, offValue, pgm_read_byte(buffer + i++));
 		if (i < length) {
-			ret |= writeSeperator(font, offsetX, offsetY, onValue, offValue);
+			ret |= writeSeperator(font, offsetX, offsetY, offValue);
 		}
 	}
 

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -100,31 +100,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="_m_h_v___r_t_c_8h_source.html">MHV_RTC.h</a>&gt;</code><br/>
-<code>#include &lt;avr/pgmspace.h&gt;</code><br/>
-<code>#include &lt;string.h&gt;</code><br/>
-<code>#include &lt;util/atomic.h&gt;</code><br/>
 </div>
 <p><a href="_m_h_v___r_t_c_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#a8b370d6f324996a97860bffd8087cb16">mhv_timestampLessThan</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;first, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;second)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#a858279f2a451fd8a80d4f3885dc328f3">mhv_timestampGreaterThanOrEqual</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;first, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;second)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#a2a1b0d31d6746568ddbd62176c72b6ef">mhv_isLeapYear</a> (uint16_t year)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool PURE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#afb69abc0cb1231fc562978ba5c117dd0">mhv_timestampLessThan</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;first, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;second)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool PURE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#a35566c1875e5d3342f560ba95dc6f7df">mhv_timestampGreaterThanOrEqual</a> (const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;first, const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;second)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool CONST&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#adbbe05ff4304797a24d6ce43a3b06be1">mhv_isLeapYear</a> (uint16_t year)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#a4612d3f9e00ed01b4fd761e99eb9d054">mhv_timestampIncrement</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;timestamp, uint32_t seconds, uint16_t milliseconds)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#abd7e3066894c2ec91b7552f992cdaebd">mhv_daysInMonth</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a> month, uint16_t year)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint8_t CONST&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#aaeff086c8b7a17643510a3da6499e18d">mhv_daysInMonth</a> (<a class="el" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a> month, uint16_t year)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const uint8_t <br class="typebreak"/>
-mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#adfd8a213b889871d0fb4b50b2d7b875d">PROGMEM</a></td></tr>
+mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_m_h_v___r_t_c_8cpp.html#ab0115810e7508e24b9206d01ff3be913">PROGMEM</a></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="abd7e3066894c2ec91b7552f992cdaebd"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_daysInMonth" ref="abd7e3066894c2ec91b7552f992cdaebd" args="(MHV_MONTH month, uint16_t year)" -->
+<a class="anchor" id="aaeff086c8b7a17643510a3da6499e18d"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_daysInMonth" ref="aaeff086c8b7a17643510a3da6499e18d" args="(MHV_MONTH month, uint16_t year)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t mhv_daysInMonth </td>
+          <td class="memname">uint8_t CONST mhv_daysInMonth </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="_m_h_v___r_t_c_8h.html#a98c5fb7fa4cf35056e932e294af7cbb5">MHV_MONTH</a>&#160;</td>
           <td class="paramname"><em>month</em>, </td>
@@ -153,16 +150,16 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>the number of days </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00192">192</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00143">143</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a2a1b0d31d6746568ddbd62176c72b6ef"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_isLeapYear" ref="a2a1b0d31d6746568ddbd62176c72b6ef" args="(uint16_t year)" -->
+<a class="anchor" id="adbbe05ff4304797a24d6ce43a3b06be1"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_isLeapYear" ref="adbbe05ff4304797a24d6ce43a3b06be1" args="(uint16_t year)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool mhv_isLeapYear </td>
+          <td class="memname">bool CONST mhv_isLeapYear </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>year</em></td><td>)</td>
@@ -173,16 +170,16 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
 <div class="memdoc">
 <p>Determine if a year is a leap year </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00100">100</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00097">97</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a858279f2a451fd8a80d4f3885dc328f3"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_timestampGreaterThanOrEqual" ref="a858279f2a451fd8a80d4f3885dc328f3" args="(const MHV_TIMESTAMP &amp;first, const MHV_TIMESTAMP &amp;second)" -->
+<a class="anchor" id="a35566c1875e5d3342f560ba95dc6f7df"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_timestampGreaterThanOrEqual" ref="a35566c1875e5d3342f560ba95dc6f7df" args="(const MHV_TIMESTAMP &amp;first, const MHV_TIMESTAMP &amp;second)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool mhv_timestampGreaterThanOrEqual </td>
+          <td class="memname">bool PURE mhv_timestampGreaterThanOrEqual </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>first</em>, </td>
@@ -211,7 +208,7 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the first timestamp is greater than or equal to the second </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00079">79</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00076">76</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -255,16 +252,16 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00113">113</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00110">110</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a8b370d6f324996a97860bffd8087cb16"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_timestampLessThan" ref="a8b370d6f324996a97860bffd8087cb16" args="(const MHV_TIMESTAMP &amp;first, const MHV_TIMESTAMP &amp;second)" -->
+<a class="anchor" id="afb69abc0cb1231fc562978ba5c117dd0"></a><!-- doxytag: member="MHV_RTC.cpp::mhv_timestampLessThan" ref="afb69abc0cb1231fc562978ba5c117dd0" args="(const MHV_TIMESTAMP &amp;first, const MHV_TIMESTAMP &amp;second)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool mhv_timestampLessThan </td>
+          <td class="memname">bool PURE mhv_timestampLessThan </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="_m_h_v___r_t_c_8h.html#a1e30d3a92b1b868286bd0d619245d8a6">MHV_TIMESTAMP</a> &amp;&#160;</td>
           <td class="paramname"><em>first</em>, </td>
@@ -295,17 +292,17 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the first timestamp is less than the second </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00053">53</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00050">50</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Variable Documentation</h2>
-<a class="anchor" id="adfd8a213b889871d0fb4b50b2d7b875d"></a><!-- doxytag: member="MHV_RTC.cpp::PROGMEM" ref="adfd8a213b889871d0fb4b50b2d7b875d" args="" -->
+<a class="anchor" id="ab0115810e7508e24b9206d01ff3be913"></a><!-- doxytag: member="MHV_RTC.cpp::PROGMEM" ref="ab0115810e7508e24b9206d01ff3be913" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const uint32_t mhv_secondsFromYearStart [] <a class="el" href="_m_h_v___stepper_motor_unipolar_8cpp.html#ac7b0e9759bb3e284f224e7afc27313bf">PROGMEM</a></td>
+          <td class="memname">const uint8_t mhv_daysInMonthArray [] <a class="el" href="_m_h_v___stepper_motor_unipolar_8cpp.html#ac7b0e9759bb3e284f224e7afc27313bf">PROGMEM</a></td>
         </tr>
       </table>
 </div>
@@ -325,7 +322,7 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
                 31 
 }
 </pre></div>
-<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00171">171</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___r_t_c_8cpp_source.html#l00121">121</a> of file <a class="el" href="_m_h_v___r_t_c_8cpp_source.html">MHV_RTC.cpp</a>.</p>
 
 </div>
 </div>
@@ -349,7 +346,7 @@ mhv_daysInMonthArray[]&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:36 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:05 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

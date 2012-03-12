@@ -55,7 +55,9 @@ MHV_Timer8::MHV_Timer8(MHV_TIMER_TYPE type, volatile uint8_t *controlRegA, volat
 /**
  * Create a new timer (only for use by MHV_Timer16)
  */
+#pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
 MHV_Timer8::MHV_Timer8() {}
+#pragma GCC diagnostic warning "-Wsuggest-attribute=const"
 
 /**
  * Get the current value of the timer

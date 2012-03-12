@@ -92,6 +92,11 @@ StepperInstructions::StepperInstructions() :
 	_speed(1),
 	_speedUp(true) {}
 
+/**
+ * Called when a motor movement is complete
+ * @param position	the current position of the motor (unused)
+ */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void StepperInstructions::moveComplete(int32_t position) {
 	_forward = !_forward;
 	_speed += (_speedUp) ? 100 : -100;
@@ -104,15 +109,15 @@ void StepperInstructions::moveComplete(int32_t position) {
 		_speedUp = true;
 	}
 
-
 	int32_t newPosition = (_forward) ? 1 * STEPS_PER_ROTATION : 0;
 	stepper.rotate(_forward, _speed, newPosition);
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 StepperInstructions stepperInstructions;
 
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 #ifdef ATTINY
@@ -122,8 +127,6 @@ int NORETURN main(void) {
 	power_timer2_enable();
 #define PRESCALER	MHV_TIMER_PRESCALER_7_64
 #endif
-
-	set_sleep_mode(SLEEP_MODE_IDLE);
 
 	// Register the listener with the stepper driver to be notified when moves are complete
 	stepper.registerListener(stepperInstructions);
@@ -144,10 +147,5 @@ int NORETURN main(void) {
 		/* All the interesting things happen in events
 		 */
 		rtc.handleEvents();
-
-		// Sleep until an interrupt occurs
-		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

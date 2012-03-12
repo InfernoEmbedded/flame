@@ -139,7 +139,7 @@ void MHV_RingBuffer::flush() {
  * Get the size of the ringbuffer
  * @return the size of the ringbuffer
  */
-uint8_t MHV_RingBuffer::size() {
+PURE uint8_t MHV_RingBuffer::size() {
 	return _size;
 }
 
@@ -147,7 +147,7 @@ uint8_t MHV_RingBuffer::size() {
  * Get the length of the contents of the ringbuffer
  * Return the number of bytes in the ringbuffer
  */
-uint8_t MHV_RingBuffer::length() {
+PURE uint8_t MHV_RingBuffer::length() {
 	int16_t length = _head - _tail;
 	if (length < 0) {
 // The pointers have wrapped
@@ -161,7 +161,7 @@ uint8_t MHV_RingBuffer::length() {
  * Check if the ringbuffer is full
  * @return true if the ringbuffer is full
  */
-bool MHV_RingBuffer::full() {
+PURE bool MHV_RingBuffer::full() {
 	return length() == _size - 1;
 }
 
@@ -170,7 +170,7 @@ bool MHV_RingBuffer::full() {
  * @param blockLength	the length of the object to fit in
  * @return true if the ringbuffer is full
  */
-bool MHV_RingBuffer::full(uint8_t blockLength) {
+PURE bool MHV_RingBuffer::full(uint8_t blockLength) {
 	return length() > (_size - 1 - blockLength);
 }
 
@@ -179,7 +179,7 @@ bool MHV_RingBuffer::full(uint8_t blockLength) {
  * Check the first character in the buffer
  * @return the character, or -1 if the buffer is empty
  */
-int MHV_RingBuffer::peekHead() {
+PURE int MHV_RingBuffer::peekHead() {
 	if (_head == _tail) {
 		return -1;
 	}

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -122,8 +122,8 @@ Inheritance diagram for MHV_Display_Monochrome:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#ae9bac3772b5baa006b04121c0caf0d8b">MHV_Display_Monochrome</a> (uint16_t colCount, uint16_t rowCount, <a class="el" href="class_m_h_v___ring_buffer.html">MHV_RingBuffer</a> &amp;txBuffers)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a1ef9b1ddbc9e57007903076005335211">getWidth</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a988a98e01d54b12d3dcecc2d7878a985">getHeight</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#aff729b2192d8f862c2c58442bef44f3d">getWidth</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a66fe24dc111d1a2b224951bfa2eae853">getHeight</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a25b062aefde440ad5c47dbca98b5b478">clear</a> (uint8_t value)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a4f56f6dd2d51352e527f53bb244e3543">writeString</a> (const <a class="el" href="_m_h_v___font_8h.html#ab7088ba808ac223275dfd526d198356f">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue, const char *string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#acacf2c72fd60a1a7cbdcf25e1cd93920">writeString_P</a> (const <a class="el" href="_m_h_v___font_8h.html#ab7088ba808ac223275dfd526d198356f">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue, PGM_P string)</td></tr>
@@ -135,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <tr><td colspan="2"><h2><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#ad0321aa7b9fa5a0de26ad5e4ff17f006">writeChar</a> (const <a class="el" href="_m_h_v___font_8h.html#ab7088ba808ac223275dfd526d198356f">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue, char character)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#ad82b9b17a337cb193e5385cf212bbfb3">writeSeperator</a> (const <a class="el" href="_m_h_v___font_8h.html#ab7088ba808ac223275dfd526d198356f">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#ae4cedda8de71a496fde651ffcb9fabbf">writeSeperator</a> (const <a class="el" href="_m_h_v___font_8h.html#ab7088ba808ac223275dfd526d198356f">MHV_FONT</a> &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t offValue)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___display___monochrome.html#a7abdfbe71e00421a4275760ab6632b4a">runTxBuffers</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -218,12 +218,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a988a98e01d54b12d3dcecc2d7878a985"></a><!-- doxytag: member="MHV_Display_Monochrome::getHeight" ref="a988a98e01d54b12d3dcecc2d7878a985" args="()" -->
+<a class="anchor" id="a66fe24dc111d1a2b224951bfa2eae853"></a><!-- doxytag: member="MHV_Display_Monochrome::getHeight" ref="a66fe24dc111d1a2b224951bfa2eae853" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t MHV_Display_Monochrome::getHeight </td>
+          <td class="memname">PURE uint16_t MHV_Display_Monochrome::getHeight </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -262,16 +262,16 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a32fe510b3bfa55a32e02a9570e67639d">MHV_Display_Holtek_HT1632</a>, and <a class="el" href="class_m_h_v___display___monochrome___buffered.html#a134f42819a667a3aafb60a3fd432ef12">MHV_Display_Monochrome_Buffered</a>.</p>
+<p>Implemented in <a class="el" href="class_m_h_v___display___holtek___h_t1632.html#a2bebc937a5951bfeace807368856d0b9">MHV_Display_Holtek_HT1632</a>, and <a class="el" href="class_m_h_v___display___monochrome___buffered.html#a5accdda0269e3617813afdd964498a5e">MHV_Display_Monochrome_Buffered</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1ef9b1ddbc9e57007903076005335211"></a><!-- doxytag: member="MHV_Display_Monochrome::getWidth" ref="a1ef9b1ddbc9e57007903076005335211" args="()" -->
+<a class="anchor" id="aff729b2192d8f862c2c58442bef44f3d"></a><!-- doxytag: member="MHV_Display_Monochrome::getWidth" ref="aff729b2192d8f862c2c58442bef44f3d" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t MHV_Display_Monochrome::getWidth </td>
+          <td class="memname">PURE uint16_t MHV_Display_Monochrome::getWidth </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -302,7 +302,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">MHV_Device_TX</a>.</p>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00271">271</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00270">270</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -389,7 +389,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if there are more frames to be rendered </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00284">284</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00283">283</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -462,7 +462,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if anything was written </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00199">199</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00198">198</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -535,7 +535,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if anything was written </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00253">253</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00252">252</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -605,7 +605,7 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad82b9b17a337cb193e5385cf212bbfb3"></a><!-- doxytag: member="MHV_Display_Monochrome::writeSeperator" ref="ad82b9b17a337cb193e5385cf212bbfb3" args="(const MHV_FONT &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t onValue, uint8_t offValue)" -->
+<a class="anchor" id="ae4cedda8de71a496fde651ffcb9fabbf"></a><!-- doxytag: member="MHV_Display_Monochrome::writeSeperator" ref="ae4cedda8de71a496fde651ffcb9fabbf" args="(const MHV_FONT &amp;font, int16_t *offsetX, int16_t offsetY, uint8_t offValue)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -631,12 +631,6 @@ Protected Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>onValue</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>offValue</em>&#160;</td>
         </tr>
         <tr>
@@ -653,14 +647,13 @@ Protected Attributes</h2></td></tr>
     <tr><td class="paramname">font</td><td>the font to use </td></tr>
     <tr><td class="paramname">offsetX</td><td>the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) </td></tr>
     <tr><td class="paramname">offsetY</td><td>the vertical pixel offset to start writing at (bottom of char) </td></tr>
-    <tr><td class="paramname">onValue</td><td>the pixel value to use for on </td></tr>
     <tr><td class="paramname">offValue</td><td>the pixel value to use for off </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if the seperator was written </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00141">141</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00140">140</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -726,7 +719,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if anything was written </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00173">173</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00172">172</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -792,7 +785,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>true if anything was written </dd></dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00224">224</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html#l00223">223</a> of file <a class="el" href="_m_h_v___display___monochrome_8cpp_source.html">MHV_Display_Monochrome.cpp</a>.</p>
 
 </div>
 </div>
@@ -866,7 +859,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:39 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:10 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -108,14 +108,14 @@ Inheritance diagram for MHV_TimerListener:</div>
  <div class="center">
   <img src="class_m_h_v___timer_listener.png" usemap="#MHV_TimerListener_map" alt=""/>
   <map id="MHV_TimerListener_map" name="MHV_TimerListener_map">
-<area href="class_m_h_v___display___h_d44780___direct___connect.html" alt="MHV_Display_HD44780_Direct_Connect" shape="rect" coords="0,56,245,80"/>
-<area href="class_m_h_v___p_w_m_matrix.html" alt="MHV_PWMMatrix" shape="rect" coords="255,56,500,80"/>
-<area href="class_m_h_v___r_t_c.html" alt="MHV_RTC" shape="rect" coords="510,56,755,80"/>
-<area href="class_m_h_v___stepper_motor.html" alt="MHV_StepperMotor" shape="rect" coords="765,56,1010,80"/>
-<area href="class_m_h_v___vusb_console.html" alt="MHV_VusbConsole" shape="rect" coords="1020,56,1265,80"/>
-<area href="class_m_h_v___vusb_keyboard.html" alt="MHV_VusbKeyboard" shape="rect" coords="1275,56,1520,80"/>
-<area href="class_m_h_v___stepper_motor_unipolar.html" alt="MHV_StepperMotorUnipolar" shape="rect" coords="765,112,1010,136"/>
-<area href="class_m_h_v___vusb_typist.html" alt="MHV_VusbTypist" shape="rect" coords="1275,112,1520,136"/>
+<area href="class_m_h_v___d_a_c.html" alt="MHV_DAC" shape="rect" coords="255,56,500,80"/>
+<area href="class_m_h_v___display___h_d44780___direct___connect.html" alt="MHV_Display_HD44780_Direct_Connect" shape="rect" coords="255,112,500,136"/>
+<area href="class_m_h_v___p_w_m_matrix.html" alt="MHV_PWMMatrix" shape="rect" coords="255,168,500,192"/>
+<area href="class_m_h_v___r_t_c.html" alt="MHV_RTC" shape="rect" coords="255,224,500,248"/>
+<area href="class_m_h_v___software_p_w_m.html" alt="MHV_SoftwarePWM&lt; listenerCount &gt;" shape="rect" coords="255,280,500,304"/>
+<area href="class_m_h_v___stepper_motor.html" alt="MHV_StepperMotor" shape="rect" coords="255,336,500,360"/>
+<area href="class_m_h_v___vusb_console.html" alt="MHV_VusbConsole" shape="rect" coords="255,392,500,416"/>
+<area href="class_m_h_v___vusb_keyboard.html" alt="MHV_VusbKeyboard" shape="rect" coords="255,448,500,472"/>
 </map>
  </div></div>
 
@@ -126,8 +126,9 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___timer_listener.html#a27e243f8df77035eca626beab5b3e60a">alarm</a> ()=0</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00103">103</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
+<div class="textblock"><p>A class which will be notified when an alarm goes off </p>
+
+<p>Definition at line <a class="el" href="_m_h_v___timer8_8h_source.html#l00106">106</a> of file <a class="el" href="_m_h_v___timer8_8h_source.html">MHV_Timer8.h</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a27e243f8df77035eca626beab5b3e60a"></a><!-- doxytag: member="MHV_TimerListener::alarm" ref="a27e243f8df77035eca626beab5b3e60a" args="()=0" -->
 <div class="memitem">
@@ -142,8 +143,9 @@ Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Called when an alarm goes off </p>
 
-<p>Implemented in <a class="el" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">MHV_RTC</a>, <a class="el" href="class_m_h_v___vusb_keyboard.html#a9d59ac54f1b17ece17c038dc3f5bd026">MHV_VusbKeyboard</a>, <a class="el" href="class_m_h_v___p_w_m_matrix.html#a15a8c45e7736a53cb2e19a7c2070bb0d">MHV_PWMMatrix</a>, <a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#afde566730348a32f1699e92d2e887240">MHV_Display_HD44780_Direct_Connect</a>, <a class="el" href="class_m_h_v___stepper_motor.html#a97826114693f3e3d3ada782ee0e35b22">MHV_StepperMotor</a>, <a class="el" href="class_m_h_v___vusb_typist.html#a90c805aafa38fb78df184c26fd4e0967">MHV_VusbTypist</a>, and <a class="el" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">MHV_VusbConsole</a>.</p>
+<p>Implemented in <a class="el" href="class_m_h_v___r_t_c.html#a949570f89977560cc68dc909e7d0a805">MHV_RTC</a>, <a class="el" href="class_m_h_v___vusb_keyboard.html#a9d59ac54f1b17ece17c038dc3f5bd026">MHV_VusbKeyboard</a>, <a class="el" href="class_m_h_v___software_p_w_m.html#aef021dedf117628a95ff35eb2e0af0b0">MHV_SoftwarePWM&lt; listenerCount &gt;</a>, <a class="el" href="class_m_h_v___p_w_m_matrix.html#a15a8c45e7736a53cb2e19a7c2070bb0d">MHV_PWMMatrix</a>, <a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#afde566730348a32f1699e92d2e887240">MHV_Display_HD44780_Direct_Connect</a>, <a class="el" href="class_m_h_v___d_a_c.html#a1973fe7e81f91152cf0ecc78328121be">MHV_DAC</a>, <a class="el" href="class_m_h_v___stepper_motor.html#a97826114693f3e3d3ada782ee0e35b22">MHV_StepperMotor</a>, <a class="el" href="class_m_h_v___vusb_typist.html#a90c805aafa38fb78df184c26fd4e0967">MHV_VusbTypist</a>, and <a class="el" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">MHV_VusbConsole</a>.</p>
 
 </div>
 </div>
@@ -170,7 +172,7 @@ Public Member Functions</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:42 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:14 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

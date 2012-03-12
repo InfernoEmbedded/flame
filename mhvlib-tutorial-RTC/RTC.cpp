@@ -28,6 +28,8 @@
 /* A clock to demonstrate the RTC class
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <MHV_io.h>
 #include <MHV_HardwareSerial.h>
 #include <MHV_Timer8.h>
@@ -54,7 +56,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 #define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTC_CREATE_TZ(rtc, ALARM_COUNT, TIMEZONE);
+MHV_RTCTemplate<ALARM_COUNT> rtc(TIMEZONE);
 
 class OncePerSecond : public MHV_TimerListener {
 	void alarm();
@@ -82,8 +84,7 @@ void OncePerSecond::alarm() {
 
 OncePerSecond oncePerSecond;
 
-// Program main
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer0_enable();
@@ -187,6 +188,4 @@ int NORETURN main(void) {
 		rtc.handleEvents();
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

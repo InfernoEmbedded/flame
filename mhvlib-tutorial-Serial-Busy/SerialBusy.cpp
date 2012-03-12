@@ -28,6 +28,8 @@
 /* Demonstrates busy writing to a serial port
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -59,7 +61,7 @@
  */
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
-int NORETURN main(void) {
+MAIN {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_usart0_enable();

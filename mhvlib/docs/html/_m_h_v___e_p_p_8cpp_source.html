@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -189,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00126"></a>00126 }
 <a name="l00127"></a>00127 
 <a name="l00132"></a>00132 <span class="keywordtype">void</span> MHV_EPP::interruptStrobe(<span class="keywordtype">bool</span> address) {
-<a name="l00133"></a>00133         <span class="keywordflow">if</span> (<a class="code" href="_m_h_v__io_8h.html#a7865c800ceb654a95b780149d18fc8de">mhv_pinRead</a>(MHV_EPP_CONTROL, MHV_EPP_WRITE, 0)) {
+<a name="l00133"></a>00133         <span class="keywordflow">if</span> (<a class="code" href="_m_h_v__io_8h.html#acce04b4cb68ce79de26c245a4c8e95b7">mhv_pinRead</a>(MHV_EPP_CONTROL, MHV_EPP_WRITE, 0)) {
 <a name="l00134"></a>00134 <span class="comment">// Read cycle (host is reading from us), write is active low</span>
 <a name="l00135"></a>00135 
 <a name="l00136"></a>00136 <span class="comment">// Set data port to output</span>
@@ -208,12 +208,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00149"></a>00149         }
 <a name="l00150"></a>00150 
 <a name="l00151"></a>00151 <span class="comment">// Raise wait</span>
-<a name="l00152"></a>00152         <a class="code" href="_m_h_v__io_8h.html#a31128832d0b166b97a45871602706553">mhv_pinOn</a>(MHV_EPP_CONTROL, MHV_EPP_WAIT, 0);
+<a name="l00152"></a>00152         <a class="code" href="_m_h_v__io_8h.html#a6726e589636b11955a7d221982d60b88">mhv_pinOn</a>(MHV_EPP_CONTROL, MHV_EPP_WAIT, 0);
 <a name="l00153"></a>00153 }
 <a name="l00154"></a>00154 
 <a name="l00159"></a>00159 <span class="keywordtype">void</span> MHV_EPP::releaseStrobe(<span class="keywordtype">bool</span> address) {
 <a name="l00160"></a>00160 <span class="comment">// Drop wait</span>
-<a name="l00161"></a>00161         <a class="code" href="_m_h_v__io_8h.html#a09fb9ab4d81b04e5bd344b284e1897ae">mhv_pinOff</a>(MHV_EPP_CONTROL, MHV_EPP_WAIT, 0);
+<a name="l00161"></a>00161         <a class="code" href="_m_h_v__io_8h.html#a8b04ff083d7aea446034144f40091175">mhv_pinOff</a>(MHV_EPP_CONTROL, MHV_EPP_WAIT, 0);
 <a name="l00162"></a>00162 }
 <a name="l00163"></a>00163 
 <a name="l00164"></a>00164 <span class="preprocessor">#endif</span>
@@ -237,7 +237,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:35 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:04 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

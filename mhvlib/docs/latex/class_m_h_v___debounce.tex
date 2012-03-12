@@ -17,9 +17,9 @@
 \item 
 \hyperlink{class_m_h_v___debounce_a68049104b4f0784dcd39658cbd0728ec}{\-M\-H\-V\-\_\-\-Debounce} (\hyperlink{class_m_h_v___pin_change_manager}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} \&pin\-Change\-Manager, \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} \&rtc, uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time)
 \item 
-void \hyperlink{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}{assign\-Key} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t pin, int8\-\_\-t pinchange\-Interrupt, \hyperlink{class_m_h_v___debounce_listener}{\-M\-H\-V\-\_\-\-Debounce\-Listener} \&listener)
+void \hyperlink{class_m_h_v___debounce_ab09a603164dc481efbffd700d7ae0fa3}{assign\-Key} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin), \hyperlink{class_m_h_v___debounce_listener}{\-M\-H\-V\-\_\-\-Debounce\-Listener} \&listener)
 \item 
-void \hyperlink{class_m_h_v___debounce_a00f8ea47ef5e0b51a9169a162daa7338}{deassign\-Key} (volatile uint8\-\_\-t $\ast$dir, volatile uint8\-\_\-t $\ast$out, volatile uint8\-\_\-t $\ast$in, uint8\-\_\-t pin, int8\-\_\-t pinchange\-Interrupt)
+void \hyperlink{class_m_h_v___debounce_a9d3c75f72e639d2b796cb55c29f4574f}{deassign\-Key} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin))
 \item 
 void \hyperlink{class_m_h_v___debounce_a581f7626d54332eec3e34bb5367e1148}{check\-Held} ()
 \end{DoxyCompactItemize}
@@ -90,38 +90,26 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 
 \subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}{
+\hypertarget{class_m_h_v___debounce_ab09a603164dc481efbffd700d7ae0fa3}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!assign\-Key@{assign\-Key}}
 \index{assign\-Key@{assign\-Key}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
 \subsubsection[{assign\-Key}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Debounce\-::assign\-Key (
 \begin{DoxyParamCaption}
-\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
-\item[{volatile uint8\-\_\-t $\ast$}]{out, }
-\item[{volatile uint8\-\_\-t $\ast$}]{in, }
-\item[{uint8\-\_\-t}]{bit, }
-\item[{int8\-\_\-t}]{pinchange\-Interrupt, }
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin)}]{, }
 \item[{{\bf \-M\-H\-V\-\_\-\-Debounce\-Listener} \&}]{listener}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___debounce_af00d5a07807378e7ef02030bd3a009de}
+\label{class_m_h_v___debounce_ab09a603164dc481efbffd700d7ae0fa3}
 \-Assign a pin to debounce 
 \begin{DoxyParams}{\-Parameters}
-{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em pinchange\-Interrupt} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+{\em pin} & \-An \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
 \hline
 {\em listener} & a class to call when the button is pressed or held down \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 126 of file \-M\-H\-V\-\_\-\-Debounce.\-cpp.
+\-Definition at line 122 of file \-M\-H\-V\-\_\-\-Debounce.\-cpp.
 
 \hypertarget{class_m_h_v___debounce_a581f7626d54332eec3e34bb5367e1148}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!check\-Held@{check\-Held}}
@@ -136,35 +124,23 @@ void \hyperlink{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{init\-
 
 \-Definition at line 68 of file \-M\-H\-V\-\_\-\-Debounce.\-cpp.
 
-\hypertarget{class_m_h_v___debounce_a00f8ea47ef5e0b51a9169a162daa7338}{
+\hypertarget{class_m_h_v___debounce_a9d3c75f72e639d2b796cb55c29f4574f}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!deassign\-Key@{deassign\-Key}}
 \index{deassign\-Key@{deassign\-Key}!MHV_Debounce@{\-M\-H\-V\-\_\-\-Debounce}}
 \subsubsection[{deassign\-Key}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Debounce\-::deassign\-Key (
 \begin{DoxyParamCaption}
-\item[{volatile uint8\-\_\-t $\ast$}]{dir, }
-\item[{volatile uint8\-\_\-t $\ast$}]{out, }
-\item[{volatile uint8\-\_\-t $\ast$}]{in, }
-\item[{uint8\-\_\-t}]{bit, }
-\item[{int8\-\_\-t}]{pinchange\-Interrupt}
+\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin)}]{}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___debounce_a00f8ea47ef5e0b51a9169a162daa7338}
+\label{class_m_h_v___debounce_a9d3c75f72e639d2b796cb55c29f4574f}
 \-Deassign a pin 
 \begin{DoxyParams}{\-Parameters}
-{\em dir} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em out} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em in} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em bit} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
-\hline
-{\em pinchange\-Interrupt} & \-A member of the \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+{\em pin} & \-An \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 150 of file \-M\-H\-V\-\_\-\-Debounce.\-cpp.
+\-Definition at line 142 of file \-M\-H\-V\-\_\-\-Debounce.\-cpp.
 
 \hypertarget{class_m_h_v___debounce_ab5cc2cbf8e925708f01d2b7d1b4a2939}{
 \index{\-M\-H\-V\-\_\-\-Debounce@{\-M\-H\-V\-\_\-\-Debounce}!init\-Pin@{init\-Pin}}

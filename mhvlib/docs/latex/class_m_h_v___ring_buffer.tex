@@ -15,17 +15,17 @@ bool \hyperlink{class_m_h_v___ring_buffer_ae9fb1751555f666d4d7dd9ff5b8d4684}{app
 \item 
 bool \hyperlink{class_m_h_v___ring_buffer_a71e1ef04975d8884fc70d6ea80f6c22f}{append} (const void $\ast$p, uint8\-\_\-t p\-Length)
 \item 
-uint8\-\_\-t \hyperlink{class_m_h_v___ring_buffer_a750505bbe97b6a2fc307f8c947a187c9}{length} ()
+uint8\-\_\-t \hyperlink{class_m_h_v___ring_buffer_a0f83a4149c40b8ab7eca9712b37d14fe}{length} ()
 \item 
-uint8\-\_\-t \hyperlink{class_m_h_v___ring_buffer_a2935a046213f670d986a82a25e2a0fc3}{size} ()
+uint8\-\_\-t \hyperlink{class_m_h_v___ring_buffer_a52243d7e19970b121ca8623dd662cb43}{size} ()
 \item 
-bool \hyperlink{class_m_h_v___ring_buffer_aa876ab27b4e578ccdef251976def01b0}{full} ()
+bool \hyperlink{class_m_h_v___ring_buffer_a72eb6f83c4ddb6a23275cdd3f1030d07}{full} ()
 \item 
-bool \hyperlink{class_m_h_v___ring_buffer_a3bfc37ec8232fe0f2016232951ee67ee}{full} (uint8\-\_\-t block\-Length)
+bool \hyperlink{class_m_h_v___ring_buffer_aaaa5e7fff0c1b7e748c4278096a8b5b1}{full} (uint8\-\_\-t block\-Length)
 \item 
 void \hyperlink{class_m_h_v___ring_buffer_aa9e34685f3881cc967493e3e8c9b839e}{flush} ()
 \item 
-int \hyperlink{class_m_h_v___ring_buffer_a8577d7eb16e192771fd2af14d667ffc6}{peek\-Head} ()
+int \hyperlink{class_m_h_v___ring_buffer_a4537605236df3aa7c91fff9d95d50d05}{peek\-Head} ()
 \item 
 int \hyperlink{class_m_h_v___ring_buffer_addec99c97519a0241e7d4be65e432df6}{consume} ()
 \item 
@@ -167,15 +167,15 @@ false if we succeeded, true otherwise
 
 \-Definition at line 134 of file \-M\-H\-V\-\_\-\-Ring\-Buffer.\-cpp.
 
-\hypertarget{class_m_h_v___ring_buffer_aa876ab27b4e578ccdef251976def01b0}{
+\hypertarget{class_m_h_v___ring_buffer_a72eb6f83c4ddb6a23275cdd3f1030d07}{
 \index{\-M\-H\-V\-\_\-\-Ring\-Buffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}!full@{full}}
 \index{full@{full}!MHV_RingBuffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}}
-\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Ring\-Buffer\-::full (
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}\-P\-U\-R\-E bool \-M\-H\-V\-\_\-\-Ring\-Buffer\-::full (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___ring_buffer_aa876ab27b4e578ccdef251976def01b0}
+\label{class_m_h_v___ring_buffer_a72eb6f83c4ddb6a23275cdd3f1030d07}
 \-Check if the ringbuffer is full \begin{DoxyReturn}{\-Returns}
 true if the ringbuffer is full 
 \end{DoxyReturn}
@@ -183,15 +183,15 @@ true if the ringbuffer is full
 
 \-Definition at line 164 of file \-M\-H\-V\-\_\-\-Ring\-Buffer.\-cpp.
 
-\hypertarget{class_m_h_v___ring_buffer_a3bfc37ec8232fe0f2016232951ee67ee}{
+\hypertarget{class_m_h_v___ring_buffer_aaaa5e7fff0c1b7e748c4278096a8b5b1}{
 \index{\-M\-H\-V\-\_\-\-Ring\-Buffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}!full@{full}}
 \index{full@{full}!MHV_RingBuffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}}
-\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Ring\-Buffer\-::full (
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}\-P\-U\-R\-E bool \-M\-H\-V\-\_\-\-Ring\-Buffer\-::full (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{block\-Length}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___ring_buffer_a3bfc37ec8232fe0f2016232951ee67ee}
+\label{class_m_h_v___ring_buffer_aaaa5e7fff0c1b7e748c4278096a8b5b1}
 \-Check if an object can fit in the ringbuffer 
 \begin{DoxyParams}{\-Parameters}
 {\em block\-Length} & the length of the object to fit in \\
@@ -204,28 +204,28 @@ true if the ringbuffer is full
 
 \-Definition at line 173 of file \-M\-H\-V\-\_\-\-Ring\-Buffer.\-cpp.
 
-\hypertarget{class_m_h_v___ring_buffer_a750505bbe97b6a2fc307f8c947a187c9}{
+\hypertarget{class_m_h_v___ring_buffer_a0f83a4149c40b8ab7eca9712b37d14fe}{
 \index{\-M\-H\-V\-\_\-\-Ring\-Buffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}!length@{length}}
 \index{length@{length}!MHV_RingBuffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}}
-\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Ring\-Buffer\-::length (
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}\-P\-U\-R\-E uint8\-\_\-t \-M\-H\-V\-\_\-\-Ring\-Buffer\-::length (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___ring_buffer_a750505bbe97b6a2fc307f8c947a187c9}
+\label{class_m_h_v___ring_buffer_a0f83a4149c40b8ab7eca9712b37d14fe}
 \-Get the length of the contents of the ringbuffer \-Return the number of bytes in the ringbuffer 
 
 \-Definition at line 150 of file \-M\-H\-V\-\_\-\-Ring\-Buffer.\-cpp.
 
-\hypertarget{class_m_h_v___ring_buffer_a8577d7eb16e192771fd2af14d667ffc6}{
+\hypertarget{class_m_h_v___ring_buffer_a4537605236df3aa7c91fff9d95d50d05}{
 \index{\-M\-H\-V\-\_\-\-Ring\-Buffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}!peek\-Head@{peek\-Head}}
 \index{peek\-Head@{peek\-Head}!MHV_RingBuffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}}
-\subsubsection[{peek\-Head}]{\setlength{\rightskip}{0pt plus 5cm}int \-M\-H\-V\-\_\-\-Ring\-Buffer\-::peek\-Head (
+\subsubsection[{peek\-Head}]{\setlength{\rightskip}{0pt plus 5cm}\-P\-U\-R\-E int \-M\-H\-V\-\_\-\-Ring\-Buffer\-::peek\-Head (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___ring_buffer_a8577d7eb16e192771fd2af14d667ffc6}
+\label{class_m_h_v___ring_buffer_a4537605236df3aa7c91fff9d95d50d05}
 \-Check the first character in the buffer \begin{DoxyReturn}{\-Returns}
 the character, or -\/1 if the buffer is empty 
 \end{DoxyReturn}
@@ -233,15 +233,15 @@ the character, or -\/1 if the buffer is empty
 
 \-Definition at line 182 of file \-M\-H\-V\-\_\-\-Ring\-Buffer.\-cpp.
 
-\hypertarget{class_m_h_v___ring_buffer_a2935a046213f670d986a82a25e2a0fc3}{
+\hypertarget{class_m_h_v___ring_buffer_a52243d7e19970b121ca8623dd662cb43}{
 \index{\-M\-H\-V\-\_\-\-Ring\-Buffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}!size@{size}}
 \index{size@{size}!MHV_RingBuffer@{\-M\-H\-V\-\_\-\-Ring\-Buffer}}
-\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Ring\-Buffer\-::size (
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}\-P\-U\-R\-E uint8\-\_\-t \-M\-H\-V\-\_\-\-Ring\-Buffer\-::size (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}
-\label{class_m_h_v___ring_buffer_a2935a046213f670d986a82a25e2a0fc3}
+\label{class_m_h_v___ring_buffer_a52243d7e19970b121ca8623dd662cb43}
 \-Get the size of the ringbuffer \begin{DoxyReturn}{\-Returns}
 the size of the ringbuffer 
 \end{DoxyReturn}

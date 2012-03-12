@@ -50,7 +50,7 @@ void MHV_StepperMotor::setPosition(int32_t	position) {
  * Get the current position of the motor
  * @return the current position
  */
-int32_t MHV_StepperMotor::getPosition() {
+int32_t PURE MHV_StepperMotor::getPosition() {
 	return _position;
 }
 
@@ -58,7 +58,7 @@ int32_t MHV_StepperMotor::getPosition() {
  * Is the motor current moving?
  * @return true if the motor is moving
  */
-bool MHV_StepperMotor::isMoving() {
+bool PURE MHV_StepperMotor::isMoving() {
 	return _moving;
 }
 
@@ -77,19 +77,13 @@ void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
 	_rtc.removeAlarm(this);
 
 // Register the alarm with the RTC
-	MHV_ALARM newAlarm;
-	newAlarm.listener = this;
-	_rtc.current(newAlarm.when);
-	_started.milliseconds = newAlarm.when.milliseconds;
-	_started.timestamp = newAlarm.when.timestamp;
-	newAlarm.repeat.milliseconds = 1;
-	newAlarm.repeat.timestamp = 0;
+	_rtc.current(_started);
 
 	_startPosition = _position;
 
 	_moving = true;
 
-	_rtc.addAlarm(newAlarm);
+	_rtc.addAlarm(this, 0, 0, 0, 1);
 }
 
 /**

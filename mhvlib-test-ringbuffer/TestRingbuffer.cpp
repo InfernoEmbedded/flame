@@ -28,6 +28,8 @@
 /* A simple blinking LED on Arduino pin 13 - a loop with sleeps
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -59,7 +61,7 @@ MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 char testBuf[TX_BUFFER_SIZE];
 MHV_RingBuffer testRingBuffer(testBuf, TX_BUFFER_SIZE);
 
-int NORETURN main(void) {
+MAIN {
 // Enable interrupts
 	sei();
 
@@ -136,6 +138,4 @@ int NORETURN main(void) {
 	}
 
 	for (;;) {}
-
-	UNREACHABLE;
 }

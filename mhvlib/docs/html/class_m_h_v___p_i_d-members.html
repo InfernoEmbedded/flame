@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -106,14 +106,14 @@ This is the complete list of members for <a class="el" href="class_m_h_v___p_i_d
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a2987b7582914a11ec39c38c2c2f8bb4f">_kP</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#aa649c3528fb35b99ac6ce0dca338fcfb">_lastInput</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a8464b83c97658e1f78a0c927476af6de">_lastOutput</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a0ef2b6cdafc241e3678a4c4f3efbdcec">_outMax</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a1a7aba4cfb7c347428fade3e7a0f6e98">_outMin</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#ae47baf90291256480ae57cbbc1ed917c">_reverse</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a46322bf586cac91fef5c2e38f269c718">_setpoint</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#ae07f66a0dbc8a14844d157e97654ecd8">clampIntegral</a>()</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [inline, protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#abda9f16bcf4154a86814e069bf1f74b3">compute</a>(float input)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a2887eab7746720d7cd105ca4dfbb753c">enable</a>(bool enable)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a0923aad1d58009d5724e68fc4ca1b3a8">MHV_PID</a>(float setpoint, float kP, float kI, float kD, uint16_t period, bool reverse, uint16_t min, uint16_t max)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a0a31a7a38d1257dd94ce8cb875bad616">outMax</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a4298ba8305fd0e43abd95481801e6487">outMin</a></td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a95369e1c3664baf5cf909225a93c6428">setDirection</a>(bool reverse)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a697f31eedba0445d6e69df90c86ae9e9">setOutputLimits</a>(float, float)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="class_m_h_v___p_i_d.html#a1232a57f9e484887c9df927affacc534">setTuning</a>(float kP, float kI, float kD, uint16_t period)</td><td><a class="el" href="class_m_h_v___p_i_d.html">MHV_PID</a></td><td></td></tr>
@@ -136,7 +136,7 @@ This is the complete list of members for <a class="el" href="class_m_h_v___p_i_d
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:40 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:11 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

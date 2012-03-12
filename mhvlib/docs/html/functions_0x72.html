@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -108,6 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions_0x73.html#index_s"><span>s</span></a></li>
       <li><a href="functions_0x74.html#index_t"><span>t</span></a></li>
       <li><a href="functions_0x75.html#index_u"><span>u</span></a></li>
+      <li><a href="functions_0x76.html#index_v"><span>v</span></a></li>
       <li><a href="functions_0x77.html#index_w"><span>w</span></a></li>
       <li><a href="functions_0x79.html#index_y"><span>y</span></a></li>
     </ul>
@@ -137,7 +138,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>readByte()
 : <a class="el" href="class_m_h_v___display___h_d44780.html#a5f35b3083cca3fb405b4f56a631cbc63">MHV_Display_HD44780</a>
 , <a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a395c757364dfea8eccb8d42d83d5060c">MHV_Display_HD44780_Direct_Connect</a>
-, <a class="el" href="class_m_h_v___display___h_d44780___shift___register.html#a2d3cd6330de50850ee2500c51cfb9864">MHV_Display_HD44780_Shift_Register</a>
+, <a class="el" href="class_m_h_v___display___h_d44780___shift___register.html#aec4d12aa2c181aac3a21415fb1da26be">MHV_Display_HD44780_Shift_Register</a>
 </li>
 <li>readNibble()
 : <a class="el" href="class_m_h_v___display___h_d44780___direct___connect.html#a8d4e15ba142eb565a021f17645fe6d0a">MHV_Display_HD44780_Direct_Connect</a>
@@ -148,8 +149,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>red
 : <a class="el" href="structmhv__rgb.html#a0f10bc24930951dba3e243614179d493">mhv_rgb</a>
 </li>
+<li>registerAlarm()
+: <a class="el" href="class_m_h_v___r_t_c.html#a9f602280028deadd62f71fc85c6115cc">MHV_RTC</a>
+, <a class="el" href="class_m_h_v___r_t_c_template.html#a500eed011af3dbe6b80487a498db262d">MHV_RTCTemplate&lt; alarmMax &gt;</a>
+</li>
 <li>registerListener()
-: <a class="el" href="class_m_h_v___a_d_c.html#a6ace5a8dbe234ab2f5c92a60fb4c737c">MHV_ADC</a>
+: <a class="el" href="class_m_h_v___a_d_c.html#a5f851f487355a1a749b1e716d32d2c14">MHV_ADC</a>
 , <a class="el" href="class_m_h_v___device___r_x.html#a2797697f3b03274f06da79eb5c4e62be">MHV_Device_RX</a>
 , <a class="el" href="class_m_h_v___pin_change_manager.html#a98acb7ef6fb6eab4cf35701e856de955">MHV_PinChangeManager</a>
 , <a class="el" href="class_m_h_v___stepper_motor.html#aa8a40a53160fed20a1c5cd3bd9436dc1">MHV_StepperMotor</a>
@@ -157,11 +162,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>release()
 : <a class="el" href="class_m_h_v___lock.html#ae0b829a85a1e10e453df294055401c25">MHV_Lock</a>
 </li>
+<li>releaseTime
+: <a class="el" href="structmhv__instrument.html#a376cf3d2ec80de657a1bc947f34eab55">mhv_instrument</a>
+</li>
 <li>removeAlarm()
-: <a class="el" href="class_m_h_v___r_t_c.html#a16370e9cac54100c69776b0786f65cf1">MHV_RTC</a>
+: <a class="el" href="class_m_h_v___r_t_c.html#a0a0d7e7449118faae9e3b9d2453196b0">MHV_RTC</a>
+, <a class="el" href="class_m_h_v___r_t_c_template.html#a9c21b20f08d659d7fd23733178bf415e">MHV_RTCTemplate&lt; alarmMax &gt;</a>
 </li>
 <li>repeat
 : <a class="el" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">mhv_alarm</a>
+</li>
+<li>reset()
+: <a class="el" href="class_m_h_v___software_p_w_m_listener.html#aa7b9a7ccf218ef0f07943d5867bcdd40">MHV_SoftwarePWMListener</a>
+, <a class="el" href="class_m_h_v___software_p_w_m_pin.html#a57733b6d872cfd1fe63a30766601eb87">MHV_SoftwarePWMPin&lt;&gt;</a>
 </li>
 <li>rotate()
 : <a class="el" href="class_m_h_v___stepper_motor.html#a921e5aaac1a60eade58b8c29edfda53d">MHV_StepperMotor</a>
@@ -174,12 +187,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_m_h_v___p_w_m_matrix_driver.html#a29010e47aae4f8fd18062be2a3e36aa7">MHV_PWMMatrixDriver</a>
 </li>
 <li>runTxBuffers()
-: <a class="el" href="class_m_h_v___display___character.html#ae3cf2037be781199466b44997041ab2a">MHV_Display_Character</a>
+: <a class="el" href="class_m_h_v___display___monochrome.html#a7abdfbe71e00421a4275760ab6632b4a">MHV_Display_Monochrome</a>
+, <a class="el" href="class_m_h_v___display___character.html#ae3cf2037be781199466b44997041ab2a">MHV_Display_Character</a>
 , <a class="el" href="class_m_h_v___hardware_serial.html#a8801ff1e85b487e233737a9591131f02">MHV_HardwareSerial</a>
-, <a class="el" href="class_m_h_v___vusb_typist.html#a171cec2829ab07c838ffda3e7c3b9871">MHV_VusbTypist</a>
-, <a class="el" href="class_m_h_v___display___monochrome.html#a7abdfbe71e00421a4275760ab6632b4a">MHV_Display_Monochrome</a>
-, <a class="el" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole</a>
 , <a class="el" href="class_m_h_v___device___t_x.html#a3a86067d417c3d5a1f64042ecfcefff7">MHV_Device_TX</a>
+, <a class="el" href="class_m_h_v___vusb_typist.html#a171cec2829ab07c838ffda3e7c3b9871">MHV_VusbTypist</a>
+, <a class="el" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole</a>
 </li>
 <li>rx()
 : <a class="el" href="class_m_h_v___hardware_serial.html#aab993847fb6369e666495000d94196a3">MHV_HardwareSerial</a>
@@ -207,7 +220,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:36 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:06 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

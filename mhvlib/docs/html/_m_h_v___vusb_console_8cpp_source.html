@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -166,28 +166,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00068"></a>00068 uchar       trialValue = 0, optimumValue;
 <a name="l00069"></a>00069 <span class="keywordtype">int</span>         x, optimumDev, targetValue = (unsigned)(1499 * (<span class="keywordtype">double</span>)F_CPU / 10.5e6 + 0.5);
 <a name="l00070"></a>00070 
-<a name="l00071"></a>00071     <span class="comment">/* do a binary search: */</span>
-<a name="l00072"></a>00072     <span class="keywordflow">do</span>{
-<a name="l00073"></a>00073         OSCCAL = trialValue + step;
-<a name="l00074"></a>00074         x = usbMeasureFrameLength();    <span class="comment">/* proportional to current real frequency */</span>
-<a name="l00075"></a>00075         <span class="keywordflow">if</span>(x &lt; targetValue)             <span class="comment">/* frequency still too low */</span>
-<a name="l00076"></a>00076             trialValue += step;
-<a name="l00077"></a>00077         step &gt;&gt;= 1;
-<a name="l00078"></a>00078     }<span class="keywordflow">while</span>(step &gt; 0);
-<a name="l00079"></a>00079     <span class="comment">/* We have a precision of +/- 1 for optimum OSCCAL here */</span>
-<a name="l00080"></a>00080     <span class="comment">/* now do a neighborhood search for optimum value */</span>
-<a name="l00081"></a>00081     optimumValue = trialValue;
-<a name="l00082"></a>00082     optimumDev = x; <span class="comment">/* this is certainly far away from optimum */</span>
-<a name="l00083"></a>00083     <span class="keywordflow">for</span>(OSCCAL = trialValue - 1; OSCCAL &lt;= trialValue + 1; OSCCAL++){
-<a name="l00084"></a>00084         x = usbMeasureFrameLength() - targetValue;
-<a name="l00085"></a>00085         <span class="keywordflow">if</span>(x &lt; 0)
-<a name="l00086"></a>00086             x = -x;
-<a name="l00087"></a>00087         <span class="keywordflow">if</span>(x &lt; optimumDev){
-<a name="l00088"></a>00088             optimumDev = x;
-<a name="l00089"></a>00089             optimumValue = OSCCAL;
-<a name="l00090"></a>00090         }
-<a name="l00091"></a>00091     }
-<a name="l00092"></a>00092     OSCCAL = optimumValue;
+<a name="l00071"></a>00071         <span class="comment">/* do a binary search: */</span>
+<a name="l00072"></a>00072         <span class="keywordflow">do</span>{
+<a name="l00073"></a>00073                 OSCCAL = trialValue + step;
+<a name="l00074"></a>00074                 x = usbMeasureFrameLength();    <span class="comment">/* proportional to current real frequency */</span>
+<a name="l00075"></a>00075                 <span class="keywordflow">if</span>(x &lt; targetValue)             <span class="comment">/* frequency still too low */</span>
+<a name="l00076"></a>00076                         trialValue += step;
+<a name="l00077"></a>00077                 step &gt;&gt;= 1;
+<a name="l00078"></a>00078         }<span class="keywordflow">while</span>(step &gt; 0);
+<a name="l00079"></a>00079         <span class="comment">/* We have a precision of +/- 1 for optimum OSCCAL here */</span>
+<a name="l00080"></a>00080         <span class="comment">/* now do a neighborhood search for optimum value */</span>
+<a name="l00081"></a>00081         optimumValue = trialValue;
+<a name="l00082"></a>00082         optimumDev = x; <span class="comment">/* this is certainly far away from optimum */</span>
+<a name="l00083"></a>00083         <span class="keywordflow">for</span>(OSCCAL = trialValue - 1; OSCCAL &lt;= trialValue + 1; OSCCAL++){
+<a name="l00084"></a>00084                 x = usbMeasureFrameLength() - targetValue;
+<a name="l00085"></a>00085                 <span class="keywordflow">if</span>(x &lt; 0)
+<a name="l00086"></a>00086                         x = -x;
+<a name="l00087"></a>00087                 <span class="keywordflow">if</span>(x &lt; optimumDev){
+<a name="l00088"></a>00088                         optimumDev = x;
+<a name="l00089"></a>00089                         optimumValue = OSCCAL;
+<a name="l00090"></a>00090                 }
+<a name="l00091"></a>00091         }
+<a name="l00092"></a>00092         OSCCAL = optimumValue;
 <a name="l00093"></a>00093 }
 <a name="l00094"></a>00094 <span class="comment">/*</span>
 <a name="l00095"></a>00095 <span class="comment">Note: This calibration algorithm may try OSCCAL values of up to 192 even if</span>
@@ -202,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00104"></a>00104 
 <a name="l00105"></a>00105 <span class="keywordtype">void</span>    usbEventResetReady(<span class="keywordtype">void</span>)
 <a name="l00106"></a>00106 {
-<a name="l00107"></a>00107     calibrateOscillator();
+<a name="l00107"></a>00107         calibrateOscillator();
 <a name="l00108"></a>00108         uchar calibrationValue = eeprom_read_byte(<a class="code" href="_m_h_v___vusb_console_8cpp.html#a175a5031786130e9bdc09151854dac12">MHV_OSCCAL_EEPROM_ADDRESS</a>);
 <a name="l00109"></a>00109         <span class="keywordflow">if</span> (calibrationValue != OSCCAL) {
 <a name="l00110"></a>00110                 eeprom_write_byte(<a class="code" href="_m_h_v___vusb_console_8cpp.html#a175a5031786130e9bdc09151854dac12">MHV_OSCCAL_EEPROM_ADDRESS</a>, OSCCAL);
@@ -244,56 +244,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00157"></a>00157         }
 <a name="l00158"></a>00158 <span class="preprocessor">#endif</span>
 <a name="l00159"></a>00159 <span class="preprocessor"></span>
-<a name="l00160"></a>00160         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-<a name="l00161"></a>00161         <a class="code" href="_m_h_v__io_8h.html#a0f549923b6d324681eb0b10b4a1b57a2">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+<a name="l00160"></a>00160         <a class="code" href="_m_h_v__io_8h.html#a5824525cc7278cc03e99577e69e5d853">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+<a name="l00161"></a>00161         <a class="code" href="_m_h_v__io_8h.html#a5824525cc7278cc03e99577e69e5d853">mhv_setInput</a>(<a class="code" href="_m_h_v__io_8h.html#aec65536f7b46b621e10ad31cfb13cf4e">MHV_MAKE_PIN</a>(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 <a name="l00162"></a>00162 
 <a name="l00163"></a>00163         usbDeviceDisconnect();
-<a name="l00164"></a>00164     <span class="keywordflow">for</span>(uint8_t i=0;i&lt;20;i++){  <span class="comment">/* 300 ms disconnect */</span>
-<a name="l00165"></a>00165         _delay_ms(15);
-<a name="l00166"></a>00166     }
+<a name="l00164"></a>00164         <span class="keywordflow">for</span>(uint8_t i=0;i&lt;20;i++){  <span class="comment">/* 300 ms disconnect */</span>
+<a name="l00165"></a>00165                 _delay_ms(15);
+<a name="l00166"></a>00166         }
 <a name="l00167"></a>00167         usbDeviceConnect();
 <a name="l00168"></a>00168 
 <a name="l00169"></a>00169         usbInit();
 <a name="l00170"></a>00170 
-<a name="l00171"></a>00171         <a class="code" href="structmhv__alarm.html">MHV_ALARM</a> newAlarm;
-<a name="l00172"></a>00172 
-<a name="l00173"></a>00173         <a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>.<a class="code" href="class_m_h_v___r_t_c.html#ad01b7a3e8049fb64bf9f490e97b89696">current</a>(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>);
-<a name="l00174"></a>00174         <a class="code" href="_m_h_v___r_t_c_8cpp.html#a4612d3f9e00ed01b4fd761e99eb9d054">mhv_timestampIncrement</a>(newAlarm.<a class="code" href="structmhv__alarm.html#acbab8b3b4efa4d891d598cbd5b47fb7c">when</a>, 0, 5);
-<a name="l00175"></a>00175         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a8285e4adf91b7ddbec8ab65b5ab855e1">milliseconds</a> = 5;
-<a name="l00176"></a>00176         newAlarm.<a class="code" href="structmhv__alarm.html#ad8195c11cd5d6ff3bb37d01185c04af2">repeat</a>.<a class="code" href="structmhv__timestamp.html#a0f520358e057865fb12a9153cae820c5">timestamp</a> = 0;
-<a name="l00177"></a>00177         newAlarm.<a class="code" href="structmhv__alarm.html#a8293d729772996c869be76184bfc09e8">listener</a> = <span class="keyword">this</span>;
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179         <a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>.<a class="code" href="class_m_h_v___r_t_c.html#ac58061c6f016d665a9027f8d55b9d5c0">addAlarm</a>(newAlarm);
-<a name="l00180"></a>00180 }
-<a name="l00181"></a>00181 
-<a name="l00185"></a><a class="code" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">00185</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">MHV_VusbConsole::alarm</a>() {
-<a name="l00186"></a>00186         usbPoll();
-<a name="l00187"></a>00187 
-<a name="l00188"></a>00188         <span class="keywordflow">if</span> (usbInterruptIsReady()) {
-<a name="l00189"></a>00189                 <span class="keywordtype">int</span> c;
-<a name="l00190"></a>00190                 <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[<a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>];
-<a name="l00191"></a>00191                 uint8_t bufSize;
+<a name="l00171"></a>00171         <a class="code" href="class_m_h_v___vusb_console.html#a0ccd1ee48d53ee1871f8d1d1ba068825">_rtc</a>.<a class="code" href="class_m_h_v___r_t_c.html#a282b2b154eebe88db8f5f1225246c326">addAlarm</a>(<span class="keyword">this</span>, 0, 5, 0, 5);
+<a name="l00172"></a>00172 }
+<a name="l00173"></a>00173 
+<a name="l00177"></a><a class="code" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">00177</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#af2e1ca4fd0700cc6692807b9bcc5e227">MHV_VusbConsole::alarm</a>() {
+<a name="l00178"></a>00178         usbPoll();
+<a name="l00179"></a>00179 
+<a name="l00180"></a>00180         <span class="keywordflow">if</span> (usbInterruptIsReady()) {
+<a name="l00181"></a>00181                 <span class="keywordtype">int</span> c;
+<a name="l00182"></a>00182                 <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[<a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>];
+<a name="l00183"></a>00183                 uint8_t bufSize;
+<a name="l00184"></a>00184 
+<a name="l00185"></a>00185                 <span class="keywordflow">for</span> (bufSize = 0; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
+<a name="l00186"></a>00186                         c = <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
+<a name="l00187"></a>00187                         <span class="keywordflow">if</span> (-1 == c) {
+<a name="l00188"></a>00188                                 <span class="keywordflow">break</span>;
+<a name="l00189"></a>00189                         }
+<a name="l00190"></a>00190                         buf[bufSize] = (<span class="keywordtype">unsigned</span> char)c;
+<a name="l00191"></a>00191                 }
 <a name="l00192"></a>00192 
-<a name="l00193"></a>00193                 <span class="keywordflow">for</span> (bufSize = 0; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
-<a name="l00194"></a>00194                         c = <a class="code" href="class_m_h_v___device___t_x.html#a9e9f436d2b41766db5225c504af96ef5">nextCharacter</a>();
-<a name="l00195"></a>00195                         <span class="keywordflow">if</span> (-1 == c) {
-<a name="l00196"></a>00196                                 <span class="keywordflow">break</span>;
-<a name="l00197"></a>00197                         }
-<a name="l00198"></a>00198                         buf[bufSize] = (<span class="keywordtype">unsigned</span> char)c;
-<a name="l00199"></a>00199                 }
-<a name="l00200"></a>00200 
-<a name="l00201"></a>00201                 <span class="keywordflow">if</span> (bufSize) {
-<a name="l00202"></a>00202                         <span class="keywordflow">for</span> (; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
-<a name="l00203"></a>00203                                 buf[bufSize] = <span class="charliteral">&#39;\0&#39;</span>;
-<a name="l00204"></a>00204                         }
-<a name="l00205"></a>00205                         usbSetInterrupt(buf, bufSize);
-<a name="l00206"></a>00206                 }
-<a name="l00207"></a>00207         }
-<a name="l00208"></a>00208 }
-<a name="l00209"></a>00209 
-<a name="l00214"></a><a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">00214</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole::runTxBuffers</a>() {
-<a name="l00215"></a>00215 }
-<a name="l00216"></a>00216 
+<a name="l00193"></a>00193                 <span class="keywordflow">if</span> (bufSize) {
+<a name="l00194"></a>00194                         <span class="keywordflow">for</span> (; bufSize &lt; <a class="code" href="_m_h_v___vusb_console_8cpp.html#a351126d1fddee8c2691d1f9a92f9e15e">MAX_TX_SIZE</a>; bufSize++) {
+<a name="l00195"></a>00195                                 buf[bufSize] = <span class="charliteral">&#39;\0&#39;</span>;
+<a name="l00196"></a>00196                         }
+<a name="l00197"></a>00197                         usbSetInterrupt(buf, bufSize);
+<a name="l00198"></a>00198                 }
+<a name="l00199"></a>00199         }
+<a name="l00200"></a>00200 }
+<a name="l00201"></a>00201 
+<a name="l00206"></a><a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">00206</a> <span class="keywordtype">void</span> <a class="code" href="class_m_h_v___vusb_console.html#a00956c69813f5a0cbdf0a5cb0555bbbf">MHV_VusbConsole::runTxBuffers</a>() {
+<a name="l00207"></a>00207 }
+<a name="l00208"></a>00208 
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -314,7 +306,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:35 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:03 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

@@ -116,38 +116,30 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
 
 /**
  * Assign a pin to debounce
- * @param	dir						A member of the MHV_PIN_* macro
- * @param	out						A member of the MHV_PIN_* macro
- * @param	in						A member of the MHV_PIN_* macro
- * @param	bit						A member of the MHV_PIN_* macro
- * @param	pinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	pin						An MHV_PIN_* macro
  * @param	listener				a class to call when the button is pressed or held down
  */
-void MHV_Debounce::assignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t bit, int8_t pinchangeInterrupt, MHV_DebounceListener &listener) {
-	_pins[pinchangeInterrupt].previous = *in & _BV(bit);
-	_pins[pinchangeInterrupt].timestamp.milliseconds = 0;
-	_pins[pinchangeInterrupt].timestamp.timestamp = 0;
-	_pins[pinchangeInterrupt].listener = &listener;
-	_pins[pinchangeInterrupt].held = false;
+void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener) {
+	_pins[pinPinchangeInterrupt].previous = *pinIn & _BV(pinPin);
+	_pins[pinPinchangeInterrupt].timestamp.milliseconds = 0;
+	_pins[pinPinchangeInterrupt].timestamp.timestamp = 0;
+	_pins[pinPinchangeInterrupt].listener = &listener;
+	_pins[pinPinchangeInterrupt].held = false;
 
-	if (!_pins[pinchangeInterrupt].previous) {
+	if (!_pins[pinPinchangeInterrupt].previous) {
 // Pin started off held down
-		_rtc.current(_pins[pinchangeInterrupt].timestamp);
+		_rtc.current(_pins[pinPinchangeInterrupt].timestamp);
 	}
 
-	_pinChangeManager.registerListener(dir, out, in, bit, pinchangeInterrupt, this);
+	_pinChangeManager.registerListener(MHV_PIN_PARMS(pin), this);
 }
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 /**
  * Deassign a pin
- * @param	dir					A member of the MHV_PIN_* macro
- * @param	out					A member of the MHV_PIN_* macro
- * @param	in					A member of the MHV_PIN_* macro
- * @param	bit					A member of the MHV_PIN_* macro
- * @param	pinchangeInterrupt	A member of the MHV_PIN_* macro
+ * @param	pin						An MHV_PIN_* macro
  */
-void MHV_Debounce::deassignKey(volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in,
-		uint8_t bit, int8_t pinchangeInterrupt) {
-	initPin(pinchangeInterrupt);
+void MHV_Debounce::deassignKey(MHV_DECLARE_PIN(pin)) {
+	initPin(pinPinchangeInterrupt);
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"

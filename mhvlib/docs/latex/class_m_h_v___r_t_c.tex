@@ -9,23 +9,21 @@
 \-Inheritance diagram for \-M\-H\-V\-\_\-\-R\-T\-C\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_m_h_v___r_t_c}
+\includegraphics[height=3.000000cm]{class_m_h_v___r_t_c}
 \end{center}
 \end{figure}
 \subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___r_t_c_aacb9ee506e1e18672a821b44f5138d2b}{\-M\-H\-V\-\_\-\-R\-T\-C} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} event\-Buffer\mbox{[}$\,$\mbox{]}, uint8\-\_\-t event\-Count, int16\-\_\-t timezone=0)
+\hyperlink{class_m_h_v___r_t_c_ae896730a55cb1a66917a6fa627dfeeaf}{\-M\-H\-V\-\_\-\-R\-T\-C} (int16\-\_\-t timezone=0)
 \item 
-void \hyperlink{class_m_h_v___r_t_c_a666d907f0699c61337891adb040d5114}{timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp2)
-\item 
-void \hyperlink{class_m_h_v___r_t_c_a286a1504182064b5f8168669ac5f46c1}{timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds, uint8\-\_\-t ticks)
-\item 
-void \hyperlink{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}{synchronise} (\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} \&\-\_\-timer)
+void \hyperlink{class_m_h_v___r_t_c_a011003300b13539ef2a8df39fe8ff0cb}{synchronise} (\hyperlink{class_m_h_v___timer8}{\-M\-H\-V\-\_\-\-Timer8} \&timer)
 \item 
 void \hyperlink{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{set\-Time} (uint32\-\_\-t timestamp, uint16\-\_\-t milliseconds)
 \item 
 void \hyperlink{class_m_h_v___r_t_c_a9eba3cfa73969390764bea958ed276ab}{set\-Time} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a949570f89977560cc68dc909e7d0a805}{alarm} ()
 \item 
 void \hyperlink{class_m_h_v___r_t_c_ad01b7a3e8049fb64bf9f490e97b89696}{current} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp)
 \item 
@@ -35,7 +33,9 @@ void \hyperlink{class_m_h_v___r_t_c_aa0a908785e5445b1ab5d3bdb20f5fc62}{to\-Time}
 \item 
 void \hyperlink{class_m_h_v___r_t_c_a3aecb460c309ca773933e0c82bbd7819}{to\-Timestamp} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&to, const \hyperlink{_m_h_v___r_t_c_8h_adace8912943ac21c837360427880df71}{\-M\-H\-V\-\_\-\-T\-I\-M\-E} \&from)
 \item 
-bool \hyperlink{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}{add\-Alarm} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm)
+void \hyperlink{class_m_h_v___r_t_c_a666d907f0699c61337891adb040d5114}{timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, const \hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp2)
+\item 
+void \hyperlink{class_m_h_v___r_t_c_a286a1504182064b5f8168669ac5f46c1}{timestamp\-Increment} (\hyperlink{_m_h_v___r_t_c_8h_a1e30d3a92b1b868286bd0d619245d8a6}{\-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds, uint8\-\_\-t ticks)
 \item 
 bool \hyperlink{class_m_h_v___r_t_c_a282b2b154eebe88db8f5f1225246c326}{add\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
 \item 
@@ -53,24 +53,27 @@ bool \hyperlink{class_m_h_v___r_t_c_a75077124ea1071f263cd06e1b35b1c5c}{add\-Alar
 \item 
 bool \hyperlink{class_m_h_v___r_t_c_a64fab0fcc6e61e087c5424ef2e456d4a}{add\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds)
 \item 
-void \hyperlink{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{handle\-Events} ()
+bool \hyperlink{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}{add\-Alarm} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm)
+\item 
+virtual bool \hyperlink{class_m_h_v___r_t_c_a9f602280028deadd62f71fc85c6115cc}{register\-Alarm} (\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&alarm)=0
+\item 
+virtual void \hyperlink{class_m_h_v___r_t_c_a07fd618ada2e83e34632a637485fb59d}{handle\-Events} ()=0
 \item 
 uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{alarms\-Pending} ()
 \item 
-void \hyperlink{class_m_h_v___r_t_c_a255a2beeb975fe84bd667a4ee0f42e5d}{remove\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener)
+virtual void \hyperlink{class_m_h_v___r_t_c_a0a0d7e7449118faae9e3b9d2453196b0}{remove\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} \&listener)=0
 \item 
-void \hyperlink{class_m_h_v___r_t_c_a16370e9cac54100c69776b0786f65cf1}{remove\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} $\ast$listener)
+virtual void \hyperlink{class_m_h_v___r_t_c_a07000693b6d6f05b1a1b6fc12ebeb77b}{remove\-Alarm} (\hyperlink{class_m_h_v___timer_listener}{\-M\-H\-V\-\_\-\-Timer\-Listener} $\ast$listener)=0
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Member \-Functions}
+\begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_m_h_v___r_t_c_a949570f89977560cc68dc909e7d0a805}{alarm} ()
+void \hyperlink{class_m_h_v___r_t_c_adfdc40d1583e116656b3ac0310270c33}{increment\-Milliseconds} ()
 \end{DoxyCompactItemize}
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{_m_h_v___r_t_c_8h_af13307658f41fba330ffae04dd5cbce6}{\-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} $\ast$ \hyperlink{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{\-\_\-alarms}
-\item 
 volatile uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}{\-\_\-alarm\-Count}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}{\-\_\-alarm\-Max}
 \item 
 uint32\-\_\-t \hyperlink{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}{\-\_\-timestamp}
 \item 
@@ -87,59 +90,32 @@ int16\-\_\-t \hyperlink{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{\
 \subsection{\-Detailed \-Description}
 
 
-\-Definition at line 199 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 219 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
 \subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___r_t_c_aacb9ee506e1e18672a821b44f5138d2b}{
+\hypertarget{class_m_h_v___r_t_c_ae896730a55cb1a66917a6fa627dfeeaf}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \subsubsection[{\-M\-H\-V\-\_\-\-R\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-R\-T\-C\-::\-M\-H\-V\-\_\-\-R\-T\-C (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}}]{event\-Buffer\mbox{[}$\,$\mbox{]}, }
-\item[{uint8\-\_\-t}]{event\-Count, }
 \item[{int16\-\_\-t}]{timezone = {\ttfamily 0}}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_aacb9ee506e1e18672a821b44f5138d2b}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_m_h_v___r_t_c_ae896730a55cb1a66917a6fa627dfeeaf}
 \-Create a new \-R\-T\-C 
 \begin{DoxyParams}{\-Parameters}
-{\em event\-Buffer} & \-A buffer to store events until they are executed \\
-\hline
-{\em event\-Count} & \-The number of events that can be stored in the buffer \\
-\hline
 {\em timezone} & minutes offset from \-U\-T\-C \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 207 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 246 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
 \subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}{
-\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
-\index{add\-Alarm@{add\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-R\-T\-C\-::add\-Alarm (
-\begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm}
-\end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}
-\-Insert an alarm, to be triggered at a later time 
-\begin{DoxyParams}{\-Parameters}
-{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{\-Returns}
-true if the event could not be added 
-\end{DoxyReturn}
-
-
-\-Definition at line 460 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
-
 \hypertarget{class_m_h_v___r_t_c_a282b2b154eebe88db8f5f1225246c326}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
 \index{add\-Alarm@{add\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
@@ -153,7 +129,7 @@ true if the event could not be added
 \item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
 \item[{uint8\-\_\-t}]{repeat\-Ticks}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a282b2b154eebe88db8f5f1225246c326}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -172,9 +148,12 @@ true if the event could not be added
 {\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 495 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 515 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a97f7ec7def5d867c1d193146100e203c}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -187,7 +166,7 @@ true if the event could not be added
 \item[{uint32\-\_\-t}]{repeat\-Seconds, }
 \item[{uint16\-\_\-t}]{repeat\-Milliseconds}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a97f7ec7def5d867c1d193146100e203c}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -202,9 +181,12 @@ true if the event could not be added
 {\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 518 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 539 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a041fd4bd05c84350eedb8f60d9c8efdd}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -216,7 +198,7 @@ true if the event could not be added
 \item[{uint16\-\_\-t}]{when\-Milliseconds, }
 \item[{uint8\-\_\-t}]{when\-Ticks}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a041fd4bd05c84350eedb8f60d9c8efdd}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -229,9 +211,12 @@ true if the event could not be added
 {\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 540 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 562 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a112fea9b79614666f60ee1c6930a8da6}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -242,7 +227,7 @@ true if the event could not be added
 \item[{uint32\-\_\-t}]{when\-Seconds, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a112fea9b79614666f60ee1c6930a8da6}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -253,9 +238,12 @@ true if the event could not be added
 {\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 560 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 583 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a8d39f027b7305abd0a12aea616d8577f}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -270,7 +258,7 @@ true if the event could not be added
 \item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
 \item[{uint8\-\_\-t}]{repeat\-Ticks}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a8d39f027b7305abd0a12aea616d8577f}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -289,9 +277,12 @@ true if the event could not be added
 {\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 584 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 608 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a3c2af7eb56925a7c9506e2bb1f0ed965}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -304,7 +295,7 @@ true if the event could not be added
 \item[{uint32\-\_\-t}]{repeat\-Seconds, }
 \item[{uint16\-\_\-t}]{repeat\-Milliseconds}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a3c2af7eb56925a7c9506e2bb1f0ed965}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -319,9 +310,12 @@ true if the event could not be added
 {\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 607 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 632 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a75077124ea1071f263cd06e1b35b1c5c}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -333,7 +327,7 @@ true if the event could not be added
 \item[{uint16\-\_\-t}]{when\-Milliseconds, }
 \item[{uint8\-\_\-t}]{when\-Ticks}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a75077124ea1071f263cd06e1b35b1c5c}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -346,9 +340,12 @@ true if the event could not be added
 {\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 629 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 655 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a64fab0fcc6e61e087c5424ef2e456d4a}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
@@ -359,7 +356,7 @@ true if the event could not be added
 \item[{uint32\-\_\-t}]{when\-Seconds, }
 \item[{uint16\-\_\-t}]{when\-Milliseconds}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a64fab0fcc6e61e087c5424ef2e456d4a}
 \-Insert an alarm to be triggered at a later time 
 \begin{DoxyParams}{\-Parameters}
@@ -370,9 +367,33 @@ true if the event could not be added
 {\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
 
 
-\-Definition at line 649 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 676 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_m_h_v___r_t_c_ac58061c6f016d665a9027f8d55b9d5c0}
+\-Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+\-Definition at line 698 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a949570f89977560cc68dc909e7d0a805}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!alarm@{alarm}}
@@ -381,7 +402,7 @@ true if the event could not be added
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a949570f89977560cc68dc909e7d0a805}
 \-Alarm handler from the timer 
 
@@ -389,7 +410,7 @@ true if the event could not be added
 
 
 
-\-Definition at line 267 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 291 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!alarms\-Pending@{alarms\-Pending}}
@@ -398,14 +419,14 @@ true if the event could not be added
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a78c9916568b91c43ba000a8fa851e3e5}
 \-How many events are left in the queue \begin{DoxyReturn}{\-Returns}
 the number of events 
 \end{DoxyReturn}
 
 
-\-Definition at line 704 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 724 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_ad01b7a3e8049fb64bf9f490e97b89696}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!current@{current}}
@@ -414,7 +435,7 @@ the number of events
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_ad01b7a3e8049fb64bf9f490e97b89696}
 \-Get the current timestamp 
 \begin{DoxyParams}{\-Parameters}
@@ -423,7 +444,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 288 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 312 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_ac29cd961ae085c0b19e439f6a41c2941}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!elapsed@{elapsed}}
@@ -433,7 +454,7 @@ the number of events
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{since, }
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{elapsed}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_ac29cd961ae085c0b19e439f6a41c2941}
 \-Determine how long has elapsed since the supplied timestamp \-Fixme\-: \-Does not deal with ticks
 
@@ -446,30 +467,64 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 304 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 328 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
-\hypertarget{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}{
+\hypertarget{class_m_h_v___r_t_c_a07fd618ada2e83e34632a637485fb59d}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!handle\-Events@{handle\-Events}}
 \index{handle\-Events@{handle\-Events}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::handle\-Events (
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-R\-T\-C\-::handle\-Events (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_abebdf394ea6ed2c48f80cc02d4371a90}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a07fd618ada2e83e34632a637485fb59d}
 \-Check for events that are due, and run them \-Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
 
-\-Definition at line 670 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Implemented in \hyperlink{class_m_h_v___r_t_c_template_a7032d5ee95b422be71b7fa2c29853165}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template$<$ alarm\-Max $>$}.
 
-\hypertarget{class_m_h_v___r_t_c_a255a2beeb975fe84bd667a4ee0f42e5d}{
+\hypertarget{class_m_h_v___r_t_c_adfdc40d1583e116656b3ac0310270c33}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!increment\-Milliseconds@{increment\-Milliseconds}}
+\index{increment\-Milliseconds@{increment\-Milliseconds}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{increment\-Milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::increment\-Milliseconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, protected\mbox{]}}}}
+\label{class_m_h_v___r_t_c_adfdc40d1583e116656b3ac0310270c33}
+\-Increment milliseconds by 1 
+
+\-Definition at line 231 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+
+\hypertarget{class_m_h_v___r_t_c_a9f602280028deadd62f71fc85c6115cc}{
+\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!register\-Alarm@{register\-Alarm}}
+\index{register\-Alarm@{register\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
+\subsubsection[{register\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool \-M\-H\-V\-\_\-\-R\-T\-C\-::register\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a9f602280028deadd62f71fc85c6115cc}
+\-Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{\-Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+\-Implemented in \hyperlink{class_m_h_v___r_t_c_template_a500eed011af3dbe6b80487a498db262d}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template$<$ alarm\-Max $>$}.
+
+\hypertarget{class_m_h_v___r_t_c_a0a0d7e7449118faae9e3b9d2453196b0}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
 \index{remove\-Alarm@{remove\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} \&}]{listener}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_a255a2beeb975fe84bd667a4ee0f42e5d}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a0a0d7e7449118faae9e3b9d2453196b0}
 \-Remove all matching events from the list of pending events 
 \begin{DoxyParams}{\-Parameters}
 {\em listener} & the listener for the event to remove \\
@@ -477,17 +532,17 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 712 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Implemented in \hyperlink{class_m_h_v___r_t_c_template_a9c21b20f08d659d7fd23733178bf415e}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template$<$ alarm\-Max $>$}.
 
-\hypertarget{class_m_h_v___r_t_c_a16370e9cac54100c69776b0786f65cf1}{
+\hypertarget{class_m_h_v___r_t_c_a07000693b6d6f05b1a1b6fc12ebeb77b}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
 \index{remove\-Alarm@{remove\-Alarm}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void \-M\-H\-V\-\_\-\-R\-T\-C\-::remove\-Alarm (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-Timer\-Listener} $\ast$}]{listener}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_a16370e9cac54100c69776b0786f65cf1}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a07000693b6d6f05b1a1b6fc12ebeb77b}
 \-Remove all matching events from the list of pending events 
 \begin{DoxyParams}{\-Parameters}
 {\em listener} & the listener for the event to remove \\
@@ -495,7 +550,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 729 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Implemented in \hyperlink{class_m_h_v___r_t_c_template_ac8b774085133a5d98ef507251232bb75}{\-M\-H\-V\-\_\-\-R\-T\-C\-Template$<$ alarm\-Max $>$}.
 
 \hypertarget{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
@@ -505,7 +560,7 @@ the number of events
 \item[{uint32\-\_\-t}]{timestamp, }
 \item[{uint16\-\_\-t}]{milliseconds}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a426e7a34e8a3957d378a634c2c2d00d8}
 \-Set the current time 
 \begin{DoxyParams}{\-Parameters}
@@ -516,7 +571,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 233 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 268 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a9eba3cfa73969390764bea958ed276ab}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!set\-Time@{set\-Time}}
@@ -525,7 +580,7 @@ the number of events
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a9eba3cfa73969390764bea958ed276ab}
 \-Set the current time 
 \begin{DoxyParams}{\-Parameters}
@@ -534,17 +589,17 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 244 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 279 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
-\hypertarget{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}{
+\hypertarget{class_m_h_v___r_t_c_a011003300b13539ef2a8df39fe8ff0cb}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!synchronise@{synchronise}}
 \index{synchronise@{synchronise}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
 \subsubsection[{synchronise}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-R\-T\-C\-::synchronise (
 \begin{DoxyParamCaption}
 \item[{{\bf \-M\-H\-V\-\_\-\-Timer8} \&}]{timer}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___r_t_c_a97308259a62550d63eaf677190fa5581}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{class_m_h_v___r_t_c_a011003300b13539ef2a8df39fe8ff0cb}
 \-Synchronise the ticks\-Per\-Millisecond with the timer \-This is useful if you change the timer values, or if you are are running the timer faster than 1ms 
 \begin{DoxyParams}{\-Parameters}
 {\em timer} & the timer to sync with \\
@@ -552,7 +607,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 223 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 258 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a666d907f0699c61337891adb040d5114}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
@@ -562,7 +617,7 @@ the number of events
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp2}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a666d907f0699c61337891adb040d5114}
 \-Increment a timestamp 
 \begin{DoxyParams}{\-Parameters}
@@ -573,7 +628,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 129 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 463 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a286a1504182064b5f8168669ac5f46c1}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
@@ -585,7 +640,7 @@ the number of events
 \item[{uint16\-\_\-t}]{milliseconds, }
 \item[{uint8\-\_\-t}]{ticks}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a286a1504182064b5f8168669ac5f46c1}
 \-Increment a timestamp 
 \begin{DoxyParams}{\-Parameters}
@@ -600,7 +655,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 153 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 487 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_aa0a908785e5445b1ab5d3bdb20f5fc62}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!to\-Time@{to\-Time}}
@@ -610,7 +665,7 @@ the number of events
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E} \&}]{to, }
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{from}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_aa0a908785e5445b1ab5d3bdb20f5fc62}
 \-Convert a timestamp into year,month,day,hours,minutes,seconds 
 \begin{DoxyParams}{\-Parameters}
@@ -621,7 +676,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 343 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 350 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a3aecb460c309ca773933e0c82bbd7819}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!to\-Timestamp@{to\-Timestamp}}
@@ -631,7 +686,7 @@ the number of events
 \item[{{\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{to, }
 \item[{const {\bf \-M\-H\-V\-\_\-\-T\-I\-M\-E} \&}]{from}
 \end{DoxyParamCaption}
-)}}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
 \label{class_m_h_v___r_t_c_a3aecb460c309ca773933e0c82bbd7819}
 \-Convert year,month,day,hours,minutes,seconds into a timestamp 
 \begin{DoxyParams}{\-Parameters}
@@ -642,7 +697,7 @@ the number of events
 \end{DoxyParams}
 
 
-\-Definition at line 412 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-cpp.
+\-Definition at line 419 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
@@ -654,25 +709,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a953a79952c9fa5fde5d1dacbc03d3b46}
 
 
-\-Definition at line 205 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
-
-\hypertarget{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}{
-\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarm\-Max@{\-\_\-alarm\-Max}}
-\index{\-\_\-alarm\-Max@{\-\_\-alarm\-Max}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{\-\_\-alarm\-Max}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-alarm\-Max}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___r_t_c_aed7d37466a99362b78dd9ccf1390d35c}
-
-
-\-Definition at line 206 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
-
-\hypertarget{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}{
-\index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-alarms@{\-\_\-alarms}}
-\index{\-\_\-alarms@{\-\_\-alarms}!MHV_RTC@{\-M\-H\-V\-\_\-\-R\-T\-C}}
-\subsubsection[{\-\_\-alarms}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-A\-L\-A\-R\-M}$\ast$ {\bf \-M\-H\-V\-\_\-\-R\-T\-C\-::\-\_\-alarms}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___r_t_c_afaaed6deea21b52f8bde5f8ebc0abf70}
-
-
-\-Definition at line 204 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 221 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-milliseconds@{\-\_\-milliseconds}}
@@ -681,7 +718,7 @@ the number of events
 \label{class_m_h_v___r_t_c_acd3e486b5e5ee1d8cf9d961c0fdbde57}
 
 
-\-Definition at line 208 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 223 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks@{\-\_\-ticks}}
@@ -690,7 +727,7 @@ the number of events
 \label{class_m_h_v___r_t_c_ab29c30f80f7234394299476c73f36baf}
 
 
-\-Definition at line 209 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 224 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}}
@@ -699,7 +736,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a48e7d03e90e78881ed8833d6e4f77b36}
 
 
-\-Definition at line 210 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 225 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-timestamp@{\-\_\-timestamp}}
@@ -708,7 +745,7 @@ the number of events
 \label{class_m_h_v___r_t_c_a6ac0d6f1b8985cd6113249693da50104}
 
 
-\-Definition at line 207 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 222 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 \hypertarget{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}{
 \index{\-M\-H\-V\-\_\-\-R\-T\-C@{\-M\-H\-V\-\_\-\-R\-T\-C}!\-\_\-tz\-Offset@{\-\_\-tz\-Offset}}
@@ -717,11 +754,10 @@ the number of events
 \label{class_m_h_v___r_t_c_af9e544307713892ec196261247213490}
 
 
-\-Definition at line 211 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
+\-Definition at line 226 of file \-M\-H\-V\-\_\-\-R\-T\-C.\-h.
 
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___r_t_c_8h}{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}\item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___r_t_c_8cpp}{\-M\-H\-V\-\_\-\-R\-T\-C.\-cpp}\end{DoxyCompactItemize}
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___r_t_c_8h}{\-M\-H\-V\-\_\-\-R\-T\-C.\-h}\end{DoxyCompactItemize}

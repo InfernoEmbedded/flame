@@ -76,7 +76,7 @@ MHV_Timer16 vOutTimer(MHV_TIMER16_1);
 MHV_VoltageRegulator regulator(MHV_VREG_MODE_BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE,
 		MHV_AD_REFERENCE_1V1, R2/(R2+R1), vOutTimer, ADC_CHANNEL);
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_usart0_enable();
@@ -125,6 +125,4 @@ int NORETURN main(void) {
 
 		_delay_ms(100);
 	}
-
-	UNREACHABLE;
 }

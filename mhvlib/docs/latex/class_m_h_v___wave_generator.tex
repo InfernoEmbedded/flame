@@ -1,0 +1,115 @@
+\hypertarget{class_m_h_v___wave_generator}{
+\section{\-M\-H\-V\-\_\-\-Wave\-Generator \-Class \-Reference}
+\label{class_m_h_v___wave_generator}\index{\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}}
+}
+
+
+{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Wave\-Generator.\-h$>$}
+
+\-Inheritance diagram for \-M\-H\-V\-\_\-\-Wave\-Generator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_m_h_v___wave_generator}
+\end{center}
+\end{figure}
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_m_h_v___wave_generator_a00832ec1568e58f54dc4e4cb1b7399b6}{\-M\-H\-V\-\_\-\-Wave\-Generator} (\hyperlink{class_m_h_v___d_a_c}{\-M\-H\-V\-\_\-\-D\-A\-C} \&dac, \hyperlink{_m_h_v___d_a_c_8h_a5ed12db0bcd6a3870733daecfb30e640}{\-M\-H\-V\-\_\-\-S\-A\-M\-P\-L\-E} $\ast$sample\-Buffer, uint8\-\_\-t sample\-Length, uint32\-\_\-t sample\-Rate, \hyperlink{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E} $\ast$voices, uint8\-\_\-t voice\-Count)
+\item 
+void \hyperlink{class_m_h_v___wave_generator_a57d400e9427c7cfb38c6700c202998e5}{more\-Samples} (\hyperlink{class_m_h_v___d_a_c}{\-M\-H\-V\-\_\-\-D\-A\-C} $\ast$dac, \hyperlink{_m_h_v___d_a_c_8h_a5ed12db0bcd6a3870733daecfb30e640}{\-M\-H\-V\-\_\-\-S\-A\-M\-P\-L\-E} $\ast$old\-Samples, uint8\-\_\-t sample\-Length)
+\item 
+bool \hyperlink{class_m_h_v___wave_generator_ae9e9adfb5c34e678a3cf24d8971997b0}{play} (\hyperlink{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T} $\ast$instrument, uint16\-\_\-t frequency, \hyperlink{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E} velocity, uint32\-\_\-t duration)
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+
+
+\-Definition at line 92 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{class_m_h_v___wave_generator_a00832ec1568e58f54dc4e4cb1b7399b6}{
+\index{\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}!\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}}
+\index{\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}!MHV_WaveGenerator@{\-M\-H\-V\-\_\-\-Wave\-Generator}}
+\subsubsection[{\-M\-H\-V\-\_\-\-Wave\-Generator}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Wave\-Generator\-::\-M\-H\-V\-\_\-\-Wave\-Generator (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-D\-A\-C} \&}]{dac, }
+\item[{{\bf \-M\-H\-V\-\_\-\-S\-A\-M\-P\-L\-E} $\ast$}]{sample\-Buffer, }
+\item[{uint8\-\_\-t}]{sample\-Length, }
+\item[{uint32\-\_\-t}]{sample\-Rate, }
+\item[{{\bf \-M\-H\-V\-\_\-\-V\-O\-I\-C\-E} $\ast$}]{voices, }
+\item[{uint8\-\_\-t}]{voice\-Count}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___wave_generator_a00832ec1568e58f54dc4e4cb1b7399b6}
+\-Generate waveforms and write them to the \-D\-A\-C
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em dac} & the \-D\-A\-C to write to \\
+\hline
+{\em sample\-Buffer} & a buffer of samples to write to, used to communicate with the \-D\-A\-C \\
+\hline
+{\em sample\-Length} & the length of the sample buffer \\
+\hline
+{\em sample\-Rate} & the sample rate of the \-D\-A\-C \\
+\hline
+{\em voices} & the voices to use to generate sound \\
+\hline
+{\em voice\-Count} & the number of voices \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-cpp.
+
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{class_m_h_v___wave_generator_a57d400e9427c7cfb38c6700c202998e5}{
+\index{\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}!more\-Samples@{more\-Samples}}
+\index{more\-Samples@{more\-Samples}!MHV_WaveGenerator@{\-M\-H\-V\-\_\-\-Wave\-Generator}}
+\subsubsection[{more\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Wave\-Generator\-::more\-Samples (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-D\-A\-C} $\ast$}]{dac, }
+\item[{{\bf \-M\-H\-V\-\_\-\-S\-A\-M\-P\-L\-E} $\ast$}]{old\-Samples, }
+\item[{uint8\-\_\-t}]{sample\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{class_m_h_v___wave_generator_a57d400e9427c7cfb38c6700c202998e5}
+\-Send more samples to the \-D\-A\-C 
+
+\-Reimplemented from \hyperlink{class_m_h_v___d_a_c_listener_a13bdc72b48cbe990100bf9da86a6ac43}{\-M\-H\-V\-\_\-\-D\-A\-C\-Listener}.
+
+
+
+\-Definition at line 187 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-cpp.
+
+\hypertarget{class_m_h_v___wave_generator_ae9e9adfb5c34e678a3cf24d8971997b0}{
+\index{\-M\-H\-V\-\_\-\-Wave\-Generator@{\-M\-H\-V\-\_\-\-Wave\-Generator}!play@{play}}
+\index{play@{play}!MHV_WaveGenerator@{\-M\-H\-V\-\_\-\-Wave\-Generator}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Wave\-Generator\-::play (
+\begin{DoxyParamCaption}
+\item[{{\bf \-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T} $\ast$}]{instrument, }
+\item[{uint16\-\_\-t}]{frequency, }
+\item[{{\bf \-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}}]{velocity, }
+\item[{uint32\-\_\-t}]{duration}
+\end{DoxyParamCaption}
+)}}
+\label{class_m_h_v___wave_generator_ae9e9adfb5c34e678a3cf24d8971997b0}
+\-Play a note \begin{DoxyReturn}{\-Returns}
+true if the note could not be played 
+\end{DoxyReturn}
+
+
+\-Definition at line 196 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-cpp.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___wave_generator_8h}{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}\item 
+\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___wave_generator_8cpp}{\-M\-H\-V\-\_\-\-Wave\-Generator.\-cpp}\end{DoxyCompactItemize}

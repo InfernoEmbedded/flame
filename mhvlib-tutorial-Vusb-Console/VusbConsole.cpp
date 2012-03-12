@@ -55,8 +55,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	4
 // The RTC object we will use
-MHV_RTC_CREATE(rtc, ALARM_COUNT);
-
+MHV_RTCTemplate<ALARM_COUNT> rtc;
 
 // The USB Keyboard driver
 MHV_TX_BUFFER_CREATE(consoleBuffer, 16);
@@ -87,7 +86,7 @@ void WriteString::alarm() {
 
 WriteString writeString;
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 #ifdef ATTINY
@@ -119,6 +118,4 @@ int NORETURN main(void) {
 		// Sleep until an interrupt occurs
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

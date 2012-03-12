@@ -120,6 +120,7 @@ MHV_ServoControl::MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK con
  * @param	servo	an index to address the servo by
  * @param	pin	the pin the servo is connected to
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void MHV_ServoControl::addServo(uint8_t servo, MHV_DECLARE_PIN(pin)) {
 	_controlBlocks[servo].pin = pinPin;
 	_controlBlocks[servo].port = pinOut;
@@ -131,6 +132,7 @@ void MHV_ServoControl::addServo(uint8_t servo, MHV_DECLARE_PIN(pin)) {
 		sortServos();
 	}
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 /**
  * Adjust the minimum & maximum positions of a servo

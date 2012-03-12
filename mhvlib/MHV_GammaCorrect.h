@@ -30,6 +30,7 @@
 #include <inttypes.h>
 #include <math.h>
 #include <avr/pgmspace.h>
+#include <MHV_io.h>
 
 const uint8_t mhv_gammaValues[] PROGMEM = {
 	0,		0,		0,		0,		0,		0,		0,		0,

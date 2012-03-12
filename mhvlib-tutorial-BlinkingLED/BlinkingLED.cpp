@@ -35,7 +35,7 @@
 #include <util/delay.h>
 #include <avr/power.h>
 
-int NORETURN main() {
+MAIN {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 
@@ -55,6 +55,4 @@ int NORETURN main() {
 // Sleep for 1/3 sec
 		_delay_ms(333);
 	}
-
-	UNREACHABLE;
 }

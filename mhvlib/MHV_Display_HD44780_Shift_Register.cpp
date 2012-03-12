@@ -42,33 +42,17 @@
 /**
  * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164
  *
- * @param	dataDir						A member of the MHV_PIN_* macro   pin declaration for the data line of the shift register
- * @param	dataOut						A member of the MHV_PIN_* macro
- * @param	dataIn						A member of the MHV_PIN_* macro
- * @param	dataPin						A member of the MHV_PIN_* macro
- * @param	dataPinchangeInterrupt		A member of the MHV_PIN_* macro
- * @param	enableDir					A member of the MHV_PIN_* macro   pin declaration for the enable line of the shift register
- * @param	enableOut					A member of the MHV_PIN_* macro
- * @param	enableIn					A member of the MHV_PIN_* macro
- * @param	enablePin					A member of the MHV_PIN_* macro
- * @param	enablePinchangeInterrupt	A member of the MHV_PIN_* macro
- * @param	clockDir					A member of the MHV_PIN_* macro   pin declaration for the clock line of the shift register
- * @param	clockOut					A member of the MHV_PIN_* macro
- * @param	clockIn						A member of the MHV_PIN_* macro
- * @param	clockPin					A member of the MHV_PIN_* macro
- * @param	clockPinchangeInterrupt		A member of the MHV_PIN_* macro
+ * @param	data						An MHV_PIN_* macro for the data line of the shift register
+ * @param	enable						An MHV_PIN_* macro for the enable line of the shift register
+ * @param	clock						An MHV_PIN_* macro for the clock line of the shift register
  * @param	colCount					the number of columns on the display
  * @param	rowCount					the number of rows on the display
  * @param	txBuffers					buffers for async writing
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(
-		volatile uint8_t *dataDir, volatile uint8_t *dataOut, volatile uint8_t *dataIn,
-		uint8_t dataPin, int8_t dataPinchangeInterrupt,
-		volatile uint8_t *enableDir, volatile uint8_t *enableOut, volatile uint8_t *enableIn,
-		uint8_t enablePin, int8_t enablePinchangeInterrupt,
-		volatile uint8_t *clockDir, volatile uint8_t *clockOut, volatile uint8_t *clockIn,
-		uint8_t clockPin, int8_t clockPinchangeInterrupt, uint8_t colCount,
-		uint16_t rowCount, MHV_RingBuffer &txBuffers) :
+		MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(enable), MHV_DECLARE_PIN(clock),
+		uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers) :
 	MHV_Display_HD44780(colCount, rowCount, txBuffers) {
 	_dataOut = dataOut;
 	_dataPin = dataPin;
@@ -81,8 +65,9 @@ MHV_Display_HD44780_Shift_Register::MHV_Display_HD44780_Shift_Register(
 	_clockOut = clockOut;
 	_clockPin = clockPin;
 	mhv_setOutput(clockDir, clockOut, clockIn, clockPin, -1);
-
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
+
 
 /**
  * Write 8 data bits to the display
@@ -126,15 +111,18 @@ void MHV_Display_HD44780_Shift_Register::writeByte(uint8_t byte, bool rs) {
  * Read a byte from the display
  * @param	rs		true to set the RS pin
  */
-uint8_t MHV_Display_HD44780_Shift_Register::readByte(bool rs) {
+#pragma GCC diagnostic ignored "-Wunused-parameter"
+uint8_t CONST MHV_Display_HD44780_Shift_Register::readByte(bool rs) {
 	return 0;
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
+
 
 /**
  * Check if the display is busy
  * @return true if the display is busy
  */
-bool MHV_Display_HD44780_Shift_Register::isBusy() {
+bool CONST MHV_Display_HD44780_Shift_Register::isBusy() {
 	return false;
 }
 

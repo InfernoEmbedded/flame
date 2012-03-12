@@ -49,7 +49,7 @@ public:
 };
 
 struct mhv_eventADC {
-	uint8_t					channel;
+	int8_t					channel;
 	MHV_ADCListener			*listener;
 };
 typedef struct mhv_eventADC	MHV_EVENT_ADC;
@@ -67,12 +67,12 @@ public:
 
 // ADC
 	void adc();
-	void registerListener(uint8_t channel, MHV_ADCListener &listener);
-	void deregisterListener(uint8_t channel);
+	void registerListener(int8_t channel, MHV_ADCListener &listener);
+	void deregisterListener(int8_t channel);
 	void enable();
 	void disable();
-	uint16_t busyRead(uint8_t channel, uint8_t reference);
-	void asyncRead(uint8_t channel, uint8_t reference);
+	uint16_t busyRead(int8_t channel, uint8_t reference);
+	void asyncRead(int8_t channel, uint8_t reference);
 	void setPrescaler(MHV_AD_PRESCALER prescaler);
 
 	void handleEvents();

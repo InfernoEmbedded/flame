@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -129,12 +129,12 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a26def3787ab18a8681c361720090b0df">_integral</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#aa649c3528fb35b99ac6ce0dca338fcfb">_lastInput</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a8464b83c97658e1f78a0c927476af6de">_lastOutput</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a4298ba8305fd0e43abd95481801e6487">outMin</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a0a31a7a38d1257dd94ce8cb875bad616">outMax</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a1a7aba4cfb7c347428fade3e7a0f6e98">_outMin</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_m_h_v___p_i_d.html#a0ef2b6cdafc241e3678a4c4f3efbdcec">_outMax</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00038">38</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00037">37</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0923aad1d58009d5724e68fc4ca1b3a8"></a><!-- doxytag: member="MHV_PID::MHV_PID" ref="a0923aad1d58009d5724e68fc4ca1b3a8" args="(float setpoint, float kP, float kI, float kD, uint16_t period, bool reverse, uint16_t min, uint16_t max)" -->
 <div class="memitem">
@@ -206,7 +206,7 @@ Protected Attributes</h2></td></tr>
     <tr><td class="paramname">period</td><td>the period that <a class="el" href="class_m_h_v___p_i_d.html#abda9f16bcf4154a86814e069bf1f74b3">compute()</a> is called, in ms </td></tr>
     <tr><td class="paramname">reverse</td><td>true if there is an inverse relationship between the output and the input (eg. running a cooler to reduce temperature) </td></tr>
     <tr><td class="paramname">min</td><td>the minimum value for output </td></tr>
-    <tr><td class="paramname">max</td><td>the maximum value four output </td></tr>
+    <tr><td class="paramname">max</td><td>the maximum value for output </td></tr>
   </table>
   </dd>
 </dl>
@@ -230,7 +230,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00057">57</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00063">63</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -256,7 +256,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00069">69</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00075">75</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -282,7 +282,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00129">129</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00135">135</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -303,7 +303,7 @@ Protected Attributes</h2></td></tr>
 <p>Set the direction for the PID.</p>
 <p>Setting reverse means that increasing output reduces the input (eg. increasing power to a cooler, with the input being temperature) </p>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00145">145</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00151">151</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -340,7 +340,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00117">117</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00123">123</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -391,7 +391,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00097">97</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8cpp_source.html#l00103">103</a> of file <a class="el" href="_m_h_v___p_i_d_8cpp_source.html">MHV_PID.cpp</a>.</p>
 
 </div>
 </div>
@@ -407,7 +407,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00045">45</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00044">44</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -422,7 +422,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00048">48</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00047">47</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -437,7 +437,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00042">42</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -452,7 +452,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00041">41</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00040">40</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -467,7 +467,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00040">40</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00039">39</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -482,7 +482,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00049">49</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00048">48</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -497,7 +497,37 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00050">50</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00049">49</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ef2b6cdafc241e3678a4c4f3efbdcec"></a><!-- doxytag: member="MHV_PID::_outMax" ref="a0ef2b6cdafc241e3678a4c4f3efbdcec" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_m_h_v___p_i_d.html#a0ef2b6cdafc241e3678a4c4f3efbdcec">MHV_PID::_outMax</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00052">52</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a7aba4cfb7c347428fade3e7a0f6e98"></a><!-- doxytag: member="MHV_PID::_outMin" ref="a1a7aba4cfb7c347428fade3e7a0f6e98" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float <a class="el" href="class_m_h_v___p_i_d.html#a1a7aba4cfb7c347428fade3e7a0f6e98">MHV_PID::_outMin</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00051">51</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -512,7 +542,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00044">44</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00043">43</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -527,37 +557,7 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00047">47</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a0a31a7a38d1257dd94ce8cb875bad616"></a><!-- doxytag: member="MHV_PID::outMax" ref="a0a31a7a38d1257dd94ce8cb875bad616" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float <a class="el" href="class_m_h_v___p_i_d.html#a0a31a7a38d1257dd94ce8cb875bad616">MHV_PID::outMax</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00053">53</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4298ba8305fd0e43abd95481801e6487"></a><!-- doxytag: member="MHV_PID::outMin" ref="a4298ba8305fd0e43abd95481801e6487" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float <a class="el" href="class_m_h_v___p_i_d.html#a4298ba8305fd0e43abd95481801e6487">MHV_PID::outMin</a><code> [protected]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00052">52</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
+<p>Definition at line <a class="el" href="_m_h_v___p_i_d_8h_source.html#l00046">46</a> of file <a class="el" href="_m_h_v___p_i_d_8h_source.html">MHV_PID.h</a>.</p>
 
 </div>
 </div>
@@ -585,7 +585,7 @@ Protected Attributes</h2></td></tr>
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:40 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:11 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

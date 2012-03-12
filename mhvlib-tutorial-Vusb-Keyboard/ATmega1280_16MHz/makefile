@@ -61,8 +61,8 @@ sizedummy \
 all: mhvlib-tutorial-Vusb-Keyboard.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
 mhvlib-tutorial-Vusb-Keyboard.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a

@@ -32,7 +32,7 @@
   
   <td style="padding-left: 0.5em;">
    <div id="projectname">MHVLib
-   &#160;<span id="projectnumber">20120103</span>
+   &#160;<span id="projectnumber">20120313</span>
    </div>
    <div id="projectbrief">An efficiency oriented runtime library for AVR microcontrollers</div>
   </td>
@@ -171,46 +171,78 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00073"></a>00073 <span class="comment">// Power reduction register for ADC</span>
 <a name="l00074"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a6ca551aaaf8d1d21d1837d1e2c398ab5">00074</a> <span class="preprocessor">#define MHV_AD_PRR      PRR</span>
 <a name="l00075"></a>00075 <span class="preprocessor"></span>
-<a name="l00076"></a>00076 <span class="comment">//                                      Dir,    Output, Input,  Bit,PCINT</span>
-<a name="l00077"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9fdbcb2dac22565470003a84bedfd226">00077</a> <span class="preprocessor">#define MHV_PIN_B0      &amp;DDRB,  &amp;PORTB, &amp;PINB,  0,      0</span>
-<a name="l00078"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aaf37624042226b601b58e94b2d560206">00078</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B1      &amp;DDRB,  &amp;PORTB, &amp;PINB,  1,      1</span>
-<a name="l00079"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a4a865901942e7c540aa9d5b23014506d">00079</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B2      &amp;DDRB,  &amp;PORTB, &amp;PINB,  2,      2</span>
-<a name="l00080"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abb6ca3ac438ffc597768c8dd3c13fd6c">00080</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B3      &amp;DDRB,  &amp;PORTB, &amp;PINB,  3,      3</span>
-<a name="l00081"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a14e99b376317115c573f8f885a27df7d">00081</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B4      &amp;DDRB,  &amp;PORTB, &amp;PINB,  4,      4</span>
-<a name="l00082"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a95e380436fa99ffcd2af495f050148e3">00082</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B5      &amp;DDRB,  &amp;PORTB, &amp;PINB,  5,      5</span>
-<a name="l00083"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac49c09bb0d460391edd25e701713077b">00083</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B6      &amp;DDRB,  &amp;PORTB, &amp;PINB,  6,      6</span>
-<a name="l00084"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a3049e8bd2e606a01ffa1f2a07f09fa1a">00084</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B7      &amp;DDRB,  &amp;PORTB, &amp;PINB,  7,      7</span>
-<a name="l00085"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a510bab525daada40f9ecd90fce5498b9">00085</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C0      &amp;DDRC,  &amp;PORTC, &amp;PINC,  0,      8</span>
-<a name="l00086"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a3cc3a41b052061de467c186e5da2bfe0">00086</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C1      &amp;DDRC,  &amp;PORTC, &amp;PINC,  1,      9</span>
-<a name="l00087"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abd2a26886de41e3a441e5a86b30df8ad">00087</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C2      &amp;DDRC,  &amp;PORTC, &amp;PINC,  2,      10</span>
-<a name="l00088"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a1ca30292e1f3c63820cb3aa656354c54">00088</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C3      &amp;DDRC,  &amp;PORTC, &amp;PINC,  3,      11</span>
-<a name="l00089"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae0a24204d7fc131a26bd7f77c1f8d952">00089</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C4      &amp;DDRC,  &amp;PORTC, &amp;PINC,  4,      12</span>
-<a name="l00090"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a39e19e06a814ca3d69125f172f9050ea">00090</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C5      &amp;DDRC,  &amp;PORTC, &amp;PINC,  5,      13</span>
-<a name="l00091"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a44cf5aa56c348274f7b34d3c722e6eec">00091</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C6      &amp;DDRC,  &amp;PORTC, &amp;PINC,  6,      14</span>
-<a name="l00092"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9220c4034f2b4b37cc98f34707f7f5a2">00092</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D0      &amp;DDRD,  &amp;PORTD, &amp;PIND,  0,      16</span>
-<a name="l00093"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#af0c7d8c1e19a615f468da8590356b3aa">00093</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D1      &amp;DDRD,  &amp;PORTD, &amp;PIND,  1,      17</span>
-<a name="l00094"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aaf37a5b22a351f52f72d5ec7fd2c9de0">00094</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D2      &amp;DDRD,  &amp;PORTD, &amp;PIND,  2,      18</span>
-<a name="l00095"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae84235eaa9c80e7c59df1f61f534a0b2">00095</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D3      &amp;DDRD,  &amp;PORTD, &amp;PIND,  3,      19</span>
-<a name="l00096"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae81ee54a296c032e2c988b1f6de46f5f">00096</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D4      &amp;DDRD,  &amp;PORTD, &amp;PIND,  4,      20</span>
-<a name="l00097"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aa3ccd8b59f4b39de05f655ddf8f4fed2">00097</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D5      &amp;DDRD,  &amp;PORTD, &amp;PIND,  5,      21</span>
-<a name="l00098"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abb687a0acd54bc8be0920888497c7a19">00098</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D6      &amp;DDRD,  &amp;PORTD, &amp;PIND,  6,      22</span>
-<a name="l00099"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac6eb6e77ed0b834f843ee6939d25a3c4">00099</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D7      &amp;DDRD,  &amp;PORTD, &amp;PIND,  7,      23</span>
+<a name="l00076"></a>00076 <span class="comment">//                                                      Dir,    Output, Input,  Bit,PCINT</span>
+<a name="l00077"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9fdbcb2dac22565470003a84bedfd226">00077</a> <span class="preprocessor">#define MHV_PIN_B0                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  0,      0</span>
+<a name="l00078"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aaf37624042226b601b58e94b2d560206">00078</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B1                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  1,      1</span>
+<a name="l00079"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a4a865901942e7c540aa9d5b23014506d">00079</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B2                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  2,      2</span>
+<a name="l00080"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abb6ca3ac438ffc597768c8dd3c13fd6c">00080</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B3                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  3,      3</span>
+<a name="l00081"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a14e99b376317115c573f8f885a27df7d">00081</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B4                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  4,      4</span>
+<a name="l00082"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a95e380436fa99ffcd2af495f050148e3">00082</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B5                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  5,      5</span>
+<a name="l00083"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac49c09bb0d460391edd25e701713077b">00083</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B6                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  6,      6</span>
+<a name="l00084"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a3049e8bd2e606a01ffa1f2a07f09fa1a">00084</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_B7                      &amp;DDRB,  &amp;PORTB, &amp;PINB,  7,      7</span>
+<a name="l00085"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a510bab525daada40f9ecd90fce5498b9">00085</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C0                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  0,      8</span>
+<a name="l00086"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a3cc3a41b052061de467c186e5da2bfe0">00086</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C1                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  1,      9</span>
+<a name="l00087"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abd2a26886de41e3a441e5a86b30df8ad">00087</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C2                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  2,      10</span>
+<a name="l00088"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a1ca30292e1f3c63820cb3aa656354c54">00088</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C3                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  3,      11</span>
+<a name="l00089"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae0a24204d7fc131a26bd7f77c1f8d952">00089</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C4                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  4,      12</span>
+<a name="l00090"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a39e19e06a814ca3d69125f172f9050ea">00090</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C5                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  5,      13</span>
+<a name="l00091"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a44cf5aa56c348274f7b34d3c722e6eec">00091</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_C6                      &amp;DDRC,  &amp;PORTC, &amp;PINC,  6,      14</span>
+<a name="l00092"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9220c4034f2b4b37cc98f34707f7f5a2">00092</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D0                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  0,      16</span>
+<a name="l00093"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#af0c7d8c1e19a615f468da8590356b3aa">00093</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D1                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  1,      17</span>
+<a name="l00094"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aaf37a5b22a351f52f72d5ec7fd2c9de0">00094</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D2                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  2,      18</span>
+<a name="l00095"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae84235eaa9c80e7c59df1f61f534a0b2">00095</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D3                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  3,      19</span>
+<a name="l00096"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae81ee54a296c032e2c988b1f6de46f5f">00096</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D4                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  4,      20</span>
+<a name="l00097"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aa3ccd8b59f4b39de05f655ddf8f4fed2">00097</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D5                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  5,      21</span>
+<a name="l00098"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#abb687a0acd54bc8be0920888497c7a19">00098</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D6                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  6,      22</span>
+<a name="l00099"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac6eb6e77ed0b834f843ee6939d25a3c4">00099</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_D7                      &amp;DDRD,  &amp;PORTD, &amp;PIND,  7,      23</span>
 <a name="l00100"></a>00100 <span class="preprocessor"></span>
-<a name="l00101"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aee7f731d87eab6a0d42b7ec10bf1ed3a">00101</a> <span class="preprocessor">#define MHV_PIN_TIMER_0_A       MHV_PIN_D6</span>
-<a name="l00102"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a0959cf6ba52bb8b6e493392cd08ff5f4">00102</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_0_B       MHV_PIN_D5</span>
-<a name="l00103"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a55d73e0b1aff01457d2d79ef80f58011">00103</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_1_A       MHV_PIN_B1</span>
-<a name="l00104"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#af3f35cd1afa406826dd3e96e76b2ee18">00104</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_1_B       MHV_PIN_B2</span>
-<a name="l00105"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ad11b48c21b7c1db72ed3e7ceb384a131">00105</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_2_A       MHV_PIN_B3</span>
-<a name="l00106"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a866cd764335bc260cf2e244d83f59b00">00106</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_2_B       MHV_PIN_D3</span>
-<a name="l00107"></a>00107 <span class="preprocessor"></span>
-<a name="l00108"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a75de4618d63c9eb576c9c5eec7171eda">00108</a> <span class="preprocessor">#define MHV_INTERRUPT_INT0 INT0_vect, &amp;MCUCR, ISC00</span>
-<a name="l00109"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a41af31714a0feed22f781fb8fb9f9ac0">00109</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_INTERRUPT_INT1 INT1_vect, &amp;MCUCR, ISC10</span>
-<a name="l00110"></a>00110 <span class="preprocessor"></span>
-<a name="l00111"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac3370faa54861753416a738657731f6b">00111</a> <span class="preprocessor">#define MHV_PC_INT_COUNT        24</span>
-<a name="l00112"></a>00112 <span class="preprocessor"></span>
-<a name="l00113"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a8c0a87a650a4af6474acab15499bf3cc">00113</a> <span class="preprocessor">#define MHV_EEPROM_VECT         EE_READY_vect</span>
-<a name="l00114"></a>00114 <span class="preprocessor"></span>
-<a name="l00115"></a>00115 <span class="preprocessor">#endif </span><span class="comment">/* MHV_IO_ATMEGA168_H_ */</span>
+<a name="l00101"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aa8d3a6eba2653f0560da9eac052c792a">00101</a> <span class="preprocessor">#define MHV_TEMPLATE_PIN_B0     0x04,   0x05,   0x03,   0,      0</span>
+<a name="l00102"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a2c49695d46c87ee8ba0b5c7acf0be02e">00102</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B1     0x04,   0x05,   0x03,   1,      1</span>
+<a name="l00103"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a4eb22a92eac188ddf5a0d5420303ecbe">00103</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B2     0x04,   0x05,   0x03,   2,      2</span>
+<a name="l00104"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a09818e33fd243bd200b9af8d29d956a7">00104</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B3     0x04,   0x05,   0x03,   3,      3</span>
+<a name="l00105"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a51192d0d2b50efdb71a4cede91ee201e">00105</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B4     0x04,   0x05,   0x03,   4,      4</span>
+<a name="l00106"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a10b8a1858d9f526952e958bf23275b50">00106</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B5     0x04,   0x05,   0x03,   5,      5</span>
+<a name="l00107"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae477a363d34be05c69342766a8a2a440">00107</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B6     0x04,   0x05,   0x03,   6,      6</span>
+<a name="l00108"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a38f805c96b821c8b39a6f56b5094d9ea">00108</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_B7     0x04,   0x05,   0x03,   7,      7</span>
+<a name="l00109"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ad93725b6fc88603e36645ff6407dbc73">00109</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C0     0x07,   0x08,   0x06,   0,      8</span>
+<a name="l00110"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9321c3b6c0e7517cf1310d597f073bc5">00110</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C1     0x07,   0x08,   0x06,   1,      9</span>
+<a name="l00111"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ae22b98c0d21ab4f65ca4095987930b01">00111</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C2     0x07,   0x08,   0x06,   2,      10</span>
+<a name="l00112"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aff43bd7bf0e127431fcac20ff18c2319">00112</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C3     0x07,   0x08,   0x06,   3,      11</span>
+<a name="l00113"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a8901830ba0f3b3079b8a683f4786ae1a">00113</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C4     0x07,   0x08,   0x06,   4,      12</span>
+<a name="l00114"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a72bae451b7de7d9ed742946fd900bc92">00114</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C5     0x07,   0x08,   0x06,   5,      13</span>
+<a name="l00115"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9a46d7fad37c709a88842d4d31f3ab7e">00115</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_C6     0x07,   0x08,   0x06,   6,      14</span>
+<a name="l00116"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9bbaa62e4fa0d0476946e1cc24312817">00116</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D0     0x0A,   0x0B,   0x09,   0,      16</span>
+<a name="l00117"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac12659ded657ea16d47c2d8728f27492">00117</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D1     0x0A,   0x0B,   0x09,   1,      17</span>
+<a name="l00118"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a13f610ca6228eba8f52316a1610323d1">00118</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D2     0x0A,   0x0B,   0x09,   2,      18</span>
+<a name="l00119"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a39dcfe381dc5539438af0f038163d4d0">00119</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D3     0x0A,   0x0B,   0x09,   3,      19</span>
+<a name="l00120"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#af4b6d08c7b7560e079146442d71f6ed5">00120</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D4     0x0A,   0x0B,   0x09,   4,      20</span>
+<a name="l00121"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a7f722e0c0f3f4b2e44d9b7f3d258d4b6">00121</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D5     0x0A,   0x0B,   0x09,   5,      21</span>
+<a name="l00122"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a9468363e56bd42abdb3dd1fecc405237">00122</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D6     0x0A,   0x0B,   0x09,   6,      22</span>
+<a name="l00123"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac501938927d37f0fc78cec7ae3c0f96f">00123</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_D7     0x0A,   0x0B,   0x09,   7,      23</span>
+<a name="l00124"></a>00124 <span class="preprocessor"></span>
+<a name="l00125"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aee7f731d87eab6a0d42b7ec10bf1ed3a">00125</a> <span class="preprocessor">#define MHV_PIN_TIMER_0_A       MHV_PIN_D6</span>
+<a name="l00126"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a0959cf6ba52bb8b6e493392cd08ff5f4">00126</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_0_B       MHV_PIN_D5</span>
+<a name="l00127"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a55d73e0b1aff01457d2d79ef80f58011">00127</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_1_A       MHV_PIN_B1</span>
+<a name="l00128"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#af3f35cd1afa406826dd3e96e76b2ee18">00128</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_1_B       MHV_PIN_B2</span>
+<a name="l00129"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ad11b48c21b7c1db72ed3e7ceb384a131">00129</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_2_A       MHV_PIN_B3</span>
+<a name="l00130"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a866cd764335bc260cf2e244d83f59b00">00130</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_PIN_TIMER_2_B       MHV_PIN_D3</span>
+<a name="l00131"></a>00131 <span class="preprocessor"></span>
+<a name="l00132"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a4b153a09de6e1241e0b4c4d1852b73d3">00132</a> <span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_0_A      MHV_TEMPLATE_PIN_D6</span>
+<a name="l00133"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a7f23777511a37bec6b63a69bcda8dc89">00133</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_0_B      MHV_TEMPLATE_PIN_D5</span>
+<a name="l00134"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ab889538f03d45a4b421d73bbd16bd046">00134</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_1_A      MHV_TEMPLATE_PIN_B1</span>
+<a name="l00135"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a0685a20180a326d17c523b2324f9b7b5">00135</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_1_B      MHV_TEMPLATE_PIN_B2</span>
+<a name="l00136"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aee010ae551888d2fe33e3ebcbc15bc0b">00136</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_2_A      MHV_TEMPLATE_PIN_B3</span>
+<a name="l00137"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#aabf332bb79e7f25980ebb139f4286505">00137</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_TEMPLATE_PIN_TIMER_2_B      MHV_TEMPLATE_PIN_D3</span>
+<a name="l00138"></a>00138 <span class="preprocessor"></span>
+<a name="l00139"></a>00139 
+<a name="l00140"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a75de4618d63c9eb576c9c5eec7171eda">00140</a> <span class="preprocessor">#define MHV_INTERRUPT_INT0 INT0_vect, &amp;MCUCR, ISC00</span>
+<a name="l00141"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a41af31714a0feed22f781fb8fb9f9ac0">00141</a> <span class="preprocessor"></span><span class="preprocessor">#define MHV_INTERRUPT_INT1 INT1_vect, &amp;MCUCR, ISC10</span>
+<a name="l00142"></a>00142 <span class="preprocessor"></span>
+<a name="l00143"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#ac3370faa54861753416a738657731f6b">00143</a> <span class="preprocessor">#define MHV_PC_INT_COUNT        24</span>
+<a name="l00144"></a>00144 <span class="preprocessor"></span>
+<a name="l00145"></a><a class="code" href="_m_h_v__io___a_tmega168_8h.html#a8c0a87a650a4af6474acab15499bf3cc">00145</a> <span class="preprocessor">#define MHV_EEPROM_VECT         EE_READY_vect</span>
+<a name="l00146"></a>00146 <span class="preprocessor"></span>
+<a name="l00147"></a>00147 <span class="preprocessor">#endif </span><span class="comment">/* MHV_IO_ATMEGA168_H_ */</span>
 </pre></div></div>
 </div>
   <div id="nav-path" class="navpath">
@@ -231,7 +263,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 
-    <li class="footer">Generated on Tue Jan 3 2012 11:37:35 for MHVLib by
+    <li class="footer">Generated on Mon Mar 12 2012 15:17:04 for MHVLib by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.5.1 </li>
    </ul>

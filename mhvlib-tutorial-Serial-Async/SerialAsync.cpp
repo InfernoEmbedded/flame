@@ -28,6 +28,8 @@
 /* A simple blinking LED on Arduino pin 13 - a loop with sleeps
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -62,14 +64,14 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
 /* We will call this if a write fails
  * Just turn on the LED and stop execution
  */
-void writeFailed(void) {
+void NORETURN writeFailed() {
 	mhv_setOutput(MHV_ARDUINO_PIN_13);
 	mhv_pinOn(MHV_ARDUINO_PIN_13);
 
 	for (;;);
 }
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_usart0_enable();
@@ -120,6 +122,4 @@ int NORETURN main(void) {
 		(void)serial.write_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
 				41);
 	} // Loop
-
-	UNREACHABLE;
 }

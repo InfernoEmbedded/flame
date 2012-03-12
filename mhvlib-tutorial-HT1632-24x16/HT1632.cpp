@@ -28,6 +28,8 @@
  * Sure Electronics DE-DP105 displays
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <avr/interrupt.h>
 #include <util/delay.h>
 #include <MHV_io.h>
@@ -62,6 +64,7 @@ public:
  * @param moduleX	the x coordinate of the module
  * @param moduleY	the y coordinate of the module
  */
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 void DisplaySelector::select(uint8_t moduleX, uint8_t moduleY, bool active) {
 	if (active) {
 		switch (moduleX) {
@@ -79,6 +82,7 @@ void DisplaySelector::select(uint8_t moduleX, uint8_t moduleY, bool active) {
 		mhv_pinOn(MHV_ARDUINO_PIN_A3);
 	}
 }
+#pragma GCC diagnostic warning "-Wunused-parameter"
 
 DisplaySelector displaySelector;
 
@@ -269,7 +273,7 @@ void textAnimation(MHV_Display_Holtek_HT1632 &display) {
 	display.flush();
 }
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 
@@ -288,11 +292,9 @@ int NORETURN main(void) {
 		display.setPixel(0, 15, 1);
 		display.setPixel(23, 0, 1);
 		lines(display);
-//		textAnimation(display);
-//		fader(display);
-//		manualTextAnimation(display);
-//		slowFill(display);
+		textAnimation(display);
+		fader(display);
+		manualTextAnimation(display);
+		slowFill(display);
 	}
-
-	UNREACHABLE;
 }

@@ -81,7 +81,7 @@ void LEDBlinker::alarm() {
 // Instantiate the blinker class
 LEDBlinker blinker;
 
-int NORETURN main() {
+MAIN {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -111,6 +111,4 @@ int NORETURN main() {
 	for(;;) {
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

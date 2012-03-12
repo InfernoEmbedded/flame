@@ -47,7 +47,7 @@ protected:
 	bool writeChar(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, char character);
 	bool writeSeperator(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
-			uint8_t onValue, uint8_t offValue);
+			uint8_t offValue);
 	void runTxBuffers();
 
 public:

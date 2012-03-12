@@ -29,6 +29,8 @@
  * and 10 & 11 (columns)
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the interrupt library
 #include <avr/interrupt.h>
 
@@ -167,7 +169,7 @@ void Animation::alarm() {
 		} else {
 			_fader = FADERMAX;
 		}
-// Drop through
+// no break
 	case 0:
 		ledMatrix.setPixel(0, 0,
 				mhv_precalculatedGammaCorrect(_fader));
@@ -210,7 +212,7 @@ void LEDMatrixTicker::alarm() {
 LEDMatrixTicker ledMatrixTicker;
 
 
-int NORETURN main(void) {
+MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
 	power_timer2_enable();
@@ -251,7 +253,5 @@ int NORETURN main(void) {
 
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }
 

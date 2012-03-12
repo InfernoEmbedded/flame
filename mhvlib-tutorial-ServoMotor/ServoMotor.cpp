@@ -69,7 +69,7 @@ void MoveServos::alarm() {
 
 MoveServos moveServos;
 
-int NORETURN main() {
+MAIN {
 	power_all_disable();
 
 	power_timer1_enable();
@@ -96,6 +96,4 @@ int NORETURN main() {
 		rtc.handleEvents();
 		sleep_mode();
 	}
-
-	UNREACHABLE;
 }

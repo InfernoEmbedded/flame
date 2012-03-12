@@ -48,8 +48,8 @@ protected:
 	float	_lastInput;
 	float	_lastOutput;
 
-	float	outMin;
-	float	outMax;
+	float	_outMin;
+	float	_outMax;
 
 	inline void clampIntegral();
 

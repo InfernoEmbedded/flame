@@ -60,7 +60,7 @@ ISR(mhvTxVect) { \
 #define MHV_HARDWARESERIAL_CREATE(_mhvObjectName, _mhvRXBUFLEN, _mhvTXBUFCOUNT, _mhvSERIAL, _mhvBAUD) \
 		MHV_RX_BUFFER_CREATE(_mhvObjectName ## RX, _mhvRXBUFLEN); \
 		MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTXBUFCOUNT); \
-		MHV_HardwareSerial _mhvObjectName(_mhvObjectName ## RX, _mhvObjectName ## RX, _mhvSERIAL, _mhvBAUD); \
+		MHV_HardwareSerial _mhvObjectName(_mhvObjectName ## RX, _mhvObjectName ## TX, _mhvSERIAL, _mhvBAUD); \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
 #define MHV_HARDWARESERIAL_DEBUG MHV_DEBUG
