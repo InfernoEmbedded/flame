@@ -134,5 +134,5 @@ MAIN {
 		serial.busyWrite("'\r\n");
 	} // Loop
 
-	UNREACHABLE;
+	return 0;
 }

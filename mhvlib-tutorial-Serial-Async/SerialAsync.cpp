@@ -122,4 +122,6 @@ MAIN {
 		(void)serial.write_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
 				41);
 	} // Loop
+
+	return 0;
 }

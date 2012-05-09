@@ -19,17 +19,92 @@
 #ifndef MHV_VUSBCONSOLE_H_
 #define MHV_VUSBCONSOLE_H_
 
+extern "C" {
+	#include <vusb/usbdrv.h>
+}
+
+#define MAX_TX_SIZE		8
+
 #include <MHV_Device_TX.h>
 #include <MHV_RTC.h>
+#include <util/delay.h>
 
-class MHV_VusbConsole : public MHV_TimerListener, public MHV_Device_TX {
+template<uint8_t txCount>
+class MHV_VusbConsole : public MHV_TimerListener, public MHV_Device_TXImplementation<txCount> {
 protected:
 	MHV_RTC		&_rtc;
 
 public:
-	MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
-	void alarm();
-	void runTxBuffers();
+	/**
+	 * Provide a V-USB console using V-USB
+	 *   Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h)
+	 *   Uses pins B0/B2 for ATtiny25/45/85
+	 *
+	 * To view the output of the console on your computer, use HID Listen, available from:
+	 * http://www.pjrc.com/teensy/hid_listen.html
+	 *
+	 * @param	txBuffer	a ringbuffer to store data in
+	 * @param	rtc			an RTC to schedule jobs on
+	 */
+	MHV_VusbConsole(MHV_RTC &rtc) :
+					_rtc(rtc) {
+	#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
+		uchar calibrationValue;
+
+		calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS); /* calibration value from last time */
+		if (calibrationValue != 0xff) {
+			OSCCAL = calibrationValue;
+		}
+	#endif
+
+		mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+		mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+
+		usbDeviceDisconnect();
+		for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
+			_delay_ms(15);
+		}
+		usbDeviceConnect();
+
+		usbInit();
+
+		_rtc.addAlarm(this, 0, 5, 0, 5);
+	}
+
+	/**
+	 * Periodically called to maintain USB comms
+	 */
+	void alarm() {
+		usbPoll();
+
+		if (usbInterruptIsReady()) {
+			int c;
+			unsigned char buf[MAX_TX_SIZE];
+			uint8_t bufSize;
+
+			for (bufSize = 0; bufSize < MAX_TX_SIZE; bufSize++) {
+				c = MHV_Device_TX::nextCharacter();
+				if (-1 == c) {
+					break;
+				}
+				buf[bufSize] = (unsigned char)c;
+			}
+
+			if (bufSize) {
+				for (; bufSize < MAX_TX_SIZE; bufSize++) {
+					buf[bufSize] = '\0';
+				}
+				usbSetInterrupt(buf, bufSize);
+			}
+		}
+	}
+
+	/**
+	 * Start transmitting a new string
+	 * (does nothing, alarm will immediately pick up the next character)
+	 */
+	void runTxBuffers() {
+	}
 };
 
 #endif /* MHV_VUSBCONSOLE_H_ */

@@ -120,7 +120,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
  * @param	listener				a class to call when the button is pressed or held down
  */
 void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener) {
-	_pins[pinPinchangeInterrupt].previous = *pinIn & _BV(pinPin);
+	_pins[pinPinchangeInterrupt].previous = VALUE(pinIn) & _BV(pinPin);
 	_pins[pinPinchangeInterrupt].timestamp.milliseconds = 0;
 	_pins[pinPinchangeInterrupt].timestamp.timestamp = 0;
 	_pins[pinPinchangeInterrupt].listener = &listener;
@@ -134,12 +134,12 @@ void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listene
 	_pinChangeManager.registerListener(MHV_PIN_PARMS(pin), this);
 }
 
-#pragma GCC diagnostic ignored "-Wunused-parameter"
 /**
  * Deassign a pin
- * @param	pin						An MHV_PIN_* macro
+ * @param	pinPinchangeInterrupt		the pin change interrupt to deregister
  */
-void MHV_Debounce::deassignKey(MHV_DECLARE_PIN(pin)) {
-	initPin(pinPinchangeInterrupt);
+void MHV_Debounce::deassignKey(int8_t pinPinchangeInterrupt) {
+	if (pinPinchangeInterrupt) {
+		initPin(pinPinchangeInterrupt);
+	}
 }
-#pragma GCC diagnostic warning "-Wunused-parameter"

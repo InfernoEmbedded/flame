@@ -46,10 +46,13 @@
 #define MHV_TIMER1_INTERRUPTS TIMER1_COMPA_vect, TIMER1_COMPB_vect, 0
 
 
-// USART
+// USART           Baud    Status   Control  I/O
 //				   ubrr,   ucsra,   ucsrb,   udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
-#define MHV_USART0 &UBRR0, &UCSR0A, &UCSR0B, &UDR0, RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
+#define MHV_USART0 0xC4,   0xC0,    0xC1,    0xC6,  RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
 #define MHV_USART0_INTERRUPTS USART_RX_vect, USART_TX_vect
+
+#define MHV_UART_REGISTER		_SFR_MEM8
+#define MHV_UART_BAUD_REGISTER	_SFR_MEM16
 
 #define MHV_AD_RESOLUTION		1024
 
@@ -73,54 +76,30 @@
 // Power reduction register for ADC
 #define MHV_AD_PRR	PRR
 
-//							Dir,	Output,	Input,	Bit,PCINT
-#define MHV_PIN_B0			&DDRB,	&PORTB,	&PINB,	0,	0
-#define MHV_PIN_B1			&DDRB,	&PORTB,	&PINB,	1,	1
-#define MHV_PIN_B2			&DDRB,	&PORTB,	&PINB,	2,	2
-#define MHV_PIN_B3			&DDRB,	&PORTB,	&PINB,	3,	3
-#define MHV_PIN_B4			&DDRB,	&PORTB,	&PINB,	4,	4
-#define MHV_PIN_B5			&DDRB,	&PORTB,	&PINB,	5,	5
-#define MHV_PIN_B6			&DDRB,	&PORTB,	&PINB,	6,	6
-#define MHV_PIN_B7			&DDRB,	&PORTB,	&PINB,	7,	7
-#define MHV_PIN_C0			&DDRC,	&PORTC,	&PINC,	0,	8
-#define MHV_PIN_C1			&DDRC,	&PORTC,	&PINC,	1,	9
-#define MHV_PIN_C2			&DDRC,	&PORTC,	&PINC,	2,	10
-#define MHV_PIN_C3			&DDRC,	&PORTC,	&PINC,	3,	11
-#define MHV_PIN_C4			&DDRC,	&PORTC,	&PINC,	4,	12
-#define MHV_PIN_C5			&DDRC,	&PORTC,	&PINC,	5,	13
-#define MHV_PIN_C6			&DDRC,	&PORTC,	&PINC,	6,	14
-#define MHV_PIN_D0			&DDRD,	&PORTD,	&PIND,	0,	16
-#define MHV_PIN_D1			&DDRD,	&PORTD,	&PIND,	1,	17
-#define MHV_PIN_D2			&DDRD,	&PORTD,	&PIND,	2,	18
-#define MHV_PIN_D3			&DDRD,	&PORTD,	&PIND,	3,	19
-#define MHV_PIN_D4			&DDRD,	&PORTD,	&PIND,	4,	20
-#define MHV_PIN_D5			&DDRD,	&PORTD,	&PIND,	5,	21
-#define MHV_PIN_D6			&DDRD,	&PORTD,	&PIND,	6,	22
-#define MHV_PIN_D7			&DDRD,	&PORTD,	&PIND,	7,	23
-
-#define MHV_TEMPLATE_PIN_B0	0x04,	0x05,	0x03,	0,	0
-#define MHV_TEMPLATE_PIN_B1	0x04,	0x05,	0x03,	1,	1
-#define MHV_TEMPLATE_PIN_B2	0x04,	0x05,	0x03,	2,	2
-#define MHV_TEMPLATE_PIN_B3	0x04,	0x05,	0x03,	3,	3
-#define MHV_TEMPLATE_PIN_B4	0x04,	0x05,	0x03,	4,	4
-#define MHV_TEMPLATE_PIN_B5	0x04,	0x05,	0x03,	5,	5
-#define MHV_TEMPLATE_PIN_B6	0x04,	0x05,	0x03,	6,	6
-#define MHV_TEMPLATE_PIN_B7	0x04,	0x05,	0x03,	7,	7
-#define MHV_TEMPLATE_PIN_C0	0x07,	0x08,	0x06,	0,	8
-#define MHV_TEMPLATE_PIN_C1	0x07,	0x08,	0x06,	1,	9
-#define MHV_TEMPLATE_PIN_C2	0x07,	0x08,	0x06,	2,	10
-#define MHV_TEMPLATE_PIN_C3	0x07,	0x08,	0x06,	3,	11
-#define MHV_TEMPLATE_PIN_C4	0x07,	0x08,	0x06,	4,	12
-#define MHV_TEMPLATE_PIN_C5	0x07,	0x08,	0x06,	5,	13
-#define MHV_TEMPLATE_PIN_C6	0x07,	0x08,	0x06,	6,	14
-#define MHV_TEMPLATE_PIN_D0	0x0A,	0x0B,	0x09,	0,	16
-#define MHV_TEMPLATE_PIN_D1	0x0A,	0x0B,	0x09,	1,	17
-#define MHV_TEMPLATE_PIN_D2	0x0A,	0x0B,	0x09,	2,	18
-#define MHV_TEMPLATE_PIN_D3	0x0A,	0x0B,	0x09,	3,	19
-#define MHV_TEMPLATE_PIN_D4	0x0A,	0x0B,	0x09,	4,	20
-#define MHV_TEMPLATE_PIN_D5	0x0A,	0x0B,	0x09,	5,	21
-#define MHV_TEMPLATE_PIN_D6	0x0A,	0x0B,	0x09,	6,	22
-#define MHV_TEMPLATE_PIN_D7	0x0A,	0x0B,	0x09,	7,	23
+//					Dir,	Output,	Input,	Bit,PCINT
+#define MHV_PIN_B0	0x04,	0x05,	0x03,	0,	0
+#define MHV_PIN_B1	0x04,	0x05,	0x03,	1,	1
+#define MHV_PIN_B2	0x04,	0x05,	0x03,	2,	2
+#define MHV_PIN_B3	0x04,	0x05,	0x03,	3,	3
+#define MHV_PIN_B4	0x04,	0x05,	0x03,	4,	4
+#define MHV_PIN_B5	0x04,	0x05,	0x03,	5,	5
+#define MHV_PIN_B6	0x04,	0x05,	0x03,	6,	6
+#define MHV_PIN_B7	0x04,	0x05,	0x03,	7,	7
+#define MHV_PIN_C0	0x07,	0x08,	0x06,	0,	8
+#define MHV_PIN_C1	0x07,	0x08,	0x06,	1,	9
+#define MHV_PIN_C2	0x07,	0x08,	0x06,	2,	10
+#define MHV_PIN_C3	0x07,	0x08,	0x06,	3,	11
+#define MHV_PIN_C4	0x07,	0x08,	0x06,	4,	12
+#define MHV_PIN_C5	0x07,	0x08,	0x06,	5,	13
+#define MHV_PIN_C6	0x07,	0x08,	0x06,	6,	14
+#define MHV_PIN_D0	0x0A,	0x0B,	0x09,	0,	16
+#define MHV_PIN_D1	0x0A,	0x0B,	0x09,	1,	17
+#define MHV_PIN_D2	0x0A,	0x0B,	0x09,	2,	18
+#define MHV_PIN_D3	0x0A,	0x0B,	0x09,	3,	19
+#define MHV_PIN_D4	0x0A,	0x0B,	0x09,	4,	20
+#define MHV_PIN_D5	0x0A,	0x0B,	0x09,	5,	21
+#define MHV_PIN_D6	0x0A,	0x0B,	0x09,	6,	22
+#define MHV_PIN_D7	0x0A,	0x0B,	0x09,	7,	23
 
 #define MHV_PIN_TIMER_0_A	MHV_PIN_D6
 #define MHV_PIN_TIMER_0_B	MHV_PIN_D5
@@ -128,13 +107,6 @@
 #define MHV_PIN_TIMER_1_B	MHV_PIN_B2
 #define MHV_PIN_TIMER_2_A	MHV_PIN_B3
 #define MHV_PIN_TIMER_2_B	MHV_PIN_D3
-
-#define MHV_TEMPLATE_PIN_TIMER_0_A	MHV_TEMPLATE_PIN_D6
-#define MHV_TEMPLATE_PIN_TIMER_0_B	MHV_TEMPLATE_PIN_D5
-#define MHV_TEMPLATE_PIN_TIMER_1_A	MHV_TEMPLATE_PIN_B1
-#define MHV_TEMPLATE_PIN_TIMER_1_B	MHV_TEMPLATE_PIN_B2
-#define MHV_TEMPLATE_PIN_TIMER_2_A	MHV_TEMPLATE_PIN_B3
-#define MHV_TEMPLATE_PIN_TIMER_2_B	MHV_TEMPLATE_PIN_D3
 
 
 #define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00

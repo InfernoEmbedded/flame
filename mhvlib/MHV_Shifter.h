@@ -28,646 +28,10 @@
 #define MHV_SHIFTER_H_
 
 #include <MHV_io.h>
+#include <util/delay.h>
 
-#ifndef MHV_CORE
-#ifndef MHV_SHIFT_WRITECLOCK
-#warning MHV_SHIFT_WRITECLOCK not defined - do not expect MHV_SHIFTOUT_* macros to work!
-#endif
-
-#ifndef MHV_SHIFT_WRITEDATA
-#warning MHV_SHIFT_WRITEDATA not defined - do not expect MHV_SHIFTOUT_* macros to work!
-#endif
-#endif
-
-#ifndef MHV_SHIFT_DELAY
-#define MHV_SHIFT_DELAY
-#ifndef MHV_CORE
-#warning Defaulting delay to 0
-#endif
-#endif
-
-#ifdef MHV_SHIFT_ORDER_MSB
-#define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 7; mhv_shift_i >= 0; mhv_shift_i--)
-#define SHIFTOUT_BITS_LOOP (mhv_shift_i = bits - 1; mhv_shift_i >= 0; mhv_shift_i--)
-#define MHV_BIT_1 _BV(7)
-#define MHV_BIT_2 _BV(6)
-#define MHV_BIT_3 _BV(5)
-#define MHV_BIT_4 _BV(4)
-#define MHV_BIT_5 _BV(3)
-#define MHV_BIT_6 _BV(2)
-#define MHV_BIT_7 _BV(1)
-#define MHV_BIT_8 _BV(0)
-#else
-#define SHIFTOUT_BYTE_LOOP (mhv_shift_i = 0; mhv_shift_i < 8; mhv_shift_i++)
-#define SHIFTOUT_BITS_LOOP (mhv_shift_i = 0; mhv_shift_i < bits; mhv_shift_i++)
-#define MHV_BIT_1 _BV(0)
-#define MHV_BIT_2 _BV(1)
-#define MHV_BIT_3 _BV(2)
-#define MHV_BIT_4 _BV(3)
-#define MHV_BIT_5 _BV(4)
-#define MHV_BIT_6 _BV(5)
-#define MHV_BIT_7 _BV(6)
-#define MHV_BIT_8 _BV(7)
-#endif
-
-#if defined(MHV_SHIFT_WRITECLOCK) && defined(MHV_SHIFT_WRITEDATA)
-
-/* Shift a byte out, works both for devices that read on rising clock
- * & falling clock
- * @param	data	the byte to shift out
- */
-#define MHV_SHIFTOUT_BYTE(data) \
-do { \
-	int8_t		mhv_shift_i; \
-	for SHIFTOUT_BYTE_LOOP { \
-		if ((data >> mhv_shift_i) & 0x01) { \
-			mhv_pinOn(MHV_SHIFT_WRITEDATA); \
-		} else { \
-			mhv_pinOff(MHV_SHIFT_WRITEDATA); \
-		} \
-		mhv_pinOn(MHV_SHIFT_WRITECLOCK); \
-		MHV_SHIFT_DELAY; \
-		mhv_pinOff(MHV_SHIFT_WRITECLOCK); \
-		MHV_SHIFT_DELAY; \
-	} \
-} while (0);
-
-
-/* Shift the lowest N bits out, works both for devices that read on rising clock
- * & falling clock
- * @param	data	the byte to shift out
- * @param	bits	the number of bits to shift out
- *
- */
-#define MHV_SHIFTOUT_BITS(data,bits) \
-do { \
-	int8_t		mhv_shift_i; \
-	for SHIFTOUT_BITS_LOOP { \
-		if ((data >> mhv_shift_i) & 0x01) { \
-			mhv_pinOn(MHV_SHIFT_WRITEDATA); \
-		} else { \
-			mhv_pinOff(MHV_SHIFT_WRITEDATA); \
-		} \
-		mhv_pinOn(MHV_SHIFT_WRITECLOCK); \
-		MHV_SHIFT_DELAY; \
-		mhv_pinOff(MHV_SHIFT_WRITECLOCK); \
-		MHV_SHIFT_DELAY; \
-	} \
-} while (0);
-
-
-/* Write an array of data as clocked serial, where the reading device
- * reads data when the clock rises
- * Clock and data must be on the same port.
- * Other pins on this port should not be manipulated by interrupts or
- * this macro will corrupt them.
- * data & dataLength are sacrificial, upon completion, data will point to the
- * end of the array, and dataLength will be 0
- * mhv_dataCopy is used to avoid pointer indirection on each bit test
- *
- * @param	data		a pointer to the data to write
- * @param	dataLength	the length of the data (must be a variable)
- */
-#define MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(data,len) \
-do { \
-	uint8_t dataOffClockOff = *mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA))) & ~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK))); \
-	uint8_t dataOffClockOn = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA)))) | _BV(mhv_bit(MHV_SHIFT_WRITECLOCK)); \
-	uint8_t dataOnClockOff = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-			~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)))) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t dataOnClockOn = *mhv_out(MHV_SHIFT_WRITEDATA) | \
-		_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t mhv_dataCopy; \
-\
-	while (len--) { \
-		mhv_dataCopy = *data++; \
-		if ((mhv_dataCopy & MHV_BIT_1)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_2)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_3)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_4)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_5)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_6)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_7)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_8)) { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-			*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-		} \
-	}  \
-	*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-} while (0);
-
-/* Write an array of data as clocked serial, where the reading device
- * reads data when the clock rises
- * Clock and data must be on the same port.
- * Other pins on this port should not be manipulated by interrupts or
- * this macro will corrupt them.
- * data & dataLength are sacrificial, upon completion, data will point to the
- * end of the array, and dataLength will be 0
- * mhv_dataCopy is used to avoid pointer indirection on each bit test
- *
- * @param	data		a pointer to the data to write
- * @param	dataLength	the length of a element of data
- * @param	elements	the number of elements
- */
-#define MHV_SHIFTOUT_ELEMENTS_CLOCKED_RISING(data,len,elements) \
-do { \
-	uint8_t dataOffClockOff = *mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA))) & ~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK))); \
-	uint8_t dataOffClockOn = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA)))) | _BV(mhv_bit(MHV_SHIFT_WRITECLOCK)); \
-	uint8_t dataOnClockOff = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-			~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)))) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t dataOnClockOn = *mhv_out(MHV_SHIFT_WRITEDATA) | \
-		_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t mhv_dataCopy; \
-	uint8_t lenCopy; \
-	while (elements--) { \
-		for (lenCopy = len; --lenCopy;) { \
-			mhv_dataCopy = *data++; \
-			if ((mhv_dataCopy & MHV_BIT_1)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_2)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_3)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_4)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_5)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_6)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_7)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_8)) { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-				*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-			} \
-		} \
-	} \
-	*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-} while (0);
-
-
-/* Write an array of data as clocked serial, where the reading device
- * reads data when the clock falls
- * Clock and data must be on the same port.
- * Other pins on this port should not be manipulated by interrupts or
- * this macro will corrupt them.
- * data & dataLength are sacrificial, upon completion, data will point to the
- * end of the array, and dataLength will be 0
- * mhv_dataCopy is used to avoid pointer indirection on each bit test
- *
- * @param	data		a pointer to the data to write
- * @param	dataLength	the length of a element of data
- * @param	elements	the number of elements
- *
- */
-#define MHV_SHIFTOUT_ELEMENTS_CLOCKED_FALLING(data,len,elements) \
-do { \
-	uint8_t dataOffClockOff = *mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA))) & ~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK))); \
-	uint8_t dataOffClockOn = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA)))) | _BV(mhv_bit(MHV_SHIFT_WRITECLOCK)); \
-	uint8_t dataOnClockOff = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-			~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)))) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t dataOnClockOn = *mhv_out(MHV_SHIFT_WRITEDATA) | \
-		_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA));\
-	uint8_t mhv_dataCopy; \
-	uint8_t lenCopy; \
-	while (elements--) { \
-		for (lenCopy = len; --lenCopy;) { \
-			mhv_dataCopy = *data++;\
-			if ((mhv_dataCopy & MHV_BIT_1)) {\
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_2)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_3)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_4)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_5)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_6)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_7)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-			if ((mhv_dataCopy & MHV_BIT_8)) { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-				MHV_SHIFT_DELAY; \
-			} else { \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-				MHV_SHIFT_DELAY; \
-				mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-				MHV_SHIFT_DELAY; \
-			} \
-		} \
-	} \
-	*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-} while (0);
-
-
-/* Write an array of data as clocked serial, where the reading device
- * reads data when the clock falls
- * Clock and data must be on the same port.
- * Other pins on this port should not be manipulated by interrupts or
- * this macro will corrupt them.
- * data & dataLength are sacrificial, upon completion, data will point to the
- * end of the array, and dataLength will be 0
- * mhv_dataCopy is used to avoid pointer indirection on each bit test
- *
- * param	data		a pointer to the data to write
- * param	dataLength	the length of the data (must be a variable)
- *
- */
-#define MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(data,len) \
-do { \
-	uint8_t dataOffClockOff = *mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA))) & ~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK))); \
-	uint8_t dataOffClockOn = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-		~(_BV(mhv_bit(MHV_SHIFT_WRITEDATA)))) | _BV(mhv_bit(MHV_SHIFT_WRITECLOCK)); \
-	uint8_t dataOnClockOff = (*mhv_out(MHV_SHIFT_WRITEDATA) & \
-			~(_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)))) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA)); \
-	uint8_t dataOnClockOn = *mhv_out(MHV_SHIFT_WRITEDATA) | \
-		_BV(mhv_bit(MHV_SHIFT_WRITECLOCK)) | _BV(mhv_bit(MHV_SHIFT_WRITEDATA));\
-	uint8_t mhv_dataCopy; \
-\
-	while (!dataLength--) { \
-		mhv_dataCopy = *data++;\
-		if ((mhv_dataCopy & MHV_BIT_1)) {\
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_2)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_3)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_4)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_5)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_6)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_7)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-		if ((mhv_dataCopy & MHV_BIT_8)) { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOnClockOff; \
-			MHV_SHIFT_DELAY; \
-		} else { \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-			MHV_SHIFT_DELAY; \
-			mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOff; \
-			MHV_SHIFT_DELAY; \
-		} \
-	} \
-	*mhv_out(MHV_SHIFT_WRITEDATA) = dataOffClockOn; \
-} while (0);
-
-
-#endif
-
-/* Function variants of the above macros
- */
 void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
 void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
-
-
-/**
- * Create a new shifter for devices that read on the rising edge
- * The MHV_SHIFT_WRITECLOCK & MHV_SHIFT_WRITEDATA macros should be defined in advance
- * @param	name	the name of the object to create
- */
-#define MHV_SHIFTER_CLOCKED_RISING_CREATE(name) \
-	class MHV_Shifter_ ## name : public MHV_Shifter { \
-		public: \
-			void shiftOut(uint8_t shiftData, uint8_t bits); \
-			void shiftOut(uint8_t shiftData); \
-			void shiftOut(uint8_t *shiftData, uint8_t shiftLength); \
-			void shiftOut(uint8_t *shiftData, uint16_t shiftLength); \
-			void shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
-	}; \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { \
-		MHV_SHIFTOUT_BITS(shiftData, bits); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
-		MHV_SHIFTOUT_BYTE(shiftData); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
-		MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t shiftLength) { \
-		MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements) { \
-		MHV_SHIFTOUT_ELEMENTS_CLOCKED_RISING(shiftData, dataLength, elements); \
-	} \
-	MHV_Shifter_ ## name name;
-
-/**
- * Create a new shifter for devices that read on the falling edge
- * The MHV_SHIFT_WRITECLOCK & MHV_SHIFT_WRITEDATA macros should be defined in advance
- * @param	name	the name of the object to create
- */
-#define MHV_SHIFTER_CLOCKED_FALLING_CREATE(name) \
-	class MHV_Shifter_ ## name : public MHV_Shifter { \
-		public: \
-			void shiftOut(uint8_t shiftData, uint8_t bits); \
-			void shiftOut(uint8_t shiftData); \
-			void shiftOut(uint8_t *shiftData, uint8_t shiftLength); \
-			void shiftOut(uint8_t *shiftData, uint16_t shiftLength); \
-			void shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements); \
-	}; \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { \
-		MHV_SHIFTOUT_BITS(shiftData, bits); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
-		MHV_SHIFTOUT_BYTE(shiftData); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t shiftLength) { \
-		MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t shiftLength) { \
-		MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
-	} \
-	void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements) { \
-		MHV_SHIFTOUT_ELEMENTS_CLOCKED_FALLING(shiftData, dataLength, elements); \
-	} \
-	MHV_Shifter_ ## name name;
 
 
 class MHV_Shifter {
@@ -675,8 +39,992 @@ public:
 	virtual void shiftOut(uint8_t data, uint8_t bits) =0;
 	virtual void shiftOut(uint8_t data) =0;
 	virtual void shiftOut(uint8_t *data, uint8_t length) =0;
-	virtual void shiftOut(uint8_t *data, uint16_t length) =0;
 	virtual void shiftOut(uint8_t *data, uint8_t length, uint16_t elements) =0;
+//	virtual ~MHV_Shifter();
+};
+
+#undef MHV_SHIFT_DELAY
+#define MHV_SHIFT_DELAY if (delay) _delay_us(delay);
+
+/**
+ * Create a new shifter
+ * @tparam	clock...	an MHV_PIN describing the clock line
+ * @tparam	data...		an MHV_PIN describing the data line
+ * @tparam	msb			true to output MSB first. false for LSB
+ * @tparam	rising		true if the receiver is clocked on the rising edge, false otherwise
+ * @tparam	delay		the delay between state changes (us)
+ */
+template<MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), bool msb = true, bool rising = true,
+		uint16_t delay = 0>
+class MHV_ShifterImplementation : public MHV_Shifter {
+
+private:
+	/**
+	 * Shift out data in MSB order, clocked on the rising edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutMSBRising(uint8_t *shiftData, uint8_t shiftLength) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (shiftLength--) {
+			mhv_dataCopy = *shiftData++;
+			if (mhv_dataCopy & _BV(7)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(6)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(5)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(4)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(3)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(2)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(1)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(0)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+		}
+		_SFR_IO8(dataOut) = dataOffClockOff;
+	}
+
+	/**
+	 * Shift out data in MSB order, clocked on the falling edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutMSBFalling(uint8_t *shiftData, uint8_t shiftLength) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (!shiftLength--) {
+			mhv_dataCopy = *shiftData++;
+			if (mhv_dataCopy & _BV(7)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(6)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(5)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(4)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(3)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(2)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(1)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(0)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+		}
+		_SFR_IO8(dataOut) = dataOffClockOn;
+	}
+
+	/**
+	 * Shift out data in LSB order, clocked on the rising edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutLSBRising(uint8_t *shiftData, uint8_t shiftLength) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (shiftLength--) {
+			mhv_dataCopy = *shiftData++;
+			if (mhv_dataCopy & _BV(0)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(1)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(2)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(3)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(4)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(5)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(6)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(7)) {
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+			}
+		}
+		_SFR_IO8(dataOut) = dataOffClockOff;
+	}
+
+	/**
+	 * Shift out data in LSB order, clocked on the falling edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutLSBFalling(uint8_t *shiftData, uint8_t shiftLength) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (!shiftLength--) {
+			mhv_dataCopy = *shiftData++;
+			if (mhv_dataCopy & _BV(0)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(1)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(2)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(3)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(4)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(5)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(6)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+			if (mhv_dataCopy & _BV(7)) {
+				_SFR_IO8(dataOut) = dataOnClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOnClockOff;
+				MHV_SHIFT_DELAY;
+			} else {
+				_SFR_IO8(dataOut) = dataOffClockOn;
+				MHV_SHIFT_DELAY;
+				_SFR_IO8(dataOut) = dataOffClockOff;
+				MHV_SHIFT_DELAY;
+			}
+		}
+		_SFR_IO8(dataOut) = dataOffClockOn;
+	}
+
+	/**
+	 * Shift out data in MSB order, clocked on the rising edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes in an element
+	 * @param elements		the number of elements
+	 */
+	INLINE void shiftOutElementsMSBRising(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (elements--) {
+			uint8_t length = shiftLength;
+			while (length--) {
+				mhv_dataCopy = *shiftData++;
+				if (mhv_dataCopy & _BV(7)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(6)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(5)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(4)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(3)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(2)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(1)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(0)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+			}
+			_SFR_IO8(dataOut) = dataOffClockOff;
+		}
+	}
+
+	/**
+	 * Shift out data in MSB order, clocked on the falling edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutElementsMSBFalling(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (elements--) {
+			uint8_t length = shiftLength;
+			while (length--) {
+				mhv_dataCopy = *shiftData++;
+				if (mhv_dataCopy & _BV(7)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(6)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(5)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(4)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(3)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(2)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(1)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(0)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+			}
+			_SFR_IO8(dataOut) = dataOffClockOn;
+		}
+	}
+
+	/**
+	 * Shift out data in LSB order, clocked on the rising edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutElementsLSBRising(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (elements--) {
+			uint8_t length = shiftLength;
+			while (length--) {
+				mhv_dataCopy = *shiftData++;
+				if (mhv_dataCopy & _BV(0)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(1)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(2)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(3)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(4)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(5)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(6)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(7)) {
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+				}
+			}
+			_SFR_IO8(dataOut) = dataOffClockOff;
+		}
+	}
+
+	/**
+	 * Shift out data in LSB order, clocked on the falling edge
+	 * @param shiftData		the data to shift out
+	 * @param shiftLength	the number of bytes to shift
+	 */
+	INLINE void shiftOutElementsLSBFalling(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
+		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t mhv_dataCopy;
+
+		while (elements--) {
+			uint8_t length = shiftLength;
+			while (length--) {
+				mhv_dataCopy = *shiftData++;
+				if (mhv_dataCopy & _BV(0)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(1)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(2)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(3)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(4)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(5)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(6)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+				if (mhv_dataCopy & _BV(7)) {
+					_SFR_IO8(dataOut) = dataOnClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOnClockOff;
+					MHV_SHIFT_DELAY;
+				} else {
+					_SFR_IO8(dataOut) = dataOffClockOn;
+					MHV_SHIFT_DELAY;
+					_SFR_IO8(dataOut) = dataOffClockOff;
+					MHV_SHIFT_DELAY;
+				}
+			}
+			_SFR_IO8(dataOut) = dataOffClockOn;
+		}
+	}
+
+public:
+
+	/**
+	 * Shift out a number of bits (LSB aligned)
+	 * @param data	a byte containing the bits to shift
+	 * @param bits	the number of bits to shift
+	 */
+	void shiftOut(uint8_t data, uint8_t bits) {
+		if (msb) {
+			for (int8_t i = bits - 1; i >= 0; i--) {
+				if ((data >> i) & 0x01) {
+					mhv_pinOn(MHV_PIN_PARMS(data));
+				} else {
+					mhv_pinOff(MHV_PIN_PARMS(data));
+				}
+				mhv_pinOn(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+
+				mhv_pinOff(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+			}
+		} else {
+			for (uint8_t i = 0; i < bits; i++) {
+				if ((data >> i) & 0x01) {
+					mhv_pinOn(MHV_PIN_PARMS(data));
+				} else {
+					mhv_pinOff(MHV_PIN_PARMS(data));
+				}
+
+				mhv_pinOn(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+
+				mhv_pinOff(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+			}
+		}
+	}
+
+	/**
+	 * Shift out a byte of data
+	 * @param data the data to output
+	 */
+	void shiftOut(uint8_t data) {
+		if (msb) {
+			for (int8_t i = 7; i >= 0; i--) {
+				if ((data >> i) & 0x01) {
+					mhv_pinOn(MHV_PIN_PARMS(data));
+				} else {
+					mhv_pinOff(MHV_PIN_PARMS(data));
+				}
+
+				mhv_pinOn(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+
+				mhv_pinOff(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+			}
+		} else {
+			for (uint8_t i = 0; i < 8; i++) {
+				if ((data >> i) & 0x01) {
+					mhv_pinOn(MHV_PIN_PARMS(data));
+				} else {
+					mhv_pinOff(MHV_PIN_PARMS(data));
+				}
+
+				mhv_pinOn(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+
+				mhv_pinOff(MHV_PIN_PARMS(clock));
+				MHV_SHIFT_DELAY;
+			}
+		}
+	}
+
+	void shiftOut(uint8_t *shiftData, uint8_t shiftLength) {
+		if (msb) {
+			if (rising) {
+				shiftOutMSBRising(shiftData, shiftLength);
+			} else {
+				shiftOutMSBFalling(shiftData, shiftLength);
+			}
+		} else {
+			if (rising) {
+				shiftOutLSBRising(shiftData, shiftLength);
+			} else {
+				shiftOutLSBFalling(shiftData, shiftLength);
+			}
+		}
+	}
+
+	void shiftOut(uint8_t *shiftData, uint8_t dataLength, uint16_t elements) {
+		if (msb) {
+			if (rising) {
+				shiftOutElementsMSBRising(shiftData, dataLength, elements);
+			} else {
+				shiftOutElementsMSBFalling(shiftData, dataLength, elements);
+			}
+		} else {
+			if (rising) {
+				shiftOutElementsLSBRising(shiftData, dataLength, elements);
+			} else {
+				shiftOutElementsLSBFalling(shiftData, dataLength, elements);
+			}
+		}
+	}
 };
 
 #endif /* MHV_SHIFTER_H_ */

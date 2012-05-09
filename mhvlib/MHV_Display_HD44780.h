@@ -28,6 +28,13 @@
 #define MHV_DISPLAY_HD44780_H_
 
 #include <MHV_Display_Character.h>
+#define HD44780_TINIT	300		// ms
+
+
+static const uint8_t mhv_hd44780AddressTable[] PROGMEM = {
+		64+20,	20,	64,	0
+};
+
 
 enum mhv_hd44780_command {
 	MHV_44780_CMD_CLEAR				= 0x001,
@@ -42,33 +49,215 @@ enum mhv_hd44780_command {
 };
 typedef enum mhv_hd44780_command MHV_HD44780_COMMAND;
 
-class MHV_Display_HD44780 : public MHV_Display_Character {
+/**
+ * A class for operating HD44780 based LCD displays (and compatible)
+ * @tparam	cols		the number of columns
+ * @tparam	rows		the number of rows
+ * @tparam	txBuffers	the number of output buffers
+ */
+template<uint16_t cols, uint16_t rows, uint8_t txBuffers>
+class MHV_Display_HD44780 : public MHV_Display_Character<cols, rows, txBuffers> {
 protected:
 	uint16_t			_ticks;
 	uint16_t			_animateTicks;
 	bool 				_mustDelay;
 	bool				_byteMode;
 
-	void writeCommand(MHV_HD44780_COMMAND command, uint8_t data);
-	void function(bool byteMode, bool multiLine, bool bigFont);
-	void addressCGRAM(uint8_t address);
-	void addressDDRAM(uint8_t address);
+	/**
+	 * Send a command to the display
+	 */
+	void writeCommand(MHV_HD44780_COMMAND command, uint8_t data) {
+		uint8_t byte = command | data;
+
+		if (_mustDelay) {
+			_delay_us(19);
+			_mustDelay = false;
+		}
+
+		writeByte(byte, false);
+
+		delay(command);
+	}
+
+	/**
+	 * Initialise the display
+	 * @param	byteMode	true to use 8 bit protocol
+	 * @param	multiLine	true if there is more than 1 line
+	 * @param	bigFont		true to use 5x11 fonts, false for 5x8
+	 */
+	void function(bool byteMode, bool multiLine, bool bigFont) {
+		uint8_t data = byteMode << 4 | multiLine << 3 | bigFont << 2;
+
+		if (!byteMode) {
+			// Set 4 bit transfer
+			writeByte(0b00100010, false);
+			_delay_ms(4.1);
+		}
+
+		writeCommand(MHV_44780_CMD_SET_FUNCTION, data);
+	}
+
+	/**
+	 * Set the CGRAM address
+	 * @param	address	the CGRAM address
+	 */
+	void addressCGRAM(uint8_t address) {
+		while (isBusy()) {};
+
+		writeCommand(MHV_44780_CMD_SET_CG_ADDR, address);
+	}
+
+	/**
+	 * Set the DDRAM address
+	 * @param	address	the DDRAM address
+	 */
+	void addressDDRAM(uint8_t address) {
+		while (isBusy()) {};
+
+		writeCommand(MHV_44780_CMD_SET_DD_ADDR, address);
+	}
+
 	virtual void writeByte(uint8_t byte, bool rs)=0;
 	virtual uint8_t readByte(bool rs)=0;
-	void _setCursor(uint8_t col, uint8_t row);
-	void _setCursor(uint16_t col, uint16_t row);
-	void _writeChar(char character);
-	char _readChar();
+
+//	/**
+//	 * Move the cursor to a location, so the next writeChar will write a character at that location
+//	 * (Origin is at the bottom left)
+//	 * @param	col		the column to put the character
+//	 * @param	row		the row to put the character
+//	 */
+//	void _setCursor(uint16_t col, uint16_t row) {
+//		_setCursor((uint8_t)col, (uint8_t)row);
+//	}
+
+	/**
+	 * Move the cursor to a location, so the next writeChar will write a character at that location
+	 * (Origin is at the bottom left)
+	 * @param	col		the column to put the character
+	 * @param	row		the row to put the character
+	 */
+	void _setCursor(uint8_t col, uint8_t row) {
+		uint8_t address;
+
+		if (4 == rows && 20 == cols) {
+			address = pgm_read_byte(mhv_hd44780AddressTable + row);
+		} else {
+	// Display type unsupported - assume 2 line display
+			address = pgm_read_byte(mhv_hd44780AddressTable + row + 2);
+		}
+
+		address += col;
+
+		while (isBusy()) {};
+
+		addressDDRAM(address);
+	}
+
+	/**
+	 * Write a character to the display at the current location, incrementing the location by 1
+	 * @param	character	the character to write
+	 */
+	void _writeChar(char character) {
+		while (isBusy()) {};
+		writeByte(character, true);
+		delay(MHV_44780_WRITE_CHAR);
+	}
+
+	/**
+	 * Read a character from the display at the current location, incrementing the location by 1
+	 * @return	the character at the current location
+	 */
+	char _readChar() {
+		while (isBusy()) {};
+		return readByte(true);
+	}
+
 	virtual bool isBusy()=0;
 	virtual void delay(MHV_HD44780_COMMAND command)=0;
 
 public:
-	MHV_Display_HD44780(uint8_t colCount, uint16_t rowCount, MHV_RingBuffer &txBuffers);
+	/**
+	 * Create a new display
+	 */
+	MHV_Display_HD44780() {
+		_ticks = 0;
+		_animateTicks = 64;
+		_mustDelay = false;
+	}
+
+	/**
+	 * Initialise the display
+	 * @param	byteMode	true to use 8 bit transfers
+	 * @param	multiLine	true if there is more than 1 line
+	 * @param	bigFont		true to use 5x11 fonts, false for 5x8
+	 * @param	cursorOn	turn the curson on
+	 * @param	cursorBlink	blink the cursor
+	 * @param	left2right	true for text reading left to right
+	 * @param	scroll		true to scroll text rather than moving the cursor
+	 */
 	void init(bool byteMode, bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
-			bool left2right, bool scroll);
-	void clear();
-	void entryMode(bool left2Right, bool scroll);
-	void control(bool displayOn, bool cursorOn, bool cursorBlink);
+			bool left2right, bool scroll) {
+	/* Assume the worst case, we are called immediately after poweron
+	 * Also assume that the MCU init takes 0 time
+	 */
+		_delay_ms(HD44780_TINIT);
+
+	// hardware initialization always set 8 bits mode
+		_byteMode = true;
+		uint8_t resetData = 1 << 4 | multiLine << 3 | bigFont << 2 | 1;
+		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+
+		_byteMode = byteMode;
+
+
+		function(byteMode, multiLine, bigFont);
+		_delay_us(39);
+		control(true, cursorOn, cursorBlink);
+		clear();
+		entryMode(left2right, scroll);
+		MHV_Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
+		MHV_Display_Character<cols, rows, txBuffers>::_currentCol = 0;
+	}
+
+	/**
+	 * Clear the display
+	 */
+	void clear() {
+		while (isBusy()) {};
+
+		writeCommand(MHV_44780_CMD_CLEAR, 0);
+		MHV_Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
+		MHV_Display_Character<cols, rows, txBuffers>::_currentCol = 0;
+	}
+
+	/**
+	 * Set the entry mode - allows for left or right printing, allows for scrolling display or moving cursor
+	 * @param	left2Right	true for text reading left to right
+	 * @param	scroll		true to scroll text rather than moving the cursor
+	 */
+	void entryMode(bool left2Right, bool scroll) {
+		uint8_t data = left2Right << 1 | scroll;
+
+		while (isBusy()) {};
+
+		writeCommand(MHV_44780_CMD_SET_ENTRY_MODE, data);
+	}
+
+	/**
+	 * Set parameters on the display
+	 * @param	displayOn	turn the display on
+	 * @param	cursorOn	turn the cursor on
+	 * @param	cursorBlink	blink the cursor
+	 */
+	void control(bool displayOn, bool cursorOn, bool cursorBlink) {
+		uint8_t data = displayOn << 2 | cursorOn << 1 | cursorBlink;
+
+		while (isBusy()) {};
+
+		writeCommand(MHV_44780_CMD_SET_DISPLAY_MODE, data);
+	}
 };
 
 #endif /* MHV_DISPLAY_HD44780_H_ */

@@ -56,7 +56,7 @@
  * to have an array of N things we can use to specify the order the servos should be serviced
  */
 struct MHV_ServoControlBlock {
-	volatile uint8_t	*port;
+	mhv_register		port;
 	uint8_t				pin;
 	uint16_t			position;
 	int16_t				clockMinOffset;
@@ -76,7 +76,7 @@ private:
 
 public:
 	MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
-	void addServo(uint8_t servo, volatile uint8_t *dir, volatile uint8_t *out, volatile uint8_t *in, uint8_t pin, int8_t pinchangeInterrupt);
+	void addServo(uint8_t servo, MHV_DECLARE_PIN(pin));
 	void tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
 	void positionServo(uint8_t servo, uint16_t position);
 	bool canPosition();

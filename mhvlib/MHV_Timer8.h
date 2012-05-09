@@ -109,6 +109,11 @@ public:
 	 * Called when an alarm goes off
 	 */
 	virtual void alarm() =0;
+
+//	/**
+//	 * Destroy the listener
+//	 */
+//	virtual ~MHV_TimerListener();
 };
 
 class MHV_Timer8 {

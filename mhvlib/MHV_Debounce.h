@@ -57,6 +57,7 @@ class MHV_DebounceListener {
 public:
 	virtual void singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
 	virtual void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
+//	virtual ~MHV_DebounceListener();
 };
 
 struct mhv_debouncePin {
@@ -82,7 +83,7 @@ protected:
 public:
 	MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
 	void assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener);
-	void deassignKey(MHV_DECLARE_PIN(pin));
+	void deassignKey(int8_t pinPinChangeInterrupt);
 	void checkHeld();
 };
 

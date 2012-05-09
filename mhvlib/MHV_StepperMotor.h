@@ -34,6 +34,7 @@
 class MHV_StepperListener {
 public:
 	virtual void moveComplete(int32_t position) =0;
+//	virtual ~MHV_StepperListener();
 };
 
 class MHV_StepperMotor : public MHV_TimerListener {

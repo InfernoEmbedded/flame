@@ -26,8 +26,6 @@ extern "C" {
 
 #define MHV_OSCCAL_EEPROM_ADDRESS	1022
 
-#define MAX_TX_SIZE		8
-
 // Taken from usb_debug_only.c:
 PROGMEM const char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /* USB report descriptor */
 		0x06, 0x31, 0xFF,		// Usage Page 0xFF31 (vendor defined)
@@ -131,78 +129,5 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 		/* no vendor specific requests implemented */
 	}
 	return 0;
-}
-
-
-/**
- * Provide a V-USB console using V-USB
- *   Uses pins D4/D2 for ATmega (can be changed in VUSBKeyboard/usbconfig.h)
- *   Uses pins B0/B2 for ATtiny25/45/85
- *
- * To view the output of the console on your computer, use HID Listen, available from:
- * http://www.pjrc.com/teensy/hid_listen.html
- *
- * @param	txBuffer	a ringbuffer to store data in
- * @param	rtc			an RTC to schedule jobs on
- */
-MHV_VusbConsole::MHV_VusbConsole(MHV_RingBuffer &txBuffer, MHV_RTC &rtc) :
-				MHV_Device_TX(txBuffer),
-				_rtc(rtc) {
-#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
-	uchar calibrationValue;
-
-	calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS); /* calibration value from last time */
-	if (calibrationValue != 0xff) {
-		OSCCAL = calibrationValue;
-	}
-#endif
-
-	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
-
-	usbDeviceDisconnect();
-	for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
-		_delay_ms(15);
-	}
-	usbDeviceConnect();
-
-	usbInit();
-
-	_rtc.addAlarm(this, 0, 5, 0, 5);
-}
-
-/**
- * Periodically called to maintain USB comms
- */
-void MHV_VusbConsole::alarm() {
-	usbPoll();
-
-	if (usbInterruptIsReady()) {
-		int c;
-		unsigned char buf[MAX_TX_SIZE];
-		uint8_t bufSize;
-
-		for (bufSize = 0; bufSize < MAX_TX_SIZE; bufSize++) {
-			c = nextCharacter();
-			if (-1 == c) {
-				break;
-			}
-			buf[bufSize] = (unsigned char)c;
-		}
-
-		if (bufSize) {
-			for (; bufSize < MAX_TX_SIZE; bufSize++) {
-				buf[bufSize] = '\0';
-			}
-			usbSetInterrupt(buf, bufSize);
-		}
-	}
-}
-
-/**
- * Start transmitting a new string
- * (does nothing, alarm will immediately pick up the next character)
- */
-void MHV_VusbConsole::runTxBuffers() {
 }
 

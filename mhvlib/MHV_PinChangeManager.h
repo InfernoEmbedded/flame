@@ -74,10 +74,11 @@ ISR(PCINT2_vect) { \
 class MHV_PinEventListener {
 public:
 	virtual void pinChanged(uint8_t pcInt, bool newState) =0;
+//	virtual ~MHV_PinEventListener();
 };
 
 struct mhv_eventPin {
-	volatile uint8_t		*port;
+	mhv_register			port;
 	uint8_t					mask;
 	uint8_t					pcInt;
 	MHV_PinEventListener	*listener;
@@ -104,7 +105,7 @@ public:
 #endif
 	void pinChange(uint8_t offset);
 	void registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener);
-	void deregisterListener(MHV_DECLARE_PIN(pin));
+	void deregisterListener(int8_t pinPinChangeListener);
 
 	void handleEvents();
 

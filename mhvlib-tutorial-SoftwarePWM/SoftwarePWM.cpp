@@ -38,11 +38,11 @@ MHV_TIMER_ASSIGN_1INTERRUPT(pwmTimer, MHV_TIMER2_INTERRUPTS);
 #define PWM_LISTENER_COUNT	5
 MHV_SoftwarePWM<PWM_LISTENER_COUNT> pwm(pwmTimer);
 
-MHV_SoftwarePWMPin<MHV_TEMPLATE_PIN_B0> led1;
-MHV_SoftwarePWMPin<MHV_TEMPLATE_PIN_B1> led2;
-MHV_SoftwarePWMPin<MHV_TEMPLATE_PIN_B2> led3;
-MHV_SoftwarePWMPin<MHV_TEMPLATE_PIN_B3> led4;
-MHV_SoftwarePWMPin<MHV_TEMPLATE_PIN_B4> led5;
+MHV_SoftwarePWMPin<MHV_PIN_B0> led1;
+MHV_SoftwarePWMPin<MHV_PIN_B1> led2;
+MHV_SoftwarePWMPin<MHV_PIN_B2> led3;
+MHV_SoftwarePWMPin<MHV_PIN_B3> led4;
+MHV_SoftwarePWMPin<MHV_PIN_B4> led5;
 
 MAIN {
 	power_all_disable();
@@ -70,4 +70,6 @@ MAIN {
 	for (;;) {
 		sleep_mode();
 	}
+
+	return 0;
 }

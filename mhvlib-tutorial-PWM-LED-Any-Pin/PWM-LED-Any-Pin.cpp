@@ -190,4 +190,6 @@ MAIN {
 	for (;;) {
 		sleep_mode();
 	}
+
+	return 0;
 }

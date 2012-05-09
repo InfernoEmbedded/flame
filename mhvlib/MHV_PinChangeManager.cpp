@@ -32,7 +32,7 @@
 
 MHV_PinChangeManager::MHV_PinChangeManager() {
 	for (uint8_t i = 0; i < MHV_PC_INT_COUNT; i++) {
-		_pins[i].port = NULL;
+		_pins[i].listener = NULL;
 	}
 }
 
@@ -70,11 +70,11 @@ void MHV_PinChangeManager::pinChange(uint8_t offset) {
 	MHV_EVENT_PIN *maxPin = pin + 8;
 
 	for (; pin < maxPin; ++pin) {
-		if (NULL == pin->port) {
+		if (NULL == pin->listener) {
 			continue;
 		}
 
-		bool cur = *(pin->port) & pin->mask;
+		bool cur = VALUE(pin->port) & pin->mask;
 		if (cur != pin->previous) {
 			// Pin has changed
 			pin->previous = cur;
@@ -130,10 +130,12 @@ void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventLi
 
 /**
  * Deregister interest for pinchange events
- * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
+ * @param	pinPinChangeInterrupt			the pinPinchangeInterrupt to deregister
  */
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-void MHV_PinChangeManager::deregisterListener(MHV_DECLARE_PIN(pin)) {
+void MHV_PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
+	if (pinPinchangeInterrupt) {
+		return;
+	}
 
 	_pins[pinPinchangeInterrupt].listener = NULL;
 	_pins[pinPinchangeInterrupt].changed = false;
@@ -162,7 +164,6 @@ void MHV_PinChangeManager::deregisterListener(MHV_DECLARE_PIN(pin)) {
 	}
 #endif
 }
-#pragma GCC diagnostic warning "-Wunused-parameter"
 
 /**
  * Call from the main loop to handle any events

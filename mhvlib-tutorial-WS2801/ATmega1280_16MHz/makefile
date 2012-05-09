@@ -56,9 +56,6 @@ mhvlib-tutorial-WS2801.eep \
 SIZEDUMMY += \
 sizedummy \
 
-AVRDUDEDUMMY += \
-avrdudedummy \
-
 
 # All Target
 all: mhvlib-tutorial-WS2801.elf secondary-outputs
@@ -95,18 +92,12 @@ sizedummy: mhvlib-tutorial-WS2801.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-avrdudedummy: mhvlib-tutorial-WS2801.elf
-	@echo 'Invoking: AVRDude'
-	C:\Program Files (x86)\MHV AVR Tools\bin\avrdude -pm1280 -carduino -Pcom9 -b57600 -Uflash:w:mhvlib-tutorial-WS2801.hex:a
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(AVRDUDEDUMMY)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-WS2801.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-WS2801.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY) $(AVRDUDEDUMMY)
+secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

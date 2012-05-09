@@ -36,6 +36,8 @@
 
 #include <util/delay.h>
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
@@ -61,10 +63,10 @@ MHV_HARDWARESERIAL_CREATE(serial, 0, 2, MHV_USART0, 115200);
 #define OUTPUT_PIN MHV_PIN_TIMER_1_B
 MHV_Timer16 vOutTimer(MHV_TIMER16_1);
 
-#define TARGET_VOLTAGE 7.0
+#define TARGET_VOLTAGE 7000
 
 // This is only accurate to ~ 5%, you may want to measure it (on the AREF pin) to increase accuracy
-#define REFERENCE_VOLTAGE 1.1
+#define REFERENCE_VOLTAGE 1100
 
 // The resistors in the resistor divider, the sum should not be greater than 10k
 #define R1	7250.00
@@ -73,8 +75,8 @@ MHV_Timer16 vOutTimer(MHV_TIMER16_1);
 // Which ADC channel to use
 #define ADC_CHANNEL	MHV_AD_CHANNEL_0
 
-MHV_VoltageRegulator regulator(MHV_VREG_MODE_BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE,
-		MHV_AD_REFERENCE_1V1, R2/(R2+R1), vOutTimer, ADC_CHANNEL);
+MHV_VoltageRegulator<MHV_VREG_MODE_BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, MHV_AD_REFERENCE_1V1,
+	MHV_VREG_DIVIDER(R2/(R2+R1)), ADC_CHANNEL> regulator(vOutTimer);
 
 MAIN {
 	// Disable all peripherals and enable just what we need
@@ -125,4 +127,6 @@ MAIN {
 
 		_delay_ms(100);
 	}
+
+	return 0;
 }

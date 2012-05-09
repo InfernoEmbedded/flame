@@ -57,9 +57,11 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 // The RTC object we will use
 MHV_RTCTemplate<ALARM_COUNT> rtc;
 
+// The number of output strings to buffer for async transmission
+#define TX_BUFFERS	5
+
 // The USB Keyboard driver
-MHV_TX_BUFFER_CREATE(consoleBuffer, 16);
-MHV_VusbConsole console(consoleBuffer, rtc);
+MHV_VusbConsole<TX_BUFFERS> console(rtc);
 
 class WriteString : public MHV_TimerListener {
 public:

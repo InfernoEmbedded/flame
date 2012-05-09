@@ -96,4 +96,6 @@ MAIN {
 		rtc.handleEvents();
 		sleep_mode();
 	}
+
+	return 0;
 }

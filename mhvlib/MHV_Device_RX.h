@@ -34,34 +34,164 @@
 #include <MHV_io.h>
 #include <stdio.h>
 #include <MHV_RingBuffer.h>
+#include <avr/pgmspace.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define MHV_RX_BUFFER_CREATE(_mhvRxName, _mhvRxCharacterCount) \
 	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
 	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
 
 class MHV_Device_RX;
+
+/**
+ * A listener that will be called when a line is ready or the buffer is full
+ */
 class MHV_RXListener {
 public:
 	virtual void rxReady(MHV_Device_RX *rx) =0;
 };
 
+
+/**
+ * A device that can receive data
+ */
 class MHV_Device_RX {
 protected:
 	MHV_RingBuffer		&_rxBuffer;
 	MHV_RXListener		*_listener;
 
-	MHV_Device_RX(MHV_RingBuffer &rxBuffer);
+	/**
+	 * Constructor
+	 * @param	buffer	A buffer to store received data
+	 */
+	MHV_Device_RX(MHV_RingBuffer &buffer) :
+			_rxBuffer(buffer),
+			_listener(NULL) {}
 
 public:
-	int asyncReadLine(char *buffer, uint8_t bufferLength);
-	int busyReadLine(char *buffer, uint8_t bufferLength);
-	int read();
-	void flush();
-	bool ready();
-	void registerListener(MHV_RXListener &listener);
-	void deregisterListener();
+	/**
+	 * If we have a line, copy it into a buffer & null terminate, stripping CR/LF
+	 * returns 0 if we have successfully copied a line
+	 * returns -1 if there was no line available
+	 * returns -2 if the buffer was too small
+	 * returns -3 if we have reached the end of the ringbuffer with no line terminator
+	 */
+	int asyncReadLine(char *buffer, uint8_t bufferLength) {
+		// Peek at the last character & see if its a newline
+		int last = _rxBuffer.peekHead();
 
-	void handleEvents();
+		bool isFull = _rxBuffer.full();
+		if (!isFull) {
+			if ('\r' != last && '\n' != last) {
+				return -1;
+			}
+		}
+
+		uint8_t i = 0;
+		int byte;
+		while (-1 != (byte = _rxBuffer.consume())) {
+			if (i == bufferLength - 1) {
+				buffer[i] = '\0';
+				return -2;
+			}
+			if ('\r' == byte || '\n' == byte) {
+				break;
+			}
+			buffer[i++] = (char)byte;
+		}
+		buffer[i] = '\0';
+
+		if (isFull) {
+			return -3;
+		}
+		return 0;
+	}
+
+	/**
+	 * If we have a line, copy it into a buffer & null terminate, stripping CR/LF
+	 * Blocks until a line is available
+	 * @return 0 if we have successfully copied a line
+	 * @return -2 if the buffer was too small
+	 * @return -3 if we have reached the end of the ringbuffer with no line terminator
+	 */
+	int busyReadLine(char *buffer, uint8_t bufferLength) {
+		int rc;
+		while (-1 == (rc = asyncReadLine(buffer, bufferLength))) {}
+		return rc;
+	}
+
+	/**
+	 * Read a byte from the receive buffer
+	 * @return the byte, or -1 if there is nothing to read
+	 */
+	int read(void) {
+		return _rxBuffer.consume();
+	}
+
+	/**
+	 * Discard remaining data in the receive buffer
+	 */
+	void flush() {
+		_rxBuffer.flush();
+	}
+
+	/**
+	 * Check if a line is ready, or the ringbuffer is full
+	 * @return true if either of the situations occurs
+	 */
+	bool ready() {
+		if (_rxBuffer.full()) {
+			return true;
+		}
+
+		// Peek at the last character & see if its a newline
+		int last = _rxBuffer.peekHead();
+		if ('\r' == last || '\n' == last) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Register interest for lines/overflows from an RX device
+	 * @param	listener	an MHV_RXListener to notify that the device is ready
+	 */
+	void registerListener(MHV_RXListener &listener) {
+		_listener = &listener;
+	}
+
+	/**
+	 * Deregister interest for lines/overflows from an RX device
+	 */
+	void deregisterListener() {
+		_listener = NULL;
+	}
+
+
+	/**
+	 * Call from the main loop to handle any events
+	 */
+	void handleEvents() {
+			if (ready()) {
+			_listener->rxReady(this);
+		}
+	}
 };
+
+template<uint8_t bufferLength>
+class MHV_Device_RXImplementation : public MHV_Device_RX {
+protected:
+	MHV_RingBufferImplementation<bufferLength>
+					_myBuffer;
+
+	/**
+	 * Constructor
+	 */
+	MHV_Device_RXImplementation() :
+		MHV_Device_RX(_myBuffer) {}
+};
+
 
 #endif

@@ -54,15 +54,13 @@ class ButtonHandler : public MHV_DebounceListener {
 	void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
 };
 
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-void ButtonHandler::singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
+void ButtonHandler::singlePress(UNUSED uint8_t pcInt, UNUSED MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
 
-void ButtonHandler::heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) {
+void ButtonHandler::heldDown(UNUSED uint8_t pcInt, UNUSED MHV_TIMESTAMP *heldFor) {
 	mhv_pinToggle(MHV_ARDUINO_PIN_13);
 }
-#pragma GCC diagnostic warning "-Wunused-parameter"
 
 ButtonHandler buttonHandler;
 
@@ -108,4 +106,6 @@ MAIN {
 // Sleep until the next interrupt
 		sleep_mode();
 	}
+
+	return 0;
 }

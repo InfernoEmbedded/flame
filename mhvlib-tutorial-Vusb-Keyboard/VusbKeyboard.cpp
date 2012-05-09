@@ -59,7 +59,6 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 MHV_RTCTemplate<ALARM_COUNT> rtc;
 
 // The USB Keyboard driver
-MHV_TX_BUFFER_CREATE(typistBuffer, 2);
 MHV_VusbTypist typist(typistBuffer, rtc);
 
 class TypeString : public MHV_TimerListener {
@@ -105,4 +104,6 @@ MAIN {
 		// Sleep until an interrupt occurs
 		sleep_mode();
 	}
+
+	return 0;
 }

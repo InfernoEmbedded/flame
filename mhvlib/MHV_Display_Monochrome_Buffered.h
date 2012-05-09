@@ -28,18 +28,55 @@
 #define MHV_DISPLAY_MONOCHROME_BUFFERED_H_
 
 #include <inttypes.h>
-#include <avr/pgmspace.h>
 #include <MHV_Display_Monochrome.h>
+#include <string.h>
+#include <math.h>
 
-class MHV_Display_Monochrome_Buffered : public MHV_Display_Monochrome {
+#define pixel(pixelRow, pixelCol) MHV_Display_Monochrome_Buffered<cols, rows, txBuffers>::_frameBuffer[pixelRow * cols + pixelCol]
+
+/**
+ * A monochrome bitmap display
+ * Origin (0,0) is bottom left
+ * @tparam	cols		the number of columns
+ * @tparam	rows		the number of rows
+ * @tparam	txBuffers	the number of output buffers
+ */
+template<uint16_t cols, uint16_t rows, uint8_t txBuffers>
+class MHV_Display_Monochrome_Buffered : public MHV_Display_Monochrome<cols, rows, txBuffers> {
 protected:
-	uint8_t		*_frameBuffer;
+	uint8_t		_frameBuffer[cols * rows];
 
 public:
-	MHV_Display_Monochrome_Buffered(uint16_t colCount, uint16_t rowCount, uint8_t *frameBuffer,
-			MHV_RingBuffer &txBuffers);
-	void setPixel(uint16_t col, uint16_t row, uint8_t value);
-	uint8_t getPixel(uint16_t col, uint16_t row);
+	/**
+	 * Create a new monochrome display
+	 */
+	MHV_Display_Monochrome_Buffered() {
+		memset(_frameBuffer, 0, rows * cols);
+	}
+
+	/* Set a pixel
+	 * param:	col		the column
+	 * param:	row		the row
+	 * param:	value	the intensity of the pixel
+	 */
+	void setPixel(uint16_t col, uint16_t row, uint8_t value) {
+		if (row < rows && col < cols) {
+			pixel(row, col) = value;
+		}
+	}
+
+	/* Get a pixel
+	 * param:	col		the column
+	 * param:	row		the row
+	 * return	the intensity of the pixel
+	 */
+	PURE uint8_t getPixel(uint16_t col, uint16_t row) {
+		if (row < rows && col < cols) {
+			return pixel(row, col);
+		} else {
+			return 0;
+		}
+	}
 };
 
 #endif /* MHV_DISPLAY_MONOCHROME_BUFFERED_H_ */

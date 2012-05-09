@@ -37,9 +37,6 @@
 #include <avr/interrupt.h>
 #include <avr/power.h>
 
-#define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A1
-#define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A0
-#define MHV_SHIFT_ORDER_MSB
 #include <MHV_Display_Holtek_HT1632.h>
 
 /* We will use the following pins to communicate with the display
@@ -63,8 +60,7 @@ public:
  * @param moduleX	the x coordinate of the module
  * @param moduleY	the y coordinate of the module
  */
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-void DisplaySelector::select(uint8_t moduleX, uint8_t moduleY, bool active) {
+void DisplaySelector::select(uint8_t moduleX, UNUSED uint8_t moduleY, bool active) {
 	if (active) {
 		switch (moduleX) {
 		case 0:
@@ -81,17 +77,20 @@ void DisplaySelector::select(uint8_t moduleX, uint8_t moduleY, bool active) {
 		mhv_pinOn(MHV_ARDUINO_PIN_A3);
 	}
 }
-#pragma GCC diagnostic warning "-Wunused-parameter"
 
 DisplaySelector displaySelector;
 
-MHV_HOLTEK_HT1632_CREATE(display, MHV_HT1632_PMOS_32x8, 32 * 8, 2, 1, displaySelector, TX_ELEMENTS_COUNT);
+MHV_HOLTEK_HT1632_CREATE(display, MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, MHV_HT1632_PMOS_32x8,
+		32 * 8, 2, 1, displaySelector, TX_ELEMENTS_COUNT);
+
+#define DISPLAY_TYPE MHV_Display_Holtek_HT1632< \
+	MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, MHV_HT1632_PMOS_32x8, 2, 1, TX_ELEMENTS_COUNT>
 
 /**
  *  Fill up the display column by column, starting from the bottom left
  *  @param	display	the display to draw on
  */
-void slowFill(MHV_Display_Holtek_HT1632 &display) {
+void slowFill(DISPLAY_TYPE &display) {
 	uint8_t height = display.getHeight();
 	uint8_t width = display.getWidth();
 
@@ -112,7 +111,7 @@ void slowFill(MHV_Display_Holtek_HT1632 &display) {
  * Fade the display in and out
  *  @param	display	the display to draw on
  */
-void fader(MHV_Display_Holtek_HT1632 &display) {
+void fader(DISPLAY_TYPE &display) {
 	display.brightness(0);
 	display.clear(1);
 	display.flush();
@@ -136,7 +135,7 @@ void fader(MHV_Display_Holtek_HT1632 &display) {
  * Render travelling horizontal & vertical lines
  *  @param	display	the display to draw on
  */
-void lines(MHV_Display_Holtek_HT1632 &display) {
+void lines(DISPLAY_TYPE &display) {
 	uint8_t height = display.getHeight();
 	uint8_t width = display.getWidth();
 
@@ -176,7 +175,7 @@ void lines(MHV_Display_Holtek_HT1632 &display) {
  * Render text - a homage to Portal
  *  @param	display	the display to draw on
  */
-void manualTextAnimation(MHV_Display_Holtek_HT1632 &display) {
+void manualTextAnimation(DISPLAY_TYPE &display) {
 	display.brightness(MHV_HT1632_BRIGHTNESS_MAX);
 	display.clear(0);
 	display.flush();
@@ -261,7 +260,7 @@ void manualTextAnimation(MHV_Display_Holtek_HT1632 &display) {
  * Render text using the asynchronous buffers
  *  @param	display	the display to draw on
  */
-void textAnimation(MHV_Display_Holtek_HT1632 &display) {
+void textAnimation(DISPLAY_TYPE &display) {
 	display.write("1. Here is a string of text");
 	display.write_P(PSTR("2. Here is string of text in PROGMEM"));
 	display.write("3. Here is a buffer containing some data//This will not show", 40);
@@ -293,4 +292,6 @@ MAIN {
 		manualTextAnimation(display);
 		slowFill(display);
 	}
+
+	return 0;
 }

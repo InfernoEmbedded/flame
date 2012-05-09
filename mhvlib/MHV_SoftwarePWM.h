@@ -38,6 +38,8 @@ public:
 	virtual void set() =0;
 	virtual bool check() =0;
 
+//	virtual ~MHV_SoftwarePWMListener();
+
 	void setDutyCycle(uint8_t dutyCycle) {
 		when = dutyCycle;
 	}
@@ -47,7 +49,7 @@ public:
 	}
 };
 
-template<MHV_DECLARE_TEMPLATE_PIN(pin)>
+template<MHV_DECLARE_PIN(pin)>
 class MHV_SoftwarePWMPin : public MHV_SoftwarePWMListener {
 public:
 	MHV_SoftwarePWMPin() {

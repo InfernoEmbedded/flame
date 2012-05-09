@@ -40,22 +40,13 @@
 // The number of LEDs in the string
 #define LEDS	32*5
 
-// The pins for comms with the string
-#define MHV_SHIFT_ORDER_MSB
-#define MHV_SHIFT_DELAY			_delay_us(2);
-#define MHV_SHIFT_WRITECLOCK	MHV_PIN_B0
-#define MHV_SHIFT_WRITEDATA		MHV_PIN_B1
-
 // Bring in the WS2801 driver
 #include <MHV_WS2801.h>
 
 // Instantiate the driver
-MHV_WS2801_CREATE(ws2801, LEDS);
+MHV_WS2801<MHV_PIN_B0, MHV_PIN_B1, LEDS> ws2801;
 
 MAIN {
-	mhv_setOutput(MHV_SHIFT_WRITECLOCK);
-	mhv_setOutput(MHV_SHIFT_WRITEDATA);
-
 	ws2801.setAll(128, 128, 128);
 	ws2801.flush();
 
@@ -122,5 +113,7 @@ MAIN {
 			ws2801.rotate(false);
 		}
 	}
+
+	return 0;
 }
 

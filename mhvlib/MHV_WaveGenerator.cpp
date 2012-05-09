@@ -184,7 +184,7 @@ inline void MHV_WaveGenerator::renderBuffer() {
 /**
  * Send more samples to the DAC
  */
-void MHV_WaveGenerator::moreSamples(MHV_DAC *dac, MHV_SAMPLE *oldSamples, uint8_t sampleLength) {
+void MHV_WaveGenerator::moreSamples(MHV_DAC *dac, UNUSED MHV_SAMPLE *oldSamples, UNUSED uint8_t sampleLength) {
 	renderBuffer();
 	dac->playSamples(_samples, _sampleLength);
 }

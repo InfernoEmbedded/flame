@@ -60,7 +60,7 @@ void MHV_VusbTypist::alarm() {
  * Start transmitting a new string
  * (does nothing, alarm will immediately pick up the next character)
  */
-void MHV_VusbTypist::runTxBuffers() {
+CONST void MHV_VusbTypist::runTxBuffers() {
 }
 
 /**

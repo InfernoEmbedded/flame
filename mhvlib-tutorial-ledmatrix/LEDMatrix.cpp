@@ -77,61 +77,63 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
  * These are implemented as a driver class to allow us to replace directly driven
  * LEDs with shift registers
  */
-class LEDDriver : public MHV_PWMMatrixDriver {
+class LEDDriver: public MHV_PWMMatrixDriver {
 public:
-	void rowOn(uint16_t row);
-	void rowOff(uint16_t row);
-	void colOn(uint16_t col);
-	void colOff(uint16_t col);
+	LEDDriver() {
+		mhv_setOutput(MHV_ARDUINO_PIN_8);
+		mhv_setOutput(MHV_ARDUINO_PIN_9);
+		mhv_setOutput(MHV_ARDUINO_PIN_10);
+		mhv_setOutput(MHV_ARDUINO_PIN_11);
+	}
+
+	void rowOn(uint16_t row) {
+		switch (row) {
+		case 0:
+			mhv_pinOff(MHV_ARDUINO_PIN_8);
+			break;
+		case 1:
+			mhv_pinOff(MHV_ARDUINO_PIN_9);
+			break;
+		}
+	}
+
+	void rowOff(uint16_t row) {
+		switch (row) {
+		case 0:
+			mhv_pinOn(MHV_ARDUINO_PIN_8);
+			break;
+		case 1:
+			mhv_pinOn(MHV_ARDUINO_PIN_9);
+			break;
+		}
+	}
+
+	void colOn(uint16_t col) {
+		switch (col) {
+		case 0:
+			mhv_pinOn(MHV_ARDUINO_PIN_10);
+			break;
+		case 1:
+			mhv_pinOn(MHV_ARDUINO_PIN_11);
+			break;
+		}
+	}
+
+	void colOff(uint16_t col) {
+		switch (col) {
+		case 0:
+			mhv_pinOff(MHV_ARDUINO_PIN_10);
+			break;
+		case 1:
+			mhv_pinOff(MHV_ARDUINO_PIN_11);
+			break;
+		}
+	}
 };
-
-void LEDDriver::rowOn(uint16_t row) {
-	switch (row) {
-	case 0:
-		mhv_pinOff(MHV_ARDUINO_PIN_8);
-		break;
-	case 1:
-		mhv_pinOff(MHV_ARDUINO_PIN_9);
-		break;
-	}
-}
-
-void LEDDriver::rowOff(uint16_t row) {
-	switch (row) {
-	case 0:
-		mhv_pinOn(MHV_ARDUINO_PIN_8);
-		break;
-	case 1:
-		mhv_pinOn(MHV_ARDUINO_PIN_9);
-		break;
-	}
-}
-
-void LEDDriver::colOn(uint16_t col) {
-	switch (col) {
-	case 0:
-		mhv_pinOn(MHV_ARDUINO_PIN_10);
-		break;
-	case 1:
-		mhv_pinOn(MHV_ARDUINO_PIN_11);
-		break;
-	}
-}
-
-void LEDDriver::colOff(uint16_t col) {
-	switch (col) {
-	case 0:
-		mhv_pinOff(MHV_ARDUINO_PIN_10);
-		break;
-	case 1:
-		mhv_pinOff(MHV_ARDUINO_PIN_11);
-		break;
-	}
-}
 
 LEDDriver ledDriver;
 
-MHV_PWMMATRIX_CREATE(ledMatrix, LED_MATRIX_ROWS, LED_MATRIX_COLS, 1, ledDriver);
+MHV_PWMMatrix<LED_MATRIX_COLS, LED_MATRIX_ROWS, 1, MHV_PWMMATRIX_MODE_AUTO> ledMatrix(ledDriver);
 
 /* Animation routine for the LED matrix
  * brings up each LED in turn, then takes then down in turn
@@ -227,10 +229,6 @@ MAIN {
 	 * There are 256 PWM periods, so each timer tick needs to be 1 / (60 * 256) seconds
 	 * ~ 64 microseconds
 	 */
-	mhv_setOutput(MHV_ARDUINO_PIN_8);
-	mhv_setOutput(MHV_ARDUINO_PIN_9);
-	mhv_setOutput(MHV_ARDUINO_PIN_10);
-	mhv_setOutput(MHV_ARDUINO_PIN_11);
 
 	// Configure the tick timer to tick every 1 millisecond
 	tickTimer.setPeriods(1000, 0);
@@ -253,5 +251,7 @@ MAIN {
 
 		sleep_mode();
 	}
+
+	return 0;
 }
 

@@ -51,15 +51,20 @@
 #define MHV_TIMER4_INTERRUPTS TIMER4_COMPA_vect, TIMER4_COMPB_vect, TIMER4_COMPC_vect
 #define MHV_TIMER5_INTERRUPTS TIMER5_COMPA_vect, TIMER5_COMPB_vect, TIMER5_COMPC_vect
 
-#define MHV_USART0 &UBRR0, &UCSR0A, &UCSR0B, &UDR0, RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
-#define MHV_USART1 &UBRR1, &UCSR1A, &UCSR1B, &UDR1, RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
-#define MHV_USART2 &UBRR2, &UCSR2A, &UCSR2B, &UDR2, RXEN2, TXEN2, RXCIE2, TXCIE2, UDRE2, U2X2
-#define MHV_USART3 &UBRR3, &UCSR3A, &UCSR3B, &UDR3, RXEN3, TXEN3, RXCIE3, TXCIE3, UDRE3, U2X3
+// USART           Baud    Status   Control  I/O
+//				   ubrr,   ucsra,   ucsrb,   udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
+#define MHV_USART0 0xC4,   0xC0,    0xC1,    0xC6,  RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
+#define MHV_USART1 0xCC,   0xC8,    0xC9,    0xCE,  RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
+#define MHV_USART2 0xD4,   0xC0,    0xD1,    0xD6,  RXEN2, TXEN2, RXCIE2, TXCIE2, UDRE2, U2X2
+#define MHV_USART3 0x134,  0x130,   0x131,   0x136, RXEN3, TXEN3, RXCIE3, TXCIE3, UDRE3, U2X3
 
 #define MHV_USART0_INTERRUPTS USART0_RX_vect, USART0_TX_vect
 #define MHV_USART1_INTERRUPTS USART1_RX_vect, USART1_TX_vect
 #define MHV_USART2_INTERRUPTS USART2_RX_vect, USART2_TX_vect
 #define MHV_USART3_INTERRUPTS USART3_RX_vect, USART3_TX_vect
+
+#define MHV_UART_REGISTER		_SFR_MEM8
+#define MHV_UART_BAUD_REGISTER	_SFR_MEM16
 
 #define MHV_AD_RESOLUTION		1024
 
@@ -136,180 +141,93 @@
 #define MHV_AD_PRR	PRR0
 
 
-//							Dir,	Output,	Input,	Bit,PCINT
-#define MHV_PIN_A0			&DDRA,	&PORTA, &PINA,	0,	-1
-#define MHV_PIN_A1			&DDRA,	&PORTA, &PINA,	1,	-1
-#define MHV_PIN_A2			&DDRA,	&PORTA, &PINA,	2,	-1
-#define MHV_PIN_A3			&DDRA,	&PORTA, &PINA,	3,	-1
-#define MHV_PIN_A4			&DDRA,	&PORTA, &PINA,	4,	-1
-#define MHV_PIN_A5			&DDRA,	&PORTA, &PINA,	5,	-1
-#define MHV_PIN_A6			&DDRA,	&PORTA, &PINA,	6,	-1
-#define MHV_PIN_A7			&DDRA,	&PORTA, &PINA,	7,	-1
-#define MHV_PIN_B0			&DDRB,	&PORTB, &PINB,	0,	0
-#define MHV_PIN_B1			&DDRB,	&PORTB, &PINB,	1,	1
-#define MHV_PIN_B2			&DDRB,	&PORTB, &PINB,	2,	2
-#define MHV_PIN_B3			&DDRB,	&PORTB, &PINB,	3,	3
-#define MHV_PIN_B4			&DDRB,	&PORTB, &PINB,	4,	4
-#define MHV_PIN_B5			&DDRB,	&PORTB, &PINB,	5,	5
-#define MHV_PIN_B6			&DDRB,	&PORTB, &PINB,	6,	6
-#define MHV_PIN_B7			&DDRB,	&PORTB, &PINB,	7,	7
-#define MHV_PIN_C0			&DDRC,	&PORTC, &PINC,	0,	-1
-#define MHV_PIN_C1			&DDRC,	&PORTC, &PINC,	1,	-1
-#define MHV_PIN_C2			&DDRC,	&PORTC, &PINC,	2,	-1
-#define MHV_PIN_C3			&DDRC,	&PORTC, &PINC,	3,	-1
-#define MHV_PIN_C4			&DDRC,	&PORTC, &PINC,	4,	-1
-#define MHV_PIN_C5			&DDRC,	&PORTC, &PINC,	5,	-1
-#define MHV_PIN_C6			&DDRC,	&PORTC, &PINC,	6,	-1
-#define MHV_PIN_C7			&DDRC,	&PORTC, &PINC,	7,	-1
-#define MHV_PIN_D0			&DDRD,	&PORTD, &PIND,	0,	-1
-#define MHV_PIN_D1			&DDRD,	&PORTD, &PIND,	1,	-1
-#define MHV_PIN_D2			&DDRD,	&PORTD, &PIND,	2,	-1
-#define MHV_PIN_D3			&DDRD,	&PORTD, &PIND,	3,	-1
-#define MHV_PIN_D4			&DDRD,	&PORTD, &PIND,	4,	-1
-#define MHV_PIN_D5			&DDRD,	&PORTD, &PIND,	5,	-1
-#define MHV_PIN_D6			&DDRD,	&PORTD, &PIND,	6,	-1
-#define MHV_PIN_D7			&DDRD,	&PORTD, &PIND,	7,	-1
-#define MHV_PIN_E0			&DDRE,	&PORTE, &PINE,	0,	8
-#define MHV_PIN_E1			&DDRE,	&PORTE, &PINE,	1,	-1
-#define MHV_PIN_E2			&DDRE,	&PORTE, &PINE,	2,	-1
-#define MHV_PIN_E3			&DDRE,	&PORTE, &PINE,	3,	-1
-#define MHV_PIN_E4			&DDRE,	&PORTE, &PINE,	4,	-1
-#define MHV_PIN_E5			&DDRE,	&PORTE, &PINE,	5,	-1
-#define MHV_PIN_E6			&DDRE,	&PORTE, &PINE,	6,	-1
-#define MHV_PIN_E7			&DDRE,	&PORTE, &PINE,	7,	-1
-#define MHV_PIN_F0			&DDRF,	&PORTF, &PINF,	0,	-1
-#define MHV_PIN_F1			&DDRF,	&PORTF, &PINF,	1,	-1
-#define MHV_PIN_F2			&DDRF,	&PORTF, &PINF,	2,	-1
-#define MHV_PIN_F3			&DDRF,	&PORTF, &PINF,	3,	-1
-#define MHV_PIN_F4			&DDRF,	&PORTF, &PINF,	4,	-1
-#define MHV_PIN_F5			&DDRF,	&PORTF, &PINF,	5,	-1
-#define MHV_PIN_F6			&DDRF,	&PORTF, &PINF,	6,	-1
-#define MHV_PIN_F7			&DDRF,	&PORTF, &PINF,	7,	-1
-#define MHV_PIN_G0			&DDRG,	&PORTG, &PING,	0,	-1
-#define MHV_PIN_G1			&DDRG,	&PORTG, &PING,	1,	-1
-#define MHV_PIN_G2			&DDRG,	&PORTG, &PING,	2,	-1
-#define MHV_PIN_G3			&DDRG,	&PORTG, &PING,	3,	-1
-#define MHV_PIN_G4			&DDRG,	&PORTG, &PING,	4,	-1
-#define MHV_PIN_G5			&DDRG,	&PORTG, &PING,	5,	-1
-#define MHV_PIN_H0			&DDRH,	&PORTH, &PINH,	0,	-1
-#define MHV_PIN_H1			&DDRH,	&PORTH, &PINH,	1,	-1
-#define MHV_PIN_H2			&DDRH,	&PORTH, &PINH,	2,	-1
-#define MHV_PIN_H3			&DDRH,	&PORTH, &PINH,	3,	-1
-#define MHV_PIN_H4			&DDRH,	&PORTH, &PINH,	4,	-1
-#define MHV_PIN_H5			&DDRH,	&PORTH, &PINH,	5,	-1
-#define MHV_PIN_H6			&DDRH,	&PORTH, &PINH,	6,	-1
-#define MHV_PIN_H7			&DDRH,	&PORTH, &PINH,	7,	-1
-#define MHV_PIN_J0			&DDRJ,	&PORTJ, &PINJ,	0,	9
-#define MHV_PIN_J1			&DDRJ,	&PORTJ, &PINJ,	1,	10
-#define MHV_PIN_J2			&DDRJ,	&PORTJ, &PINJ,	2,	11
-#define MHV_PIN_J3			&DDRJ,	&PORTJ, &PINJ,	3,	12
-#define MHV_PIN_J4			&DDRJ,	&PORTJ, &PINJ,	4,	13
-#define MHV_PIN_J5			&DDRJ,	&PORTJ, &PINJ,	5,	14
-#define MHV_PIN_J6			&DDRJ,	&PORTJ, &PINJ,	6,	15
-#define MHV_PIN_J7			&DDRJ,	&PORTJ, &PINJ,	7,	-1
-#define MHV_PIN_K0			&DDRK,	&PORTK, &PINK,	0,	16
-#define MHV_PIN_K1			&DDRK,	&PORTK, &PINK,	1,	17
-#define MHV_PIN_K2			&DDRK,	&PORTK, &PINK,	2,	18
-#define MHV_PIN_K3			&DDRK,	&PORTK, &PINK,	3,	19
-#define MHV_PIN_K4			&DDRK,	&PORTK, &PINK,	4,	20
-#define MHV_PIN_K5			&DDRK,	&PORTK, &PINK,	5,	21
-#define MHV_PIN_K6			&DDRK,	&PORTK, &PINK,	6,	22
-#define MHV_PIN_K7			&DDRK,	&PORTK, &PINK,	7,	23
-#define MHV_PIN_L0			&DDRL,	&PORTL, &PINL,	0,	-1
-#define MHV_PIN_L1			&DDRL,	&PORTL, &PINL,	1,	-1
-#define MHV_PIN_L2			&DDRL,	&PORTL, &PINL,	2,	-1
-#define MHV_PIN_L3			&DDRL,	&PORTL, &PINL,	3,	-1
-#define MHV_PIN_L4			&DDRL,	&PORTL, &PINL,	4,	-1
-#define MHV_PIN_L5			&DDRL,	&PORTL, &PINL,	5,	-1
-#define MHV_PIN_L6			&DDRL,	&PORTL, &PINL,	6,	-1
-#define MHV_PIN_L7			&DDRL,	&PORTL, &PINL,	7,	-1
-
-#define MHV_TEMPLATE_PIN_A0	0x01,	0x02, 0x00,		0,	-1
-#define MHV_TEMPLATE_PIN_A1	0x01,	0x02, 0x00,		1,	-1
-#define MHV_TEMPLATE_PIN_A2	0x01,	0x02, 0x00,		2,	-1
-#define MHV_TEMPLATE_PIN_A3	0x01,	0x02, 0x00,		3,	-1
-#define MHV_TEMPLATE_PIN_A4	0x01,	0x02, 0x00,		4,	-1
-#define MHV_TEMPLATE_PIN_A5	0x01,	0x02, 0x00,		5,	-1
-#define MHV_TEMPLATE_PIN_A6	0x01,	0x02, 0x00,		6,	-1
-#define MHV_TEMPLATE_PIN_A7	0x01,	0x02, 0x00,		7,	-1
-#define MHV_TEMPLATE_PIN_B0	0x04,	0x05, 0x03,		0,	0
-#define MHV_TEMPLATE_PIN_B1	0x04,	0x05, 0x03,		1,	1
-#define MHV_TEMPLATE_PIN_B2	0x04,	0x05, 0x03,		2,	2
-#define MHV_TEMPLATE_PIN_B3	0x04,	0x05, 0x03,		3,	3
-#define MHV_TEMPLATE_PIN_B4	0x04,	0x05, 0x03,		4,	4
-#define MHV_TEMPLATE_PIN_B5	0x04,	0x05, 0x03,		5,	5
-#define MHV_TEMPLATE_PIN_B6	0x04,	0x05, 0x03,		6,	6
-#define MHV_TEMPLATE_PIN_B7	0x04,	0x05, 0x03,		7,	7
-#define MHV_TEMPLATE_PIN_C0	0x07,	0x08, 0x06,		0,	-1
-#define MHV_TEMPLATE_PIN_C1	0x07,	0x08, 0x06,		1,	-1
-#define MHV_TEMPLATE_PIN_C2	0x07,	0x08, 0x06,		2,	-1
-#define MHV_TEMPLATE_PIN_C3	0x07,	0x08, 0x06,		3,	-1
-#define MHV_TEMPLATE_PIN_C4	0x07,	0x08, 0x06,		4,	-1
-#define MHV_TEMPLATE_PIN_C5	0x07,	0x08, 0x06,		5,	-1
-#define MHV_TEMPLATE_PIN_C6	0x07,	0x08, 0x06,		6,	-1
-#define MHV_TEMPLATE_PIN_C7	0x07,	0x08, 0x06,		7,	-1
-#define MHV_TEMPLATE_PIN_D0	0x0A,	0x0B, 0x09,		0,	-1
-#define MHV_TEMPLATE_PIN_D1	0x0A,	0x0B, 0x09,		1,	-1
-#define MHV_TEMPLATE_PIN_D2	0x0A,	0x0B, 0x09,		2,	-1
-#define MHV_TEMPLATE_PIN_D3	0x0A,	0x0B, 0x09,		3,	-1
-#define MHV_TEMPLATE_PIN_D4	0x0A,	0x0B, 0x09,		4,	-1
-#define MHV_TEMPLATE_PIN_D5	0x0A,	0x0B, 0x09,		5,	-1
-#define MHV_TEMPLATE_PIN_D6	0x0A,	0x0B, 0x09,		6,	-1
-#define MHV_TEMPLATE_PIN_D7	0x0A,	0x0B, 0x09,		7,	-1
-#define MHV_TEMPLATE_PIN_E0	0x0D,	0x0E, 0x0C,		0,	8
-#define MHV_TEMPLATE_PIN_E1	0x0D,	0x0E, 0x0C,		1,	-1
-#define MHV_TEMPLATE_PIN_E2	0x0D,	0x0E, 0x0C,		2,	-1
-#define MHV_TEMPLATE_PIN_E3	0x0D,	0x0E, 0x0C,		3,	-1
-#define MHV_TEMPLATE_PIN_E4	0x0D,	0x0E, 0x0C,		4,	-1
-#define MHV_TEMPLATE_PIN_E5	0x0D,	0x0E, 0x0C,		5,	-1
-#define MHV_TEMPLATE_PIN_E6	0x0D,	0x0E, 0x0C,		6,	-1
-#define MHV_TEMPLATE_PIN_E7	0x0D,	0x0E, 0x0C,		7,	-1
-#define MHV_TEMPLATE_PIN_F0	0x10,	0x11, 0x0F,		0,	-1
-#define MHV_TEMPLATE_PIN_F1	0x10,	0x11, 0x0F,		1,	-1
-#define MHV_TEMPLATE_PIN_F2	0x10,	0x11, 0x0F,		2,	-1
-#define MHV_TEMPLATE_PIN_F3	0x10,	0x11, 0x0F,		3,	-1
-#define MHV_TEMPLATE_PIN_F4	0x10,	0x11, 0x0F,		4,	-1
-#define MHV_TEMPLATE_PIN_F5	0x10,	0x11, 0x0F,		5,	-1
-#define MHV_TEMPLATE_PIN_F6	0x10,	0x11, 0x0F,		6,	-1
-#define MHV_TEMPLATE_PIN_F7	0x10,	0x11, 0x0F,		7,	-1
-#define MHV_TEMPLATE_PIN_G0	0x13,	0x14, 0x12,		0,	-1
-#define MHV_TEMPLATE_PIN_G1	0x13,	0x14, 0x12,		1,	-1
-#define MHV_TEMPLATE_PIN_G2	0x13,	0x14, 0x12,		2,	-1
-#define MHV_TEMPLATE_PIN_G3	0x13,	0x14, 0x12,		3,	-1
-#define MHV_TEMPLATE_PIN_G4	0x13,	0x14, 0x12,		4,	-1
-#define MHV_TEMPLATE_PIN_G5	0x13,	0x14, 0x12,		5,	-1
-#define MHV_TEMPLATE_PIN_H0	0x101,	0x102, 0x100,	0,	-1
-#define MHV_TEMPLATE_PIN_H1	0x101,	0x102, 0x100,	1,	-1
-#define MHV_TEMPLATE_PIN_H2	0x101,	0x102, 0x100,	2,	-1
-#define MHV_TEMPLATE_PIN_H3	0x101,	0x102, 0x100,	3,	-1
-#define MHV_TEMPLATE_PIN_H4	0x101,	0x102, 0x100,	4,	-1
-#define MHV_TEMPLATE_PIN_H5	0x101,	0x102, 0x100,	5,	-1
-#define MHV_TEMPLATE_PIN_H6	0x101,	0x102, 0x100,	6,	-1
-#define MHV_TEMPLATE_PIN_H7	0x101,	0x102, 0x100,	7,	-1
-#define MHV_TEMPLATE_PIN_J0	0x104,	0x105, 0x103,	0,	9
-#define MHV_TEMPLATE_PIN_J1	0x104,	0x105, 0x103,	1,	10
-#define MHV_TEMPLATE_PIN_J2	0x104,	0x105, 0x103,	2,	11
-#define MHV_TEMPLATE_PIN_J3	0x104,	0x105, 0x103,	3,	12
-#define MHV_TEMPLATE_PIN_J4	0x104,	0x105, 0x103,	4,	13
-#define MHV_TEMPLATE_PIN_J5	0x104,	0x105, 0x103,	5,	14
-#define MHV_TEMPLATE_PIN_J6	0x104,	0x105, 0x103,	6,	15
-#define MHV_TEMPLATE_PIN_J7	0x104,	0x105, 0x103,	7,	-1
-#define MHV_TEMPLATE_PIN_K0	0x107,	0x108, 0x106,	0,	16
-#define MHV_TEMPLATE_PIN_K1	0x107,	0x108, 0x106,	1,	17
-#define MHV_TEMPLATE_PIN_K2	0x107,	0x108, 0x106,	2,	18
-#define MHV_TEMPLATE_PIN_K3	0x107,	0x108, 0x106,	3,	19
-#define MHV_TEMPLATE_PIN_K4	0x107,	0x108, 0x106,	4,	20
-#define MHV_TEMPLATE_PIN_K5	0x107,	0x108, 0x106,	5,	21
-#define MHV_TEMPLATE_PIN_K6	0x107,	0x108, 0x106,	6,	22
-#define MHV_TEMPLATE_PIN_K7	0x107,	0x108, 0x106,	7,	23
-#define MHV_TEMPLATE_PIN_L0	0x10A,	0x10B, 0x109,	0,	-1
-#define MHV_TEMPLATE_PIN_L1	0x10A,	0x10B, 0x109,	1,	-1
-#define MHV_TEMPLATE_PIN_L2	0x10A,	0x10B, 0x109,	2,	-1
-#define MHV_TEMPLATE_PIN_L3	0x10A,	0x10B, 0x109,	3,	-1
-#define MHV_TEMPLATE_PIN_L4	0x10A,	0x10B, 0x109,	4,	-1
-#define MHV_TEMPLATE_PIN_L5	0x10A,	0x10B, 0x109,	5,	-1
-#define MHV_TEMPLATE_PIN_L6	0x10A,	0x10B, 0x109,	6,	-1
-#define MHV_TEMPLATE_PIN_L7	0x10A,	0x10B, 0x109,	7,	-1
+//					Dir,	Output,	Input,	Bit,PCINT
+#define MHV_PIN_A0	0x01,	0x02, 0x00,		0,	-1
+#define MHV_PIN_A1	0x01,	0x02, 0x00,		1,	-1
+#define MHV_PIN_A2	0x01,	0x02, 0x00,		2,	-1
+#define MHV_PIN_A3	0x01,	0x02, 0x00,		3,	-1
+#define MHV_PIN_A4	0x01,	0x02, 0x00,		4,	-1
+#define MHV_PIN_A5	0x01,	0x02, 0x00,		5,	-1
+#define MHV_PIN_A6	0x01,	0x02, 0x00,		6,	-1
+#define MHV_PIN_A7	0x01,	0x02, 0x00,		7,	-1
+#define MHV_PIN_B0	0x04,	0x05, 0x03,		0,	0
+#define MHV_PIN_B1	0x04,	0x05, 0x03,		1,	1
+#define MHV_PIN_B2	0x04,	0x05, 0x03,		2,	2
+#define MHV_PIN_B3	0x04,	0x05, 0x03,		3,	3
+#define MHV_PIN_B4	0x04,	0x05, 0x03,		4,	4
+#define MHV_PIN_B5	0x04,	0x05, 0x03,		5,	5
+#define MHV_PIN_B6	0x04,	0x05, 0x03,		6,	6
+#define MHV_PIN_B7	0x04,	0x05, 0x03,		7,	7
+#define MHV_PIN_C0	0x07,	0x08, 0x06,		0,	-1
+#define MHV_PIN_C1	0x07,	0x08, 0x06,		1,	-1
+#define MHV_PIN_C2	0x07,	0x08, 0x06,		2,	-1
+#define MHV_PIN_C3	0x07,	0x08, 0x06,		3,	-1
+#define MHV_PIN_C4	0x07,	0x08, 0x06,		4,	-1
+#define MHV_PIN_C5	0x07,	0x08, 0x06,		5,	-1
+#define MHV_PIN_C6	0x07,	0x08, 0x06,		6,	-1
+#define MHV_PIN_C7	0x07,	0x08, 0x06,		7,	-1
+#define MHV_PIN_D0	0x0A,	0x0B, 0x09,		0,	-1
+#define MHV_PIN_D1	0x0A,	0x0B, 0x09,		1,	-1
+#define MHV_PIN_D2	0x0A,	0x0B, 0x09,		2,	-1
+#define MHV_PIN_D3	0x0A,	0x0B, 0x09,		3,	-1
+#define MHV_PIN_D4	0x0A,	0x0B, 0x09,		4,	-1
+#define MHV_PIN_D5	0x0A,	0x0B, 0x09,		5,	-1
+#define MHV_PIN_D6	0x0A,	0x0B, 0x09,		6,	-1
+#define MHV_PIN_D7	0x0A,	0x0B, 0x09,		7,	-1
+#define MHV_PIN_E0	0x0D,	0x0E, 0x0C,		0,	8
+#define MHV_PIN_E1	0x0D,	0x0E, 0x0C,		1,	-1
+#define MHV_PIN_E2	0x0D,	0x0E, 0x0C,		2,	-1
+#define MHV_PIN_E3	0x0D,	0x0E, 0x0C,		3,	-1
+#define MHV_PIN_E4	0x0D,	0x0E, 0x0C,		4,	-1
+#define MHV_PIN_E5	0x0D,	0x0E, 0x0C,		5,	-1
+#define MHV_PIN_E6	0x0D,	0x0E, 0x0C,		6,	-1
+#define MHV_PIN_E7	0x0D,	0x0E, 0x0C,		7,	-1
+#define MHV_PIN_F0	0x10,	0x11, 0x0F,		0,	-1
+#define MHV_PIN_F1	0x10,	0x11, 0x0F,		1,	-1
+#define MHV_PIN_F2	0x10,	0x11, 0x0F,		2,	-1
+#define MHV_PIN_F3	0x10,	0x11, 0x0F,		3,	-1
+#define MHV_PIN_F4	0x10,	0x11, 0x0F,		4,	-1
+#define MHV_PIN_F5	0x10,	0x11, 0x0F,		5,	-1
+#define MHV_PIN_F6	0x10,	0x11, 0x0F,		6,	-1
+#define MHV_PIN_F7	0x10,	0x11, 0x0F,		7,	-1
+#define MHV_PIN_G0	0x13,	0x14, 0x12,		0,	-1
+#define MHV_PIN_G1	0x13,	0x14, 0x12,		1,	-1
+#define MHV_PIN_G2	0x13,	0x14, 0x12,		2,	-1
+#define MHV_PIN_G3	0x13,	0x14, 0x12,		3,	-1
+#define MHV_PIN_G4	0x13,	0x14, 0x12,		4,	-1
+#define MHV_PIN_G5	0x13,	0x14, 0x12,		5,	-1
+#define MHV_PIN_H0	0x101,	0x102, 0x100,	0,	-1
+#define MHV_PIN_H1	0x101,	0x102, 0x100,	1,	-1
+#define MHV_PIN_H2	0x101,	0x102, 0x100,	2,	-1
+#define MHV_PIN_H3	0x101,	0x102, 0x100,	3,	-1
+#define MHV_PIN_H4	0x101,	0x102, 0x100,	4,	-1
+#define MHV_PIN_H5	0x101,	0x102, 0x100,	5,	-1
+#define MHV_PIN_H6	0x101,	0x102, 0x100,	6,	-1
+#define MHV_PIN_H7	0x101,	0x102, 0x100,	7,	-1
+#define MHV_PIN_J0	0x104,	0x105, 0x103,	0,	9
+#define MHV_PIN_J1	0x104,	0x105, 0x103,	1,	10
+#define MHV_PIN_J2	0x104,	0x105, 0x103,	2,	11
+#define MHV_PIN_J3	0x104,	0x105, 0x103,	3,	12
+#define MHV_PIN_J4	0x104,	0x105, 0x103,	4,	13
+#define MHV_PIN_J5	0x104,	0x105, 0x103,	5,	14
+#define MHV_PIN_J6	0x104,	0x105, 0x103,	6,	15
+#define MHV_PIN_J7	0x104,	0x105, 0x103,	7,	-1
+#define MHV_PIN_K0	0x107,	0x108, 0x106,	0,	16
+#define MHV_PIN_K1	0x107,	0x108, 0x106,	1,	17
+#define MHV_PIN_K2	0x107,	0x108, 0x106,	2,	18
+#define MHV_PIN_K3	0x107,	0x108, 0x106,	3,	19
+#define MHV_PIN_K4	0x107,	0x108, 0x106,	4,	20
+#define MHV_PIN_K5	0x107,	0x108, 0x106,	5,	21
+#define MHV_PIN_K6	0x107,	0x108, 0x106,	6,	22
+#define MHV_PIN_K7	0x107,	0x108, 0x106,	7,	23
+#define MHV_PIN_L0	0x10A,	0x10B, 0x109,	0,	-1
+#define MHV_PIN_L1	0x10A,	0x10B, 0x109,	1,	-1
+#define MHV_PIN_L2	0x10A,	0x10B, 0x109,	2,	-1
+#define MHV_PIN_L3	0x10A,	0x10B, 0x109,	3,	-1
+#define MHV_PIN_L4	0x10A,	0x10B, 0x109,	4,	-1
+#define MHV_PIN_L5	0x10A,	0x10B, 0x109,	5,	-1
+#define MHV_PIN_L6	0x10A,	0x10B, 0x109,	6,	-1
+#define MHV_PIN_L7	0x10A,	0x10B, 0x109,	7,	-1
 
 
 #define MHV_PIN_TIMER_0_A	MHV_PIN_B7
@@ -328,23 +246,6 @@
 #define MHV_PIN_TIMER_5_A	MHV_PIN_L3
 #define MHV_PIN_TIMER_5_B	MHV_PIN_L4
 #define MHV_PIN_TIMER_5_C	MHV_PIN_L6
-
-#define MHV_TEMPLATE_PIN_TIMER_0_A	MHV_TEMPLATE_PIN_B7
-#define MHV_TEMPLATE_PIN_TIMER_0_B	MHV_TEMPLATE_PIN_G5
-#define MHV_TEMPLATE_PIN_TIMER_1_A	MHV_TEMPLATE_PIN_B5
-#define MHV_TEMPLATE_PIN_TIMER_1_B	MHV_TEMPLATE_PIN_B6
-#define MHV_TEMPLATE_PIN_TIMER_1_C	MHV_TEMPLATE_PIN_B7
-#define MHV_TEMPLATE_PIN_TIMER_2_A	MHV_TEMPLATE_PIN_B4
-#define MHV_TEMPLATE_PIN_TIMER_2_B	MHV_TEMPLATE_PIN_H6
-#define MHV_TEMPLATE_PIN_TIMER_3_A	MHV_TEMPLATE_PIN_E3
-#define MHV_TEMPLATE_PIN_TIMER_3_B	MHV_TEMPLATE_PIN_E4
-#define MHV_TEMPLATE_PIN_TIMER_3_C	MHV_TEMPLATE_PIN_E5
-#define MHV_TEMPLATE_PIN_TIMER_4_A	MHV_TEMPLATE_PIN_H3
-#define MHV_TEMPLATE_PIN_TIMER_4_B	MHV_TEMPLATE_PIN_H4
-#define MHV_TEMPLATE_PIN_TIMER_4_C	MHV_TEMPLATE_PIN_H5
-#define MHV_TEMPLATE_PIN_TIMER_5_A	MHV_TEMPLATE_PIN_L3
-#define MHV_TEMPLATE_PIN_TIMER_5_B	MHV_TEMPLATE_PIN_L4
-#define MHV_TEMPLATE_PIN_TIMER_5_C	MHV_TEMPLATE_PIN_L6
 
 
 #define MHV_PC_INT_COUNT	24

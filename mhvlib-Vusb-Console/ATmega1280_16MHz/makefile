@@ -56,7 +56,7 @@ sizedummy \
 all: libmhvlib-Vusb-Console.a secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) all
+	-cd A:/eclipse/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
 libmhvlib-Vusb-Console.a: $(OBJS) A:/eclipse/mhvlib/ATmega1280_16MHz/libmhvlib.a

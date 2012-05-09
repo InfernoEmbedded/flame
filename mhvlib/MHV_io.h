@@ -70,6 +70,11 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 // the main declaration
 #define MAIN int __attribute__ ((OS_main)) main()
 
+/* A parameter we know is unused, used to suppress warnings for parameters required to implement an
+ * API, but net necessary for a specific implementation
+ */
+#define UNUSED __attribute__ ((unused))
+
 
 #if defined(__AVR_ATtiny2313__)
 #include <MHV_io_ATtiny2313.h>
@@ -88,10 +93,14 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
+typedef uint16_t mhv_register;
+#define VALUE(_mhv_register) _SFR_IO8(_mhv_register)
+
+
 struct mhv_pin {
-	volatile uint8_t	*dir;
-	volatile uint8_t	*input;
-	volatile uint8_t	*output;
+	mhv_register		dir;
+	mhv_register		input;
+	mhv_register		output;
 	// Contains a mask of the pin
 	uint8_t				bit;
 	int8_t				pcInt;
@@ -109,25 +118,26 @@ typedef struct mhv_pin MHV_PIN;
 #define _MHV_MAKE_PIN(_mhv_port, _mhv_bit) \
 	MHV_PIN_ ## _mhv_port ## _mhv_bit
 
+
 /**
  * Get the list of parms for a pin declaration
  * @param _mhvPrefix	the prefix to use for the variable names
  */
 #define MHV_DECLARE_PIN(_mhvPrefix) \
-	volatile uint8_t *_mhvPrefix ## Dir, volatile uint8_t *_mhvPrefix ## Out, \
-	volatile uint8_t *_mhvPrefix ## In, uint8_t _mhvPrefix ## Pin, \
-	int8_t _mhvPrefix ## PinchangeInterrupt
-
-
-typedef uint8_t mhv_register;
-/**
- * Get the list of parms for a pin declaration for templates
- * @param _mhvPrefix	the prefix to use for the variable names
- */
-#define MHV_DECLARE_TEMPLATE_PIN(_mhvPrefix) \
 	mhv_register _mhvPrefix ## Dir, mhv_register _mhvPrefix ## Out, \
 	mhv_register _mhvPrefix ## In, uint8_t _mhvPrefix ## Pin, \
 	int8_t _mhvPrefix ## PinchangeInterrupt
+
+/**
+ * Get the list of parms for a USART
+ * @param _mhvPrefix	the prefix to use for the variable names
+ */
+#define MHV_DECLARE_USART(_mhvPrefix) \
+		mhv_register _mhvPrefix ## Baud, mhv_register _mhvPrefix ## Status, \
+		mhv_register _mhvPrefix ## Control, mhv_register _mhvPrefix ## IO, \
+		mhv_register _mhvPrefix ## RxEnable, mhv_register _mhvPrefix ## TxEnable, \
+		mhv_register _mhvPrefix ## RxInterruptEnable, mhv_register _mhvPrefix ## TxInterruptEnable, \
+		mhv_register _mhvPrefix ## DataEmpty, mhv_register _mhvPrefix ## U2X
 
 /**
  * Get the parameter list for a pin
@@ -135,16 +145,6 @@ typedef uint8_t mhv_register;
  */
 #define MHV_PIN_PARMS(_mhvPrefix) \
 	_mhvPrefix ## Dir, _mhvPrefix ## Out, _mhvPrefix ## In, _mhvPrefix ## Pin, _mhvPrefix ## PinchangeInterrupt
-
-/**
- * Convert a MHV_PIN macro into a parameter list suitable for templates
- * @param mhvParms	a MHV_PIN_* macro
- */
-#define MHV_TEMPLATE_PIN(mhvParms) \
-	_MHV_TEMPLATE_PIN(mhvParms)
-
-#define _MHV_TEMPLATE_PIN(mhvDir,mhvOutput,mhvInput,mhvBit,mhvPCInt) \
-		(mhv_register)(*mhvDir),(mhv_register)(*mhvOutput),(mhv_register)(*mhvInput),mhvBit,mhvPCInt
 
 /**
  * Convert a pin declaration to a pin struct
@@ -163,7 +163,7 @@ typedef uint8_t mhv_register;
  * @param	pin		the pin to turn on
  */
 INLINE void mhv_pinOn(MHV_PIN *pin) {
-	*(pin->output) |= pin->bit;
+	VALUE(pin->output) |= pin->bit;
 }
 
 /**
@@ -182,15 +182,7 @@ INLINE void mhv_pinOnAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinOn(MHV_DECLARE_PIN(pin)) {
-	*(pinOut) |= _BV(pinPin);
-}
-
-/**
- * Set an output pin on
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinOn(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinOut) |= _BV(pinPin);
+	VALUE(pinOut) |= _BV(pinPin);
 }
 
 
@@ -205,21 +197,11 @@ INLINE void mhv_pinOnAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinOnAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOn(MHV_PIN_PARMS(pin));
-	}
-}
-
-/**
  * Set an output pin off
  * @param	pin		the pin to turn off
  */
 INLINE void mhv_pinOff(MHV_PIN *pin) {
-	*(pin->output) &= ~(pin->bit);
+	VALUE(pin->output) &= ~(pin->bit);
 }
 
 /**
@@ -238,15 +220,7 @@ INLINE void mhv_pinOffAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinOff(MHV_DECLARE_PIN(pin)) {
-	*(pinOut) &= ~_BV(pinPin);
-}
-
-/**
- * Set an output pin off
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinOff(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinOut) &= ~_BV(pinPin);
+	VALUE(pinOut) &= ~_BV(pinPin);
 }
 
 /**
@@ -260,42 +234,13 @@ INLINE void mhv_pinOffAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinOffAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOff(MHV_PIN_PARMS(pin));
-	}
-}
-
-
-/**
- * Set an output pin on or off (state should really be constant for optimal performance)
+ * Set an output pin on or off
  * @param	pin		an MHV_PIN_* macro
  * @param	state	true to turn the pin on
  */
 INLINE void mhv_pinSet(MHV_DECLARE_PIN(pin), bool state) {
-	if (state) {
-		mhv_pinOn(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	} else {
-		mhv_pinOff(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	}
+	VALUE(pinOut) = (VALUE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
 }
-
-/**
- * Set an output pin on or off (state should really be constant for optimal performance)
- * @param	pin		an MHV_PIN_* macro
- * @param	state	true to turn the pin on
- */
-INLINE void mhv_pinSet(MHV_DECLARE_TEMPLATE_PIN(pin), bool state) {
-	if (state) {
-		mhv_pinOn(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	} else {
-		mhv_pinOff(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	}
-}
-
 
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
@@ -304,34 +249,17 @@ INLINE void mhv_pinSet(MHV_DECLARE_TEMPLATE_PIN(pin), bool state) {
  * @param	state	true to turn the pin on
  */
 INLINE void mhv_pinSetAtomic(MHV_DECLARE_PIN(pin), bool state) {
-	if (state) {
-		mhv_pinOnAtomic(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	} else {
-		mhv_pinOffAtomic(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		mhv_pinSet(MHV_PIN_PARMS(pin), state);
 	}
 }
-
-/**
- * Set an output pin on or off (state should really be constant for optimal performance)
- * 	 (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- * @param	state	true to turn the pin on
- */
-INLINE void mhv_pinSetAtomic(MHV_DECLARE_TEMPLATE_PIN(pin), bool state) {
-	if (state) {
-		mhv_pinOnAtomic(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	} else {
-		mhv_pinOffAtomic(pinDir, pinOut, pinIn, pinPin, pinPinchangeInterrupt);
-	}
-}
-
 
 /**
  * Set a pin to be an output
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setOutput(MHV_PIN *pin) {
-	*(pin->dir) |= pin->bit;
+	VALUE(pin->dir) |= pin->bit;
 }
 
 /**
@@ -344,21 +272,12 @@ INLINE void mhv_setOutputAtomic(MHV_PIN *pin) {
 	}
 }
 
-
 /**
  * Set a pin to be an output
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_setOutput(MHV_DECLARE_PIN(pin)) {
-	*pinDir |= _BV(pinPin);
-}
-
-/**
- * Set a pin to be an output
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_setOutput(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinDir) |= _BV(pinPin);
+	VALUE(pinDir) |= _BV(pinPin);
 }
 
 /**
@@ -372,22 +291,12 @@ INLINE void mhv_setOutputAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
-*/
-INLINE void mhv_setOutputAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setOutput(MHV_PIN_PARMS(pin));
-	}
-}
-
-/**
  * Set a pin to be an input
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setInput(MHV_PIN *pin) {
-	*(pin->dir) &= ~(pin->bit);
-	*(pin->output) &= ~(pin->bit);
+	VALUE(pin->dir) &= ~(pin->bit);
+	VALUE(pin->output) &= ~(pin->bit);
 }
 
 /**
@@ -405,17 +314,8 @@ INLINE void mhv_setInputAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_setInput(MHV_DECLARE_PIN(pin)) {
-	*(pinDir) &= ~_BV(pinPin);
-	*(pinOut) &= ~_BV(pinPin);
-}
-
-/**
- * Set a pin to be an input
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_setInput(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinDir) &= ~_BV(pinPin);
-	_SFR_IO8(pinOut) &= ~_BV(pinPin);
+	VALUE(pinDir) &= ~_BV(pinPin);
+	VALUE(pinOut) &= ~_BV(pinPin);
 }
 
 /**
@@ -429,22 +329,12 @@ INLINE void mhv_setInputAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_setInputAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInput(MHV_PIN_PARMS(pin));
-	}
-}
-
-/**
  * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setInputPullup(MHV_PIN *pin) {
-	*(pin->dir) &= ~(pin->bit);
-	*(pin->output) |= pin->bit;
+	VALUE(pin->dir) &= ~(pin->bit);
+	VALUE(pin->output) |= pin->bit;
 }
 
 /**
@@ -458,22 +348,14 @@ INLINE void mhv_setInputPullupAtomic(MHV_PIN *pin) {
 }
 
 
-/**
- * Set a pin to be an input, with the internal pullup enabled
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_setInputPullup(MHV_DECLARE_PIN(pin)) {
-	*(pinDir) &= ~_BV(pinPin);
-	*(pinOut) |= _BV(pinPin);
-}
 
 /**
  * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setInputPullup(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinDir) &= ~_BV(pinPin);
-	_SFR_IO8(pinOut) |= _BV(pinPin);
+INLINE void mhv_setInputPullup(MHV_DECLARE_PIN(pin)) {
+	VALUE(pinDir) &= ~_BV(pinPin);
+	VALUE(pinOut) |= _BV(pinPin);
 }
 
 /**
@@ -487,21 +369,11 @@ INLINE void mhv_setInputPullupAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_setInputPullupAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInputPullup(MHV_PIN_PARMS(pin));
-	}
-}
-
-/**
  * Toggle a pin
  * @param	pin		the pin to toggle
  */
 INLINE void mhv_pinToggle(MHV_PIN *pin) {
-	*(pin->input) |= pin->bit;
+	VALUE(pin->input) |= pin->bit;
 }
 
 /**
@@ -510,25 +382,16 @@ INLINE void mhv_pinToggle(MHV_PIN *pin) {
  */
 INLINE void mhv_pinToggleAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		*(pin->input) |= pin->bit;
+		VALUE(pin->input) |= pin->bit;
 	}
 }
-
 
 /**
  * Toggle a pin
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinToggle(MHV_DECLARE_PIN(pin)) {
-	*(pinIn) |= _BV(pinPin);
-}
-
-/**
- * Toggle a pin
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinToggle(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	_SFR_IO8(pinIn) |= _BV(pinPin);
+	VALUE(pinIn) |= _BV(pinPin);
 }
 
 /**
@@ -542,22 +405,11 @@ INLINE void mhv_pinToggleAtomic(MHV_DECLARE_PIN(pin)) {
 }
 
 /**
- * Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE void mhv_pinToggleAtomic(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinToggle(MHV_PIN_PARMS(pin));
-	}
-}
-
-
-/**
  * Read a pin
  * @param	pin		the pin to read
  */
 INLINE bool mhv_pinRead(MHV_PIN *pin) {
-	return *(pin->input) & pin->bit;
+	return VALUE(pin->input) & pin->bit;
 }
 
 
@@ -566,15 +418,7 @@ INLINE bool mhv_pinRead(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE bool mhv_pinRead(MHV_DECLARE_PIN(pin)) {
-	return *(pinIn) & _BV(pinPin);
-}
-
-/**
- * Read a pin
- * @param	pin		an MHV_PIN_* macro
- */
-INLINE bool mhv_pinRead(MHV_DECLARE_TEMPLATE_PIN(pin)) {
-	return _SFR_IO8(pinIn) & _BV(pinPin);
+	return VALUE(pinIn) & _BV(pinPin);
 }
 
 #pragma GCC diagnostic warning "-Wunused-parameter"

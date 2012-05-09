@@ -70,7 +70,7 @@ MHV_RTC_CREATE (rtc, ALARM_COUNT);
 /* The stepper driver
  * Available modes are WAVE, FULL and HALF
  */
-MHV_StepperMotorUnipolar stepper(rtc, MHV_STEPPER_MODE_HALF, MHV_PIN_B0);
+MHV_StepperMotorUnipolar<MHV_STEPPER_MODE_HALF, MHV_PIN_B0> stepper(rtc);
 
 
 /* A class that tells the stepper what to do next
@@ -96,8 +96,7 @@ StepperInstructions::StepperInstructions() :
  * Called when a motor movement is complete
  * @param position	the current position of the motor (unused)
  */
-#pragma GCC diagnostic ignored "-Wunused-parameter"
-void StepperInstructions::moveComplete(int32_t position) {
+void StepperInstructions::moveComplete(UNUSED int32_t position) {
 	_forward = !_forward;
 	_speed += (_speedUp) ? 100 : -100;
 
@@ -112,7 +111,6 @@ void StepperInstructions::moveComplete(int32_t position) {
 	int32_t newPosition = (_forward) ? 1 * STEPS_PER_ROTATION : 0;
 	stepper.rotate(_forward, _speed, newPosition);
 }
-#pragma GCC diagnostic warning "-Wunused-parameter"
 
 StepperInstructions stepperInstructions;
 
@@ -148,4 +146,6 @@ MAIN {
 		 */
 		rtc.handleEvents();
 	}
+
+	return 0;
 }

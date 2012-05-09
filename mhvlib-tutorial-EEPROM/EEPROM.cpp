@@ -34,6 +34,8 @@
  * Address 4+:	String data
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 #include <MHV_io.h>
 #include <MHV_HardwareSerial.h>
 #include <MHV_EEPROM.h>
@@ -138,4 +140,6 @@ MAIN {
 		serial.busyWrite_P(PSTR("Writing CRC\r\n"));
 		eeprom.busyWrite(&calculatedCRC, CRC_ADDRESS, sizeof(calculatedCRC));
 	}
+
+	return 0;
 }

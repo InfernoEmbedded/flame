@@ -547,7 +547,7 @@ uchar       len;
 
 /* ------------------------------------------------------------------------- */
 
-static inline void usbHandleResetHook(uchar notResetState)
+static inline void usbHandleResetHook(__attribute__ ((unused)) uchar notResetState)
 {
 #ifdef USB_RESET_HOOK
 static uchar    wasReset;

@@ -62,15 +62,13 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-// A buffer for the display to send data, it only contains pointers and has space for 10 elements
-MHV_TX_BUFFER_CREATE(txBuffer, 10);
-
 // A timer we will use to tick the display
 MHV_Timer8 tickTimer(MHV_TIMER8_2);
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20
 #define	ROWS		4
+#define TX_COUNT	10
 #define MULTILINE	true
 #define	BIGFONT		false
 #define CURSORON	false
@@ -78,14 +76,14 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define	LEFT2RIGHT	true
 #define	SCROLL		false
 
-MHV_Display_HD44780_Shift_Register display(MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2,
-		COLUMNS, ROWS, txBuffer);
+MHV_Display_HD44780_Shift_Register<COLUMNS, ROWS, TX_COUNT, MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2> display;
 
 /**
+ * +
  * Render text using the asynchronous buffers
  * @param	display	the display to draw on
  */
-void textAnimation(MHV_Display_Character *display) {
+void textAnimation(MHV_Device_TX *display) {
 	display->write("1. Here is a string of text");
 	display->write_P(PSTR("2. Here is string of text in PROGMEM"));
 	display->write("3. Here is a buffer containing some data//This will not show", 40);
@@ -118,6 +116,8 @@ MAIN {
 	for (;;) {
 		sleep_mode();
 	};
+
+	return 0;
 }
 
 

@@ -28,25 +28,10 @@
 #define MHV_PWMMATRIX_H_
 
 #include <inttypes.h>
+#include <string.h>
+#include <math.h>
 #include <MHV_Display_Monochrome_Buffered.h>
 #include <MHV_Timer8.h>
-
-/**
- * Create a new PWM Matrix object
- * @param	_mhvObjectName		the variable name of the object
- * @param	_mhvRows			the number of rows
- * @param	_mhvCols			the number of columns
- * @param	_mhvTxElements		the number of elements to make available for async transmission
- * @param	_mhvMatrixDriver	the handler to drive rows & cols
- * @param	_mhvMatrixRowOff	function to call to turn a row off
- * @param	_mhvMatrixColOn		function to call to turn a row on
- * @param	_mhvMatrixColOff	function to call to turn a row off
- */
-#define MHV_PWMMATRIX_CREATE(_mhvObjectName, _mhvRows, _mhvCols, _mhvTxElements, _mhvMatrixDriver) \
-	uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
-	MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
-	MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## FrameBuffer, _mhvObjectName ## TX, \
-			_mhvMatrixDriver);
 
 enum MHV_PWMMatrix_Mode {
 	MHV_PWMMATRIX_MODE_AUTO,
@@ -64,22 +49,159 @@ public:
 	virtual void colOff(uint16_t col) =0;
 };
 
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered, public MHV_TimerListener {
+
+#define _MODE ((MHV_PWMMATRIX_MODE_AUTO == mode) ? \
+	((rows <= cols) ? MHV_PWMMATRIX_MODE_ROWS : MHV_PWMMATRIX_MODE_COLS) : mode)
+
+
+/**
+ * A driver for bitbashed LED matrices
+ * @tparam	cols		the number of columns
+ * @tparam	rows		the number of rows
+ * @tparam	txBuffers	the number of output buffers
+ * @tparam	mode		whether to scan rows, cols, individual pixels or auto
+ */
+template<uint16_t cols, uint16_t rows, uint8_t txBuffers, MHV_PWMMATRIX_MODE mode>
+class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered<cols, rows, txBuffers>,
+	public MHV_TimerListener {
 private:
 	uint16_t				_currentRow;
 	uint16_t				_currentCol;
 	uint8_t					_currentLevel;
-	MHV_PWMMATRIX_MODE		_mode;
 	MHV_PWMMatrixDriver		&_driver;
 
-	void tickRow();
-	void tickCol();
-	void tickPixel();
+	/**
+	 * Render the display row by row
+	 */
+	inline void tickRow(void) {
+		uint16_t		i;
+
+		if (0 == _currentLevel) {
+			// Turn on the current row
+			_driver.rowOn(_currentRow);
+			for (i = 0; i < cols; i++) {
+				if (pixel(i, _currentRow) > 0) {
+					_driver.colOn(i);
+				}
+			}
+		} else {
+			// Turn off pixels that get switched off on this pass
+			for (i = 0; i < cols; i++) {
+				if (pixel(i, _currentRow) <= _currentLevel) {
+					_driver.colOff(i);
+				}
+			}
+		}
+
+		if (255 == ++_currentLevel) {
+			// Turn off the current row & advance
+			_driver.rowOff(_currentRow);
+
+			_currentLevel = 0;
+			if (++_currentRow == rows) {
+				_currentRow = 0;
+			}
+		}
+	}
+
+	/**
+	 * Render the display column by column
+	 */
+	inline void tickCol(void) {
+		uint16_t		i;
+
+		if (0 == _currentLevel) {
+			// Turn on the current column
+			_driver.colOn(_currentCol);
+			for (i = 0; i < rows; i++) {
+				if (pixel(_currentCol, i) > 0) {
+					_driver.rowOn(i);
+				}
+			}
+		} else {
+			// Turn off pixels that get switched off on this pass
+			for (i = 0; i < rows; i++) {
+				if (pixel(_currentCol, i) <= _currentLevel) {
+					_driver.rowOff(i);
+				}
+			}
+		}
+
+		if (255 == ++_currentLevel) {
+			// Turn off the current column & advance
+			_driver.colOff(_currentCol);
+
+			_currentLevel = 0;
+			if (++_currentCol == cols) {
+				_currentCol = 0;
+			}
+		}
+	}
+
+	/**
+	 * Render the display pixel by pixel
+	 */
+	inline void tickPixel(void) {
+		if (0 == _currentLevel) {
+			// Turn on the pixel at the current row & column
+			_driver.colOn(_currentCol);
+			_driver.rowOn(_currentRow);
+		} else if (pixel(_currentRow, _currentCol) <= _currentLevel) {
+			// Turn off the pixel
+			_driver.colOff(_currentCol);
+			_driver.rowOff(_currentRow);
+		}
+
+		if (255 == ++_currentLevel) {
+			// Advance the column
+			if (++_currentCol == cols) {
+				_currentCol = 0;
+
+				// Advance the row
+				if (++_currentRow == rows) {
+					_currentRow = 0;
+				}
+			}
+		}
+	}
 
 public:
-	MHV_PWMMatrix(uint16_t rowCount, uint16_t colCount, uint8_t *frameBuffer, MHV_RingBuffer &txBuffers,
-		MHV_PWMMatrixDriver &driver, MHV_PWMMATRIX_MODE mode = MHV_PWMMATRIX_MODE_AUTO);
-	void alarm();
+	/**
+	 * Establish a new matrix
+	 * @param	driver		the driver to turn on/off rows and columns
+	 */
+	MHV_PWMMatrix(MHV_PWMMatrixDriver &driver) :
+				_currentRow(0),
+				_currentCol(0),
+				_currentLevel(0),
+				_driver(driver) {
+		uint8_t	i;
+
+		for (i = 0; i < rows; i++) {
+			_driver.rowOff(i);
+		}
+		for (i = 0; i < cols; i++) {
+			_driver.colOff(i);
+		}
+	}
+
+	/* Process a timer tick
+	 */
+	void alarm() {
+		switch (_MODE) {
+		case MHV_PWMMATRIX_MODE_ROWS:
+			tickRow();
+			break;
+		case MHV_PWMMATRIX_MODE_COLS:
+			tickCol();
+			break;
+		case MHV_PWMMATRIX_MODE_INDIVIDUAL:
+			tickPixel();
+			break;
+		default:
+			break;
+		}
+	}
 };
 
 #endif /* MHV_PWMMATRIX_H_ */

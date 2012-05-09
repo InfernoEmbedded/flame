@@ -55,4 +55,6 @@ MAIN {
 // Sleep for 1/3 sec
 		_delay_ms(333);
 	}
+
+	return 0;
 }

@@ -45,6 +45,8 @@ public:
 	 * @param sampleLength	the number of old samples
 	 */
 	virtual void moreSamples(MHV_DAC *dac, MHV_SAMPLE *oldSamples, uint8_t sampleLength);
+
+	virtual ~MHV_DACListener();
 };
 
 class MHV_DAC : public MHV_TimerListener {
