@@ -69,6 +69,7 @@ uint16_t MHV_Timer16::current() {
 void MHV_Timer16::setGenerationMode(void) {
 	switch (_mode) {
 	case MHV_TIMER_ONE_SHOT:
+		// no break
 	case MHV_TIMER_REPETITIVE:
 		*_controlRegA = (*_controlRegA & 0xfc);
 		*_controlRegB = (*_controlRegB & 0xe7) | _BV(WGM12);

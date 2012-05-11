@@ -261,6 +261,7 @@ void MHV_Timer8::setPrescaler(MHV_TIMER_PRESCALER prescaler) {
 void MHV_Timer8::setGenerationMode() {
 	switch (_mode) {
 	case MHV_TIMER_ONE_SHOT:
+		// no break
 	case MHV_TIMER_REPETITIVE:
 		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01);
 		*_controlRegB = (*_controlRegB & 0xf7);
@@ -270,7 +271,7 @@ void MHV_Timer8::setGenerationMode() {
 		*_controlRegB = (*_controlRegB & 0xf7) | _BV(WGM02);
 		break;
 	case MHV_TIMER_8_PWM_PHASE_CORRECT_2_OUTPUT:
-		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01) | _BV(WGM00);
+		*_controlRegA = (*_controlRegA & 0xfc) | _BV(WGM01);
 		*_controlRegB = (*_controlRegB & 0xf7);
 		break;
 	case MHV_TIMER_8_PWM_FAST_VAR_FREQ:
