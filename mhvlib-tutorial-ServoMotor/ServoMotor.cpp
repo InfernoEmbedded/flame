@@ -53,7 +53,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER1_INTERRUPTS);
 
 // Create the servo controller
 #define SERVO_COUNT 1
-MHV_SERVOCONTROL_CREATE(servos, servoTimer, SERVO_COUNT);
+ServoControl<SERVO_COUNT> servos(servoTimer);
 
 class MoveServos: public TimerListener {
 #define SERVO_INCREMENT 1000

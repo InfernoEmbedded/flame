@@ -17,7 +17,6 @@ CPP_SRCS += \
 ../PID.cpp \
 ../PinChangeManager.cpp \
 ../RTC.cpp \
-../ServoControl.cpp \
 ../Shifter.cpp \
 ../SoftwareHBridge.cpp \
 ../StepperMotor.cpp \
@@ -38,7 +37,6 @@ OBJS += \
 ./PID.o \
 ./PinChangeManager.o \
 ./RTC.o \
-./ServoControl.o \
 ./Shifter.o \
 ./SoftwareHBridge.o \
 ./StepperMotor.o \
@@ -59,7 +57,6 @@ CPP_DEPS += \
 ./PID.d \
 ./PinChangeManager.d \
 ./RTC.d \
-./ServoControl.d \
 ./Shifter.d \
 ./SoftwareHBridge.d \
 ./StepperMotor.d \
