@@ -25,14 +25,18 @@ extern "C" {
 
 #define MAX_TX_SIZE		8
 
-#include <MHV_Device_TX.h>
-#include <MHV_RTC.h>
+#include <mhvlib/Device_TX.h>
+#include <mhvlib/RTC.h>
 #include <util/delay.h>
 
+using namespace mhvlib_bsd;
+
+namespace mhvlib_gpl {
+
 template<uint8_t txCount>
-class MHV_VusbConsole : public MHV_TimerListener, public MHV_Device_TXImplementation<txCount> {
+class VusbConsole : public TimerListener, public Device_TXImplementation<txCount> {
 protected:
-	MHV_RTC		&_rtc;
+	RTC		&_rtc;
 
 public:
 	/**
@@ -45,7 +49,7 @@ public:
 	 *
 	 * @param	rtc			an RTC to schedule jobs on
 	 */
-	MHV_VusbConsole(MHV_RTC &rtc) :
+	VusbConsole(RTC &rtc) :
 					_rtc(rtc) {
 	#if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 		uchar calibrationValue;
@@ -56,8 +60,8 @@ public:
 		}
 	#endif
 
-		mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-		mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+		setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+		setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 
 		usbDeviceDisconnect();
 		for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
@@ -82,7 +86,7 @@ public:
 			uint8_t bufSize;
 
 			for (bufSize = 0; bufSize < MAX_TX_SIZE; bufSize++) {
-				c = MHV_Device_TX::nextCharacter();
+				c = Device_TX::nextCharacter();
 				if (-1 == c) {
 					break;
 				}
@@ -106,4 +110,5 @@ public:
 	}
 };
 
+}
 #endif /* MHV_VUSBCONSOLE_H_ */

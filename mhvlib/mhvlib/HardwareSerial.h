@@ -62,8 +62,10 @@ ISR(mhvTxVect) { \
  * @param	_mhvBAUD		the baud rate requested
  */
 #define MHV_HARDWARESERIAL_CREATE(_mhvObjectName, _mhvRXBUFLEN, _mhvTXBUFCOUNT, _mhvSERIAL, _mhvBAUD) \
-		MHV_HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName; \
+		HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName; \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
+
+namespace mhvlib_bsd {
 
 /**
  * Create now serial port driver
@@ -74,8 +76,8 @@ ISR(mhvTxVect) { \
  * @post Interrupts should be assigned to the driver
  */
 template <MHV_DECLARE_USART(usart), uint32_t baud, uint8_t rxBufLength, uint8_t txBuffers>
-class MHV_HardwareSerial : public MHV_Device_TXImplementation<txBuffers>,
-	public MHV_Device_RXImplementation<rxBufLength> {
+class HardwareSerial : public Device_TXImplementation<txBuffers>,
+	public Device_RXImplementation<rxBufLength> {
 private:
 	volatile bool _echo;
 
@@ -84,7 +86,7 @@ protected:
 	 * Start sending async data
 	 */
 	void runTxBuffers() {
-		int c = MHV_Device_TX::nextCharacter();
+		int c = Device_TX::nextCharacter();
 		if (-1 == c) {
 	// This should never happen
 			return;
@@ -103,9 +105,9 @@ public:
 	/**
 	 * Constructor
 	 */
-	MHV_HardwareSerial() {
+	HardwareSerial() {
 		_echo = false;
-		MHV_Device_TX::_tx = NULL;
+		Device_TX::_tx = NULL;
 
 		setSpeed(baud);
 	}
@@ -115,7 +117,7 @@ public:
 	 */
 	void rx() {
 		char c = _MMIO_BYTE(usartIO);
-		MHV_Device_RX::_rxBuffer.append(c);
+		Device_RX::_rxBuffer.append(c);
 
 		if (_echo && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
 			_MMIO_BYTE(usartIO) = c;
@@ -126,11 +128,11 @@ public:
 	 * TX interrupt handler
 	 */
 	void tx() {
-		int c = MHV_Device_TX::nextCharacter();
+		int c = Device_TX::nextCharacter();
 
 		if (-1 == c) {
 			// Nothing more to send, disable the TX interrupt
-			MHV_Device_TX::_tx = NULL;
+			Device_TX::_tx = NULL;
 			_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 			return;
 		}
@@ -181,7 +183,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((NULL == MHV_Device_TX::_tx) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return ((NULL == Device_TX::_tx) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
 	}
 
 	/**
@@ -286,6 +288,6 @@ public:
 		return !(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
 	}
 };
-
+}
 
 #endif

@@ -35,31 +35,33 @@
 #include <avr/interrupt.h>
 
 // Bring in the IO library
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 #include <boards/MHV_io_Arduino.h>
 
 // Bring in the timers we need for animation and PWM
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Bring in the RTC
-#include <MHV_RTC.h>
+#include <mhvlib/RTC.h>
 
 // Bring in the PWM Matrix core
-#include <MHV_PWMMatrix.h>
+#include <mhvlib/PWMMatrix.h>
 
 // Bring in the gamma correction library
-#include <MHV_GammaCorrect.h>
+#include <mhvlib/GammaCorrect.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+using namespace mhvlib_bsd;
+
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 // A timer we will use to tick the LED Matrix
-MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE>ledMatrixTimer;
+TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE>ledMatrixTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER0_INTERRUPTS);
 
 #define ALARM_COUNT	4
@@ -78,22 +80,22 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
  * These are implemented as a driver class to allow us to replace directly driven
  * LEDs with shift registers
  */
-class LEDDriver: public MHV_PWMMatrixDriver {
+class LEDDriver: public PWMMatrixDriver {
 public:
 	LEDDriver() {
-		mhv_setOutput(MHV_ARDUINO_PIN_8);
-		mhv_setOutput(MHV_ARDUINO_PIN_9);
-		mhv_setOutput(MHV_ARDUINO_PIN_10);
-		mhv_setOutput(MHV_ARDUINO_PIN_11);
+		setOutput(MHV_ARDUINO_PIN_8);
+		setOutput(MHV_ARDUINO_PIN_9);
+		setOutput(MHV_ARDUINO_PIN_10);
+		setOutput(MHV_ARDUINO_PIN_11);
 	}
 
 	void rowOn(uint16_t row) {
 		switch (row) {
 		case 0:
-			mhv_pinOff(MHV_ARDUINO_PIN_8);
+			pinOff(MHV_ARDUINO_PIN_8);
 			break;
 		case 1:
-			mhv_pinOff(MHV_ARDUINO_PIN_9);
+			pinOff(MHV_ARDUINO_PIN_9);
 			break;
 		}
 	}
@@ -101,10 +103,10 @@ public:
 	void rowOff(uint16_t row) {
 		switch (row) {
 		case 0:
-			mhv_pinOn(MHV_ARDUINO_PIN_8);
+			pinOn(MHV_ARDUINO_PIN_8);
 			break;
 		case 1:
-			mhv_pinOn(MHV_ARDUINO_PIN_9);
+			pinOn(MHV_ARDUINO_PIN_9);
 			break;
 		}
 	}
@@ -112,10 +114,10 @@ public:
 	void colOn(uint16_t col) {
 		switch (col) {
 		case 0:
-			mhv_pinOn(MHV_ARDUINO_PIN_10);
+			pinOn(MHV_ARDUINO_PIN_10);
 			break;
 		case 1:
-			mhv_pinOn(MHV_ARDUINO_PIN_11);
+			pinOn(MHV_ARDUINO_PIN_11);
 			break;
 		}
 	}
@@ -123,10 +125,10 @@ public:
 	void colOff(uint16_t col) {
 		switch (col) {
 		case 0:
-			mhv_pinOff(MHV_ARDUINO_PIN_10);
+			pinOff(MHV_ARDUINO_PIN_10);
 			break;
 		case 1:
-			mhv_pinOff(MHV_ARDUINO_PIN_11);
+			pinOff(MHV_ARDUINO_PIN_11);
 			break;
 		}
 	}
@@ -134,12 +136,12 @@ public:
 
 LEDDriver ledDriver;
 
-MHV_PWMMatrix<LED_MATRIX_COLS, LED_MATRIX_ROWS, 1, MHV_PWMMATRIX_MODE_AUTO> ledMatrix(ledDriver);
+PWMMatrix<LED_MATRIX_COLS, LED_MATRIX_ROWS, 1, PWMMATRIX_MODE::AUTO> ledMatrix(ledDriver);
 
 /* Animation routine for the LED matrix
  * brings up each LED in turn, then takes then down in turn
  */
-class Animation : public MHV_TimerListener {
+class Animation : public TimerListener {
 private:
 	uint8_t		_led;
 #define FADERMAX 255
@@ -175,19 +177,19 @@ void Animation::alarm() {
 // no break
 	case 0:
 		ledMatrix.setPixel(0, 0,
-				mhv_precalculatedGammaCorrect(_fader));
+				precalculatedGammaCorrect(_fader));
 		break;
 	case 1:
 		ledMatrix.setPixel(1, 0,
-				mhv_precalculatedGammaCorrect(_fader));
+				precalculatedGammaCorrect(_fader));
 		break;
 	case 2:
 		ledMatrix.setPixel(1, 1,
-				mhv_precalculatedGammaCorrect(_fader));
+				precalculatedGammaCorrect(_fader));
 		break;
 	case 3:
 		ledMatrix.setPixel(0, 1,
-				mhv_precalculatedGammaCorrect(_fader));
+				precalculatedGammaCorrect(_fader));
 		break;
 	}
 
@@ -200,7 +202,7 @@ void Animation::alarm() {
 	}
 }
 
-class LEDMatrixTicker : public MHV_TimerListener {
+class LEDMatrixTicker : public TimerListener {
 public:
 	void alarm();
 };

@@ -27,11 +27,13 @@
 
 #include <mhvlib/Timer.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Attach a listener to channel 1
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener1(MHV_TimerListener &listener) {
+void Timer::setListener1(TimerListener &listener) {
 	_listener1 = &listener;
 }
 
@@ -39,7 +41,7 @@ void MHV_Timer::setListener1(MHV_TimerListener &listener) {
  * Attach a listener to channel 2
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener2(MHV_TimerListener &listener) {
+void Timer::setListener2(TimerListener &listener) {
 	_listener2 = &listener;
 }
 
@@ -47,7 +49,7 @@ void MHV_Timer::setListener2(MHV_TimerListener &listener) {
  * Attach a listener to channel 3
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener3(MHV_TimerListener &listener) {
+void Timer::setListener3(TimerListener &listener) {
 	_listener3 = &listener;
 }
 
@@ -55,7 +57,7 @@ void MHV_Timer::setListener3(MHV_TimerListener &listener) {
  * Attach a listener to channel 1
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener1(MHV_TimerListener *listener) {
+void Timer::setListener1(TimerListener *listener) {
 	_listener1 = listener;
 }
 
@@ -63,7 +65,7 @@ void MHV_Timer::setListener1(MHV_TimerListener *listener) {
  * Attach a listener to channel 2
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener2(MHV_TimerListener *listener) {
+void Timer::setListener2(TimerListener *listener) {
 	_listener2 = listener;
 }
 
@@ -71,7 +73,7 @@ void MHV_Timer::setListener2(MHV_TimerListener *listener) {
  * Attach a listener to channel 3
  * @param listener	the listener to attach
  */
-void MHV_Timer::setListener3(MHV_TimerListener *listener) {
+void Timer::setListener3(TimerListener *listener) {
 	_listener3 = listener;
 }
 
@@ -79,14 +81,14 @@ void MHV_Timer::setListener3(MHV_TimerListener *listener) {
  * Set the prescaler (to be used when enabled)
  * @param prescaler	the desired prescaler
  */
-void MHV_Timer::setPrescaler(MHV_TIMER_PRESCALER prescaler) {
+void Timer::setPrescaler(TIMER_PRESCALER prescaler) {
 	_prescaler = prescaler;
 }
 
 /**
  * Trigger the listener for channel 2
  */
-void MHV_Timer::trigger2() {
+void Timer::trigger2() {
 	if (_listener2) {
 		_listener2->alarm();
 	}
@@ -95,7 +97,7 @@ void MHV_Timer::trigger2() {
 /**
  * Trigger the listener for channel 3
  */
-void MHV_Timer::trigger3() {
+void Timer::trigger3() {
 	if (_listener3) {
 		_listener3->alarm();
 	}
@@ -106,7 +108,8 @@ void MHV_Timer::trigger3() {
  * Check if the timer is enabled
  * @return	true if the timer is enabled
  */
-bool MHV_Timer::enabled() {
-	return getPrescaler();
+bool Timer::enabled() {
+	return getPrescaler() != TIMER_PRESCALER::PRESCALER_DISABLED;
 }
 
+}

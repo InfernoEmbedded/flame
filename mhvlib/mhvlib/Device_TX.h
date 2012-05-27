@@ -44,32 +44,34 @@ do {\
 	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
 } while (0)
 
-struct mhv_tx_buffer {
+namespace mhvlib_bsd {
+
+struct tx_buffer {
 	const char	*data;
 	uint16_t	length;
 	void		(*completeFunction)(const char *);
 	bool		progmem;
 	bool		isString;
 };
-typedef struct mhv_tx_buffer MHV_TX_BUFFER;
+typedef struct tx_buffer TX_BUFFER;
 
-void mhv_device_tx_free(const char *buf);
+void device_tx_free(const char *buf);
 
 /**
  * A device that can transmit data
  * @tparam	txPointers	the number of available output buffers for non-blocking I/O
  */
-class MHV_Device_TX {
+class Device_TX {
 protected:
-	MHV_TX_BUFFER				_currentTx;
+	TX_BUFFER				_currentTx;
 	const char					*_tx;
-	MHV_RingBuffer				&_txPointers;
+	RingBuffer				&_txPointers;
 
 	/**
 	 * Constructor
 	 * @param	txPointers	a ringbuffer to store TX elements in
 	 */
-	MHV_Device_TX(MHV_RingBuffer &txPointers) :
+	Device_TX(RingBuffer &txPointers) :
 			_txPointers(txPointers) {
 		_currentTx.data = NULL;
 		_currentTx.length = 0;
@@ -141,7 +143,7 @@ public:
 	 * Can we accept another buffer?
 	 */
 	bool canWrite() {
-		return !(_txPointers.full(sizeof(MHV_TX_BUFFER)));
+		return !(_txPointers.full(sizeof(TX_BUFFER)));
 	}
 
 	/**
@@ -151,7 +153,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P buffer) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -178,7 +180,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -206,7 +208,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer, void (*completeFunction)(const char *)) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -234,7 +236,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P buffer, uint16_t length) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -262,7 +264,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer, uint16_t length) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -291,7 +293,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) {
-		MHV_TX_BUFFER buf;
+		TX_BUFFER buf;
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -342,8 +344,8 @@ public:
 			*(cur++) = '\n';
 			*cur = '\0';
 
-			if (write(buf, length, &mhv_device_tx_free)) {
-				mhv_device_tx_free(buf);
+			if (write(buf, length, &device_tx_free)) {
+				device_tx_free(buf);
 				va_end(ap);
 				return true;
 			}
@@ -374,8 +376,8 @@ public:
 		if (NULL != buf) {
 			vsnprintf_P(buf, length, format, ap);
 
-			if (write(buf, length, &mhv_device_tx_free)) {
-				mhv_device_tx_free(buf);
+			if (write(buf, length, &device_tx_free)) {
+				device_tx_free(buf);
 				va_end(ap);
 				return true;
 			}
@@ -437,8 +439,8 @@ public:
 		char *buf = (char *)malloc(11);
 		if (NULL != buf) {
 			ultoa(value, buf, 10);
-			if (write(buf, &mhv_device_tx_free)) {
-				mhv_device_tx_free(buf);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
 				return true;
 			}
 			return false;
@@ -449,17 +451,18 @@ public:
 
 
 template<uint8_t txCount>
-class MHV_Device_TXImplementation : public MHV_Device_TX {
+class Device_TXImplementation : public Device_TX {
 protected:
-	MHV_RingBufferImplementation<txCount * sizeof(MHV_TX_BUFFER)>
+	RingBufferImplementation<txCount * sizeof(TX_BUFFER)>
 					_myTxPointers;
 
 	/**
 	 * Constructor
 	 */
-	MHV_Device_TXImplementation() :
-		MHV_Device_TX(_myTxPointers) {}
+	Device_TXImplementation() :
+		Device_TX(_myTxPointers) {}
 
 };
 
+}
 #endif

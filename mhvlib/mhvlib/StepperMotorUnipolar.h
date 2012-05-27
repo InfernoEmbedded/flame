@@ -31,6 +31,8 @@
 #include <mhvlib/StepperMotor.h>
 #include <avr/pgmspace.h>
 
+namespace mhvlib_bsd {
+
 // coil patterns for wave drive
 const uint8_t wavedrive[] PROGMEM = {
 //	Phase  xxxx DCBA
@@ -50,12 +52,12 @@ const uint8_t halfdrive[] PROGMEM = {
 };
 
 
-enum MHV_StepperMode {
-	MHV_STEPPER_MODE_WAVE,
-	MHV_STEPPER_MODE_FULL,
-	MHV_STEPPER_MODE_HALF
+enum class StepperMode : uint8_t {
+	WAVE,
+	FULL,
+	HALF
 };
-typedef enum MHV_StepperMode MHV_STEPPER_MODE;
+typedef enum StepperMode STEPPER_MODE;
 
 
 #define PHASE_MASK (0x0f << phaseAPin)
@@ -74,8 +76,8 @@ typedef enum MHV_StepperMode MHV_STEPPER_MODE;
  * @tparam	mode	the mode of the stepper driver
  * @tparam	phaseA	the pin for the A phase
  */
-template <MHV_STEPPER_MODE mode, MHV_DECLARE_PIN(phaseA)>
-class MHV_StepperMotorUnipolar: public MHV_StepperMotor {
+template <STEPPER_MODE mode, MHV_DECLARE_PIN(phaseA)>
+class StepperMotorUnipolar: public StepperMotor {
 private:
 	int8_t				_state;
 	uint8_t				_steps;
@@ -83,17 +85,17 @@ private:
 	/**
 	 * Set the outputs based on the current state & mode
 	 */
-	void setOutput() {
+	void setPins() {
 		uint8_t coilPattern = 0;
 
 		switch (mode) {
-		case MHV_STEPPER_MODE_WAVE:
+		case STEPPER_MODE::WAVE:
 			coilPattern = pgm_read_byte(wavedrive + _state);
 			break;
-		case MHV_STEPPER_MODE_FULL:
+		case STEPPER_MODE::FULL:
 			coilPattern = pgm_read_byte(fulldrive + _state);
 			break;
-		case MHV_STEPPER_MODE_HALF:
+		case STEPPER_MODE::HALF:
 			coilPattern = pgm_read_byte(halfdrive + _state);
 			break;
 		}
@@ -108,16 +110,16 @@ public:
 	 *
 	 * @param	rtc		the RTC used for stepper movements
 	 */
-	MHV_StepperMotorUnipolar(MHV_RTC &rtc) :
-			MHV_StepperMotor(rtc),
+	StepperMotorUnipolar(RTC &rtc) :
+			StepperMotor(rtc),
 			_state(0),
-			_steps((MHV_STEPPER_MODE_HALF == mode) ? 8 : 4) {
-		mhv_setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 0, phaseAPinchangeInterrupt);
-		mhv_setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 1, phaseAPinchangeInterrupt);
-		mhv_setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 2, phaseAPinchangeInterrupt);
-		mhv_setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 3, phaseAPinchangeInterrupt);
+			_steps((STEPPER_MODE::HALF == mode) ? 8 : 4) {
+		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 0, phaseAPinchangeInterrupt);
+		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 1, phaseAPinchangeInterrupt);
+		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 2, phaseAPinchangeInterrupt);
+		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 3, phaseAPinchangeInterrupt);
 
-		setOutput();
+		setPins();
 	}
 
 	void step(bool forwards) {
@@ -131,8 +133,9 @@ public:
 			}
 		}
 
-		setOutput();
+		setPins();
 	}
 };
 
+}
 #endif /* MHV_STEPPERMOTORUNIPOLAR_H_ */

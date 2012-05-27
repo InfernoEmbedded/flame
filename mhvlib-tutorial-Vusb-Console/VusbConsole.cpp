@@ -26,65 +26,67 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the USB Console driver
-#include <MHV_VusbConsole.h>
+#include <mhvlib/VusbConsole.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
 
+using namespace mhvlib_bsd;
+using namespace mhvlib_gpl;
+
+
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
 #define ALARM_COUNT	4
 // The RTC object we will use
-MHV_RTCTemplate<ALARM_COUNT> rtc;
+RTCImplementation<ALARM_COUNT> rtc;
 
 // The number of output strings to buffer for async transmission
 #define TX_BUFFERS	5
 
 // The USB Keyboard driver
-MHV_VusbConsole<TX_BUFFERS> console(rtc);
+VusbConsole<TX_BUFFERS> console(rtc);
 
-class WriteString : public MHV_TimerListener {
+class WriteString : public TimerListener {
 public:
-	void alarm();
+	void alarm() {
+		console.write_P(PSTR("Greetings, program!\n"));
+		console.printf(PSTR("This is a %s string\n"), "printf");
+		console.write("Here are some numbers: ");
+		console.write((uint8_t)1);
+		console.write(" ");
+		console.write((uint16_t)2);
+		console.write(" ");
+		console.write((uint32_t)3);
+		console.write(" ");
+		console.write((int8_t)4);
+		console.write(" ");
+		console.write((int16_t)5);
+		console.write(" ");
+		console.write((int32_t)6);
+		console.write("\n That about wraps up this demo.\n");
+	}
 };
-
-void WriteString::alarm() {
-	console.write_P(PSTR("Greetings, program!\n"));
-	console.printf(PSTR("This is a %s string\n"), "printf");
-	console.write("Here are some numbers: ");
-	console.write((uint8_t)1);
-	console.write(" ");
-	console.write((uint16_t)2);
-	console.write(" ");
-	console.write((uint32_t)3);
-	console.write(" ");
-	console.write((int8_t)4);
-	console.write(" ");
-	console.write((int16_t)5);
-	console.write(" ");
-	console.write((int32_t)6);
-	console.write("\n That about wraps up this demo.\n");
-}
 
 WriteString writeString;
 
@@ -93,10 +95,10 @@ MAIN {
 	power_all_disable();
 #ifdef ATTINY
 	power_timer0_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_5_64
+#define PRESCALER	TIMER_PRESCALER::PRESCALER_5_64
 #else
 	power_timer2_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_7_64
+#define PRESCALER	TIMER_PRESCALER::PRESCALER_7_64
 #endif
 
 	set_sleep_mode(SLEEP_MODE_IDLE);

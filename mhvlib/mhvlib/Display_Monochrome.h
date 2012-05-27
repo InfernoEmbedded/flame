@@ -33,10 +33,11 @@
 #include <mhvlib/io.h>
 #include <mhvlib/Font.h>
 
-class MHV_Display_Selector {
+namespace mhvlib_bsd {
+
+class Display_Selector {
 public:
 	virtual void select(uint8_t displayX, uint8_t displayY, bool active) =0;
-//	virtual ~MHV_Display_Selector();
 };
 
 /**
@@ -47,7 +48,7 @@ public:
  * @tparam	txBuffers	the number of output buffers
  */
 template<uint16_t cols, uint16_t rows, uint8_t txBuffers>
-class MHV_Display_Monochrome : public MHV_Device_TXImplementation<txBuffers> {
+class Display_Monochrome : public Device_TXImplementation<txBuffers> {
 protected:
 	int16_t			_txOffset;
 
@@ -61,7 +62,7 @@ protected:
 	 * @param	character	the character to write
 	 * @return	true if a character was written
 	 */
-	bool writeChar(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeChar(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, char character) {
 		uint8_t c = (uint8_t)character;
 		if (c < font.firstChar || c >= font.firstChar + font.charCount) {
@@ -114,7 +115,7 @@ protected:
 	 * @param	offValue	the pixel value to use for off
 	 * @return true if the seperator was written
 	 */
-	bool writeSeperator(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeSeperator(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t offValue) {
 		bool ret = false;
 
@@ -141,7 +142,7 @@ protected:
 	 */
 	void runTxBuffers() {
 		_txOffset = cols - 1;
-		MHV_Device_TX::moreTX();
+		Device_TX::moreTX();
 	}
 
 public:
@@ -184,7 +185,7 @@ public:
 	 * @param	length		the length of the buffer
 	 * @return true if anything was written
 	 */
-	bool writeBuffer(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeBuffer(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, const char *buffer, uint16_t length) {
 		bool ret = false;
 		uint16_t i = 0;
@@ -209,7 +210,7 @@ public:
 	 * @param	string		the string to write
 	 * @return true if anything was written
 	 */
-	bool writeString_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeString_P(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, PGM_P string) {
 		const char *p = string;
 		char val;
@@ -238,7 +239,7 @@ public:
 	 * @param	length		the length of the buffer
 	 * @return true if anything was written
 	 */
-	bool writeBuffer_P(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeBuffer_P(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, PGM_P buffer, uint16_t length) {
 
 		bool ret = false;
@@ -263,7 +264,7 @@ public:
 	 * @param	string		the string to write
 	 * @return true if anything was written
 	 */
-	bool writeString(const MHV_FONT &font, int16_t *offsetX, int16_t offsetY,
+	bool writeString(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, const char *string) {
 		const char *p = string;
 
@@ -288,29 +289,29 @@ public:
 	 * @param	offValue	the pixel value for off pixels
 	 * @return true if there are more frames to be rendered
 	 */
-	bool txAnimation(const MHV_FONT &font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
+	bool txAnimation(const FONT &font, int16_t offsetY, uint8_t onValue, uint8_t offValue) {
 		int16_t offsetX = _txOffset--;
 
 		clear(offValue);
 
 		bool ret;
-		if (MHV_Device_TX::_currentTx.progmem) {
-			if (MHV_Device_TX::_currentTx.isString) {
-				ret = writeString_P(font, &offsetX, offsetY, onValue, offValue, MHV_Device_TX::_tx);
+		if (Device_TX::_currentTx.progmem) {
+			if (Device_TX::_currentTx.isString) {
+				ret = writeString_P(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx);
 			} else {
-				ret = writeBuffer_P(font, &offsetX, offsetY, onValue, offValue, MHV_Device_TX::_tx, MHV_Device_TX::_currentTx.length);
+				ret = writeBuffer_P(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx, Device_TX::_currentTx.length);
 			}
 		} else {
-			if (MHV_Device_TX::_currentTx.isString) {
-				ret = writeString(font, &offsetX, offsetY, onValue, offValue, MHV_Device_TX::_tx);
+			if (Device_TX::_currentTx.isString) {
+				ret = writeString(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx);
 			} else {
-				ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, MHV_Device_TX::_tx, MHV_Device_TX::_currentTx.length);
+				ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx, Device_TX::_currentTx.length);
 			}
 		}
 
 		if (!ret) {
 			_txOffset = cols - 1;
-			return MHV_Device_TX::moreTX();
+			return Device_TX::moreTX();
 		}
 
 		return true;
@@ -320,4 +321,5 @@ public:
 	virtual uint8_t getPixel(uint16_t row, uint16_t col)=0;
 };
 
+}
 #endif /* MHV_DISPLAY_MONOCHROME_H_ */

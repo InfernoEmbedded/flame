@@ -32,7 +32,9 @@
 #include <string.h>
 #include <math.h>
 
-#define pixel(pixelRow, pixelCol) MHV_Display_Monochrome_Buffered<cols, rows, txBuffers>::_frameBuffer[pixelRow * cols + pixelCol]
+#define pixel(pixelRow, pixelCol) Display_Monochrome_Buffered<cols, rows, txBuffers>::_frameBuffer[pixelRow * cols + pixelCol]
+
+namespace mhvlib_bsd {
 
 /**
  * A monochrome bitmap display
@@ -42,7 +44,7 @@
  * @tparam	txBuffers	the number of output buffers
  */
 template<uint16_t cols, uint16_t rows, uint8_t txBuffers>
-class MHV_Display_Monochrome_Buffered : public MHV_Display_Monochrome<cols, rows, txBuffers> {
+class Display_Monochrome_Buffered : public Display_Monochrome<cols, rows, txBuffers> {
 protected:
 	uint8_t		_frameBuffer[cols * rows];
 
@@ -50,7 +52,7 @@ public:
 	/**
 	 * Create a new monochrome display
 	 */
-	MHV_Display_Monochrome_Buffered() {
+	Display_Monochrome_Buffered() {
 		memset(_frameBuffer, 0, rows * cols);
 	}
 
@@ -79,4 +81,5 @@ public:
 	}
 };
 
+}
 #endif /* MHV_DISPLAY_MONOCHROME_BUFFERED_H_ */

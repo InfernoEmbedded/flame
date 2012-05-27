@@ -33,15 +33,17 @@
 #include <mhvlib/Display_Monochrome_Buffered.h>
 #include <mhvlib/Timer.h>
 
-enum MHV_PWMMatrix_Mode {
-	MHV_PWMMATRIX_MODE_AUTO,
-	MHV_PWMMATRIX_MODE_ROWS,
-	MHV_PWMMATRIX_MODE_COLS,
-	MHV_PWMMATRIX_MODE_INDIVIDUAL
-};
-typedef enum MHV_PWMMatrix_Mode MHV_PWMMATRIX_MODE;
+namespace mhvlib_bsd {
 
-class MHV_PWMMatrixDriver {
+enum class PWMMatrix_Mode : uint8_t {
+	AUTO,
+	ROWS,
+	COLS,
+	INDIVIDUAL
+};
+typedef enum PWMMatrix_Mode PWMMATRIX_MODE;
+
+class PWMMatrixDriver {
 public:
 	virtual void rowOn(uint16_t row) =0;
 	virtual void rowOff(uint16_t row) =0;
@@ -50,8 +52,8 @@ public:
 };
 
 
-#define _MODE ((MHV_PWMMATRIX_MODE_AUTO == mode) ? \
-	((rows <= cols) ? MHV_PWMMATRIX_MODE_ROWS : MHV_PWMMATRIX_MODE_COLS) : mode)
+#define _MODE ((PWMMATRIX_MODE::AUTO == mode) ? \
+	((rows <= cols) ? PWMMATRIX_MODE::ROWS : PWMMATRIX_MODE::COLS) : mode)
 
 
 /**
@@ -61,14 +63,14 @@ public:
  * @tparam	txBuffers	the number of output buffers
  * @tparam	mode		whether to scan rows, cols, individual pixels or auto
  */
-template<uint16_t cols, uint16_t rows, uint8_t txBuffers, MHV_PWMMATRIX_MODE mode>
-class MHV_PWMMatrix : public MHV_Display_Monochrome_Buffered<cols, rows, txBuffers>,
-	public MHV_TimerListener {
+template<uint16_t cols, uint16_t rows, uint8_t txBuffers, PWMMATRIX_MODE mode>
+class PWMMatrix : public Display_Monochrome_Buffered<cols, rows, txBuffers>,
+	public TimerListener {
 private:
 	uint16_t				_currentRow;
 	uint16_t				_currentCol;
 	uint8_t					_currentLevel;
-	MHV_PWMMatrixDriver		&_driver;
+	PWMMatrixDriver		&_driver;
 
 	/**
 	 * Render the display row by row
@@ -170,7 +172,7 @@ public:
 	 * Establish a new matrix
 	 * @param	driver		the driver to turn on/off rows and columns
 	 */
-	MHV_PWMMatrix(MHV_PWMMatrixDriver &driver) :
+	PWMMatrix(PWMMatrixDriver &driver) :
 				_currentRow(0),
 				_currentCol(0),
 				_currentLevel(0),
@@ -189,13 +191,13 @@ public:
 	 */
 	void alarm() {
 		switch (_MODE) {
-		case MHV_PWMMATRIX_MODE_ROWS:
+		case PWMMATRIX_MODE::ROWS:
 			tickRow();
 			break;
-		case MHV_PWMMATRIX_MODE_COLS:
+		case PWMMATRIX_MODE::COLS:
 			tickCol();
 			break;
-		case MHV_PWMMATRIX_MODE_INDIVIDUAL:
+		case PWMMATRIX_MODE::INDIVIDUAL:
 			tickPixel();
 			break;
 		default:
@@ -203,5 +205,7 @@ public:
 		}
 	}
 };
+
+}
 
 #endif /* MHV_PWMMATRIX_H_ */

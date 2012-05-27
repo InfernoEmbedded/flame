@@ -19,20 +19,23 @@
 #ifndef MHV_VUSBTYPIST_H_
 #define MHV_VUSBTYPIST_H_
 
-#include <MHV_VusbKeyboard.h>
-#include <MHV_Device_TX.h>
+#include <mhvlib/VusbKeyboard.h>
+#include <mhvlib/Device_TX.h>
 #include <avr/pgmspace.h>
 
 extern "C" {
 	#include <vusb/usbdrv.h>
 }
 
+using namespace mhvlib_bsd;
+namespace mhvlib_gpl {
+
 /**
  * A USB keyboard emulator that will type what you print to it
  * @tparam	txBuffers	the number of output buffers
  */
 template<uint8_t txBuffers>
-class MHV_VusbTypist : public MHV_VusbKeyboard, public MHV_Device_TXImplementation<txBuffers> {
+class VusbTypist : public VusbKeyboard, public Device_TXImplementation<txBuffers> {
 protected:
 	bool _isTyping;
 
@@ -48,15 +51,15 @@ protected:
 	 */
 	void typeChar(char c) {
 		uint8_t modifiers = 0;
-		MHV_VUSB_KEYBOARD_KEY key = MHV_KEY_BACKSPACE;
+		VUSB_KEYBOARD_KEY key = MHV_KEY_BACKSPACE;
 
 		if (c >= 'a' && c <= 'z') {
-			key = mhv_vusb_keyboard_key_add(MHV_KEY_A, c - 'a');
+			key = vusb_keyboard_key_add(MHV_KEY_A, c - 'a');
 		} else if (c >= 'A' && c <= 'Z') {
-			key = mhv_vusb_keyboard_key_add(MHV_KEY_A, c - 'A');
+			key = vusb_keyboard_key_add(MHV_KEY_A, c - 'A');
 			modifiers = MHV_MOD_SHIFT_LEFT;
 		} else if (c >= '1' && c <= '9') {
-			key = mhv_vusb_keyboard_key_add(MHV_KEY_1, c - '1');
+			key = vusb_keyboard_key_add(MHV_KEY_1, c - '1');
 		} else {
 	// Shifted characters
 			switch (c) {
@@ -191,17 +194,17 @@ public:
 	 *   This class can also be passed strings, which it will type out on the keyboard
 	 *  @param	rtc			an RTC to trigger events from
 	 */
-	MHV_VusbTypist(MHV_RTC &rtc) :
-			MHV_VusbKeyboard(rtc),
+	VusbTypist(RTC &rtc) :
+			VusbKeyboard(rtc),
 			_isTyping(false) {}
 
 	/**
 	 * Periodically called to maintain USB comms
 	 */
 	void alarm() {
-		MHV_VusbKeyboard::alarm();
+		VusbKeyboard::alarm();
 		if (usbInterruptIsReady()) {
-			int c = MHV_Device_TX::nextCharacter();
+			int c = Device_TX::nextCharacter();
 
 			if (-1 == c) {
 				if (_isTyping) {
@@ -217,4 +220,5 @@ public:
 	}
 };
 
+}
 #endif /* MHV_VUSBTYPIST_H_ */

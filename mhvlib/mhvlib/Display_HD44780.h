@@ -31,23 +31,29 @@
 #define HD44780_TINIT	300		// ms
 
 
+namespace mhvlib_bsd {
+
 static const uint8_t mhv_hd44780AddressTable[] PROGMEM = {
 		64+20,	20,	64,	0
 };
 
 
-enum mhv_hd44780_command {
-	MHV_44780_CMD_CLEAR				= 0x001,
-	MHV_44780_CMD_RETURN_HOME		= 0x002,
-	MHV_44780_CMD_SET_ENTRY_MODE	= 0x004,
-	MHV_44780_CMD_SET_DISPLAY_MODE	= 0x008,
-	MHV_44780_CMD_SET_CURSOR_MODE	= 0x010,
-	MHV_44780_CMD_SET_FUNCTION		= 0x020,
-	MHV_44780_CMD_SET_CG_ADDR		= 0x040,
-	MHV_44780_CMD_SET_DD_ADDR		= 0x080,
-	MHV_44780_WRITE_CHAR			= 0xff
+enum class hd44780_command : uint8_t {
+	CLEAR					= 0x001,
+	HOME					= 0x002,
+	SET_ENTRY_MODE			= 0x004,
+	SET_DISPLAY_MODE		= 0x008,
+	SET_CURSOR_MODE			= 0x010,
+	SET_FUNCTION			= 0x020,
+	SET_CG_ADDR				= 0x040,
+	SET_DD_ADDR				= 0x080,
+	WRITE_CHAR				= 0xff /* not a real command, only here to support delay */
 };
-typedef enum mhv_hd44780_command MHV_HD44780_COMMAND;
+typedef enum hd44780_command HD44780_COMMAND;
+INLINE uint8_t operator| (HD44780_COMMAND command, uint8_t oredWith) {
+	const uint8_t myCommand = static_cast<uint8_t>(command);
+	return(myCommand | oredWith);
+}
 
 /**
  * A class for operating HD44780 based LCD displays (and compatible)
@@ -56,7 +62,7 @@ typedef enum mhv_hd44780_command MHV_HD44780_COMMAND;
  * @tparam	txBuffers	the number of output buffers
  */
 template<uint16_t cols, uint16_t rows, uint8_t txBuffers>
-class MHV_Display_HD44780 : public MHV_Display_Character<cols, rows, txBuffers> {
+class Display_HD44780 : public Display_Character<cols, rows, txBuffers> {
 protected:
 	uint16_t			_ticks;
 	uint16_t			_animateTicks;
@@ -66,7 +72,7 @@ protected:
 	/**
 	 * Send a command to the display
 	 */
-	void writeCommand(MHV_HD44780_COMMAND command, uint8_t data) {
+	void writeCommand(HD44780_COMMAND command, uint8_t data) {
 		uint8_t byte = command | data;
 
 		if (_mustDelay) {
@@ -94,7 +100,7 @@ protected:
 			_delay_ms(4.1);
 		}
 
-		writeCommand(MHV_44780_CMD_SET_FUNCTION, data);
+		writeCommand(HD44780_COMMAND::SET_FUNCTION, data);
 	}
 
 	/**
@@ -104,7 +110,7 @@ protected:
 	void addressCGRAM(uint8_t address) {
 		while (isBusy()) {};
 
-		writeCommand(MHV_44780_CMD_SET_CG_ADDR, address);
+		writeCommand(HD44780_COMMAND::SET_CG_ADDR, address);
 	}
 
 	/**
@@ -114,21 +120,11 @@ protected:
 	void addressDDRAM(uint8_t address) {
 		while (isBusy()) {};
 
-		writeCommand(MHV_44780_CMD_SET_DD_ADDR, address);
+		writeCommand(HD44780_COMMAND::SET_DD_ADDR, address);
 	}
 
 	virtual void writeByte(uint8_t byte, bool rs)=0;
 	virtual uint8_t readByte(bool rs)=0;
-
-//	/**
-//	 * Move the cursor to a location, so the next writeChar will write a character at that location
-//	 * (Origin is at the bottom left)
-//	 * @param	col		the column to put the character
-//	 * @param	row		the row to put the character
-//	 */
-//	void _setCursor(uint16_t col, uint16_t row) {
-//		_setCursor((uint8_t)col, (uint8_t)row);
-//	}
 
 	/**
 	 * Move the cursor to a location, so the next writeChar will write a character at that location
@@ -160,7 +156,7 @@ protected:
 	void _writeChar(char character) {
 		while (isBusy()) {};
 		writeByte(character, true);
-		delay(MHV_44780_WRITE_CHAR);
+		delay(HD44780_COMMAND::WRITE_CHAR);
 	}
 
 	/**
@@ -173,13 +169,13 @@ protected:
 	}
 
 	virtual bool isBusy()=0;
-	virtual void delay(MHV_HD44780_COMMAND command)=0;
+	virtual void delay(HD44780_COMMAND command)=0;
 
 public:
 	/**
 	 * Create a new display
 	 */
-	MHV_Display_HD44780() {
+	Display_HD44780() {
 		_ticks = 0;
 		_animateTicks = 64;
 		_mustDelay = false;
@@ -205,9 +201,9 @@ public:
 	// hardware initialization always set 8 bits mode
 		_byteMode = true;
 		uint8_t resetData = 1 << 4 | multiLine << 3 | bigFont << 2 | 1;
-		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
-		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
-		writeCommand(MHV_44780_CMD_SET_FUNCTION, resetData);
+		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
+		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
+		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
 
 		_byteMode = byteMode;
 
@@ -217,8 +213,8 @@ public:
 		control(true, cursorOn, cursorBlink);
 		clear();
 		entryMode(left2right, scroll);
-		MHV_Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
-		MHV_Display_Character<cols, rows, txBuffers>::_currentCol = 0;
+		Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
+		Display_Character<cols, rows, txBuffers>::_currentCol = 0;
 	}
 
 	/**
@@ -227,9 +223,9 @@ public:
 	void clear() {
 		while (isBusy()) {};
 
-		writeCommand(MHV_44780_CMD_CLEAR, 0);
-		MHV_Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
-		MHV_Display_Character<cols, rows, txBuffers>::_currentCol = 0;
+		writeCommand(HD44780_COMMAND::CLEAR, 0);
+		Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
+		Display_Character<cols, rows, txBuffers>::_currentCol = 0;
 	}
 
 	/**
@@ -242,7 +238,7 @@ public:
 
 		while (isBusy()) {};
 
-		writeCommand(MHV_44780_CMD_SET_ENTRY_MODE, data);
+		writeCommand(HD44780_COMMAND::SET_ENTRY_MODE, data);
 	}
 
 	/**
@@ -256,8 +252,9 @@ public:
 
 		while (isBusy()) {};
 
-		writeCommand(MHV_44780_CMD_SET_DISPLAY_MODE, data);
+		writeCommand(HD44780_COMMAND::SET_DISPLAY_MODE, data);
 	}
 };
 
+}
 #endif /* MHV_DISPLAY_HD44780_H_ */

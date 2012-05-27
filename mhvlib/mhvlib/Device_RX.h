@@ -42,30 +42,32 @@
 	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
 	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
 
-class MHV_Device_RX;
+namespace mhvlib_bsd {
+
+class Device_RX;
 
 /**
  * A listener that will be called when a line is ready or the buffer is full
  */
-class MHV_RXListener {
+class RXListener {
 public:
-	virtual void rxReady(MHV_Device_RX *rx) =0;
+	virtual void rxReady(Device_RX *rx) =0;
 };
 
 
 /**
  * A device that can receive data
  */
-class MHV_Device_RX {
+class Device_RX {
 protected:
-	MHV_RingBuffer		&_rxBuffer;
-	MHV_RXListener		*_listener;
+	RingBuffer		&_rxBuffer;
+	RXListener		*_listener;
 
 	/**
 	 * Constructor
 	 * @param	buffer	A buffer to store received data
 	 */
-	MHV_Device_RX(MHV_RingBuffer &buffer) :
+	Device_RX(RingBuffer &buffer) :
 			_rxBuffer(buffer),
 			_listener(NULL) {}
 
@@ -158,7 +160,7 @@ public:
 	 * Register interest for lines/overflows from an RX device
 	 * @param	listener	an MHV_RXListener to notify that the device is ready
 	 */
-	void registerListener(MHV_RXListener &listener) {
+	void registerListener(RXListener &listener) {
 		_listener = &listener;
 	}
 
@@ -181,17 +183,18 @@ public:
 };
 
 template<uint8_t bufferLength>
-class MHV_Device_RXImplementation : public MHV_Device_RX {
+class Device_RXImplementation : public Device_RX {
 protected:
-	MHV_RingBufferImplementation<bufferLength>
+	RingBufferImplementation<bufferLength>
 					_myBuffer;
 
 	/**
 	 * Constructor
 	 */
-	MHV_Device_RXImplementation() :
-		MHV_Device_RX(_myBuffer) {}
+	Device_RXImplementation() :
+		Device_RX(_myBuffer) {}
 };
 
+}
 
 #endif

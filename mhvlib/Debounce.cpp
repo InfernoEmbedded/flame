@@ -26,6 +26,8 @@
 
 #include <mhvlib/Debounce.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Debouncing helper for buttons connected directly to PCINT capable pins
  * The user must pull the pin up, either externally (and initing the pin by calling mhv_setInput),
@@ -37,7 +39,7 @@
  * @param	heldTime			the minimum amount of time to consider a button held down
  * @param	repeatTime			the time after which the held call repeats
  */
-MHV_Debounce::MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc,
+Debounce::Debounce(PinChangeManager &pinChangeManager, RTC &rtc,
 		uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime) :
 			_rtc(rtc),
 			_pinChangeManager(pinChangeManager) {
@@ -46,40 +48,40 @@ MHV_Debounce::MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc,
 
 	_heldTime.timestamp = 0;
 	_heldTime.milliseconds = 0;
-	mhv_timestampIncrement(_heldTime, 0, heldTime);
+	timestampIncrement(_heldTime, 0, heldTime);
 
 	_repeatTime.timestamp = 0;
 	_repeatTime.milliseconds = 0;
-	mhv_timestampIncrement(_repeatTime, 0, repeatTime);
+	timestampIncrement(_repeatTime, 0, repeatTime);
 
 	for (uint8_t i = 0; i < MHV_PC_INT_COUNT; ++i) {
 		initPin(i);
 	}
 }
 
-void MHV_Debounce::initPin(uint8_t pinchangeInterrupt) {
-	mhv_memClear(_pins + pinchangeInterrupt, MHV_BYTESIZEOF(*_pins), (uint8_t)1);
+void Debounce::initPin(uint8_t pinchangeInterrupt) {
+	memClear(_pins + pinchangeInterrupt, MHV_BYTESIZEOF(*_pins), (uint8_t)1);
 }
 
 /**
  * Called periodically to check if pins have been held
  * Ideally, this should be called from the main loop, rather than the interrupt context
  */
-void MHV_Debounce::checkHeld() {
-	MHV_DEBOUNCE_PIN *pin = _pins;
-	MHV_DEBOUNCE_PIN *maxPin = pin + MHV_PC_INT_COUNT;
+void Debounce::checkHeld() {
+	DEBOUNCE_PIN *pin = _pins;
+	DEBOUNCE_PIN *maxPin = pin + MHV_PC_INT_COUNT;
 
 	for (; pin < maxPin; ++pin) {
 		if (pin->timestamp.timestamp && !pin->previous) {
 // Pin is currently held down
-			MHV_TIMESTAMP heldFor;
+			TIMESTAMP heldFor;
 			_rtc.elapsed(pin->timestamp, heldFor);
 
-			if (!pin->held && mhv_timestampGreaterThanOrEqual(heldFor, _heldTime)) {
+			if (!pin->held && timestampGreaterThanOrEqual(heldFor, _heldTime)) {
 				pin->held = true;
 				pin->listener->heldDown(pin - _pins, &heldFor);
 				_rtc.current(pin->timestamp);
-			} else if (pin->held && mhv_timestampGreaterThanOrEqual(heldFor, _repeatTime)) {
+			} else if (pin->held && timestampGreaterThanOrEqual(heldFor, _repeatTime)) {
 				pin->listener->heldDown(pin - _pins, &heldFor);
 				_rtc.current(pin->timestamp);
 			}
@@ -92,16 +94,16 @@ void MHV_Debounce::checkHeld() {
  * @param	pcInt		the pin change interrupt that was triggered
  * @param	newState	the new state of the pin
  */
-void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
+void Debounce::pinChanged(uint8_t pcInt, bool newState) {
 	if (newState) {
 // Pin has been released
-		MHV_TIMESTAMP heldFor;
+		TIMESTAMP heldFor;
 
 /* Call the singlePress function if the time is greater than the debounce time,
  * and the button has not been held down
  */
 		_rtc.elapsed(_pins[pcInt].timestamp, heldFor);
-		if (!_pins[pcInt].held && mhv_timestampGreaterThanOrEqual(heldFor, _debounceTime)) {
+		if (!_pins[pcInt].held && timestampGreaterThanOrEqual(heldFor, _debounceTime)) {
 			_pins[pcInt].listener->singlePress(pcInt, &heldFor);
 		}
 
@@ -119,7 +121,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
  * @param	pin						An MHV_PIN_* macro
  * @param	listener				a class to call when the button is pressed or held down
  */
-void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener) {
+void Debounce::assignKey(MHV_DECLARE_PIN(pin), DebounceListener &listener) {
 	_pins[pinPinchangeInterrupt].previous = _MMIO_BYTE(pinIn) & _BV(pinPin);
 	_pins[pinPinchangeInterrupt].timestamp.milliseconds = 0;
 	_pins[pinPinchangeInterrupt].timestamp.timestamp = 0;
@@ -138,8 +140,10 @@ void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listene
  * Deassign a pin
  * @param	pinPinchangeInterrupt		the pin change interrupt to deregister
  */
-void MHV_Debounce::deassignKey(int8_t pinPinchangeInterrupt) {
+void Debounce::deassignKey(int8_t pinPinchangeInterrupt) {
 	if (pinPinchangeInterrupt) {
 		initPin(pinPinchangeInterrupt);
 	}
+}
+
 }

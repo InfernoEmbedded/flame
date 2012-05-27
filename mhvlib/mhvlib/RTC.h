@@ -32,32 +32,33 @@
 #include <string.h> // Needed for memmove
 #include <util/atomic.h>
 
+namespace mhvlib_bsd {
 
-struct mhv_timestamp {
+struct timestamp {
 	uint32_t	timestamp;
 	uint16_t	milliseconds;
 	uint8_t		ticks;
 };
-typedef struct mhv_timestamp MHV_TIMESTAMP;
+typedef struct timestamp TIMESTAMP;
 
-enum mhv_weekday {
-	MHV_SUNDAY,
-	MHV_MONDAY,
-	MHV_TUESDAY,
-	MHV_WEDNESDAY,
-	MHV_THURSDAY,
-	MHV_FRIDAY,
-	MHV_SATURDAY
+enum class weekday : uint8_t {
+	SUNDAY = 0,
+	MONDAY = 1,
+	TUESDAY = 2,
+	WEDNESDAY = 3,
+	THURSDAY = 4,
+	FRIDAY = 5,
+	SATURDAY = 6
 };
-typedef enum mhv_weekday MHV_WEEKDAY;
+typedef enum weekday WEEKDAY;
 
-enum mhv_month {
-	MHV_JANUARY = 1,
-	MHV_FEBRUARY = 2,
-	MHV_MARCH = 3,
-	MHV_APRIL = 4,
-	MHV_MAY = 5,
-	MHV_JUNE = 6,
+enum class month : uint8_t {
+	JANUARY = 1,
+	FEBRUARY = 2,
+	MARCH = 3,
+	APRIL = 4,
+	MAY = 5,
+	JUNE = 6,
 	MHV_JULY = 7,
 	MHV_AUGUST = 8,
 	MHV_SEPTEMBER = 9,
@@ -65,29 +66,33 @@ enum mhv_month {
 	MHV_NOVEMBER = 11,
 	MHV_DECEMBER = 12
 };
-typedef enum mhv_month MHV_MONTH;
+typedef enum month MONTH;
+INLINE uint8_t operator- (MONTH month, uint8_t subtractValue) {
+	const uint8_t myMonth = static_cast<uint8_t>(month);
+	return(myMonth - subtractValue);
+}
 
 
-struct mhv_time {
+struct time {
 	uint16_t	milliseconds;	// 0 - 999
 	uint8_t		seconds;		// 0 - 59 (we don't do leap seconds)
 	uint8_t		minutes;		// 0 - 59
 	uint8_t		hours;			// 0 - 23
 	uint8_t		day;			// 1 - 31	day of the month
-	MHV_MONTH	month;			// 1 - 12
+	MONTH	month;			// 1 - 12
 	uint16_t	year;			// 1970 - 2106
 //	MHV_WEEKDAY	weekday;		// Weekday
 	uint16_t	yearday;		// 0 - 365 Day of the year
 	uint16_t	timezone;		// Timezone offset in minutes
 };
-typedef struct mhv_time MHV_TIME;
+typedef struct time TIME;
 
-struct mhv_alarm {
-	MHV_TIMESTAMP		when;
-	MHV_TIMESTAMP		repeat;
-	MHV_TimerListener	*listener;
+struct alarm {
+	TIMESTAMP		when;
+	TIMESTAMP		repeat;
+	TimerListener	*listener;
 };
-typedef struct mhv_alarm MHV_ALARM;
+typedef struct alarm ALARM;
 
 /**
  * Initialise an alarm struct with tick resolution and repeats
@@ -101,7 +106,7 @@ typedef struct mhv_alarm MHV_ALARM;
  * @param repeatMilliseconds	the number of milliseconds to repeat the alarm
  * @param repeatTicks			the number of ticks to repeat the alarm
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
+inline void alarmInit(ALARM &alarm, TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks,
 		uint32_t repeatTimestamp, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
 	alarm.listener = &listener;
@@ -123,7 +128,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
  * @param repeatTimestamp		the number of seconds to repeat the alarm
  * @param repeatMilliseconds	the number of milliseconds to repeat the alarm
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
+inline void alarmInit(ALARM &alarm, TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds,
 		uint32_t repeatTimestamp, uint16_t repeatMilliseconds) {
 	alarm.listener = &listener;
@@ -144,7 +149,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
  * @param whenMilliseconds		the milliseconds past the timestamp the alarm should fire at
  * @param whenTicks				the ticks past the millisecond the alarm should fire at
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
+inline void alarmInit(ALARM &alarm, TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds, uint8_t whenTicks) {
 	alarm.listener = &listener;
 	alarm.when.timestamp = whenTimestamp;
@@ -163,7 +168,7 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
  * @param whenTimestamp			the timestamp the alarm should fire at
  * @param whenMilliseconds		the milliseconds past the timestamp the alarm should fire at
  */
-inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
+inline void alarmInit(ALARM &alarm, TimerListener &listener,
 		uint32_t whenTimestamp, uint16_t whenMilliseconds) {
 	alarm.listener = &listener;
 	alarm.when.timestamp = whenTimestamp;
@@ -174,15 +179,15 @@ inline void mhv_alarmInit(MHV_ALARM &alarm, MHV_TimerListener &listener,
 	alarm.repeat.ticks = 0;
 }
 
-void mhv_timestampIncrement(MHV_TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds);
-bool mhv_isLeapYear(uint16_t year);
-bool mhv_timestampGreaterThanOrEqual(const MHV_TIMESTAMP &first, const MHV_TIMESTAMP &second);
-bool mhv_timestampLessThan(const MHV_TIMESTAMP &first, const MHV_TIMESTAMP &second);
-uint8_t mhv_daysInMonth(MHV_MONTH month, uint16_t year);
+void timestampIncrement(TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds);
+bool isLeapYear(uint16_t year);
+bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second);
+bool timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second);
+uint8_t daysInMonth(MONTH month, uint16_t year);
 
 
 // Used in toTime: Cumulative totals at the end of the month in a normal year
-const uint32_t mhv_secondsFromYearStart[] PROGMEM = {
+const uint32_t secondsFromYearStart[] PROGMEM = {
 		2678400, 	// Jan
 		5097600,	// Feb
 		7776000,	// Mar
@@ -213,10 +218,10 @@ const uint32_t mhv_secondsFromYearStart[] PROGMEM = {
  * @param	_mhvEventCount	the number of events
  */
 #define MHV_RTC_CREATE(_mhvObjectName,_mhvEventCount) \
-		MHV_RTCTemplate<_mhvEventCount> _mhvObjectName;
+		RTCImplementation<_mhvEventCount> _mhvObjectName;
 
 
-class MHV_RTC : public MHV_TimerListener {
+class RTC : public TimerListener {
 protected:
 	volatile uint8_t		_alarmCount;
 	uint32_t				_timestamp;
@@ -243,7 +248,7 @@ public:
 	 * Create a new RTC
 	 * @param	timezone	minutes offset from UTC
 	 */
-	MHV_RTC(int16_t timezone = 0) :
+	RTC(int16_t timezone = 0) :
 			_alarmCount(0),
 			_milliseconds(0),
 			_ticks(0),
@@ -255,7 +260,7 @@ public:
 	 *  This is useful if you change the timer values, or if you are are running the timer faster than 1ms
 	 *  @param	timer	the timer to sync with
 	 */
-	void synchronise(MHV_Timer &timer) {
+	void synchronise(Timer &timer) {
 		uint32_t ticksPerMillisecond = F_CPU / timer.getPrescalerMultiplier() / (timer.getTop() + 1) / 1000;
 		_ticksPerMillisecond = ticksPerMillisecond;
 	}
@@ -276,7 +281,7 @@ public:
 	 * Set the current time
 	 * @param timestamp		the current Unix timestamp
 	 */
-	void setTime(MHV_TIMESTAMP &timestamp) {
+	void setTime(TIMESTAMP &timestamp) {
 		ATOMIC_BLOCK(ATOMIC_FORCEON) {
 			_ticks = timestamp.ticks;
 			_milliseconds = timestamp.milliseconds;
@@ -309,7 +314,7 @@ public:
 	 * Get the current timestamp
 	 * @param	timestamp	the timestamp to write into
 	 */
-	void current(MHV_TIMESTAMP &timestamp) {
+	void current(TIMESTAMP &timestamp) {
 		ATOMIC_BLOCK(ATOMIC_FORCEON) {
 			timestamp.ticks = _ticks;
 			timestamp.milliseconds = _milliseconds;
@@ -325,8 +330,8 @@ public:
 	 * @param	since		the timestamp to measure against
 	 * @param	elapsed		returns how much time has elapsed
 	 */
-	void elapsed(const MHV_TIMESTAMP &since, MHV_TIMESTAMP &elapsed) {
-		MHV_TIMESTAMP currentTimestamp;
+	void elapsed(const TIMESTAMP &since, TIMESTAMP &elapsed) {
+		TIMESTAMP currentTimestamp;
 
 		current(currentTimestamp);
 
@@ -347,7 +352,7 @@ public:
 	 * @param to	the MHV_TIME to store the results
 	 * @param from	the MHV_TIMESTAMP struct to convert from
 	 */
-	void toTime(MHV_TIME &to, const MHV_TIMESTAMP &from) {
+	void toTime(TIME &to, const TIMESTAMP &from) {
 		uint16_t year = 1970;
 		bool leapYear = false;
 		uint32_t seconds = from.timestamp + _tzOffset;
@@ -360,7 +365,7 @@ public:
 			seconds -= secondsThisYear;
 			secondsSoFar += secondsThisYear;
 
-			if ((mhv_isLeapYear(++year))) {
+			if ((isLeapYear(++year))) {
 				secondsThisYear = 366 * 86400;
 			} else {
 				secondsThisYear = 365 * 86400;
@@ -369,14 +374,14 @@ public:
 		to.year = year;
 
 		uint8_t month;
-		leapYear = mhv_isLeapYear(year);
-		for (month = 0; month < sizeof(mhv_secondsFromYearStart); month++) {
+		leapYear = isLeapYear(year);
+		for (month = 0; month < sizeof(secondsFromYearStart); month++) {
 			if (leapYear) {
-				if (seconds < pgm_read_dword(&mhv_secondsFromYearStart[month] + (1 == month) ? 86400 : 0)) {
+				if (seconds < pgm_read_dword(&secondsFromYearStart[month] + (1 == month) ? 86400 : 0)) {
 					break;
 				}
 			} else {
-				if (seconds < pgm_read_dword(&mhv_secondsFromYearStart[month])) {
+				if (seconds < pgm_read_dword(&secondsFromYearStart[month])) {
 					break;
 				}
 			}
@@ -384,7 +389,7 @@ public:
 		to.yearday = seconds / 86400;
 
 		if (month) {
-			seconds -= pgm_read_dword(&mhv_secondsFromYearStart[month - 1]);
+			seconds -= pgm_read_dword(&secondsFromYearStart[month - 1]);
 		}
 
 		if (leapYear && month > 1) {
@@ -392,7 +397,7 @@ public:
 		}
 
 		// Increment so we start numbering from 1
-		to.month = (MHV_MONTH)(month + 1);
+		to.month = (MONTH)(month + 1);
 
 		uint32_t day = seconds / 86400;
 		to.day = (uint8_t)day;
@@ -416,7 +421,7 @@ public:
 	 * @param to	the MHV_TIMESTAMP to store the results
 	 * @param from	the MHV_TIME struct to convert from
 	 */
-	void toTimestamp(MHV_TIMESTAMP &to, const MHV_TIME &from) {
+	void toTimestamp(TIMESTAMP &to, const TIME &from) {
 		to.milliseconds = from.milliseconds;
 
 		uint32_t seconds = from.seconds;
@@ -430,14 +435,14 @@ public:
 		} else {
 			seconds += (from.day - 1) * 86400;
 			switch (from.month) {
-			case MHV_JANUARY:
+			case MONTH::JANUARY:
 				break;
-			case MHV_FEBRUARY:
+			case MONTH::FEBRUARY:
 				seconds += 5097600;
 				break;
 			default:
-				seconds += pgm_read_dword(&mhv_secondsFromYearStart[(uint8_t)from.month - 2]);
-				if (mhv_isLeapYear(from.year)) {
+				seconds += pgm_read_dword(&secondsFromYearStart[(uint8_t)from.month - 2]);
+				if (isLeapYear(from.year)) {
 					seconds += 86400;
 				}
 				break;
@@ -446,7 +451,7 @@ public:
 
 		for (uint16_t year = from.year - 1; year >= 1970; year--) {
 			seconds += 365 * 86400;
-			if (mhv_isLeapYear(year)) {
+			if (isLeapYear(year)) {
 				seconds += 86400;
 			}
 		}
@@ -460,7 +465,7 @@ public:
 	 * @param timestamp		the timestamp to increment
 	 * @param timestamp2	the timestamp to increment by
 	 */
-	void timestampIncrement(MHV_TIMESTAMP &timestamp, const MHV_TIMESTAMP &timestamp2) {
+	void timestampIncrement(TIMESTAMP &timestamp, const TIMESTAMP &timestamp2) {
 		timestamp.ticks += timestamp2.ticks;
 		timestamp.milliseconds += timestamp2.milliseconds;
 
@@ -484,7 +489,7 @@ public:
 	 * @param milliseconds	the number of milliseconds to increment by
 	 * @param ticks			the number of ticks to increment by
 	 */
-	void timestampIncrement(MHV_TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks) {
+	void timestampIncrement(TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds, uint8_t ticks) {
 		timestamp.ticks += ticks;
 		timestamp.milliseconds += milliseconds;
 
@@ -512,10 +517,10 @@ public:
 	 * @param	repeatTicks			the number of ticks past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener &listener,
+	bool addAlarm(TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = &listener;
 		current(alarm.when);
@@ -536,10 +541,10 @@ public:
 	 * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener &listener,
+	bool addAlarm(TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = &listener;
 		current(alarm.when);
@@ -559,9 +564,9 @@ public:
 	 * @param	whenTicks			the number of ticks past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener &listener,
+	bool addAlarm(TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = &listener;
 		current(alarm.when);
@@ -580,9 +585,9 @@ public:
 	 * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener &listener,
+	bool addAlarm(TimerListener &listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = &listener;
 		current(alarm.when);
@@ -605,10 +610,10 @@ public:
 	 * @param	repeatTicks			the number of ticks past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener *listener,
+	bool addAlarm(TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds, uint8_t repeatTicks) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = listener;
 		current(alarm.when);
@@ -629,10 +634,10 @@ public:
 	 * @param	repeatMilliseconds	the number of milliseconds past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener *listener,
+	bool addAlarm(TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds,
 			uint32_t repeatSeconds, uint16_t repeatMilliseconds) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = listener;
 		current(alarm.when);
@@ -652,9 +657,9 @@ public:
 	 * @param	whenTicks			the number of ticks past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener *listener,
+	bool addAlarm(TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds, uint8_t whenTicks) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = listener;
 		current(alarm.when);
@@ -673,9 +678,9 @@ public:
 	 * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_TimerListener *listener,
+	bool addAlarm(TimerListener *listener,
 			uint32_t whenSeconds, uint16_t whenMilliseconds) {
-		MHV_ALARM alarm;
+		ALARM alarm;
 
 		alarm.listener = listener;
 		current(alarm.when);
@@ -695,7 +700,7 @@ public:
 	 * 						what should be called (it will be passed a reference to the alarm)
 	 * @return	true if the event could not be added
 	 */
-	bool addAlarm(MHV_ALARM &alarm) {
+	bool addAlarm(ALARM &alarm) {
 		return registerAlarm(alarm);
 	}
 
@@ -707,7 +712,7 @@ public:
 	 * 						what should be called (it will be passed a reference to the alarm)
 	 * @return	true if the event could not be added
 	 */
-	virtual bool registerAlarm(MHV_ALARM &alarm) =0;
+	virtual bool registerAlarm(ALARM &alarm) =0;
 
 	/**
 	 * Check for events that are due, and run them
@@ -729,40 +734,40 @@ public:
 	 * Remove all matching events from the list of pending events
 	 * @param	listener		the listener for the event to remove
 	 */
-	virtual void removeAlarm(MHV_TimerListener &listener) =0;
+	virtual void removeAlarm(TimerListener &listener) =0;
 
 	/**
 	 * Remove all matching events from the list of pending events
 	 * @param	listener		the listener for the event to remove
 	 */
-	virtual void removeAlarm(MHV_TimerListener *listener) =0;
+	virtual void removeAlarm(TimerListener *listener) =0;
 };
 
 
 template<uint8_t alarmMax = 8>
-class MHV_RTCTemplate : public MHV_RTC {
+class RTCImplementation : public RTC {
 protected:
-	MHV_ALARM				_alarms[alarmMax];
+	ALARM				_alarms[alarmMax];
 
 public:
 	/**
 	 * Create a new RTC
 	 * @param	timezone	minutes offset from UTC
 	 */
-	MHV_RTCTemplate(int16_t timezone = 0) : MHV_RTC(timezone) {
-		memset (_alarms, sizeof(_alarms[0]), alarmMax);
+	RTCImplementation(int16_t timezone = 0) : RTC(timezone) {
+		memSet (_alarms, sizeof(_alarms[0]), alarmMax);
 	}
 
 	/**
 	 * Remove all matching events from the list of pending events
 	 * @param	listener		the listener for the event to remove
 	 */
-	void removeAlarm(MHV_TimerListener &listener) {
+	void removeAlarm(TimerListener &listener) {
 		for (uint8_t i = 0; i < _alarmCount; i++) {
 			if (_alarms[i].listener == &listener) {
 				// Shift remaining events down
 				if (i < _alarmCount) {
-					mhv_memcpyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+					memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
 				}
 
 				_alarmCount -= i;
@@ -774,12 +779,12 @@ public:
 	 * Remove all matching events from the list of pending events
 	 * @param	listener		the listener for the event to remove
 	 */
-	void removeAlarm(MHV_TimerListener *listener) {
+	void removeAlarm(TimerListener *listener) {
 		for (uint8_t i = 0; i < _alarmCount; i++) {
 			if (_alarms[i].listener == listener) {
 				// Shift remaining events down
 				if (i < _alarmCount) {
-					mhv_memcpyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+					memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
 				}
 
 				_alarmCount -= i;
@@ -795,11 +800,11 @@ public:
 	 */
 	void handleEvents() {
 		uint8_t i;
-		MHV_TIMESTAMP timestamp;
+		TIMESTAMP timestamp;
 		current(timestamp);
 
 		// Run any events pending
-		for (i = 0; i < _alarmCount && mhv_timestampGreaterThanOrEqual(timestamp, _alarms[i].when);
+		for (i = 0; i < _alarmCount && timestampGreaterThanOrEqual(timestamp, _alarms[i].when);
 				i++, current(timestamp)) {
 			_alarms[i].listener->alarm();
 
@@ -817,7 +822,7 @@ public:
 
 		// Shift remaining events down
 		if (i < _alarmCount) {
-			mhv_memcpyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+			memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
 		}
 
 		_alarmCount -= i;
@@ -831,7 +836,7 @@ public:
 	 * 						what should be called (it will be passed a reference to the alarm)
 	 * @return	true if the event could not be added
 	 */
-	bool registerAlarm(MHV_ALARM &alarm) {
+	bool registerAlarm(ALARM &alarm) {
 		if (_alarmCount == alarmMax) {
 			return true;
 		}
@@ -839,16 +844,16 @@ public:
 		// Figure out where it needs to be inserted
 		uint8_t i;
 		for (i = 0; i < _alarmCount; ++i) {
-			if (mhv_timestampLessThan(alarm.when, _alarms[i].when)) {
+			if (timestampLessThan(alarm.when, _alarms[i].when)) {
 				break;
 			}
 		}
 		// i now is the offset of where the timestamp should be inserted
 		if (i < _alarmCount) {
-			mhv_memcpyTailFirst(_alarms + i + 1, _alarms + i, MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
-			mhv_memcpy(_alarms + i, &alarm, MHV_BYTESIZEOF(*_alarms));
+			memCopyTailFirst(_alarms + i + 1, _alarms + i, MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+			memCopy(_alarms + i, &alarm, MHV_BYTESIZEOF(*_alarms));
 		} else {
-			mhv_memcpy(&(_alarms[_alarmCount]), &alarm, MHV_BYTESIZEOF(*_alarms));
+			memCopy(&(_alarms[_alarmCount]), &alarm, MHV_BYTESIZEOF(*_alarms));
 		}
 
 		_alarmCount++;
@@ -857,4 +862,5 @@ public:
 	}
 };
 
+}
 #endif /* MHV_RTC_H_ */

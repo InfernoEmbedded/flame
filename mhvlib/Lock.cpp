@@ -1,5 +1,5 @@
 /*
- * MHV_Lock.cpp
+ * Lock.cpp
  *
  *  Created on: 26/06/2011
  *      Author: deece
@@ -7,10 +7,12 @@
 
 #include <mhvlib/Lock.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Create a new lock
  */
-MHV_Lock::MHV_Lock() {
+Lock::Lock() {
 	_lock = false;
 }
 
@@ -18,7 +20,7 @@ MHV_Lock::MHV_Lock() {
  * Obtain the lock
  * @return true if the lock was successfully obtained, false otherwise
  */
-bool MHV_Lock::obtain() {
+bool Lock::obtain() {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		if (!_lock) {
 			_lock = true;
@@ -31,7 +33,7 @@ bool MHV_Lock::obtain() {
 /**
  * Release the lock
  */
-void MHV_Lock::release() {
+void Lock::release() {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		_lock = false;
 	}
@@ -41,6 +43,8 @@ void MHV_Lock::release() {
  * Check if the lock is currently held
  * @return true if the lock is held
  */
-bool MHV_Lock::check() {
+bool Lock::check() {
 	return _lock;
+}
+
 }

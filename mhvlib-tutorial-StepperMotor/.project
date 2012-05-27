@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>mhvlib</project>
-		<project>mhvlib-Vusb-Keyboard</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

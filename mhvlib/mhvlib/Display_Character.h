@@ -29,6 +29,8 @@
 
 #include <mhvlib/Device_TX.h>
 
+namespace mhvlib_bsd {
+
 /**
  * A generic text display
  * Origin (0,0) is bottom left
@@ -37,7 +39,7 @@
  * @tparam	txBuffers	the number of output buffers
  */
 template<uint8_t cols, uint8_t rows, uint8_t txBuffers>
-class MHV_Display_Character : public MHV_Device_TXImplementation<txBuffers> {
+class Display_Character : public Device_TXImplementation<txBuffers> {
 protected:
 	int16_t			_txOffset;
 	bool			_wrap;
@@ -49,7 +51,7 @@ public:
 	/**
 	 * Create a new character display
 	 */
-	MHV_Display_Character() :
+	Display_Character() :
 		_wrap(true),
 		_scroll(true),
 		_currentRow(0),
@@ -193,7 +195,7 @@ public:
 	 */
 	void runTxBuffers() {
 		_txOffset = cols - 1;
-		MHV_Device_TX::moreTX();
+		Device_TX::moreTX();
 	}
 
 	/**
@@ -202,7 +204,7 @@ public:
 	 * @return true if there are more frames to be rendered
 	 */
 	bool txAnimation(uint16_t row) {
-		if (!MHV_Device_TX::_tx) {
+		if (!Device_TX::_tx) {
 			return false;
 		}
 
@@ -211,17 +213,17 @@ public:
 		setCursor(0, row);
 
 		bool ret;
-		if (MHV_Device_TX::_currentTx.progmem) {
-			if (MHV_Device_TX::_currentTx.isString) {
-				ret = writeString_P(&offsetX, row, MHV_Device_TX::_tx);
+		if (Device_TX::_currentTx.progmem) {
+			if (Device_TX::_currentTx.isString) {
+				ret = writeString_P(&offsetX, row, Device_TX::_tx);
 			} else {
-				ret = writeBuffer_P(&offsetX, row, MHV_Device_TX::_tx, MHV_Device_TX::_currentTx.length);
+				ret = writeBuffer_P(&offsetX, row, Device_TX::_tx, Device_TX::_currentTx.length);
 			}
 		} else {
-			if (MHV_Device_TX::_currentTx.isString) {
-				ret = writeString(&offsetX, row, MHV_Device_TX::_tx);
+			if (Device_TX::_currentTx.isString) {
+				ret = writeString(&offsetX, row, Device_TX::_tx);
 			} else {
-				ret = writeBuffer(&offsetX, row, MHV_Device_TX::_tx, MHV_Device_TX::_currentTx.length);
+				ret = writeBuffer(&offsetX, row, Device_TX::_tx, Device_TX::_currentTx.length);
 			}
 		}
 
@@ -231,7 +233,7 @@ public:
 
 		if (!ret) {
 			_txOffset = cols - 1;
-			return MHV_Device_TX::moreTX();
+			return Device_TX::moreTX();
 		}
 
 		return true;
@@ -364,5 +366,6 @@ public:
 	virtual void clear()=0;
 };
 
+}
 
 #endif /* MHV_DISPLAY_CHARACTER_H_ */

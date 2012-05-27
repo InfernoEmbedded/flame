@@ -25,8 +25,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <MHV_NotePlayer.h>
+#include <mhvlib/NotePlayer.h>
 
+namespace mhvlib_bsd {
 
 /**
  * Create a new NotePlayer for playing an array of notes
@@ -34,7 +35,8 @@
  * @param	waveGenerator	the MHV_WaveGenerator to play the notes on
  * @param	rtc				the RTC to use for scheduling
  */
-MHV_NotePlayer::MHV_NotePlayer(MHV_WaveGenerator &waveGenerator, MHV_RTC &rtc) :
+NotePlayer::NotePlayer(WaveGenerator &waveGenerator, RTC &rtc) :
 		_waveGenerator(waveGenerator),
 		_rtc(rtc) {}
 
+}

@@ -43,39 +43,43 @@ ISR(ADC_vect) { \
 #define MHV_ADC_BUFFER_CREATE(_mhvADCBufferName, _mhvADCBufferCount) \
 MHV_EVENT_ADC _mhvADCBufferName[_mhvADCBufferCount];
 
-class MHV_ADCListener {
+namespace mhvlib_bsd {
+
+class ADCListener {
 public:
 	virtual void adc(uint8_t adcChannel, uint16_t adcValue) =0;
 };
 
-struct mhv_eventADC {
+struct eventADC {
 	int8_t					channel;
-	MHV_ADCListener			*listener;
+	ADCListener			*listener;
 };
-typedef struct mhv_eventADC	MHV_EVENT_ADC;
+typedef struct eventADC	EVENT_ADC;
 
 class MHV_ADC {
 protected:
 	uint16_t		_adcValue;
 	int8_t			_adcChannel;
-	MHV_EVENT_ADC	*_adcs;
+	EVENT_ADC	*_adcs;
 	uint8_t			_adcCount;
 
 
 public:
-	MHV_ADC(MHV_EVENT_ADC *adcs, uint8_t adcCount);
+	MHV_ADC(EVENT_ADC *adcs, uint8_t adcCount);
 
 // ADC
 	void adc();
-	void registerListener(int8_t channel, MHV_ADCListener &listener);
+	void registerListener(int8_t channel, ADCListener &listener);
 	void deregisterListener(int8_t channel);
 	void enable();
 	void disable();
 	uint16_t busyRead(int8_t channel, uint8_t reference);
 	void asyncRead(int8_t channel, uint8_t reference);
-	void setPrescaler(MHV_AD_PRESCALER prescaler);
+	void setPrescaler(AD_PRESCALER prescaler);
 
 	void handleEvents();
 };
+
+}
 
 #endif /* MHV_ADC_H_ */

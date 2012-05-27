@@ -36,14 +36,16 @@
 
 #define MHVLIB_NEED_PURE_VIRTUAL
 
-#include <MHV_io.h>
-#include <MHV_HardwareSerial.h>
-#include <MHV_EEPROM.h>
+#include <mhvlib/io.h>
+#include <mhvlib/HardwareSerial.h>
+#include <mhvlib/EEPROM.h>
 #include <util/CRC16.h>
 #include <util/delay.h>
 #include <string.h>
 #include <avr/power.h>
 #include <avr/sleep.h>
+
+using namespace mhvlib_bsd;
 
 // Chosen to fit within all supported MCUs - yours may have more space available
 #define DATA_MAX_LENGTH ((uint16_t)(128 - DATA_ADDRESS))

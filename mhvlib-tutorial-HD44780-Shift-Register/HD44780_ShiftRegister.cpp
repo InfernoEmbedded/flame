@@ -55,15 +55,17 @@
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include <MHV_io.h>
-#include <MHV_Display_HD44780_Shift_Register.h>
-#include <MHV_Timer.h>
+#include <mhvlib/io.h>
+#include <mhvlib/Display_HD44780_Shift_Register.h>
+#include <mhvlib/Timer.h>
 #include <avr/pgmspace.h>
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+using namespace mhvlib_bsd;
+
 // A timer we will use to tick the display
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20
@@ -76,14 +78,14 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define	LEFT2RIGHT	true
 #define	SCROLL		false
 
-MHV_Display_HD44780_Shift_Register<COLUMNS, ROWS, TX_COUNT, MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2> display;
+Display_HD44780_Shift_Register<COLUMNS, ROWS, TX_COUNT, MHV_PIN_D4, MHV_PIN_D7, MHV_PIN_D2> display;
 
 /**
  * +
  * Render text using the asynchronous buffers
  * @param	display	the display to draw on
  */
-void textAnimation(MHV_Device_TX *display) {
+void textAnimation(Device_TX *display) {
 	display->write("1. Here is a string of text");
 	display->write_P(PSTR("2. Here is string of text in PROGMEM"));
 	display->write("3. Here is a buffer containing some data//This will not show", 40);

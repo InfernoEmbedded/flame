@@ -30,6 +30,8 @@
 
 #include <mhvlib/io.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Set the colour order of the MHV_RGB struct
  * 	RGB	1
@@ -52,43 +54,45 @@
 #endif
 
 #if MHV_RGB_ORDER == MHV_RGB_ORDER_RGB
-struct mhv_rgb {
+struct rgb {
 	uint8_t	red;
 	uint8_t	green;
 	uint8_t	blue;
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_RBG
-struct mhv_rgb {
+struct rgb {
 	uint8_t	red;
 	uint8_t	blue;
 	uint8_t	green;
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_GRB
-struct mhv_rgb {
+struct rgb {
 	uint8_t	green;
 	uint8_t	red;
 	uint8_t	blue;
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_GBR
-struct mhv_rgb {
+struct rgb {
 	uint8_t	green;
 	uint8_t	blue;
 	uint8_t	red;
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_BGR
-struct mhv_rgb {
+struct rgb {
 	uint8_t	blue;
 	uint8_t	green;
 	uint8_t	red;
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_BRG
-struct mhv_rgb {
+struct rgb {
 	uint8_t	blue;
 	uint8_t	red;
 	uint8_t	green;
 };
 #endif
 
-typedef struct mhv_rgb MHV_RGB;
+typedef struct rgb RGB;
+
+}
 
 #endif /* MHV_RGB_H_ */

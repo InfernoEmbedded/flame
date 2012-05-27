@@ -32,6 +32,8 @@
 #include <mhvlib/DAC.h>
 #include <avr/pgmspace.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Waveform amplification envelope
  *
@@ -51,62 +53,63 @@
  *     t(0)
  */
 
-typedef uint8_t MHV_AMPLITUDE;
+typedef uint8_t AMPLITUDE;
 
-struct mhv_instrument {
-	const MHV_SAMPLE 			*samples;		/** The samples for a single/part cycle of the instrument at 440Hz (middle A),
-													samples at 32kHz, 72 samples long, stored in progmem */
-	uint16_t					attackTime;		/** samples to ramp from 0 to 100% when starting playback */
-	uint16_t					decay1Time;		/** samples to ramp from 100% to amount/255 * 100% after the attack */
-	MHV_AMPLITUDE				decay1Amount;	/** the amplitude to decay to */
-	uint16_t					sustain1Time;	/** samples spent in sustain until decay2 */
-	uint16_t					decay2Time;		/** samples spent in decay2 */
-	MHV_AMPLITUDE				decay2Amount;   /** the amplitude to decay to */
-	uint16_t					releaseTime;	/** samples that playback will continue for when the note is released */
+struct instrument {
+	const SAMPLE 			*samples;		/** The samples for a single/part cycle of the instrument at 440Hz (middle A),
+												samples at 32kHz, 72 samples long, stored in progmem */
+	uint16_t				attackTime;		/** samples to ramp from 0 to 100% when starting playback */
+	uint16_t				decay1Time;		/** samples to ramp from 100% to amount/255 * 100% after the attack */
+	AMPLITUDE				decay1Amount;	/** the amplitude to decay to */
+	uint16_t				sustain1Time;	/** samples spent in sustain until decay2 */
+	uint16_t				decay2Time;		/** samples spent in decay2 */
+	AMPLITUDE				decay2Amount;   /** the amplitude to decay to */
+	uint16_t				releaseTime;	/** samples that playback will continue for when the note is released */
 };
-typedef struct mhv_instrument MHV_INSTRUMENT;
+typedef struct instrument INSTRUMENT;
 
-enum mhv_voicePhase {
-	MHV_VOICE_AVAILABLE,
-	MHV_VOICE_ATTACK,
-	MHV_VOICE_DECAY1,
-	MHV_VOICE_SUSTAIN1,
-	MHV_VOICE_DECAY2,
-	MHV_VOICE_SUSTAIN2,
-	MHV_VOICE_RELEASE,
+enum class voicePhase : uint8_t {
+	AVAILABLE,
+	ATTACK,
+	DECAY1,
+	SUSTAIN1,
+	DECAY2,
+	SUSTAIN2,
+	RELEASE,
 };
-typedef enum mhv_voicePhase MHV_VOICE_PHASE;
+typedef enum voicePhase VOICE_PHASE;
 
-struct mhv_voice {
-	MHV_INSTRUMENT			*instrument;		/** The instrument playing on the voice */
-	uint16_t				phaseOffset;		/** The current sample offset for the current phase */
-	uint32_t				currentOffset;  	/** The current sample offset for the voice */
-	MHV_VOICE_PHASE			phase;				/** The current phase this voice is in */
-	MHV_AMPLITUDE			velocity;			/** The overall amplitude of the envelope */
-	uint16_t				frequency;			/** The frequency in Hz */
-	uint32_t				duration;			/** The duration of the note, samples */
-	MHV_AMPLITUDE			amplitude;			/** The current amplitude */
+struct voice {
+	INSTRUMENT		*instrument;		/** The instrument playing on the voice */
+	uint16_t		phaseOffset;		/** The current sample offset for the current phase */
+	uint32_t		currentOffset;  	/** The current sample offset for the voice */
+	VOICE_PHASE		phase;				/** The current phase this voice is in */
+	AMPLITUDE		velocity;			/** The overall amplitude of the envelope */
+	uint16_t		frequency;			/** The frequency in Hz */
+	uint32_t		duration;			/** The duration of the note, samples */
+	AMPLITUDE		amplitude;			/** The current amplitude */
 };
-typedef struct mhv_voice MHV_VOICE;
+typedef struct voice VOICE;
 
-class MHV_WaveGenerator : public MHV_DACListener {
+class WaveGenerator : public DACListener {
 private:
-	MHV_DAC		&_dac;
-	MHV_SAMPLE	*_samples;
+	DAConverter	&_dac;
+	SAMPLE		*_samples;
 	uint8_t		_sampleLength;
 	uint32_t	_sampleRate;
-	MHV_VOICE	*_voices;
+	VOICE	*_voices;
 	uint8_t		_voiceCount;
 
 	inline void renderBuffer();
-	inline MHV_AMPLITUDE currentAmplitude(MHV_VOICE &voice);
-	inline void switchPhase(MHV_VOICE &voice);
-	inline MHV_SAMPLE renderVoice(MHV_VOICE &voice);
+	inline AMPLITUDE currentAmplitude(VOICE &voice);
+	inline void switchPhase(VOICE &voice);
+	inline SAMPLE renderVoice(VOICE &voice);
 
 public:
-	MHV_WaveGenerator(MHV_DAC &dac, MHV_SAMPLE *sampleBuffer, uint8_t sampleLength, uint32_t sampleRate, MHV_VOICE *voices, uint8_t voiceCount);
-	void moreSamples(MHV_DAC *dac, MHV_SAMPLE *oldSamples, uint8_t sampleLength);
-	bool play(MHV_INSTRUMENT *instrument, uint16_t frequency, MHV_AMPLITUDE velocity, uint32_t duration);
+	WaveGenerator(DAConverter &dac, SAMPLE *sampleBuffer, uint8_t sampleLength, uint32_t sampleRate, VOICE *voices, uint8_t voiceCount);
+	void moreSamples(DAConverter *dac, SAMPLE *oldSamples, uint8_t sampleLength);
+	bool play(INSTRUMENT *instrument, uint16_t frequency, AMPLITUDE velocity, uint32_t duration);
 };
 
+}
 #endif /* MHVWAVEGENERATOR_H_ */

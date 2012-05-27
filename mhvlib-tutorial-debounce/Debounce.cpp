@@ -31,42 +31,44 @@
 
 #define MHVLIB_NEED_PURE_VIRTUAL
 
-#include <MHV_io.h>
-#include <MHV_Timer.h>
-#include <MHV_RTC.h>
-#include <MHV_Debounce.h>
+#include <mhvlib/io.h>
+#include <mhvlib/Timer.h>
+#include <mhvlib/RTC.h>
+#include <mhvlib/Debounce.h>
 
 #include <boards/MHV_io_Arduino.h>
 
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+using namespace mhvlib_bsd;
+
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	10
 
 // The RTC object we will use
-MHV_RTCTemplate<ALARM_COUNT> rtc;
+RTCImplementation<ALARM_COUNT> rtc;
 
 // Triggers for button presses
-class ButtonHandler : public MHV_DebounceListener {
-	void singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
-	void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor);
+class ButtonHandler : public DebounceListener {
+	void singlePress(uint8_t pcInt, TIMESTAMP *heldFor);
+	void heldDown(uint8_t pcInt, TIMESTAMP *heldFor);
 };
 
-void ButtonHandler::singlePress(UNUSED uint8_t pcInt, UNUSED MHV_TIMESTAMP *heldFor) {
-	mhv_pinToggle(MHV_ARDUINO_PIN_13);
+void ButtonHandler::singlePress(UNUSED uint8_t pcInt, UNUSED TIMESTAMP *heldFor) {
+	pinToggle(MHV_ARDUINO_PIN_13);
 }
 
-void ButtonHandler::heldDown(UNUSED uint8_t pcInt, UNUSED MHV_TIMESTAMP *heldFor) {
-	mhv_pinToggle(MHV_ARDUINO_PIN_13);
+void ButtonHandler::heldDown(UNUSED uint8_t pcInt, UNUSED TIMESTAMP *heldFor) {
+	pinToggle(MHV_ARDUINO_PIN_13);
 }
 
 ButtonHandler buttonHandler;
 
-MHV_PinChangeManager pinChangeManager;
+PinChangeManager pinChangeManager;
 MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 
 // Minimum time a button must be held to be considered a press (milliseconds)
@@ -78,7 +80,7 @@ MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 // Time to repeat the held down call while the button is held down (milliseconds)
 #define REPEAT_TIME		100
 
-MHV_Debounce debouncer(pinChangeManager, rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
+Debounce debouncer(pinChangeManager, rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
 
 MAIN {
 	// Disable all peripherals and enable just what we need
@@ -88,15 +90,15 @@ MAIN {
 	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 
 	// Enable output on pin 13 of the Arduino - this normally has an LED connected
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
+	setOutput(MHV_ARDUINO_PIN_13);
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	// B0 is pin 53 on the Arduino Mega, pin 8 on the Diecimilla
-	mhv_setInputPullup(MHV_PIN_B0);
+	setInputPullup(MHV_PIN_B0);
 	debouncer.assignKey(MHV_PIN_B0, buttonHandler);
 
 	// Enable global interrupts

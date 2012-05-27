@@ -53,6 +53,8 @@
 #define HD44780_TINSTR	39		// us
 #define HD44780_TRAM	430		// us
 
+namespace mhvlib_bsd {
+
 /**
  * A class for operating HD44780 based LCD displays (and compatible) in 4 bit mode
  * Data port layout:
@@ -80,8 +82,8 @@
  */
 template<uint16_t cols, uint16_t rows, uint8_t txBuffers, MHV_DECLARE_PIN(data),
 MHV_DECLARE_PIN(control), MHV_DECLARE_PIN(visual)>
-class MHV_Display_HD44780_Direct_Connect : public MHV_Display_HD44780<cols, rows, txBuffers>,
-	public MHV_TimerListener {
+class Display_HD44780_Direct_Connect : public Display_HD44780<cols, rows, txBuffers>,
+	public TimerListener {
 protected:
 	uint8_t			_brightness;
 	uint8_t			_contrast;
@@ -172,7 +174,7 @@ protected:
 		_SFR_IO8(controlOut) &= ~(HD44780_E | HD44780_RW);
 		_SFR_IO8(dataDir) |= HD44780_DB7;
 
-		MHV_Display_HD44780<cols, rows, txBuffers>::_mustDelay = true;
+		Display_HD44780<cols, rows, txBuffers>::_mustDelay = true;
 
 		return busy;
 	}
@@ -181,7 +183,7 @@ protected:
 	 * Delay function
 	 * No delays required as we can check whether the display is busy
 	 */
-	void CONST delay(UNUSED MHV_HD44780_COMMAND command) {
+	void CONST delay(UNUSED HD44780_COMMAND command) {
 		return;
 	}
 
@@ -189,7 +191,7 @@ public:
 	/**
 	 * Create a new driver for a directly connected HD44780 display
 	 */
-	MHV_Display_HD44780_Direct_Connect() {
+	Display_HD44780_Direct_Connect() {
 		// Set pins as output
 			_dataMask = 0x0f << dataPin;
 			_SFR_IO8(dataDir) |= _dataMask;
@@ -264,10 +266,11 @@ public:
 	 */
 	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 					bool left2right, bool scroll) {
-		MHV_Display_HD44780<cols, rows, txBuffers>::init(
+		Display_HD44780<cols, rows, txBuffers>::init(
 				false, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
 	}
 
 };
+}
 
 #endif /* MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_ */

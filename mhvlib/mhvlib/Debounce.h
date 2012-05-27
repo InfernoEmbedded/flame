@@ -53,38 +53,40 @@ ISR(PCINT2_vect) { \
 		MHV_DEBOUNCE_ASSIGN_PCINT(_mhvDebounce)
 #endif
 
-class MHV_DebounceListener {
+namespace mhvlib_bsd {
+
+class DebounceListener {
 public:
-	virtual void singlePress(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
-	virtual void heldDown(uint8_t pcInt, MHV_TIMESTAMP *heldFor) =0;
-//	virtual ~MHV_DebounceListener();
+	virtual void singlePress(uint8_t pcInt, TIMESTAMP *heldFor) =0;
+	virtual void heldDown(uint8_t pcInt, TIMESTAMP *heldFor) =0;
 };
 
-struct mhv_debouncePin {
-	uint8_t					previous;
-	MHV_TIMESTAMP			timestamp;
-	MHV_DebounceListener	*listener;
-	bool					held;
+struct debouncePin {
+	uint8_t				previous;
+	TIMESTAMP			timestamp;
+	DebounceListener	*listener;
+	bool				held;
 };
-typedef struct mhv_debouncePin MHV_DEBOUNCE_PIN;
+typedef struct debouncePin DEBOUNCE_PIN;
 
-class MHV_Debounce : MHV_PinEventListener {
+class Debounce : PinEventListener {
 protected:
-	MHV_RTC					&_rtc;
-	MHV_DEBOUNCE_PIN		_pins[MHV_PC_INT_COUNT];
-	MHV_TIMESTAMP			_debounceTime;
-	MHV_TIMESTAMP			_heldTime;
-	MHV_TIMESTAMP			_repeatTime;
-	MHV_PinChangeManager	&_pinChangeManager;
+	RTC					&_rtc;
+	DEBOUNCE_PIN		_pins[MHV_PC_INT_COUNT];
+	TIMESTAMP			_debounceTime;
+	TIMESTAMP			_heldTime;
+	TIMESTAMP			_repeatTime;
+	PinChangeManager	&_pinChangeManager;
 
 	void pinChanged(uint8_t pcInt, bool newState);
 	void initPin(uint8_t pinchangeInterrupt);
 
 public:
-	MHV_Debounce(MHV_PinChangeManager &pinChangeManager, MHV_RTC &rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
-	void assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener);
+	Debounce(PinChangeManager &pinChangeManager, RTC &rtc, uint16_t debounceTime, uint16_t heldTime, uint16_t repeatTime);
+	void assignKey(MHV_DECLARE_PIN(pin), DebounceListener &listener);
 	void deassignKey(int8_t pinPinChangeInterrupt);
 	void checkHeld();
 };
 
+}
 #endif /* MHV_DEBOUNCE_H_ */

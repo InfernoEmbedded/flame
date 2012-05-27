@@ -31,7 +31,7 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -41,10 +41,12 @@
 #define LEDS	32*5
 
 // Bring in the WS2801 driver
-#include <MHV_WS2801.h>
+#include <mhvlib/WS2801.h>
+
+using namespace mhvlib_bsd;
 
 // Instantiate the driver
-MHV_WS2801<MHV_PIN_B0, MHV_PIN_B1, LEDS> ws2801;
+WS2801<MHV_PIN_B0, MHV_PIN_B1, LEDS> ws2801;
 
 MAIN {
 	ws2801.setAll(128, 128, 128);

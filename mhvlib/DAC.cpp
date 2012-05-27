@@ -26,20 +26,21 @@
 
 #include <mhvlib/DAC.h>
 
+namespace mhvlib_bsd {
 
 /**
  * Create a new DAC to play samples by PWMing a timer
  * @param	timer		the timer to PWM - we will be calling setOutput2 on this to adjust the output
  * @param	listener	a listener we will notify when we need more samples to play
  */
-MHV_DAC::MHV_DAC(MHV_Timer &timer, MHV_DACListener &listener) :
+DAConverter::DAConverter(Timer &timer, DACListener &listener) :
 	_timer(timer),
 	_listener(listener) {}
 
 /**
  * Play the next sample if available
  */
-void MHV_DAC::alarm() {
+void DAConverter::alarm() {
 	if (_currentSample == _sampleLength) {
 		return;
 	}
@@ -54,7 +55,7 @@ void MHV_DAC::alarm() {
  * @param	samples			the samples to play
  * @param	sampleLength	the number of samples to play
  */
-void MHV_DAC::playSamples(MHV_SAMPLE *samples, uint8_t sampleLength) {
+void DAConverter::playSamples(SAMPLE *samples, uint8_t sampleLength) {
 	ATOMIC_BLOCK(ATOMIC_FORCEON) {
 		_samples = samples;
 		_sampleLength = sampleLength;
@@ -65,8 +66,10 @@ void MHV_DAC::playSamples(MHV_SAMPLE *samples, uint8_t sampleLength) {
 /**
  * Handle any non-interrupt context events for the DAC
  */
-void MHV_DAC::handleEvents() {
+void DAConverter::handleEvents() {
 	if (_currentSample == _sampleLength) {
 		_listener.moreSamples(this, _samples, _sampleLength);
 	}
+}
+
 }

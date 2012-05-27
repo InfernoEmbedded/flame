@@ -39,29 +39,31 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the MHV timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Bring in the MHV Voltage Regulator header
-#include <MHV_VoltageRegulator.h>
+#include <mhvlib/VoltageRegulator.h>
 
 // Bring in the MHV Serial header
-#include <MHV_HardwareSerial.h>
+#include <mhvlib/HardwareSerial.h>
 
 // Bring in the MHV ADC header
-#include <MHV_AD.h>
+#include <mhvlib/AD.h>
 
 // Bring in the power management header
 #include <avr/power.h>
+
+using namespace mhvlib_bsd;
 
 
 MHV_HARDWARESERIAL_CREATE(serial, 0, 2, MHV_USART0, 115200);
 
 // We will be operating using Timer1
 #define OUTPUT_PIN MHV_PIN_TIMER_1_B
-MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_16_PWM_FAST> vOutTimer;
+TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16> vOutTimer;
 
 #define TARGET_VOLTAGE 7000
 
@@ -75,7 +77,7 @@ MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_16_PWM_FAST> vOutTimer;
 // Which ADC channel to use
 #define ADC_CHANNEL	MHV_AD_CHANNEL_0
 
-MHV_VoltageRegulator<MHV_VREG_MODE_BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, MHV_AD_REFERENCE_1V1,
+VoltageRegulator<VREG_MODE::BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, MHV_AD_REFERENCE_1V1,
 	MHV_VREG_DIVIDER(R2/(R2+R1)), ADC_CHANNEL> regulator(vOutTimer);
 
 MAIN {
@@ -87,14 +89,13 @@ MAIN {
 // Enable interrupts
 	sei();
 
-	mhv_ad_setPrescaler(MHV_AD_PRESCALER_128);
-//	MHV_AD_ENABLE;
+	ad_setPrescaler(AD_PRESCALER::DIVIDE_BY_128);
 
 // Set the pin the transistor is connected to to output
-	mhv_setOutput(OUTPUT_PIN);
+	setOutput(OUTPUT_PIN);
 
 // Set the PWM prescaler to 1 (no prescaler)
-	vOutTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
+	vOutTimer.setPrescaler(TIMER_PRESCALER::PRESCALER_5_1);
 
 /* Set the TOP value of the PWM timer - this defines the resolution &
  * frequency of the PWM output. With a 16MHz clock, this gives us a PWM
@@ -106,7 +107,7 @@ MAIN {
  * It will turn off the output pin when the timer elapses, and turn it on
  * when it is reset
  */
-	vOutTimer.connectOutput2(MHV_TIMER_CONNECT_CLEAR);
+	vOutTimer.connectOutput2(TIMER_CONNECT::CLEAR);
 
 // Start the regulator
 	regulator.enable();

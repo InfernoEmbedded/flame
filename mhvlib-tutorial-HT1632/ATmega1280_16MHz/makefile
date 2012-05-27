@@ -47,9 +47,6 @@ endif
 LSS += \
 mhvlib-tutorial-HT1632.lss \
 
-FLASH_IMAGE += \
-mhvlib-tutorial-HT1632.hex \
-
 EEPROM_IMAGE += \
 mhvlib-tutorial-HT1632.eep \
 
@@ -74,12 +71,6 @@ mhvlib-tutorial-HT1632.lss: mhvlib-tutorial-HT1632.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
-mhvlib-tutorial-HT1632.hex: mhvlib-tutorial-HT1632.elf
-	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -O ihex mhvlib-tutorial-HT1632.elf  "mhvlib-tutorial-HT1632.hex"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 mhvlib-tutorial-HT1632.eep: mhvlib-tutorial-HT1632.elf
 	@echo 'Create eeprom image (ihex format)'
 	-avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex mhvlib-tutorial-HT1632.elf  "mhvlib-tutorial-HT1632.eep"
@@ -94,10 +85,10 @@ sizedummy: mhvlib-tutorial-HT1632.elf
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HT1632.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(ELFS)$(EEPROM_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-HT1632.elf
 	-@echo ' '
 
-secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
+secondary-outputs: $(LSS) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:

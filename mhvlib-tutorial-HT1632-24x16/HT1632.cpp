@@ -32,17 +32,15 @@
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include <MHV_io.h>
-#include <MHV_Font_SansSerif_10x8.h>
+#include <mhvlib/io.h>
+#include <mhvlib/Font_SansSerif_10x8.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
 #include <boards/MHV_io_Arduino.h>
 
-#define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A0
-#define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A1
-#define MHV_SHIFT_ORDER_MSB
-#include <MHV_Display_Holtek_HT1632.h>
+#include <mhvlib/Display_Holtek_HT1632.h>
 
+using namespace mhvlib_bsd;
 
 /* We will use the following pins to communicate with the display
  * Signal	328	1280		Arduino
@@ -55,41 +53,47 @@
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 10
 
-class DisplaySelector : public MHV_Display_Selector {
+class DisplaySelector: public Display_Selector {
 public:
-	void select(uint8_t moduleX, uint8_t moduleY, bool active);
-};
-
-/**
- * Callback for the display selection - sets CS lines appropriately
- * @param moduleX	the x coordinate of the module
- * @param moduleY	the y coordinate of the module
- */
-void DisplaySelector::select(uint8_t moduleX, UNUSED uint8_t moduleY, bool active) {
-	if (active) {
-		switch (moduleX) {
-		case 0:
-			mhv_pinOn(MHV_ARDUINO_PIN_A3);
-			mhv_pinOff(MHV_ARDUINO_PIN_A2);
-			break;
-		case 1:
-			mhv_pinOn(MHV_ARDUINO_PIN_A2);
-			mhv_pinOff(MHV_ARDUINO_PIN_A3);
-			break;
-		}
-	} else {
-		mhv_pinOn(MHV_ARDUINO_PIN_A2);
-		mhv_pinOn(MHV_ARDUINO_PIN_A3);
+	/**
+	 * Constructor - set the pins to output
+	 */
+	DisplaySelector() {
+		setOutput(MHV_ARDUINO_PIN_A2);
+		setOutput(MHV_ARDUINO_PIN_A3);
 	}
-}
+
+	/**
+	 * Callback for the display selection - sets CS lines appropriately
+	 * @param moduleX	the x coordinate of the module
+	 * @param moduleY	the y coordinate of the module
+	 */
+	void select(uint8_t moduleX, UNUSED uint8_t moduleY, bool active) {
+		if (active) {
+			switch (moduleX) {
+			case 0:
+				pinOn (MHV_ARDUINO_PIN_A3);
+				pinOff (MHV_ARDUINO_PIN_A2);
+				break;
+			case 1:
+				pinOn(MHV_ARDUINO_PIN_A2);
+				pinOff(MHV_ARDUINO_PIN_A3);
+				break;
+			}
+		} else {
+			pinOn (MHV_ARDUINO_PIN_A2);
+			pinOn (MHV_ARDUINO_PIN_A3);
+		}
+	}
+};
 
 DisplaySelector displaySelector;
 
-MHV_HOLTEK_HT1632_CREATE(display, MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, MHV_HT1632_PMOS_24x16,
+MHV_HOLTEK_HT1632_CREATE(display, MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, HT1632_MODE::PMOS_24x16,
 		24 * 16, 2, 1, displaySelector, TX_ELEMENTS_COUNT);
 
-#define DISPLAY_TYPE MHV_Display_Holtek_HT1632< \
-	MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, MHV_HT1632_PMOS_24x16, 2, 1, TX_ELEMENTS_COUNT>
+#define DISPLAY_TYPE Display_Holtek_HT1632< \
+	MHV_ARDUINO_PIN_A1, MHV_ARDUINO_PIN_A0, HT1632_MODE::PMOS_24x16, 2, 1, TX_ELEMENTS_COUNT>
 
 
 /**
@@ -191,7 +195,7 @@ void manualTextAnimation(DISPLAY_TYPE &display) {
 
 	int16_t startPos = offsetX;
 
-	while (display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("This was a triumph!"))) {
+	while (display.writeString_P(fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("This was a triumph!"))) {
 		display.flush();
 		_delay_ms(80);
 		display.clear(0);
@@ -204,10 +208,10 @@ void manualTextAnimation(DISPLAY_TYPE &display) {
 	bool toggle = true;
 	bool more = true;
 	while (more) {
-		more = display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("I'm making a note here: "));
+		more = display.writeString_P(fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("I'm making a note here: "));
 
 		if (toggle) {
-			display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS"));
+			display.writeString_P(fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS"));
 		}
 		toggle = !toggle;
 		offsetX = startPos--;
@@ -220,7 +224,7 @@ void manualTextAnimation(DISPLAY_TYPE &display) {
 	for (uint8_t i = 0; i < 25; i++) {
 		offsetX = 0;
 		if (toggle) {
-			display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS!!"));
+			display.writeString_P(fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("HUGE SUCCESS!!"));
 		}
 
 		display.flush();
@@ -232,18 +236,18 @@ void manualTextAnimation(DISPLAY_TYPE &display) {
 
 	for (offsetY = -7; offsetY < 16; ++offsetY) {
 		offsetX = 0;
-		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("It's hard to"));
+		display.writeString_P(fontSansSerif8x10, &offsetX, offsetY, 1, 0, PSTR("It's hard to"));
 		offsetX = 0;
-		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY - 8, 1, 0, PSTR("overstate my"));
+		display.writeString_P(fontSansSerif8x10, &offsetX, offsetY - 8, 1, 0, PSTR("overstate my"));
 		offsetX = 0;
-		display.writeString_P(mhv_fontSansSerif8x10, &offsetX, offsetY - 16, 1, 0, PSTR("satisfaction"));
+		display.writeString_P(fontSansSerif8x10, &offsetX, offsetY - 16, 1, 0, PSTR("satisfaction"));
 		display.flush();
 		_delay_ms(100);
 		display.clear(0);
 	}
 
 	offsetX = 0;
-	display.writeString_P(mhv_fontSansSerif8x10, &offsetX, 0, 1, 0, PSTR("satisfaction"));
+	display.writeString_P(fontSansSerif8x10, &offsetX, 0, 1, 0, PSTR("satisfaction"));
 	display.flush();
 	for (uint8_t i = 0; i < 3; i++) {
 		uint8_t brightness;
@@ -270,7 +274,7 @@ void textAnimation(DISPLAY_TYPE &display) {
 	display.write_P(PSTR("2. Here is string of text in PROGMEM"));
 	display.write("3. Here is a buffer containing some data//This will not show", 40);
 	display.write_P(PSTR("4. Here is a buffer in PROGMEM containing some data//This will not show"), 51);
-	while (display.txAnimation(mhv_fontSansSerif8x10, 0, 1, 0)) {
+	while (display.txAnimation(fontSansSerif8x10, 0, 1, 0)) {
 		display.flush();
 		_delay_ms(40);
 	}
@@ -280,12 +284,6 @@ void textAnimation(DISPLAY_TYPE &display) {
 MAIN {
 	// Disable all peripherals and enable just what we need
 	power_all_disable();
-
-	// Enable output on the display pins
-	mhv_setOutput(MHV_ARDUINO_PIN_A0);
-	mhv_setOutput(MHV_ARDUINO_PIN_A1);
-	mhv_setOutput(MHV_ARDUINO_PIN_A2);
-	mhv_setOutput(MHV_ARDUINO_PIN_A3);
 
 	// Enable global interrupts
 	sei();

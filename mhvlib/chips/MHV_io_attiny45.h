@@ -40,7 +40,7 @@
 #endif
 
 //						bits,type,                            ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,inputCapture1,counter,interrupt,intEnable
-#define MHV_TIMER8_0	8,   MHV_TIMER_5_PRESCALERS,          0x4a,    0x53,    0,       0x49,     0x48,     0,        0,            0x52,   0x59,     4
+#define MHV_TIMER8_0	8,   TIMER_TYPE::HAS_5_PRESCALERS,    0x4a,    0x53,    0,       0x49,     0x48,     0,        0,            0x52,   0x59,     4
 
 
 #define MHV_TIMER0_INTERRUPTS TIMER0_COMPA_vect, TIMER0_COMPB_vect, 0

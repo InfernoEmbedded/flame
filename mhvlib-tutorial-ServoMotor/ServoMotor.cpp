@@ -22,23 +22,25 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the Servo driver
-#include <MHV_ServoControl.h>
+#include <mhvlib/ServoControl.h>
 
 // Bring in the realtime clock driver
-#include <MHV_RTC.h>
+#include <mhvlib/RTC.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
+
+using namespace mhvlib_bsd;
 
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	4
@@ -46,26 +48,24 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 MHV_RTC_CREATE (rtc, ALARM_COUNT);
 
 // Create the timer that the servo controller will manage
-MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_REPETITIVE>servoTimer;
+TimerImplementation<MHV_TIMER16_1, TIMER_MODE::REPETITIVE>servoTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER1_INTERRUPTS);
 
 // Create the servo controller
 #define SERVO_COUNT 1
 MHV_SERVOCONTROL_CREATE(servos, servoTimer, SERVO_COUNT);
 
-class MoveServos : public MHV_TimerListener {
-	void alarm();
-};
-
+class MoveServos: public TimerListener {
 #define SERVO_INCREMENT 1000
-void MoveServos::alarm() {
-	static uint16_t position = 0;
+	void alarm() {
+		static uint16_t position = 0;
 
 // Increment the servo, we don't mind if it wraps, the motor will just move back to the start
-	position += SERVO_INCREMENT;
+		position += SERVO_INCREMENT;
 
-	servos.positionServo(0, position);
-}
+		servos.positionServo(0, position);
+	}
+};
 
 MoveServos moveServos;
 
@@ -79,7 +79,7 @@ MAIN {
 
 
 // Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 

@@ -26,19 +26,21 @@
  */
 #include <mhvlib/ADC.h>
 
+namespace mhvlib_bsd {
+
 /**
  * An event manager for ADC events
  * @param	adcs		ADC event handles
  * @param	adcCount	The number of ADC events we can handle (must match adcs)
  */
 
-MHV_ADC::MHV_ADC(MHV_EVENT_ADC *adcs, uint8_t adcCount) {
+MHV_ADC::MHV_ADC(EVENT_ADC *adcs, uint8_t adcCount) {
 	_adcs = adcs;
 	_adcCount = adcCount;
 
 	_adcChannel = -1;
 
-	mhv_memClear(_adcs, sizeof(*_adcs), adcCount);
+	memClear(_adcs, sizeof(*_adcs), adcCount);
 }
 
 /**
@@ -57,7 +59,7 @@ void MHV_ADC::adc() {
  * @param	listener	an MHV_ADCListener to notify when an ADC reading has been completed
  */
 #pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
-void MHV_ADC::registerListener(int8_t channel, MHV_ADCListener &listener) {
+void MHV_ADC::registerListener(int8_t channel, ADCListener &listener) {
 	for (uint8_t i = 0; i < _adcCount; i++) {
 		if (_adcs[i].channel == -1) {
 			_adcs[i].channel = channel;
@@ -123,7 +125,7 @@ void MHV_ADC::asyncRead(int8_t channel, uint8_t reference) {
  * Set the ADC clock prescaler
  * @param	prescaler	the prescaler to use
  */
-void MHV_ADC::setPrescaler(MHV_AD_PRESCALER prescaler) {
+void MHV_ADC::setPrescaler(AD_PRESCALER prescaler) {
 	ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
 }
 
@@ -143,4 +145,6 @@ void MHV_ADC::handleEvents() {
 			}
 		}
 	}
+}
+
 }

@@ -47,15 +47,17 @@
 
 #include <avr/interrupt.h>
 #include <util/delay.h>
-#include <MHV_io.h>
-#include <MHV_Display_HD44780_Direct_Connect.h>
-#include <MHV_Timer.h>
+#include <mhvlib/io.h>
+#include <mhvlib/Display_HD44780_Direct_Connect.h>
+#include <mhvlib/Timer.h>
 #include <avr/pgmspace.h>
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+using namespace mhvlib_bsd;
+
 // A timer we will use to tick the display
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20
@@ -68,13 +70,13 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #define	LEFT2RIGHT	true
 #define	SCROLL		false
 
-MHV_Display_HD44780_Direct_Connect<COLUMNS, ROWS, TX_COUNT, MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3> display;
+Display_HD44780_Direct_Connect<COLUMNS, ROWS, TX_COUNT, MHV_PIN_B0, MHV_PIN_C0, MHV_PIN_C3> display;
 
 /**
  * Render text using the asynchronous buffers
  * @param	display	the display to draw on
  */
-void textAnimation(MHV_Device_TX *display) {
+void textAnimation(Device_TX *display) {
 	display->write("1. Here is a string of text");
 	display->write_P(PSTR("2. Here is string of text in PROGMEM"));
 	display->write("3. Here is a buffer containing some data//This will not show", 40);
@@ -92,16 +94,16 @@ MAIN {
 	sei();
 
 	// Turn power on
-	mhv_setOutput(MHV_PIN_C5);
-	mhv_pinOn(MHV_PIN_C5);
+	setOutput(MHV_PIN_C5);
+	pinOn(MHV_PIN_C5);
 
 	// Enable board LED on
-	mhv_setOutput(MHV_PIN_B5);
+	setOutput(MHV_PIN_B5);
 
 	display.init(MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
 
 	// Configure the tick timer to tick every 0.5ms (at 20MHz) to drive the backlight intensity and animation
-	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_256, 36, 0);
+	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_256, 36, 0);
 	tickTimer.setListener1(display);
 	tickTimer.enable();
 

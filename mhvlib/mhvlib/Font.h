@@ -12,7 +12,9 @@
  * at the bottom of the character, while the least significant is at the top
  */
 
-struct mhv_font {
+namespace mhvlib_bsd {
+
+struct font {
 	uint8_t		maxWidth;		// maximum width of a character
 	uint8_t		maxHeight;		// maximum height of a character
 	char		firstChar;		// the first character in the font
@@ -23,6 +25,7 @@ struct mhv_font {
 	const uint16_t *offsets;
 	const uint8_t *fontData; // most significant bit at the bottom
 };
-typedef struct mhv_font MHV_FONT;
+typedef struct font FONT;
 
+}
 #endif /* MHV_FONT_H */

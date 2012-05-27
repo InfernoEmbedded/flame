@@ -80,6 +80,8 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
+namespace mhvlib_bsd {
+
 typedef uint16_t mhv_register;
 
 struct mhv_pin {
@@ -147,7 +149,7 @@ typedef struct mhv_pin MHV_PIN;
  * Set an output pin on
  * @param	pin		the pin to turn on
  */
-INLINE void mhv_pinOn(MHV_PIN *pin) {
+INLINE void pinOn(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->output) |= pin->bit;
 }
 
@@ -155,9 +157,9 @@ INLINE void mhv_pinOn(MHV_PIN *pin) {
  * Set an output pin on atomically (used if the state of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to turn on
  */
-INLINE void mhv_pinOnAtomic(MHV_PIN *pin) {
+INLINE void pinOnAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOn(pin);
+		pinOn(pin);
 	}
 }
 
@@ -166,7 +168,7 @@ INLINE void mhv_pinOnAtomic(MHV_PIN *pin) {
  * Set an output pin on
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinOn(MHV_DECLARE_PIN(pin)) {
+INLINE void pinOn(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinOut) |= _BV(pinPin);
 }
 
@@ -175,9 +177,9 @@ INLINE void mhv_pinOn(MHV_DECLARE_PIN(pin)) {
  * Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinOnAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void pinOnAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOn(MHV_PIN_PARMS(pin));
+		pinOn(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -185,7 +187,7 @@ INLINE void mhv_pinOnAtomic(MHV_DECLARE_PIN(pin)) {
  * Set an output pin off
  * @param	pin		the pin to turn off
  */
-INLINE void mhv_pinOff(MHV_PIN *pin) {
+INLINE void pinOff(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->output) &= ~(pin->bit);
 }
 
@@ -193,9 +195,9 @@ INLINE void mhv_pinOff(MHV_PIN *pin) {
  * Set an output pin off  (used if the state of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to turn off
  */
-INLINE void mhv_pinOffAtomic(MHV_PIN *pin) {
+INLINE void pinOffAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOff(pin);
+		pinOff(pin);
 	}
 }
 
@@ -204,7 +206,7 @@ INLINE void mhv_pinOffAtomic(MHV_PIN *pin) {
  * Set an output pin off
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinOff(MHV_DECLARE_PIN(pin)) {
+INLINE void pinOff(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinOut) &= ~_BV(pinPin);
 }
 
@@ -212,9 +214,9 @@ INLINE void mhv_pinOff(MHV_DECLARE_PIN(pin)) {
  * Set an output pin off (used if the state of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinOffAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void pinOffAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinOff(MHV_PIN_PARMS(pin));
+		pinOff(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -223,7 +225,7 @@ INLINE void mhv_pinOffAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		an MHV_PIN_* macro
  * @param	state	true to turn the pin on
  */
-INLINE void mhv_pinSet(MHV_DECLARE_PIN(pin), bool state) {
+INLINE void pinSet(MHV_DECLARE_PIN(pin), bool state) {
 	_MMIO_BYTE(pinOut) = (_MMIO_BYTE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
 }
 
@@ -233,9 +235,9 @@ INLINE void mhv_pinSet(MHV_DECLARE_PIN(pin), bool state) {
  * @param	pin		an MHV_PIN_* macro
  * @param	state	true to turn the pin on
  */
-INLINE void mhv_pinSetAtomic(MHV_DECLARE_PIN(pin), bool state) {
+INLINE void pinSetAtomic(MHV_DECLARE_PIN(pin), bool state) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinSet(MHV_PIN_PARMS(pin), state);
+		pinSet(MHV_PIN_PARMS(pin), state);
 	}
 }
 
@@ -243,7 +245,7 @@ INLINE void mhv_pinSetAtomic(MHV_DECLARE_PIN(pin), bool state) {
  * Set a pin to be an output
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setOutput(MHV_PIN *pin) {
+INLINE void setOutput(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->dir) |= pin->bit;
 }
 
@@ -251,9 +253,9 @@ INLINE void mhv_setOutput(MHV_PIN *pin) {
  * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setOutputAtomic(MHV_PIN *pin) {
+INLINE void setOutputAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setOutput(pin);
+		setOutput(pin);
 	}
 }
 
@@ -261,7 +263,7 @@ INLINE void mhv_setOutputAtomic(MHV_PIN *pin) {
  * Set a pin to be an output
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setOutput(MHV_DECLARE_PIN(pin)) {
+INLINE void setOutput(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinDir) |= _BV(pinPin);
 }
 
@@ -269,9 +271,9 @@ INLINE void mhv_setOutput(MHV_DECLARE_PIN(pin)) {
  * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
 */
-INLINE void mhv_setOutputAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void setOutputAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setOutput(MHV_PIN_PARMS(pin));
+		setOutput(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -279,7 +281,7 @@ INLINE void mhv_setOutputAtomic(MHV_DECLARE_PIN(pin)) {
  * Set a pin to be an input
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setInput(MHV_PIN *pin) {
+INLINE void setInput(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
 	_MMIO_BYTE(pin->output) &= ~(pin->bit);
 }
@@ -288,9 +290,9 @@ INLINE void mhv_setInput(MHV_PIN *pin) {
  * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setInputAtomic(MHV_PIN *pin) {
+INLINE void setInputAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInput(pin);
+		setInput(pin);
 	}
 }
 
@@ -298,7 +300,7 @@ INLINE void mhv_setInputAtomic(MHV_PIN *pin) {
  * Set a pin to be an input
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setInput(MHV_DECLARE_PIN(pin)) {
+INLINE void setInput(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinDir) &= ~_BV(pinPin);
 	_MMIO_BYTE(pinOut) &= ~_BV(pinPin);
 }
@@ -307,9 +309,9 @@ INLINE void mhv_setInput(MHV_DECLARE_PIN(pin)) {
  * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setInputAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void setInputAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInput(MHV_PIN_PARMS(pin));
+		setInput(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -317,7 +319,7 @@ INLINE void mhv_setInputAtomic(MHV_DECLARE_PIN(pin)) {
  * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setInputPullup(MHV_PIN *pin) {
+INLINE void setInputPullup(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
 	_MMIO_BYTE(pin->output) |= pin->bit;
 }
@@ -326,9 +328,9 @@ INLINE void mhv_setInputPullup(MHV_PIN *pin) {
  * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to become an output
  */
-INLINE void mhv_setInputPullupAtomic(MHV_PIN *pin) {
+INLINE void setInputPullupAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInputPullup(pin);
+		setInputPullup(pin);
 	}
 }
 
@@ -338,7 +340,7 @@ INLINE void mhv_setInputPullupAtomic(MHV_PIN *pin) {
  * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setInputPullup(MHV_DECLARE_PIN(pin)) {
+INLINE void setInputPullup(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinDir) &= ~_BV(pinPin);
 	_MMIO_BYTE(pinOut) |= _BV(pinPin);
 }
@@ -347,9 +349,9 @@ INLINE void mhv_setInputPullup(MHV_DECLARE_PIN(pin)) {
  * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_setInputPullupAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void setInputPullupAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_setInputPullup(MHV_PIN_PARMS(pin));
+		setInputPullup(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -357,7 +359,7 @@ INLINE void mhv_setInputPullupAtomic(MHV_DECLARE_PIN(pin)) {
  * Toggle a pin
  * @param	pin		the pin to toggle
  */
-INLINE void mhv_pinToggle(MHV_PIN *pin) {
+INLINE void pinToggle(MHV_PIN *pin) {
 	_MMIO_BYTE(pin->input) |= pin->bit;
 }
 
@@ -365,7 +367,7 @@ INLINE void mhv_pinToggle(MHV_PIN *pin) {
  * Toggle a pin (used if the state of a pin on the same port is altered in an interrupt handler)
  * @param	pin		the pin to toggle
  */
-INLINE void mhv_pinToggleAtomic(MHV_PIN *pin) {
+INLINE void pinToggleAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		_MMIO_BYTE(pin->input) |= pin->bit;
 	}
@@ -375,7 +377,7 @@ INLINE void mhv_pinToggleAtomic(MHV_PIN *pin) {
  * Toggle a pin
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinToggle(MHV_DECLARE_PIN(pin)) {
+INLINE void pinToggle(MHV_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinIn) |= _BV(pinPin);
 }
 
@@ -383,9 +385,9 @@ INLINE void mhv_pinToggle(MHV_DECLARE_PIN(pin)) {
  * Toggle a pin (used if the direction of a pin on the same port is altered in an interrupt handler)
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE void mhv_pinToggleAtomic(MHV_DECLARE_PIN(pin)) {
+INLINE void pinToggleAtomic(MHV_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		mhv_pinToggle(MHV_PIN_PARMS(pin));
+		pinToggle(MHV_PIN_PARMS(pin));
 	}
 }
 
@@ -393,7 +395,7 @@ INLINE void mhv_pinToggleAtomic(MHV_DECLARE_PIN(pin)) {
  * Read a pin
  * @param	pin		the pin to read
  */
-INLINE bool mhv_pinRead(MHV_PIN *pin) {
+INLINE bool pinRead(MHV_PIN *pin) {
 	return _MMIO_BYTE(pin->input) & pin->bit;
 }
 
@@ -402,7 +404,7 @@ INLINE bool mhv_pinRead(MHV_PIN *pin) {
  * Read a pin
  * @param	pin		an MHV_PIN_* macro
  */
-INLINE bool mhv_pinRead(MHV_DECLARE_PIN(pin)) {
+INLINE bool pinRead(MHV_DECLARE_PIN(pin)) {
 	return _MMIO_BYTE(pinIn) & _BV(pinPin);
 }
 
@@ -416,19 +418,76 @@ INLINE bool mhv_pinRead(MHV_DECLARE_PIN(pin)) {
 #define MHV_BYTESIZEOF(_mhvItem) (uint8_t)(sizeof(_mhvItem))
 
 /**
+ * Cheap memset
+ * @param	bufIn	a pointer to the buffer
+ * @param	value	the value to set
+ * @param	len		the length of an element in the buffer
+ * @param	count	the number of elements in the buffer
+ */
+INLINE void memSet(void *bufIn, char value, uint8_t len, uint8_t count) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < count; i++) {
+		for (uint8_t j = 0; j < len; j++, buf++) {
+			*buf = value;
+		}
+	}
+}
+
+/**
+ * Cheap memset
+ * @param	bufIn	a pointer to the buffer
+ * @param	value	the value to set
+ * @param	len		the length of the buffer
+ */
+INLINE void memSet(void *bufIn, char value, uint8_t len) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < len; i++, buf++) {
+		*buf = value;
+	}
+}
+
+
+/**
+ * Cheap memset with 16 bit lengths
+ * @param	bufIn	a pointer to the buffer
+ * @param	value	the value to set
+ * @param	len		the length of an element in the buffer
+ * @param	count	the number of elements in the buffer
+ */
+INLINE void memSet16(void *bufIn, char value, uint8_t len, uint16_t count) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < count; i++) {
+		for (uint8_t j = 0; j < len; j++, buf++) {
+			*buf = value;
+		}
+	}
+}
+
+/**
+ * Cheap memset with 16 bit lengths
+ * @param	bufIn	a pointer to the buffer
+ * @param	value	the value to set
+ * @param	len		the length of the buffer
+ */
+INLINE void memSet16(void *bufIn, char value, uint16_t len) {
+	char *buf = (char *)bufIn;
+
+	for (uint8_t i = 0; i < len; i++, buf++) {
+		*buf = value;
+	}
+}
+
+/**
  * Cheap memset to 0
  * @param	bufIn	a pointer to the buffer
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
-	char *buf = (char *)bufIn;
-
-	for (uint8_t i = 0; i < count; i++) {
-		for (uint8_t j = 0; j < len; j++, buf++) {
-			*buf = 0;
-		}
-	}
+INLINE void memClear(void *bufIn, uint8_t len, uint8_t count) {
+	memSet(bufIn, 0, len, count);
 }
 
 /**
@@ -436,7 +495,7 @@ INLINE void mhv_memClear(void *bufIn, uint8_t len, uint8_t count) {
  * @param	bufIn	a pointer to the buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memClear(void *bufIn, uint8_t len) {
+INLINE void memClear(void *bufIn, uint8_t len) {
 	char *buf = (char *)bufIn;
 
 	for (uint8_t i = 0; i < len; i++, buf++) {
@@ -451,7 +510,7 @@ INLINE void mhv_memClear(void *bufIn, uint8_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memClear16(void *bufIn, uint8_t len, uint16_t count) {
+INLINE void memClear16(void *bufIn, uint8_t len, uint16_t count) {
 	char *buf = (char *)bufIn;
 
 	for (uint8_t i = 0; i < count; i++) {
@@ -466,7 +525,7 @@ INLINE void mhv_memClear16(void *bufIn, uint8_t len, uint16_t count) {
  * @param	bufIn	a pointer to the buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memClear16(void *bufIn, uint16_t len) {
+INLINE void memClear16(void *bufIn, uint16_t len) {
 	char *buf = (char *)bufIn;
 
 	for (uint8_t i = 0; i < len; i++, buf++) {
@@ -482,7 +541,7 @@ INLINE void mhv_memClear16(void *bufIn, uint16_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memcpy(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
+INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -499,7 +558,7 @@ INLINE void mhv_memcpy(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memcpy(void *bufOut, void *bufIn, uint8_t len) {
+INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -516,7 +575,7 @@ INLINE void mhv_memcpy(void *bufOut, void *bufIn, uint8_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memcpy16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
+INLINE void memCopy16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -533,7 +592,7 @@ INLINE void mhv_memcpy16(void *bufOut, void *bufIn, uint8_t len, uint16_t count)
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memcpy16(void *bufOut, void *bufIn, uint16_t len) {
+INLINE void memCopy16(void *bufOut, void *bufIn, uint16_t len) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -549,7 +608,7 @@ INLINE void mhv_memcpy16(void *bufOut, void *bufIn, uint16_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
+INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
 	size_t offset = (size_t)len * count;
 	char *src = (char *)bufIn + offset;
 	char *dst = (char *)bufOut + offset;
@@ -567,7 +626,7 @@ INLINE void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint8_t 
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint8_t len) {
+INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len) {
 	char *src = (char *)bufIn + len;
 	char *dst = (char *)bufOut + len;
 
@@ -584,7 +643,7 @@ INLINE void mhv_memcpyTailFirst(void *bufOut, void *bufIn, uint8_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void mhv_memcpyTailFirst16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
+INLINE void memCopyTailFirst16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
 	size_t offset = (size_t)len * count;
 	char *src = (char *)bufIn + offset;
 	char *dst = (char *)bufOut + offset;
@@ -602,7 +661,7 @@ INLINE void mhv_memcpyTailFirst16(void *bufOut, void *bufIn, uint8_t len, uint16
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void mhv_memcpyTailFirst16(void *bufOut, void *bufIn, uint16_t len) {
+INLINE void memCopyTailFirst16(void *bufOut, void *bufIn, uint16_t len) {
 	char *src = (char *)bufIn + len;
 	char *dst = (char *)bufOut + len;
 
@@ -708,5 +767,7 @@ typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
 
 #define _mhv_enableExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvInterruptMode) \
 	*mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | (mhvInterruptMode << mhvModeBitshift)
+
+}
 
 #endif /* MHV_IO_H_ */

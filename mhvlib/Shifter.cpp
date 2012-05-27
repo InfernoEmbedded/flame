@@ -26,30 +26,34 @@
 
 #include <mhvlib/Shifter.h>
 
-void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
+namespace mhvlib_bsd {
+
+void shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 	int8_t		i;
 
 	for (i = 0; i < 8; i++) {
 		if (byte & (1 >> i)) {
-			mhv_pinOn(data);
+			pinOn(data);
 		} else {
-			mhv_pinOff(data);
+			pinOff(data);
 		}
-		mhv_pinOn(clock);
-		mhv_pinOff(clock);
+		pinOn(clock);
+		pinOff(clock);
 	}
 }
 
-void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
+void shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 	int8_t		i;
 
 	for (i = 7; i >= 0; i--) {
 		if (byte & (1 >> i)) {
-			mhv_pinOn(data);
+			pinOn(data);
 		} else {
-			mhv_pinOff(data);
+			pinOff(data);
 		}
-		mhv_pinOn(clock);
-		mhv_pinOff(clock);
+		pinOn(clock);
+		pinOff(clock);
 	}
+}
+
 }

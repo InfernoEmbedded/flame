@@ -47,15 +47,16 @@
  * @param	_mhvServoCount	the number of servos that need to be controlled
  */
 #define MHV_SERVOCONTROL_CREATE(_mhvObjName, _mhvServoTimer, _mhvServoCount) \
-	MHV_SERVOCONTROLBLOCK _mhvObjName ## ControlBlocks[_mhvServoCount]; \
-	MHV_ServoControl _mhvObjName(_mhvServoTimer, _mhvObjName ## ControlBlocks, _mhvServoCount);
+	SERVOCONTROLBLOCK _mhvObjName ## ControlBlocks[_mhvServoCount]; \
+	ServoControl _mhvObjName(_mhvServoTimer, _mhvObjName ## ControlBlocks, _mhvServoCount);
 
+namespace mhvlib_bsd {
 
 
 /* The servoOrder member is not really part of the control block, but instead is an easy way
  * to have an array of N things we can use to specify the order the servos should be serviced
  */
-struct MHV_ServoControlBlock {
+struct ServoControlBlock {
 	mhv_register		port;
 	uint8_t				pin;
 	uint16_t			position;
@@ -63,19 +64,19 @@ struct MHV_ServoControlBlock {
 	int16_t				clockMaxOffset;
 	uint8_t				servoOrder; // This isn't really a member of the control structure
 };
-typedef struct MHV_ServoControlBlock MHV_SERVOCONTROLBLOCK;
+typedef struct ServoControlBlock SERVOCONTROLBLOCK;
 
-class MHV_ServoControl : public MHV_TimerListener {
+class ServoControl : public TimerListener {
 private:
-	MHV_Timer 			&_timer;
-	MHV_SERVOCONTROLBLOCK 	*_controlBlocks;
+	Timer 					&_timer;
+	SERVOCONTROLBLOCK 		*_controlBlocks;
 	uint8_t					_count;
 	volatile uint8_t		_nextServoIndex;
 
 	void sortServos();
 
 public:
-	MHV_ServoControl(MHV_Timer &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
+	ServoControl(Timer &timer, SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
 	void addServo(uint8_t servo, MHV_DECLARE_PIN(pin));
 	void tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
 	void positionServo(uint8_t servo, uint16_t position);
@@ -85,6 +86,8 @@ public:
 	void disable();
 	void alarm();
 };
+
+}
 
 #endif
 

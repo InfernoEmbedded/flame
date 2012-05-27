@@ -30,15 +30,15 @@
 
 #include <mhvlib/Timer.h>
 
-class MHV_SoftwarePWMListener {
+namespace mhvlib_bsd {
+
+class SoftwarePWMListener {
 public:
 	uint8_t	when;
 
 	virtual void reset() =0;
 	virtual void set() =0;
 	virtual bool check() =0;
-
-//	virtual ~MHV_SoftwarePWMListener();
 
 	void setDutyCycle(uint8_t dutyCycle) {
 		when = dutyCycle;
@@ -50,37 +50,37 @@ public:
 };
 
 template<MHV_DECLARE_PIN(pin)>
-class MHV_SoftwarePWMPin : public MHV_SoftwarePWMListener {
+class SoftwarePWMPin : public SoftwarePWMListener {
 public:
-	MHV_SoftwarePWMPin() {
-		mhv_setOutput(MHV_PIN_PARMS(pin));
+	SoftwarePWMPin() {
+		setOutput(MHV_PIN_PARMS(pin));
 	}
 	void reset() {
-		mhv_pinOff(MHV_PIN_PARMS(pin));
+		pinOff(MHV_PIN_PARMS(pin));
 	}
 	void set() {
-		mhv_pinOn(MHV_PIN_PARMS(pin));
+		pinOn(MHV_PIN_PARMS(pin));
 	}
 	bool check() {
-		return mhv_pinRead(MHV_PIN_PARMS(pin));
+		return pinRead(MHV_PIN_PARMS(pin));
 	}
 };
 
 
 template<uint8_t listenerCount=8>
-class MHV_SoftwarePWM : public MHV_TimerListener {
+class SoftwarePWM : public TimerListener {
 private:
-	MHV_Timer					&_timer;
-	MHV_SoftwarePWMListener		*_listeners[listenerCount];
-	uint8_t						_listenerCount;
-	uint8_t						_ticks;
+	Timer					&_timer;
+	SoftwarePWMListener		*_listeners[listenerCount];
+	uint8_t					_listenerCount;
+	uint8_t					_ticks;
 
 public:
 	/**
 	 * Create a new software PWM manager
 	 * @param timer			the timer to drive the manager with
 	 */
-	MHV_SoftwarePWM(MHV_Timer &timer) :
+	SoftwarePWM(Timer &timer) :
 		_timer(timer),
 		_listenerCount(0),
 		_ticks(0) {}
@@ -90,7 +90,7 @@ public:
 	 * @param 	listener		the listener to register
 	 * @return the index of listener, or 0 if the add failed
 	 */
-	uint8_t addListener(MHV_SoftwarePWMListener &listener) {
+	uint8_t addListener(SoftwarePWMListener &listener) {
 		if (_listenerCount == listenerCount) {
 			return 0;
 		}
@@ -120,5 +120,5 @@ public:
 	}
 };
 
-
+}
 #endif /* MHV_SOFTWAREPWM_H_ */

@@ -52,8 +52,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1212147422" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.189496068" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1465055477" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.189496068" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra -std=c++11" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1465055477" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.668830681" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.134696254" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -118,8 +118,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.def.519376877" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1905165081" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1820555620" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1905165081" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra -std=c++11" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1820555620" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.489499579" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1269073437" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -184,8 +184,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1329090848" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.535494230" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1393628290" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.535494230" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra -std=c++11" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1393628290" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.1862290180" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.220794924" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -250,8 +250,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.def.651756960" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.631315712" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.566646223" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.631315712" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra -std=c++11" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.566646223" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.874436386" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1533073610" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>
@@ -316,8 +316,8 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.def.33036460" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1143702773" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-fpermissive -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1701320235" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.1143702773" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra -std=c++11" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1701320235" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.51723959" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.1912918150" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>

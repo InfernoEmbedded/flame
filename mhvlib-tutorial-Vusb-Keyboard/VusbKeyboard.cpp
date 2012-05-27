@@ -23,30 +23,33 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the USB Keyboard driver
-#include <MHV_VusbTypist.h>
+#include <mhvlib/VusbTypist.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
 
+using namespace mhvlib_bsd;
+using namespace mhvlib_gpl;
+
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
@@ -56,15 +59,15 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
  */
 #define ALARM_COUNT	4
 // The RTC object we will use
-MHV_RTCTemplate<ALARM_COUNT> rtc;
+RTCImplementation<ALARM_COUNT> rtc;
 
 // The number of buffers we can print to
 #define TX_BUFFERS	4
 
 // The USB Keyboard driver
-MHV_VusbTypist<TX_BUFFERS> typist(rtc);
+VusbTypist<TX_BUFFERS> typist(rtc);
 
-class TypeString : public MHV_TimerListener {
+class TypeString : public TimerListener {
 public:
 	void alarm();
 };
@@ -80,10 +83,10 @@ MAIN {
 	power_all_disable();
 #ifdef ATTINY
 	power_timer0_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_5_64
+#define PRESCALER	TIMER_PRESCALER::PRESCALER_5_64
 #else
 	power_timer2_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_7_64
+#define PRESCALER	TIMER_PRESCALER::PRESCALER_7_64
 #endif
 
 	set_sleep_mode(SLEEP_MODE_IDLE);

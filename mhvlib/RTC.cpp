@@ -27,6 +27,8 @@
 
 #include <mhvlib/RTC.h>
 
+namespace mhvlib_bsd {
+
 /**
  * A Realtime clock
  *
@@ -47,7 +49,7 @@
  * @param	second	the second timestamp
  * @return true if the first timestamp is less than the second
  */
-bool PURE mhv_timestampLessThan(const MHV_TIMESTAMP &first, const MHV_TIMESTAMP &second) {
+bool PURE timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) {
 	if (first.timestamp < second.timestamp) {
 		return true;
 	}
@@ -73,7 +75,7 @@ bool PURE mhv_timestampLessThan(const MHV_TIMESTAMP &first, const MHV_TIMESTAMP 
  * @param	second	the second timestamp
  * @return true if the first timestamp is greater than or equal to the second
  */
-bool PURE mhv_timestampGreaterThanOrEqual(const MHV_TIMESTAMP &first, const MHV_TIMESTAMP &second) {
+bool PURE timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second) {
 	if (first.timestamp > second.timestamp) {
 		return true;
 	}
@@ -94,7 +96,7 @@ bool PURE mhv_timestampGreaterThanOrEqual(const MHV_TIMESTAMP &first, const MHV_
 /**
  *  Determine if a year is a leap year
  */
-bool CONST mhv_isLeapYear(uint16_t year) {
+bool CONST isLeapYear(uint16_t year) {
 	if ((0 == year % 4 && year % 100) || 0 == year % 400) {
 		return true;
 	}
@@ -107,7 +109,7 @@ bool CONST mhv_isLeapYear(uint16_t year) {
  * @param seconds		the number of seconds to increment by
  * @param milliseconds	the number of milliseconds to increment by
  */
-void mhv_timestampIncrement(MHV_TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds) {
+void timestampIncrement(TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds) {
 	timestamp.milliseconds += milliseconds;
 
 	while (timestamp.milliseconds >= 1000) {
@@ -140,12 +142,12 @@ const uint8_t mhv_daysInMonthArray[] PROGMEM = {
  * @param year the year
  * @return the number of days
  */
-uint8_t CONST mhv_daysInMonth(MHV_MONTH month, uint16_t year) {
-	if (MHV_FEBRUARY == month && mhv_isLeapYear(year)) {
+uint8_t CONST daysInMonth(MONTH month, uint16_t year) {
+	if (MONTH::FEBRUARY == month && isLeapYear(year)) {
 		return 29;
 	}
 
-	return pgm_read_byte(mhv_daysInMonthArray + month - 1);
+	return pgm_read_byte(mhv_daysInMonthArray + (month - 1));
 }
 
-
+}

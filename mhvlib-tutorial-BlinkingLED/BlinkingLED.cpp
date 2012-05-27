@@ -29,7 +29,7 @@
  */
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in Arduino defines
 #include <boards/MHV_io_Arduino.h>
@@ -38,22 +38,25 @@
 #include <util/delay.h>
 #include <avr/power.h>
 
+using namespace mhvlib_bsd;
+
+
 MAIN {
 // Disable all peripherals and enable just what we need
 	power_all_disable();
 
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
+	setOutput(MHV_ARDUINO_PIN_13);
 
 	for (;;) {
 // Turn off the LED
-		mhv_pinOff(MHV_ARDUINO_PIN_13);
+		pinOff(MHV_ARDUINO_PIN_13);
 
 // Sleep for 1/3 sec
 		_delay_ms(333);
 
 // Turn on the LED
-		mhv_pinOn(MHV_ARDUINO_PIN_13);
+		pinOn(MHV_ARDUINO_PIN_13);
 
 // Sleep for 1/3 sec
 		_delay_ms(333);

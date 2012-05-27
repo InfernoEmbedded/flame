@@ -31,34 +31,37 @@
 #include <mhvlib/io.h>
 #include <mhvlib/RTC.h>
 
-class MHV_StepperListener {
+namespace mhvlib_bsd {
+
+class StepperListener {
 public:
 	virtual void moveComplete(int32_t position) =0;
-//	virtual ~MHV_StepperListener();
 };
 
-class MHV_StepperMotor : public MHV_TimerListener {
+class StepperMotor : public TimerListener {
 private:
-	int32_t				_position;
-	MHV_RTC				&_rtc;
-	bool				_moving;
-	bool				_forward;
-	float				_speed;
-	int32_t				_until;
-	MHV_TIMESTAMP		_started;
-	int32_t				_startPosition;
-	MHV_StepperListener	*_stepperListener;
+	int32_t			_position;
+	RTC				&_rtc;
+	bool			_moving;
+	bool			_forward;
+	float			_speed;
+	int32_t			_until;
+	TIMESTAMP		_started;
+	int32_t			_startPosition;
+	StepperListener	*_stepperListener;
 
 public:
-	MHV_StepperMotor(MHV_RTC &rtc);
+	StepperMotor(RTC &rtc);
 	virtual void step(bool forward) =0;
 	void setPosition(int32_t position);
 	bool isMoving();
 	int32_t	getPosition();
 	void rotate(bool forward, float speed, int32_t until);
 	void alarm();
-	void registerListener(MHV_StepperListener &listener);
+	void registerListener(StepperListener &listener);
 	void deregisterListener();
 };
+
+}
 
 #endif /* MHV_STEPPERMOTOR_H_ */

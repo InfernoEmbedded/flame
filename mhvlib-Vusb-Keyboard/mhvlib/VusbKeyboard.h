@@ -19,8 +19,8 @@
 #ifndef MHV_VUSBKEYBOARD_H_
 #define MHV_VUSBKEYBOARD_H_
 
-#include <MHV_io.h>
-#include <MHV_RTC.h>
+#include <mhvlib/io.h>
+#include <mhvlib/RTC.h>
 
 #define MHV_MOD_CONTROL_LEFT    (1<<0)
 #define MHV_MOD_SHIFT_LEFT      (1<<1)
@@ -31,7 +31,10 @@
 #define MHV_MOD_ALT_RIGHT       (1<<6)
 #define MHV_MOD_GUI_RIGHT       (1<<7)
 
-enum mhv_vusb_keyboard_key {
+using namespace mhvlib_bsd;
+namespace mhvlib_gpl {
+
+enum vusb_keyboard_key {
 	MHV_KEY_A					= 4,
 	MHV_KEY_B					= 5,
 	MHV_KEY_C					= 6,
@@ -173,25 +176,26 @@ enum mhv_vusb_keyboard_key {
 	MHV_KEY_GUI_RIGHT			= 231
 };
 
-typedef enum mhv_vusb_keyboard_key MHV_VUSB_KEYBOARD_KEY;
+typedef enum vusb_keyboard_key VUSB_KEYBOARD_KEY;
 
-INLINE MHV_VUSB_KEYBOARD_KEY mhv_vusb_keyboard_key_add(MHV_VUSB_KEYBOARD_KEY key, char c) {
+INLINE VUSB_KEYBOARD_KEY vusb_keyboard_key_add(VUSB_KEYBOARD_KEY key, char c) {
 	const uint8_t myKey = key;
-	return static_cast<MHV_VUSB_KEYBOARD_KEY>(myKey + c);
+	return static_cast<VUSB_KEYBOARD_KEY>(myKey + c);
 }
 
-class MHV_VusbKeyboard : public MHV_TimerListener {
+class VusbKeyboard : public TimerListener {
 protected:
-	MHV_RTC		&_rtc;
+	RTC		&_rtc;
 
 public:
-	MHV_VusbKeyboard(MHV_RTC &rtc);
-	void keyStroke(MHV_VUSB_KEYBOARD_KEY key);
-	void keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
-	void keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers);
+	VusbKeyboard(RTC &rtc);
+	void keyStroke(VUSB_KEYBOARD_KEY key);
+	void keyStroke(VUSB_KEYBOARD_KEY key, uint8_t modifiers);
+	void keyDown(VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keysUp(uint8_t modifiers);
 	void keysUp();
 	void alarm();
 };
 
+}
 #endif /* MHV_VUSBKEYBOARD_H_ */

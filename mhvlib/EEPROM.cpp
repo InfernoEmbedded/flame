@@ -27,10 +27,13 @@
 #include <stddef.h>
 #include <mhvlib/EEPROM.h>
 
+namespace mhvlib_bsd {
+
+
 /**
  * Create a new EEPROM access class
  */
-MHV_EEPROM::MHV_EEPROM() {
+EEPROM::EEPROM() {
 	_writeAddress = 0;
 	_writeBuffer = NULL;
 	_bytesWritten = 0;
@@ -44,7 +47,7 @@ MHV_EEPROM::MHV_EEPROM() {
  * @param	address	the address to read from
  * @return the byte, or MHV_EEPROM_BUSY if the EEPROM is busy
  */
-int16_t MHV_EEPROM::read(uint16_t address) {
+int16_t EEPROM::read(uint16_t address) {
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
 		return MHV_EEPROM_BUSY;
 	}
@@ -63,7 +66,7 @@ int16_t MHV_EEPROM::read(uint16_t address) {
  * @param	address	the address to read from
  * @return the byte
  */
-uint8_t MHV_EEPROM::busyRead(uint16_t address) {
+uint8_t EEPROM::busyRead(uint16_t address) {
 	int16_t ret;
 
 	while (MHV_EEPROM_BUSY == (ret = read(address))) {}
@@ -76,7 +79,7 @@ uint8_t MHV_EEPROM::busyRead(uint16_t address) {
  * @param	address	the address to read from
  * @param	length	the number of bytes to read
  */
-int8_t MHV_EEPROM::read(void *buffer, uint16_t address, uint16_t length) {
+int8_t EEPROM::read(void *buffer, uint16_t address, uint16_t length) {
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
 		return MHV_EEPROM_BUSY;
 	}
@@ -100,7 +103,7 @@ int8_t MHV_EEPROM::read(void *buffer, uint16_t address, uint16_t length) {
  * @param	address	the address to read from
  * @param	length	the number of bytes to read
  */
-void MHV_EEPROM::busyRead(void *buffer, uint16_t address, uint16_t length) {
+void EEPROM::busyRead(void *buffer, uint16_t address, uint16_t length) {
 	while (MHV_EEPROM_BUSY == (read(buffer, address, length))) {}
 }
 
@@ -110,7 +113,7 @@ void MHV_EEPROM::busyRead(void *buffer, uint16_t address, uint16_t length) {
  * @param	data	the byte to write
  * @return MHV_EEPROM_BUSY if the EEPROM is busy
  */
-int8_t MHV_EEPROM::write(uint16_t address, uint8_t data) {
+int8_t EEPROM::write(uint16_t address, uint8_t data) {
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
 		return MHV_EEPROM_BUSY;
 	}
@@ -131,7 +134,7 @@ int8_t MHV_EEPROM::write(uint16_t address, uint8_t data) {
  * @param	address	the address to write to
  * @param	length	the number of bytes to write
  */
-int8_t MHV_EEPROM::busyWrite(void *buffer, uint16_t address, uint16_t length) {
+int8_t EEPROM::busyWrite(void *buffer, uint16_t address, uint16_t length) {
 	uint8_t *buf = (uint8_t *)buffer;
 
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
@@ -161,7 +164,7 @@ int8_t MHV_EEPROM::busyWrite(void *buffer, uint16_t address, uint16_t length) {
  * @param	doneCallback		A callback to call when the buffer has been written (can be NULL)
  * @param	doneCallbackData	A pointer to pass to the callback
  */
-int8_t MHV_EEPROM::write(void *buffer, uint16_t address, uint16_t length,
+int8_t EEPROM::write(void *buffer, uint16_t address, uint16_t length,
 		void (*doneCallback)(void *buffer, void *data),
 		void *doneCallbackData) {
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
@@ -189,7 +192,7 @@ int8_t MHV_EEPROM::write(void *buffer, uint16_t address, uint16_t length,
 /**
  * Interrupt handler for async writes
  */
-void MHV_EEPROM::writeInterrupt() {
+void EEPROM::writeInterrupt() {
 	if (++_bytesWritten == _bytesToWrite) {
 		// Done
 		EECR = 0;
@@ -213,10 +216,12 @@ void MHV_EEPROM::writeInterrupt() {
  * Check if the EEPROM hardware is busy
  * @return true if the EEPROM hardware is busy
  */
-bool MHV_EEPROM::isBusy() {
+bool EEPROM::isBusy() {
 	if ((EECR & _BV(EEPE)) || _lock.check()) {
 		return MHV_EEPROM_BUSY;
 	}
 
 	return false;
+}
+
 }

@@ -31,11 +31,11 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 #include <boards/MHV_io_Arduino.h>
 
 // Bring in the MHV Serial header
-#include <MHV_HardwareSerial.h>
+#include <mhvlib/HardwareSerial.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -52,6 +52,8 @@
 // Bring in stdio, required for snprintf
 #include <stdio.h>
 
+using namespace mhvlib_bsd;
+
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 // The number of elements we want to be able to store to send asynchronously
@@ -66,8 +68,8 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
  * Just turn on the LED and stop execution
  */
 void NORETURN writeFailed() {
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
-	mhv_pinOn(MHV_ARDUINO_PIN_13);
+	setOutput(MHV_ARDUINO_PIN_13);
+	pinOn(MHV_ARDUINO_PIN_13);
 
 	for (;;);
 }

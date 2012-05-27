@@ -67,7 +67,7 @@
  * @param		data		Pin0 of the data port (we will use the full port)
  * @param		control		the port register for the control pins
  */
-MHV_EPP::MHV_EPP(MHV_EPP_MODE mode,
+EPP::EPP(EPP_MODE mode,
 		MHV_DECLARE_PIN(data),
 		MHV_DECLARE_PIN(control)) {
 	_address = 0;
@@ -94,7 +94,7 @@ MHV_EPP::MHV_EPP(MHV_EPP_MODE mode,
 /**
  * Poll the EPP device to look for new data
  */
-void MHV_EPP::poll() {
+void EPP::poll() {
 	uint8_t control = *_controlInput;
 	uint8_t changed = control ^ _controlPrevious;
 
@@ -121,7 +121,7 @@ void MHV_EPP::poll() {
 /**
  * A reset interrupt has been triggered
  */
-void MHV_EPP::interruptReset() {
+void EPP::interruptReset() {
 	_reset();
 }
 
@@ -129,7 +129,7 @@ void MHV_EPP::interruptReset() {
  * A strobe has been triggered
  * @param	address	true if it is the address strobe, false if it is the data strobe
  */
-void MHV_EPP::interruptStrobe(bool address) {
+void EPP::interruptStrobe(bool address) {
 	if (mhv_pinRead(MHV_EPP_CONTROL, MHV_EPP_WRITE, 0)) {
 // Read cycle (host is reading from us), write is active low
 
@@ -156,7 +156,7 @@ void MHV_EPP::interruptStrobe(bool address) {
  * A strobe has been released
  * @param	address	true if it is the address strobe, false if it is the data strobe
  */
-void MHV_EPP::releaseStrobe(bool address) {
+void EPP::releaseStrobe(bool address) {
 // Drop wait
 	mhv_pinOff(MHV_EPP_CONTROL, MHV_EPP_WAIT, 0);
 }

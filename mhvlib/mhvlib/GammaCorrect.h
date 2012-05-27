@@ -32,7 +32,9 @@
 #include <avr/pgmspace.h>
 #include <mhvlib/io.h>
 
-const uint8_t mhv_gammaValues[] PROGMEM = {
+namespace mhvlib_bsd {
+
+const uint8_t gammaValues[] PROGMEM = {
 	0,		0,		0,		0,		0,		0,		0,		0,
 	0,		0,		0,		0,		0,		0,		0,		0,
 	0,		0,		0,		0,		0,		0,		1,		1,
@@ -68,17 +70,19 @@ const uint8_t mhv_gammaValues[] PROGMEM = {
 };
 
 
-uint8_t mhv_calculatedGammaCorrect(uint8_t value);
+uint8_t calculatedGammaCorrect(uint8_t value);
 
 /* Gamma correct a value via a lookup table
  * This uses less program memory than calculated value, and uses less clocks
  * param	value	the value to gamma correct
  * return the gamma corrected value
  */
-inline uint8_t mhv_precalculatedGammaCorrect(uint8_t value) {
-	return pgm_read_byte(mhv_gammaValues + value);
+inline uint8_t precalculatedGammaCorrect(uint8_t value) {
+	return pgm_read_byte(gammaValues + value);
 }
 
-#define MHV_PRECALCULATED_GAMMA_CORRECT mhv_precalculatedGammaCorrect
+#define MHV_PRECALCULATED_GAMMA_CORRECT precalculatedGammaCorrect
+
+}
 
 #endif /* MHV_GAMMACORRECT_H_ */

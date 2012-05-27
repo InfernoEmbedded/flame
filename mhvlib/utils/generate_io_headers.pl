@@ -253,7 +253,7 @@ EOF
 		if (defined $macros{"TCCR${timer}A"}) {
 			my ($bits, $prescaler) = timerInfo($chip, $timer);
 			my $paddedBits = pack 'A5', "$bits,";
-			$prescaler = pack 'A33', "MHV_TIMER_${prescaler}_PRESCALERS,";
+			$prescaler = pack 'A33', "TIMER_TYPE::HAS_${prescaler}_PRESCALERS,";
 
 			my $ctrlRegA = pack 'A9', $macros{"TCCR${timer}A"} . ',';
 			my $ctrlRegB = pack 'A9', $macros{"TCCR${timer}B"} . ',';

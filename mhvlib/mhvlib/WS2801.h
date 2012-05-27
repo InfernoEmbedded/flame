@@ -32,6 +32,8 @@
 #include <mhvlib/GammaCorrect.h>
 #include <mhvlib/Shifter.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Create a new WS2801 object to control a string of LED drivers
  * The MHV_SHIFT_WRITECLOCK & MHV_SHIFT_WRITEDATA macros should be defined in advance
@@ -51,20 +53,20 @@
  * @tparam	length		the number of LEDs in the string
  */
 template <MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), uint16_t length>
-class MHV_WS2801 {
+class WS2801 {
 private:
-	MHV_RGB		_data[length];
+	RGB		_data[length];
 
-	MHV_ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(data), true, true, 2>
+	ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(data), true, true, 2>
 				_shifter;
 
 public:
 	/**
 	 * Create a new driver for a string of WS2801 LEDs
 	 */
-	MHV_WS2801() {
-		mhv_setOutput(MHV_PIN_PARMS(clock));
-		mhv_setOutput(MHV_PIN_PARMS(data));
+	WS2801() {
+		setOutput(MHV_PIN_PARMS(clock));
+		setOutput(MHV_PIN_PARMS(data));
 	}
 
 	/**
@@ -75,7 +77,7 @@ public:
 	 * @param	green	the green value
 	 */
 	void setPixel(uint16_t pixel, uint8_t red, uint8_t green, uint8_t blue) {
-		MHV_RGB *chip = _data + pixel;
+		RGB *chip = _data + pixel;
 
 		chip->red = red;
 		chip->green = green;
@@ -87,8 +89,8 @@ public:
 	 * @param	pixel	the pixel to set
 	 * @param	value	the value to set
 	 */
-	void setPixel(uint16_t pixel, MHV_RGB *value) {
-		mhv_memcpy(_data + pixel, value, MHV_BYTESIZEOF(*value));
+	void setPixel(uint16_t pixel, RGB *value) {
+		memcpy(_data + pixel, value, MHV_BYTESIZEOF(*value));
 	}
 
 	/**
@@ -98,7 +100,7 @@ public:
 	 * @param	green	the green value
 	 */
 	void setAll(uint8_t red, uint8_t green, uint8_t blue) {
-		MHV_RGB *chip;
+		RGB *chip;
 
 		for (uint16_t i = 0; i < length; i++) {
 			chip = _data + i;
@@ -113,9 +115,9 @@ public:
 	 * Set the strip to a particular value
 	 * @param	value	the value to set
 	 */
-	void setAll(MHV_RGB *value) {
+	void setAll(RGB *value) {
 		for (uint16_t i = 0; i < length; i++) {
-			mhv_memcpy(_data + i, value, MHV_BYTESIZEOF(*value));
+			memcpy(_data + i, value, MHV_BYTESIZEOF(*value));
 		}
 	}
 
@@ -127,11 +129,11 @@ public:
 	 * @param	green	the green value
 	 */
 	void setPixelGamma(uint16_t pixel, uint8_t red, uint8_t green, uint8_t blue) {
-		MHV_RGB *chip = _data + pixel;
+		RGB *chip = _data + pixel;
 
-		chip->red = mhv_precalculatedGammaCorrect(red);
-		chip->green = mhv_precalculatedGammaCorrect(green);
-		chip->blue = mhv_precalculatedGammaCorrect(blue);
+		chip->red = precalculatedGammaCorrect(red);
+		chip->green = precalculatedGammaCorrect(green);
+		chip->blue = precalculatedGammaCorrect(blue);
 	}
 
 	/**
@@ -139,12 +141,12 @@ public:
 	 * @param	pixel	the pixel to set
 	 * @param	value	the value to set
 	 */
-	void setPixelGamma(uint16_t pixel, MHV_RGB *value) {
-		MHV_RGB *chip = _data + pixel;
+	void setPixelGamma(uint16_t pixel, RGB *value) {
+		RGB *chip = _data + pixel;
 
-		chip->red = mhv_precalculatedGammaCorrect(value->red);
-		chip->green = mhv_precalculatedGammaCorrect(value->green);
-		chip->blue = mhv_precalculatedGammaCorrect(value->blue);
+		chip->red = precalculatedGammaCorrect(value->red);
+		chip->green = precalculatedGammaCorrect(value->green);
+		chip->blue = precalculatedGammaCorrect(value->blue);
 	}
 
 	/**
@@ -154,14 +156,14 @@ public:
 	 * @param	green	the green value
 	 */
 	void setAllGamma(uint8_t red, uint8_t green, uint8_t blue) {
-		MHV_RGB *chip;
+		RGB *chip;
 
 		for (uint16_t i = 0; i < length; i++) {
 			chip = _data + i;
 
-			chip->red = mhv_precalculatedGammaCorrect(red);
-			chip->green = mhv_precalculatedGammaCorrect(green);
-			chip->blue = mhv_precalculatedGammaCorrect(blue);
+			chip->red = precalculatedGammaCorrect(red);
+			chip->green = precalculatedGammaCorrect(green);
+			chip->blue = precalculatedGammaCorrect(blue);
 		}
 	}
 
@@ -169,13 +171,13 @@ public:
 	 * Set the strip to a gamma corrected value
 	 * @param	value	the value to set
 	 */
-	void setAllGamma(MHV_RGB *value) {
-		MHV_RGB newValue = {mhv_precalculatedGammaCorrect(value->red),
-				mhv_precalculatedGammaCorrect(value->green),
-				mhv_precalculatedGammaCorrect(value->blue)};
+	void setAllGamma(RGB *value) {
+		RGB newValue = {precalculatedGammaCorrect(value->red),
+				precalculatedGammaCorrect(value->green),
+				precalculatedGammaCorrect(value->blue)};
 
 		for (uint16_t i = 0; i < length; i++) {
-			mhv_memcpy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
+			memcpy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
 		}
 	}
 
@@ -192,19 +194,20 @@ public:
 	 * @param	forwards	true for forwards, false for backwards
 	 */
 	void rotate(bool forwards) {
-		MHV_RGB temp;
+		RGB temp;
 
 		if (forwards) {
-			mhv_memcpy(&temp, _data + length - 1, MHV_BYTESIZEOF(temp));
-			mhv_memcpyTailFirst(_data + 1, _data, MHV_BYTESIZEOF(*_data), length - 1);
-			mhv_memcpy(_data, &temp, MHV_BYTESIZEOF(temp));
+			memCopy(&temp, _data + length - 1, MHV_BYTESIZEOF(temp));
+			memCopyTailFirst(_data + 1, _data, MHV_BYTESIZEOF(*_data), length - 1);
+			memCopy(_data, &temp, MHV_BYTESIZEOF(temp));
 		} else {
-			mhv_memcpy(&temp, _data, MHV_BYTESIZEOF(temp));
-			mhv_memcpy(_data, _data + 1,  MHV_BYTESIZEOF(*_data), length - 1);
-			mhv_memcpy(_data, &temp, MHV_BYTESIZEOF(temp));
+			memCopy(&temp, _data, MHV_BYTESIZEOF(temp));
+			memCopy(_data, _data + 1,  MHV_BYTESIZEOF(*_data), length - 1);
+			memCopy(_data, &temp, MHV_BYTESIZEOF(temp));
 		}
 	}
 
 };
 
+}
 #endif /* MHV_WS2801_H_ */

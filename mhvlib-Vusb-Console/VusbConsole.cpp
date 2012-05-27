@@ -20,7 +20,7 @@ extern "C" {
 	#include <vusb/usbdrv.h>
 }
 
-#include <MHV_VusbConsole.h>
+#include <mhvlib/VusbConsole.h>
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
@@ -130,4 +130,3 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 	}
 	return 0;
 }
-

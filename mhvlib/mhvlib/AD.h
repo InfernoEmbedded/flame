@@ -35,16 +35,6 @@
 #define MHV_AD_MAX			1023
 #define MHV_AD_RESOLUTION	1024
 
-enum mhv_ad_prescaler {
-	MHV_AD_PRESCALER_2   = 1,
-	MHV_AD_PRESCALER_4   = 2,
-	MHV_AD_PRESCALER_8   = 3,
-	MHV_AD_PRESCALER_16  = 4,
-	MHV_AD_PRESCALER_32  = 5,
-	MHV_AD_PRESCALER_64  = 6,
-	MHV_AD_PRESCALER_128 = 7
-};
-typedef enum mhv_ad_prescaler MHV_AD_PRESCALER;
 
 // helper macros for adc trigger functions
 #define MHV_AD_REFERENCE (ADMUX & 0xF0)
@@ -91,9 +81,27 @@ ISR(ADC_vect) { \
 	} while (0)
 #endif
 
-uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference);
-void mhv_ad_asyncRead(uint8_t channel, uint8_t reference);
-void mhv_ad_setPrescaler(MHV_AD_PRESCALER prescaler);
+namespace mhvlib_bsd {
+enum class ad_prescaler : uint8_t {
+	DIVIDE_BY_2   = 1,
+	DIVIDE_BY_4   = 2,
+	DIVIDE_BY_8   = 3,
+	DIVIDE_BY_16  = 4,
+	DIVIDE_BY_32  = 5,
+	DIVIDE_BY_64  = 6,
+	DIVIDE_BY_128 = 7
+};
+typedef enum ad_prescaler AD_PRESCALER;
+INLINE uint8_t operator& (AD_PRESCALER prescaler, uint8_t andedWith) {
+	const uint8_t myPrescaler = static_cast<uint8_t>(prescaler);
+	return(myPrescaler & andedWith);
+}
+
+
+uint16_t ad_busyRead(uint8_t channel, uint8_t reference);
+void ad_asyncRead(uint8_t channel, uint8_t reference);
+void ad_setPrescaler(AD_PRESCALER prescaler);
+}
 
 #endif // ADC
 #endif /* MHV_AD_H_ */

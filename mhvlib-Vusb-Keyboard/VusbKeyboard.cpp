@@ -20,7 +20,7 @@ extern "C" {
 	#include <vusb/usbdrv.h>
 }
 
-#include <MHV_VusbKeyboard.h>
+#include <mhvlib/VusbKeyboard.h>
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
@@ -35,24 +35,24 @@ extern "C" {
  * for the second INPUT item.
  */
 PROGMEM const char usbHidReportDescriptor[USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH] = { /* USB report descriptor */
-  0x05, 0x01,	// USAGE_PAGE (Generic Desktop)
-  0x09, 0x06,	// USAGE (Keyboard)
-  0xa1, 0x01,	// COLLECTION (Application)
-  0x05, 0x07,	//   USAGE_PAGE (Keyboard)
-  0x19, 0xe0,	//   USAGE_MINIMUM (Keyboard LeftControl)
-  0x29, 0xe7,	//   USAGE_MAXIMUM (Keyboard Right GUI)
-  0x15, 0x00,	//   LOGICAL_MINIMUM (0)
-  0x25, 0x01,	//   LOGICAL_MAXIMUM (1)
-  0x75, 0x01,	//   REPORT_SIZE (1)
-  0x95, 0x08,	//   REPORT_COUNT (8)
-  0x81, 0x02,	//   INPUT (Data,Var,Abs)
-  0x95, 0x01,	//   REPORT_COUNT (1)
-  0x75, 0x08,	//   REPORT_SIZE (8)
-  0x25, 0x65,	//   LOGICAL_MAXIMUM (101)
-  0x19, 0x00,	//   USAGE_MINIMUM (Reserved (no event indicated))
-  0x29, 0x65,	//   USAGE_MAXIMUM (Keyboard Application)
-  0x81, 0x00,	//   INPUT (Data,Ary,Abs)
-  0xc0       	// END_COLLECTION
+0x05, 0x01,	// USAGE_PAGE (Generic Desktop)
+0x09, 0x06,	// USAGE (Keyboard)
+0xa1, 0x01,	// COLLECTION (Application)
+0x05, 0x07,	//   USAGE_PAGE (Keyboard)
+0x19, 0xe0,	//   USAGE_MINIMUM (Keyboard LeftControl)
+0x29, 0xe7,	//   USAGE_MAXIMUM (Keyboard Right GUI)
+0x15, 0x00,	//   LOGICAL_MINIMUM (0)
+0x25, 0x01,	//   LOGICAL_MAXIMUM (1)
+0x75, 0x01,	//   REPORT_SIZE (1)
+0x95, 0x08,	//   REPORT_COUNT (8)
+0x81, 0x02,	//   INPUT (Data,Var,Abs)
+0x95, 0x01,	//   REPORT_COUNT (1)
+0x75, 0x08,	//   REPORT_SIZE (8)
+0x25, 0x65,	//   LOGICAL_MAXIMUM (101)
+0x19, 0x00,	//   USAGE_MINIMUM (Reserved (no event indicated))
+0x29, 0x65,	//   USAGE_MAXIMUM (Keyboard Application)
+0x81, 0x00,	//   INPUT (Data,Ary,Abs)
+0xc0       	// END_COLLECTION
 };
 
 /* This code has been borrowed from Sparkfun's AVR Stick firmware
@@ -81,28 +81,28 @@ uchar       step = 128;
 uchar       trialValue = 0, optimumValue;
 int         x, optimumDev, targetValue = (unsigned)(1499 * (double)F_CPU / 10.5e6 + 0.5);
 
-    /* do a binary search: */
-    do{
-        OSCCAL = trialValue + step;
-        x = usbMeasureFrameLength();    /* proportional to current real frequency */
-        if(x < targetValue)             /* frequency still too low */
-            trialValue += step;
-        step >>= 1;
-    }while(step > 0);
-    /* We have a precision of +/- 1 for optimum OSCCAL here */
-    /* now do a neighborhood search for optimum value */
-    optimumValue = trialValue;
-    optimumDev = x; /* this is certainly far away from optimum */
-    for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
-        x = usbMeasureFrameLength() - targetValue;
-        if(x < 0)
-            x = -x;
-        if(x < optimumDev){
-            optimumDev = x;
-            optimumValue = OSCCAL;
-        }
-    }
-    OSCCAL = optimumValue;
+	/* do a binary search: */
+	do{
+		OSCCAL = trialValue + step;
+		x = usbMeasureFrameLength();    /* proportional to current real frequency */
+		if(x < targetValue)             /* frequency still too low */
+			trialValue += step;
+		step >>= 1;
+	}while(step > 0);
+	/* We have a precision of +/- 1 for optimum OSCCAL here */
+	/* now do a neighborhood search for optimum value */
+	optimumValue = trialValue;
+	optimumDev = x; /* this is certainly far away from optimum */
+	for(OSCCAL = trialValue - 1; OSCCAL <= trialValue + 1; OSCCAL++){
+		x = usbMeasureFrameLength() - targetValue;
+		if(x < 0)
+			x = -x;
+		if(x < optimumDev){
+			optimumDev = x;
+			optimumValue = OSCCAL;
+		}
+	}
+	OSCCAL = optimumValue;
 }
 /*
 Note: This calibration algorithm may try OSCCAL values of up to 192 even if
@@ -117,7 +117,7 @@ both regions.
 
 void    usbEventResetReady(void)
 {
-    calibrateOscillator();
+	calibrateOscillator();
 	uchar calibrationValue = eeprom_read_byte(MHV_OSCCAL_EEPROM_ADDRESS);
 	if (calibrationValue != OSCCAL) {
 		eeprom_write_byte(MHV_OSCCAL_EEPROM_ADDRESS, OSCCAL);
@@ -148,6 +148,9 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 	return 0;
 }
 
+using namespace mhvlib_bsd;
+
+namespace mhvlib_gpl {
 
 /**
  * Emulate a USB keyboard using V-USB
@@ -155,7 +158,7 @@ unsigned char usbFunctionSetup(uchar data[8]) {
  *   Uses pins B0/B2 for ATtiny25/45/85
  * @param	rtc	an RTC to schedule jobs on
  */
-MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC &rtc) :
+VusbKeyboard::VusbKeyboard(RTC &rtc) :
 		_rtc(rtc) {
 #if USB_CFG_HAVE_MEASURE_FRAME_LENGTH
 	uchar calibrationValue;
@@ -166,13 +169,13 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC &rtc) :
 	}
 #endif
 
-	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
-	mhv_setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
+	setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DPLUS_BIT));
+	setInput(MHV_MAKE_PIN(USB_CFG_IOPORTNAME, USB_CFG_DMINUS_BIT));
 
 	usbDeviceDisconnect();
-    for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
-        _delay_ms(15);
-    }
+	for(uint8_t i=0;i<20;i++){  /* 300 ms disconnect */
+		_delay_ms(15);
+	}
 	usbDeviceConnect();
 
 	usbInit();
@@ -187,7 +190,7 @@ MHV_VusbKeyboard::MHV_VusbKeyboard(MHV_RTC &rtc) :
  *
  * @return false if the keyStroke was not sent
  */
-void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
+void VusbKeyboard::keyStroke(VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
 	keyDown(key, modifiers);
 	keysUp(0);
 }
@@ -198,7 +201,7 @@ void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
  *
  * @return false if the keyStroke was not sent
  */
-void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key) {
+void VusbKeyboard::keyStroke(VUSB_KEYBOARD_KEY key) {
 	return keyStroke(key, 0);
 }
 
@@ -207,7 +210,7 @@ void MHV_VusbKeyboard::keyStroke(MHV_VUSB_KEYBOARD_KEY key) {
  * @param	key			the key to send
  * @param	modifiers	the key modifiers
  */
-void MHV_VusbKeyboard::keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
+void VusbKeyboard::keyDown(VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
 	while (!usbInterruptIsReady()) {}
 
 	mhv_vusbReportBuffer[0] = modifiers;
@@ -220,7 +223,7 @@ void MHV_VusbKeyboard::keyDown(MHV_VUSB_KEYBOARD_KEY key, uint8_t modifiers) {
  * Release all keys
  * @param	modifiers	the key modifiers still held
  */
-void MHV_VusbKeyboard::keysUp(uint8_t modifiers) {
+void VusbKeyboard::keysUp(uint8_t modifiers) {
 	while (!usbInterruptIsReady()) {}
 
 	mhv_vusbReportBuffer[0] = modifiers;
@@ -231,13 +234,15 @@ void MHV_VusbKeyboard::keysUp(uint8_t modifiers) {
 /**
  * Release all keys
  */
-void MHV_VusbKeyboard::keysUp() {
+void VusbKeyboard::keysUp() {
 	keysUp(0);
 }
 
 /**
  * Periodically called to maintain USB comms
  */
-void MHV_VusbKeyboard::alarm() {
+void VusbKeyboard::alarm() {
 	usbPoll();
+}
+
 }

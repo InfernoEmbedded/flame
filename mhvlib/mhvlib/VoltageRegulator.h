@@ -35,11 +35,13 @@
 #include <mhvlib/Timer.h>
 #include <mhvlib/RTC.h>
 
-enum mhv_vreg_modes {
-	MHV_VREG_MODE_BUCK,
-	MHV_VREG_MODE_BOOST
+namespace mhvlib_bsd {
+
+enum class vreg_modes : bool {
+	BUCK,
+	BOOST
 };
-typedef enum mhv_vreg_modes MHV_VREG_MODES;
+typedef enum vreg_modes VREG_MODE;
 
 #define MHV_VREG_DIVIDER(__mhv_divider_value) ((uint16_t)((__mhv_divider_value) * 16384))
 
@@ -65,21 +67,21 @@ typedef enum mhv_vreg_modes MHV_VREG_MODES;
  * @param adcChannel	the ADC channel for feedback
  */
 
-template <MHV_VREG_MODES mode, uint32_t millivolts, uint32_t vrefMillivolts, uint8_t vref, uint16_t divider,
+template <VREG_MODE mode, uint32_t millivolts, uint32_t vrefMillivolts, uint8_t vref, uint16_t divider,
 	uint8_t adcChannel>
-class MHV_VoltageRegulator : public MHV_TimerListener {
+class VoltageRegulator : public TimerListener {
 private:
-	uint16_t		_targetADC;
-	MHV_Timer		&_timer;
-	uint16_t		_pwm;	// The current PWM rate
-	bool			_lastMoveUp;
-	bool			_invert;
-	uint16_t		_lastADC;
+	uint16_t	_targetADC;
+	Timer		&_timer;
+	uint16_t	_pwm;	// The current PWM rate
+	bool		_lastMoveUp;
+	bool		_invert;
+	uint16_t	_lastADC;
 
 	/* Regulate as a boosting regulator
 	 */
 	inline void regulateBoost() {
-		uint16_t adc = mhv_ad_busyRead(adcChannel, vref);
+		uint16_t adc = ad_busyRead(adcChannel, vref);
 		uint16_t newPWM = (uint16_t)(_pwm * (float)_targetADC / (float)adc);
 
 		if (newPWM == _pwm) {
@@ -107,7 +109,7 @@ private:
 	 * Regulate as a buck regulator
 	 */
 	inline void regulateBuck() {
-		uint16_t adc = mhv_ad_busyRead(adcChannel, vref);
+		uint16_t adc = ad_busyRead(adcChannel, vref);
 
 		if (adc < _targetADC) {
 			_lastMoveUp = true;
@@ -144,10 +146,10 @@ private:
 	 */
 	inline void regulate() {
 		switch (mode) {
-		case MHV_VREG_MODE_BOOST:
+		case VREG_MODE::BOOST:
 			regulateBoost();
 			break;
-		case MHV_VREG_MODE_BUCK:
+		case VREG_MODE::BUCK:
 			regulateBuck();
 			break;
 		}
@@ -158,7 +160,7 @@ public:
 	 * Initialise the library
 	 * @param timer			the timer for which the duty cycle will be adjusted
 	 */
-	MHV_VoltageRegulator(MHV_Timer &timer) :
+	VoltageRegulator(Timer &timer) :
 				_timer(timer) {
 		_targetADC = (uint16_t)(millivolts * divider * MHV_AD_RESOLUTION / (vrefMillivolts * 16384));
 		_pwm = 1;
@@ -199,6 +201,8 @@ public:
 		return (float)(_lastADC * vrefMillivolts * 16384) / (divider * MHV_AD_RESOLUTION * 1000);
 	}
 };
+
+}
 
 #endif // ADC
 #endif // MHV_VOLTAGEREGULATOR_H_

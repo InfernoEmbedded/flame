@@ -26,10 +26,14 @@
 
 #include <mhvlib/Device_TX.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Free a buffer allocated in debug
  * @param buf	the buffer to free
  */
-void mhv_device_tx_free(const char *buf) {
+void device_tx_free(const char *buf) {
 	free((void *)buf);
+}
+
 }

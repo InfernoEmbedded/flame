@@ -31,10 +31,10 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the MHV Serial header
-#include <MHV_HardwareSerial.h>
+#include <mhvlib/HardwareSerial.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -50,15 +50,17 @@
 
 #include <string.h>
 
+using namespace mhvlib_bsd;
+
 
 /* Declare the serial object on UART0
  * Set the baud rate to 115,200
  */
 MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 
-// Space for 3 instances of MHV_TX_BUFFER
-#define TX_BUFFER_SIZE 3 * sizeof(MHV_TX_BUFFER) + 1
-MHV_RingBufferImplementation<TX_BUFFER_SIZE> testRingBuffer;
+// Space for 3 instances of TX_BUFFER
+#define TX_BUFFER_SIZE 3 * sizeof(TX_BUFFER) + 1
+RingBufferImplementation<TX_BUFFER_SIZE> testRingBuffer;
 
 MAIN {
 // Enable interrupts
@@ -75,8 +77,8 @@ MAIN {
 			testRingBuffer.length(), testRingBuffer.size());
 	serial.busyWrite(buffer);
 
-	MHV_TX_BUFFER object;
-	memset(&object, '_', sizeof(object));
+	TX_BUFFER object;
+	memSet(&object, '_', sizeof(object));
 
 	int i;
 	for (i = 0; i < 4; i++) {

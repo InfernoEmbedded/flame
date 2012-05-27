@@ -21,23 +21,25 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the Stepper driver
-#include <MHV_StepperMotorUnipolar.h>
+#include <mhvlib/StepperMotorUnipolar.h>
 
 // Bring in the realtime clock driver
-#include <MHV_RTC.h>
+#include <mhvlib/RTC.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
+
+using namespace mhvlib_bsd;
 
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY
@@ -47,7 +49,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
@@ -70,13 +72,13 @@ MHV_RTC_CREATE (rtc, ALARM_COUNT);
 /* The stepper driver
  * Available modes are WAVE, FULL and HALF
  */
-MHV_StepperMotorUnipolar<MHV_STEPPER_MODE_HALF, MHV_PIN_B0> stepper(rtc);
+StepperMotorUnipolar<STEPPER_MODE::HALF, MHV_PIN_B0> stepper(rtc);
 
 
 /* A class that tells the stepper what to do next
  * Note that moveComplete() is called every time the stepper driver has completed a move
  */
-class StepperInstructions : public MHV_StepperListener {
+class StepperInstructions : public StepperListener {
 private:
 	bool	_forward;		// The direction we are currently rotating
 	float	_speed;			// The rotation speed (steps/second)
@@ -123,7 +125,7 @@ MAIN {
 #define PRESCALER	MHV_TIMER_PRESCALER_5_64
 #else
 	power_timer2_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_7_64
+#define PRESCALER	TIMER_PRESCALER::PRESCALER_7_64
 #endif
 
 	// Register the listener with the stepper driver to be notified when moves are complete

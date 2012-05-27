@@ -31,11 +31,11 @@
 #define OUTPUT_PIN	MHV_ARDUINO_PIN_13
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 #include <boards/MHV_io_Arduino.h>
 
 // Bring in the MHV timer header
-#include <MHV_Timer.h>
+#include <mhvlib/Timer.h>
 
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
@@ -44,10 +44,13 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+using namespace mhvlib_bsd;
+
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>animationTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>animationTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
@@ -58,7 +61,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(animationTimer, MHV_TIMER2_INTERRUPTS);
 
 /* Declare a 16 bit timer for PWM output
  */
-MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_16_PWM_FAST>pwmTimer;
+TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16>pwmTimer;
 MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
 
 /* The maximum value of the PWM
@@ -75,64 +78,57 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
  *
  * This will fade the LED up to 50% and back down to 0
  */
-class Animation : public MHV_TimerListener {
+class Animation : public TimerListener {
 public:
-	void alarm();
+	void alarm() {
+	/* static variables are initialised once at boot, and persist between calls
+	 * What is the next action to take
+	 */
+		static bool fadeUp = true;
+
+	/* Get the current output, and increment/decrement it based on the direction
+	 * Note that we are only going to 50% duty cycle as it is difficult to see
+	 * the difference between 50% & 100% duty cycle on LEDs. This could be fixed
+	 * by gamma correcting the output (see MHV_GammaCorrect)
+	 */
+		uint16_t current = pwmTimer.getOutput2();
+
+		if (fadeUp && current + PWM_INCREMENT >= PWM_TOP / 2) {
+			fadeUp = false;
+			pwmTimer.setOutput2(PWM_TOP / 2);
+		} else if (!fadeUp && current <= PWM_INCREMENT) {
+			fadeUp = true;
+			pwmTimer.setOutput2(0);
+		} else if (fadeUp) {
+			pwmTimer.setOutput2(current + PWM_INCREMENT);
+		} else {
+			pwmTimer.setOutput2(current - PWM_INCREMENT);
+		}
+	}
 };
 
-void Animation::alarm() {
-/* static variables are initialised once at boot, and persist between calls
- * What is the next action to take
- */
-	static bool fadeUp = true;
-
-/* Get the current output, and increment/decrement it based on the direction
- * Note that we are only going to 50% duty cycle as it is difficult to see
- * the difference between 50% & 100% duty cycle on LEDs. This could be fixed
- * by gamma correcting the output (see MHV_GammaCorrect)
- */
-	uint16_t current = pwmTimer.getOutput2();
-
-	if (fadeUp && current + PWM_INCREMENT >= PWM_TOP / 2) {
-		fadeUp = false;
-		pwmTimer.setOutput2(PWM_TOP / 2);
-	} else if (!fadeUp && current <= PWM_INCREMENT) {
-		fadeUp = true;
-		pwmTimer.setOutput2(0);
-	} else if (fadeUp) {
-		pwmTimer.setOutput2(current + PWM_INCREMENT);
-	} else {
-		pwmTimer.setOutput2(current - PWM_INCREMENT);
-	}
-}
 
 Animation animation;
 
 
 // More listeners to toggle the LED on and off
-class LEDOn : public MHV_TimerListener {
+class LEDOn : public TimerListener {
 public:
-	void alarm();
+	void alarm() {
+		pinOn(OUTPUT_PIN);
+	}
 };
 
-class LEDOff : public MHV_TimerListener {
+class LEDOff : public TimerListener {
 public:
-	void alarm();
+	void alarm() {
+		pinOff(OUTPUT_PIN);
+	}
 };
-
-
-void LEDOn::alarm() {
-	mhv_pinOn(OUTPUT_PIN);
-}
-
-void LEDOff::alarm() {
-	mhv_pinOn(OUTPUT_PIN);
-}
 
 // Instantiate the LED toggling listeners
 LEDOn ledOn;
 LEDOff ledOff;
-
 
 MAIN {
 	// Disable all peripherals and enable just what we need
@@ -143,7 +139,7 @@ MAIN {
 
 	/* Enable output on the output pin - see the declaration above
 	 */
-	mhv_setOutput(OUTPUT_PIN);
+	setOutput(OUTPUT_PIN);
 
 	/* Trigger the animation routine every 20ms
 	 */
@@ -157,7 +153,7 @@ MAIN {
 	pwmTimer.setListener2(ledOff);
 
 	// Set the PWM prescaler to 1 (no prescaler)
-	pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);
+	pwmTimer.setPrescaler(TIMER_PRESCALER::PRESCALER_5_1);
 
 	/* Set the TOP value of the PWM timer - this defines the resolution &
 	 * frequency of the PWM output

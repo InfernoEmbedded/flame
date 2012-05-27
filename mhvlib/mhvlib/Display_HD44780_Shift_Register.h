@@ -37,6 +37,7 @@
 #define HD44780_TSU1	(60 * 1000000 / F_CPU / 3 + 1)
 #define HD44780_TW		(450 * 1000000 / F_CPU / 3 + 1)
 
+namespace mhvlib_bsd {
 
 /**
  * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164
@@ -50,9 +51,9 @@
  */
 template<uint16_t cols, uint16_t rows, uint8_t txBuffers,
 	MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(enable)>
-class MHV_Display_HD44780_Shift_Register : public MHV_Display_HD44780<cols, rows, txBuffers> {
+class Display_HD44780_Shift_Register : public Display_HD44780<cols, rows, txBuffers> {
 private:
-	MHV_ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(clock)> _shifter;
+	ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(clock)> _shifter;
 
 protected:
 	/**
@@ -69,9 +70,9 @@ protected:
 
 		// strobe Enable pin
 			_delay_loop_1(HD44780_TSU1);
-			mhv_pinOn(MHV_PIN_PARMS(enable));
+			pinOn(MHV_PIN_PARMS(enable));
 			_delay_loop_1(HD44780_TW);
-			mhv_pinOff(MHV_PIN_PARMS(enable));
+			pinOff(MHV_PIN_PARMS(enable));
 			_delay_loop_1(HD44780_TW);
 		}
 
@@ -81,7 +82,7 @@ protected:
 	 * @param	rs		true to set the RS pin (aka data pin )
 	 */
 	void writeByte(uint8_t byte, bool rs) {
-		if (MHV_Display_HD44780<cols, rows, txBuffers>::_byteMode) {
+		if (Display_HD44780<cols, rows, txBuffers>::_byteMode) {
 	// 8 bits interface mode
 			pushBits(byte, rs);
 		} else {
@@ -113,19 +114,19 @@ protected:
 	/**
 	 * Post-command delays
 	 */
-	void delay(MHV_HD44780_COMMAND command) {
+	void delay(HD44780_COMMAND command) {
 		switch (command) {
-		case MHV_44780_CMD_CLEAR:
-		case MHV_44780_CMD_RETURN_HOME:
+		case HD44780_COMMAND::CLEAR:
+		case HD44780_COMMAND::HOME:
 			_delay_ms(2);
 			break;
-		case MHV_44780_CMD_SET_ENTRY_MODE:
-		case MHV_44780_CMD_SET_DISPLAY_MODE:
-		case MHV_44780_CMD_SET_CURSOR_MODE:
-		case MHV_44780_CMD_SET_CG_ADDR:
-		case MHV_44780_CMD_SET_DD_ADDR:
-		case MHV_44780_WRITE_CHAR:
-		case MHV_44780_CMD_SET_FUNCTION:
+		case HD44780_COMMAND::SET_ENTRY_MODE:
+		case HD44780_COMMAND::SET_DISPLAY_MODE:
+		case HD44780_COMMAND::SET_CURSOR_MODE:
+		case HD44780_COMMAND::SET_CG_ADDR:
+		case HD44780_COMMAND::SET_DD_ADDR:
+		case HD44780_COMMAND::WRITE_CHAR:
+		case HD44780_COMMAND::SET_FUNCTION:
 			_delay_us(39);
 			break;
 		}
@@ -135,10 +136,10 @@ public:
 	/**
 	 * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164
 	 */
-	MHV_Display_HD44780_Shift_Register() {
-		mhv_setOutput(MHV_PIN_PARMS(data));
-		mhv_setOutput(MHV_PIN_PARMS(enable));
-		mhv_setOutput(MHV_PIN_PARMS(clock));
+	Display_HD44780_Shift_Register() {
+		setOutput(MHV_PIN_PARMS(data));
+		setOutput(MHV_PIN_PARMS(enable));
+		setOutput(MHV_PIN_PARMS(clock));
 	}
 
 
@@ -153,9 +154,10 @@ public:
 	 */
 	void init(bool multiLine, bool bigFont, bool cursorOn, bool cursorBlink,
 					bool left2right, bool scroll) {
-		MHV_Display_HD44780<cols, rows, txBuffers>::init(
+		Display_HD44780<cols, rows, txBuffers>::init(
 				false, multiLine, bigFont, cursorOn, cursorBlink, left2right, scroll);
 	}
 };
 
+}
 #endif /* MHV_DISPLAY_HD44780_SHIFT_REGISTER_H_ */

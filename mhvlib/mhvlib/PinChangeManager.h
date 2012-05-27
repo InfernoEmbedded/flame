@@ -70,31 +70,31 @@ ISR(PCINT2_vect) { \
 
 
 
+namespace mhvlib_bsd {
 
-class MHV_PinEventListener {
+class PinEventListener {
 public:
 	virtual void pinChanged(uint8_t pcInt, bool newState) =0;
-//	virtual ~MHV_PinEventListener();
 };
 
-struct mhv_eventPin {
+struct eventPin {
 	mhv_register			port;
 	uint8_t					mask;
 	uint8_t					pcInt;
-	MHV_PinEventListener	*listener;
+	PinEventListener	*listener;
 	bool					previous;
 	bool					changed;
 };
-typedef struct mhv_eventPin MHV_EVENT_PIN;
+typedef struct eventPin EVENT_PIN;
 
-class MHV_PinChangeManager {
+class PinChangeManager {
 protected:
 // Fixme: Allocate externally and pass in
-	MHV_EVENT_PIN	_pins[MHV_PC_INT_COUNT];
+	EVENT_PIN	_pins[MHV_PC_INT_COUNT];
 //	uint8_t			_pinsUsed;
 
 public:
-	MHV_PinChangeManager();
+	PinChangeManager();
 
 	void pinChange0();
 #if MHV_PC_INT_COUNT > 7
@@ -104,11 +104,12 @@ public:
 	void pinChange2();
 #endif
 	void pinChange(uint8_t offset);
-	void registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener);
+	void registerListener(MHV_DECLARE_PIN(pin), PinEventListener *listener);
 	void deregisterListener(int8_t pinPinChangeListener);
 
 	void handleEvents();
 
 };
 
+}
 #endif /* MHV_PINCHANGEMANAGER_H_ */

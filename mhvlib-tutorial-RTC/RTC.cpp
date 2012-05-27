@@ -30,14 +30,16 @@
 
 #define MHVLIB_NEED_PURE_VIRTUAL
 
-#include <MHV_io.h>
-#include <MHV_HardwareSerial.h>
-#include <MHV_Timer.h>
-#include <MHV_RTC.h>
+#include <mhvlib/io.h>
+#include <mhvlib/HardwareSerial.h>
+#include <mhvlib/Timer.h>
+#include <mhvlib/RTC.h>
 #include <stdlib.h> // required for atoi, itoa
 
 #include <avr/power.h>
 #include <avr/sleep.h>
+
+using namespace mhvlib_bsd;
 
 // A buffer for the serial port to receive data
 #define RX_BUFFER_SIZE	81
@@ -46,7 +48,7 @@
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 // A timer we will use to tick the RTC
-MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 /* A buffer the RTC will use to store alarms - this determines how many alarms
@@ -56,31 +58,29 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 #define TIMEZONE 600 // UTC+10
 
 // The RTC object we will use
-MHV_RTCTemplate<ALARM_COUNT> rtc(TIMEZONE);
+RTCImplementation<ALARM_COUNT> rtc(TIMEZONE);
 
-class OncePerSecond : public MHV_TimerListener {
-	void alarm();
+class OncePerSecond : public TimerListener {
+	/* An event that we will trigger every second
+	 * We will be passed the event that triggered us - we can have parameters
+	 * passed through the actionData member of the event
+	 */
+	void alarm() {
+		// Get the current timestamp
+		TIMESTAMP timestamp;
+		rtc.current(timestamp);
+
+		// Convert the timestamp to human readable time
+		TIME time;
+		rtc.toTime(time, timestamp);
+
+		static char buf[90];
+		snprintf_P(buf, sizeof(buf), PSTR("The current time is %02u:%02u:%02u %u-%02u-%02u  (%lu.%03u)\r\n"),
+				time.hours, time.minutes, time.seconds, time.year, time.month, time.day,
+				timestamp.timestamp, timestamp.milliseconds);
+		serial.write(buf);
+	}
 };
-
-/* An event that we will trigger every second
- * We will be passed the event that triggered us - we can have parameters
- * passed through the actionData member of the event
- */
-void OncePerSecond::alarm() {
-	// Get the current timestamp
-	MHV_TIMESTAMP timestamp;
-	rtc.current(timestamp);
-
-	// Convert the timestamp to human readable time
-	MHV_TIME time;
-	rtc.toTime(time, timestamp);
-
-	static char buf[90];
-	snprintf_P(buf, sizeof(buf), PSTR("The current time is %02u:%02u:%02u %u-%02u-%02u  (%lu.%03u)\r\n"),
-			time.hours, time.minutes, time.seconds, time.year, time.month, time.day,
-			timestamp.timestamp, timestamp.milliseconds);
-	serial.write(buf);
-}
 
 OncePerSecond oncePerSecond;
 
@@ -95,11 +95,11 @@ MAIN {
 	sei();
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(MHV_TIMER_PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 
 	// Prompt the user for the current time
-	MHV_TIME time;
+	TIME time;
 
 	for (;;) {
 		bool error = false;
@@ -114,7 +114,7 @@ MAIN {
 		time.milliseconds = 0;
 		time.yearday = 0;
 		time.year = atoi(input);
-		time.month = (MHV_MONTH)atoi(input + 5);
+		uint8_t month = atoi(input + 5);
 		time.day = atoi(input + 8);
 		time.hours = atoi(input + 11);
 		time.minutes = atoi(input + 14);
@@ -125,15 +125,18 @@ MAIN {
 			error = true;
 		}
 
-		if (time.month > 13 || time.month < 1) {
+		if (month > 13 || month < 1) {
 			serial.write_P(PSTR("Month must be between 1 and 12 inclusive\r\n"));
 			error = true;
+		} else {
+			time.month = (MONTH)month;
 		}
 
-		if (0 == time.day || time.day > mhv_daysInMonth(time.month, time.year)) {
+
+		if (0 == time.day || time.day > daysInMonth(time.month, time.year)) {
 			serial.write_P(PSTR("Day must be between 1 and "));
 			// Reuse input for string representation of the days in month
-			itoa(mhv_daysInMonth(time.month, time.year), input, 10);
+			itoa(daysInMonth(time.month, time.year), input, 10);
 			serial.write(input);
 			serial.write_P(PSTR(" inclusive\r\n"));
 			error = true;
@@ -160,7 +163,7 @@ MAIN {
 		}
 	}
 
-	MHV_TIMESTAMP timestamp;
+	TIMESTAMP timestamp;
 	rtc.toTimestamp(timestamp, time);
 
 	// Set the RTC

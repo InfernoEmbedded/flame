@@ -22,34 +22,36 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the power management header
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // Bring in the SoftwarePWM header
-#include <MHV_SoftwarePWM.h>
+#include <mhvlib/SoftwarePWM.h>
+
+using namespace mhvlib_bsd;
 
 // The timer for PWM control
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE> pwmTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> pwmTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(pwmTimer, MHV_TIMER2_INTERRUPTS);
 
 #define PWM_LISTENER_COUNT	5
-MHV_SoftwarePWM<PWM_LISTENER_COUNT> pwm(pwmTimer);
+SoftwarePWM<PWM_LISTENER_COUNT> pwm(pwmTimer);
 
-MHV_SoftwarePWMPin<MHV_PIN_B0> led1;
-MHV_SoftwarePWMPin<MHV_PIN_B1> led2;
-MHV_SoftwarePWMPin<MHV_PIN_B2> led3;
-MHV_SoftwarePWMPin<MHV_PIN_B3> led4;
-MHV_SoftwarePWMPin<MHV_PIN_B4> led5;
+SoftwarePWMPin<MHV_PIN_B0> led1;
+SoftwarePWMPin<MHV_PIN_B1> led2;
+SoftwarePWMPin<MHV_PIN_B2> led3;
+SoftwarePWMPin<MHV_PIN_B3> led4;
+SoftwarePWMPin<MHV_PIN_B4> led5;
 
 MAIN {
 	power_all_disable();
 	power_timer2_enable();
 
 	// Configure the PWM timer, for ~60 fps, 256 levels = ~16kHz  - 64,20
-	pwmTimer.setPeriods(MHV_TIMER_PRESCALER_7_64, 20, 0);
+	pwmTimer.setPeriods(TIMER_PRESCALER::PRESCALER_7_64, 20, 0);
 	pwmTimer.setListener1(pwm);
 	pwmTimer.enable();
 

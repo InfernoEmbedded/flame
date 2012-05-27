@@ -26,11 +26,13 @@
 
 #include <mhvlib/StepperMotor.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Create a new StepperMotor
  * @param	rtc		an RTC we will use to trigger events
  */
-MHV_StepperMotor::MHV_StepperMotor(MHV_RTC &rtc) :
+StepperMotor::StepperMotor(RTC &rtc) :
 		_position(0),
 		_rtc(rtc),
 		_moving(false),
@@ -42,7 +44,7 @@ MHV_StepperMotor::MHV_StepperMotor(MHV_RTC &rtc) :
  *
  * @param	position	the new position
  */
-void MHV_StepperMotor::setPosition(int32_t	position) {
+void StepperMotor::setPosition(int32_t position) {
 		_position = position;
 }
 
@@ -50,7 +52,7 @@ void MHV_StepperMotor::setPosition(int32_t	position) {
  * Get the current position of the motor
  * @return the current position
  */
-int32_t PURE MHV_StepperMotor::getPosition() {
+int32_t PURE StepperMotor::getPosition() {
 	return _position;
 }
 
@@ -58,7 +60,7 @@ int32_t PURE MHV_StepperMotor::getPosition() {
  * Is the motor current moving?
  * @return true if the motor is moving
  */
-bool PURE MHV_StepperMotor::isMoving() {
+bool PURE StepperMotor::isMoving() {
 	return _moving;
 }
 
@@ -68,7 +70,7 @@ bool PURE MHV_StepperMotor::isMoving() {
  * @param	speed		the speed to move in steps/second
  * @param	until		the position to stop at
  */
-void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
+void StepperMotor::rotate(bool forward, float speed, int32_t until) {
 	_forward = forward;
 	_speed = speed;
 	_until = until;
@@ -89,12 +91,12 @@ void MHV_StepperMotor::rotate(bool forward, float speed, int32_t until) {
 /**
  * Called periodically to move the motor
  */
-void MHV_StepperMotor::alarm() {
+void StepperMotor::alarm() {
 	if (!_moving) {
 		return;
 	}
 
-	MHV_TIMESTAMP elapsed;
+	TIMESTAMP elapsed;
 	_rtc.elapsed(_started, elapsed);
 // Reuse elapsed.timestamp to represent milliseconds elapsed
 	elapsed.timestamp *= 1000;
@@ -122,13 +124,15 @@ void MHV_StepperMotor::alarm() {
  * Register a listener to be notified when moves are complete
  * @param	listener	the listener to notify
  */
-void MHV_StepperMotor::registerListener(MHV_StepperListener &listener) {
+void StepperMotor::registerListener(StepperListener &listener) {
 	_stepperListener = &listener;
 }
 
 /**
  * Deregister the listener
  */
-void MHV_StepperMotor::deregisterListener() {
+void StepperMotor::deregisterListener() {
 	_stepperListener = NULL;
+}
+
 }

@@ -31,10 +31,10 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
 // Bring in the MHV Serial header
-#include <MHV_HardwareSerial.h>
+#include <mhvlib/HardwareSerial.h>
 
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
@@ -48,6 +48,8 @@
 
 // Bring in the power management header
 #include <avr/power.h>
+
+using namespace mhvlib_bsd;
 
 
 // Create a buffer we will use for a receive buffer

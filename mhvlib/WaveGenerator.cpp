@@ -27,6 +27,8 @@
 
 #include <mhvlib/WaveGenerator.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Generate waveforms and write them to the DAC
  *
@@ -37,8 +39,8 @@
  * @param	voices			the voices to use to generate sound
  * @param	voiceCount		the number of voices
  */
-MHV_WaveGenerator::MHV_WaveGenerator(MHV_DAC &dac, MHV_SAMPLE *sampleBuffer, uint8_t sampleLength,
-		uint32_t sampleRate, MHV_VOICE *voices, uint8_t voiceCount) :
+WaveGenerator::WaveGenerator(DAConverter &dac, SAMPLE *sampleBuffer, uint8_t sampleLength,
+		uint32_t sampleRate, VOICE *voices, uint8_t voiceCount) :
 		_dac(dac),
 		_samples(sampleBuffer),
 		_sampleLength(sampleLength),
@@ -46,7 +48,7 @@ MHV_WaveGenerator::MHV_WaveGenerator(MHV_DAC &dac, MHV_SAMPLE *sampleBuffer, uin
 		_voices(voices),
 		_voiceCount(voiceCount) {
 	for (uint8_t i = 0; i < _voiceCount; i++) {
-		_voices[i].phase = MHV_VOICE_AVAILABLE;
+		_voices[i].phase = VOICE_PHASE::AVAILABLE;
 	}
 
 // Kick start the DAC, it will come back to us when it needs more data
@@ -57,35 +59,35 @@ MHV_WaveGenerator::MHV_WaveGenerator(MHV_DAC &dac, MHV_SAMPLE *sampleBuffer, uin
  * Switch the current phase if required
  * @param	voice	the voice to switch the phase of
  */
-inline void MHV_WaveGenerator::switchPhase(MHV_VOICE &voice) {
+inline void WaveGenerator::switchPhase(VOICE &voice) {
 	switch (voice.phase) {
-	case MHV_VOICE_ATTACK:
+	case VOICE_PHASE::ATTACK:
 		if (voice.phaseOffset == voice.instrument->attackTime) {
 			voice.phaseOffset = 0;
-			voice.phase = MHV_VOICE_DECAY1;
+			voice.phase = VOICE_PHASE::DECAY1;
 		}
 		break;
-	case MHV_VOICE_DECAY1:
+	case VOICE_PHASE::DECAY1:
 		if (voice.phaseOffset == voice.instrument->decay1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = MHV_VOICE_SUSTAIN1;
+			voice.phase = VOICE_PHASE::SUSTAIN1;
 		}
 		break;
-	case MHV_VOICE_SUSTAIN1:
+	case VOICE_PHASE::SUSTAIN1:
 		if (voice.phaseOffset == voice.instrument->sustain1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = MHV_VOICE_DECAY2;
+			voice.phase = VOICE_PHASE::DECAY2;
 		}
 		break;
-	case MHV_VOICE_DECAY2:
+	case VOICE_PHASE::DECAY2:
 		if (voice.phaseOffset == voice.instrument->decay1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = MHV_VOICE_SUSTAIN2;
+			voice.phase = VOICE_PHASE::SUSTAIN2;
 		}
 		break;
-	case MHV_VOICE_RELEASE:
+	case VOICE_PHASE::RELEASE:
 		if (voice.phaseOffset == voice.instrument->releaseTime) {
-			voice.phase = MHV_VOICE_AVAILABLE;
+			voice.phase = VOICE_PHASE::AVAILABLE;
 		}
 		break;
 	default:
@@ -94,7 +96,7 @@ inline void MHV_WaveGenerator::switchPhase(MHV_VOICE &voice) {
 
 	if (voice.currentOffset == voice.duration) {
 		voice.phaseOffset = 0;
-		voice.phase = MHV_VOICE_RELEASE;
+		voice.phase = VOICE_PHASE::RELEASE;
 	}
 }
 
@@ -104,32 +106,32 @@ inline void MHV_WaveGenerator::switchPhase(MHV_VOICE &voice) {
  * @param voice	the voice to work on
  * @return the current amplitude
  */
-inline MHV_AMPLITUDE MHV_WaveGenerator::currentAmplitude(MHV_VOICE &voice) {
+inline AMPLITUDE WaveGenerator::currentAmplitude(VOICE &voice) {
 	uint32_t amplitude = voice.velocity;
 
 	switch (voice.phase) {
-	case MHV_VOICE_ATTACK:
+	case VOICE_PHASE::ATTACK:
 		amplitude *= voice.phaseOffset;
 		amplitude /= voice.instrument->attackTime;
 		voice.amplitude = amplitude;
 		break;
-	case MHV_VOICE_DECAY1:
+	case VOICE_PHASE::DECAY1:
 		amplitude -= voice.phaseOffset * (voice.velocity - voice.instrument->decay1Amount) / voice.instrument->decay1Time;
 		voice.amplitude = amplitude;
 		break;
-	case MHV_VOICE_SUSTAIN1:
+	case VOICE_PHASE::SUSTAIN1:
 		amplitude *= voice.instrument->decay1Amount;
 		voice.amplitude = amplitude;
 		break;
-	case MHV_VOICE_DECAY2:
+	case VOICE_PHASE::DECAY2:
 		amplitude -= voice.phaseOffset * (voice.velocity - voice.instrument->decay2Amount) / voice.instrument->decay2Time;
 		voice.amplitude = amplitude;
 		break;
-	case MHV_VOICE_SUSTAIN2:
+	case VOICE_PHASE::SUSTAIN2:
 		amplitude *= voice.instrument->decay2Amount;
 		voice.amplitude = amplitude;
 		break;
-	case MHV_VOICE_RELEASE:
+	case VOICE_PHASE::RELEASE:
 		amplitude = voice.amplitude * (voice.instrument->releaseTime - voice.phaseOffset) / voice.instrument->releaseTime;
 		break;
 	default:
@@ -144,16 +146,16 @@ inline MHV_AMPLITUDE MHV_WaveGenerator::currentAmplitude(MHV_VOICE &voice) {
  * @param	voice	the voice to render
  * @return the value of the sample
  */
-inline MHV_SAMPLE MHV_WaveGenerator::renderVoice(MHV_VOICE &voice) {
-	if (voice.phase == MHV_VOICE_AVAILABLE) {
+inline SAMPLE WaveGenerator::renderVoice(VOICE &voice) {
+	if (voice.phase == VOICE_PHASE::AVAILABLE) {
 		return 0;
 	}
 
 	uint8_t sampleOffset = uint32_t(voice.currentOffset * voice.frequency / 440)  % 72;
-	MHV_SAMPLE sample = pgm_read_byte(voice.instrument->samples + sampleOffset);
+	SAMPLE sample = pgm_read_byte(voice.instrument->samples + sampleOffset);
 
 // Calculate amplitude
-	MHV_AMPLITUDE amplitude = currentAmplitude(voice);
+	AMPLITUDE amplitude = currentAmplitude(voice);
 
 	int16_t bigSample = sample * amplitude;
 	bigSample /= _voiceCount;
@@ -165,14 +167,14 @@ inline MHV_SAMPLE MHV_WaveGenerator::renderVoice(MHV_VOICE &voice) {
 
 	switchPhase(voice);
 
-	return (MHV_SAMPLE)bigSample;
+	return (SAMPLE)bigSample;
 }
 
 /**
  * Render the current instruments to the buffer
  */
-inline void MHV_WaveGenerator::renderBuffer() {
-	mhv_memClear(_samples, _sampleLength);
+inline void WaveGenerator::renderBuffer() {
+	memClear(_samples, _sampleLength);
 
 	for (uint8_t i = 0; i < _sampleLength; i++) {
 		for (uint8_t voice = 0; voice < _voiceCount; voice++) {
@@ -184,7 +186,7 @@ inline void MHV_WaveGenerator::renderBuffer() {
 /**
  * Send more samples to the DAC
  */
-void MHV_WaveGenerator::moreSamples(MHV_DAC *dac, UNUSED MHV_SAMPLE *oldSamples, UNUSED uint8_t sampleLength) {
+void WaveGenerator::moreSamples(DAConverter *dac, UNUSED SAMPLE *oldSamples, UNUSED uint8_t sampleLength) {
 	renderBuffer();
 	dac->playSamples(_samples, _sampleLength);
 }
@@ -193,11 +195,11 @@ void MHV_WaveGenerator::moreSamples(MHV_DAC *dac, UNUSED MHV_SAMPLE *oldSamples,
  * Play a note
  * @return true if the note could not be played
  */
-bool MHV_WaveGenerator::play(MHV_INSTRUMENT *instrument, uint16_t frequency, MHV_AMPLITUDE velocity, uint32_t duration) {
+bool WaveGenerator::play(INSTRUMENT *instrument, uint16_t frequency, AMPLITUDE velocity, uint32_t duration) {
 // Find a free voice
 	uint8_t voice;
 	for (voice = 0; voice < _voiceCount; voice++) {
-		if (MHV_VOICE_AVAILABLE == _voices[voice].phase) {
+		if (VOICE_PHASE::AVAILABLE == _voices[voice].phase) {
 			break;
 		}
 	}
@@ -209,7 +211,9 @@ bool MHV_WaveGenerator::play(MHV_INSTRUMENT *instrument, uint16_t frequency, MHV
 	_voices[voice].velocity = velocity;
 	_voices[voice].frequency = frequency;
 	_voices[voice].duration = duration;
-	_voices[voice].phase = MHV_VOICE_ATTACK;
+	_voices[voice].phase = VOICE_PHASE::ATTACK;
 
 	return false;
+}
+
 }

@@ -1,10 +1,9 @@
 /*
- * Based on Arduino PID Library - Version 1
+ * Inspired by the Arduino PID Library - Version 1
  *		by Brett Beauregard <br3ttb@gmail.com> brettbeauregard.com
+ * 		licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
  *
- * Original code is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
- *
- * MHV version Copyright (c) 2011, Make, Hack, Void Inc
+ * Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +31,8 @@
 
 #include <mhvlib/PID.h>
 
+namespace mhvlib_bsd {
+
 /**
  * Create a new PID
  * @param	setpoint	the target value
@@ -43,7 +44,7 @@
  * @param	min			the minimum value for output
  * @param	max			the maximum value for output
  */
-MHV_PID::MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
+PID::PID(float setpoint, float kP, float kI, float kD, uint16_t period,
 		bool reverse, uint16_t min, uint16_t max) :
 		_enabled(false),
 		_setpoint(setpoint),
@@ -60,7 +61,7 @@ MHV_PID::MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
 }
 
 
-inline void MHV_PID::clampIntegral() {
+inline void PID::clampIntegral() {
 	if (_integral > _outMax) {
 		_integral = _outMax;
 	} else if (_integral < _outMin) {
@@ -72,7 +73,7 @@ inline void MHV_PID::clampIntegral() {
  * Calculate the next output
  * @param	input	the latest sample
  */
-float MHV_PID::compute(float input) {
+float PID::compute(float input) {
 	float error = _setpoint - input;
 
 	_integral += (_kI * error);
@@ -100,7 +101,7 @@ float MHV_PID::compute(float input) {
  * @param	kD		the derivative constant
  * @param	period	the period that compute() is called, in ms
  */
-void MHV_PID::setTuning(float kP, float kI, float kD, uint16_t period) {
+void PID::setTuning(float kP, float kI, float kD, uint16_t period) {
 	float myPeriod = period / 1000;
 
 	_kP = kP;
@@ -120,7 +121,7 @@ void MHV_PID::setTuning(float kP, float kI, float kD, uint16_t period) {
  * @param	min		the new minimum output value
  * @param	max		the new maximum output value
  */
-void MHV_PID::setOutputLimits(float min, float max) {
+void PID::setOutputLimits(float min, float max) {
 	_outMin = min;
 	_outMax = max;
 
@@ -132,7 +133,7 @@ void MHV_PID::setOutputLimits(float min, float max) {
  * Enable/Disable the PID
  * @param	enable	true to enable the pid
  */
-void MHV_PID::enable(bool enable) {
+void PID::enable(bool enable) {
 	if (enable && !_enabled) {
 		_integral = _lastOutput;
 
@@ -148,13 +149,14 @@ void MHV_PID::enable(bool enable) {
  * Setting reverse means that increasing output reduces the input (eg. increasing power to a cooler,
  * with the input being temperature)
  */
-void MHV_PID::setDirection(bool reverse) {
+void PID::setDirection(bool reverse) {
 if (_enabled && reverse != _reverse) {
 	_kP = 0 - _kP;
-	  _kI = 0 - _kI;
-	  _kD = 0 - _kD;
+	_kI = 0 - _kI;
+	_kD = 0 - _kD;
 }
 
 _reverse = reverse;
 }
 
+}

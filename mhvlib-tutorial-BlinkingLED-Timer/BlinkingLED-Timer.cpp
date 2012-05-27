@@ -29,10 +29,10 @@
  */
 
 // Bring in the MHV IO header
-#include <MHV_io.h>
+#include <mhvlib/io.h>
 
-// Bring in the MHV 8 bit timer header
-#include <MHV_Timer.h>
+// Bring in the MHV timer header
+#include <mhvlib/Timer.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -47,10 +47,12 @@
 // Bring in Arduino defines
 #include <boards/MHV_io_Arduino.h>
 
+using namespace mhvlib_bsd;
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
@@ -61,7 +63,7 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(tickTimer, MHV_TIMER2_INTERRUPTS);
  * Since we want a timer triggered every 333ms, but the hardware is incapable
  * of this, we will instead trigger every 1ms and maintain a counter instead
  */
-class LEDBlinker : public MHV_TimerListener {
+class LEDBlinker : public TimerListener {
 	void alarm();
 };
 
@@ -75,7 +77,7 @@ void LEDBlinker::alarm() {
  * counter
  */
 	if (333 == ++count) {
-			mhv_pinToggle(MHV_ARDUINO_PIN_13);
+			pinToggle(MHV_ARDUINO_PIN_13);
 
 		count = 0;
 	}
@@ -92,7 +94,7 @@ MAIN {
 	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
-	mhv_setOutput(MHV_ARDUINO_PIN_13);
+	setOutput(MHV_ARDUINO_PIN_13);
 
 /* We want the timer to trigger ever 333ms, however, the maximum an 8 bit timer
  * can count to is 32768us @ 16MHz

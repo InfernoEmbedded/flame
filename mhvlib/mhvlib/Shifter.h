@@ -30,17 +30,18 @@
 #include <mhvlib/io.h>
 #include <util/delay.h>
 
-void mhv_shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
-void mhv_shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
+namespace mhvlib_bsd {
+
+void shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
+void shiftout_byte_msb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte);
 
 
-class MHV_Shifter {
+class Shifter {
 public:
 	virtual void shiftOut(uint8_t data, uint8_t bits) =0;
 	virtual void shiftOut(uint8_t data) =0;
 	virtual void shiftOut(uint8_t *data, uint8_t length) =0;
 	virtual void shiftOut(uint8_t *data, uint8_t length, uint16_t elements) =0;
-//	virtual ~MHV_Shifter();
 };
 
 #undef MHV_SHIFT_DELAY
@@ -48,15 +49,15 @@ public:
 
 /**
  * Create a new shifter
- * @tparam	clock...	an MHV_PIN describing the clock line
- * @tparam	data...		an MHV_PIN describing the data line
+ * @tparam	clock...	an pin describing the clock line
+ * @tparam	data...		an pin describing the data line
  * @tparam	msb			true to output MSB first. false for LSB
  * @tparam	rising		true if the receiver is clocked on the rising edge, false otherwise
  * @tparam	delay		the delay between state changes (us)
  */
 template<MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), bool msb = true, bool rising = true,
 		uint16_t delay = 0>
-class MHV_ShifterImplementation : public MHV_Shifter {
+class ShifterImplementation : public Shifter {
 
 private:
 	/**
@@ -921,6 +922,13 @@ private:
 	}
 
 public:
+	/**
+	 * Constructor - set the pins to output
+	 */
+	ShifterImplementation() {
+		setOutput(MHV_PIN_PARMS(clock));
+		setOutput(MHV_PIN_PARMS(data));
+	}
 
 	/**
 	 * Shift out a number of bits (LSB aligned)
@@ -931,28 +939,28 @@ public:
 		if (msb) {
 			for (int8_t i = bits - 1; i >= 0; i--) {
 				if ((data >> i) & 0x01) {
-					mhv_pinOn(MHV_PIN_PARMS(data));
+					pinOn(MHV_PIN_PARMS(data));
 				} else {
-					mhv_pinOff(MHV_PIN_PARMS(data));
+					pinOff(MHV_PIN_PARMS(data));
 				}
-				mhv_pinOn(MHV_PIN_PARMS(clock));
+				pinOn(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 
-				mhv_pinOff(MHV_PIN_PARMS(clock));
+				pinOff(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 			}
 		} else {
 			for (uint8_t i = 0; i < bits; i++) {
 				if ((data >> i) & 0x01) {
-					mhv_pinOn(MHV_PIN_PARMS(data));
+					pinOn(MHV_PIN_PARMS(data));
 				} else {
-					mhv_pinOff(MHV_PIN_PARMS(data));
+					pinOff(MHV_PIN_PARMS(data));
 				}
 
-				mhv_pinOn(MHV_PIN_PARMS(clock));
+				pinOn(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 
-				mhv_pinOff(MHV_PIN_PARMS(clock));
+				pinOff(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 			}
 		}
@@ -966,29 +974,29 @@ public:
 		if (msb) {
 			for (int8_t i = 7; i >= 0; i--) {
 				if ((data >> i) & 0x01) {
-					mhv_pinOn(MHV_PIN_PARMS(data));
+					pinOn(MHV_PIN_PARMS(data));
 				} else {
-					mhv_pinOff(MHV_PIN_PARMS(data));
+					pinOff(MHV_PIN_PARMS(data));
 				}
 
-				mhv_pinOn(MHV_PIN_PARMS(clock));
+				pinOn(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 
-				mhv_pinOff(MHV_PIN_PARMS(clock));
+				pinOff(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 			}
 		} else {
 			for (uint8_t i = 0; i < 8; i++) {
 				if ((data >> i) & 0x01) {
-					mhv_pinOn(MHV_PIN_PARMS(data));
+					pinOn(MHV_PIN_PARMS(data));
 				} else {
-					mhv_pinOff(MHV_PIN_PARMS(data));
+					pinOff(MHV_PIN_PARMS(data));
 				}
 
-				mhv_pinOn(MHV_PIN_PARMS(clock));
+				pinOn(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 
-				mhv_pinOff(MHV_PIN_PARMS(clock));
+				pinOff(MHV_PIN_PARMS(clock));
 				MHV_SHIFT_DELAY;
 			}
 		}
@@ -1027,4 +1035,5 @@ public:
 	}
 };
 
+}
 #endif /* MHV_SHIFTER_H_ */

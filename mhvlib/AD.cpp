@@ -26,7 +26,9 @@
 
 #include <mhvlib/AD.h>
 
-uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference) {
+namespace mhvlib_bsd {
+
+uint16_t ad_busyRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -41,7 +43,7 @@ uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference) {
 	return ADC;
 }
 
-void mhv_ad_asyncRead(uint8_t channel, uint8_t reference) {
+void ad_asyncRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -52,6 +54,8 @@ void mhv_ad_asyncRead(uint8_t channel, uint8_t reference) {
 	ADCSRA |= _BV(ADSC);
 }
 
-void mhv_ad_setPrescaler(MHV_AD_PRESCALER prescaler) {
+void ad_setPrescaler(AD_PRESCALER prescaler) {
 	ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
+}
+
 }

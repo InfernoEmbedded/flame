@@ -34,16 +34,18 @@
 
 #include <mhvlib/io.h>
 
-enum mhv_epp_mode {
-	MHV_EPP_MODE_INTERRUPT,
-	MHV_EPP_MODE_POLLED
-};
-typedef enum mhv_epp_mode MHV_EPP_MODE;
+namespace mhvlib_bsd {
 
-class MHV_EPP {
+enum class epp_mode : uint8_t {
+	INTERRUPT,
+	POLLED
+};
+typedef enum epp_mode EPP_MODE;
+
+class EPP {
 private:
 		uint8_t				_address;
-		MHV_EPP_MODE		_mode;
+		EPP_MODE			_mode;
 
 		volatile uint8_t	*_dataDir;
 		volatile uint8_t	*_dataInput;
@@ -56,7 +58,7 @@ private:
 		volatile uint8_t	*_controlOutput;
 
 public:
-	MHV_EPP(MHV_EPP_MODE mode,
+	EPP(EPP_MODE mode,
 			MHV_DECLARE_PIN(data),
 			MHV_DECLARE_PIN(control));
 	void interruptReset();
@@ -70,6 +72,8 @@ protected:
 	virtual uint8_t _read(bool address)=0;
 	virtual void _write(bool address, uint8_t data)=0;
 };
+
+}
 
 #endif /* MHV_EPP_H_ */
 #endif

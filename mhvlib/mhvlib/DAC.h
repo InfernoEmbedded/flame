@@ -29,14 +29,16 @@
 
 #include <mhvlib/Timer.h>
 
-typedef int8_t MHV_SAMPLE;
+typedef int8_t SAMPLE;
 
-class MHV_DAC;
+namespace mhvlib_bsd {
+
+class DAConverter;
 
 /**
  * A listener which will be notified when the DAC needs more samples
  */
-class MHV_DACListener {
+class DACListener {
 public:
 	/**
 	 * Called when the DAC needs more samples
@@ -44,24 +46,23 @@ public:
 	 * @param oldSamples	a pointer the the old samples (so it can be reused/freed)
 	 * @param sampleLength	the number of old samples
 	 */
-	virtual void moreSamples(MHV_DAC *dac, MHV_SAMPLE *oldSamples, uint8_t sampleLength);
-
-	virtual ~MHV_DACListener();
+	virtual void moreSamples(DAConverter *dac, SAMPLE *oldSamples, uint8_t sampleLength);
 };
 
-class MHV_DAC : public MHV_TimerListener {
+class DAConverter : public TimerListener {
 protected:
-	MHV_SAMPLE		*_samples;
-	uint8_t			_sampleLength;
-	uint8_t			_currentSample;
-	MHV_Timer		&_timer;
-	MHV_DACListener	&_listener;
+	SAMPLE		*_samples;
+	uint8_t		_sampleLength;
+	uint8_t		_currentSample;
+	Timer		&_timer;
+	DACListener	&_listener;
 
 public:
-	MHV_DAC(MHV_Timer &timer, MHV_DACListener &listener);
+	DAConverter(Timer &timer, DACListener &listener);
 	void alarm();
-	void playSamples(MHV_SAMPLE *samples, uint8_t sampleLength);
+	void playSamples(SAMPLE *samples, uint8_t sampleLength);
 	void handleEvents();
 };
 
+}
 #endif /* MHVDAC_H_ */

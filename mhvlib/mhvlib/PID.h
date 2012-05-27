@@ -3,7 +3,7 @@
  *		by Brett Beauregard <br3ttb@gmail.com> brettbeauregard.com
  * 		licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
  *
- * MHV version Copyright (c) 2011, Make, Hack, Void Inc
+ * Copyright (c) 2011, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,9 @@
 
 #include <mhvlib/io.h>
 
-class MHV_PID {
+namespace mhvlib_bsd {
+
+class PID {
 protected:
 	float	_kP;
 	float	_kI;
@@ -54,7 +56,7 @@ protected:
 	inline void clampIntegral();
 
 public:
-	MHV_PID(float setpoint, float kP, float kI, float kD, uint16_t period,
+	PID(float setpoint, float kP, float kI, float kD, uint16_t period,
 			bool reverse, uint16_t min, uint16_t max);
 	void setDirection(bool reverse);
 	void enable(bool enable);
@@ -62,5 +64,7 @@ public:
 	void setTuning(float kP, float kI, float kD, uint16_t period);
 	void setOutputLimits(float, float);
 };
+
+}
 #endif
 

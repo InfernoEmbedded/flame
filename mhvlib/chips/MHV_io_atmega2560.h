@@ -40,12 +40,12 @@
 #endif
 
 //						bits,type,                            ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,inputCapture1,counter,interrupt,intEnable
-#define MHV_TIMER8_0	8,   MHV_TIMER_5_PRESCALERS,          0x44,    0x45,    0,       0x47,     0x48,     0,        0,            0x46,   0x6e,     1
-#define MHV_TIMER16_1	16,  MHV_TIMER_5_PRESCALERS,          0x80,    0x81,    0x82,    0x88,     0x8a,     0x8c,     0,            0x84,   0x6f,     1
-#define MHV_TIMER8_2	8,   MHV_TIMER_7_PRESCALERS,          0xb0,    0xb1,    0,       0xb3,     0xb4,     0,        0,            0xb2,   0x70,     1
-#define MHV_TIMER16_3	16,  MHV_TIMER_5_PRESCALERS,          0x90,    0x91,    0x92,    0x98,     0x9a,     0x9c,     0,            0x94,   0x71,     1
-#define MHV_TIMER16_4	16,  MHV_TIMER_5_PRESCALERS,          0xa0,    0xa1,    0xa2,    0xa8,     0xaa,     0xac,     0,            0xa4,   0x72,     1
-#define MHV_TIMER16_5	16,  MHV_TIMER_5_PRESCALERS,          0x120,   0x121,   0x122,   0x128,    0x12a,    0x12c,    0,            0x124,  0x73,     1
+#define MHV_TIMER8_0	8,   TIMER_TYPE::HAS_5_PRESCALERS,    0x44,    0x45,    0,       0x47,     0x48,     0,        0,            0x46,   0x6e,     1
+#define MHV_TIMER16_1	16,  TIMER_TYPE::HAS_5_PRESCALERS,    0x80,    0x81,    0x82,    0x88,     0x8a,     0x8c,     0,            0x84,   0x6f,     1
+#define MHV_TIMER8_2	8,   TIMER_TYPE::HAS_7_PRESCALERS,    0xb0,    0xb1,    0,       0xb3,     0xb4,     0,        0,            0xb2,   0x70,     1
+#define MHV_TIMER16_3	16,  TIMER_TYPE::HAS_5_PRESCALERS,    0x90,    0x91,    0x92,    0x98,     0x9a,     0x9c,     0,            0x94,   0x71,     1
+#define MHV_TIMER16_4	16,  TIMER_TYPE::HAS_5_PRESCALERS,    0xa0,    0xa1,    0xa2,    0xa8,     0xaa,     0xac,     0,            0xa4,   0x72,     1
+#define MHV_TIMER16_5	16,  TIMER_TYPE::HAS_5_PRESCALERS,    0x120,   0x121,   0x122,   0x128,    0x12a,    0x12c,    0,            0x124,  0x73,     1
 
 
 #define MHV_TIMER0_INTERRUPTS TIMER0_COMPA_vect, TIMER0_COMPB_vect, 0

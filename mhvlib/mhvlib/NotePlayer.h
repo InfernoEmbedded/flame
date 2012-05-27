@@ -31,20 +31,24 @@
 #include <mhvlib/WaveGenerator.h>
 #include <mhvlib/RTC.h>
 
-struct MHV_Note {
-	MHV_INSTRUMENT	*instrument;	/** The instrument to use */
+namespace mhvlib_bsd {
+
+struct Note {
+	INSTRUMENT		*instrument;	/** The instrument to use */
 	uint32_t		when;			/** When the note should be played, ms */
 	uint16_t		frequency;		/** the frequency of the note, Hz */
 	uint32_t		duration;		/** how long the note should be played for, ms */
 };
 
-class MHV_NotePlayer {
+class NotePlayer {
 private:
-	MHV_WaveGenerator	&_waveGenerator;
-	MHV_RTC				&_rtc;
+	WaveGenerator	&_waveGenerator;
+	RTC				&_rtc;
 
 public:
-	MHV_NotePlayer(MHV_WaveGenerator &waveGenerator, MHV_RTC &rtc);
+	NotePlayer(WaveGenerator &waveGenerator, RTC &rtc);
 };
+
+}
 
 #endif /* MHVNOTEPLAYER_H_ */

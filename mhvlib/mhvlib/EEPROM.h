@@ -44,14 +44,16 @@ ISR(EEPROM_READY_vect) { \
 #endif
 
 #define MHV_EEPROM_CREATE(_mhvObjectName) \
-		MHV_EEPROM _mhvObjectName; \
+		EEPROM _mhvObjectName; \
 		MHV_EEPROM_ASSIGN_INTERRUPTS(_mhvObjectName);
 
 #define MHV_EEPROM_BUSY	-1
 
-class MHV_EEPROM {
+namespace mhvlib_bsd {
+
+class EEPROM {
 private:
-	MHV_Lock	_lock;
+	Lock		_lock;
 	uint16_t	_writeAddress;
 	uint8_t		*_writeBuffer;
 	uint16_t	_bytesWritten;
@@ -60,7 +62,7 @@ private:
 	void		*_doneCallbackData;
 
 public:
-	MHV_EEPROM();
+	EEPROM();
 	int16_t read(uint16_t address);
 	uint8_t busyRead(uint16_t address);
 	int8_t read(void *buffer, uint16_t address, uint16_t length);
@@ -73,5 +75,7 @@ public:
 	void writeInterrupt();
 	bool isBusy();
 };
+
+}
 
 #endif /* MHV_EEPROM_H_ */

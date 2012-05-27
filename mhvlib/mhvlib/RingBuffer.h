@@ -32,8 +32,10 @@
 #include <inttypes.h>
 #include <mhvlib/io.h>
 
+namespace mhvlib_bsd {
 
-class MHV_RingBuffer {
+
+class RingBuffer {
 protected:
 	uint8_t 	_head;
 	uint8_t 	_tail;
@@ -58,7 +60,7 @@ public:
 	/**
 	 * Create a new ringbuffer
 	 */
-	MHV_RingBuffer() :
+	RingBuffer() :
 		_head(0),
 		_tail(0) {};
 
@@ -207,7 +209,7 @@ public:
  * @tparam	bufSize	the number of bytes to store
  */
 template<uint8_t bufSize>
-class MHV_RingBufferImplementation : public MHV_RingBuffer {
+class RingBufferImplementation : public RingBuffer {
 protected:
 	uint8_t _myBuffer[bufSize + 1];
 
@@ -215,11 +217,12 @@ public:
 	/**
 	 * Create a new ringbuffer
 	 */
-	MHV_RingBufferImplementation() :
-		MHV_RingBuffer() {
+	RingBufferImplementation() :
+		RingBuffer() {
 		_buffer = _myBuffer;
 		_size = bufSize;
 	}
 };
 
+}
 #endif /* MHV_RINGBUFFER_H_ */

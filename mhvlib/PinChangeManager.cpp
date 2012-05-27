@@ -26,11 +26,13 @@
  */
 #include <mhvlib/PinChangeManager.h>
 
+namespace mhvlib_bsd {
+
 /**
  * An event manager for handling pinchange events
  */
 
-MHV_PinChangeManager::MHV_PinChangeManager() {
+PinChangeManager::PinChangeManager() {
 	for (uint8_t i = 0; i < MHV_PC_INT_COUNT; i++) {
 		_pins[i].listener = NULL;
 	}
@@ -39,7 +41,7 @@ MHV_PinChangeManager::MHV_PinChangeManager() {
 /**
  * Trigger for interrupt PCINT0
  */
-void MHV_PinChangeManager::pinChange0() {
+void PinChangeManager::pinChange0() {
 	pinChange(0);
 }
 
@@ -47,7 +49,7 @@ void MHV_PinChangeManager::pinChange0() {
 /**
  * Trigger for interrupt PCINT1
  */
-void MHV_PinChangeManager::pinChange1() {
+void PinChangeManager::pinChange1() {
 	pinChange(8);
 }
 #endif
@@ -56,7 +58,7 @@ void MHV_PinChangeManager::pinChange1() {
 /**
  * Trigger for interrupt PCINT2
  */
-void MHV_PinChangeManager::pinChange2() {
+void PinChangeManager::pinChange2() {
 	pinChange(16);
 }
 #endif
@@ -65,9 +67,9 @@ void MHV_PinChangeManager::pinChange2() {
  * Trigger for pin change interrupts - scans through 8 pins starting at the offset
  * @param	offset	the number of pins to skip before scanning
  */
-void MHV_PinChangeManager::pinChange(uint8_t offset) {
-	MHV_EVENT_PIN *pin = _pins + offset;
-	MHV_EVENT_PIN *maxPin = pin + 8;
+void PinChangeManager::pinChange(uint8_t offset) {
+	EVENT_PIN *pin = _pins + offset;
+	EVENT_PIN *maxPin = pin + 8;
 
 	for (; pin < maxPin; ++pin) {
 		if (NULL == pin->listener) {
@@ -89,14 +91,14 @@ void MHV_PinChangeManager::pinChange(uint8_t offset) {
  * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
  * @param	listener	a MHV_PinEventListener to notify when the pin changes
  */
-void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventListener *listener) {
+void PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), PinEventListener *listener) {
 
-	mhv_setInput(MHV_PIN_PARMS(pin));
+	setInput(MHV_PIN_PARMS(pin));
 
 	_pins[pinPinchangeInterrupt].port = pinIn;
 	_pins[pinPinchangeInterrupt].mask = _BV(pinPin);
 	_pins[pinPinchangeInterrupt].listener = listener;
-	_pins[pinPinchangeInterrupt].previous = mhv_pinRead(MHV_PIN_PARMS(pin));
+	_pins[pinPinchangeInterrupt].previous = pinRead(MHV_PIN_PARMS(pin));
 	_pins[pinPinchangeInterrupt].changed = false;
 
 	// Enable the interrupt
@@ -132,7 +134,7 @@ void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventLi
  * Deregister interest for pinchange events
  * @param	pinPinchangeInterrupt			the pinPinchangeInterrupt to deregister
  */
-void MHV_PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
+void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 	if (pinPinchangeInterrupt >= MHV_PC_INT_COUNT) {
 		return;
 	}
@@ -168,7 +170,7 @@ void MHV_PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 /**
  * Call from the main loop to handle any events
  */
-void MHV_PinChangeManager::handleEvents() {
+void PinChangeManager::handleEvents() {
 	uint8_t i;
 
 	for (i = 0; i < MHV_PC_INT_COUNT; i++) {
@@ -177,4 +179,6 @@ void MHV_PinChangeManager::handleEvents() {
 			_pins[i].listener->pinChanged(i, _pins[i].previous);
 		}
 	}
+}
+
 }
