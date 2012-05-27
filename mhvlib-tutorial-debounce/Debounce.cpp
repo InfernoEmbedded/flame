@@ -32,15 +32,17 @@
 #define MHVLIB_NEED_PURE_VIRTUAL
 
 #include <MHV_io.h>
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 #include <MHV_RTC.h>
 #include <MHV_Debounce.h>
+
+#include <boards/MHV_io_Arduino.h>
 
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	10

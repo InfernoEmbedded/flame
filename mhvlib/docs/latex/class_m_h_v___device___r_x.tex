@@ -1,104 +1,97 @@
-\hypertarget{class_m_h_v___device___r_x}{
-\section{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X \-Class \-Reference}
-\label{class_m_h_v___device___r_x}\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\hypertarget{class_m_h_v___device___r_x}{\section{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X Class Reference}
+\label{class_m_h_v___device___r_x}\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
 }
 
 
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h$>$}
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h$>$}
 
-\-Inheritance diagram for \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-:\begin{figure}[H]
+Inheritance diagram for M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_m_h_v___device___r_x}
+\includegraphics[height=2.492581cm]{class_m_h_v___device___r_x}
 \end{center}
 \end{figure}
-\subsection*{\-Public \-Member \-Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 int \hyperlink{class_m_h_v___device___r_x_ad8da50a37b9f5e84428ce7920f6c7153}{async\-Read\-Line} (char $\ast$buffer, uint8\-\_\-t buffer\-Length)
 \item 
 int \hyperlink{class_m_h_v___device___r_x_a872dd2a1c97d5e1bb962df0d93c7c3cc}{busy\-Read\-Line} (char $\ast$buffer, uint8\-\_\-t buffer\-Length)
 \item 
-int \hyperlink{class_m_h_v___device___r_x_ab823ad1f27ec0a659ba3ab896e936b2c}{read} ()
+int \hyperlink{class_m_h_v___device___r_x_a03301976a9e3f504bcdfd56607f03425}{read} (void)
 \item 
 void \hyperlink{class_m_h_v___device___r_x_a046e51e8d7b47e084fea8f2508e93ae9}{flush} ()
 \item 
 bool \hyperlink{class_m_h_v___device___r_x_a6d9d253544c30aff62bdcae14f9b2705}{ready} ()
 \item 
-void \hyperlink{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}{register\-Listener} (\hyperlink{class_m_h_v___r_x_listener}{\-M\-H\-V\-\_\-\-R\-X\-Listener} \&listener)
+void \hyperlink{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}{register\-Listener} (\hyperlink{class_m_h_v___r_x_listener}{M\-H\-V\-\_\-\-R\-X\-Listener} \&listener)
 \item 
 void \hyperlink{class_m_h_v___device___r_x_aeaeee691f88b5895a09afbb1c47d83d1}{deregister\-Listener} ()
 \item 
 void \hyperlink{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}{handle\-Events} ()
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Member \-Functions}
+\subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___device___r_x_a7e170355a69743ca2f80ff4abca3fb53}{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X} (\hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&rx\-Buffer)
+\hyperlink{class_m_h_v___device___r_x_af467bd2473b7588273676d245c0c8887}{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X} (\hyperlink{class_m_h_v___ring_buffer}{M\-H\-V\-\_\-\-Ring\-Buffer} \&buffer)
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Attributes}
+\subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \& \hyperlink{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}{\-\_\-rx\-Buffer}
+\hyperlink{class_m_h_v___ring_buffer}{M\-H\-V\-\_\-\-Ring\-Buffer} \& \hyperlink{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}{\-\_\-rx\-Buffer}
 \item 
-\hyperlink{class_m_h_v___r_x_listener}{\-M\-H\-V\-\_\-\-R\-X\-Listener} $\ast$ \hyperlink{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}{\-\_\-listener}
+\hyperlink{class_m_h_v___r_x_listener}{M\-H\-V\-\_\-\-R\-X\-Listener} $\ast$ \hyperlink{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}{\-\_\-listener}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Detailed \-Description}
+\subsection{Detailed Description}
+A device that can receive data 
+
+Definition at line 59 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
 
-\-Definition at line 48 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-
-
-\subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___device___r_x_a7e170355a69743ca2f80ff4abca3fb53}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X (
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_h_v___device___r_x_af467bd2473b7588273676d245c0c8887}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}]{\setlength{\rightskip}{0pt plus 5cm}M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{rx\-Buffer}
+\item[{{\bf M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{buffer}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___device___r_x_a7e170355a69743ca2f80ff4abca3fb53}
-\-Constructor 
-\begin{DoxyParams}{\-Parameters}
-{\em rx\-Buffer} & a buffer to read into \\
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_m_h_v___device___r_x_af467bd2473b7588273676d245c0c8887}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & A buffer to store received data \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 68 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
 
 
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___device___r_x_ad8da50a37b9f5e84428ce7920f6c7153}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!async\-Read\-Line@{async\-Read\-Line}}
-\index{async\-Read\-Line@{async\-Read\-Line}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{async\-Read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}int \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::async\-Read\-Line (
+\subsection{Member Function Documentation}
+\hypertarget{class_m_h_v___device___r_x_ad8da50a37b9f5e84428ce7920f6c7153}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!async\-Read\-Line@{async\-Read\-Line}}
+\index{async\-Read\-Line@{async\-Read\-Line}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{async\-Read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}int M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::async\-Read\-Line (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{buffer, }
 \item[{uint8\-\_\-t}]{buffer\-Length}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_ad8da50a37b9f5e84428ce7920f6c7153}
-\-If we have a line, copy it into a buffer \& null terminate, stripping \-C\-R/\-L\-F returns 0 if we have successfully copied a line returns -\/1 if there was no line available returns -\/2 if the buffer was too small returns -\/3 if we have reached the end of the ringbuffer with no line terminator 
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_ad8da50a37b9f5e84428ce7920f6c7153}
+If we have a line, copy it into a buffer \& null terminate, stripping C\-R/\-L\-F returns 0 if we have successfully copied a line returns -\/1 if there was no line available returns -\/2 if the buffer was too small returns -\/3 if we have reached the end of the ringbuffer with no line terminator 
 
-\-Definition at line 53 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 80 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a872dd2a1c97d5e1bb962df0d93c7c3cc}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!busy\-Read\-Line@{busy\-Read\-Line}}
-\index{busy\-Read\-Line@{busy\-Read\-Line}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{busy\-Read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}int \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::busy\-Read\-Line (
+\hypertarget{class_m_h_v___device___r_x_a872dd2a1c97d5e1bb962df0d93c7c3cc}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!busy\-Read\-Line@{busy\-Read\-Line}}
+\index{busy\-Read\-Line@{busy\-Read\-Line}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{busy\-Read\-Line}]{\setlength{\rightskip}{0pt plus 5cm}int M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::busy\-Read\-Line (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{buffer, }
 \item[{uint8\-\_\-t}]{buffer\-Length}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_a872dd2a1c97d5e1bb962df0d93c7c3cc}
-\-If we have a line, copy it into a buffer \& null terminate, stripping \-C\-R/\-L\-F \-Blocks until a line is available \begin{DoxyReturn}{\-Returns}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a872dd2a1c97d5e1bb962df0d93c7c3cc}
+If we have a line, copy it into a buffer \& null terminate, stripping C\-R/\-L\-F Blocks until a line is available \begin{DoxyReturn}{Returns}
 0 if we have successfully copied a line 
 
 -\/2 if the buffer was too small 
@@ -107,121 +100,104 @@ void \hyperlink{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}{ha
 \end{DoxyReturn}
 
 
-\-Definition at line 91 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 118 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_aeaeee691f88b5895a09afbb1c47d83d1}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!deregister\-Listener@{deregister\-Listener}}
-\index{deregister\-Listener@{deregister\-Listener}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::deregister\-Listener (
+\hypertarget{class_m_h_v___device___r_x_aeaeee691f88b5895a09afbb1c47d83d1}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::deregister\-Listener (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_aeaeee691f88b5895a09afbb1c47d83d1}
-\-Deregister interest for lines/overflows from an \-R\-X device 
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_aeaeee691f88b5895a09afbb1c47d83d1}
+Deregister interest for lines/overflows from an R\-X device 
 
-\-Definition at line 141 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 168 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a046e51e8d7b47e084fea8f2508e93ae9}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!flush@{flush}}
-\index{flush@{flush}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::flush (
+\hypertarget{class_m_h_v___device___r_x_a046e51e8d7b47e084fea8f2508e93ae9}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!flush@{flush}}
+\index{flush@{flush}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::flush (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_a046e51e8d7b47e084fea8f2508e93ae9}
-\-Discard remaining data in the receive buffer 
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a046e51e8d7b47e084fea8f2508e93ae9}
+Discard remaining data in the receive buffer 
 
-\-Definition at line 108 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 135 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!handle\-Events@{handle\-Events}}
-\index{handle\-Events@{handle\-Events}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::handle\-Events (
+\hypertarget{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::handle\-Events (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}
-\-Call from the main loop to handle any events 
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a13adea72a323b7debc5985e5bba21e58}
+Call from the main loop to handle any events 
 
-\-Definition at line 149 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 176 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_ab823ad1f27ec0a659ba3ab896e936b2c}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!read@{read}}
-\index{read@{read}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::read (
+\hypertarget{class_m_h_v___device___r_x_a03301976a9e3f504bcdfd56607f03425}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!read@{read}}
+\index{read@{read}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::read (
 \begin{DoxyParamCaption}
 \item[{void}]{}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_ab823ad1f27ec0a659ba3ab896e936b2c}
-\-Read a byte from the receive buffer \begin{DoxyReturn}{\-Returns}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a03301976a9e3f504bcdfd56607f03425}
+Read a byte from the receive buffer \begin{DoxyReturn}{Returns}
 the byte, or -\/1 if there is nothing to read 
 \end{DoxyReturn}
 
 
-\-Definition at line 101 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 128 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a6d9d253544c30aff62bdcae14f9b2705}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!ready@{ready}}
-\index{ready@{ready}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::ready (
+\hypertarget{class_m_h_v___device___r_x_a6d9d253544c30aff62bdcae14f9b2705}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!ready@{ready}}
+\index{ready@{ready}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}bool M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::ready (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_a6d9d253544c30aff62bdcae14f9b2705}
-\-Check if a line is ready, or the ringbuffer is full \begin{DoxyReturn}{\-Returns}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a6d9d253544c30aff62bdcae14f9b2705}
+Check if a line is ready, or the ringbuffer is full \begin{DoxyReturn}{Returns}
 true if either of the situations occurs 
 \end{DoxyReturn}
 
 
-\-Definition at line 116 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 143 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!register\-Listener@{register\-Listener}}
-\index{register\-Listener@{register\-Listener}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::register\-Listener (
+\hypertarget{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::register\-Listener (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-R\-X\-Listener} \&}]{listener}
+\item[{{\bf M\-H\-V\-\_\-\-R\-X\-Listener} \&}]{listener}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}
-\-Register interest for lines/overflows from an \-R\-X device 
-\begin{DoxyParams}{\-Parameters}
-{\em listener} & an \hyperlink{class_m_h_v___r_x_listener}{\-M\-H\-V\-\_\-\-R\-X\-Listener} to notify that the device is ready \\
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___device___r_x_a2797697f3b03274f06da79eb5c4e62be}
+Register interest for lines/overflows from an R\-X device 
+\begin{DoxyParams}{Parameters}
+{\em listener} & an \hyperlink{class_m_h_v___r_x_listener}{M\-H\-V\-\_\-\-R\-X\-Listener} to notify that the device is ready \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 134 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp.
+Definition at line 161 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
 
 
-\subsection{\-Member \-Data \-Documentation}
-\hypertarget{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!\-\_\-listener@{\-\_\-listener}}
-\index{\-\_\-listener@{\-\_\-listener}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-R\-X\-Listener}$\ast$ {\bf \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-\_\-listener}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}
+\subsection{Member Data Documentation}
+\hypertarget{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!\-\_\-listener@{\-\_\-listener}}
+\index{\-\_\-listener@{\-\_\-listener}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf M\-H\-V\-\_\-\-R\-X\-Listener}$\ast$ M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-\_\-listener\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___device___r_x_a7f95636c0225ca0316f45e5e7ac466b0}
 
 
-\-Definition at line 51 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
+Definition at line 62 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
-\hypertarget{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}{
-\index{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!\-\_\-rx\-Buffer@{\-\_\-rx\-Buffer}}
-\index{\-\_\-rx\-Buffer@{\-\_\-rx\-Buffer}!MHV_Device_RX@{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
-\subsubsection[{\-\_\-rx\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer}\& {\bf \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-\_\-rx\-Buffer}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}
+\hypertarget{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}{\index{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}!\-\_\-rx\-Buffer@{\-\_\-rx\-Buffer}}
+\index{\-\_\-rx\-Buffer@{\-\_\-rx\-Buffer}!MHV_Device_RX@{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X}}
+\subsubsection[{\-\_\-rx\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf M\-H\-V\-\_\-\-Ring\-Buffer}\& M\-H\-V\-\_\-\-Device\-\_\-\-R\-X\-::\-\_\-rx\-Buffer\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___device___r_x_a868bacb2136afc4d3dad8d06f93847da}
 
 
-\-Definition at line 50 of file \-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
+Definition at line 61 of file M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h.
 
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___device___r_x_8h}{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h}\item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___device___r_x_8cpp}{\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-cpp}\end{DoxyCompactItemize}
+A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___device___r_x_8h}{M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h}\end{DoxyCompactItemize}

@@ -35,10 +35,10 @@
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	4
@@ -46,7 +46,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 MHV_RTC_CREATE (rtc, ALARM_COUNT);
 
 // Create the timer that the servo controller will manage
-MHV_Timer16 servoTimer(MHV_TIMER16_1);
+MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_REPETITIVE>servoTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER1_INTERRUPTS);
 
 // Create the servo controller

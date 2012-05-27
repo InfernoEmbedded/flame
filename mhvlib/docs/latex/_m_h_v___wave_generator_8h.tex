@@ -1,128 +1,103 @@
-\hypertarget{_m_h_v___wave_generator_8h}{
-\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.h \-File \-Reference}
-\label{_m_h_v___wave_generator_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\hypertarget{_m_h_v___wave_generator_8h}{\section{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.h File Reference}
+\label{_m_h_v___wave_generator_8h}\index{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
 }
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-io.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-D\-A\-C.\-h$>$}\*
-{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\*
-\subsection*{\-Classes}
+{\ttfamily \#include $<$M\-H\-V\-\_\-io.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-D\-A\-C.\-h$>$}\\*
+{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\\*
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
 struct \hyperlink{structmhv__instrument}{mhv\-\_\-instrument}
 \item 
 struct \hyperlink{structmhv__voice}{mhv\-\_\-voice}
 \item 
-class \hyperlink{class_m_h_v___wave_generator}{\-M\-H\-V\-\_\-\-Wave\-Generator}
+class \hyperlink{class_m_h_v___wave_generator}{M\-H\-V\-\_\-\-Wave\-Generator}
 \end{DoxyCompactItemize}
-\subsection*{\-Typedefs}
+\subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef uint8\-\_\-t \hyperlink{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}
+typedef uint8\-\_\-t \hyperlink{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}{M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}
 \item 
-typedef struct \hyperlink{structmhv__instrument}{mhv\-\_\-instrument} \hyperlink{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}
+typedef struct \hyperlink{structmhv__instrument}{mhv\-\_\-instrument} \hyperlink{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}{M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}
 \item 
-typedef enum \hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{mhv\-\_\-voice\-Phase} \hyperlink{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}
+typedef enum \hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{mhv\-\_\-voice\-Phase} \hyperlink{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}
 \item 
-typedef struct \hyperlink{structmhv__voice}{mhv\-\_\-voice} \hyperlink{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E}
+typedef struct \hyperlink{structmhv__voice}{mhv\-\_\-voice} \hyperlink{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E}
 \end{DoxyCompactItemize}
-\subsection*{\-Enumerations}
+\subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{mhv\-\_\-voice\-Phase} \{ \*
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}, 
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}, 
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}, 
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}, 
-\*
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}, 
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}, 
-\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}
+enum \hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{mhv\-\_\-voice\-Phase} \{ \\*
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}, 
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}, 
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}, 
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}, 
+\\*
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}, 
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}, 
+\hyperlink{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}
  \}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Typedef \-Documentation}
-\hypertarget{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}{
-\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E@{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}}
-\index{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E@{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}!MHV_WaveGenerator.h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}}}
-\label{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}
-\-Waveform amplification envelope
+\subsection{Typedef Documentation}
+\hypertarget{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}{\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E@{M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}}
+\index{M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E@{M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}!MHV_WaveGenerator.h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef uint8\-\_\-t {\bf M\-H\-V\-\_\-\-A\-M\-P\-L\-I\-T\-U\-D\-E}}}\label{_m_h_v___wave_generator_8h_ae0ff00bbcfd596fc3d6afab09bb5e11c}
+Waveform amplification envelope
 
-\-Attack \-A $^\wedge$ m $|$ \-Decay1 p $|$ l $|$ $^\wedge$ i $|$ / $\backslash$ t $|$ / $\backslash$ \-Sustain1 \-Note off here u $|$ /  \-Decay2 $|$ d $|$ / $\backslash$ \-Sustain2 v e $|$ /  \-Release / $\backslash$ / $\backslash$ \-Samples -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/$>$ t(0) 
+Attack A $^\wedge$ m $|$ Decay1 p $|$ l $|$ $^\wedge$ i $|$ / \textbackslash{} t $|$ / \textbackslash{} Sustain1 Note off here u $|$ / \-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\- Decay2 $|$ d $|$ / \textbackslash{} Sustain2 v e $|$ / \-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\-\-\_\- Release / \textbackslash{} / \textbackslash{} Samples ------------------------------$>$ t(0) 
 
-\-Definition at line 54 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+Definition at line 54 of file M\-H\-V\-\_\-\-Wave\-Generator.\-h.
 
-\hypertarget{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}{
-\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T@{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}}
-\index{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T@{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}!MHV_WaveGenerator.h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-instrument} {\bf \-M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}}}
-\label{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}
+\hypertarget{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}{\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T@{M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}}
+\index{M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T@{M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}!MHV_WaveGenerator.h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-instrument} {\bf M\-H\-V\-\_\-\-I\-N\-S\-T\-R\-U\-M\-E\-N\-T}}}\label{_m_h_v___wave_generator_8h_ad8420c0a6c4bf917359c2c4f2e7720d3}
 
 
-\-Definition at line 67 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+Definition at line 67 of file M\-H\-V\-\_\-\-Wave\-Generator.\-h.
 
-\hypertarget{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}{
-\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E}}
-\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E}!MHV_WaveGenerator.h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-voice} {\bf \-M\-H\-V\-\_\-\-V\-O\-I\-C\-E}}}
-\label{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}
+\hypertarget{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}{\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E}}
+\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E}!MHV_WaveGenerator.h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-V\-O\-I\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf mhv\-\_\-voice} {\bf M\-H\-V\-\_\-\-V\-O\-I\-C\-E}}}\label{_m_h_v___wave_generator_8h_a6e1f0fc3a346e43815c488947b5887f0}
 
 
-\-Definition at line 90 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+Definition at line 90 of file M\-H\-V\-\_\-\-Wave\-Generator.\-h.
 
-\hypertarget{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}{
-\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}}
-\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}!MHV_WaveGenerator.h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf mhv\-\_\-voice\-Phase} {\bf \-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}}}
-\label{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}
+\hypertarget{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}{\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}}
+\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}!MHV_WaveGenerator.h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf mhv\-\_\-voice\-Phase} {\bf M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-P\-H\-A\-S\-E}}}\label{_m_h_v___wave_generator_8h_ac654c7265d33a8268f0fae7e46219fe2}
 
 
-\-Definition at line 78 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+Definition at line 78 of file M\-H\-V\-\_\-\-Wave\-Generator.\-h.
 
 
 
-\subsection{\-Enumeration \-Type \-Documentation}
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{
-\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!mhv\-\_\-voice\-Phase@{mhv\-\_\-voice\-Phase}}
-\index{mhv\-\_\-voice\-Phase@{mhv\-\_\-voice\-Phase}!MHV_WaveGenerator.h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
-\subsubsection[{mhv\-\_\-voice\-Phase}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mhv\-\_\-voice\-Phase}}}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}
+\subsection{Enumeration Type Documentation}
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}{\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!mhv\-\_\-voice\-Phase@{mhv\-\_\-voice\-Phase}}
+\index{mhv\-\_\-voice\-Phase@{mhv\-\_\-voice\-Phase}!MHV_WaveGenerator.h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}
+\subsubsection[{mhv\-\_\-voice\-Phase}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf mhv\-\_\-voice\-Phase}}}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00c}
 \begin{Desc}
-\item[\-Enumerator\-: ]\par
+\item[Enumerator\-: ]\par
 \begin{description}
-\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}
-}]\index{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}!\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h@{\-M\-H\-V\-\_\-\-Wave\-Generator.\-h}!\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E@{\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}}\item[{\em 
-\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}{
-\-M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}
-\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}
+\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-V\-A\-I\-L\-A\-B\-L\-E}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca3bc9016b679fffc21ee0f680bfd2890a}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-A\-T\-T\-A\-C\-K}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca93fec685d3d656d613c8b7340a16d6ef}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y1}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caaf9ba06a8bd90b2a49a3ca8a5661d693}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N1}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca14690ef7028375c9feff8616b7d1f051}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-D\-E\-C\-A\-Y2}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00ca5ff79bb5bbf133aa211fb9d145df1b87}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-S\-U\-S\-T\-A\-I\-N2}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00caab480d0488a0ae2817d686b366d19b60}
+}]\index{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}!M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}}\index{M\-H\-V\-\_\-\-Wave\-Generator.\-h@{M\-H\-V\-\_\-\-Wave\-Generator.\-h}!M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E@{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}}\item[{\em 
+\hypertarget{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}{M\-H\-V\-\_\-\-V\-O\-I\-C\-E\-\_\-\-R\-E\-L\-E\-A\-S\-E}\label{_m_h_v___wave_generator_8h_a6c48004edc7d0f3c921cdae11a6ea00cab7993deeba60285c158f8ff546b4d4ce}
 }]\end{description}
 \end{Desc}
 
 
 
-\-Definition at line 69 of file \-M\-H\-V\-\_\-\-Wave\-Generator.\-h.
+Definition at line 69 of file M\-H\-V\-\_\-\-Wave\-Generator.\-h.
 

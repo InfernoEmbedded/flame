@@ -1,194 +1,131 @@
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect}{
-\section{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect \-Class \-Reference}
-\label{class_m_h_v___display___h_d44780___direct___connect}\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect}{\section{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$ Class Template Reference}
+\label{class_m_h_v___display___h_d44780___direct___connect}\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}}
 }
 
 
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h$>$}
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h$>$}
 
-\-Inheritance diagram for \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-:\begin{figure}[H]
+Inheritance diagram for M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=4.000000cm]{class_m_h_v___display___h_d44780___direct___connect}
+\includegraphics[height=3.439803cm]{class_m_h_v___display___h_d44780___direct___connect}
 \end{center}
 \end{figure}
-\subsection*{\-Public \-Member \-Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___display___h_d44780___direct___connect_aecd4894b4044fde51b75ef609904036f}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual), uint8\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers)
+\hyperlink{class_m_h_v___display___h_d44780___direct___connect_ab178284ce0bb6ceaa3691727d88e431d}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect} ()
 \item 
-\hyperlink{class_m_h_v___display___h_d44780___direct___connect_aea26b842b0f5ed5e8568620354c4021e}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), \-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control), uint8\-\_\-t col\-Count, uint16\-\_\-t row\-Count, \hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffers)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_aa33b81ee3cbeb2d792f24357204d8e10}{set\-Backlight} (uint8\-\_\-t value)
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a11b8f4c551c0c622874b4242154d9d67}{set\-Backlight} (uint8\-\_\-t value)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a78469d3274c79bee769718cfef157257}{set\-Contrast} (uint8\-\_\-t value)
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a5d890e072d56c818442b209b9d4851d8}{set\-Contrast} (uint8\-\_\-t value)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a3f4f05f3f35d1605b858c6f0dfb17e9d}{alarm} ()
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}{alarm} ()
-\item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a82d09a64c377a8b25751a9b21d9cee93}{init} (bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a8d8428f76033aaebe88e455050c9349c}{init} (bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Member \-Functions}
+\subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ac61f7b7429e954bbb418ec6f2a7942f8}{write\-Byte} (uint8\-\_\-t byte, bool rs)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a2532e2b61f9c0efc5a6fa7e3254bcf75}{write\-Byte} (uint8\-\_\-t byte, bool rs)
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_afe47f18f28ff286d1d6a8e1018ae1ca1}{write\-Nibble} (uint8\-\_\-t nibble, bool rs)
+void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a27fbb4bc11acabfe3aba4bebe5f1ca78}{write\-Nibble} (uint8\-\_\-t nibble, bool rs)
 \item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a395c757364dfea8eccb8d42d83d5060c}{read\-Byte} (bool rs)
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a3393dfcb69caa33399d6eec1ac78adc0}{read\-Byte} (bool rs)
 \item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a8d4e15ba142eb565a021f17645fe6d0a}{read\-Nibble} (bool rs)
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a4298659b50d355bc27bbc6b2c64c432b}{read\-Nibble} (bool rs)
 \item 
-bool \hyperlink{class_m_h_v___display___h_d44780___direct___connect_af91e71543df100ec60594c9094cbd444}{is\-Busy} ()
+bool \hyperlink{class_m_h_v___display___h_d44780___direct___connect_af2658aa5e006eb03ef3a4a09a05914de}{is\-Busy} ()
 \item 
-void \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a07880e34d8ef2ac2c31c3cfa52a87fa9}{delay} (\hyperlink{_m_h_v___display___h_d44780_8h_a76bff68a0c366080486a09e3beec77e1}{\-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command)
+void \hyperlink{_m_h_v__io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a4a12809fe1230bae83f787c3c945084d}{delay} (\hyperlink{_m_h_v__io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D} \hyperlink{_m_h_v___display___h_d44780_8h_a76bff68a0c366080486a09e3beec77e1}{M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command)
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Attributes}
+\subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a03135ac9561c3b8c58f00f9888d02526}{\-\_\-data\-Dir}
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a28772cbdf99b334dede742f6e65ef887}{\-\_\-brightness}
 \item 
-volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___h_d44780___direct___connect_aebdad9827430f3471e92c96ac162a0e8}{\-\_\-data\-Out}
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a1f11cb05bdb7d100c222f3695703fda6}{\-\_\-contrast}
 \item 
-volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___h_d44780___direct___connect_af08537a357d3e09e268f193f87242180}{\-\_\-data\-In}
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ad095d81a074d347662bf5a2e571c626c}{\-\_\-data\-Mask}
 \item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a9a2cf1d983db8d70a196cbf6d36140b8}{\-\_\-data\-Pin}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_afbadbde61cef93fe49e29e4b4de37ea2}{\-\_\-data\-Mask}
-\item 
-volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a3d308de0a3d1f48dc28ec3a0cd416373}{\-\_\-control\-Out}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_aa40764017ac7a0c213736c761e6db379}{\-\_\-control\-Pin}
-\item 
-volatile uint8\-\_\-t $\ast$ \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae69106ff6193c454881e09cfa322be8c}{\-\_\-visual\-Out}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_aab09401fa30a20f1e082d09d1c20e959}{\-\_\-visual\-Pin}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ab5af02b6c4a31228b8cba9793270fe79}{\-\_\-brightness}
-\item 
-uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c1f3a285e1ed271227fb68a5f83c38}{\-\_\-contrast}
+uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_a4e3dea8cf7b70750de11858d52044113}{\-\_\-ticks}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Detailed \-Description}
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control), M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual)$>$class M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}
+
+A class for operating H\-D44780 based L\-C\-D displays (and compatible) in 4 bit mode Data port layout\-: Bit description n D\-B4 n+1 D\-B5 n+2 D\-B6 n+3 D\-B7
+
+Control port layout\-: n R\-S Register Select n+1 R/\-W Read/\-Write n+2 E Enable
+
+Visual port layout\-: n Contrast (V0) n+1 L\-E\-D Positive
 
 
-\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-
-
-\subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aecd4894b4044fde51b75ef609904036f}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect (
-\begin{DoxyParamCaption}
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data)}]{, }
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control)}]{, }
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual)}]{, }
-\item[{uint8\-\_\-t}]{col\-Count, }
-\item[{uint16\-\_\-t}]{row\-Count, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffers}
-\end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_aecd4894b4044fde51b75ef609904036f}
-\-A class for operating \-H\-D44780 based \-L\-C\-D displays (and compatible) in 4 bit mode \-Data port layout\-: \-Bit description n \-D\-B4 n+1 \-D\-B5 n+2 \-D\-B6 n+3 \-D\-B7
-
-\-Control port layout\-: n \-R\-S \-Register \-Select n+1 \-R/\-W \-Read/\-Write n+2 \-E \-Enable
-
-\-Visual port layout\-: n \-Contrast (\-V0) n+1 \-L\-E\-D \-Positive
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em data} & pin declaration for the first bit of the data port \-D\-B4..\-D\-B7 (will use a nibble starting at this bit) \\
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
 \hline
-{\em control} & pin declaration for the first bit of the control port (will use 3 bits) \\
+{\em rows} & the number of rows \\
 \hline
-{\em visual} & pin declaration for the first bit of the visual port (will use 2 bits) \\
+{\em tx\-Buffers} & the number of output buffers \\
 \hline
-{\em col\-Count} & the number of columns on the display \\
+{\em data...} & pin declaration for the first bit of the data port D\-B4..D\-B7 (will use a nibble starting at this bit) \\
 \hline
-{\em row\-Count} & the number of rows on the display \\
+{\em control...} & pin declaration for the first bit of the control port (will use 3 bits) \\
 \hline
-{\em tx\-Buffers} & buffers for async writing \\
+{\em visual...} & pin declaration for the first bit of the visual port (will use 2 bits) \\
 \hline
-\end{DoxyParams}
+\end{DoxyTemplParams}
 
 
-\-Definition at line 78 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aea26b842b0f5ed5e8568620354c4021e}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect (
-\begin{DoxyParamCaption}
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data)}]{, }
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control)}]{, }
-\item[{uint8\-\_\-t}]{col\-Count, }
-\item[{uint16\-\_\-t}]{row\-Count, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffers}
-\end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_aea26b842b0f5ed5e8568620354c4021e}
-\-An alternate constructor without visual pins -\/ if this constructor is used, tick\-P\-W\-M behaviour is undefined and will like overwrite random bits of memory, so don't call it
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em data} & pin declaration for the first bit of the data port \-D\-B4..\-D\-B7 (will use a nibble starting at this bit) \\
-\hline
-{\em control} & pin declaration for the first bit of the control port (will use 3 bits) \\
-\hline
-{\em col\-Count} & the number of columns on the display \\
-\hline
-{\em row\-Count} & the number of rows on the display \\
-\hline
-{\em tx\-Buffers} & buffers for async writing \\
-\hline
-\end{DoxyParams}
-
-
-\-Definition at line 122 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 83 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 
 
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!alarm@{alarm}}
-\index{alarm@{alarm}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::alarm (
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ab178284ce0bb6ceaa3691727d88e431d}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::{\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_afde566730348a32f1699e92d2e887240}
-\-Tick the display for \-P\-W\-M -\/ this should be called every 500 microseconds 
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___display___h_d44780___direct___connect_ab178284ce0bb6ceaa3691727d88e431d}
+Create a new driver for a directly connected H\-D44780 display 
 
-\-Implements \hyperlink{class_m_h_v___timer_listener_a27e243f8df77035eca626beab5b3e60a}{\-M\-H\-V\-\_\-\-Timer\-Listener}.
-
+Definition at line 192 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 
-\-Definition at line 262 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a07880e34d8ef2ac2c31c3cfa52a87fa9}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!delay@{delay}}
-\index{delay@{delay}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}void \-C\-O\-N\-S\-T \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::delay (
+\subsection{Member Function Documentation}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a3f4f05f3f35d1605b858c6f0dfb17e9d}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!alarm@{alarm}}
+\index{alarm@{alarm}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::alarm (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command}
+{}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a07880e34d8ef2ac2c31c3cfa52a87fa9}
-\-Delay function \-No delays required as we can check whether the display is busy 
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a3f4f05f3f35d1605b858c6f0dfb17e9d}
+Tick the display for P\-W\-M -\/ this should be called every 500 microseconds 
 
-\-Implements \hyperlink{class_m_h_v___display___h_d44780_a8a6017accb4910deb470ce2d1a5b5fc5}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}.
-
+Implements \hyperlink{class_m_h_v___timer_listener_a27e243f8df77035eca626beab5b3e60a}{M\-H\-V\-\_\-\-Timer\-Listener}.
 
 
-\-Definition at line 286 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a82d09a64c377a8b25751a9b21d9cee93}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!init@{init}}
-\index{init@{init}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::init (
+Definition at line 237 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a4a12809fe1230bae83f787c3c945084d}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!delay@{delay}}
+\index{delay@{delay}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf C\-O\-N\-S\-T} {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::delay (
+\begin{DoxyParamCaption}
+\item[{{\bf U\-N\-U\-S\-E\-D} {\bf M\-H\-V\-\_\-\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a4a12809fe1230bae83f787c3c945084d}
+Delay function No delays required as we can check whether the display is busy 
+
+Definition at line 184 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a8d8428f76033aaebe88e455050c9349c}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!init@{init}}
+\index{init@{init}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::init (
 \begin{DoxyParamCaption}
 \item[{bool}]{multi\-Line, }
 \item[{bool}]{big\-Font, }
@@ -197,10 +134,9 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 \item[{bool}]{left2right, }
 \item[{bool}]{scroll}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a82d09a64c377a8b25751a9b21d9cee93}
-\-Initialise the display 
-\begin{DoxyParams}{\-Parameters}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a8d8428f76033aaebe88e455050c9349c}
+Initialise the display 
+\begin{DoxyParams}{Parameters}
 {\em multi\-Line} & true if there is more than 1 line \\
 \hline
 {\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
@@ -216,255 +152,173 @@ uint8\-\_\-t \hyperlink{class_m_h_v___display___h_d44780___direct___connect_ae7c
 \end{DoxyParams}
 
 
-\-Definition at line 301 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 265 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_af91e71543df100ec60594c9094cbd444}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!is\-Busy@{is\-Busy}}
-\index{is\-Busy@{is\-Busy}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}bool \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::is\-Busy (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_af2658aa5e006eb03ef3a4a09a05914de}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!is\-Busy@{is\-Busy}}
+\index{is\-Busy@{is\-Busy}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ bool {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::is\-Busy (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_af91e71543df100ec60594c9094cbd444}
-\-Check if the display is busy \begin{DoxyReturn}{\-Returns}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_m_h_v___display___h_d44780___direct___connect_af2658aa5e006eb03ef3a4a09a05914de}
+Check if the display is busy \begin{DoxyReturn}{Returns}
 true if the display is busy 
 \end{DoxyReturn}
 
 
-\-Implements \hyperlink{class_m_h_v___display___h_d44780_a667d9f8ca08b3021fea77a47cf6c1965}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}.
+Implements \hyperlink{class_m_h_v___display___h_d44780_a2ca9b62d41637bc6a20c2b195fdfa711}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
 
 
 
-\-Definition at line 218 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 163 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a395c757364dfea8eccb8d42d83d5060c}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!read\-Byte@{read\-Byte}}
-\index{read\-Byte@{read\-Byte}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::read\-Byte (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a3393dfcb69caa33399d6eec1ac78adc0}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!read\-Byte@{read\-Byte}}
+\index{read\-Byte@{read\-Byte}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::read\-Byte (
 \begin{DoxyParamCaption}
 \item[{bool}]{rs}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a395c757364dfea8eccb8d42d83d5060c}
-\-Read a byte from the display 
-\begin{DoxyParams}{\-Parameters}
-{\em rs} & true to set the \-R\-S pin \\
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a3393dfcb69caa33399d6eec1ac78adc0}
+Read a byte from the display 
+\begin{DoxyParams}{Parameters}
+{\em rs} & true to set the R\-S pin \\
 \hline
 \end{DoxyParams}
 
 
-\-Implements \hyperlink{class_m_h_v___display___h_d44780_a5f35b3083cca3fb405b4f56a631cbc63}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}.
+Implements \hyperlink{class_m_h_v___display___h_d44780_ae219bc8342ff92efe1469261dd05684a}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
 
 
 
-\-Definition at line 184 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 129 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a8d4e15ba142eb565a021f17645fe6d0a}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!read\-Nibble@{read\-Nibble}}
-\index{read\-Nibble@{read\-Nibble}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{read\-Nibble}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::read\-Nibble (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a4298659b50d355bc27bbc6b2c64c432b}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!read\-Nibble@{read\-Nibble}}
+\index{read\-Nibble@{read\-Nibble}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{read\-Nibble}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::read\-Nibble (
 \begin{DoxyParamCaption}
 \item[{bool}]{rs}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a8d4e15ba142eb565a021f17645fe6d0a}
-\-Read a nibble from the display 
-\begin{DoxyParams}{\-Parameters}
-{\em rs} & true to set the \-R\-S pin \\
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a4298659b50d355bc27bbc6b2c64c432b}
+Read a nibble from the display 
+\begin{DoxyParams}{Parameters}
+{\em rs} & true to set the R\-S pin \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 196 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 141 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a11b8f4c551c0c622874b4242154d9d67}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!set\-Backlight@{set\-Backlight}}
-\index{set\-Backlight@{set\-Backlight}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{set\-Backlight}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::set\-Backlight (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aa33b81ee3cbeb2d792f24357204d8e10}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!set\-Backlight@{set\-Backlight}}
+\index{set\-Backlight@{set\-Backlight}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{set\-Backlight}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::set\-Backlight (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{value}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a11b8f4c551c0c622874b4242154d9d67}
-\-Manipulate the backlight 
-\begin{DoxyParams}{\-Parameters}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___display___h_d44780___direct___connect_aa33b81ee3cbeb2d792f24357204d8e10}
+Manipulate the backlight 
+\begin{DoxyParams}{Parameters}
 {\em value} & the brightness of the backlight (0..15) \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 239 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 214 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a5d890e072d56c818442b209b9d4851d8}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!set\-Contrast@{set\-Contrast}}
-\index{set\-Contrast@{set\-Contrast}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{set\-Contrast}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::set\-Contrast (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a78469d3274c79bee769718cfef157257}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!set\-Contrast@{set\-Contrast}}
+\index{set\-Contrast@{set\-Contrast}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{set\-Contrast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::set\-Contrast (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{value}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a5d890e072d56c818442b209b9d4851d8}
-\-Set the contrast 
-\begin{DoxyParams}{\-Parameters}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a78469d3274c79bee769718cfef157257}
+Set the contrast 
+\begin{DoxyParams}{Parameters}
 {\em value} & the contrast of the display(0..15) \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 250 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 225 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ac61f7b7429e954bbb418ec6f2a7942f8}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!write\-Byte@{write\-Byte}}
-\index{write\-Byte@{write\-Byte}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::write\-Byte (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a2532e2b61f9c0efc5a6fa7e3254bcf75}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!write\-Byte@{write\-Byte}}
+\index{write\-Byte@{write\-Byte}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::write\-Byte (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{byte, }
 \item[{bool}]{rs}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_ac61f7b7429e954bbb418ec6f2a7942f8}
-\-Write a byte to the display 
-\begin{DoxyParams}{\-Parameters}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a2532e2b61f9c0efc5a6fa7e3254bcf75}
+Write a byte to the display 
+\begin{DoxyParams}{Parameters}
 {\em byte} & the data to write \\
 \hline
-{\em rs} & true to set the \-R\-S pin \\
+{\em rs} & true to set the R\-S pin \\
 \hline
 \end{DoxyParams}
 
 
-\-Implements \hyperlink{class_m_h_v___display___h_d44780_ad1691510b6d35301e4182edcf11d81db}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780}.
+Implements \hyperlink{class_m_h_v___display___h_d44780_ab7df02f891c4c8c4be054eeb9881abc7}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
 
 
 
-\-Definition at line 151 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 96 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_afe47f18f28ff286d1d6a8e1018ae1ca1}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!write\-Nibble@{write\-Nibble}}
-\index{write\-Nibble@{write\-Nibble}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{write\-Nibble}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::write\-Nibble (
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a27fbb4bc11acabfe3aba4bebe5f1ca78}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!write\-Nibble@{write\-Nibble}}
+\index{write\-Nibble@{write\-Nibble}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{write\-Nibble}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ void {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::write\-Nibble (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{nibble, }
 \item[{bool}]{rs}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_afe47f18f28ff286d1d6a8e1018ae1ca1}
-\-Write a nibble to the display 
-\begin{DoxyParams}{\-Parameters}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a27fbb4bc11acabfe3aba4bebe5f1ca78}
+Write a nibble to the display 
+\begin{DoxyParams}{Parameters}
 {\em nibble} & the data to write (lower 4 bits) \\
 \hline
-{\em rs} & true to set the \-R\-S pin \\
+{\em rs} & true to set the R\-S pin \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 163 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp.
+Definition at line 108 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 
 
-\subsection{\-Member \-Data \-Documentation}
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ab5af02b6c4a31228b8cba9793270fe79}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-brightness@{\-\_\-brightness}}
-\index{\-\_\-brightness@{\-\_\-brightness}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-brightness}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-brightness}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_ab5af02b6c4a31228b8cba9793270fe79}
+\subsection{Member Data Documentation}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a28772cbdf99b334dede742f6e65ef887}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-brightness@{\-\_\-brightness}}
+\index{\-\_\-brightness@{\-\_\-brightness}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{\-\_\-brightness}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::\-\_\-brightness\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a28772cbdf99b334dede742f6e65ef887}
 
 
-\-Definition at line 45 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+Definition at line 86 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ae7c1f3a285e1ed271227fb68a5f83c38}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-contrast@{\-\_\-contrast}}
-\index{\-\_\-contrast@{\-\_\-contrast}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-contrast}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-contrast}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_ae7c1f3a285e1ed271227fb68a5f83c38}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a1f11cb05bdb7d100c222f3695703fda6}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-contrast@{\-\_\-contrast}}
+\index{\-\_\-contrast@{\-\_\-contrast}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{\-\_\-contrast}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::\-\_\-contrast\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a1f11cb05bdb7d100c222f3695703fda6}
 
 
-\-Definition at line 46 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+Definition at line 87 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a3d308de0a3d1f48dc28ec3a0cd416373}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-control\-Out@{\-\_\-control\-Out}}
-\index{\-\_\-control\-Out@{\-\_\-control\-Out}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-control\-Out}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-control\-Out}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a3d308de0a3d1f48dc28ec3a0cd416373}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ad095d81a074d347662bf5a2e571c626c}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Mask@{\-\_\-data\-Mask}}
+\index{\-\_\-data\-Mask@{\-\_\-data\-Mask}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{\-\_\-data\-Mask}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::\-\_\-data\-Mask\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_ad095d81a074d347662bf5a2e571c626c}
 
 
-\-Definition at line 40 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+Definition at line 88 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aa40764017ac7a0c213736c761e6db379}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-control\-Pin@{\-\_\-control\-Pin}}
-\index{\-\_\-control\-Pin@{\-\_\-control\-Pin}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-control\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-control\-Pin}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_aa40764017ac7a0c213736c761e6db379}
+\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a4e3dea8cf7b70750de11858d52044113}{\index{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!MHV_Display_HD44780_Direct_Connect@{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(control) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(visual) $>$ uint8\-\_\-t {\bf M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}$<$ cols, rows, tx\-Buffers,,, $>$\-::\-\_\-ticks\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___display___h_d44780___direct___connect_a4e3dea8cf7b70750de11858d52044113}
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a03135ac9561c3b8c58f00f9888d02526}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Dir@{\-\_\-data\-Dir}}
-\index{\-\_\-data\-Dir@{\-\_\-data\-Dir}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-data\-Dir}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-data\-Dir}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a03135ac9561c3b8c58f00f9888d02526}
-
-
-\-Definition at line 35 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_af08537a357d3e09e268f193f87242180}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-In@{\-\_\-data\-In}}
-\index{\-\_\-data\-In@{\-\_\-data\-In}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-data\-In}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-data\-In}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_af08537a357d3e09e268f193f87242180}
-
-
-\-Definition at line 37 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_afbadbde61cef93fe49e29e4b4de37ea2}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Mask@{\-\_\-data\-Mask}}
-\index{\-\_\-data\-Mask@{\-\_\-data\-Mask}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-data\-Mask}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-data\-Mask}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_afbadbde61cef93fe49e29e4b4de37ea2}
-
-
-\-Definition at line 39 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aebdad9827430f3471e92c96ac162a0e8}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Out@{\-\_\-data\-Out}}
-\index{\-\_\-data\-Out@{\-\_\-data\-Out}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-data\-Out}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-data\-Out}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_aebdad9827430f3471e92c96ac162a0e8}
-
-
-\-Definition at line 36 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_a9a2cf1d983db8d70a196cbf6d36140b8}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-data\-Pin@{\-\_\-data\-Pin}}
-\index{\-\_\-data\-Pin@{\-\_\-data\-Pin}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-data\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-data\-Pin}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_a9a2cf1d983db8d70a196cbf6d36140b8}
-
-
-\-Definition at line 38 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_ae69106ff6193c454881e09cfa322be8c}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-visual\-Out@{\-\_\-visual\-Out}}
-\index{\-\_\-visual\-Out@{\-\_\-visual\-Out}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-visual\-Out}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-visual\-Out}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_ae69106ff6193c454881e09cfa322be8c}
-
-
-\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
-
-\hypertarget{class_m_h_v___display___h_d44780___direct___connect_aab09401fa30a20f1e082d09d1c20e959}{
-\index{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}!\-\_\-visual\-Pin@{\-\_\-visual\-Pin}}
-\index{\-\_\-visual\-Pin@{\-\_\-visual\-Pin}!MHV_Display_HD44780_Direct_Connect@{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect}}
-\subsubsection[{\-\_\-visual\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t {\bf \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect\-::\-\_\-visual\-Pin}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___display___h_d44780___direct___connect_aab09401fa30a20f1e082d09d1c20e959}
-
-
-\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+Reimplemented from \hyperlink{class_m_h_v___display___h_d44780_a447c8849122f3533367daf1b105cf9c1}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
 
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+Definition at line 89 of file M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___h_d44780___direct___connect_8h}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}\item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___h_d44780___direct___connect_8cpp}{\-M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-cpp}\end{DoxyCompactItemize}
+A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___display___h_d44780___direct___connect_8h}{M\-H\-V\-\_\-\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}\end{DoxyCompactItemize}

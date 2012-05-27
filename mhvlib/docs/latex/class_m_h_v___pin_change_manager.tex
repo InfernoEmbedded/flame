@@ -1,155 +1,140 @@
-\hypertarget{class_m_h_v___pin_change_manager}{
-\section{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager \-Class \-Reference}
-\label{class_m_h_v___pin_change_manager}\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\hypertarget{class_m_h_v___pin_change_manager}{\section{M\-H\-V\-\_\-\-Pin\-Change\-Manager Class Reference}
+\label{class_m_h_v___pin_change_manager}\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
 }
 
 
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h$>$}
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h$>$}
 
-\subsection*{\-Public \-Member \-Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager} ()
+\hyperlink{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}{M\-H\-V\-\_\-\-Pin\-Change\-Manager} ()
 \item 
 void \hyperlink{class_m_h_v___pin_change_manager_a2e13f1107ef9406dd224f404176e4fde}{pin\-Change0} ()
 \item 
 void \hyperlink{class_m_h_v___pin_change_manager_af607081980ab2858f718f6ed0ae0f9f1}{pin\-Change} (uint8\-\_\-t offset)
 \item 
-void \hyperlink{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}{register\-Listener} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin), \hyperlink{class_m_h_v___pin_event_listener}{\-M\-H\-V\-\_\-\-Pin\-Event\-Listener} $\ast$listener)
+void \hyperlink{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}{register\-Listener} (\hyperlink{_m_h_v__io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), \hyperlink{class_m_h_v___pin_event_listener}{M\-H\-V\-\_\-\-Pin\-Event\-Listener} $\ast$listener)
 \item 
-void \hyperlink{class_m_h_v___pin_change_manager_a0178ee5bb5a493985a507e8aaf3e8263}{deregister\-Listener} (\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin))
+void \hyperlink{class_m_h_v___pin_change_manager_a9ff89d320dfbef1be042e0109aac091f}{deregister\-Listener} (int8\-\_\-t pin\-Pin\-Change\-Listener)
 \item 
 void \hyperlink{class_m_h_v___pin_change_manager_a241ab368e927b544737adadc2c4b45d0}{handle\-Events} ()
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Attributes}
+\subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{_m_h_v___pin_change_manager_8h_a8690da5e1dbb6f0cb21bdb56a4982a66}{\-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-P\-I\-N} \hyperlink{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}{\-\_\-pins} \mbox{[}\-M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T\mbox{]}
+\hyperlink{_m_h_v___pin_change_manager_8h_a8690da5e1dbb6f0cb21bdb56a4982a66}{M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-P\-I\-N} \hyperlink{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}{\-\_\-pins} \mbox{[}M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T\mbox{]}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Detailed \-Description}
+\subsection{Detailed Description}
 
 
-\-Definition at line 89 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h.
+Definition at line 90 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h.
 
 
 
-\subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::\-M\-H\-V\-\_\-\-Pin\-Change\-Manager (
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{M\-H\-V\-\_\-\-Pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::\-M\-H\-V\-\_\-\-Pin\-Change\-Manager (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}
-\-An event manager for handling pinchange events 
+)}}\label{class_m_h_v___pin_change_manager_a0f53c32cf969c858e7c0f5127f8ed760}
+An event manager for handling pinchange events 
 
-\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
-
+Definition at line 33 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
 
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___pin_change_manager_a0178ee5bb5a493985a507e8aaf3e8263}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!deregister\-Listener@{deregister\-Listener}}
-\index{deregister\-Listener@{deregister\-Listener}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::deregister\-Listener (
+
+\subsection{Member Function Documentation}
+\hypertarget{class_m_h_v___pin_change_manager_a9ff89d320dfbef1be042e0109aac091f}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::deregister\-Listener (
 \begin{DoxyParamCaption}
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin)}]{}
+\item[{int8\-\_\-t}]{pin\-Pinchange\-Interrupt}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_a0178ee5bb5a493985a507e8aaf3e8263}
-\-Deregister interest for pinchange events 
-\begin{DoxyParams}{\-Parameters}
-{\em pin} & \-A \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro, must have a valid pin\-Pinchange\-Interrupt \\
+)}}\label{class_m_h_v___pin_change_manager_a9ff89d320dfbef1be042e0109aac091f}
+Deregister interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin\-Pinchange\-Interrupt} & the pin\-Pinchange\-Interrupt to deregister \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 136 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
+Definition at line 135 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
-\hypertarget{class_m_h_v___pin_change_manager_a241ab368e927b544737adadc2c4b45d0}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!handle\-Events@{handle\-Events}}
-\index{handle\-Events@{handle\-Events}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::handle\-Events (
+\hypertarget{class_m_h_v___pin_change_manager_a241ab368e927b544737adadc2c4b45d0}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::handle\-Events (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_a241ab368e927b544737adadc2c4b45d0}
-\-Call from the main loop to handle any events 
+)}}\label{class_m_h_v___pin_change_manager_a241ab368e927b544737adadc2c4b45d0}
+Call from the main loop to handle any events 
 
-\-Definition at line 170 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
+Definition at line 171 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
-\hypertarget{class_m_h_v___pin_change_manager_af607081980ab2858f718f6ed0ae0f9f1}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!pin\-Change@{pin\-Change}}
-\index{pin\-Change@{pin\-Change}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{pin\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::pin\-Change (
+\hypertarget{class_m_h_v___pin_change_manager_af607081980ab2858f718f6ed0ae0f9f1}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!pin\-Change@{pin\-Change}}
+\index{pin\-Change@{pin\-Change}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::pin\-Change (
 \begin{DoxyParamCaption}
 \item[{uint8\-\_\-t}]{offset}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_af607081980ab2858f718f6ed0ae0f9f1}
-\-Trigger for pin change interrupts -\/ scans through 8 pins starting at the offset 
-\begin{DoxyParams}{\-Parameters}
+)}}\label{class_m_h_v___pin_change_manager_af607081980ab2858f718f6ed0ae0f9f1}
+Trigger for pin change interrupts -\/ scans through 8 pins starting at the offset 
+\begin{DoxyParams}{Parameters}
 {\em offset} & the number of pins to skip before scanning \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 68 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
+Definition at line 68 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
-\hypertarget{class_m_h_v___pin_change_manager_a2e13f1107ef9406dd224f404176e4fde}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!pin\-Change0@{pin\-Change0}}
-\index{pin\-Change0@{pin\-Change0}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{pin\-Change0}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::pin\-Change0 (
+\hypertarget{class_m_h_v___pin_change_manager_a2e13f1107ef9406dd224f404176e4fde}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!pin\-Change0@{pin\-Change0}}
+\index{pin\-Change0@{pin\-Change0}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change0}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::pin\-Change0 (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_a2e13f1107ef9406dd224f404176e4fde}
-\-Trigger for interrupt \-P\-C\-I\-N\-T0 
+)}}\label{class_m_h_v___pin_change_manager_a2e13f1107ef9406dd224f404176e4fde}
+Trigger for interrupt P\-C\-I\-N\-T0 
 
-\-Definition at line 42 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
+Definition at line 42 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
-\hypertarget{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!register\-Listener@{register\-Listener}}
-\index{register\-Listener@{register\-Listener}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::register\-Listener (
+\hypertarget{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::register\-Listener (
 \begin{DoxyParamCaption}
-\item[{\-M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(pin)}]{, }
-\item[{{\bf \-M\-H\-V\-\_\-\-Pin\-Event\-Listener} $\ast$}]{listener}
+\item[{{\bf M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin)}]{, }
+\item[{{\bf M\-H\-V\-\_\-\-Pin\-Event\-Listener} $\ast$}]{listener}
 \end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}
-\-Register interest for pinchange events 
-\begin{DoxyParams}{\-Parameters}
-{\em pin} & \-A \-M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro, must have a valid pin\-Pinchange\-Interrupt \\
+)}}\label{class_m_h_v___pin_change_manager_a98acb7ef6fb6eab4cf35701e856de955}
+Register interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin} & A M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro, must have a valid pin\-Pinchange\-Interrupt \\
 \hline
-{\em listener} & a \hyperlink{class_m_h_v___pin_event_listener}{\-M\-H\-V\-\_\-\-Pin\-Event\-Listener} to notify when the pin changes \\
+{\em listener} & a \hyperlink{class_m_h_v___pin_event_listener}{M\-H\-V\-\_\-\-Pin\-Event\-Listener} to notify when the pin changes \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 92 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
+Definition at line 92 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp.
 
 
 
-\subsection{\-Member \-Data \-Documentation}
-\hypertarget{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}{
-\index{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}!\-\_\-pins@{\-\_\-pins}}
-\index{\-\_\-pins@{\-\_\-pins}!MHV_PinChangeManager@{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
-\subsubsection[{\-\_\-pins}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-P\-I\-N} {\bf \-M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::\-\_\-pins}\mbox{[}\-M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}
+\subsection{Member Data Documentation}
+\hypertarget{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}{\index{M\-H\-V\-\_\-\-Pin\-Change\-Manager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}!\-\_\-pins@{\-\_\-pins}}
+\index{\-\_\-pins@{\-\_\-pins}!MHV_PinChangeManager@{M\-H\-V\-\_\-\-Pin\-Change\-Manager}}
+\subsubsection[{\-\_\-pins}]{\setlength{\rightskip}{0pt plus 5cm}{\bf M\-H\-V\-\_\-\-E\-V\-E\-N\-T\-\_\-\-P\-I\-N} M\-H\-V\-\_\-\-Pin\-Change\-Manager\-::\-\_\-pins\mbox{[}M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___pin_change_manager_afe6febbf14bb802401734219ef6b2eec}
 
 
-\-Definition at line 92 of file \-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h.
+Definition at line 93 of file M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h.
 
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___pin_change_manager_8h}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h}\item 
-\-A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___pin_change_manager_8cpp}{\-M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp}\end{DoxyCompactItemize}
+A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___pin_change_manager_8h}{M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-h}\item 
+A\-:/eclipse/mhvlib/\hyperlink{_m_h_v___pin_change_manager_8cpp}{M\-H\-V\-\_\-\-Pin\-Change\-Manager.\-cpp}\end{DoxyCompactItemize}

@@ -32,7 +32,7 @@
 
 #include <MHV_io.h>
 #include <MHV_HardwareSerial.h>
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 #include <MHV_RTC.h>
 #include <stdlib.h> // required for atoi, itoa
 
@@ -46,7 +46,7 @@
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_0);
+MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 /* A buffer the RTC will use to store alarms - this determines how many alarms

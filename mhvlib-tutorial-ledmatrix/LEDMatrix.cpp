@@ -36,9 +36,10 @@
 
 // Bring in the IO library
 #include <MHV_io.h>
+#include <boards/MHV_io_Arduino.h>
 
 // Bring in the timers we need for animation and PWM
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 // Bring in the RTC
 #include <MHV_RTC.h>
@@ -54,12 +55,12 @@
 #include <avr/sleep.h>
 
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 // A timer we will use to tick the LED Matrix
-MHV_Timer8 ledMatrixTimer(MHV_TIMER8_0);
-MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
+MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE>ledMatrixTimer;
+MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER0_INTERRUPTS);
 
 #define ALARM_COUNT	4
 // The RTC object we will use
@@ -231,12 +232,12 @@ MAIN {
 	 */
 
 	// Configure the tick timer to tick every 1 millisecond
-	tickTimer.setPeriods(1000, 0);
+	tickTimer.setTimes(1000, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	// Configure the tick timer to tick every 64 microseconds
-	ledMatrixTimer.setPeriods(64, 0);
+	ledMatrixTimer.setTimes(64, 0);
 	ledMatrixTimer.setListener1(ledMatrixTicker);
 	ledMatrixTimer.enable();
 

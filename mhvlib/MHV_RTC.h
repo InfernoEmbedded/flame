@@ -27,7 +27,7 @@
 #ifndef MHV_RTC_H_
 #define MHV_RTC_H_
 
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 #include <avr/pgmspace.h>
 #include <string.h> // Needed for memmove
 #include <util/atomic.h>
@@ -255,7 +255,7 @@ public:
 	 *  This is useful if you change the timer values, or if you are are running the timer faster than 1ms
 	 *  @param	timer	the timer to sync with
 	 */
-	void synchronise(MHV_Timer8 &timer) {
+	void synchronise(MHV_Timer &timer) {
 		uint32_t ticksPerMillisecond = F_CPU / timer.getPrescalerMultiplier() / (timer.getTop() + 1) / 1000;
 		_ticksPerMillisecond = ticksPerMillisecond;
 	}

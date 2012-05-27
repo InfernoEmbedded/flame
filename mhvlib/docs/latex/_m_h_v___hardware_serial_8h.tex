@@ -1,76 +1,71 @@
-\hypertarget{_m_h_v___hardware_serial_8h}{
-\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.h \-File \-Reference}
-\label{_m_h_v___hardware_serial_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
+\hypertarget{_m_h_v___hardware_serial_8h}{\section{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.h File Reference}
+\label{_m_h_v___hardware_serial_8h}\index{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
 }
-{\ttfamily \#include $<$inttypes.\-h$>$}\*
-{\ttfamily \#include $<$avr/interrupt.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-io.\-h$>$}\*
-{\ttfamily \#include $<$stdio.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Ring\-Buffer.\-h$>$}\*
-{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h$>$}\*
-\subsection*{\-Classes}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-io.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Ring\-Buffer.\-h$>$}\\*
+{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Device\-\_\-\-T\-X.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Device\-\_\-\-R\-X.\-h$>$}\\*
+{\ttfamily \#include $<$avr/sfr\-\_\-defs.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_m_h_v___hardware_serial}{\-M\-H\-V\-\_\-\-Hardware\-Serial}
+class \hyperlink{class_m_h_v___hardware_serial}{M\-H\-V\-\_\-\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}
 \end{DoxyCompactItemize}
-\subsection*{\-Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)~\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)
+\#define \hyperlink{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)~\hyperlink{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)
 \item 
 \#define \hyperlink{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Rx\-Vect, mhv\-Tx\-Vect)
 \item 
-\#define \hyperlink{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N, \-\_\-mhv\-T\-X\-B\-U\-F\-C\-O\-U\-N\-T, \-\_\-mhv\-S\-E\-R\-I\-A\-L, \-\_\-mhv\-B\-A\-U\-D)
-\item 
-\#define \hyperlink{_m_h_v___hardware_serial_8h_aade0140aca875380dc782d9dc649cb5a}{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G}~\-M\-H\-V\-\_\-\-D\-E\-B\-U\-G
+\#define \hyperlink{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N, \-\_\-mhv\-T\-X\-B\-U\-F\-C\-O\-U\-N\-T, \-\_\-mhv\-S\-E\-R\-I\-A\-L, \-\_\-mhv\-B\-A\-U\-D)
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Define \-Documentation}
-\hypertarget{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{
-\index{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
-\index{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!MHV_HardwareSerial.h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
+\subsection{Macro Definition Documentation}
+\hypertarget{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\index{M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!MHV_HardwareSerial.h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
 \subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
 \begin{DoxyParamCaption}
 \item[{}]{mhv\-Hardware\-Serial, }
 \item[{}]{mhv\-Rx\-Vect, }
 \item[{}]{mhv\-Tx\-Vect}
 \end{DoxyParamCaption}
-)}}
-\label{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}
-{\bfseries \-Value\-:}
+)}}\label{_m_h_v___hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}
+{\bfseries Value\-:}
 \begin{DoxyCode}
-ISR(mhvRxVect) { \
-        mhvHardwareSerial.rx(); \
-} \
-ISR(mhvTxVect) { \
-        mhvHardwareSerial.tx(); \
-}
+ISR(mhvRxVect) \{ \(\backslash\)
+        mhvHardwareSerial.rx(); \(\backslash\)
+\} \(\backslash\)
+ISR(mhvTxVect) \{ \(\backslash\)
+        mhvHardwareSerial.tx(); \(\backslash\)
+\}
 \end{DoxyCode}
 
 
-\-Definition at line 44 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
+Definition at line 48 of file M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
 
-\hypertarget{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{
-\index{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
-\index{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!MHV_HardwareSerial.h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\hypertarget{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{\index{M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!MHV_HardwareSerial.h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
 \begin{DoxyParamCaption}
 \item[{}]{mhv\-Hardware\-Serial, }
 \item[{}]{mhv\-Hardware\-Serial\-Interrupts}
 \end{DoxyParamCaption}
-)~\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)}}
-\label{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}
+)~{\bf \-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)}}\label{_m_h_v___hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
+Definition at line 45 of file M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
 
-\hypertarget{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{
-\index{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}}
-\index{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_HardwareSerial.h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E(
+\hypertarget{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{\index{M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_HardwareSerial.h@{M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E(
 \begin{DoxyParamCaption}
 \item[{}]{\-\_\-mhv\-Object\-Name, }
 \item[{}]{\-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N, }
@@ -78,19 +73,16 @@ ISR(mhvTxVect) { \
 \item[{}]{\-\_\-mhv\-S\-E\-R\-I\-A\-L, }
 \item[{}]{\-\_\-mhv\-B\-A\-U\-D}
 \end{DoxyParamCaption}
-)}}
-\label{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}
-{\bfseries \-Value\-:}
+)}}\label{_m_h_v___hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}
+{\bfseries Value\-:}
 \begin{DoxyCode}
-MHV_RX_BUFFER_CREATE(_mhvObjectName ## RX, _mhvRXBUFLEN); \
-                MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTXBUFCOUNT); \
-                MHV_HardwareSerial _mhvObjectName(_mhvObjectName ## RX, 
-      _mhvObjectName ## TX, _mhvSERIAL, _mhvBAUD); \
-                MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL
-       ## _INTERRUPTS);
+\hyperlink{class_m_h_v___hardware_serial}{MHV\_HardwareSerial<\_mhvSERIAL, \_mhvBAUD, \_mhvRXBUFLEN, \_mhvTXBUFCOUNT>}
+       \_mhvObjectName; \(\backslash\)
+                MHV\_HARDWARESERIAL\_ASSIGN\_INTERRUPTS(\_mhvObjectName, \_mhvSERIAL
+       ## \_INTERRUPTS);
 \end{DoxyCode}
-\-Create a new serial object 
-\begin{DoxyParams}{\-Parameters}
+Create a new serial object 
+\begin{DoxyParams}{Parameters}
 {\em \-\_\-mhv\-Object\-Name} & the variable name of the object \\
 \hline
 {\em \-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N} & the maximum length of the line to be received \\
@@ -104,14 +96,5 @@ MHV_RX_BUFFER_CREATE(_mhvObjectName ## RX, _mhvRXBUFLEN); \
 \end{DoxyParams}
 
 
-\-Definition at line 60 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
-
-\hypertarget{_m_h_v___hardware_serial_8h_aade0140aca875380dc782d9dc649cb5a}{
-\index{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}!\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G}}
-\index{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G@{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G}!MHV_HardwareSerial.h@{\-M\-H\-V\-\_\-\-Hardware\-Serial.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-D\-E\-B\-U\-G~\-M\-H\-V\-\_\-\-D\-E\-B\-U\-G}}
-\label{_m_h_v___hardware_serial_8h_aade0140aca875380dc782d9dc649cb5a}
-
-
-\-Definition at line 66 of file \-M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
+Definition at line 64 of file M\-H\-V\-\_\-\-Hardware\-Serial.\-h.
 

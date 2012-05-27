@@ -4,16 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../MHV_VusbKeyboard.cpp \
-../MHV_VusbTypist.cpp 
+../MHV_VusbKeyboard.cpp 
 
 OBJS += \
-./MHV_VusbKeyboard.o \
-./MHV_VusbTypist.o 
+./MHV_VusbKeyboard.o 
 
 CPP_DEPS += \
-./MHV_VusbKeyboard.d \
-./MHV_VusbTypist.d 
+./MHV_VusbKeyboard.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

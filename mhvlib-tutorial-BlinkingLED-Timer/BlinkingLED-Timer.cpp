@@ -32,7 +32,7 @@
 #include <MHV_io.h>
 
 // Bring in the MHV 8 bit timer header
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -44,10 +44,13 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
+// Bring in Arduino defines
+#include <boards/MHV_io_Arduino.h>
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
@@ -96,7 +99,7 @@ MAIN {
  * Instead, we will trigger the timer every 1 ms, and increment a counter within
  * the trigger function to give us our 333ms count
  */
-	tickTimer.setPeriods(1000UL, 0);
+	tickTimer.setTimes(1000UL, 0);
 
 // Tell the timer to call our trigger function
 	tickTimer.setListener1(blinker);

@@ -205,7 +205,8 @@ public:
 
 	/**
 	 * Set the brightness of a module
-	 * @param module 		the module
+	 * @param moduleX 		the X position of the module
+	 * @param moduleY 		the Y position of the module
 	 * @param brightness	the brightness (from 0 to 15)
 	 */
 	void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness) {

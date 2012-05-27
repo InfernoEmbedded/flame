@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 158.102767
+%%BoundingBox: 0 0 500 122.850123
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 3.162500 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 4.070000 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 4 def
+/rows 5 def
 /cols 2 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -173,11 +173,12 @@
 
 boxfont setfont
 1 boundaspect scale
-(MHV_Display_HD44780) cw
-(MHV_Display_Character) cw
+(MHV_Display_HD44780< cols, rows, txBuffers >) cw
+(MHV_Display_Character< cols, rows, txBuffers >) cw
+(MHV_Device_TXImplementation< txBuffers >) cw
 (MHV_Device_TX) cw
-(MHV_Display_HD44780_Direct_Connect) cw
-(MHV_Display_HD44780_Shift_Register) cw
+(MHV_Display_HD44780_Direct_Connect< cols, rows, txBuffers,,, >) cw
+(MHV_Display_HD44780_Shift_Register< cols, rows, txBuffers,,, >) cw
 /boxwidth boxwidth marginwidth 2 mul add def
 /xspacing boxwidth distx add def
 /yspacing boxheight disty add def
@@ -189,11 +190,12 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (MHV_Display_HD44780) 0.500000 1.000000 box
- (MHV_Display_Character) 0.500000 2.000000 box
- (MHV_Device_TX) 0.500000 3.000000 box
- (MHV_Display_HD44780_Direct_Connect) 0.000000 0.000000 box
- (MHV_Display_HD44780_Shift_Register) 1.000000 0.000000 box
+ (MHV_Display_HD44780< cols, rows, txBuffers >) 0.500000 1.000000 box
+ (MHV_Display_Character< cols, rows, txBuffers >) 0.500000 2.000000 box
+ (MHV_Device_TXImplementation< txBuffers >) 0.500000 3.000000 box
+ (MHV_Device_TX) 0.500000 4.000000 box
+ (MHV_Display_HD44780_Direct_Connect< cols, rows, txBuffers,,, >) 0.000000 0.000000 box
+ (MHV_Display_HD44780_Shift_Register< cols, rows, txBuffers,,, >) 1.000000 0.000000 box
 
 % ----- relations -----
 
@@ -205,6 +207,10 @@ solid
 0 0.500000 2.000000 out
 solid
 1 0.500000 3.000000 in
+solid
+0 0.500000 3.000000 out
+solid
+1 0.500000 4.000000 in
 solid
 1 0.500000 0.250000 out
 solid

@@ -28,7 +28,7 @@
 #define MHV_DISPLAY_HD44780_DIRECT_CONNECT_H_
 
 #include <MHV_Display_HD44780.h>
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 #include <util/delay.h>
 
 #define HD44780_DB4			(1 << dataPin)

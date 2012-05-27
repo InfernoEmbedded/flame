@@ -34,11 +34,8 @@
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
-// Bring in the MHV 8 bit timer header
-#include <MHV_Timer8.h>
-
-// Bring in the MHV 16 bit timer header
-#include <MHV_Timer16.h>
+// Bring in the MHV timer header
+#include <MHV_Timer.h>
 
 // Bring in the AVR interrupt header (needed for cli)
 #include <avr/interrupt.h>
@@ -50,7 +47,7 @@
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-MHV_Timer8 animationTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>animationTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
@@ -61,7 +58,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(animationTimer, MHV_TIMER2_INTERRUPTS);
 
 /* Declare a 16 bit timer for PWM output
  */
-MHV_Timer16 pwmTimer(MHV_TIMER16_1);
+MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_16_PWM_FAST>pwmTimer;
 
 /* The maximum value of the PWM
  * This defines the resolution of the PWM, as well as the frequency
@@ -123,13 +120,10 @@ MAIN {
 
 	/* Trigger the animation routine every 20ms
 	 */
-	(void) animationTimer.setPeriods(20000UL, 0);
+	(void) animationTimer.setTimes(20000UL, 0);
 
 	// Tell the timer to call our trigger function
 	animationTimer.setListener1(animation);
-
-	// Set the PWM mode to FAST PWM
-	pwmTimer.setMode(MHV_TIMER_16_PWM_FAST);
 
 	// Set the PWM prescaler to 1 (no prescaler)
 	pwmTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);

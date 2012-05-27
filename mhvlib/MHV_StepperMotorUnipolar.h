@@ -99,7 +99,7 @@ private:
 		}
 
 		coilPattern <<= phaseAPin;
-		VALUE(phaseAOut) = (VALUE(phaseAOut) & ~PHASE_MASK) | coilPattern;
+		_MMIO_BYTE(phaseAOut) = (_MMIO_BYTE(phaseAOut) & ~PHASE_MASK) | coilPattern;
 	}
 
 public:

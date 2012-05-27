@@ -31,9 +31,8 @@
 #include <MHV_io.h>
 #include <MHV_AD.h>
 
-#ifdef MHV_AD_RESOLUTION
-#ifdef MHV_TIMER16_1
-#include <MHV_Timer16.h>
+#ifdef ADC
+#include <MHV_Timer.h>
 #include <MHV_RTC.h>
 
 enum mhv_vreg_modes {
@@ -71,7 +70,7 @@ template <MHV_VREG_MODES mode, uint32_t millivolts, uint32_t vrefMillivolts, uin
 class MHV_VoltageRegulator : public MHV_TimerListener {
 private:
 	uint16_t		_targetADC;
-	MHV_Timer16		&_timer;
+	MHV_Timer		&_timer;
 	uint16_t		_pwm;	// The current PWM rate
 	bool			_lastMoveUp;
 	bool			_invert;
@@ -159,7 +158,7 @@ public:
 	 * Initialise the library
 	 * @param timer			the timer for which the duty cycle will be adjusted
 	 */
-	MHV_VoltageRegulator(MHV_Timer16 &timer) :
+	MHV_VoltageRegulator(MHV_Timer &timer) :
 				_timer(timer) {
 		_targetADC = (uint16_t)(millivolts * divider * MHV_AD_RESOLUTION / (vrefMillivolts * 16384));
 		_pwm = 1;
@@ -201,6 +200,5 @@ public:
 	}
 };
 
-#endif // MHV_TIMER16_1
-#endif // MHV_AD_RESOLUTION
+#endif // ADC
 #endif // MHV_VOLTAGEREGULATOR_H_

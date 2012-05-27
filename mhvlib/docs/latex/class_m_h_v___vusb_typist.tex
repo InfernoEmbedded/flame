@@ -1,132 +1,129 @@
-\hypertarget{class_m_h_v___vusb_typist}{
-\section{\-M\-H\-V\-\_\-\-Vusb\-Typist \-Class \-Reference}
-\label{class_m_h_v___vusb_typist}\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
+\hypertarget{class_m_h_v___vusb_typist}{\section{M\-H\-V\-\_\-\-Vusb\-Typist$<$ tx\-Buffers $>$ Class Template Reference}
+\label{class_m_h_v___vusb_typist}\index{M\-H\-V\-\_\-\-Vusb\-Typist$<$ tx\-Buffers $>$@{M\-H\-V\-\_\-\-Vusb\-Typist$<$ tx\-Buffers $>$}}
 }
 
 
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Vusb\-Typist.\-h$>$}
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Vusb\-Typist.\-h$>$}
 
-\-Inheritance diagram for \-M\-H\-V\-\_\-\-Vusb\-Typist\-:\begin{figure}[H]
+Inheritance diagram for M\-H\-V\-\_\-\-Vusb\-Typist$<$ tx\-Buffers $>$\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=3.000000cm]{class_m_h_v___vusb_typist}
 \end{center}
 \end{figure}
-\subsection*{\-Public \-Member \-Functions}
+\subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_m_h_v___vusb_typist_abec936c0ca44586fec7bd76430feac71}{\-M\-H\-V\-\_\-\-Vusb\-Typist} (\hyperlink{class_m_h_v___ring_buffer}{\-M\-H\-V\-\_\-\-Ring\-Buffer} \&tx\-Buffer, \hyperlink{class_m_h_v___r_t_c}{\-M\-H\-V\-\_\-\-R\-T\-C} \&rtc)
+\hyperlink{class_m_h_v___vusb_typist_a18ea6a0825c817909f3f3b54c27da348}{M\-H\-V\-\_\-\-Vusb\-Typist} (\hyperlink{class_m_h_v___r_t_c}{M\-H\-V\-\_\-\-R\-T\-C} \&rtc)
 \item 
-void \hyperlink{class_m_h_v___vusb_typist_a90c805aafa38fb78df184c26fd4e0967}{alarm} ()
+void \hyperlink{class_m_h_v___vusb_typist_affb513e7ee986fdbc001d7cbc037d4e4}{alarm} ()
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Member \-Functions}
+\subsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_m_h_v___vusb_typist_a171cec2829ab07c838ffda3e7c3b9871}{run\-Tx\-Buffers} ()
+\hyperlink{_m_h_v__io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} void \hyperlink{class_m_h_v___vusb_typist_aff30ddf6ba362fa02b44a21df31eba49}{run\-Tx\-Buffers} ()
 \item 
-void \hyperlink{class_m_h_v___vusb_typist_a20f527471b7f3a907d3969eaf4a04689}{type\-Char} (char c)
+void \hyperlink{class_m_h_v___vusb_typist_ad7c64ff9884b31c9f7112cff7d366913}{type\-Char} (char c)
 \end{DoxyCompactItemize}
-\subsection*{\-Protected \-Attributes}
+\subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{class_m_h_v___vusb_typist_a4c6b10764e87d062ec4fd70007959175}{\-\_\-is\-Typing}
+bool \hyperlink{class_m_h_v___vusb_typist_a6866d7732e04eb0f6d410522ba306ca5}{\-\_\-is\-Typing}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Detailed \-Description}
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t tx\-Buffers$>$class M\-H\-V\-\_\-\-Vusb\-Typist$<$ tx\-Buffers $>$}
 
-
-\-Definition at line 25 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
-
-
-
-\subsection{\-Constructor \& \-Destructor \-Documentation}
-\hypertarget{class_m_h_v___vusb_typist_abec936c0ca44586fec7bd76430feac71}{
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!MHV_VusbTypist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\subsubsection[{\-M\-H\-V\-\_\-\-Vusb\-Typist}]{\setlength{\rightskip}{0pt plus 5cm}\-M\-H\-V\-\_\-\-Vusb\-Typist\-::\-M\-H\-V\-\_\-\-Vusb\-Typist (
-\begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-Ring\-Buffer} \&}]{tx\-Buffer, }
-\item[{{\bf \-M\-H\-V\-\_\-\-R\-T\-C} \&}]{rtc}
-\end{DoxyParamCaption}
-)}}
-\label{class_m_h_v___vusb_typist_abec936c0ca44586fec7bd76430feac71}
-\-Emulate a \-U\-S\-B keyboard using \-V-\/\-U\-S\-B \-This class can also be passed strings, which it will type out on the keyboard 
-\begin{DoxyParams}{\-Parameters}
-{\em tx\-Buffer} & a ringbuffer to store data in \\
+A U\-S\-B keyboard emulator that will type what you print to it 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em tx\-Buffers} & the number of output buffers \\
 \hline
-{\em rtc} & an \-R\-T\-C to trigger events from \\
+\end{DoxyTemplParams}
+
+
+Definition at line 35 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_m_h_v___vusb_typist_a18ea6a0825c817909f3f3b54c27da348}{\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!MHV_VusbTypist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\subsubsection[{M\-H\-V\-\_\-\-Vusb\-Typist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf M\-H\-V\-\_\-\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::{\bf M\-H\-V\-\_\-\-Vusb\-Typist} (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-H\-V\-\_\-\-R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_m_h_v___vusb_typist_a18ea6a0825c817909f3f3b54c27da348}
+Emulate a U\-S\-B keyboard using V-\/\-U\-S\-B This class can also be passed strings, which it will type out on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to trigger events from \\
 \hline
 \end{DoxyParams}
 
 
-\-Definition at line 33 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-cpp.
+Definition at line 194 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
 
 
 
-\subsection{\-Member \-Function \-Documentation}
-\hypertarget{class_m_h_v___vusb_typist_a90c805aafa38fb78df184c26fd4e0967}{
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!alarm@{alarm}}
-\index{alarm@{alarm}!MHV_VusbTypist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Vusb\-Typist\-::alarm (
+\subsection{Member Function Documentation}
+\hypertarget{class_m_h_v___vusb_typist_affb513e7ee986fdbc001d7cbc037d4e4}{\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!alarm@{alarm}}
+\index{alarm@{alarm}!MHV_VusbTypist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf M\-H\-V\-\_\-\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::alarm (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{class_m_h_v___vusb_typist_a90c805aafa38fb78df184c26fd4e0967}
-\-Periodically called to maintain \-U\-S\-B comms 
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_m_h_v___vusb_typist_affb513e7ee986fdbc001d7cbc037d4e4}
+Periodically called to maintain U\-S\-B comms 
 
-\-Reimplemented from \hyperlink{class_m_h_v___vusb_keyboard_a9d59ac54f1b17ece17c038dc3f5bd026}{\-M\-H\-V\-\_\-\-Vusb\-Keyboard}.
-
+Reimplemented from \hyperlink{class_m_h_v___vusb_keyboard_a9d59ac54f1b17ece17c038dc3f5bd026}{M\-H\-V\-\_\-\-Vusb\-Keyboard}.
 
 
-\-Definition at line 41 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-cpp.
 
-\hypertarget{class_m_h_v___vusb_typist_a171cec2829ab07c838ffda3e7c3b9871}{
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
-\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!MHV_VusbTypist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Vusb\-Typist\-::run\-Tx\-Buffers (
+Definition at line 201 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
+
+\hypertarget{class_m_h_v___vusb_typist_aff30ddf6ba362fa02b44a21df31eba49}{\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!MHV_VusbTypist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf C\-O\-N\-S\-T} void {\bf M\-H\-V\-\_\-\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::run\-Tx\-Buffers (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected, virtual\mbox{]}}}}
-\label{class_m_h_v___vusb_typist_a171cec2829ab07c838ffda3e7c3b9871}
-\-Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_m_h_v___vusb_typist_aff30ddf6ba362fa02b44a21df31eba49}
+Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
 
-\-Implements \hyperlink{class_m_h_v___device___t_x_a3a86067d417c3d5a1f64042ecfcefff7}{\-M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}.
-
+Implements \hyperlink{class_m_h_v___device___t_x_a3a86067d417c3d5a1f64042ecfcefff7}{M\-H\-V\-\_\-\-Device\-\_\-\-T\-X}.
 
 
-\-Definition at line 63 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-cpp.
 
-\hypertarget{class_m_h_v___vusb_typist_a20f527471b7f3a907d3969eaf4a04689}{
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!type\-Char@{type\-Char}}
-\index{type\-Char@{type\-Char}!MHV_VusbTypist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\subsubsection[{type\-Char}]{\setlength{\rightskip}{0pt plus 5cm}void \-M\-H\-V\-\_\-\-Vusb\-Typist\-::type\-Char (
+Definition at line 43 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
+
+\hypertarget{class_m_h_v___vusb_typist_ad7c64ff9884b31c9f7112cff7d366913}{\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!type\-Char@{type\-Char}}
+\index{type\-Char@{type\-Char}!MHV_VusbTypist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\subsubsection[{type\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf M\-H\-V\-\_\-\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::type\-Char (
 \begin{DoxyParamCaption}
 \item[{char}]{c}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___vusb_typist_a20f527471b7f3a907d3969eaf4a04689}
-\-Type a single character on the keyboard 
-
-\-Definition at line 69 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-cpp.
-
-
-
-\subsection{\-Member \-Data \-Documentation}
-\hypertarget{class_m_h_v___vusb_typist_a4c6b10764e87d062ec4fd70007959175}{
-\index{\-M\-H\-V\-\_\-\-Vusb\-Typist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}!\-\_\-is\-Typing@{\-\_\-is\-Typing}}
-\index{\-\_\-is\-Typing@{\-\_\-is\-Typing}!MHV_VusbTypist@{\-M\-H\-V\-\_\-\-Vusb\-Typist}}
-\subsubsection[{\-\_\-is\-Typing}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-M\-H\-V\-\_\-\-Vusb\-Typist\-::\-\_\-is\-Typing}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}
-\label{class_m_h_v___vusb_typist_a4c6b10764e87d062ec4fd70007959175}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{class_m_h_v___vusb_typist_ad7c64ff9884b31c9f7112cff7d366913}
+Type a single character on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em c} & the character to type \\
+\hline
+\end{DoxyParams}
 
 
-\-Definition at line 27 of file \-M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
+Definition at line 49 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
 
 
 
-\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\subsection{Member Data Documentation}
+\hypertarget{class_m_h_v___vusb_typist_a6866d7732e04eb0f6d410522ba306ca5}{\index{M\-H\-V\-\_\-\-Vusb\-Typist@{M\-H\-V\-\_\-\-Vusb\-Typist}!\-\_\-is\-Typing@{\-\_\-is\-Typing}}
+\index{\-\_\-is\-Typing@{\-\_\-is\-Typing}!MHV_VusbTypist@{M\-H\-V\-\_\-\-Vusb\-Typist}}
+\subsubsection[{\-\_\-is\-Typing}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ bool {\bf M\-H\-V\-\_\-\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::\-\_\-is\-Typing\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_m_h_v___vusb_typist_a6866d7732e04eb0f6d410522ba306ca5}
+
+
+Definition at line 37 of file M\-H\-V\-\_\-\-Vusb\-Typist.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\-A\-:/eclipse/mhvlib-\/\-Vusb-\/\-Keyboard/\hyperlink{_m_h_v___vusb_typist_8h}{\-M\-H\-V\-\_\-\-Vusb\-Typist.\-h}\item 
-\-A\-:/eclipse/mhvlib-\/\-Vusb-\/\-Keyboard/\hyperlink{_m_h_v___vusb_typist_8cpp}{\-M\-H\-V\-\_\-\-Vusb\-Typist.\-cpp}\end{DoxyCompactItemize}
+A\-:/eclipse/mhvlib-\/\-Vusb-\/\-Keyboard/\hyperlink{_m_h_v___vusb_typist_8h}{M\-H\-V\-\_\-\-Vusb\-Typist.\-h}\end{DoxyCompactItemize}

@@ -27,7 +27,7 @@
 #ifndef MHVDAC_H_
 #define MHVDAC_H_
 
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 typedef int8_t MHV_SAMPLE;
 
@@ -54,11 +54,11 @@ protected:
 	MHV_SAMPLE		*_samples;
 	uint8_t			_sampleLength;
 	uint8_t			_currentSample;
-	MHV_Timer8		&_timer;
+	MHV_Timer		&_timer;
 	MHV_DACListener	&_listener;
 
 public:
-	MHV_DAC(MHV_Timer8 &timer, MHV_DACListener &listener);
+	MHV_DAC(MHV_Timer &timer, MHV_DACListener &listener);
 	void alarm();
 	void playSamples(MHV_SAMPLE *samples, uint8_t sampleLength);
 	void handleEvents();

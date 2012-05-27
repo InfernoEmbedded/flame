@@ -16,15 +16,13 @@ CPP_SRCS += \
 ../MHV_NotePlayer.cpp \
 ../MHV_PID.cpp \
 ../MHV_PinChangeManager.cpp \
-../MHV_RGB.cpp \
 ../MHV_RTC.cpp \
 ../MHV_ServoControl.cpp \
 ../MHV_Shifter.cpp \
 ../MHV_SoftwareHBridge.cpp \
 ../MHV_SoftwarePWM.cpp \
 ../MHV_StepperMotor.cpp \
-../MHV_Timer16.cpp \
-../MHV_Timer8.cpp \
+../MHV_Timer.cpp \
 ../MHV_WaveGenerator.cpp 
 
 OBJS += \
@@ -40,15 +38,13 @@ OBJS += \
 ./MHV_NotePlayer.o \
 ./MHV_PID.o \
 ./MHV_PinChangeManager.o \
-./MHV_RGB.o \
 ./MHV_RTC.o \
 ./MHV_ServoControl.o \
 ./MHV_Shifter.o \
 ./MHV_SoftwareHBridge.o \
 ./MHV_SoftwarePWM.o \
 ./MHV_StepperMotor.o \
-./MHV_Timer16.o \
-./MHV_Timer8.o \
+./MHV_Timer.o \
 ./MHV_WaveGenerator.o 
 
 CPP_DEPS += \
@@ -64,15 +60,13 @@ CPP_DEPS += \
 ./MHV_NotePlayer.d \
 ./MHV_PID.d \
 ./MHV_PinChangeManager.d \
-./MHV_RGB.d \
 ./MHV_RTC.d \
 ./MHV_ServoControl.d \
 ./MHV_Shifter.d \
 ./MHV_SoftwareHBridge.d \
 ./MHV_SoftwarePWM.d \
 ./MHV_StepperMotor.d \
-./MHV_Timer16.d \
-./MHV_Timer8.d \
+./MHV_Timer.d \
 ./MHV_WaveGenerator.d 
 
 

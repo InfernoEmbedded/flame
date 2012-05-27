@@ -31,7 +31,7 @@
 #include <string.h>
 #include <math.h>
 #include <MHV_Display_Monochrome_Buffered.h>
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 enum MHV_PWMMatrix_Mode {
 	MHV_PWMMATRIX_MODE_AUTO,

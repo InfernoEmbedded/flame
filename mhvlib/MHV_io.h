@@ -46,6 +46,9 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 #include <stddef.h>
 #include <util/atomic.h>
 
+#include <chips/MHV_io_chip.h>
+
+
 // Some useful attributes
 
 // A function that does not return
@@ -54,12 +57,12 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 // Code here is unreachable
 #define UNREACHABLE __builtin_unreachable();
 
-/* A function that has no effect other than its return value, and the return value depends
+/* A function that has no effect other than its return _MMIO_BYTE, and the return _MMIO_BYTE depends
  * only on the parameters, class variables and/or global variables
  */
 #define PURE __attribute__ ((pure))
 
-/* A function that has no effect other than its return value, and the return value depends
+/* A function that has no effect other than its return _MMIO_BYTE, and the return _MMIO_BYTE depends
  * only on the parameters
  */
 #define CONST __attribute__ ((const))
@@ -75,27 +78,9 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
  */
 #define UNUSED __attribute__ ((unused))
 
-
-#if defined(__AVR_ATtiny2313__)
-#include <MHV_io_ATtiny2313.h>
-#elif defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
-#include <MHV_io_ATtiny85.h>
-#elif defined(__AVR_ATmega1280__)
-#include <MHV_io_ATmega1280.h>
-#include <MHV_io_ArduinoMega.h>
-#elif defined(__AVR_ATmega48__) || defined(__AVR_ATmega48A__) || defined(__AVR_ATmega88__) || \
-	defined(__AVR_ATmega88A__) || defined(__AVR_ATmega88PA__) || defined(__AVR_ATmega168__) || \
-	defined(__AVR_ATmega168A__) || defined(__AVR_ATmega168PA__) || defined(__AVR_ATmega328__) || \
-	defined(__AVR_ATmega328P__)
-#include <MHV_io_ATmega168.h>
-#include <MHV_io_ArduinoDiecimilla.h>
-#endif
-
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
 typedef uint16_t mhv_register;
-#define VALUE(_mhv_register) _SFR_IO8(_mhv_register)
-
 
 struct mhv_pin {
 	mhv_register		dir;
@@ -163,7 +148,7 @@ typedef struct mhv_pin MHV_PIN;
  * @param	pin		the pin to turn on
  */
 INLINE void mhv_pinOn(MHV_PIN *pin) {
-	VALUE(pin->output) |= pin->bit;
+	_MMIO_BYTE(pin->output) |= pin->bit;
 }
 
 /**
@@ -182,7 +167,7 @@ INLINE void mhv_pinOnAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinOn(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinOut) |= _BV(pinPin);
+	_MMIO_BYTE(pinOut) |= _BV(pinPin);
 }
 
 
@@ -201,7 +186,7 @@ INLINE void mhv_pinOnAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		the pin to turn off
  */
 INLINE void mhv_pinOff(MHV_PIN *pin) {
-	VALUE(pin->output) &= ~(pin->bit);
+	_MMIO_BYTE(pin->output) &= ~(pin->bit);
 }
 
 /**
@@ -220,7 +205,7 @@ INLINE void mhv_pinOffAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinOff(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinOut) &= ~_BV(pinPin);
+	_MMIO_BYTE(pinOut) &= ~_BV(pinPin);
 }
 
 /**
@@ -239,7 +224,7 @@ INLINE void mhv_pinOffAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	state	true to turn the pin on
  */
 INLINE void mhv_pinSet(MHV_DECLARE_PIN(pin), bool state) {
-	VALUE(pinOut) = (VALUE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
+	_MMIO_BYTE(pinOut) = (_MMIO_BYTE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
 }
 
 /**
@@ -259,7 +244,7 @@ INLINE void mhv_pinSetAtomic(MHV_DECLARE_PIN(pin), bool state) {
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setOutput(MHV_PIN *pin) {
-	VALUE(pin->dir) |= pin->bit;
+	_MMIO_BYTE(pin->dir) |= pin->bit;
 }
 
 /**
@@ -277,7 +262,7 @@ INLINE void mhv_setOutputAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_setOutput(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinDir) |= _BV(pinPin);
+	_MMIO_BYTE(pinDir) |= _BV(pinPin);
 }
 
 /**
@@ -295,8 +280,8 @@ INLINE void mhv_setOutputAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setInput(MHV_PIN *pin) {
-	VALUE(pin->dir) &= ~(pin->bit);
-	VALUE(pin->output) &= ~(pin->bit);
+	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
+	_MMIO_BYTE(pin->output) &= ~(pin->bit);
 }
 
 /**
@@ -314,8 +299,8 @@ INLINE void mhv_setInputAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_setInput(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinDir) &= ~_BV(pinPin);
-	VALUE(pinOut) &= ~_BV(pinPin);
+	_MMIO_BYTE(pinDir) &= ~_BV(pinPin);
+	_MMIO_BYTE(pinOut) &= ~_BV(pinPin);
 }
 
 /**
@@ -333,8 +318,8 @@ INLINE void mhv_setInputAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		the pin to become an output
  */
 INLINE void mhv_setInputPullup(MHV_PIN *pin) {
-	VALUE(pin->dir) &= ~(pin->bit);
-	VALUE(pin->output) |= pin->bit;
+	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
+	_MMIO_BYTE(pin->output) |= pin->bit;
 }
 
 /**
@@ -354,8 +339,8 @@ INLINE void mhv_setInputPullupAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_setInputPullup(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinDir) &= ~_BV(pinPin);
-	VALUE(pinOut) |= _BV(pinPin);
+	_MMIO_BYTE(pinDir) &= ~_BV(pinPin);
+	_MMIO_BYTE(pinOut) |= _BV(pinPin);
 }
 
 /**
@@ -373,7 +358,7 @@ INLINE void mhv_setInputPullupAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		the pin to toggle
  */
 INLINE void mhv_pinToggle(MHV_PIN *pin) {
-	VALUE(pin->input) |= pin->bit;
+	_MMIO_BYTE(pin->input) |= pin->bit;
 }
 
 /**
@@ -382,7 +367,7 @@ INLINE void mhv_pinToggle(MHV_PIN *pin) {
  */
 INLINE void mhv_pinToggleAtomic(MHV_PIN *pin) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		VALUE(pin->input) |= pin->bit;
+		_MMIO_BYTE(pin->input) |= pin->bit;
 	}
 }
 
@@ -391,7 +376,7 @@ INLINE void mhv_pinToggleAtomic(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE void mhv_pinToggle(MHV_DECLARE_PIN(pin)) {
-	VALUE(pinIn) |= _BV(pinPin);
+	_MMIO_BYTE(pinIn) |= _BV(pinPin);
 }
 
 /**
@@ -409,7 +394,7 @@ INLINE void mhv_pinToggleAtomic(MHV_DECLARE_PIN(pin)) {
  * @param	pin		the pin to read
  */
 INLINE bool mhv_pinRead(MHV_PIN *pin) {
-	return VALUE(pin->input) & pin->bit;
+	return _MMIO_BYTE(pin->input) & pin->bit;
 }
 
 
@@ -418,7 +403,7 @@ INLINE bool mhv_pinRead(MHV_PIN *pin) {
  * @param	pin		an MHV_PIN_* macro
  */
 INLINE bool mhv_pinRead(MHV_DECLARE_PIN(pin)) {
-	return VALUE(pinIn) & _BV(pinPin);
+	return _MMIO_BYTE(pinIn) & _BV(pinPin);
 }
 
 #pragma GCC diagnostic warning "-Wunused-parameter"

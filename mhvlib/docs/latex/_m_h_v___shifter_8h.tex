@@ -1,287 +1,63 @@
-\hypertarget{_m_h_v___shifter_8h}{
-\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.h \-File \-Reference}
-\label{_m_h_v___shifter_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.\-h}}
+\hypertarget{_m_h_v___shifter_8h}{\section{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.h File Reference}
+\label{_m_h_v___shifter_8h}\index{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.\-h@{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-Shifter.\-h}}
 }
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-io.\-h$>$}\*
-\subsection*{\-Classes}
+{\ttfamily \#include $<$M\-H\-V\-\_\-io.\-h$>$}\\*
+{\ttfamily \#include $<$util/delay.\-h$>$}\\*
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_m_h_v___shifter}{\-M\-H\-V\-\_\-\-Shifter}
+class \hyperlink{class_m_h_v___shifter}{M\-H\-V\-\_\-\-Shifter}
+\item 
+class \hyperlink{class_m_h_v___shifter_implementation}{M\-H\-V\-\_\-\-Shifter\-Implementation$<$,, msb, rising, delay $>$}
 \end{DoxyCompactItemize}
-\subsection*{\-Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_ae8524b0e106007cfef0def2112f5bf7f}{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P}~(mhv\-\_\-shift\-\_\-i = 0; mhv\-\_\-shift\-\_\-i $<$ 8; mhv\-\_\-shift\-\_\-i++)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a8abb1b840bf41a390f7f0b2ee46d13e7}{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P}~(mhv\-\_\-shift\-\_\-i = 0; mhv\-\_\-shift\-\_\-i $<$ bits; mhv\-\_\-shift\-\_\-i++)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_aedd45c50f913b95905beebd36a58cf8a}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1}~\-\_\-\-B\-V(0)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a38f7965772e648657760476f6117acee}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2}~\-\_\-\-B\-V(1)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a8536b8af16a1e962aa2479c7e19e9855}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3}~\-\_\-\-B\-V(2)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a239566632f9a2aad21b8e9e482d7ff5b}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4}~\-\_\-\-B\-V(3)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a98faf2c66870c2ae44b3429f98bca645}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5}~\-\_\-\-B\-V(4)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a206d23120dba2746a0000d24d9f57f73}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6}~\-\_\-\-B\-V(5)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a751cd84024cd8ff277118858b70d9508}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7}~\-\_\-\-B\-V(6)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_ad905d94dc30caa1665486e7b62977e86}{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8}~\-\_\-\-B\-V(7)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_a7ffab0ab7f8d2e8e71c6e5ba55c20fc5}{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}(name)
-\item 
-\#define \hyperlink{_m_h_v___shifter_8h_ae400697c1b5b144d4e57d0e0cbe17b88}{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}(name)
+\#define \hyperlink{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}~if (delay) \-\_\-delay\-\_\-us(delay);
 \end{DoxyCompactItemize}
-\subsection*{\-Functions}
+\subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$data, \hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$clock, uint8\-\_\-t byte)
+void \hyperlink{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{M\-H\-V\-\_\-\-P\-I\-N} $\ast$data, \hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{M\-H\-V\-\_\-\-P\-I\-N} $\ast$clock, uint8\-\_\-t byte)
 \item 
-void \hyperlink{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$data, \hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{\-M\-H\-V\-\_\-\-P\-I\-N} $\ast$clock, uint8\-\_\-t byte)
+void \hyperlink{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb} (\hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{M\-H\-V\-\_\-\-P\-I\-N} $\ast$data, \hyperlink{_m_h_v__io_8h_abbc6653affbd7b00c4a4caff8fdb6998}{M\-H\-V\-\_\-\-P\-I\-N} $\ast$clock, uint8\-\_\-t byte)
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Define \-Documentation}
-\hypertarget{_m_h_v___shifter_8h_aedd45c50f913b95905beebd36a58cf8a}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-1~\-\_\-\-B\-V(0)}}
-\label{_m_h_v___shifter_8h_aedd45c50f913b95905beebd36a58cf8a}
+\subsection{Macro Definition Documentation}
+\hypertarget{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}{\index{M\-H\-V\-\_\-\-Shifter.\-h@{M\-H\-V\-\_\-\-Shifter.\-h}!M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}}
+\index{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}!MHV_Shifter.h@{M\-H\-V\-\_\-\-Shifter.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y~if (delay) \-\_\-delay\-\_\-us(delay);}}\label{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}
 
 
-\-Definition at line 63 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a38f7965772e648657760476f6117acee}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-2~\-\_\-\-B\-V(1)}}
-\label{_m_h_v___shifter_8h_a38f7965772e648657760476f6117acee}
-
-
-\-Definition at line 64 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a8536b8af16a1e962aa2479c7e19e9855}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-3~\-\_\-\-B\-V(2)}}
-\label{_m_h_v___shifter_8h_a8536b8af16a1e962aa2479c7e19e9855}
-
-
-\-Definition at line 65 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a239566632f9a2aad21b8e9e482d7ff5b}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-4~\-\_\-\-B\-V(3)}}
-\label{_m_h_v___shifter_8h_a239566632f9a2aad21b8e9e482d7ff5b}
-
-
-\-Definition at line 66 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a98faf2c66870c2ae44b3429f98bca645}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-5~\-\_\-\-B\-V(4)}}
-\label{_m_h_v___shifter_8h_a98faf2c66870c2ae44b3429f98bca645}
-
-
-\-Definition at line 67 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a206d23120dba2746a0000d24d9f57f73}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-6~\-\_\-\-B\-V(5)}}
-\label{_m_h_v___shifter_8h_a206d23120dba2746a0000d24d9f57f73}
-
-
-\-Definition at line 68 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a751cd84024cd8ff277118858b70d9508}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-7~\-\_\-\-B\-V(6)}}
-\label{_m_h_v___shifter_8h_a751cd84024cd8ff277118858b70d9508}
-
-
-\-Definition at line 69 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_ad905d94dc30caa1665486e7b62977e86}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8}}
-\index{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8@{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-B\-I\-T\-\_\-8~\-\_\-\-B\-V(7)}}
-\label{_m_h_v___shifter_8h_ad905d94dc30caa1665486e7b62977e86}
-
-
-\-Definition at line 70 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}}
-\index{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}}
-\label{_m_h_v___shifter_8h_a2f4f482aa20414028355f66010d07e50}
-
-
-\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_ae400697c1b5b144d4e57d0e0cbe17b88}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}}
-\index{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-F\-A\-L\-L\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E(
-\begin{DoxyParamCaption}
-\item[{}]{name}
-\end{DoxyParamCaption}
-)}}
-\label{_m_h_v___shifter_8h_ae400697c1b5b144d4e57d0e0cbe17b88}
-{\bfseries \-Value\-:}
-\begin{DoxyCode}
-class MHV_Shifter_ ## name : public MHV_Shifter { \
-                public: \
-                        void shiftOut(uint8_t shiftData, uint8_t bits); \
-                        void shiftOut(uint8_t shiftData); \
-                        void shiftOut(uint8_t *shiftData, uint8_t shiftLength);
-       \
-                        void shiftOut(uint8_t *shiftData, uint16_t shiftLength)
-      ; \
-                        void shiftOut(uint8_t *shiftData, uint8_t dataLength, 
-      uint16_t elements); \
-        }; \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { 
-      \
-                MHV_SHIFTOUT_BITS(shiftData, bits); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
-                MHV_SHIFTOUT_BYTE(shiftData); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t 
-      shiftLength) { \
-                MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t 
-      shiftLength) { \
-                MHV_SHIFTOUT_ARRAY_CLOCKED_FALLING(shiftData, shiftLength); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t 
-      dataLength, uint16_t elements) { \
-                MHV_SHIFTOUT_ELEMENTS_CLOCKED_FALLING(shiftData, dataLength, 
-      elements); \
-        } \
-        MHV_Shifter_ ## name name;
-\end{DoxyCode}
-\-Create a new shifter for devices that read on the falling edge \-The \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-C\-L\-O\-C\-K \& \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-D\-A\-T\-A macros should be defined in advance 
-\begin{DoxyParams}{\-Parameters}
-{\em name} & the name of the object to create \\
-\hline
-\end{DoxyParams}
-
-
-\-Definition at line 646 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a7ffab0ab7f8d2e8e71c6e5ba55c20fc5}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}}
-\index{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-E\-R\-\_\-\-C\-L\-O\-C\-K\-E\-D\-\_\-\-R\-I\-S\-I\-N\-G\-\_\-\-C\-R\-E\-A\-T\-E(
-\begin{DoxyParamCaption}
-\item[{}]{name}
-\end{DoxyParamCaption}
-)}}
-\label{_m_h_v___shifter_8h_a7ffab0ab7f8d2e8e71c6e5ba55c20fc5}
-{\bfseries \-Value\-:}
-\begin{DoxyCode}
-class MHV_Shifter_ ## name : public MHV_Shifter { \
-                public: \
-                        void shiftOut(uint8_t shiftData, uint8_t bits); \
-                        void shiftOut(uint8_t shiftData); \
-                        void shiftOut(uint8_t *shiftData, uint8_t shiftLength);
-       \
-                        void shiftOut(uint8_t *shiftData, uint16_t shiftLength)
-      ; \
-                        void shiftOut(uint8_t *shiftData, uint8_t dataLength, 
-      uint16_t elements); \
-        }; \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData, uint8_t bits) { 
-      \
-                MHV_SHIFTOUT_BITS(shiftData, bits); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t shiftData) { \
-                MHV_SHIFTOUT_BYTE(shiftData); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t 
-      shiftLength) { \
-                MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint16_t 
-      shiftLength) { \
-                MHV_SHIFTOUT_ARRAY_CLOCKED_RISING(shiftData, shiftLength); \
-        } \
-        void MHV_Shifter_ ## name::shiftOut(uint8_t *shiftData, uint8_t 
-      dataLength, uint16_t elements) { \
-                MHV_SHIFTOUT_ELEMENTS_CLOCKED_RISING(shiftData, dataLength, 
-      elements); \
-        } \
-        MHV_Shifter_ ## name name;
-\end{DoxyCode}
-\-Create a new shifter for devices that read on the rising edge \-The \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-C\-L\-O\-C\-K \& \-M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-W\-R\-I\-T\-E\-D\-A\-T\-A macros should be defined in advance 
-\begin{DoxyParams}{\-Parameters}
-{\em name} & the name of the object to create \\
-\hline
-\end{DoxyParams}
-
-
-\-Definition at line 615 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_a8abb1b840bf41a390f7f0b2ee46d13e7}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P@{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P}}
-\index{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P@{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-I\-T\-S\-\_\-\-L\-O\-O\-P~(mhv\-\_\-shift\-\_\-i = 0; mhv\-\_\-shift\-\_\-i $<$ bits; mhv\-\_\-shift\-\_\-i++)}}
-\label{_m_h_v___shifter_8h_a8abb1b840bf41a390f7f0b2ee46d13e7}
-
-
-\-Definition at line 62 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
-
-\hypertarget{_m_h_v___shifter_8h_ae8524b0e106007cfef0def2112f5bf7f}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P@{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P}}
-\index{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P@{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
-\subsubsection[{\-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-S\-H\-I\-F\-T\-O\-U\-T\-\_\-\-B\-Y\-T\-E\-\_\-\-L\-O\-O\-P~(mhv\-\_\-shift\-\_\-i = 0; mhv\-\_\-shift\-\_\-i $<$ 8; mhv\-\_\-shift\-\_\-i++)}}
-\label{_m_h_v___shifter_8h_ae8524b0e106007cfef0def2112f5bf7f}
-
-
-\-Definition at line 61 of file \-M\-H\-V\-\_\-\-Shifter.\-h.
+Definition at line 47 of file M\-H\-V\-\_\-\-Shifter.\-h.
 
 
 
-\subsection{\-Function \-Documentation}
-\hypertarget{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb}}
-\index{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
+\subsection{Function Documentation}
+\hypertarget{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}{\index{M\-H\-V\-\_\-\-Shifter.\-h@{M\-H\-V\-\_\-\-Shifter.\-h}!mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb}}
+\index{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb}!MHV_Shifter.h@{M\-H\-V\-\_\-\-Shifter.\-h}}
 \subsubsection[{mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-shiftout\-\_\-byte\-\_\-lsb (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{data, }
-\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{clock, }
+\item[{{\bf M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{data, }
+\item[{{\bf M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{clock, }
 \item[{uint8\-\_\-t}]{byte}
 \end{DoxyParamCaption}
-)}}
-\label{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}
+)}}\label{_m_h_v___shifter_8h_abe0858ebc0d0e1fb7af752438a51baba}
 
 
-\-Definition at line 29 of file \-M\-H\-V\-\_\-\-Shifter.\-cpp.
+Definition at line 29 of file M\-H\-V\-\_\-\-Shifter.\-cpp.
 
-\hypertarget{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}{
-\index{\-M\-H\-V\-\_\-\-Shifter.\-h@{\-M\-H\-V\-\_\-\-Shifter.\-h}!mhv\-\_\-shiftout\-\_\-byte\-\_\-msb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb}}
-\index{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb}!MHV_Shifter.h@{\-M\-H\-V\-\_\-\-Shifter.\-h}}
+\hypertarget{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}{\index{M\-H\-V\-\_\-\-Shifter.\-h@{M\-H\-V\-\_\-\-Shifter.\-h}!mhv\-\_\-shiftout\-\_\-byte\-\_\-msb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb}}
+\index{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb@{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb}!MHV_Shifter.h@{M\-H\-V\-\_\-\-Shifter.\-h}}
 \subsubsection[{mhv\-\_\-shiftout\-\_\-byte\-\_\-msb}]{\setlength{\rightskip}{0pt plus 5cm}void mhv\-\_\-shiftout\-\_\-byte\-\_\-msb (
 \begin{DoxyParamCaption}
-\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{data, }
-\item[{{\bf \-M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{clock, }
+\item[{{\bf M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{data, }
+\item[{{\bf M\-H\-V\-\_\-\-P\-I\-N} $\ast$}]{clock, }
 \item[{uint8\-\_\-t}]{byte}
 \end{DoxyParamCaption}
-)}}
-\label{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}
+)}}\label{_m_h_v___shifter_8h_a79842e13b5ce45963dd73442e061eff1}
 
 
-\-Definition at line 43 of file \-M\-H\-V\-\_\-\-Shifter.\-cpp.
+Definition at line 43 of file M\-H\-V\-\_\-\-Shifter.\-cpp.
 

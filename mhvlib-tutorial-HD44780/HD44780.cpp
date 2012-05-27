@@ -49,13 +49,13 @@
 #include <util/delay.h>
 #include <MHV_io.h>
 #include <MHV_Display_HD44780_Direct_Connect.h>
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 #include <avr/pgmspace.h>
 #include <avr/power.h>
 #include <avr/sleep.h>
 
 // A timer we will use to tick the display
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20

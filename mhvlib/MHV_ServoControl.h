@@ -29,7 +29,7 @@
 #ifndef MHV_SERVOCONTROL_H_
 #define MHV_SERVOCONTROL_H_
 
-#include <MHV_Timer16.h>
+#include <MHV_Timer.h>
 
 #ifdef MHV_TIMER16_1
 
@@ -67,7 +67,7 @@ typedef struct MHV_ServoControlBlock MHV_SERVOCONTROLBLOCK;
 
 class MHV_ServoControl : public MHV_TimerListener {
 private:
-	MHV_Timer16 			&_timer;
+	MHV_Timer 			&_timer;
 	MHV_SERVOCONTROLBLOCK 	*_controlBlocks;
 	uint8_t					_count;
 	volatile uint8_t		_nextServoIndex;
@@ -75,7 +75,7 @@ private:
 	void sortServos();
 
 public:
-	MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
+	MHV_ServoControl(MHV_Timer &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count);
 	void addServo(uint8_t servo, MHV_DECLARE_PIN(pin));
 	void tweakServo(uint8_t servo, int8_t minOffset, int8_t maxOffset);
 	void positionServo(uint8_t servo, uint16_t position);

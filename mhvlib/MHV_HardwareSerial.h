@@ -65,6 +65,14 @@ ISR(mhvTxVect) { \
 		MHV_HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName; \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
+/**
+ * Create now serial port driver
+ * @tparam	usart			the serial port parameters
+ * @tparam	baud			the baud rate to run at
+ * @tparam	rxBufLength		the maximum number of characters to receive
+ * @tparam	txBuffers		the number of send buffers
+ * @post Interrupts should be assigned to the driver
+ */
 template <MHV_DECLARE_USART(usart), uint32_t baud, uint8_t rxBufLength, uint8_t txBuffers>
 class MHV_HardwareSerial : public MHV_Device_TXImplementation<txBuffers>,
 	public MHV_Device_RXImplementation<rxBufLength> {
@@ -83,12 +91,12 @@ protected:
 		}
 
 		// Enable tx interrupt
-		MHV_UART_REGISTER(usartControl) |= _BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) |= _BV(usartTxInterruptEnable);
 
 		// If the UART isn't already sending data, start sending
-		while (!(MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty))) {}
+		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
-		MHV_UART_REGISTER(usartIO) = (char)c;
+		_MMIO_BYTE(usartIO) = (char)c;
 	}
 
 public:
@@ -106,11 +114,11 @@ public:
 	 * RX interrupt handler
 	 */
 	void rx() {
-		char c = MHV_UART_REGISTER(usartIO);
+		char c = _MMIO_BYTE(usartIO);
 		MHV_Device_RX::_rxBuffer.append(c);
 
-		if (_echo && (MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty))) {
-			MHV_UART_REGISTER(usartIO) = c;
+		if (_echo && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
+			_MMIO_BYTE(usartIO) = c;
 		}
 	}
 
@@ -123,16 +131,16 @@ public:
 		if (-1 == c) {
 			// Nothing more to send, disable the TX interrupt
 			MHV_Device_TX::_tx = NULL;
-			MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+			_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 			return;
 		}
 
-		MHV_UART_REGISTER(usartIO) = (char)c;
+		_MMIO_BYTE(usartIO) = (char)c;
 	}
 
 	/**
 	 * Configure the serial port for a specific baud rate
-	 * @param	baud	the baud rate to set
+	 * @param	newBaud	the baud rate to set
 	 */
 	INLINE void setSpeed(unsigned long newBaud) {
 	/* Use U2X if the requested baud rate is higher than (F_CPU/16),
@@ -140,21 +148,21 @@ public:
 	 */
 		if (newBaud > F_CPU / 16 ||
 				abs((int)(255-((F_CPU/(8*(((F_CPU/4/newBaud-1)/2)+1))*255)/newBaud))) < abs((int)(255-((F_CPU/(16*(((F_CPU/8/newBaud-1)/2)+1))*255)/newBaud)))) {
-			MHV_UART_REGISTER(usartStatus) = _BV(usartU2X);
-			MHV_UART_BAUD_REGISTER(usartBaud) = (uint16_t)(F_CPU / 4 / newBaud - 1) / 2;
+			_MMIO_BYTE(usartStatus) = _BV(usartU2X);
+			_MMIO_BYTE(usartBaud) = (uint16_t)(F_CPU / 4 / newBaud - 1) / 2;
 		} else {
-			MHV_UART_REGISTER(usartStatus) = 0;
-			MHV_UART_BAUD_REGISTER(usartBaud) = (uint16_t)(F_CPU / 8 / newBaud - 1) / 2;
+			_MMIO_BYTE(usartStatus) = 0;
+			_MMIO_BYTE(usartBaud) = (uint16_t)(F_CPU / 8 / newBaud - 1) / 2;
 		}
 
-		MHV_UART_REGISTER(usartControl) |= _BV(usartRxEnable) | _BV(usartTxEnable) | _BV(usartRxInterruptEnable);
+		_MMIO_BYTE(usartControl) |= _BV(usartRxEnable) | _BV(usartTxEnable) | _BV(usartRxInterruptEnable);
 	}
 
 	/**
 	 * Halt the serial port
 	 */
 	void end() {
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartRxEnable) & ~_BV(usartTxEnable) & ~_BV(usartRxInterruptEnable) & ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartRxEnable) & ~_BV(usartTxEnable) & ~_BV(usartRxInterruptEnable) & ~_BV(usartTxInterruptEnable);
 	}
 
 	/**
@@ -173,7 +181,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((NULL == MHV_Device_TX::_tx) && (MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty)));
+		return ((NULL == MHV_Device_TX::_tx) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
 	}
 
 	/**
@@ -183,11 +191,11 @@ public:
 	 */
 	void busyWrite(char c) {
 		while (!canSendBusy()) {};
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 
-		while (!(MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty))) {}
+		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
-		MHV_UART_REGISTER(usartIO) = c;
+		_MMIO_BYTE(usartIO) = c;
 	}
 
 	/**
@@ -199,14 +207,14 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 
 		p = buffer;
 		char c = pgm_read_byte(p++);
 		while (c != '\0') {
-			while (!(MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty))) {}
+			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
-			MHV_UART_REGISTER(usartIO) = c;
+			_MMIO_BYTE(usartIO) = c;
 			c = pgm_read_byte(p++);
 		}
 	}
@@ -221,12 +229,12 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 
 		for (p = buffer; *p != '\0';) {
-			while (!(MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty))) {}
+			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
-			MHV_UART_REGISTER(usartIO) = *(p++);
+			_MMIO_BYTE(usartIO) = *(p++);
 		}
 	}
 
@@ -239,7 +247,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -258,7 +266,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		MHV_UART_REGISTER(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -275,7 +283,7 @@ public:
 	 * @return true if the hardware is busy
 	 */
 	bool busy(void) {
-		return !(MHV_UART_REGISTER(usartStatus) & _BV(usartDataEmpty));
+		return !(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
 	}
 };
 

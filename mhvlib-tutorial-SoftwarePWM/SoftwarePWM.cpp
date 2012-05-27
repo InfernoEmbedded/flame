@@ -32,7 +32,7 @@
 #include <MHV_SoftwarePWM.h>
 
 // The timer for PWM control
-MHV_Timer8 pwmTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE> pwmTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(pwmTimer, MHV_TIMER2_INTERRUPTS);
 
 #define PWM_LISTENER_COUNT	5

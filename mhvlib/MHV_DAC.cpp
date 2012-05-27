@@ -32,7 +32,7 @@
  * @param	timer		the timer to PWM - we will be calling setOutput2 on this to adjust the output
  * @param	listener	a listener we will notify when we need more samples to play
  */
-MHV_DAC::MHV_DAC(MHV_Timer8 &timer, MHV_DACListener &listener) :
+MHV_DAC::MHV_DAC(MHV_Timer &timer, MHV_DACListener &listener) :
 	_timer(timer),
 	_listener(listener) {}
 

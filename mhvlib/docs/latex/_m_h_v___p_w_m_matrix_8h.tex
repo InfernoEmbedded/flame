@@ -1,126 +1,84 @@
-\hypertarget{_m_h_v___p_w_m_matrix_8h}{
-\section{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.h \-File \-Reference}
-\label{_m_h_v___p_w_m_matrix_8h}\index{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
+\hypertarget{_m_h_v___p_w_m_matrix_8h}{\section{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.h File Reference}
+\label{_m_h_v___p_w_m_matrix_8h}\index{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{A\-:/eclipse/mhvlib/\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
 }
-{\ttfamily \#include $<$inttypes.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\*
-{\ttfamily \#include $<$\-M\-H\-V\-\_\-\-Timer8.\-h$>$}\*
-\subsection*{\-Classes}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\\*
+{\ttfamily \#include $<$M\-H\-V\-\_\-\-Timer.\-h$>$}\\*
+\subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{class_m_h_v___p_w_m_matrix_driver}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-Driver}
+class \hyperlink{class_m_h_v___p_w_m_matrix_driver}{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-Driver}
 \item 
-class \hyperlink{class_m_h_v___p_w_m_matrix}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix}
+class \hyperlink{class_m_h_v___p_w_m_matrix}{M\-H\-V\-\_\-\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}
 \end{DoxyCompactItemize}
-\subsection*{\-Defines}
+\subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Rows, \-\_\-mhv\-Cols, \-\_\-mhv\-Tx\-Elements, \-\_\-mhv\-Matrix\-Driver)
+\#define \hyperlink{_m_h_v___p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}{\-\_\-\-M\-O\-D\-E}
 \end{DoxyCompactItemize}
-\subsection*{\-Typedefs}
+\subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} \hyperlink{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}
+typedef enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} \hyperlink{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}
 \end{DoxyCompactItemize}
-\subsection*{\-Enumerations}
+\subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} \{ \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}, 
-\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}, 
-\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}, 
-\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
+enum \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} \{ \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}, 
+\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}, 
+\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}, 
+\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
  \}
 \end{DoxyCompactItemize}
 
 
-\subsection{\-Define \-Documentation}
-\hypertarget{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}{
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}}
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}!MHV_PWMMatrix.h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-C\-R\-E\-A\-T\-E(
-\begin{DoxyParamCaption}
-\item[{}]{\-\_\-mhv\-Object\-Name, }
-\item[{}]{\-\_\-mhv\-Rows, }
-\item[{}]{\-\_\-mhv\-Cols, }
-\item[{}]{\-\_\-mhv\-Tx\-Elements, }
-\item[{}]{\-\_\-mhv\-Matrix\-Driver}
-\end{DoxyParamCaption}
-)}}
-\label{_m_h_v___p_w_m_matrix_8h_af72cf7207940298e4bd9859b9c2e967d}
-{\bfseries \-Value\-:}
+\subsection{Macro Definition Documentation}
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}{\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-\_\-\-M\-O\-D\-E@{\-\_\-\-M\-O\-D\-E}}
+\index{\-\_\-\-M\-O\-D\-E@{\-\_\-\-M\-O\-D\-E}!MHV_PWMMatrix.h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
+\subsubsection[{\-\_\-\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-O\-D\-E}}\label{_m_h_v___p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}
+{\bfseries Value\-:}
 \begin{DoxyCode}
-uint8_t _mhvObjectName ## FrameBuffer[_mhvRows * _mhvCols]; \
-        MHV_TX_BUFFER_CREATE(_mhvObjectName ## TX, _mhvTxElements); \
-        MHV_PWMMatrix _mhvObjectName(_mhvRows, _mhvCols, _mhvObjectName ## 
-      FrameBuffer, _mhvObjectName ## TX, \
-                        _mhvMatrixDriver);
+((\hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}{MHV\_PWMMATRIX\_MODE\_AUTO} == mode) ? \(\backslash\)
+        ((rows <= cols) ? \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}{MHV\_PWMMATRIX\_MODE\_ROWS} : 
+      \hyperlink{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}{MHV\_PWMMATRIX\_MODE\_COLS}) : mode)
 \end{DoxyCode}
-\-Create a new \-P\-W\-M \-Matrix object 
-\begin{DoxyParams}{\-Parameters}
-{\em \-\_\-mhv\-Object\-Name} & the variable name of the object \\
-\hline
-{\em \-\_\-mhv\-Rows} & the number of rows \\
-\hline
-{\em \-\_\-mhv\-Cols} & the number of columns \\
-\hline
-{\em \-\_\-mhv\-Tx\-Elements} & the number of elements to make available for async transmission \\
-\hline
-{\em \-\_\-mhv\-Matrix\-Driver} & the handler to drive rows \& cols \\
-\hline
-{\em \-\_\-mhv\-Matrix\-Row\-Off} & function to call to turn a row off \\
-\hline
-{\em \-\_\-mhv\-Matrix\-Col\-On} & function to call to turn a row on \\
-\hline
-{\em \-\_\-mhv\-Matrix\-Col\-Off} & function to call to turn a row off \\
-\hline
-\end{DoxyParams}
 
 
-\-Definition at line 45 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+Definition at line 53 of file M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 
 
 
-\subsection{\-Typedef \-Documentation}
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}!MHV_PWMMatrix.h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} {\bf \-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}}
-\label{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}
+\subsection{Typedef Documentation}
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}{\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}
+\index{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}!MHV_PWMMatrix.h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode} {\bf M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}}}\label{_m_h_v___p_w_m_matrix_8h_a6cc1d016b3af074f35a0248396cf6b73}
 
 
-\-Definition at line 57 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+Definition at line 42 of file M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 
 
 
-\subsection{\-Enumeration \-Type \-Documentation}
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}}
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}!MHV_PWMMatrix.h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
-\subsubsection[{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}}}
-\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}
+\subsection{Enumeration Type Documentation}
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}{\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}}
+\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}!MHV_PWMMatrix.h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf M\-H\-V\-\_\-\-P\-W\-M\-Matrix\-\_\-\-Mode}}}\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819f}
 \begin{Desc}
-\item[\-Enumerator\-: ]\par
+\item[Enumerator\-: ]\par
 \begin{description}
-\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}}\item[{\em 
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}{
-\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}
-\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}
-}]\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}}\item[{\em 
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}{
-\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}
-\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}
-}]\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}}\item[{\em 
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}{
-\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}
-\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}
-}]\index{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}!\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{\-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L@{\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}}\item[{\em 
-\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}{
-\-M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
-\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}
+\index{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}!M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}}\item[{\em 
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-A\-U\-T\-O}\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa3ded9452161ee13ec33005712ed9c8a0}
+}]\index{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}!M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}}\item[{\em 
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-R\-O\-W\-S}\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819faa6c22f715ce623d5ca08a8fb1e134300}
+}]\index{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}!M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}}\item[{\em 
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-C\-O\-L\-S}\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fa9cd94c78436179a26557fdf1a1a8fdaa}
+}]\index{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}!M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}}\index{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h@{M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h}!M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L@{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}}\item[{\em 
+\hypertarget{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}{M\-H\-V\-\_\-\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E\-\_\-\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}\label{_m_h_v___p_w_m_matrix_8h_a5425ef4f50d495d1b093a548b9f4819fad3254bc0939ccd8bb67bcbb49c34bc2a}
 }]\end{description}
 \end{Desc}
 
 
 
-\-Definition at line 51 of file \-M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
+Definition at line 36 of file M\-H\-V\-\_\-\-P\-W\-M\-Matrix.\-h.
 

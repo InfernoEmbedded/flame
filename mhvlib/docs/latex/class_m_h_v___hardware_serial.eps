@@ -5,7 +5,7 @@
 %%For: 
 %Magnification: 1.00
 %%Orientation: Portrait
-%%BoundingBox: 0 0 500 137.931034
+%%BoundingBox: 0 0 500 89.020772
 %%Pages: 0
 %%BeginSetup
 %%EndSetup
@@ -19,12 +19,12 @@
 /marginwidth 10 def
 /distx 20 def
 /disty 40 def
-/boundaspect 3.625000 def  % aspect ratio of the BoundingBox (width/height)
+/boundaspect 5.616667 def  % aspect ratio of the BoundingBox (width/height)
 /boundx 500 def
 /boundy boundx boundaspect div def
 /xspacing 0 def
 /yspacing 0 def
-/rows 2 def
+/rows 3 def
 /cols 2 def
 /scalefactor 0 def
 /boxfont /Times-Roman findfont fontheight scalefont def
@@ -173,7 +173,9 @@
 
 boxfont setfont
 1 boundaspect scale
-(MHV_HardwareSerial) cw
+(MHV_HardwareSerial<, baud, rxBufLength, txBuffers >) cw
+(MHV_Device_TXImplementation< txBuffers >) cw
+(MHV_Device_RXImplementation< rxBufLength >) cw
 (MHV_Device_TX) cw
 (MHV_Device_RX) cw
 /boxwidth boxwidth marginwidth 2 mul add def
@@ -187,9 +189,11 @@ boundx scalefactor div boundy scalefactor div scale
 
 % ----- classes -----
 
- (MHV_HardwareSerial) 0.500000 0.000000 box
- (MHV_Device_TX) 0.000000 1.000000 box
- (MHV_Device_RX) 1.000000 1.000000 box
+ (MHV_HardwareSerial<, baud, rxBufLength, txBuffers >) 0.500000 0.000000 box
+ (MHV_Device_TXImplementation< txBuffers >) 0.000000 1.000000 box
+ (MHV_Device_RXImplementation< rxBufLength >) 1.000000 1.000000 box
+ (MHV_Device_TX) 0.000000 2.000000 box
+ (MHV_Device_RX) 1.000000 2.000000 box
 
 % ----- relations -----
 
@@ -200,4 +204,12 @@ solid
 solid
 1 0.000000 1.000000 in
 solid
+0 0.000000 1.000000 out
+solid
 1 1.000000 1.000000 in
+solid
+0 1.000000 1.000000 out
+solid
+1 0.000000 2.000000 in
+solid
+1 1.000000 2.000000 in

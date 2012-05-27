@@ -28,7 +28,7 @@
 #ifndef MHV_SOFTWAREPWM_H_
 #define MHV_SOFTWAREPWM_H_
 
-#include <MHV_Timer16.h>
+#include <MHV_Timer.h>
 
 class MHV_SoftwarePWMListener {
 public:
@@ -70,7 +70,7 @@ public:
 template<uint8_t listenerCount=8>
 class MHV_SoftwarePWM : public MHV_TimerListener {
 private:
-	MHV_Timer8					_timer;
+	MHV_Timer					&_timer;
 	MHV_SoftwarePWMListener		*_listeners[listenerCount];
 	uint8_t						_listenerCount;
 	uint8_t						_ticks;
@@ -80,7 +80,7 @@ public:
 	 * Create a new software PWM manager
 	 * @param timer			the timer to drive the manager with
 	 */
-	MHV_SoftwarePWM(MHV_Timer8 &timer) :
+	MHV_SoftwarePWM(MHV_Timer &timer) :
 		_timer(timer),
 		_listenerCount(0),
 		_ticks(0) {}

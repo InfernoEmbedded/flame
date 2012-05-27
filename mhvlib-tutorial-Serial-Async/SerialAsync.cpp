@@ -32,6 +32,7 @@
 
 // Bring in the MHV IO header
 #include <MHV_io.h>
+#include <boards/MHV_io_Arduino.h>
 
 // Bring in the MHV Serial header
 #include <MHV_HardwareSerial.h>

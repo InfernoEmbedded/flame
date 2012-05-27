@@ -55,7 +55,7 @@
 // The number of elements we want to be able to store to send asynchronously
 #define TX_ELEMENTS_COUNT 0
 
-/* Declare the serial object on UART0 using the above ring buffer
+/* Declare the serial object on UART0
  * Use the USART0 hardware
  * Set the baud rate to 115,200
  */

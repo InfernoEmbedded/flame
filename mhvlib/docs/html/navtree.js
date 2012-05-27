@@ -1,309 +1,123 @@
 var NAVTREE =
 [
   [ "MHVLib", "index.html", [
-    [ "Class List", "annotated.html", [
-      [ "MHV_ADC", "class_m_h_v___a_d_c.html", null ],
-      [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
-      [ "mhv_alarm", "structmhv__alarm.html", null ],
-      [ "MHV_DAC", "class_m_h_v___d_a_c.html", null ],
-      [ "MHV_DACListener", "class_m_h_v___d_a_c_listener.html", null ],
-      [ "MHV_Debounce", "class_m_h_v___debounce.html", null ],
-      [ "MHV_DebounceListener", "class_m_h_v___debounce_listener.html", null ],
-      [ "mhv_debouncePin", "structmhv__debounce_pin.html", null ],
-      [ "MHV_Device_RX", "class_m_h_v___device___r_x.html", null ],
-      [ "MHV_Device_TX", "class_m_h_v___device___t_x.html", null ],
-      [ "MHV_Display_Character", "class_m_h_v___display___character.html", null ],
-      [ "MHV_Display_HD44780", "class_m_h_v___display___h_d44780.html", null ],
-      [ "MHV_Display_HD44780_Direct_Connect", "class_m_h_v___display___h_d44780___direct___connect.html", null ],
-      [ "MHV_Display_HD44780_Shift_Register", "class_m_h_v___display___h_d44780___shift___register.html", null ],
-      [ "MHV_Display_Holtek_HT1632", "class_m_h_v___display___holtek___h_t1632.html", null ],
-      [ "MHV_Display_Monochrome", "class_m_h_v___display___monochrome.html", null ],
-      [ "MHV_Display_Monochrome_Buffered", "class_m_h_v___display___monochrome___buffered.html", null ],
-      [ "MHV_Display_Selector", "class_m_h_v___display___selector.html", null ],
-      [ "MHV_EEPROM", "class_m_h_v___e_e_p_r_o_m.html", null ],
-      [ "mhv_eventADC", "structmhv__event_a_d_c.html", null ],
-      [ "mhv_eventPin", "structmhv__event_pin.html", null ],
-      [ "mhv_font", "structmhv__font.html", null ],
-      [ "MHV_HardwareSerial", "class_m_h_v___hardware_serial.html", null ],
-      [ "mhv_instrument", "structmhv__instrument.html", null ],
-      [ "MHV_Lock", "class_m_h_v___lock.html", null ],
-      [ "MHV_Note", "struct_m_h_v___note.html", null ],
-      [ "MHV_NotePlayer", "class_m_h_v___note_player.html", null ],
-      [ "MHV_PID", "class_m_h_v___p_i_d.html", null ],
-      [ "mhv_pin", "structmhv__pin.html", null ],
-      [ "MHV_PinChangeManager", "class_m_h_v___pin_change_manager.html", null ],
-      [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", null ],
-      [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
-      [ "MHV_PWMMatrixDriver", "class_m_h_v___p_w_m_matrix_driver.html", null ],
-      [ "mhv_rgb", "structmhv__rgb.html", null ],
-      [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
-      [ "MHV_RTC", "class_m_h_v___r_t_c.html", null ],
-      [ "MHV_RTCTemplate< alarmMax >", "class_m_h_v___r_t_c_template.html", null ],
-      [ "MHV_RXListener", "class_m_h_v___r_x_listener.html", null ],
-      [ "MHV_Shifter", "class_m_h_v___shifter.html", null ],
-      [ "MHV_SoftwarePWM< listenerCount >", "class_m_h_v___software_p_w_m.html", null ],
-      [ "MHV_SoftwarePWMListener", "class_m_h_v___software_p_w_m_listener.html", null ],
-      [ "MHV_SoftwarePWMPin<>", "class_m_h_v___software_p_w_m_pin.html", null ],
-      [ "MHV_StepperListener", "class_m_h_v___stepper_listener.html", null ],
-      [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", null ],
-      [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ],
-      [ "mhv_time", "structmhv__time.html", null ],
-      [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
-      [ "MHV_TimerListener", "class_m_h_v___timer_listener.html", null ],
-      [ "mhv_timestamp", "structmhv__timestamp.html", null ],
-      [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
-      [ "mhv_voice", "structmhv__voice.html", null ],
-      [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
-      [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", null ],
-      [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ],
-      [ "MHV_WaveGenerator", "class_m_h_v___wave_generator.html", null ],
-      [ "MHV_WS2801", "class_m_h_v___w_s2801.html", null ]
+    [ "Classes", null, [
+      [ "Class List", "annotated.html", "annotated" ],
+      [ "Class Index", "classes.html", "classes" ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", "functions_func" ],
+        [ "Variables", "functions_vars.html", null ]
+      ] ]
     ] ],
-    [ "Class Index", "classes.html", null ],
-    [ "Class Hierarchy", "hierarchy.html", [
-      [ "MHV_ADC", "class_m_h_v___a_d_c.html", null ],
-      [ "MHV_ADCListener", "class_m_h_v___a_d_c_listener.html", null ],
-      [ "mhv_alarm", "structmhv__alarm.html", null ],
-      [ "MHV_DACListener", "class_m_h_v___d_a_c_listener.html", [
-        [ "MHV_WaveGenerator", "class_m_h_v___wave_generator.html", null ]
-      ] ],
-      [ "MHV_DebounceListener", "class_m_h_v___debounce_listener.html", null ],
-      [ "mhv_debouncePin", "structmhv__debounce_pin.html", null ],
-      [ "MHV_Device_RX", "class_m_h_v___device___r_x.html", [
-        [ "MHV_HardwareSerial", "class_m_h_v___hardware_serial.html", null ]
-      ] ],
-      [ "MHV_Device_TX", "class_m_h_v___device___t_x.html", [
-        [ "MHV_Display_Character", "class_m_h_v___display___character.html", [
-          [ "MHV_Display_HD44780", "class_m_h_v___display___h_d44780.html", [
-            [ "MHV_Display_HD44780_Direct_Connect", "class_m_h_v___display___h_d44780___direct___connect.html", null ],
-            [ "MHV_Display_HD44780_Shift_Register", "class_m_h_v___display___h_d44780___shift___register.html", null ]
-          ] ]
-        ] ],
-        [ "MHV_Display_Monochrome", "class_m_h_v___display___monochrome.html", [
-          [ "MHV_Display_Holtek_HT1632", "class_m_h_v___display___holtek___h_t1632.html", null ],
-          [ "MHV_Display_Monochrome_Buffered", "class_m_h_v___display___monochrome___buffered.html", [
-            [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ]
-          ] ]
-        ] ],
-        [ "MHV_HardwareSerial", "class_m_h_v___hardware_serial.html", null ],
-        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
-        [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
-      ] ],
-      [ "MHV_Display_Selector", "class_m_h_v___display___selector.html", null ],
-      [ "MHV_EEPROM", "class_m_h_v___e_e_p_r_o_m.html", null ],
-      [ "mhv_eventADC", "structmhv__event_a_d_c.html", null ],
-      [ "mhv_eventPin", "structmhv__event_pin.html", null ],
-      [ "mhv_font", "structmhv__font.html", null ],
-      [ "mhv_instrument", "structmhv__instrument.html", null ],
-      [ "MHV_Lock", "class_m_h_v___lock.html", null ],
-      [ "MHV_Note", "struct_m_h_v___note.html", null ],
-      [ "MHV_NotePlayer", "class_m_h_v___note_player.html", null ],
-      [ "MHV_PID", "class_m_h_v___p_i_d.html", null ],
-      [ "mhv_pin", "structmhv__pin.html", null ],
-      [ "MHV_PinChangeManager", "class_m_h_v___pin_change_manager.html", null ],
-      [ "MHV_PinEventListener", "class_m_h_v___pin_event_listener.html", [
-        [ "MHV_Debounce", "class_m_h_v___debounce.html", null ]
-      ] ],
-      [ "MHV_PWMMatrixDriver", "class_m_h_v___p_w_m_matrix_driver.html", null ],
-      [ "mhv_rgb", "structmhv__rgb.html", null ],
-      [ "MHV_RingBuffer", "class_m_h_v___ring_buffer.html", null ],
-      [ "MHV_RXListener", "class_m_h_v___r_x_listener.html", null ],
-      [ "MHV_Shifter", "class_m_h_v___shifter.html", null ],
-      [ "MHV_SoftwarePWMListener", "class_m_h_v___software_p_w_m_listener.html", [
-        [ "MHV_SoftwarePWMPin<>", "class_m_h_v___software_p_w_m_pin.html", null ]
-      ] ],
-      [ "MHV_StepperListener", "class_m_h_v___stepper_listener.html", null ],
-      [ "mhv_time", "structmhv__time.html", null ],
-      [ "MHV_Timer8", "class_m_h_v___timer8.html", null ],
-      [ "MHV_TimerListener", "class_m_h_v___timer_listener.html", [
-        [ "MHV_DAC", "class_m_h_v___d_a_c.html", null ],
-        [ "MHV_Display_HD44780_Direct_Connect", "class_m_h_v___display___h_d44780___direct___connect.html", null ],
-        [ "MHV_PWMMatrix", "class_m_h_v___p_w_m_matrix.html", null ],
-        [ "MHV_RTC", "class_m_h_v___r_t_c.html", [
-          [ "MHV_RTCTemplate< alarmMax >", "class_m_h_v___r_t_c_template.html", null ]
-        ] ],
-        [ "MHV_SoftwarePWM< listenerCount >", "class_m_h_v___software_p_w_m.html", null ],
-        [ "MHV_StepperMotor", "class_m_h_v___stepper_motor.html", [
-          [ "MHV_StepperMotorUnipolar", "class_m_h_v___stepper_motor_unipolar.html", null ]
-        ] ],
-        [ "MHV_VusbConsole", "class_m_h_v___vusb_console.html", null ],
-        [ "MHV_VusbKeyboard", "class_m_h_v___vusb_keyboard.html", [
-          [ "MHV_VusbTypist", "class_m_h_v___vusb_typist.html", null ]
-        ] ]
-      ] ],
-      [ "mhv_timestamp", "structmhv__timestamp.html", null ],
-      [ "mhv_tx_buffer", "structmhv__tx__buffer.html", null ],
-      [ "mhv_voice", "structmhv__voice.html", null ],
-      [ "MHV_WS2801", "class_m_h_v___w_s2801.html", null ]
-    ] ],
-    [ "Class Members", "functions.html", null ],
-    [ "File List", "files.html", [
-      [ "A:/eclipse/mhvlib-Vusb-Console/MHV_VusbConsole.cpp", "_m_h_v___vusb_console_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib-Vusb-Console/MHV_VusbConsole.h", "_m_h_v___vusb_console_8h.html", null ],
-      [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbKeyboard.cpp", "_m_h_v___vusb_keyboard_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbKeyboard.h", "_m_h_v___vusb_keyboard_8h.html", null ],
-      [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbTypist.cpp", "_m_h_v___vusb_typist_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib-Vusb-Keyboard/MHV_VusbTypist.h", "_m_h_v___vusb_typist_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_AD.cpp", "_m_h_v___a_d_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_AD.h", "_m_h_v___a_d_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_ADC.cpp", "_m_h_v___a_d_c_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_ADC.h", "_m_h_v___a_d_c_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_DAC.cpp", "_m_h_v___d_a_c_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_DAC.h", "_m_h_v___d_a_c_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Debounce.cpp", "_m_h_v___debounce_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Debounce.h", "_m_h_v___debounce_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Device_RX.cpp", "_m_h_v___device___r_x_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Device_RX.h", "_m_h_v___device___r_x_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Device_TX.cpp", "_m_h_v___device___t_x_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Device_TX.h", "_m_h_v___device___t_x_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Character.cpp", "_m_h_v___display___character_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Character.h", "_m_h_v___display___character_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780.cpp", "_m_h_v___display___h_d44780_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780.h", "_m_h_v___display___h_d44780_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780_Direct_Connect.cpp", "_m_h_v___display___h_d44780___direct___connect_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780_Direct_Connect.h", "_m_h_v___display___h_d44780___direct___connect_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780_Shift_Register.cpp", "_m_h_v___display___h_d44780___shift___register_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_HD44780_Shift_Register.h", "_m_h_v___display___h_d44780___shift___register_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Holtek_HT1632.cpp", "_m_h_v___display___holtek___h_t1632_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Holtek_HT1632.h", "_m_h_v___display___holtek___h_t1632_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Monochrome.cpp", "_m_h_v___display___monochrome_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Monochrome.h", "_m_h_v___display___monochrome_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Monochrome_Buffered.cpp", "_m_h_v___display___monochrome___buffered_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Display_Monochrome_Buffered.h", "_m_h_v___display___monochrome___buffered_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_EEPROM.cpp", "_m_h_v___e_e_p_r_o_m_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_EEPROM.h", "_m_h_v___e_e_p_r_o_m_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_EPP.cpp", "_m_h_v___e_p_p_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_EPP.h", "_m_h_v___e_p_p_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Font.h", "_m_h_v___font_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Font_SansSerif_10x8.h", "_m_h_v___font___sans_serif__10x8_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_GammaCorrect.cpp", "_m_h_v___gamma_correct_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_GammaCorrect.h", "_m_h_v___gamma_correct_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_HardwareSerial.cpp", "_m_h_v___hardware_serial_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_HardwareSerial.h", "_m_h_v___hardware_serial_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io.h", "_m_h_v__io_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ArduinoDiecimilla.h", "_m_h_v__io___arduino_diecimilla_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ArduinoMega.h", "_m_h_v__io___arduino_mega_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ATmega1280.h", "_m_h_v__io___a_tmega1280_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ATmega168.h", "_m_h_v__io___a_tmega168_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ATtiny2313.h", "_m_h_v__io___a_ttiny2313_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_io_ATtiny85.h", "_m_h_v__io___a_ttiny85_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Lock.cpp", "_m_h_v___lock_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Lock.h", "_m_h_v___lock_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_NotePlayer.cpp", "_m_h_v___note_player_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_NotePlayer.h", "_m_h_v___note_player_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PID.cpp", "_m_h_v___p_i_d_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PID.h", "_m_h_v___p_i_d_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PinChangeManager.cpp", "_m_h_v___pin_change_manager_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PinChangeManager.h", "_m_h_v___pin_change_manager_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PWMMatrix.cpp", "_m_h_v___p_w_m_matrix_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_PWMMatrix.h", "_m_h_v___p_w_m_matrix_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RGB.cpp", "_m_h_v___r_g_b_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RGB.h", "_m_h_v___r_g_b_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RingBuffer.cpp", "_m_h_v___ring_buffer_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RingBuffer.h", "_m_h_v___ring_buffer_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RTC.cpp", "_m_h_v___r_t_c_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_RTC.h", "_m_h_v___r_t_c_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_ServoControl.cpp", "_m_h_v___servo_control_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_ServoControl.h", "_m_h_v___servo_control_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Shifter.cpp", "_m_h_v___shifter_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Shifter.h", "_m_h_v___shifter_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_SoftwareHBridge.cpp", "_m_h_v___software_h_bridge_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_SoftwareHBridge.h", "_m_h_v___software_h_bridge_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_SoftwarePWM.cpp", "_m_h_v___software_p_w_m_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_SoftwarePWM.h", "_m_h_v___software_p_w_m_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_StepperMotor.cpp", "_m_h_v___stepper_motor_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_StepperMotor.h", "_m_h_v___stepper_motor_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_StepperMotorUnipolar.cpp", "_m_h_v___stepper_motor_unipolar_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_StepperMotorUnipolar.h", "_m_h_v___stepper_motor_unipolar_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Timer16.cpp", "_m_h_v___timer16_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Timer16.h", "_m_h_v___timer16_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Timer8.cpp", "_m_h_v___timer8_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_Timer8.h", "_m_h_v___timer8_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_VoltageRegulator.cpp", "_m_h_v___voltage_regulator_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_VoltageRegulator.h", "_m_h_v___voltage_regulator_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_WaveGenerator.cpp", "_m_h_v___wave_generator_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_WaveGenerator.h", "_m_h_v___wave_generator_8h.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_WS2801.cpp", "_m_h_v___w_s2801_8cpp.html", null ],
-      [ "A:/eclipse/mhvlib/MHV_WS2801.h", "_m_h_v___w_s2801_8h.html", null ]
-    ] ],
-    [ "File Members", "globals.html", null ]
+    [ "Files", null, [
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", "globals_dup" ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Enumerator", "globals_eval.html", "globals_eval" ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
   ] ]
 ];
 
+var navTreeIndex;
+var navTreeSubIndices = new Array();
+
+function getData(varName)
+{
+  var i = varName.lastIndexOf('/');
+  var n = i>=0 ? varName.substring(i+1) : varName;
+  return eval(n);
+}
+
+function stripPath(uri)
+{
+  return uri.substring(uri.lastIndexOf('/')+1);
+}
+
+function stripPath2(uri)
+{
+  var i = uri.lastIndexOf('/');
+  var s = uri.substring(i+1);
+  var m = uri.substring(0,i+1).match(/\/d\w\/d\w\w\/$/);
+  return m ? uri.substring(i-6) : s;
+}
+
+function getScript(scriptName,func,show)
+{
+  var head = document.getElementsByTagName("head")[0]; 
+  var script = document.createElement('script');
+  script.id = scriptName;
+  script.type = 'text/javascript';
+  script.onload = func; 
+  script.src = scriptName+'.js'; 
+  if ($.browser.msie && $.browser.version<=8) { 
+    // script.onload does work with older versions of IE
+    script.onreadystatechange = function() {
+      if (script.readyState=='complete' || script.readyState=='loaded') { 
+        func(); if (show) showRoot(); 
+      }
+    }
+  }
+  head.appendChild(script); 
+}
+
 function createIndent(o,domNode,node,level)
 {
-  if (node.parentNode && node.parentNode.parentNode)
-  {
+  if (node.parentNode && node.parentNode.parentNode) {
     createIndent(o,domNode,node.parentNode,level+1);
   }
   var imgNode = document.createElement("img");
-  if (level==0 && node.childrenData)
-  {
+  imgNode.width = 16;
+  imgNode.height = 22;
+  if (level==0 && node.childrenData) {
     node.plus_img = imgNode;
     node.expandToggle = document.createElement("a");
     node.expandToggle.href = "javascript:void(0)";
-    node.expandToggle.onclick = function() 
-    {
-      if (node.expanded) 
-      {
+    node.expandToggle.onclick = function() {
+      if (node.expanded) {
         $(node.getChildrenUL()).slideUp("fast");
-        if (node.isLast)
-        {
+        if (node.isLast) {
           node.plus_img.src = node.relpath+"ftv2plastnode.png";
-        }
-        else
-        {
+        } else {
           node.plus_img.src = node.relpath+"ftv2pnode.png";
         }
         node.expanded = false;
-      } 
-      else 
-      {
-        expandNode(o, node, false);
+      } else {
+        expandNode(o, node, false, false);
       }
     }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
-  }
-  else
-  {
+  } else {
     domNode.appendChild(imgNode);
   }
-  if (level==0)
-  {
-    if (node.isLast)
-    {
-      if (node.childrenData)
-      {
+  if (level==0) {
+    if (node.isLast) {
+      if (node.childrenData) {
         imgNode.src = node.relpath+"ftv2plastnode.png";
-      }
-      else
-      {
+      } else {
         imgNode.src = node.relpath+"ftv2lastnode.png";
         domNode.appendChild(imgNode);
       }
-    }
-    else
-    {
-      if (node.childrenData)
-      {
+    } else {
+      if (node.childrenData) {
         imgNode.src = node.relpath+"ftv2pnode.png";
-      }
-      else
-      {
+      } else {
         imgNode.src = node.relpath+"ftv2node.png";
         domNode.appendChild(imgNode);
       }
     }
-  }
-  else
-  {
-    if (node.isLast)
-    {
+  } else {
+    if (node.isLast) {
       imgNode.src = node.relpath+"ftv2blank.png";
-    }
-    else
-    {
+    } else {
       imgNode.src = node.relpath+"ftv2vertline.png";
     }
   }
@@ -336,27 +150,63 @@ function newNode(o, po, text, link, childrenData, lastNode)
   var a = document.createElement("a");
   node.labelSpan.appendChild(a);
   node.label = document.createTextNode(text);
+  node.expanded = false;
   a.appendChild(node.label);
-  if (link) 
-  {
-    a.href = node.relpath+link;
-  } 
-  else 
-  {
+  if (link) {
+    var url;
+    if (link.substring(0,1)=='^') {
+      url = link.substring(1);
+      link = url;
+    } else {
+      url = node.relpath+link;
+    }
+    a.className = stripPath(link.replace('#',':'));
+    if (link.indexOf('#')!=-1) {
+      var aname = '#'+link.split('#')[1];
+      var srcPage = stripPath($(location).attr('pathname'));
+      var targetPage = stripPath(link.split('#')[0]);
+      a.href = srcPage!=targetPage ? url : '#';
+      a.onclick = function(){
+        if (!$(a).parent().parent().hasClass('selected'))
+        {
+          $('.item').removeClass('selected');
+          $('.item').removeAttr('id');
+          $(a).parent().parent().addClass('selected');
+          $(a).parent().parent().attr('id','selected');
+        }
+        var pos, anchor = $(aname), docContent = $('#doc-content');
+        if (anchor.parent().attr('class')=='memItemLeft') {
+          pos = anchor.parent().position().top;
+        } else if (anchor.position()) {
+          pos = anchor.position().top;
+        }
+        if (pos) {
+          var dist = Math.abs(Math.min(
+                     pos-docContent.offset().top,
+                     docContent[0].scrollHeight-
+                     docContent.height()-docContent.scrollTop()));
+          docContent.animate({
+            scrollTop: pos + docContent.scrollTop() - docContent.offset().top
+          },Math.max(50,Math.min(500,dist)),function(){
+            window.location.replace(aname);
+          });
+        }
+      };
+    } else {
+      a.href = url;
+    }
+  } else {
     if (childrenData != null) 
     {
       a.className = "nolink";
       a.href = "javascript:void(0)";
       a.onclick = node.expandToggle.onclick;
-      node.expanded = false;
     }
   }
 
   node.childrenUL = null;
-  node.getChildrenUL = function() 
-  {
-    if (!node.childrenUL) 
-    {
+  node.getChildrenUL = function() {
+    if (!node.childrenUL) {
       node.childrenUL = document.createElement("ul");
       node.childrenUL.className = "children_ul";
       node.childrenUL.style.display = "none";
@@ -373,34 +223,126 @@ function showRoot()
   var headerHeight = $("#top").height();
   var footerHeight = $("#nav-path").height();
   var windowHeight = $(window).height() - headerHeight - footerHeight;
-  navtree.scrollTo('#selected',0,{offset:-windowHeight/2});
+  (function (){ // retry until we can scroll to the selected item
+    try {
+      var navtree=$('#nav-tree');
+      navtree.scrollTo('#selected',0,{offset:-windowHeight/2});
+    } catch (err) {
+      setTimeout(arguments.callee, 0);
+    }
+  })();
 }
 
-function expandNode(o, node, imm)
+function expandNode(o, node, imm, showRoot)
 {
-  if (node.childrenData && !node.expanded) 
-  {
-    if (!node.childrenVisited) 
-    {
-      getNode(o, node);
+  if (node.childrenData && !node.expanded) {
+    if (typeof(node.childrenData)==='string') {
+      var varName    = node.childrenData;
+      getScript(node.relpath+varName,function(){
+        node.childrenData = getData(varName);
+        expandNode(o, node, imm, showRoot);
+      }, showRoot);
+    } else {
+      if (!node.childrenVisited) {
+        getNode(o, node);
+      } if (imm || ($.browser.msie && $.browser.version>8)) { 
+        // somehow slideDown jumps to the start of tree for IE9 :-(
+        $(node.getChildrenUL()).show();
+      } else {
+        $(node.getChildrenUL()).slideDown("fast");
+      }
+      if (node.isLast) {
+        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
+      } else {
+        node.plus_img.src = node.relpath+"ftv2mnode.png";
+      }
+      node.expanded = true;
     }
-    if (imm)
-    {
+  }
+}
+
+function glowEffect(n,duration)
+{
+  n.addClass('glow').delay(duration).queue(function(next){
+    $(this).removeClass('glow');next();
+  });
+}
+
+function highlightAnchor()
+{
+  var anchor = $($(location).attr('hash'));
+  if (anchor.parent().attr('class')=='memItemLeft'){
+    var rows = $('.memberdecls tr[class$="'+
+               window.location.hash.substring(1)+'"]');
+    glowEffect(rows.children(),300);
+  } else if (anchor.parent().is(":header")) {
+    glowEffect(anchor.parent(),1000);
+  } else {
+    glowEffect(anchor.next(),1000);
+  }
+}
+
+function selectAndHighlight(n)
+{
+  var a;
+  if ($(location).attr('hash')) {
+    var link=stripPath($(location).attr('pathname'))+':'+
+      $(location).attr('hash').substring(1);
+    a=$('.item a[class$="'+link+'"]');
+  }
+  if (a && a.length) {
+    a.parent().parent().addClass('selected');
+    a.parent().parent().attr('id','selected');
+    highlightAnchor();
+  } else if (n) {
+    $(n.itemDiv).addClass('selected');
+    $(n.itemDiv).attr('id','selected');
+  }
+  showRoot();
+}
+
+function showNode(o, node, index)
+{
+  if (node && node.childrenData) {
+    if (typeof(node.childrenData)==='string') {
+      var varName    = node.childrenData;
+      getScript(node.relpath+varName,function(){
+        node.childrenData = getData(varName);
+        showNode(o,node,index);
+      },true);
+    } else {
+      if (!node.childrenVisited) {
+        getNode(o, node);
+      }
       $(node.getChildrenUL()).show();
-    } 
-    else 
-    {
-      $(node.getChildrenUL()).slideDown("fast",showRoot);
+      if (node.isLast) {
+        node.plus_img.src = node.relpath+"ftv2mlastnode.png";
+      } else {
+        node.plus_img.src = node.relpath+"ftv2mnode.png";
+      }
+      node.expanded = true;
+      var n = node.children[o.breadcrumbs[index]];
+      if (index+1<o.breadcrumbs.length) {
+        showNode(o,n,index+1);
+      } else {
+        if (typeof(n.childrenData)==='string') {
+          var varName = n.childrenData;
+          getScript(n.relpath+varName,function(){
+            n.childrenData = getData(varName);
+            node.expanded=false;
+            showNode(o,node,index); // retry with child node expanded
+          },true);
+        } else {
+          var rootBase = o.toroot.replace(/\..+$/, '');
+          if (rootBase=="index" || rootBase=="pages") {
+            expandNode(o, n, true, true);
+          }
+          selectAndHighlight(n);
+        }
+      }
     }
-    if (node.isLast)
-    {
-      node.plus_img.src = node.relpath+"ftv2mlastnode.png";
-    }
-    else
-    {
-      node.plus_img.src = node.relpath+"ftv2mnode.png";
-    }
-    node.expanded = true;
+  } else {
+    selectAndHighlight();
   }
 }
 
@@ -408,35 +350,57 @@ function getNode(o, po)
 {
   po.childrenVisited = true;
   var l = po.childrenData.length-1;
-  for (var i in po.childrenData) 
-  {
+  for (var i in po.childrenData) {
     var nodeData = po.childrenData[i];
     po.children[i] = newNode(o, po, nodeData[0], nodeData[1], nodeData[2],
-        i==l);
+      i==l);
   }
 }
 
-function findNavTreePage(url, data)
+function gotoNode(o,subIndex,root,hash)
 {
-  var nodes = data;
-  var result = null;
-  for (var i in nodes) 
+  var nti = navTreeSubIndices[subIndex][root+hash];
+  o.breadcrumbs = nti ? nti : navTreeSubIndices[subIndex][root];
+  if (o.breadcrumbs)
   {
-    var d = nodes[i];
-    if (d[1] == url) 
-    {
-      return new Array(i);
-    }
-    else if (d[2] != null) // array of children
-    {
-      result = findNavTreePage(url, d[2]);
-      if (result != null) 
-      {
-        return (new Array(i).concat(result));
-      }
-    }
+    o.breadcrumbs.unshift(0); // add 0 for root node
+    showNode(o, o.node, 0);
   }
-  return null;
+}
+
+function gotoSubIndex(o,root,hash,relpath)
+{
+  if (hash.match(/^#l\d+$/)) 
+  {
+    hash=''; // strip line number anchors
+  }
+  var url=root+hash;
+  var i=-1;
+  while (navTreeIndex[i+1]<=url) i++;
+  if (navTreeSubIndices[i]) {
+    gotoNode(o,i,root,hash)
+  } else {
+    getScript(relpath+'navtreeindex'+i,function(){
+      navTreeSubIndices[i] = eval('NAVTREEINDEX'+i);
+      if (navTreeSubIndices[i]) {
+        gotoNode(o,i,root,hash);
+      }
+    },true);
+  }
+}
+
+function navTo(o,root,hash,relpath)
+{
+  if (navTreeIndex){
+    gotoSubIndex(o,root,hash,relpath);
+  } else {
+    getScript(relpath+"navtreeindex",function(){
+      navTreeIndex = eval('NAVTREEINDEX');
+      if (navTreeIndex){
+        gotoSubIndex(o,root,hash,relpath);
+      }
+    },true);
+  } 
 }
 
 function initNavTree(toroot,relpath)
@@ -452,26 +416,32 @@ function initNavTree(toroot,relpath)
   o.node.li.appendChild(o.node.childrenUL);
   o.node.depth = 0;
   o.node.relpath = relpath;
+  o.node.expanded = false;
+  o.node.isLast = true;
+  o.node.plus_img = document.createElement("img");
+  o.node.plus_img.src = relpath+"ftv2pnode.png";
+  o.node.plus_img.width = 16;
+  o.node.plus_img.height = 22;
 
-  getNode(o, o.node);
+  navTo(o,toroot,window.location.hash,relpath);
 
-  o.breadcrumbs = findNavTreePage(toroot, NAVTREE);
-  if (o.breadcrumbs == null)
-  {
-    o.breadcrumbs = findNavTreePage("index.html",NAVTREE);
-  }
-  if (o.breadcrumbs != null && o.breadcrumbs.length>0)
-  {
-    var p = o.node;
-    for (var i in o.breadcrumbs) 
-    {
-      var j = o.breadcrumbs[i];
-      p = p.children[j];
-      expandNode(o,p,true);
-    }
-    p.itemDiv.className = p.itemDiv.className + " selected";
-    p.itemDiv.id = "selected";
-    $(window).load(showRoot);
-  }
+  $(window).bind('hashchange', function(){
+     if (window.location.hash && window.location.hash.length>1){
+       var a;
+       if ($(location).attr('hash')){
+         var clslink=stripPath($(location).attr('pathname'))+':'+
+                               $(location).attr('hash').substring(1);
+         a=$('.item a[class$="'+clslink+'"]');
+       }
+       if (a==null || !$(a).parent().parent().hasClass('selected')){
+         $('.item').removeClass('selected');
+         $('.item').removeAttr('id');
+       }
+       var link=stripPath2($(location).attr('pathname'));
+       navTo(o,link,$(location).attr('hash'),relpath);
+     }
+  })
+
+  $(window).load(showRoot);
 }
 

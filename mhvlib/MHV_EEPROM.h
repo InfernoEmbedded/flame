@@ -32,10 +32,16 @@
 #include <MHV_Lock.h>
 #include <inttypes.h>
 
+#ifdef EE_READY_vect
 #define MHV_EEPROM_ASSIGN_INTERRUPTS(_mhvEeprom) \
-ISR(MHV_EEPROM_VECT) { \
+ISR(EE_READY_vect) { \
 	_mhvEeprom.writeInterrupt(); \
 }
+#elif defined EEPROM_READY_vect
+ISR(EEPROM_READY_vect) { \
+	_mhvEeprom.writeInterrupt(); \
+}
+#endif
 
 #define MHV_EEPROM_CREATE(_mhvObjectName) \
 		MHV_EEPROM _mhvObjectName; \

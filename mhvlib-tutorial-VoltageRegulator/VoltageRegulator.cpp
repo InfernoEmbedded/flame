@@ -41,8 +41,8 @@
 // Bring in the MHV IO header
 #include <MHV_io.h>
 
-// Bring in the MHV 16 bit timer header
-#include <MHV_Timer16.h>
+// Bring in the MHV timer header
+#include <MHV_Timer.h>
 
 // Bring in the MHV Voltage Regulator header
 #include <MHV_VoltageRegulator.h>
@@ -61,7 +61,7 @@ MHV_HARDWARESERIAL_CREATE(serial, 0, 2, MHV_USART0, 115200);
 
 // We will be operating using Timer1
 #define OUTPUT_PIN MHV_PIN_TIMER_1_B
-MHV_Timer16 vOutTimer(MHV_TIMER16_1);
+MHV_TimerImplementation<MHV_TIMER16_1, MHV_TIMER_16_PWM_FAST> vOutTimer;
 
 #define TARGET_VOLTAGE 7000
 
@@ -92,9 +92,6 @@ MAIN {
 
 // Set the pin the transistor is connected to to output
 	mhv_setOutput(OUTPUT_PIN);
-
-// Set the PWM mode to FAST PWM
-	vOutTimer.setMode(MHV_TIMER_16_PWM_FAST);
 
 // Set the PWM prescaler to 1 (no prescaler)
 	vOutTimer.setPrescaler(MHV_TIMER_PRESCALER_5_1);

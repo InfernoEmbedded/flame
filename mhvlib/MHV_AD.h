@@ -29,8 +29,11 @@
 
 #include <MHV_io.h>
 
+#ifdef ADC
+
 // Maximum value of the ADC
-#define MHV_AD_MAX	1024
+#define MHV_AD_MAX			1023
+#define MHV_AD_RESOLUTION	1024
 
 enum mhv_ad_prescaler {
 	MHV_AD_PRESCALER_2   = 1,
@@ -45,7 +48,7 @@ typedef enum mhv_ad_prescaler MHV_AD_PRESCALER;
 
 // helper macros for adc trigger functions
 #define MHV_AD_REFERENCE (ADMUX & 0xF0)
-#ifdef __AVR_ATmega1280__
+#ifdef MUX5
 #define MHV_AD_CHANNEL ((ADMUX & 0x0F) | (ADCSRB & _BV(MUX5)))
 #else
 #define MHV_AD_CHANNEL (ADMUX & 0x0F)
@@ -62,20 +65,35 @@ ISR(ADC_vect) { \
 #define MHV_AD_DISABLE_INTERRUPT	ADCSRA &= ~_BV(ADIE)
 
 // Enable/Disable the ADC
+#ifdef PRR
 #define MHV_AD_ENABLE \
 	do { \
-		MHV_AD_PRR &= ~_BV(PRADC); \
+		PRR &= ~_BV(PRADC); \
 		ADCSRA |= _BV(ADEN); \
 	} while (0)
 
 #define MHV_AD_DISABLE \
 	do { \
-		MHV_AD_PRR |= _BV(PRADC); \
+		PRR |= _BV(PRADC); \
 		ADCSRA |= _BV(ADEN); \
 	} while (0)
+#elif defined PRR0
+#define MHV_AD_ENABLE \
+	do { \
+		PRR0 &= ~_BV(PRADC); \
+		ADCSRA |= _BV(ADEN); \
+	} while (0)
+
+#define MHV_AD_DISABLE \
+	do { \
+		PRR0 |= _BV(PRADC); \
+		ADCSRA |= _BV(ADEN); \
+	} while (0)
+#endif
 
 uint16_t mhv_ad_busyRead(uint8_t channel, uint8_t reference);
 void mhv_ad_asyncRead(uint8_t channel, uint8_t reference);
 void mhv_ad_setPrescaler(MHV_AD_PRESCALER prescaler);
 
+#endif // ADC
 #endif /* MHV_AD_H_ */

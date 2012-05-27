@@ -33,7 +33,7 @@
 #include <avr/sleep.h>
 
 // Bring in the timer header
-#include <MHV_Timer8.h>
+#include <MHV_Timer.h>
 
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
@@ -41,12 +41,12 @@
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_0);
+MHV_TimerImplementation<MHV_TIMER8_0, MHV_TIMER_REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-MHV_Timer8 tickTimer(MHV_TIMER8_2);
+MHV_TimerImplementation<MHV_TIMER8_2, MHV_TIMER_REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
@@ -58,8 +58,11 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 // The RTC object we will use
 MHV_RTCTemplate<ALARM_COUNT> rtc;
 
+// The number of buffers we can print to
+#define TX_BUFFERS	4
+
 // The USB Keyboard driver
-MHV_VusbTypist typist(typistBuffer, rtc);
+MHV_VusbTypist<TX_BUFFERS> typist(rtc);
 
 class TypeString : public MHV_TimerListener {
 public:

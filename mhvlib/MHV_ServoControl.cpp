@@ -73,7 +73,7 @@ void MHV_ServoControl::alarm() {
 		if (_nextServoIndex >= _count || 255 == SERVO_ORDER(_nextServoIndex)) {
 			_nextServoIndex = 255;
 			// sleep for 20ms to the next servo pass
-			_timer.setPeriods(20000UL, 0UL, 0UL); // sleep for 20ms
+			_timer.setTimes(20000UL, 0UL, 0UL); // sleep for 20ms
 			_timer.enable();
 			return;
 		}
@@ -92,11 +92,11 @@ void MHV_ServoControl::alarm() {
 
 /**
  * Create a new ServoControl object
- * @param	timer			the timer to use
+ * @param	timer			the timer to use (should be set to MHV_MODE_ONE_SHOT)
  * @param	controlblocks	storage for servo information, must store count MHV_SERVOCONTROLBLOCKs
  * @param	count			the number of servos to control
  */
-MHV_ServoControl::MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count) :
+MHV_ServoControl::MHV_ServoControl(MHV_Timer &timer, MHV_SERVOCONTROLBLOCK controlBlocks[], uint8_t count) :
 		_timer(timer),
 		_controlBlocks(controlBlocks),
 		_count(count),
@@ -111,7 +111,6 @@ MHV_ServoControl::MHV_ServoControl(MHV_Timer16 &timer, MHV_SERVOCONTROLBLOCK con
 		controlBlocks[i].servoOrder = 255;
 	}
 
-	_timer.setMode(MHV_TIMER_ONE_SHOT);
 	_timer.setListener1(this);
 }
 

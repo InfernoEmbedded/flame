@@ -120,7 +120,7 @@ void MHV_Debounce::pinChanged(uint8_t pcInt, bool newState) {
  * @param	listener				a class to call when the button is pressed or held down
  */
 void MHV_Debounce::assignKey(MHV_DECLARE_PIN(pin), MHV_DebounceListener &listener) {
-	_pins[pinPinchangeInterrupt].previous = VALUE(pinIn) & _BV(pinPin);
+	_pins[pinPinchangeInterrupt].previous = _MMIO_BYTE(pinIn) & _BV(pinPin);
 	_pins[pinPinchangeInterrupt].timestamp.milliseconds = 0;
 	_pins[pinPinchangeInterrupt].timestamp.timestamp = 0;
 	_pins[pinPinchangeInterrupt].listener = &listener;

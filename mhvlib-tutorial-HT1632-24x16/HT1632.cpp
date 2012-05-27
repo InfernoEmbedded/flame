@@ -36,6 +36,7 @@
 #include <MHV_Font_SansSerif_10x8.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
+#include <boards/MHV_io_Arduino.h>
 
 #define MHV_SHIFT_WRITECLOCK MHV_ARDUINO_PIN_A0
 #define MHV_SHIFT_WRITEDATA MHV_ARDUINO_PIN_A1

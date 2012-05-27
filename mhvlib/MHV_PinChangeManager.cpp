@@ -74,7 +74,7 @@ void MHV_PinChangeManager::pinChange(uint8_t offset) {
 			continue;
 		}
 
-		bool cur = VALUE(pin->port) & pin->mask;
+		bool cur = _MMIO_BYTE(pin->port) & pin->mask;
 		if (cur != pin->previous) {
 			// Pin has changed
 			pin->previous = cur;
@@ -130,10 +130,10 @@ void MHV_PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), MHV_PinEventLi
 
 /**
  * Deregister interest for pinchange events
- * @param	pinPinChangeInterrupt			the pinPinchangeInterrupt to deregister
+ * @param	pinPinchangeInterrupt			the pinPinchangeInterrupt to deregister
  */
 void MHV_PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
-	if (pinPinchangeInterrupt) {
+	if (pinPinchangeInterrupt >= MHV_PC_INT_COUNT) {
 		return;
 	}
 

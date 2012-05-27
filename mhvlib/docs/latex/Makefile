@@ -4,7 +4,7 @@ pdf: refman.pdf
 
 refman.pdf: clean refman.tex
 	pdflatex refman
-	C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe refman.tex
+	C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe refman.idx
 	pdflatex refman
 	latex_count=5 ; \
 	while egrep -s 'Rerun (LaTeX|to get cross-references right)' refman.log && [ $$latex_count -gt 0 ] ;\
@@ -16,4 +16,4 @@ refman.pdf: clean refman.tex
 
 
 clean:
-	del /s/y *.ps *.dvi *.aux *.toc *.idx *.ind *.ilg *.log *.out *.brf *.blg *.bbl refman.pdf
+	rm -f *.ps *.dvi *.aux *.toc *.idx *.ind *.ilg *.log *.out *.brf *.blg *.bbl refman.pdf

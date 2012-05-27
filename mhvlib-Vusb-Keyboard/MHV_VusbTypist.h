@@ -21,17 +21,200 @@
 
 #include <MHV_VusbKeyboard.h>
 #include <MHV_Device_TX.h>
+#include <avr/pgmspace.h>
 
-class MHV_VusbTypist : public MHV_VusbKeyboard, public MHV_Device_TX {
+extern "C" {
+	#include <vusb/usbdrv.h>
+}
+
+/**
+ * A USB keyboard emulator that will type what you print to it
+ * @tparam	txBuffers	the number of output buffers
+ */
+template<uint8_t txBuffers>
+class MHV_VusbTypist : public MHV_VusbKeyboard, public MHV_Device_TXImplementation<txBuffers> {
 protected:
 	bool _isTyping;
 
-	void runTxBuffers();
-	void typeChar(char c);
+	/**
+	 * Start transmitting a new string
+	 * (does nothing, alarm will immediately pick up the next character)
+	 */
+	CONST void runTxBuffers() {}
+
+	/**
+	 * Type a single character on the keyboard
+	 * @param	c	the character to type
+	 */
+	void typeChar(char c) {
+		uint8_t modifiers = 0;
+		MHV_VUSB_KEYBOARD_KEY key = MHV_KEY_BACKSPACE;
+
+		if (c >= 'a' && c <= 'z') {
+			key = mhv_vusb_keyboard_key_add(MHV_KEY_A, c - 'a');
+		} else if (c >= 'A' && c <= 'Z') {
+			key = mhv_vusb_keyboard_key_add(MHV_KEY_A, c - 'A');
+			modifiers = MHV_MOD_SHIFT_LEFT;
+		} else if (c >= '1' && c <= '9') {
+			key = mhv_vusb_keyboard_key_add(MHV_KEY_1, c - '1');
+		} else {
+	// Shifted characters
+			switch (c) {
+			case '!':
+				key = MHV_KEY_1;
+				break;
+			case '@':
+				key = MHV_KEY_2;
+				break;
+			case '#':
+				key = MHV_KEY_3;
+				break;
+			case '$':
+				key = MHV_KEY_4;
+				break;
+			case '%':
+				key = MHV_KEY_5;
+				break;
+			case '^':
+				key = MHV_KEY_6;
+				break;
+			case '&':
+				key = MHV_KEY_7;
+				break;
+			case '(':
+				key = MHV_KEY_9;
+				break;
+			case ')':
+				key = MHV_KEY_0;
+				break;
+			case '{':
+				key = MHV_KEY_L_SQUARE;
+				break;
+			case '}':
+				key = MHV_KEY_R_SQUARE;
+				break;
+			case '|':
+				key = MHV_KEY_BACKSLASH;
+				break;
+			case ':':
+				key = MHV_KEY_SEMICOLON;
+				break;
+			case '"':
+				key = MHV_KEY_QUOTE;
+				break;
+			case '<':
+				key = MHV_KEY_COMMA;
+				break;
+			case '>':
+				key = MHV_KEY_FULLSTOP;
+				break;
+			case '?':
+				key = MHV_KEY_SLASH;
+				break;
+			case '_':
+				key = MHV_KEY_MINUS;
+				break;
+			case '+':
+				key = MHV_KEY_EQUALS;
+				break;
+			case '~':
+				key = MHV_KEY_GRAVE_ACCENT;
+				break;
+			}
+
+			if (MHV_KEY_BACKSPACE != key) {
+				modifiers = MHV_MOD_SHIFT_LEFT;
+			}
+		}
+
+		if (MHV_KEY_BACKSPACE == key) {
+			switch (c) {
+			case '0':
+				key = MHV_KEY_0;
+				break;
+			case '\n':
+				key = MHV_KEY_ENTER;
+				break;
+			case '\t':
+				key = MHV_KEY_TAB;
+				break;
+			case '*':
+				key = MHV_KEYPAD_ASTERISK;
+				break;
+			case '[':
+				key = MHV_KEY_L_SQUARE;
+				break;
+			case ']':
+				key = MHV_KEY_R_SQUARE;
+				break;
+			case '\\':
+				key = MHV_KEY_BACKSLASH;
+				break;
+			case ';':
+				key = MHV_KEY_SEMICOLON;
+				break;
+			case '\'':
+				key = MHV_KEY_QUOTE;
+				break;
+			case ',':
+				key = MHV_KEY_COMMA;
+				break;
+			case '.':
+				key = MHV_KEY_FULLSTOP;
+				break;
+			case '/':
+				key = MHV_KEY_SLASH;
+				break;
+			case '-':
+				key = MHV_KEY_MINUS;
+				break;
+			case '=':
+				key = MHV_KEY_EQUALS;
+				break;
+			case '`':
+				key = MHV_KEY_GRAVE_ACCENT;
+				break;
+			}
+		}
+
+		if (MHV_KEY_BACKSPACE == key) {
+			key = MHV_KEY_SPACE;
+		}
+
+		keyDown(key, modifiers);
+	}
+
 
 public:
-	MHV_VusbTypist(MHV_RingBuffer &txBuffer, MHV_RTC &rtc);
-	void alarm();
+	/**
+	 * Emulate a USB keyboard using V-USB
+	 *   This class can also be passed strings, which it will type out on the keyboard
+	 *  @param	rtc			an RTC to trigger events from
+	 */
+	MHV_VusbTypist(MHV_RTC &rtc) :
+			MHV_VusbKeyboard(rtc),
+			_isTyping(false) {}
+
+	/**
+	 * Periodically called to maintain USB comms
+	 */
+	void alarm() {
+		MHV_VusbKeyboard::alarm();
+		if (usbInterruptIsReady()) {
+			int c = MHV_Device_TX::nextCharacter();
+
+			if (-1 == c) {
+				if (_isTyping) {
+					_isTyping = false;
+					keysUp();
+				}
+				return;
+			}
+
+			_isTyping = true;
+			typeChar(c);
+		}
+	}
 };
 
 #endif /* MHV_VUSBTYPIST_H_ */

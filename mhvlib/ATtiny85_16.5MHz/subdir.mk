@@ -16,7 +16,6 @@ CPP_SRCS += \
 ../MHV_NotePlayer.cpp \
 ../MHV_PID.cpp \
 ../MHV_PinChangeManager.cpp \
-../MHV_RGB.cpp \
 ../MHV_RTC.cpp \
 ../MHV_ServoControl.cpp \
 ../MHV_Shifter.cpp \
@@ -40,7 +39,6 @@ OBJS += \
 ./MHV_NotePlayer.o \
 ./MHV_PID.o \
 ./MHV_PinChangeManager.o \
-./MHV_RGB.o \
 ./MHV_RTC.o \
 ./MHV_ServoControl.o \
 ./MHV_Shifter.o \
@@ -64,7 +62,6 @@ CPP_DEPS += \
 ./MHV_NotePlayer.d \
 ./MHV_PID.d \
 ./MHV_PinChangeManager.d \
-./MHV_RGB.d \
 ./MHV_RTC.d \
 ./MHV_ServoControl.d \
 ./MHV_Shifter.d \

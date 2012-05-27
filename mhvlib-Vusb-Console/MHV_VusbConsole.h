@@ -43,7 +43,6 @@ public:
 	 * To view the output of the console on your computer, use HID Listen, available from:
 	 * http://www.pjrc.com/teensy/hid_listen.html
 	 *
-	 * @param	txBuffer	a ringbuffer to store data in
 	 * @param	rtc			an RTC to schedule jobs on
 	 */
 	MHV_VusbConsole(MHV_RTC &rtc) :
