@@ -31,7 +31,6 @@
 #include <mhvlib/io.h>
 #include <mhvlib/AD.h>
 
-
 #define MHV_ADC_ASSIGN_INTERRUPT(__mhvADCManager) \
 ISR(ADC_vect) { \
 	__mhvADCManager.adc(); \
@@ -51,33 +50,135 @@ public:
 };
 
 struct eventADC {
-	int8_t					channel;
-	ADCListener			*listener;
+	int8_t channel;
+	ADCListener *listener;
 };
-typedef struct eventADC	EVENT_ADC;
+typedef struct eventADC EVENT_ADC;
 
+/**
+ * An event manager for ADC events
+ * @tparam	events	the number of ADC events we can handle
+ */
+template<uint8_t events>
 class MHV_ADC {
 protected:
-	uint16_t		_adcValue;
-	int8_t			_adcChannel;
-	EVENT_ADC	*_adcs;
-	uint8_t			_adcCount;
-
+	uint16_t _adcValue;
+	int8_t _adcChannel;
+	EVENT_ADC _adcs[events];
 
 public:
-	MHV_ADC(EVENT_ADC *adcs, uint8_t adcCount);
+	/**
+	 * An event manager for ADC events
+	 */
 
-// ADC
-	void adc();
-	void registerListener(int8_t channel, ADCListener &listener);
-	void deregisterListener(int8_t channel);
-	void enable();
-	void disable();
-	uint16_t busyRead(int8_t channel, uint8_t reference);
-	void asyncRead(int8_t channel, uint8_t reference);
-	void setPrescaler(AD_PRESCALER prescaler);
+	MHV_ADC::MHV_ADC() {
+		_adcChannel = -1;
+		memClear(_adcs, sizeof(*_adcs), events);
+	}
 
-	void handleEvents();
+	/**
+	 * Interrupt handler to read the ADC
+	 */
+	void MHV_ADC::adc() {
+		_adcValue = ADC;
+		_adcChannel = MHV_AD_CHANNEL;
+
+		MHV_AD_DISABLE_INTERRUPT;
+	}
+
+	/**
+	 * Register interest for an ADC channel
+	 * @param	channel		the ADC channel
+	 * @param	listener	an MHV_ADCListener to notify when an ADC reading has been completed
+	 */
+#pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
+	void MHV_ADC::registerListener(int8_t channel, ADCListener &listener) {
+		for (uint8_t i = 0; i < events; i++) {
+			if (_adcs[i].channel == -1) {
+				_adcs[i].channel = channel;
+				_adcs[i].listener = &listener;
+				break;
+			}
+		}
+	}
+#pragma GCC diagnostic warning "-Wsuggest-attribute=const"
+
+	/**
+	 * Deregister interest for an ADC channel
+	 * @param	channel		the ADC channel
+	 */
+	void MHV_ADC::deregisterListener(int8_t channel) {
+		for (uint8_t i = 0; i < events; i++) {
+			if (_adcs[i].channel == channel) {
+				_adcs[i].channel = -1;
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Read an ADC channel
+	 * @param	channel		the channel to read
+	 * @param	reference	the voltage reference to use
+	 */
+	uint16_t MHV_ADC::busyRead(int8_t channel, uint8_t reference) {
+		ADMUX = reference | (channel & 0x0F);
+
+#ifdef MUX5
+		ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5 - MUX5)));
+#endif
+
+		// Start the conversion
+		ADCSRA |= _BV(ADSC);
+
+		while (ADCSRA & _BV(ADSC)) {
+		};
+
+		return ADC;
+	}
+
+	/**
+	 * Trigger an ADC channel event
+	 * @param	channel		the channel to read
+	 * @param	reference	the voltage reference to use
+	 */
+	void MHV_ADC::asyncRead(int8_t channel, uint8_t reference) {
+		ADMUX = reference | (channel & 0x0F);
+
+#ifdef MUX5
+		ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5 - MUX5)));
+#endif
+
+		// Start the conversion
+		ADCSRA |= _BV(ADSC);
+
+		MHV_AD_ENABLE_INTERRUPT;
+	}
+
+	/**
+	 * Set the ADC clock prescaler
+	 * @param	prescaler	the prescaler to use
+	 */
+	void MHV_ADC::setPrescaler(AD_PRESCALER prescaler) {
+		ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
+	}
+
+	/**
+	 * Call from the main loop to handle any events
+	 */
+	void MHV_ADC::handleEvents() {
+		uint8_t i;
+
+		if (_adcChannel != -1) {
+			for (i = 0; i < events; i++) {
+				if (_adcs[i].channel == _adcChannel) {
+					_adcChannel = -1;
+					_adcs[i].listener->adc(_adcs[i].channel, _adcValue);
+					break;
+				}
+			}
+		}
+	}
 };
 
 }
