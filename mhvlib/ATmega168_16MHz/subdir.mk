@@ -7,7 +7,6 @@ CPP_SRCS += \
 ../AD.cpp \
 ../ADC.cpp \
 ../DAC.cpp \
-../Debounce.cpp \
 ../Device_TX.cpp \
 ../EEPROM.cpp \
 ../EPP.cpp \
@@ -17,7 +16,6 @@ CPP_SRCS += \
 ../PID.cpp \
 ../PinChangeManager.cpp \
 ../RTC.cpp \
-../ServoControl.cpp \
 ../Shifter.cpp \
 ../SoftwareHBridge.cpp \
 ../StepperMotor.cpp \
@@ -28,7 +26,6 @@ OBJS += \
 ./AD.o \
 ./ADC.o \
 ./DAC.o \
-./Debounce.o \
 ./Device_TX.o \
 ./EEPROM.o \
 ./EPP.o \
@@ -38,7 +35,6 @@ OBJS += \
 ./PID.o \
 ./PinChangeManager.o \
 ./RTC.o \
-./ServoControl.o \
 ./Shifter.o \
 ./SoftwareHBridge.o \
 ./StepperMotor.o \
@@ -49,7 +45,6 @@ CPP_DEPS += \
 ./AD.d \
 ./ADC.d \
 ./DAC.d \
-./Debounce.d \
 ./Device_TX.d \
 ./EEPROM.d \
 ./EPP.d \
@@ -59,7 +54,6 @@ CPP_DEPS += \
 ./PID.d \
 ./PinChangeManager.d \
 ./RTC.d \
-./ServoControl.d \
 ./Shifter.d \
 ./SoftwareHBridge.d \
 ./StepperMotor.d \

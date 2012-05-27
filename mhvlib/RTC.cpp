@@ -70,6 +70,18 @@ bool PURE timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) {
 }
 
 /**
+ * Get a timestamp in milliseconds
+ * @param	timestamp	the timestamp
+ * @return the timestamp in milliseconds, clamped at 65535
+ */
+uint16_t PURE getMilliseconds(const TIMESTAMP &timestamp) {
+	if (timestamp.timestamp > 65) {
+		return 65535;
+	}
+	return timestamp.milliseconds + (uint16_t)timestamp.timestamp * 1000;
+}
+
+/**
  * Compare 2 timestamps
  * @param	first	the first timestamp
  * @param	second	the second timestamp
@@ -92,6 +104,7 @@ bool PURE timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &s
 
 	return false;
 }
+
 
 /**
  *  Determine if a year is a leap year

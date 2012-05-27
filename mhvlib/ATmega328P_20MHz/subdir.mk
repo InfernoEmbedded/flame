@@ -7,7 +7,6 @@ CPP_SRCS += \
 ../AD.cpp \
 ../ADC.cpp \
 ../DAC.cpp \
-../Debounce.cpp \
 ../Device_TX.cpp \
 ../EEPROM.cpp \
 ../EPP.cpp \
@@ -27,7 +26,6 @@ OBJS += \
 ./AD.o \
 ./ADC.o \
 ./DAC.o \
-./Debounce.o \
 ./Device_TX.o \
 ./EEPROM.o \
 ./EPP.o \
@@ -47,7 +45,6 @@ CPP_DEPS += \
 ./AD.d \
 ./ADC.d \
 ./DAC.d \
-./Debounce.d \
 ./Device_TX.d \
 ./EEPROM.d \
 ./EPP.d \

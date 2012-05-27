@@ -80,7 +80,7 @@ MHV_PINCHANGE_MANAGER_ASSIGN_INTERRUPTS(pinChangeManager);
 // Time to repeat the held down call while the button is held down (milliseconds)
 #define REPEAT_TIME		100
 
-Debounce debouncer(pinChangeManager, rtc, DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME);
+Debounce<DEBOUNCE_TIME, HELD_TIME, REPEAT_TIME> debouncer(pinChangeManager, rtc);
 
 MAIN {
 	// Disable all peripherals and enable just what we need

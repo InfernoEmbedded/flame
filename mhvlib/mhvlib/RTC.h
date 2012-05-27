@@ -181,6 +181,7 @@ inline void alarmInit(ALARM &alarm, TimerListener &listener,
 
 void timestampIncrement(TIMESTAMP &timestamp, uint32_t seconds, uint16_t milliseconds);
 bool isLeapYear(uint16_t year);
+uint16_t getMilliseconds(const TIMESTAMP &timestamp);
 bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second);
 bool timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second);
 uint8_t daysInMonth(MONTH month, uint16_t year);
