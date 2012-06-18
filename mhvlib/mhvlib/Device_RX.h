@@ -34,7 +34,6 @@
 #include <mhvlib/io.h>
 #include <stdio.h>
 #include <mhvlib/RingBuffer.h>
-#include <avr/pgmspace.h>
 #include <stdlib.h>
 #include <string.h>
 

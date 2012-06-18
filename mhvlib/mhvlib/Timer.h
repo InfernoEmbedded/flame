@@ -489,6 +489,8 @@ public:
 	 * @param	time2		the second time in prescaled timer ticks
 	 */
 	void setPeriods(TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) {
+		_prescaler = prescaler;
+
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_setPrescaler(prescaler);
 
@@ -506,8 +508,9 @@ public:
 	 * @param	time3		the second time in prescaled timer ticks
 	 */
 	void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
+		_prescaler = prescaler;
+
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			_prescaler = prescaler;
 			_setPrescaler(prescaler);
 
 			_SFR_MEM16(counter) = 0;

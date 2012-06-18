@@ -28,6 +28,8 @@
 /* A blinking LED on Arduino pin 13 - uses a timer to toggle the LED
  */
 
+#define MHVLIB_NEED_PURE_VIRTUAL
+
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
 
@@ -64,24 +66,22 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(tickTimer, MHV_TIMER2_INTERRUPTS);
  * of this, we will instead trigger every 1ms and maintain a counter instead
  */
 class LEDBlinker : public TimerListener {
-	void alarm();
-};
+	void alarm() {
+	// static variables are initialised once at boot, and persist between calls
 
-void LEDBlinker::alarm() {
-// static variables are initialised once at boot, and persist between calls
+	// A counter to keep track of how many times we are called
+		static uint16_t count = 0;
 
-// A counter to keep track of how many times we are called
-	static uint16_t count = 0;
+	/* Increment count, and if it is the 333rd time, toggle the LED and reset the
+	 * counter
+	 */
+		if (333 == ++count) {
+				pinToggle(MHV_ARDUINO_PIN_13);
 
-/* Increment count, and if it is the 333rd time, toggle the LED and reset the
- * counter
- */
-	if (333 == ++count) {
-			pinToggle(MHV_ARDUINO_PIN_13);
-
-		count = 0;
+			count = 0;
+		}
 	}
-}
+};
 
 // Instantiate the blinker class
 LEDBlinker blinker;
