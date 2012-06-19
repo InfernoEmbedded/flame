@@ -62,7 +62,7 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // A timer we will use to tick the display
 TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;

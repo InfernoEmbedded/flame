@@ -34,7 +34,7 @@
 #include <mhvlib/io.h>
 #include <mhvlib/Timer16.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class softwarehbridge_direction : uint8_t {
 	COAST,

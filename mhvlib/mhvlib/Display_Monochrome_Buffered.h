@@ -34,7 +34,7 @@
 
 #define pixel(pixelRow, pixelCol) Display_Monochrome_Buffered<cols, rows, txBuffers>::_frameBuffer[pixelRow * cols + pixelCol]
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * A monochrome bitmap display
@@ -72,7 +72,7 @@ public:
 	 * param:	row		the row
 	 * return	the intensity of the pixel
 	 */
-	PURE uint8_t getPixel(uint16_t col, uint16_t row) {
+	uint8_t getPixel(uint16_t col, uint16_t row) {
 		if (row < rows && col < cols) {
 			return pixel(row, col);
 		} else {

@@ -57,12 +57,12 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 // Code here is unreachable
 #define UNREACHABLE __builtin_unreachable();
 
-/* A function that has no effect other than its return _MMIO_BYTE, and the return _MMIO_BYTE depends
- * only on the parameters, class variables and/or global variables
+/* A function that has no effect other than its return value, and the return value depends
+ * only on the parameters or global variables
  */
 #define PURE __attribute__ ((pure))
 
-/* A function that has no effect other than its return _MMIO_BYTE, and the return _MMIO_BYTE depends
+/* A function that has no effect other than its return value, and the return value depends
  * only on the parameters
  */
 #define CONST __attribute__ ((const))
@@ -80,7 +80,7 @@ extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
 
 #define GCC_VERSION (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 typedef uint16_t mhv_register;
 

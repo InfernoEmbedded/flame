@@ -32,7 +32,7 @@
 #include <inttypes.h>
 #include <mhvlib/io.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 
 class RingBuffer {
@@ -156,7 +156,7 @@ public:
 	 * Get the length of the contents of the ringbuffer
 	 * Return the number of bytes in the ringbuffer
 	 */
-	PURE uint8_t length() {
+	uint8_t length() {
 		int16_t length = _head - _tail;
 		if (length < 0) {
 	// The pointers have wrapped
@@ -170,7 +170,7 @@ public:
 	 * Check if the ringbuffer is full
 	 * @return true if the ringbuffer is full
 	 */
-	PURE bool full() {
+	bool full() {
 		return length() == _size - 1;
 	}
 
@@ -179,7 +179,7 @@ public:
 	 * @param blockLength	the length of the object to fit in
 	 * @return true if the ringbuffer is full
 	 */
-	PURE bool full(uint8_t blockLength) {
+	bool full(uint8_t blockLength) {
 		return length() > (_size - 1 - blockLength);
 	}
 
@@ -188,7 +188,7 @@ public:
 	 * Check the first character in the buffer
 	 * @return the character, or -1 if the buffer is empty
 	 */
-	PURE int peekHead() {
+	int peekHead() {
 		if (_head == _tail) {
 			return -1;
 		}

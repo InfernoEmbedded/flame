@@ -26,7 +26,7 @@
 
 #include <mhvlib/Shifter.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 void shiftout_byte_lsb(MHV_PIN *data, MHV_PIN *clock, uint8_t byte) {
 	int8_t		i;

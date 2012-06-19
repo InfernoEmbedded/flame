@@ -26,7 +26,7 @@
 
 #include <mhvlib/DAC.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new DAC to play samples by PWMing a timer

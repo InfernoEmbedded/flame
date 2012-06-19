@@ -26,7 +26,7 @@
 
 #include <mhvlib/AD.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 uint16_t ad_busyRead(uint8_t channel, uint8_t reference) {
 	ADMUX = reference | (channel & 0x0F);

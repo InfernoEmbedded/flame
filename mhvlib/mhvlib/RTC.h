@@ -32,7 +32,7 @@
 #include <string.h> // Needed for memmove
 #include <util/atomic.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 struct timestamp {
 	uint32_t	timestamp;

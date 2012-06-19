@@ -26,7 +26,7 @@
  */
 #include <mhvlib/PinChangeManager.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * An event manager for handling pinchange events

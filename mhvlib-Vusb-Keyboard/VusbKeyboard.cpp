@@ -148,7 +148,7 @@ unsigned char usbFunctionSetup(uchar data[8]) {
 	return 0;
 }
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 namespace mhvlib_gpl {
 

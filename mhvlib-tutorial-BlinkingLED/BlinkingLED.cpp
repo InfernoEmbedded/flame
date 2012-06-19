@@ -38,7 +38,7 @@
 #include <util/delay.h>
 #include <avr/power.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 
 MAIN {

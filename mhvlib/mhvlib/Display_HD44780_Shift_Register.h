@@ -37,7 +37,7 @@
 #define HD44780_TSU1	(60 * 1000000 / F_CPU / 3 + 1)
 #define HD44780_TW		(450 * 1000000 / F_CPU / 3 + 1)
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * A class for operating HD44780 based LCD displays via a shift register such as a 74HC164

@@ -27,7 +27,7 @@
 #include <stddef.h>
 #include <mhvlib/EEPROM.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 
 /**

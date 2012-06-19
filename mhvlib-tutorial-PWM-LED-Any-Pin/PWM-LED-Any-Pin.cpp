@@ -44,7 +44,7 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer

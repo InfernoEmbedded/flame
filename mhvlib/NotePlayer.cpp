@@ -27,7 +27,7 @@
 
 #include <mhvlib/NotePlayer.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new NotePlayer for playing an array of notes

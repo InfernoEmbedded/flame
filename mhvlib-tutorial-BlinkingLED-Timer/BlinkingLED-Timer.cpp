@@ -49,7 +49,7 @@
 // Bring in Arduino defines
 #include <boards/MHV_io_Arduino.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards

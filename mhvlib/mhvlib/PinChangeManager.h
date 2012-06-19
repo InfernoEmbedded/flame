@@ -70,7 +70,7 @@ ISR(PCINT2_vect) { \
 
 
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class PinEventListener {
 public:

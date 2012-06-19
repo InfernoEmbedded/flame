@@ -31,7 +31,7 @@
 #define HD44780_TINIT	300		// ms
 
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 static const uint8_t mhv_hd44780AddressTable[] PROGMEM = {
 		64+20,	20,	64,	0

@@ -33,7 +33,7 @@
 #include <mhvlib/io.h>
 #include <mhvlib/Font.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class Display_Selector {
 public:
@@ -149,14 +149,14 @@ public:
 	/**
 	 * Get the width of the display
 	 */
-	PURE uint16_t getWidth() {
+	uint16_t getWidth() CONST {
 		return cols;
 	}
 
 	/**
 	 * Get the width of the display
 	 */
-	PURE uint16_t getHeight() {
+	uint16_t getHeight() CONST {
 		return rows;
 	}
 

@@ -41,7 +41,7 @@
 	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
 	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class Device_RX;
 

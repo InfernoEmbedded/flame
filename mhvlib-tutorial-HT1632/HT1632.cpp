@@ -40,7 +40,7 @@
 
 #include <mhvlib/Display_Holtek_HT1632.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 /* We will use the following pins to communicate with the display
  * Signal	328	1280		Arduino

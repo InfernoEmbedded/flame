@@ -65,7 +65,7 @@ ISR(mhvTxVect) { \
 		HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName; \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create now serial port driver

@@ -31,7 +31,7 @@
 // Bring in the SoftwarePWM header
 #include <mhvlib/SoftwarePWM.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // The timer for PWM control
 TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> pwmTimer;

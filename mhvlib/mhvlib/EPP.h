@@ -34,7 +34,7 @@
 
 #include <mhvlib/io.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class epp_mode : uint8_t {
 	INTERRUPT,

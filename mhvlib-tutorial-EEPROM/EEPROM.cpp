@@ -45,7 +45,7 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // Chosen to fit within all supported MCUs - yours may have more space available
 #define DATA_MAX_LENGTH ((uint16_t)(128 - DATA_ADDRESS))

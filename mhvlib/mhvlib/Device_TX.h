@@ -44,7 +44,7 @@ do {\
 	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
 } while (0)
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 struct tx_buffer {
 	const char	*data;

@@ -26,7 +26,7 @@
 
 #include <mhvlib/StepperMotor.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new StepperMotor
@@ -52,7 +52,7 @@ void StepperMotor::setPosition(int32_t position) {
  * Get the current position of the motor
  * @return the current position
  */
-int32_t PURE StepperMotor::getPosition() {
+int32_t StepperMotor::getPosition() {
 	return _position;
 }
 
@@ -60,7 +60,7 @@ int32_t PURE StepperMotor::getPosition() {
  * Is the motor current moving?
  * @return true if the motor is moving
  */
-bool PURE StepperMotor::isMoving() {
+bool StepperMotor::isMoving() {
 	return _moving;
 }
 

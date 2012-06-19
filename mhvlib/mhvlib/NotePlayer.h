@@ -31,7 +31,7 @@
 #include <mhvlib/WaveGenerator.h>
 #include <mhvlib/RTC.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 struct Note {
 	INSTRUMENT		*instrument;	/** The instrument to use */

@@ -31,7 +31,7 @@
 #define MHV_MOD_ALT_RIGHT       (1<<6)
 #define MHV_MOD_GUI_RIGHT       (1<<7)
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 namespace mhvlib_gpl {
 
 enum vusb_keyboard_key {

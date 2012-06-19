@@ -39,7 +39,7 @@
 #include <avr/power.h>
 #include <avr/sleep.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // A buffer for the serial port to receive data
 #define RX_BUFFER_SIZE	81

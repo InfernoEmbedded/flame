@@ -52,7 +52,7 @@
 // Bring in stdio, required for snprintf
 #include <stdio.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81

@@ -32,7 +32,7 @@
 #include <mhvlib/GammaCorrect.h>
 #include <mhvlib/Shifter.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new WS2801 object to control a string of LED drivers

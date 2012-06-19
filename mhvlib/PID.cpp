@@ -31,7 +31,7 @@
 
 #include <mhvlib/PID.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new PID

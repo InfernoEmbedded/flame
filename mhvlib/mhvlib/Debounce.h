@@ -53,7 +53,7 @@ ISR(PCINT2_vect) { \
 		MHV_DEBOUNCE_ASSIGN_PCINT(_mhvDebounce)
 #endif
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class DebounceListener {
 public:

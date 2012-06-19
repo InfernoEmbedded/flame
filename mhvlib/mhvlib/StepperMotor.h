@@ -31,7 +31,7 @@
 #include <mhvlib/io.h>
 #include <mhvlib/RTC.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class StepperListener {
 public:
@@ -54,8 +54,8 @@ public:
 	StepperMotor(RTC &rtc);
 	virtual void step(bool forward) =0;
 	void setPosition(int32_t position);
-	bool isMoving();
-	int32_t	getPosition();
+	bool isMoving() PURE;
+	int32_t	getPosition() PURE;
 	void rotate(bool forward, float speed, int32_t until);
 	void alarm();
 	void registerListener(StepperListener &listener);

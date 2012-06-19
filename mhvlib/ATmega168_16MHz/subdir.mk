@@ -5,7 +5,6 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../AD.cpp \
-../ADC.cpp \
 ../DAC.cpp \
 ../Device_TX.cpp \
 ../EEPROM.cpp \
@@ -24,7 +23,6 @@ CPP_SRCS += \
 
 OBJS += \
 ./AD.o \
-./ADC.o \
 ./DAC.o \
 ./Device_TX.o \
 ./EEPROM.o \
@@ -43,7 +41,6 @@ OBJS += \
 
 CPP_DEPS += \
 ./AD.d \
-./ADC.d \
 ./DAC.d \
 ./Device_TX.d \
 ./EEPROM.d \

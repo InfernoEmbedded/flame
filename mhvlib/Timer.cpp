@@ -27,7 +27,7 @@
 
 #include <mhvlib/Timer.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Attach a listener to channel 1

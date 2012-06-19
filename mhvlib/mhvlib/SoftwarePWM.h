@@ -30,7 +30,7 @@
 
 #include <mhvlib/Timer.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class SoftwarePWMListener {
 public:

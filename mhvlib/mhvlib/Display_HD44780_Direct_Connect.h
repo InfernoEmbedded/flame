@@ -53,7 +53,7 @@
 #define HD44780_TINSTR	39		// us
 #define HD44780_TRAM	430		// us
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * A class for operating HD44780 based LCD displays (and compatible) in 4 bit mode

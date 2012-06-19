@@ -30,7 +30,7 @@
 
 #include <mhvlib/io.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Set the colour order of the MHV_RGB struct

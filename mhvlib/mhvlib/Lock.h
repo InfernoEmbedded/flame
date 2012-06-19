@@ -7,7 +7,7 @@
 #define MHV_LOCK_H_
 #include <util/atomic.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class Lock {
 private:

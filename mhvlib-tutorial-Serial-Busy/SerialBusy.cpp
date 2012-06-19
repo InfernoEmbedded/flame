@@ -49,7 +49,7 @@
 // Bring in the power management header
 #include <avr/power.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 
 // Create a buffer we will use for a receive buffer

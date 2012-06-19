@@ -49,7 +49,7 @@ ISR(EEPROM_READY_vect) { \
 
 #define MHV_EEPROM_BUSY	-1
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class EEPROM {
 private:

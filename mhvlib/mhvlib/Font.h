@@ -12,7 +12,7 @@
  * at the bottom of the character, while the least significant is at the top
  */
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 struct font {
 	uint8_t		maxWidth;		// maximum width of a character

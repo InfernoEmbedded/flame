@@ -32,7 +32,7 @@
 #include <inttypes.h>
 #include <avr/pgmspace.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 // Font widths
 static const uint8_t fontSansSerif8x10Widths[] PROGMEM = {

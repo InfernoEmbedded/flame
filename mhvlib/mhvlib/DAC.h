@@ -31,7 +31,7 @@
 
 typedef int8_t SAMPLE;
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class DAConverter;
 

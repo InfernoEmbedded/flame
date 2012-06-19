@@ -48,7 +48,7 @@
 
 #define MHV_MAX_SERVO_COUNT	254
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 
 /* The servoOrder member is not really part of the control block, but instead is an easy way

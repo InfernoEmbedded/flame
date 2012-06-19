@@ -37,7 +37,7 @@
 // Bring in the timer header
 #include <mhvlib/Timer.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // A timer we will use to tick the RTC
 TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;

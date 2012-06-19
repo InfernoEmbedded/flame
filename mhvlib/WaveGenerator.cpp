@@ -27,7 +27,7 @@
 
 #include <mhvlib/WaveGenerator.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Generate waveforms and write them to the DAC

@@ -56,7 +56,7 @@
 // Bring in the power management header
 #include <avr/power.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 
 MHV_HARDWARESERIAL_CREATE(serial, 0, 2, MHV_USART0, 115200);

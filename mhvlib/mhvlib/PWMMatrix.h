@@ -33,7 +33,7 @@
 #include <mhvlib/Display_Monochrome_Buffered.h>
 #include <mhvlib/Timer.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class PWMMatrix_Mode : uint8_t {
 	AUTO,

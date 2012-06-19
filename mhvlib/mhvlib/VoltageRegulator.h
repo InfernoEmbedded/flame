@@ -35,7 +35,7 @@
 #include <mhvlib/Timer.h>
 #include <mhvlib/RTC.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class vreg_modes : bool {
 	BUCK,
@@ -197,7 +197,7 @@ public:
 	/**
 	 * Get the voltage as of when regulate was last called
 	 */
-	float PURE getVoltage() {
+	float getVoltage() {
 		return (float)(_lastADC * vrefMillivolts * 16384) / (divider * MHV_AD_RESOLUTION * 1000);
 	}
 };

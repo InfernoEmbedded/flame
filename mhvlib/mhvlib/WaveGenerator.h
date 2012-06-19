@@ -32,7 +32,7 @@
 #include <mhvlib/DAC.h>
 #include <avr/pgmspace.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Waveform amplification envelope

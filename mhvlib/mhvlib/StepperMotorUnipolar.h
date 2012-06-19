@@ -31,7 +31,7 @@
 #include <mhvlib/StepperMotor.h>
 #include <avr/pgmspace.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 // coil patterns for wave drive
 const uint8_t wavedrive[] PROGMEM = {

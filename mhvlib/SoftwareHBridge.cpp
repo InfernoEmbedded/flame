@@ -29,7 +29,7 @@
 
 #include <mhvlib/SoftwareHBridge.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /* Create a new H bridge where all transistors are controlled by us
  * Bottom transistors are toggled between VCC & ground.

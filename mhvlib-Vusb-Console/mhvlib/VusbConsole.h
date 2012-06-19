@@ -29,7 +29,7 @@ extern "C" {
 #include <mhvlib/RTC.h>
 #include <util/delay.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 namespace mhvlib_gpl {
 

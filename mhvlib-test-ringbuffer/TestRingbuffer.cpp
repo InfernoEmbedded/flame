@@ -50,7 +50,7 @@
 
 #include <string.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 
 /* Declare the serial object on UART0

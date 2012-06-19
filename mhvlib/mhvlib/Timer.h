@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <mhvlib/io.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class timer_mode : uint8_t {
 	ONE_SHOT,
@@ -318,6 +318,7 @@ protected:
 				break;
 			}
 			break;
+#ifdef WGM12
 		case 16:
 			switch (mode) {
 			case TIMER_MODE::ONE_SHOT:
@@ -342,6 +343,7 @@ protected:
 				break;
 			}
 			break;
+#endif
 		}
 	}
 

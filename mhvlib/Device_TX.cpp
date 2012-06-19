@@ -26,7 +26,7 @@
 
 #include <mhvlib/Device_TX.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Free a buffer allocated in debug

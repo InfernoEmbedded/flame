@@ -32,7 +32,7 @@
 #include <avr/pgmspace.h>
 #include <mhvlib/io.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 const uint8_t gammaValues[] PROGMEM = {
 	0,		0,		0,		0,		0,		0,		0,		0,

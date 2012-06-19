@@ -33,7 +33,7 @@
 #define MHV_HT1632_BRIGHTNESS_MED	7
 #define MHV_HT1632_BRIGHTNESS_MAX	15
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 enum class ht1632_command : uint8_t {
 	READ	=	0b110,
@@ -368,7 +368,7 @@ public:
 	 * @param	row		the row of the pixel
 	 * @return the value of the pixel
 	 */
-	uint8_t PURE getPixel(uint16_t col, uint16_t row) {
+	uint8_t getPixel(uint16_t col, uint16_t row) {
 		if (row < DISPLAY_Y && col < DISPLAY_X) {
 			// Coordinates of the display module
 			uint8_t moduleX, moduleY;

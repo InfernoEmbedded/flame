@@ -27,7 +27,7 @@ extern "C" {
 	#include <vusb/usbdrv.h>
 }
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 namespace mhvlib_gpl {
 
 /**

@@ -7,7 +7,7 @@
 
 #include <mhvlib/Lock.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * Create a new lock

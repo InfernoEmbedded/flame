@@ -27,7 +27,7 @@
 
 #include <mhvlib/RTC.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * A Realtime clock
@@ -49,7 +49,8 @@ namespace mhvlib_bsd {
  * @param	second	the second timestamp
  * @return true if the first timestamp is less than the second
  */
-bool PURE timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) {
+bool timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) PURE;
+bool timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) {
 	if (first.timestamp < second.timestamp) {
 		return true;
 	}
@@ -74,7 +75,8 @@ bool PURE timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second) {
  * @param	timestamp	the timestamp
  * @return the timestamp in milliseconds, clamped at 65535
  */
-uint16_t PURE getMilliseconds(const TIMESTAMP &timestamp) {
+uint16_t getMilliseconds(const TIMESTAMP &timestamp) PURE;
+uint16_t getMilliseconds(const TIMESTAMP &timestamp) {
 	if (timestamp.timestamp > 65) {
 		return 65535;
 	}
@@ -87,7 +89,8 @@ uint16_t PURE getMilliseconds(const TIMESTAMP &timestamp) {
  * @param	second	the second timestamp
  * @return true if the first timestamp is greater than or equal to the second
  */
-bool PURE timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second) {
+bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second) PURE;
+bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second) {
 	if (first.timestamp > second.timestamp) {
 		return true;
 	}
@@ -109,7 +112,8 @@ bool PURE timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &s
 /**
  *  Determine if a year is a leap year
  */
-bool CONST isLeapYear(uint16_t year) {
+bool isLeapYear(uint16_t year) CONST;
+bool isLeapYear(uint16_t year) {
 	if ((0 == year % 4 && year % 100) || 0 == year % 400) {
 		return true;
 	}

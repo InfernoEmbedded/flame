@@ -42,7 +42,7 @@ ISR(ADC_vect) { \
 #define MHV_ADC_BUFFER_CREATE(_mhvADCBufferName, _mhvADCBufferCount) \
 MHV_EVENT_ADC _mhvADCBufferName[_mhvADCBufferCount];
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 class ADCListener {
 public:

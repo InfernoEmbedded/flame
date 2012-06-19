@@ -43,7 +43,7 @@
 // Bring in the WS2801 driver
 #include <mhvlib/WS2801.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 // Instantiate the driver
 WS2801<MHV_PIN_B0, MHV_PIN_B1, LEDS> ws2801;

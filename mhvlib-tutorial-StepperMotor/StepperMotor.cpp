@@ -39,7 +39,7 @@
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
 
-using namespace mhvlib_bsd;
+using namespace mhvlib;
 
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY

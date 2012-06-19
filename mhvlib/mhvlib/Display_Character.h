@@ -29,7 +29,7 @@
 
 #include <mhvlib/Device_TX.h>
 
-namespace mhvlib_bsd {
+namespace mhvlib {
 
 /**
  * A generic text display
@@ -61,14 +61,14 @@ public:
 	/**
 	 * Get the width of the display
 	 */
-	PURE uint8_t getWidth() {
+	uint8_t getWidth() CONST {
 		return cols;
 	}
 
 	/**
 	 * Get the width of the display
 	 */
-	PURE uint8_t getHeight() {
+	uint8_t getHeight() CONST {
 		return rows;
 	}
 
