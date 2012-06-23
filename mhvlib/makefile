@@ -14,7 +14,7 @@ LIB := libmhvlib.a
 
 CPPFLAGS += -DMHVLIB_CORE=1
 
-all: $(LIB) printsize $(LSS)
+all: $(LIB) $(LSS)
 
 $(LIB): $(OBJS)
 	@echo 'Building target: $@'
@@ -26,12 +26,6 @@ $(LIB): $(OBJS)
 $(LSS): $(LIB)
 	@echo 'Invoking: AVR Create Extended Listing'
 	-avr-objdump -h -S "$(LIB)" > "$(LSS)"
-	@echo 'Finished building: $@'
-	@echo ' '
-
-printsize: $(LIB)
-	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=$(MCU) $(LIB)
 	@echo 'Finished building: $@'
 	@echo ' '
 
