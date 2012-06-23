@@ -28,7 +28,7 @@
  * Sure Electronics DE-DP105 displays
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 #include <avr/interrupt.h>
 #include <util/delay.h>

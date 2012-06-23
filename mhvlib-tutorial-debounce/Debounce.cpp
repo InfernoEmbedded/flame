@@ -29,7 +29,7 @@
  *
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 #include <mhvlib/io.h>
 #include <mhvlib/Timer.h>

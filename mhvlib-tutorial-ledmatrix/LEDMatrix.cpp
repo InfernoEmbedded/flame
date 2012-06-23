@@ -29,7 +29,7 @@
  * and 10 & 11 (columns)
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the interrupt library
 #include <avr/interrupt.h>

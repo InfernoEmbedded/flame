@@ -28,7 +28,7 @@
 /* A clock to demonstrate the RTC class
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 #include <mhvlib/io.h>
 #include <mhvlib/HardwareSerial.h>

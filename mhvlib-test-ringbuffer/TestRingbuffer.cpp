@@ -28,7 +28,7 @@
 /* A simple blinking LED on Arduino pin 13 - a loop with sleeps
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>

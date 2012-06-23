@@ -43,7 +43,7 @@
  * n+1	LED Positive
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 #include <avr/interrupt.h>
 #include <util/delay.h>

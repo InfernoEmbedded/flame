@@ -28,7 +28,7 @@
 /* Drive a string of WS2801 controlled LEDs,
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>

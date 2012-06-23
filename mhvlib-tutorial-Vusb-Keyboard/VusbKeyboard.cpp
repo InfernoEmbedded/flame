@@ -20,7 +20,7 @@
  * With GCC 4.5.2, Optimisation need to be disabled for this program to work (-O0)
  *
  */
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
