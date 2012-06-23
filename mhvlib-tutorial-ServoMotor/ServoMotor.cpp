@@ -19,7 +19,7 @@
 /* Demonstrates how to use the servo driver
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
