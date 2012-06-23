@@ -1,8 +1,8 @@
+LIBDIR=.
+-include $(CURDIR)/common.mk
 # Source files
 
-SRCS := $(wildcard *.cpp)
-OBJS := $(SRCS:.cpp=.o)
-DEPS := $(SRCS:.cpp=.d)
+SRCS = $(wildcard *.cpp)
 
 # Output
 
@@ -12,13 +12,7 @@ LIB := libmhvlib.a
 
 # Compiler options
 
-CPPFLAGS := -DMHVLIB_CORE=1 -Wall -Wextra -g2 -gstabs -Os -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse -funsigned-char -funsigned-bitfields -fno-exceptions -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn  -Wno-non-virtual-dtor -std=c++11 -mmcu=$(MCU) -DF_CPU=$(MHZ)000000UL
-
-
-# Tools
-
-RM := rm -rf
-
+CPPFLAGS += -DMHVLIB_CORE=1
 
 all: $(LIB) printsize $(LSS)
 
@@ -41,18 +35,11 @@ printsize: $(LIB)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-%.o: %.cpp
-	@echo 'Building file: $<'
-	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"." -I"./mhvlib" $(CPPFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -c -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
 clean:
 	-$(RM) $(OBJS) $(DEPS) $(LSS) $(LIB)
 	-@echo ' '
 
-.PHONY: all clean dependents
+.PHONY: all clean
 .SECONDARY:
 
 -include $(DEPS)
