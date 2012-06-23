@@ -5,6 +5,9 @@ MHZ ?= 16
 # PROJECT is the name used for the output files
 PROJECT=mhvlib-tutorial-Vusb-Keyboard
 
+VUSBDIR=../mhvlib-Vusb-Keyboard
+include $(VUSBDIR)/include.mk
+
 LIBDIR=../mhvlib
 include $(LIBDIR)/project.mk
 
