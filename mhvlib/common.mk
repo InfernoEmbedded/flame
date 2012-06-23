@@ -25,6 +25,14 @@ ifdef $(findstring $(MHVAVRTOOLS)/bin,$(PATH))
 	PATH="$PATH:$MHVAVRTOOLS/bin"
 endif
 
+ifndef MCU
+$(error No MCU (avr model) has been set. You can set one by running make like this: make MCU=atmega328p MHZ=16 )
+endif
+
+ifndef MHZ
+$(error No MHZ value has been set. You can set one by running make like this: 'make MCU=atmega328p MHZ=16' )
+endif
+
 
 %.o: %.cpp
 	@echo 'Building file: $<'
