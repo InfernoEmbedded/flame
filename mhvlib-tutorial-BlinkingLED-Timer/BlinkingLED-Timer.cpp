@@ -59,7 +59,7 @@ TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
  */
-MHV_TIMER_ASSIGN_2INTERRUPTS(tickTimer, MHV_TIMER2_INTERRUPTS);
+MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 /* A trigger function that will be called every time the timer is triggered
  * Since we want a timer triggered every 333ms, but the hardware is incapable
@@ -91,7 +91,7 @@ MAIN {
 	power_all_disable();
 	power_timer2_enable();
 // Specify what level sleep to perform
-	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+//	set_sleep_mode(SLEEP_MODE_IDLE);
 
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
 	setOutput(MHV_ARDUINO_PIN_13);

@@ -61,7 +61,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(animationTimer, MHV_TIMER2_INTERRUPTS);
 
 /* Declare a 16 bit timer for PWM output
  */
-TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16>pwmTimer;
+TimerImplementation<MHV_TIMER16_1, TIMER_MODE::REPETITIVE>pwmTimer;
 MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
 
 /* The maximum value of the PWM
@@ -168,8 +168,8 @@ MAIN {
 	 */
 	pwmTimer.setOutput1(PWM_TOP);
 
-	// Start with the PWM duty cycle set to 0
-	pwmTimer.setOutput2(0);
+	// Start with the PWM duty cycle set to 1
+	pwmTimer.setOutput2(1);
 
 	// Start the timers
 	animationTimer.enable();
