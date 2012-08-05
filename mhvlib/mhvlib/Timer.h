@@ -134,7 +134,7 @@ protected:
 	 * @param	factor		the prescaler factor
 	 */
 	INLINE void calculateTop(uint32_t *time, uint16_t factor) {
-		*time = *time / factor - 1;
+		*time = (*time / factor) - 1;
 
 		return;
 	}
@@ -218,7 +218,7 @@ public:
 	}
 
 	virtual uint16_t current() =0;
-	virtual void setPeriods(TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) =0;
+	virtual void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2) =0;
 	virtual void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) =0;
 	virtual TIMER_PRESCALER getPrescaler() =0;
 	virtual uint16_t getPrescalerMultiplier() =0;
@@ -490,15 +490,24 @@ public:
 	 * @param	time1		the first time in prescaled timer ticks
 	 * @param	time2		the second time in prescaled timer ticks
 	 */
-	void setPeriods(TIMER_PRESCALER prescaler, uint8_t time1, uint8_t time2) {
+	void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2) {
 		_prescaler = prescaler;
 
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_setPrescaler(prescaler);
 
-			_SFR_MEM8(counter) = 0;
-			_SFR_MEM8(outputCompare1) = time1;
-			_SFR_MEM8(outputCompare2) = time2;
+			switch (bits) {
+			case 8:
+				_SFR_MEM8(counter) = 0;
+				_SFR_MEM8(outputCompare1) = time1;
+				_SFR_MEM8(outputCompare2) = time2;
+				break;
+			case 16:
+				_SFR_MEM16(counter) = 0;
+				_SFR_MEM16(outputCompare1) = time1;
+				_SFR_MEM16(outputCompare2) = time2;
+				break;
+			}
 		}
 	}
 
@@ -515,10 +524,25 @@ public:
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_setPrescaler(prescaler);
 
-			_SFR_MEM16(counter) = 0;
-			_SFR_MEM16(outputCompare1) = time1;
-			_SFR_MEM16(outputCompare2) = time2;
-			_SFR_MEM16(outputCompare3) = time3;
+			switch (bits) {
+			case 8:
+				_SFR_MEM8(counter) = 0;
+				_SFR_MEM8(outputCompare1) = time1;
+				_SFR_MEM8(outputCompare2) = time2;
+				if (0 != outputCompare3) {
+					_SFR_MEM8(outputCompare3) = time3;
+				}
+				break;
+
+			case 16:
+				_SFR_MEM16(counter) = 0;
+				_SFR_MEM16(outputCompare1) = time1;
+				_SFR_MEM16(outputCompare2) = time2;
+				if (0 != outputCompare3) {
+					_SFR_MEM16(outputCompare3) = time3;
+				}
+				break;
+			}
 		}
 	}
 

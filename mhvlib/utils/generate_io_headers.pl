@@ -267,7 +267,7 @@ EOF
 			$overflow3 //= 0;
 			$overflow3 = pack 'A10', $overflow3 . ',';
 
-			my $inputCapture1 = $macros{"ICR${timer}A"};
+			my $inputCapture1 = $macros{"ICR${timer}"};
 			$inputCapture1 //= 0;
 			$inputCapture1 = pack 'A14', $inputCapture1 . ',';
 			my $counter = pack 'A8', $macros{"TCNT${timer}"} . ',';

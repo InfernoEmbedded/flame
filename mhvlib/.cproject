@@ -45,7 +45,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.722123715" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1471161432" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1471161432" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1212147422" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
@@ -108,7 +108,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.222016158" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.719287852" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.719287852" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.519376877" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
@@ -170,7 +170,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.678825865" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1329090848" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
@@ -232,7 +232,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1124069608" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.384518180" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.384518180" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.651756960" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
@@ -295,7 +295,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.1234136491" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.966524961" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.966524961" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1001676218" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
