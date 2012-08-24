@@ -34,19 +34,31 @@
 namespace mhvlib {
 
 // coil patterns for wave drive
+#ifdef __FLASH
+const uint8_t __flash wavedrive[] = {
+#else
 const uint8_t wavedrive[] PROGMEM = {
+#endif
 //	Phase  xxxx DCBA
 		0x01, 0x02, 0x04, 0x08
 };
 
 // coil patterns for full step drive
+#ifdef __FLASH
+const uint8_t __flash fulldrive[] = {
+#else
 const uint8_t fulldrive[] PROGMEM = {
+#endif
 //	Phase  xxxx DCBA
 		0x03, 0x06, 0x0c, 0x09
 };
 
 // coil patterns for half step drive
+#ifdef __FLASH
+const uint8_t __flash halfdrive[] = {
+#else
 const uint8_t halfdrive[] PROGMEM = {
+#endif
 //	Phase  xxxx DCBA
 		0x01, 0x03, 0x02, 0x06, 0x04, 0x0c, 0x08, 0x09
 };
@@ -88,6 +100,19 @@ private:
 	void setPins() {
 		uint8_t coilPattern = 0;
 
+#ifdef __FLASH
+		switch (mode) {
+		case STEPPER_MODE::WAVE:
+			coilPattern = wavedrive[_state];
+			break;
+		case STEPPER_MODE::FULL:
+			coilPattern = fulldrive[_state];
+			break;
+		case STEPPER_MODE::HALF:
+			coilPattern = halfdrive[_state];
+			break;
+		}
+#else
 		switch (mode) {
 		case STEPPER_MODE::WAVE:
 			coilPattern = pgm_read_byte(wavedrive + _state);
@@ -99,6 +124,7 @@ private:
 			coilPattern = pgm_read_byte(halfdrive + _state);
 			break;
 		}
+#endif
 
 		coilPattern <<= phaseAPin;
 		_MMIO_BYTE(phaseAOut) = (_MMIO_BYTE(phaseAOut) & ~PHASE_MASK) | coilPattern;

@@ -46,14 +46,262 @@ do {\
 
 namespace mhvlib {
 
-struct tx_buffer {
-	const char	*data;
-	uint16_t	length;
-	void		(*completeFunction)(const char *);
-	bool		progmem;
-	bool		isString;
+enum AddressType {
+	NORMAL,
+#if 0 && defined __FLASH
+	FLASH,
+#endif
+#if 0 && defined __MEMX
+	MEMX,
+#endif
+	PROG_MEM
 };
-typedef struct tx_buffer TX_BUFFER;
+
+class TXBuffer {
+protected:
+	const void	*_data;
+	uint16_t 	_offset;
+	uint16_t	_length;
+	void		(*_completeFunction)(const char *);
+	AddressType	_type;
+	bool		_isString;
+
+public:
+
+	/**
+	 * Create a buffer holding a string
+	 * @param string	the string to stick in the buffer
+	 */
+	TXBuffer(const char *string) :
+		_data(string),
+		_offset(0),
+		_length(0),
+		_completeFunction(NULL),
+		_type(NORMAL),
+		_isString(true) {}
+
+	/**
+	 * Create a buffer holding a string
+	 * @param string			the string to stick in the buffer
+	 * @param completeFunction	a function to call when we are done with the string, will be passed the string
+	 */
+	TXBuffer(const char *string, void (*completeFunction)(const char *)) :
+		_data(string),
+		_offset(0),
+		_length(0),
+		_completeFunction(completeFunction),
+		_type(NORMAL),
+		_isString(true) {}
+
+	/**
+	 * Create a buffer holding a progmem string
+	 * @param string	the string to stick in the buffer
+	 * @param ignored	provided only to distinguish against a memory string
+	 */
+	TXBuffer(PGM_P string, char ignored UNUSED) :
+		_data(string),
+		_offset(0),
+		_length(0),
+		_completeFunction(NULL),
+		_type(PROG_MEM),
+		_isString(true) {}
+
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Create a buffer holding a flash string
+	 * @param string
+	 */
+	TXBuffer(const __flash char *string) :
+		_data(string),
+		_offset(0),
+		_length(0),
+		_completeFunction(NULL),
+		_type(FLASH),
+		_isString(true) {}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Create a buffer holding a memx string
+	 * @param string
+	 */
+	TXBuffer(const __memx char *string) :
+		_data(string),
+		_offset(0),
+		_length(0),
+		_completeFunction(NULL),
+		_type(MEMX),
+		_isString(true) {}
+#endif
+#endif
+
+	/**
+	 * Create a buffer holding a block of memory
+	 * @param buffer	the buffer
+	 * @param length	the length of the buffer
+	 */
+	TXBuffer(const char *buffer, uint16_t length) :
+		_data(buffer),
+		_offset(0),
+		_length(length),
+		_completeFunction(NULL),
+		_type(NORMAL),
+		_isString(false) {}
+
+	/**
+	 * Create a buffer holding a block of memory
+	 * @param buffer	the buffer
+	 * @param length	the length of the buffer
+	 * @param completeFunction	a function to call when we are done with the string, will be passed the buffer
+	 */
+	TXBuffer(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) :
+		_data(buffer),
+		_offset(0),
+		_length(length),
+		_completeFunction(completeFunction),
+		_type(NORMAL),
+		_isString(false) {}
+
+
+	/**
+	 * Create a buffer holding a progmem block of memory
+	 * @param buffer	the buffer
+	 * @param length	the length of the buffer
+	 * @param ignored	provided only to distinguish against a memory string
+	 */
+	TXBuffer(PGM_P buffer, uint16_t length, char ignored UNUSED) :
+		_data(buffer),
+		_offset(0),
+		_length(length),
+		_completeFunction(NULL),
+		_type(PROG_MEM),
+		_isString(false) {}
+
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Create a buffer holding a flash block of memory
+	 * @param buffer	the buffer
+	 * @param length	the length of the buffer
+	 */
+	TXBuffer(const __flash char *buffer buffer, uint16_t length) :
+		_data(buffer),
+		_offset(0),
+		_length(length),
+		_completeFunction(NULL),
+		_type(FLASH),
+		_isString(false) {}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Create a buffer holding a flash block of memory
+	 * @param buffer	the buffer
+	 * @param length	the length of the buffer
+	 */
+	TXBuffer(const __memx char *buffer buffer, uint16_t length) :
+		_data(buffer),
+		_offset(0),
+		_length(length),
+		_completeFunction(NULL),
+		_type(MEMX),
+		_isString(false) {}
+#endif
+#endif
+
+
+	/**
+	 * Get the position in the current buffer
+	 * @return the current position
+	 */
+	uint16_t getPosition() {
+		return _offset;
+	}
+
+
+	/**
+	 * Seek the position in the current buffer
+	 * @param	position	the desired position
+	 */
+	void seek(uint16_t position) {
+		if (position > _length - 1) {
+			return;
+		}
+
+		_offset = position;
+	}
+
+
+	/**
+	 * Get the character at an offset
+	 * @param	offset	the offset
+	 * @return the character at the offset, or -1 if there is none
+	 */
+	int peek(uint16_t offset) {
+		char c = '\0';
+
+		if (!_isString && offset >= (_length - 1)) {
+			return -1;
+		}
+
+		switch (_type) {
+			case NORMAL:
+				c = *((const char *)_data + offset);
+				break;
+			case PROG_MEM:
+				c = pgm_read_byte((PGM_P)_data + offset);
+				break;
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+			case FLASH:
+				const __flash char *flash = _data + offset;
+				c = *flash;
+				break;
+#endif
+#ifdef __MEMX
+			case MEMX:
+				const __memx char *memx = _data + offset;
+				c = *memx;
+				break;
+#endif
+#endif
+		}
+
+		if ((_isString && '\0' == c)) {
+			return -1;
+		}
+
+		return (int)c;
+
+	}
+
+	/**
+	 * Get a character to transmit
+	 * @return the character, or -1 if there is nothing left
+	 */
+	int nextCharacter() {
+		return peek(_offset++);
+	}
+
+
+	/**
+	 * Called when the buffer is no longer needed
+	 */
+	void discard() {
+		if (NULL != _completeFunction) {
+			_completeFunction((const char *)_data);
+		}
+	}
+
+	/**
+	 * Does this buffer have more characters?
+	 * @return true if there are more characters
+	 */
+	bool hasMore() {
+		return -1 != peek(_offset);
+	}
+};
 
 void device_tx_free(const char *buf);
 
@@ -63,8 +311,7 @@ void device_tx_free(const char *buf);
  */
 class Device_TX {
 protected:
-	TX_BUFFER				_currentTx;
-	const char					*_tx;
+	TXBuffer				_currentTx;
 	RingBuffer				&_txPointers;
 
 	/**
@@ -72,13 +319,8 @@ protected:
 	 * @param	txPointers	a ringbuffer to store TX elements in
 	 */
 	Device_TX(RingBuffer &txPointers) :
-			_txPointers(txPointers) {
-		_currentTx.data = NULL;
-		_currentTx.length = 0;
-		_currentTx.completeFunction = NULL;
-		_currentTx.progmem = false;
-		_currentTx.isString = false;
-	}
+			_currentTx(NULL),
+			_txPointers(txPointers) {}
 
 	virtual void runTxBuffers()=0;
 
@@ -87,53 +329,33 @@ protected:
 	 * @return true if there is another buffer to process
 	 */
 	bool moreTX() {
-	// Call the completeFunction, if one is provided - allows the user to free memory, etc
-		if (NULL != _currentTx.completeFunction) {
-			_currentTx.completeFunction(_currentTx.data);
-		}
+		_currentTx.discard();
 
 		if (_txPointers.consume(&_currentTx, sizeof(_currentTx))) {
-			_tx = NULL;
 			return false;
 		}
-
-		_tx = _currentTx.data;
 
 		return true;
 	}
 
 	/**
-	 * Called by children to get a character to transmit
-	 * @return the character, or -1 if there is nothing left
+	 * Get the next character
+	 * @return the next character, or -1 if there is no more
 	 */
 	int nextCharacter() {
-		char c = '\0';
-
-		if (NULL != _tx) {
-			if (_currentTx.progmem) {
-				c = pgm_read_byte(_tx);
-			} else {
-				c = *_tx;
-			}
-		}
-
-		if ((_currentTx.isString && ('\0' == c)) ||
-				(!_currentTx.isString && (_tx == _currentTx.data + _currentTx.length))) {
+		int c = _currentTx.nextCharacter();
+		while (-1 == c) {
 			if (!moreTX()) {
-				_tx = NULL;
-				_currentTx.data = NULL;
-				_currentTx.length = 0;
-				_currentTx.completeFunction = NULL;
-				_currentTx.progmem = false;
-				_currentTx.isString = false;
 				return -1;
 			}
 
-			return nextCharacter();
+			c = _currentTx.nextCharacter();
+			if (-1 != c) {
+				break;
+			}
 		}
 
-		_tx++;
-		return (int)c;
+		return c;
 	}
 
 	//	virtual ~MHV_Device_TX();
@@ -143,30 +365,97 @@ public:
 	 * Can we accept another buffer?
 	 */
 	bool canWrite() {
-		return !(_txPointers.full(sizeof(TX_BUFFER)));
+		return !(_txPointers.full(sizeof(TXBuffer)));
 	}
 
 	/**
 	 * Write a progmem string asynchronously
-	 * @param	buffer	the progmem string
+	 * @param	string	the progmem string
 	 * @return 	false on success
 	 * 			true if there is already a string being sent
 	 */
-	bool write_P(PGM_P buffer) {
-		TX_BUFFER buf;
+	bool write_P(PGM_P string) {
+		TXBuffer buf(string);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
 		}
 
-		buf.data = buffer;
-		buf.length = 0;
-		buf.completeFunction = NULL;
-		buf.progmem = true;
-		buf.isString = true;
+		_txPointers.append(&buf, sizeof(buf));
+
+		if (!_currentTx.hasMore()) {
+			runTxBuffers();
+		}
+
+		return false;
+	}
+
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Write a flash string asynchronously
+	 * @param	string	the string
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(const __flash char *string) {
+		TXBuffer buf(string);
+
+		if (_txPointers.full(sizeof(buf))) {
+			return true;
+		}
 
 		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
+
+		if (!_currentTx.hasMore()) {
+			runTxBuffers();
+		}
+
+		return false;
+	}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Write a memx string asynchronously
+	 * @param	string	the string
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(const __memx char *string) {
+		TXBuffer buf(string);
+
+		if (_txPointers.full(sizeof(buf))) {
+			return true;
+		}
+
+		_txPointers.append(&buf, sizeof(buf));
+
+		if (!_currentTx.hasMore()) {
+			runTxBuffers();
+		}
+
+		return false;
+	}
+#endif
+#endif
+
+	/**
+	 * Write a string asynchronously
+	 * @param	string	the string
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(const char *string) {
+		TXBuffer buf(string);
+
+		if (_txPointers.full(sizeof(buf))) {
+			return true;
+		}
+
+		_txPointers.append(&buf, sizeof(buf));
+
+		if (!_currentTx.hasMore()) {
 			runTxBuffers();
 		}
 
@@ -175,53 +464,21 @@ public:
 
 	/**
 	 * Write a string asynchronously
-	 * @param	buffer	the string
-	 * @return 	false on success
-	 * 			true if there is already a string being sent
-	 */
-	bool write(const char *buffer) {
-		TX_BUFFER buf;
-
-		if (_txPointers.full(sizeof(buf))) {
-			return true;
-		}
-
-		buf.data = buffer;
-		buf.length = 0;
-		buf.completeFunction = NULL;
-		buf.progmem = false;
-		buf.isString = true;
-
-		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
-			runTxBuffers();
-		}
-
-		return false;
-	}
-
-	/**
-	 * Write a string asynchronously
-	 * @param	buffer				the string
+	 * @param	string				the string
 	 * @param	completeFunction	a function to call when the string has been written (the string is passed as a parameter)
 	 * @return 	false on success
 	 * 			true if there is already a string being sent
 	 */
-	bool write(const char *buffer, void (*completeFunction)(const char *)) {
-		TX_BUFFER buf;
+	bool write(const char *string, void (*completeFunction)(const char *)) {
+		TXBuffer buf(string, completeFunction);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
 		}
 
-		buf.data = buffer;
-		buf.length = 0;
-		buf.completeFunction = completeFunction;
-		buf.progmem = false;
-		buf.isString = true;
-
 		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
+
+		if (!_currentTx.hasMore()) {
 			runTxBuffers();
 		}
 
@@ -236,25 +493,72 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P buffer, uint16_t length) {
-		TX_BUFFER buf;
+		TXBuffer buf(buffer, length);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
 		}
 
-		buf.data = buffer;
-		buf.length = length;
-		buf.completeFunction = NULL;
-		buf.progmem = true;
-		buf.isString = false;
-
 		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
+
+		if (!_currentTx.hasMore()) {
 			runTxBuffers();
 		}
 
 		return false;
 	}
+
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Write a flash buffer asynchronously
+	 * @param	buffer	the buffer
+	 * @param	length	the length of the buffer
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(const __flash char *buffer, uint16_t length) {
+		TXBuffer buf(buffer, length);
+
+		if (_txPointers.full(sizeof(buf))) {
+			return true;
+		}
+
+		_txPointers.append(&buf, sizeof(buf));
+
+		if (!_currentTx.hasMore()) {
+			runTxBuffers();
+		}
+
+		return false;
+	}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Write a memx buffer asynchronously
+	 * @param	buffer	the buffer
+	 * @param	length	the length of the buffer
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(const __memx char *buffer, uint16_t length) {
+		TXBuffer buf(buffer, length);
+
+		if (_txPointers.full(sizeof(buf))) {
+			return true;
+		}
+
+		_txPointers.append(&buf, sizeof(buf));
+
+		if (!_currentTx.hasMore()) {
+			runTxBuffers();
+		}
+
+		return false;
+	}
+#endif
+#endif
 
 	/**
 	 * Write a buffer asynchronously
@@ -264,20 +568,15 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer, uint16_t length) {
-		TX_BUFFER buf;
+		TXBuffer buf(buffer, length);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
 		}
 
-		buf.data = buffer;
-		buf.length = length;
-		buf.completeFunction = NULL;
-		buf.progmem = false;
-		buf.isString = false;
-
 		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
+
+		if (!_currentTx.hasMore()) {
 			runTxBuffers();
 		}
 
@@ -293,20 +592,15 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) {
-		TX_BUFFER buf;
+		TXBuffer buf(buffer, length, completeFunction);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
 		}
 
-		buf.data = buffer;
-		buf.length = length;
-		buf.completeFunction = completeFunction;
-		buf.progmem = false;
-		buf.isString = false;
-
 		_txPointers.append(&buf, sizeof(buf));
-		if (!_tx) {
+
+		if (!_currentTx.hasMore()) {
 			runTxBuffers();
 		}
 
@@ -388,7 +682,6 @@ public:
 
 		va_end(ap);
 		return true;
-
 	}
 
 //	/**
@@ -453,7 +746,7 @@ public:
 template<uint8_t txCount>
 class Device_TXImplementation : public Device_TX {
 protected:
-	RingBufferImplementation<txCount * sizeof(TX_BUFFER)>
+	RingBufferImplementation<txCount * sizeof(TXBuffer)>
 					_myTxPointers;
 
 	/**

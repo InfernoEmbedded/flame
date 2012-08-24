@@ -137,7 +137,11 @@ void timestampIncrement(TIMESTAMP &timestamp, uint32_t seconds, uint16_t millise
 	timestamp.timestamp += seconds;
 }
 
+#if 0 && defined __FLASH
+const uint8_t __flash mhv_daysInMonthArray[] = {
+#else
 const uint8_t mhv_daysInMonthArray[] PROGMEM = {
+#endif
 		31,	// Jan
 		28,	// Feb
 		31,	// Mar
@@ -164,7 +168,11 @@ uint8_t CONST daysInMonth(MONTH month, uint16_t year) {
 		return 29;
 	}
 
+#if 0 && defined __FLASH
+	return mhv_daysInMonthArray[month - 1];
+#else
 	return pgm_read_byte(mhv_daysInMonthArray + (month - 1));
+#endif
 }
 
 }

@@ -53,7 +53,7 @@ template<uint16_t cols, uint16_t rows, uint8_t txBuffers,
 	MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), MHV_DECLARE_PIN(enable)>
 class Display_HD44780_Shift_Register : public Display_HD44780<cols, rows, txBuffers> {
 private:
-	ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(clock)> _shifter;
+	ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(data)> _shifter;
 
 protected:
 	/**

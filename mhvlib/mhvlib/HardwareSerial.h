@@ -107,7 +107,6 @@ public:
 	 */
 	HardwareSerial() {
 		_echo = false;
-		Device_TX::_tx = NULL;
 
 		setSpeed(baud);
 	}
@@ -132,7 +131,6 @@ public:
 
 		if (-1 == c) {
 			// Nothing more to send, disable the TX interrupt
-			Device_TX::_tx = NULL;
 			_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
 			return;
 		}
@@ -183,7 +181,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((NULL == Device_TX::_tx) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return ((NULL == Device_TX::_currentTx.hasMore()) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
 	}
 
 	/**
@@ -239,6 +237,87 @@ public:
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
 	}
+
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Write a null terminated flash string to the serial port
+	 *
+	 * @param	buffer	the string to write
+	 */
+	void busyWrite(const __flash char *buffer) {
+		const __flash char *p;
+
+		while (!canSendBusy()) {};
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+
+		for (p = buffer; *p != '\0';) {
+			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+
+			_MMIO_BYTE(usartIO) = *(p++);
+		}
+	}
+
+	/**
+	 * Write a buffer from flash
+	 * @param	buffer	the buffer to write
+	 * @param	length	the length of the buffer
+	 */
+	void busyWrite_P(const __flash char *buffer, uint16_t length) {
+		uint16_t i;
+
+		while (!canSendBusy()) {};
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+
+		for (i = 0; i < length; i++) {
+			/* Don't need to check return values as we have already checked up front
+			 * and async writes can't be initiated until we're done
+			 */
+			busyWrite(buffer[i]));
+		}
+	}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Write a null terminated flash string to the serial port
+	 *
+	 * @param	buffer	the string to write
+	 */
+	void busyWrite(const __memx char *buffer) {
+		const __memx char *p;
+
+		while (!canSendBusy()) {};
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+
+		for (p = buffer; *p != '\0';) {
+			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+
+			_MMIO_BYTE(usartIO) = *(p++);
+		}
+	}
+
+	/**
+	 * Write a buffer from memx
+	 * @param	buffer	the buffer to write
+	 * @param	length	the length of the buffer
+	 */
+	void busyWrite_P(const __memx char *buffer, uint16_t length) {
+		uint16_t i;
+
+		while (!canSendBusy()) {};
+		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+
+		for (i = 0; i < length; i++) {
+			/* Don't need to check return values as we have already checked up front
+			 * and async writes can't be initiated until we're done
+			 */
+			busyWrite(buffer[i]));
+		}
+	}
+
+#endif
+#endif
 
 	/**
 	 * Write a buffer from PROGMEM

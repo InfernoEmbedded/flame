@@ -73,6 +73,38 @@ public:
 	}
 
 	/**
+	 * Write a TX buffer to the display
+	 * @param	offsetX		the horizontal offset to start writing at
+	 * @param	offsetY		the vertical offset to start writing at
+	 * @param	txBuffer	the buffer to write
+	 * @return true if anything was written
+	 */
+	bool write(int16_t *offsetX, uint16_t offsetY, TXBuffer &txBuffer) {
+		uint16_t currentPosition = txBuffer.getPosition();
+
+		if (*offsetX < 0) {
+			txBuffer.seek (0 - *offsetX);
+			*offsetX = 0;
+		} else {
+			txBuffer.seek(0);
+		}
+
+		setCursor((uint16_t)*offsetX, offsetY);
+
+		bool ret = false;
+		if (offsetY < rows) {
+			int c;
+			while (-1 != (c = txBuffer.nextCharacter()) && (*offsetX)++ < (int16_t)cols) {
+				ret = true;
+				writeChar((char)c);
+			}
+		}
+
+		txBuffer.seek(currentPosition);
+		return ret;
+	}
+
+	/**
 	 * Write a string to the display
 	 * @param	offsetX		the horizontal offset to start writing at
 	 * @param	offsetY		the vertical offset to start writing at
@@ -190,6 +222,124 @@ public:
 		return ret;
 	}
 
+#ifdef UNSUPPORTED
+#ifdef __FLASH
+	/**
+	 * Write a flash string to the display
+	 * @param	offsetX		the horizontal offset to start writing at
+	 * @param	offsetY		the vertical offset to start writing at
+	 * @param	string		the string to write
+	 * @return true if anything was written
+	 */
+	bool writeString(int16_t *offsetX, uint16_t offsetY, const __flash char *string) {
+		char c;
+
+		while (*offsetX < 0) {
+			(*offsetX)++;
+			p++;
+			if ('\0' == *p) {
+				return false;
+			}
+		}
+		setCursor((uint16_t)*offsetX, offsetY);
+
+		bool ret = false;
+		if (offsetY < rows) {
+			while ('\0' != (c = *p++) && (*offsetX)++ < (int16_t)cols) {
+				ret = true;
+				writeChar(c);
+			}
+		}
+
+		return ret;
+	}
+
+	/**
+	 * Write a PROGMEM buffer to the display
+	 * @param	offsetX		the horizontal offset to start writing at
+	 * @param	offsetY		the vertical offset to start writing at
+	 * @param	buffer		the buffer to write
+	 * @param	length		the length of the buffer
+	 * @return true if anything was written
+	 */
+	bool writeBuffer(int16_t *offsetX, uint16_t offsetY, const __flash char *buffer, uint16_t length) {
+		bool ret = false;
+		uint16_t i = 0;
+
+		while (*offsetX < 0) {
+			(*offsetX)++;
+			i++;
+		}
+		setCursor((uint16_t)*offsetX, offsetY);
+
+		while (i < length && (*offsetX)++ < (int16_t)cols) {
+			ret = true;
+			writeChar(buffer[i++]);
+		}
+
+		return ret;
+	}
+#endif
+
+#ifdef __MEMX
+	/**
+	 * Write a flash string to the display
+	 * @param	offsetX		the horizontal offset to start writing at
+	 * @param	offsetY		the vertical offset to start writing at
+	 * @param	string		the string to write
+	 * @return true if anything was written
+	 */
+	bool writeString(int16_t *offsetX, uint16_t offsetY, const __memx char *string) {
+		char c;
+
+		while (*offsetX < 0) {
+			(*offsetX)++;
+			p++;
+			if ('\0' == *p) {
+				return false;
+			}
+		}
+		setCursor((uint16_t)*offsetX, offsetY);
+
+		bool ret = false;
+		if (offsetY < rows) {
+			while ('\0' != (c = *p++) && (*offsetX)++ < (int16_t)cols) {
+				ret = true;
+				writeChar(c);
+			}
+		}
+
+		return ret;
+	}
+
+	/**
+	 * Write a PROGMEM buffer to the display
+	 * @param	offsetX		the horizontal offset to start writing at
+	 * @param	offsetY		the vertical offset to start writing at
+	 * @param	buffer		the buffer to write
+	 * @param	length		the length of the buffer
+	 * @return true if anything was written
+	 */
+	bool writeBuffer(int16_t *offsetX, uint16_t offsetY, const __memx char *buffer, uint16_t length) {
+		bool ret = false;
+		uint16_t i = 0;
+
+		while (*offsetX < 0) {
+			(*offsetX)++;
+			i++;
+		}
+		setCursor((uint16_t)*offsetX, offsetY);
+
+		while (i < length && (*offsetX)++ < (int16_t)cols) {
+			ret = true;
+			writeChar(buffer[i++]);
+		}
+
+		return ret;
+	}
+#endif
+#endif
+
 	/**
 	 * Start rendering TX buffers
 	 */
@@ -204,7 +354,7 @@ public:
 	 * @return true if there are more frames to be rendered
 	 */
 	bool txAnimation(uint16_t row) {
-		if (!Device_TX::_tx) {
+		if (!Device_TX::_currentTx.hasMore()) {
 			return false;
 		}
 
@@ -213,19 +363,7 @@ public:
 		setCursor(0, row);
 
 		bool ret;
-		if (Device_TX::_currentTx.progmem) {
-			if (Device_TX::_currentTx.isString) {
-				ret = writeString_P(&offsetX, row, Device_TX::_tx);
-			} else {
-				ret = writeBuffer_P(&offsetX, row, Device_TX::_tx, Device_TX::_currentTx.length);
-			}
-		} else {
-			if (Device_TX::_currentTx.isString) {
-				ret = writeString(&offsetX, row, Device_TX::_tx);
-			} else {
-				ret = writeBuffer(&offsetX, row, Device_TX::_tx, Device_TX::_currentTx.length);
-			}
-		}
+		ret = write(&offsetX, row, Device_TX::_currentTx);
 
 		while (offsetX++ < (int16_t)cols) {
 			writeChar(' ');

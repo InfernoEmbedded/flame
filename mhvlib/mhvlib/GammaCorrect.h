@@ -34,7 +34,11 @@
 
 namespace mhvlib {
 
+#if 0 && defined __FLASH
+const uint8_t __flash gammaValues[] = {
+#else
 const uint8_t gammaValues[] PROGMEM = {
+#endif
 	0,		0,		0,		0,		0,		0,		0,		0,
 	0,		0,		0,		0,		0,		0,		0,		0,
 	0,		0,		0,		0,		0,		0,		1,		1,
@@ -78,7 +82,11 @@ uint8_t calculatedGammaCorrect(uint8_t value);
  * return the gamma corrected value
  */
 inline uint8_t precalculatedGammaCorrect(uint8_t value) {
+#if 0 && defined __FLASH
+	return gammaValues[value];
+#else
 	return pgm_read_byte(gammaValues + value);
+#endif
 }
 
 #define MHV_PRECALCULATED_GAMMA_CORRECT precalculatedGammaCorrect

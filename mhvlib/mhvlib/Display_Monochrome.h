@@ -71,16 +71,26 @@ protected:
 
 	// Normalize character to font
 		c -= font.firstChar;
+#ifdef __FLASH
+		uint8_t charWidth = font.widths[c];
+
+		const uint8_t *fontChar = font.fontData + font.offsets[c];
+#else
 		uint8_t charWidth = pgm_read_byte(font.widths + c);
 
 		const uint8_t *fontChar = font.fontData + pgm_read_word(font.offsets + c);
+#endif
 
 	// Render each column
 		bool ret = false;
 		do {
 			int8_t bit = 7;
 			uint8_t y = 0;
+#ifdef __FLASH
+			uint8_t data = *(fontChar++);
+#else
 			uint8_t data = pgm_read_byte(fontChar++);
+#endif
 
 			if (*offsetX >= 0) {
 	// Start at the bottom of the column and work up
@@ -96,7 +106,11 @@ protected:
 	// Support multiple-byte font images - fetch the next byte of data if we exhaust the current one
 					if (-1 == bit && (font.maxHeight - y) > 0) {
 						bit = 7;
+#ifdef __FLASH
+						data = *(fontChar++);
+#else
 						data = pgm_read_byte(fontChar++);
+#endif
 					}
 				}
 			}
@@ -172,6 +186,36 @@ public:
 				setPixel(x, y, value);
 			}
 		}
+	}
+
+	/**
+	 * Write a TX Buffer to the display
+	 * @param	font		the font to use
+	 * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+	 * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+	 * @param	onValue		the pixel value to use for on
+	 * @param	offValue	the pixel value to use for off
+	 * @param	txBuffer	the buffer to write
+	 * @return true if anything was written
+	 */
+	bool writeBuffer(const FONT &font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, TXBuffer &txBuffer) {
+		bool ret = false;
+		while (i < length && *offsetX < (int16_t)cols) {
+			int c = txBuffer.nextCharacter();
+			if (-1 == c) {
+				break;
+			}
+
+			ret |= writeChar(font, offsetX, offsetY, onValue, offValue, (char) c);
+
+			if (txBuffer.hasMore()) {
+				ret |= writeSeperator(font, offsetX, offsetY, offValue);
+			}
+		}
+		txBuffer.seek(0);
+
+		return ret;
 	}
 
 	/**
@@ -254,6 +298,111 @@ public:
 		return ret;
 	}
 
+#if 0 && defined __FLASH
+	/**
+	 * Write a flash string to the display
+	 * @param	font		the font to use
+	 * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+	 * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+	 * @param	onValue		the pixel value to use for on
+	 * @param	offValue	the pixel value to use for off
+	 * @param	string		the string to write
+	 * @return true if anything was written
+	 */
+	bool writeString(const FONT &font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const __flash char *string) {
+
+		bool ret = false;
+		while (*string != '\0' && *offsetX < (int16_t)cols) {
+			ret |= writeChar(font, offsetX, offsetY, onValue, offValue, val);
+			if (*(++p) != '\0') {
+				ret |= writeSeperator(font, offsetX, offsetY, offValue);
+			}
+		}
+
+		return ret;
+	}
+
+	/**
+	 * Write a flash buffer to the display
+	 * @param	font		the font to use
+	 * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+	 * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+	 * @param	onValue		the pixel value to use for on
+	 * @param	offValue	the pixel value to use for off
+	 * @param	buffer		the buffer to write
+	 * @param	length		the length of the buffer
+	 * @return true if anything was written
+	 */
+	bool writeBuffer(const FONT &font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const __flash char *buffer, uint16_t length) {
+
+		bool ret = false;
+		uint16_t i = 0;
+		while (i < length && *offsetX < (int16_t)cols) {
+			ret |= writeChar(font, offsetX, offsetY, onValue, offValue, buffer[i++]);
+			if (i < length) {
+				ret |= writeSeperator(font, offsetX, offsetY, offValue);
+			}
+		}
+
+		return ret;
+	}
+#endif
+
+#if 0 && defined __MEMX
+	/**
+	 * Write a memx string to the display
+	 * @param	font		the font to use
+	 * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+	 * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+	 * @param	onValue		the pixel value to use for on
+	 * @param	offValue	the pixel value to use for off
+	 * @param	string		the string to write
+	 * @return true if anything was written
+	 */
+	bool writeString(const FONT &font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const __memx char *string) {
+
+		bool ret = false;
+		while (*string != '\0' && *offsetX < (int16_t)cols) {
+			ret |= writeChar(font, offsetX, offsetY, onValue, offValue, val);
+			if (*(++p) != '\0') {
+				ret |= writeSeperator(font, offsetX, offsetY, offValue);
+			}
+		}
+
+		return ret;
+	}
+
+	/**
+	 * Write a memx buffer to the display
+	 * @param	font		the font to use
+	 * @param	offsetX		the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return)
+	 * @param	offsetY		the vertical pixel offset to start writing at (bottom of char)
+	 * @param	onValue		the pixel value to use for on
+	 * @param	offValue	the pixel value to use for off
+	 * @param	buffer		the buffer to write
+	 * @param	length		the length of the buffer
+	 * @return true if anything was written
+	 */
+	bool writeBuffer(const FONT &font, int16_t *offsetX, int16_t offsetY,
+			uint8_t onValue, uint8_t offValue, const __memx char *buffer, uint16_t length) {
+
+		bool ret = false;
+		uint16_t i = 0;
+		while (i < length && *offsetX < (int16_t)cols) {
+			ret |= writeChar(font, offsetX, offsetY, onValue, offValue, buffer[i++]);
+			if (i < length) {
+				ret |= writeSeperator(font, offsetX, offsetY, offValue);
+			}
+		}
+
+		return ret;
+	}
+#endif
+
+
 	/**
 	 * Write a string to the display
 	 * @param	font		the font to use
@@ -294,20 +443,7 @@ public:
 
 		clear(offValue);
 
-		bool ret;
-		if (Device_TX::_currentTx.progmem) {
-			if (Device_TX::_currentTx.isString) {
-				ret = writeString_P(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx);
-			} else {
-				ret = writeBuffer_P(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx, Device_TX::_currentTx.length);
-			}
-		} else {
-			if (Device_TX::_currentTx.isString) {
-				ret = writeString(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx);
-			} else {
-				ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, Device_TX::_tx, Device_TX::_currentTx.length);
-			}
-		}
+		bool ret = writeBuffer(font, &offsetX, offsetY, onValue, offValue, Device_TX::_currentTx);
 
 		if (!ret) {
 			_txOffset = cols - 1;

@@ -188,7 +188,13 @@ uint8_t daysInMonth(MONTH month, uint16_t year);
 
 
 // Used in toTime: Cumulative totals at the end of the month in a normal year
+#if 0 && defined __FLASH
+#define SECONDS_FROM_YEAR_START(month) secondsFromYearStart[month]
+const uint32_t __flash secondsFromYearStart[] = {
+#else
+#define SECONDS_FROM_YEAR_START(month) pgm_read_dword(&secondsFromYearStart[month])
 const uint32_t secondsFromYearStart[] PROGMEM = {
+#endif
 		2678400, 	// Jan
 		5097600,	// Feb
 		7776000,	// Mar
@@ -378,11 +384,11 @@ public:
 		leapYear = isLeapYear(year);
 		for (month = 0; month < sizeof(secondsFromYearStart); month++) {
 			if (leapYear) {
-				if (seconds < pgm_read_dword(&secondsFromYearStart[month] + (1 == month) ? 86400 : 0)) {
+				if (seconds < SECONDS_FROM_YEAR_START(month) + (1 == month) ? 86400 : 0) {
 					break;
 				}
 			} else {
-				if (seconds < pgm_read_dword(&secondsFromYearStart[month])) {
+				if (seconds < SECONDS_FROM_YEAR_START(month)) {
 					break;
 				}
 			}
@@ -390,7 +396,7 @@ public:
 		to.yearday = seconds / 86400;
 
 		if (month) {
-			seconds -= pgm_read_dword(&secondsFromYearStart[month - 1]);
+			seconds -= SECONDS_FROM_YEAR_START(month - 1);
 		}
 
 		if (leapYear && month > 1) {
@@ -442,7 +448,7 @@ public:
 				seconds += 5097600;
 				break;
 			default:
-				seconds += pgm_read_dword(&secondsFromYearStart[(uint8_t)from.month - 2]);
+				seconds += SECONDS_FROM_YEAR_START(from.month - 2);
 				if (isLeapYear(from.year)) {
 					seconds += 86400;
 				}

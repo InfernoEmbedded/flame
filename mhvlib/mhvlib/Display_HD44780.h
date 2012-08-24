@@ -33,7 +33,11 @@
 
 namespace mhvlib {
 
+#ifdef __FLASH
+static const __flash uint8_t mhv_hd44780AddressTable[] = {
+#else
 static const uint8_t mhv_hd44780AddressTable[] PROGMEM = {
+#endif
 		64+20,	20,	64,	0
 };
 
@@ -135,13 +139,21 @@ protected:
 	void _setCursor(uint8_t col, uint8_t row) {
 		uint8_t address;
 
+#ifdef __FLASH
+		if (4 == rows && 20 == cols) {
+			address = mhv_hd44780AddressTable [row];
+		} else {
+	// Display type unsupported - assume 2 line display
+			address = mhv_hd44780AddressTable [row + 2];
+		}
+#else
 		if (4 == rows && 20 == cols) {
 			address = pgm_read_byte(mhv_hd44780AddressTable + row);
 		} else {
 	// Display type unsupported - assume 2 line display
 			address = pgm_read_byte(mhv_hd44780AddressTable + row + 2);
 		}
-
+#endif
 		address += col;
 
 		while (isBusy()) {};
