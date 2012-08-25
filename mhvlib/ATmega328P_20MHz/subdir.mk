@@ -14,6 +14,7 @@ CPP_SRCS += \
 ../NotePlayer.cpp \
 ../PID.cpp \
 ../PinChangeManager.cpp \
+../PureVirtual.cpp \
 ../RTC.cpp \
 ../Shifter.cpp \
 ../SoftwareHBridge.cpp \
@@ -32,6 +33,7 @@ OBJS += \
 ./NotePlayer.o \
 ./PID.o \
 ./PinChangeManager.o \
+./PureVirtual.o \
 ./RTC.o \
 ./Shifter.o \
 ./SoftwareHBridge.o \
@@ -50,6 +52,7 @@ CPP_DEPS += \
 ./NotePlayer.d \
 ./PID.d \
 ./PinChangeManager.d \
+./PureVirtual.d \
 ./RTC.d \
 ./Shifter.d \
 ./SoftwareHBridge.d \

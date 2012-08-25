@@ -201,7 +201,7 @@ public:
 	bool writeBuffer(const FONT &font, int16_t *offsetX, int16_t offsetY,
 			uint8_t onValue, uint8_t offValue, TXBuffer &txBuffer) {
 		bool ret = false;
-		while (i < length && *offsetX < (int16_t)cols) {
+		while (*offsetX < (int16_t)cols) {
 			int c = txBuffer.nextCharacter();
 			if (-1 == c) {
 				break;

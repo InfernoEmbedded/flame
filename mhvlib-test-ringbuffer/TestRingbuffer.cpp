@@ -59,7 +59,7 @@ using namespace mhvlib;
 MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 
 // Space for 3 instances of TX_BUFFER
-#define TX_BUFFER_SIZE 3 * sizeof(TX_BUFFER) + 1
+#define TX_BUFFER_SIZE 3 * sizeof(TXBuffer) + 1
 RingBufferImplementation<TX_BUFFER_SIZE> testRingBuffer;
 
 MAIN {
@@ -77,7 +77,7 @@ MAIN {
 			testRingBuffer.length(), testRingBuffer.size());
 	serial.busyWrite(buffer);
 
-	TX_BUFFER object;
+	char object[16];
 	memSet(&object, '_', sizeof(object));
 
 	int i;

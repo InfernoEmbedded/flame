@@ -182,12 +182,7 @@
 								</option>
 								<option id="de.innot.avreclipse.compiler.option.optimize.other.141963764" name="Other Optimization Flags" superClass="de.innot.avreclipse.compiler.option.optimize.other" value="-ffunction-sections -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.compiler.option.optimize.packstruct.545019755" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.compiler.option.optimize.packstruct" value="false" valueType="boolean"/>
-								<option id="de.innot.avreclipse.compiler.option.def.1188604349" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols">
-									<listOptionValue builtIn="false" value="__FLASH=1"/>
-									<listOptionValue builtIn="false" value="__flash"/>
-									<listOptionValue builtIn="false" value="__MEMX=1"/>
-									<listOptionValue builtIn="false" value="__memx"/>
-								</option>
+								<option id="de.innot.avreclipse.compiler.option.def.1188604349" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1381619990" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.lib.release.1903035832" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.lib.release">
@@ -224,7 +219,7 @@
 								<inputType id="de.innot.avreclipse.tool.assembler.input.547804920" superClass="de.innot.avreclipse.tool.assembler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.compiler.winavr.lib.release.906923915" name="AVR Compiler" superClass="de.innot.avreclipse.tool.compiler.winavr.lib.release.1948830715">
-								<option id="de.innot.avreclipse.compiler.option.def.785344272" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def" valueType="definedSymbols"/>
+								<option id="de.innot.avreclipse.compiler.option.def.785344272" name="Define Syms (-D)" superClass="de.innot.avreclipse.compiler.option.def"/>
 								<inputType id="de.innot.avreclipse.compiler.winavr.input.1869613663" name="C Source Files" superClass="de.innot.avreclipse.compiler.winavr.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.cppcompiler.lib.release.656783655" name="AVR C++ Compiler" superClass="de.innot.avreclipse.tool.cppcompiler.lib.release.1903035832">

@@ -181,7 +181,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((NULL == Device_TX::_currentTx.hasMore()) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return ((!Device_TX::_currentTx.hasMore()) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
 	}
 
 	/**
