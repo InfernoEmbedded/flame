@@ -23,7 +23,7 @@
  * http://www.pjrc.com/teensy/hid_listen.html
  *
  */
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>

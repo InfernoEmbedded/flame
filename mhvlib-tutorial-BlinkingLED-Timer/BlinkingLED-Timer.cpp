@@ -28,7 +28,7 @@
 /* A blinking LED on Arduino pin 13 - uses a timer to toggle the LED
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>

@@ -51,7 +51,7 @@
  * LCD pin 6 (E) to AVR (PD7) (Enable)
  */
 
-#define MHVLIB_NEED_PURE_VIRTUAL
+
 
 #include <avr/interrupt.h>
 #include <util/delay.h>

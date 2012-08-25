@@ -28,19 +28,6 @@
 #ifndef MHV_IO_H_
 #define MHV_IO_H_
 
-#ifdef MHVLIB_NEED_PURE_VIRTUAL
-#ifndef MHVLIB_PURE_VIRTUAL_DECLARED
-#ifndef MHVLIB_CORE
-#define MHVLIB_PURE_VIRTUAL_DECLARED
-#include <avr/interrupt.h>
-extern "C" __attribute__ ((noreturn)) void __cxa_pure_virtual() {
-	cli();
-	for (;;);
-}
-#endif
-#endif
-#endif
-
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stddef.h>
