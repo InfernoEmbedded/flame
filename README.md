@@ -1,5 +1,5 @@
 
-=== About ===
+### About ###
 
 Having been frustrated with many of the inefficiencies of the Arduino core libraries, we have built an alternate
 set with performance and size in mind. Alastair has given a talk at the [Canberra Linux User Group][clug] about this
@@ -11,7 +11,7 @@ large buffers must be used. Instead, control of these are handed over to the dev
 
 We recommend using [cppcheck][cppcheck] and the [CPPCeclipse][eclipse] Eclipse Plugin for further bug checking in your code.
 
-=== Design Philosophies ===
+### Design Philosophies ###
 
  * Design for the architecture
  * Favour efficiency over simplicity
@@ -25,13 +25,13 @@ We recommend using [cppcheck][cppcheck] and the [CPPCeclipse][eclipse] Eclipse P
  * Enable an event driven approach
  * BSD licensed to encourage commercial use (there is a separate GPL project for ports of GPL software to MHVLib, such as V-USB)
 
-=== Getting Started ===
+### Getting Started ###
 
 We recommend developing your MHVlib projects in Eclipse. For instructions on how to do so, please see our tutorial.
 
 We also have another tutorial showing how to [build MHVlib using make][makemhv] from the command line.
 
-=== Bootloader ===
+### Bootloader ###
 
 If an Arduino-style bootloader is required, we recommend [Optiboot][optiboot], which clocks at only a quarter the size of the Arduino bootloader (0.5kb vs 2kb), and a programming baud rate of 115,200bps.
 
