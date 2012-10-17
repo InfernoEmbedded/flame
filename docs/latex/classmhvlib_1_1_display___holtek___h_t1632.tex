@@ -1,0 +1,234 @@
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632}{\section{mhvlib\-:\-:Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib_1_1_display___holtek___h_t1632}\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classmhvlib_1_1_display___holtek___h_t1632}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a91a6d214ae13180b8de81d43c9c8183c}{Display\-\_\-\-Holtek\-\_\-\-H\-T1632} (\hyperlink{classmhvlib_1_1_display___selector}{Display\-\_\-\-Selector} \&selector)
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a33a39ff7071afb676a1dbeb085b697ee}{brightness} (uint8\-\_\-t module\-X, uint8\-\_\-t module\-Y, uint8\-\_\-t brightness)
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a8bc85297535d36ac9de9b2d2cff51c27}{brightness} (uint8\-\_\-t brightness\-\_\-in)
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a90e2c554c557474310f36bdc299520f7}{poweroff} (uint8\-\_\-t module\-X, uint8\-\_\-t module\-Y)
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a61ecabae484631838503724ad39afc24}{poweron} (uint8\-\_\-t module\-X, uint8\-\_\-t module\-Y)
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a022ece4c70480a6de7cc60157a36680a}{poweroff} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a2c9857b6fd6c4ee9299cead96ecc4a48}{poweron} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_a4b79ac1a2d1c52725a4127867d005253}{flush} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_af9e363429ca99983e9eee288fc33927f}{set\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row, uint8\-\_\-t value)
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___holtek___h_t1632_ac605b239695cbfd439ee1f5e8ec989cc}{get\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock), M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$class mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$}
+
+
+
+Definition at line 86 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a91a6d214ae13180b8de81d43c9c8183c}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\index{Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{Display\-\_\-\-Holtek\-\_\-\-H\-T1632}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::{\bf Display\-\_\-\-Holtek\-\_\-\-H\-T1632} (
+\begin{DoxyParamCaption}
+\item[{{\bf Display\-\_\-\-Selector} \&}]{selector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a91a6d214ae13180b8de81d43c9c8183c}
+Initialise the library 
+\begin{DoxyParams}{Parameters}
+{\em selector} & a class that sets the enable lines to choose the display to operate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 177 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a33a39ff7071afb676a1dbeb085b697ee}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!brightness@{brightness}}
+\index{brightness@{brightness}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{brightness}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::brightness (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{module\-X, }
+\item[{uint8\-\_\-t}]{module\-Y, }
+\item[{uint8\-\_\-t}]{brightness}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a33a39ff7071afb676a1dbeb085b697ee}
+Set the brightness of a module 
+\begin{DoxyParams}{Parameters}
+{\em module\-X} & the X position of the module \\
+\hline
+{\em module\-Y} & the Y position of the module \\
+\hline
+{\em brightness} & the brightness (from 0 to 15) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 214 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a8bc85297535d36ac9de9b2d2cff51c27}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!brightness@{brightness}}
+\index{brightness@{brightness}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{brightness}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::brightness (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{brightness\-\_\-in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a8bc85297535d36ac9de9b2d2cff51c27}
+Set the brightness of all modules 
+\begin{DoxyParams}{Parameters}
+{\em brightness\-\_\-in} & the brightness (from 0 to 15) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 225 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a4b79ac1a2d1c52725a4127867d005253}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!flush@{flush}}
+\index{flush@{flush}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a4b79ac1a2d1c52725a4127867d005253}
+Flush the framebuffer to the displays 
+
+Definition at line 296 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_ac605b239695cbfd439ee1f5e8ec989cc}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_ac605b239695cbfd439ee1f5e8ec989cc}
+Get a pixel 
+\begin{DoxyParams}{Parameters}
+{\em col} & the column of the pixel \\
+\hline
+{\em row} & the row of the pixel \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the value of the pixel 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___monochrome_a362dc1e29a27befa8a1acf52f4ba8c13}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ D\-I\-S\-P\-L\-A\-Y\-\_\-\-Y, D\-I\-S\-P\-L\-A\-Y\-\_\-\-X, tx\-Buffers $>$}.
+
+
+
+Definition at line 371 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a90e2c554c557474310f36bdc299520f7}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweroff@{poweroff}}
+\index{poweroff@{poweroff}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{poweroff}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::poweroff (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{module\-X, }
+\item[{uint8\-\_\-t}]{module\-Y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a90e2c554c557474310f36bdc299520f7}
+Put a module to sleep 
+\begin{DoxyParams}{Parameters}
+{\em module\-X} & the module to sleep \\
+\hline
+{\em module\-Y} & the module to sleep \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 240 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a022ece4c70480a6de7cc60157a36680a}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweroff@{poweroff}}
+\index{poweroff@{poweroff}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{poweroff}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::poweroff (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a022ece4c70480a6de7cc60157a36680a}
+Put all modules to sleep 
+
+Definition at line 270 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a61ecabae484631838503724ad39afc24}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweron@{poweron}}
+\index{poweron@{poweron}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{poweron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::poweron (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{module\-X, }
+\item[{uint8\-\_\-t}]{module\-Y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a61ecabae484631838503724ad39afc24}
+Wake a module up 
+\begin{DoxyParams}{Parameters}
+{\em module\-X} & the module to wake up \\
+\hline
+{\em module\-Y} & the module to wake up \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 253 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_a2c9857b6fd6c4ee9299cead96ecc4a48}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!poweron@{poweron}}
+\index{poweron@{poweron}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{poweron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::poweron (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_a2c9857b6fd6c4ee9299cead96ecc4a48}
+Wake all modules up 
+
+Definition at line 283 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+\hypertarget{classmhvlib_1_1_display___holtek___h_t1632_af9e363429ca99983e9eee288fc33927f}{\index{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!mhvlib::Display_Holtek_HT1632@{mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , H\-T1632\-\_\-\-M\-O\-D\-E mode, uint8\-\_\-t array\-X, uint8\-\_\-t array\-Y, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632}$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___holtek___h_t1632_af9e363429ca99983e9eee288fc33927f}
+Set a pixel 
+\begin{DoxyParams}{Parameters}
+{\em col} & the column of the pixel \\
+\hline
+{\em row} & the row of the pixel \\
+\hline
+{\em value} & the value of the pixel \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___monochrome_a06f427bbf51029a1925334a55c70abf8}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ D\-I\-S\-P\-L\-A\-Y\-\_\-\-Y, D\-I\-S\-P\-L\-A\-Y\-\_\-\-X, tx\-Buffers $>$}.
+
+
+
+Definition at line 326 of file Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_display___holtek___h_t1632_8h}{Display\-\_\-\-Holtek\-\_\-\-H\-T1632.\-h}\end{DoxyCompactItemize}

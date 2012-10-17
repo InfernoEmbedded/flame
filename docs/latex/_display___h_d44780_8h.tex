@@ -1,0 +1,56 @@
+\hypertarget{_display___h_d44780_8h}{\section{mhvlib/\-Display\-\_\-\-H\-D44780.h File Reference}
+\label{_display___h_d44780_8h}\index{mhvlib/\-Display\-\_\-\-H\-D44780.\-h@{mhvlib/\-Display\-\_\-\-H\-D44780.\-h}}
+}
+{\ttfamily \#include $<$mhvlib/\-Display\-\_\-\-Character.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_display___h_d44780}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_display___h_d44780_8h_ae8dbb0d3bff2a766514d96c5b83b22f1}{H\-D44780\-\_\-\-T\-I\-N\-I\-T}~300
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum hd44780\-\_\-command \hyperlink{namespacemhvlib_a810a3cc703298cdd5d00c913cb1bfec9}{mhvlib\-::\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10b}{mhvlib\-::hd44780\-\_\-command} \{ \\*
+\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa51fa53f0b4783ff3376a0f78d711d5e}{mhvlib\-::\-C\-L\-E\-A\-R} =  0x001, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba2497bf6514620be975cf5435c1bbc373}{mhvlib\-::\-H\-O\-M\-E} =  0x002, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10bac68280e02b32065f855c0e56f7c436ac}{mhvlib\-::\-S\-E\-T\-\_\-\-E\-N\-T\-R\-Y\-\_\-\-M\-O\-D\-E} =  0x004, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba009950c9d14fb689fc17fd74951e1e33}{mhvlib\-::\-S\-E\-T\-\_\-\-D\-I\-S\-P\-L\-A\-Y\-\_\-\-M\-O\-D\-E} =  0x008, 
+\\*
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba6d51f6692da80ba39a15460eed3b1f09}{mhvlib\-::\-S\-E\-T\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-M\-O\-D\-E} =  0x010, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba6ab17e4c274ae3fd56e1a3411d086f89}{mhvlib\-::\-S\-E\-T\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} =  0x020, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10baf5d8bb5888cb7a7fcb2d172199605919}{mhvlib\-::\-S\-E\-T\-\_\-\-C\-G\-\_\-\-A\-D\-D\-R} =  0x040, 
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba2c0acf751aeeb73923b7cedd13d02c11}{mhvlib\-::\-S\-E\-T\-\_\-\-D\-D\-\_\-\-A\-D\-D\-R} =  0x080, 
+\\*
+\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10bac535338ebc1852e057785bd8477db786}{mhvlib\-::\-W\-R\-I\-T\-E\-\_\-\-C\-H\-A\-R} =  0xff
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_acd3dc66b8c71f47eba2421fd782eb8c9}{mhvlib\-::operator$|$} (H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D command, uint8\-\_\-t ored\-With)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_display___h_d44780_8h_ae8dbb0d3bff2a766514d96c5b83b22f1}{\index{Display\-\_\-\-H\-D44780.\-h@{Display\-\_\-\-H\-D44780.\-h}!H\-D44780\-\_\-\-T\-I\-N\-I\-T@{H\-D44780\-\_\-\-T\-I\-N\-I\-T}}
+\index{H\-D44780\-\_\-\-T\-I\-N\-I\-T@{H\-D44780\-\_\-\-T\-I\-N\-I\-T}!Display_HD44780.h@{Display\-\_\-\-H\-D44780.\-h}}
+\subsubsection[{H\-D44780\-\_\-\-T\-I\-N\-I\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-I\-N\-I\-T~300}}\label{_display___h_d44780_8h_ae8dbb0d3bff2a766514d96c5b83b22f1}
+
+
+Definition at line 31 of file Display\-\_\-\-H\-D44780.\-h.
+

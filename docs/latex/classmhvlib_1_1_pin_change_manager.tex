@@ -1,0 +1,140 @@
+\hypertarget{classmhvlib_1_1_pin_change_manager}{\section{mhvlib\-:\-:Pin\-Change\-Manager Class Reference}
+\label{classmhvlib_1_1_pin_change_manager}\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}}
+}
+
+
+{\ttfamily \#include $<$Pin\-Change\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_pin_change_manager_a6fce9ae803f407df2dbedbd5856ce900}{Pin\-Change\-Manager} ()
+\item 
+void \hyperlink{classmhvlib_1_1_pin_change_manager_a3c58ac214ba242d3f2f81089f4a457de}{pin\-Change0} ()
+\item 
+void \hyperlink{classmhvlib_1_1_pin_change_manager_a7d3e61d8deec59cc51ee47b330be6bc9}{pin\-Change} (uint8\-\_\-t offset)
+\item 
+void \hyperlink{classmhvlib_1_1_pin_change_manager_ae8d988dc4fa2c038046fff692b6afed8}{register\-Listener} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), \hyperlink{classmhvlib_1_1_pin_event_listener}{Pin\-Event\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classmhvlib_1_1_pin_change_manager_ac98f357255e910af3627f1597e92e748}{deregister\-Listener} (int8\-\_\-t pin\-Pin\-Change\-Listener)
+\item 
+void \hyperlink{classmhvlib_1_1_pin_change_manager_ae7182bf75842412e1b9398f987b6dbf9}{handle\-Events} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacemhvlib_acf4cd7c00d020d1fef8ecfe350328f3b}{E\-V\-E\-N\-T\-\_\-\-P\-I\-N} \hyperlink{classmhvlib_1_1_pin_change_manager_a0f962e7260dd7b06d68ecd234dca3f7e}{\-\_\-pins} \mbox{[}\hyperlink{_m_h_v__io__attiny85_8h_ac3370faa54861753416a738657731f6b}{M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 90 of file Pin\-Change\-Manager.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_pin_change_manager_a6fce9ae803f407df2dbedbd5856ce900}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!Pin\-Change\-Manager@{Pin\-Change\-Manager}}
+\index{Pin\-Change\-Manager@{Pin\-Change\-Manager}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{Pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-Pin\-Change\-Manager\-::\-Pin\-Change\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_a6fce9ae803f407df2dbedbd5856ce900}
+An event manager for handling pinchange events 
+
+Definition at line 35 of file Pin\-Change\-Manager.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_pin_change_manager_ac98f357255e910af3627f1597e92e748}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Pin\-Change\-Manager\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+\item[{int8\-\_\-t}]{pin\-Pinchange\-Interrupt}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_ac98f357255e910af3627f1597e92e748}
+Deregister interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin\-Pinchange\-Interrupt} & the pin\-Pinchange\-Interrupt to deregister \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classmhvlib_1_1_pin_change_manager_ae7182bf75842412e1b9398f987b6dbf9}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Pin\-Change\-Manager\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_ae7182bf75842412e1b9398f987b6dbf9}
+Call from the main loop to handle any events 
+
+Definition at line 173 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classmhvlib_1_1_pin_change_manager_a7d3e61d8deec59cc51ee47b330be6bc9}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!pin\-Change@{pin\-Change}}
+\index{pin\-Change@{pin\-Change}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Pin\-Change\-Manager\-::pin\-Change (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{offset}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_a7d3e61d8deec59cc51ee47b330be6bc9}
+Trigger for pin change interrupts -\/ scans through 8 pins starting at the offset 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the number of pins to skip before scanning \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 70 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classmhvlib_1_1_pin_change_manager_a3c58ac214ba242d3f2f81089f4a457de}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!pin\-Change0@{pin\-Change0}}
+\index{pin\-Change0@{pin\-Change0}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change0}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Pin\-Change\-Manager\-::pin\-Change0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_a3c58ac214ba242d3f2f81089f4a457de}
+Trigger for interrupt P\-C\-I\-N\-T0 
+
+Definition at line 44 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classmhvlib_1_1_pin_change_manager_ae8d988dc4fa2c038046fff692b6afed8}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Pin\-Change\-Manager\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin)}]{, }
+\item[{{\bf Pin\-Event\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_pin_change_manager_ae8d988dc4fa2c038046fff692b6afed8}
+Register interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin} & A M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro, must have a valid pin\-Pinchange\-Interrupt \\
+\hline
+{\em listener} & a M\-H\-V\-\_\-\-Pin\-Event\-Listener to notify when the pin changes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file Pin\-Change\-Manager.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_pin_change_manager_a0f962e7260dd7b06d68ecd234dca3f7e}{\index{mhvlib\-::\-Pin\-Change\-Manager@{mhvlib\-::\-Pin\-Change\-Manager}!\-\_\-pins@{\-\_\-pins}}
+\index{\-\_\-pins@{\-\_\-pins}!mhvlib::PinChangeManager@{mhvlib\-::\-Pin\-Change\-Manager}}
+\subsubsection[{\-\_\-pins}]{\setlength{\rightskip}{0pt plus 5cm}{\bf E\-V\-E\-N\-T\-\_\-\-P\-I\-N} mhvlib\-::\-Pin\-Change\-Manager\-::\-\_\-pins\mbox{[}{\bf M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_pin_change_manager_a0f962e7260dd7b06d68ecd234dca3f7e}
+
+
+Definition at line 93 of file Pin\-Change\-Manager.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_pin_change_manager_8h}{Pin\-Change\-Manager.\-h}\item 
+\hyperlink{_pin_change_manager_8cpp}{Pin\-Change\-Manager.\-cpp}\end{DoxyCompactItemize}

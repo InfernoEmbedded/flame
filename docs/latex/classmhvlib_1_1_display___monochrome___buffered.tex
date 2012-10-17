@@ -1,0 +1,111 @@
+\hypertarget{classmhvlib_1_1_display___monochrome___buffered}{\section{mhvlib\-:\-:Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib_1_1_display___monochrome___buffered}\index{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classmhvlib_1_1_display___monochrome___buffered}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_display___monochrome___buffered_abdba70da61885732d695ac70f737f6e5}{Display\-\_\-\-Monochrome\-\_\-\-Buffered} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___monochrome___buffered_a3c0d5145b5f4a60997d5cedfbb904ed8}{set\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row, uint8\-\_\-t value)
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___monochrome___buffered_a6748d5aeb91a19372155f4e6c9ae5f43}{get\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___monochrome___buffered_a1cf336fb0da55e705f4fb9efb5543c7c}{\-\_\-frame\-Buffer} \mbox{[}cols $\ast$rows\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}
+
+A monochrome bitmap display Origin (0,0) is bottom left 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 47 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_display___monochrome___buffered_abdba70da61885732d695ac70f737f6e5}{\index{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!Display\-\_\-\-Monochrome\-\_\-\-Buffered@{Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\index{Display\-\_\-\-Monochrome\-\_\-\-Buffered@{Display\-\_\-\-Monochrome\-\_\-\-Buffered}!mhvlib::Display_Monochrome_Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{Display\-\_\-\-Monochrome\-\_\-\-Buffered}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::{\bf Display\-\_\-\-Monochrome\-\_\-\-Buffered} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___monochrome___buffered_abdba70da61885732d695ac70f737f6e5}
+Create a new monochrome display 
+
+Definition at line 55 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_display___monochrome___buffered_a6748d5aeb91a19372155f4e6c9ae5f43}{\index{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!mhvlib::Display_Monochrome_Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___monochrome___buffered_a6748d5aeb91a19372155f4e6c9ae5f43}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___monochrome_a362dc1e29a27befa8a1acf52f4ba8c13}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 75 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+\hypertarget{classmhvlib_1_1_display___monochrome___buffered_a3c0d5145b5f4a60997d5cedfbb904ed8}{\index{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!mhvlib::Display_Monochrome_Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___monochrome___buffered_a3c0d5145b5f4a60997d5cedfbb904ed8}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___monochrome_a06f427bbf51029a1925334a55c70abf8}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 64 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_display___monochrome___buffered_a1cf336fb0da55e705f4fb9efb5543c7c}{\index{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}}
+\index{\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}!mhvlib::Display_Monochrome_Buffered@{mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{\-\_\-frame\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-frame\-Buffer\mbox{[}cols $\ast$rows\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___monochrome___buffered_a1cf336fb0da55e705f4fb9efb5543c7c}
+
+
+Definition at line 49 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_display___monochrome___buffered_8h}{Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h}\end{DoxyCompactItemize}

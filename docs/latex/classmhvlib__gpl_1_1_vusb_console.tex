@@ -1,0 +1,108 @@
+\hypertarget{classmhvlib__gpl_1_1_vusb_console}{\section{mhvlib\-\_\-gpl\-:\-:Vusb\-Console$<$ tx\-Count $>$ Class Template Reference}
+\label{classmhvlib__gpl_1_1_vusb_console}\index{mhvlib\-\_\-gpl\-::\-Vusb\-Console$<$ tx\-Count $>$@{mhvlib\-\_\-gpl\-::\-Vusb\-Console$<$ tx\-Count $>$}}
+}
+
+
+{\ttfamily \#include $<$Vusb\-Console.\-h$>$}
+
+Inheritance diagram for mhvlib\-\_\-gpl\-:\-:Vusb\-Console$<$ tx\-Count $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmhvlib__gpl_1_1_vusb_console}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib__gpl_1_1_vusb_console_af977165f50d8f94908fcd0b7800b5f1a}{Vusb\-Console} (\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_console_a232cd712200018400618291029ff78b7}{alarm} ()
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_console_ada4429ff2cb0230f78f60aeed698952e}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \& \hyperlink{classmhvlib__gpl_1_1_vusb_console_afa40652faf990471baaaf8859cc2d398}{\-\_\-rtc}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t tx\-Count$>$class mhvlib\-\_\-gpl\-::\-Vusb\-Console$<$ tx\-Count $>$}
+
+
+
+Definition at line 37 of file Vusb\-Console.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_console_af977165f50d8f94908fcd0b7800b5f1a}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Console@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}!Vusb\-Console@{Vusb\-Console}}
+\index{Vusb\-Console@{Vusb\-Console}!mhvlib_gpl::VusbConsole@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}}
+\subsubsection[{Vusb\-Console}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Count$>$ {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Console}$<$ tx\-Count $>$\-::{\bf Vusb\-Console} (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib__gpl_1_1_vusb_console_af977165f50d8f94908fcd0b7800b5f1a}
+Provide a V-\/\-U\-S\-B console using V-\/\-U\-S\-B Uses pins D4/\-D2 for A\-Tmega (can be changed in V\-U\-S\-B\-Keyboard/usbconfig.\-h) Uses pins B0/\-B2 for A\-Ttiny25/45/85
+
+To view the output of the console on your computer, use H\-I\-D Listen, available from\-: \href{http://www.pjrc.com/teensy/hid_listen.html}{\tt http\-://www.\-pjrc.\-com/teensy/hid\-\_\-listen.\-html}
+
+
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to schedule jobs on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file Vusb\-Console.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_console_a232cd712200018400618291029ff78b7}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Console@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib_gpl::VusbConsole@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Count$>$ void {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Console}$<$ tx\-Count $>$\-::{\bf alarm} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib__gpl_1_1_vusb_console_a232cd712200018400618291029ff78b7}
+Periodically called to maintain U\-S\-B comms 
+
+Implements \hyperlink{classmhvlib_1_1_timer_listener_afd620e7d363a34525cd4b96827300de1}{mhvlib\-::\-Timer\-Listener}.
+
+
+
+Definition at line 80 of file Vusb\-Console.\-h.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_console_ada4429ff2cb0230f78f60aeed698952e}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Console@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!mhvlib_gpl::VusbConsole@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Count$>$ void {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Console}$<$ tx\-Count $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib__gpl_1_1_vusb_console_ada4429ff2cb0230f78f60aeed698952e}
+Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
+
+Implements \hyperlink{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{mhvlib\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 109 of file Vusb\-Console.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_console_afa40652faf990471baaaf8859cc2d398}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Console@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}!\-\_\-rtc@{\-\_\-rtc}}
+\index{\-\_\-rtc@{\-\_\-rtc}!mhvlib_gpl::VusbConsole@{mhvlib\-\_\-gpl\-::\-Vusb\-Console}}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Count$>$ {\bf R\-T\-C}\& {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Console}$<$ tx\-Count $>$\-::\-\_\-rtc\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib__gpl_1_1_vusb_console_afa40652faf990471baaaf8859cc2d398}
+
+
+Definition at line 39 of file Vusb\-Console.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+A\-:/eclipse/mhvlib/mhvlib-\/\-Vusb-\/\-Console/mhvlib/\hyperlink{_vusb_console_8h}{Vusb\-Console.\-h}\end{DoxyCompactItemize}

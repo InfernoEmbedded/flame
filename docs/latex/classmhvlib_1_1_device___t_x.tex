@@ -1,0 +1,377 @@
+\hypertarget{classmhvlib_1_1_device___t_x}{\section{mhvlib\-:\-:Device\-\_\-\-T\-X Class Reference}
+\label{classmhvlib_1_1_device___t_x}\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+}
+
+
+{\ttfamily \#include $<$Device\-\_\-\-T\-X.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Device\-\_\-\-T\-X\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.961538cm]{classmhvlib_1_1_device___t_x}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_a1895a175aaa3703339dbbcb0ad00f3f8}{can\-Write} ()
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_ab0cabb0edc2ee5476ca7e6bfe52c1f7a}{write\-\_\-\-P} (P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_a2ba9a08f3666d119fc896c219e0fc064}{write} (const char $\ast$string)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_ae20a1c4cf5aff6f4d365fb41b55066f1}{write} (const char $\ast$string, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_adfaeed7ec7cebaeba69f05e8e504a5c8}{write\-\_\-\-P} (P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_aa2e1c272cab64563aeb194a5cadc90d7}{write} (const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_a9b50ecb010088b7fd7711d2a5294a22a}{write} (const char $\ast$buffer, uint16\-\_\-t length, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_a015ee181dd36a40f3915f3cf752780f3}{debug} (const char $\ast$file, int line, const char $\ast$function, P\-G\-M\-\_\-\-P format,...)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_a2a9e4eac95bde0b05013a8ac619ff793}{printf} (P\-G\-M\-\_\-\-P format,...)
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_ac5bc53bfbb156bb90bcd6fa3d11c8cf5}{write} (uint32\-\_\-t value)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_device___t_x_a7c7d9c32d42a11da7ec616e11735bbfc}{Device\-\_\-\-T\-X} (\hyperlink{classmhvlib_1_1_ring_buffer}{Ring\-Buffer} \&tx\-Pointers)
+\item 
+virtual void \hyperlink{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{run\-Tx\-Buffers} ()=0
+\item 
+bool \hyperlink{classmhvlib_1_1_device___t_x_ae7f27f218fe5523e1a629eee53509b42}{more\-T\-X} ()
+\item 
+int \hyperlink{classmhvlib_1_1_device___t_x_a3b2da2bd1884de000aa2e4f6682fc2a1}{next\-Character} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_t_x_buffer}{T\-X\-Buffer} \hyperlink{classmhvlib_1_1_device___t_x_af7907a7db6b5030f410eb71e6a57319a}{\-\_\-current\-Tx}
+\item 
+\hyperlink{classmhvlib_1_1_ring_buffer}{Ring\-Buffer} \& \hyperlink{classmhvlib_1_1_device___t_x_ad1a3f6fa7db2593694280e8dca963b33}{\-\_\-tx\-Pointers}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A device that can transmit data 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em tx\-Pointers} & the number of available output buffers for non-\/blocking I/\-O \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 310 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_device___t_x_a7c7d9c32d42a11da7ec616e11735bbfc}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!Device\-\_\-\-T\-X@{Device\-\_\-\-T\-X}}
+\index{Device\-\_\-\-T\-X@{Device\-\_\-\-T\-X}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{Device\-\_\-\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-Device\-\_\-\-T\-X\-::\-Device\-\_\-\-T\-X (
+\begin{DoxyParamCaption}
+\item[{{\bf Ring\-Buffer} \&}]{tx\-Pointers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_device___t_x_a7c7d9c32d42a11da7ec616e11735bbfc}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em tx\-Pointers} & a ringbuffer to store T\-X elements in \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 319 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_device___t_x_a1895a175aaa3703339dbbcb0ad00f3f8}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!can\-Write@{can\-Write}}
+\index{can\-Write@{can\-Write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{can\-Write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::can\-Write (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_a1895a175aaa3703339dbbcb0ad00f3f8}
+Can we accept another buffer? 
+
+Definition at line 365 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_a015ee181dd36a40f3915f3cf752780f3}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!debug@{debug}}
+\index{debug@{debug}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::debug (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file, }
+\item[{int}]{line, }
+\item[{const char $\ast$}]{function, }
+\item[{P\-G\-M\-\_\-\-P}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_a015ee181dd36a40f3915f3cf752780f3}
+Print a debug message 
+\begin{DoxyParams}{Parameters}
+{\em file} & the filename \\
+\hline
+{\em line} & the line number \\
+\hline
+{\em function} & the function name \\
+\hline
+{\em format} & a printf format \\
+\hline
+{\em ...} & the printf parms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if the message was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 618 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_ae7f27f218fe5523e1a629eee53509b42}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!more\-T\-X@{more\-T\-X}}
+\index{more\-T\-X@{more\-T\-X}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{more\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::more\-T\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_device___t_x_ae7f27f218fe5523e1a629eee53509b42}
+Called when a buffer has been processed \begin{DoxyReturn}{Returns}
+true if there is another buffer to process 
+\end{DoxyReturn}
+
+
+Definition at line 329 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_a3b2da2bd1884de000aa2e4f6682fc2a1}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!next\-Character@{next\-Character}}
+\index{next\-Character@{next\-Character}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{next\-Character}]{\setlength{\rightskip}{0pt plus 5cm}int mhvlib\-::\-Device\-\_\-\-T\-X\-::next\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_device___t_x_a3b2da2bd1884de000aa2e4f6682fc2a1}
+Get the next character \begin{DoxyReturn}{Returns}
+the next character, or -\/1 if there is no more 
+\end{DoxyReturn}
+
+
+Definition at line 343 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_a2a9e4eac95bde0b05013a8ac619ff793}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!printf@{printf}}
+\index{printf@{printf}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{printf}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::printf (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_a2a9e4eac95bde0b05013a8ac619ff793}
+Print a message 
+\begin{DoxyParams}{Parameters}
+{\em format} & a printf format \\
+\hline
+{\em ...} & the printf parms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 660 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}virtual void mhvlib\-::\-Device\-\_\-\-T\-X\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___character_a03674a7c620545467b71b137b24fbc5c}{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}, \hyperlink{classmhvlib_1_1_display___monochrome_a35b8e19916a2f3e8956d6b7f9576d988}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}, \hyperlink{classmhvlib_1_1_display___monochrome_a35b8e19916a2f3e8956d6b7f9576d988}{mhvlib\-::\-Display\-\_\-\-Monochrome$<$ D\-I\-S\-P\-L\-A\-Y\-\_\-\-Y, D\-I\-S\-P\-L\-A\-Y\-\_\-\-X, tx\-Buffers $>$}, \hyperlink{classmhvlib__gpl_1_1_vusb_console_ada4429ff2cb0230f78f60aeed698952e}{mhvlib\-\_\-gpl\-::\-Vusb\-Console$<$ tx\-Count $>$}, \hyperlink{classmhvlib_1_1_hardware_serial_a1b412910dd80a178cdb406d2952593e1}{mhvlib\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}, and \hyperlink{classmhvlib__gpl_1_1_vusb_typist_ab293c01051f77e5c4278b5cc26ecaadb}{mhvlib\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}.
+
+\hypertarget{classmhvlib_1_1_device___t_x_a2ba9a08f3666d119fc896c219e0fc064}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_a2ba9a08f3666d119fc896c219e0fc064}
+Write a string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 447 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_ae20a1c4cf5aff6f4d365fb41b55066f1}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_ae20a1c4cf5aff6f4d365fb41b55066f1}
+Write a string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string \\
+\hline
+{\em complete\-Function} & a function to call when the string has been written (the string is passed as a parameter) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 470 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_aa2e1c272cab64563aeb194a5cadc90d7}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_aa2e1c272cab64563aeb194a5cadc90d7}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 568 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_a9b50ecb010088b7fd7711d2a5294a22a}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_a9b50ecb010088b7fd7711d2a5294a22a}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+{\em complete\-Function} & a function to call when the string has been written (the string is passed as a parameter) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 592 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_ac5bc53bfbb156bb90bcd6fa3d11c8cf5}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_ac5bc53bfbb156bb90bcd6fa3d11c8cf5}
+Print an integer 
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent Print an integer 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent Print an integer 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 729 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_ab0cabb0edc2ee5476ca7e6bfe52c1f7a}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write\-\_\-\-P@{write\-\_\-\-P}}
+\index{write\-\_\-\-P@{write\-\_\-\-P}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_ab0cabb0edc2ee5476ca7e6bfe52c1f7a}
+Write a progmem string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the progmem string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 375 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_adfaeed7ec7cebaeba69f05e8e504a5c8}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!write\-\_\-\-P@{write\-\_\-\-P}}
+\index{write\-\_\-\-P@{write\-\_\-\-P}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Device\-\_\-\-T\-X\-::write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_device___t_x_adfaeed7ec7cebaeba69f05e8e504a5c8}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 493 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_device___t_x_af7907a7db6b5030f410eb71e6a57319a}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!\-\_\-current\-Tx@{\-\_\-current\-Tx}}
+\index{\-\_\-current\-Tx@{\-\_\-current\-Tx}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{\-\_\-current\-Tx}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-X\-Buffer} mhvlib\-::\-Device\-\_\-\-T\-X\-::\-\_\-current\-Tx\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_device___t_x_af7907a7db6b5030f410eb71e6a57319a}
+
+
+Definition at line 312 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classmhvlib_1_1_device___t_x_ad1a3f6fa7db2593694280e8dca963b33}{\index{mhvlib\-::\-Device\-\_\-\-T\-X@{mhvlib\-::\-Device\-\_\-\-T\-X}!\-\_\-tx\-Pointers@{\-\_\-tx\-Pointers}}
+\index{\-\_\-tx\-Pointers@{\-\_\-tx\-Pointers}!mhvlib::Device_TX@{mhvlib\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{\-\_\-tx\-Pointers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ring\-Buffer}\& mhvlib\-::\-Device\-\_\-\-T\-X\-::\-\_\-tx\-Pointers\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_device___t_x_ad1a3f6fa7db2593694280e8dca963b33}
+
+
+Definition at line 313 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_device___t_x_8h}{Device\-\_\-\-T\-X.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,83 @@
+\hypertarget{classmhvlib_1_1_p_w_m_matrix}{\section{mhvlib\-:\-:P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$ Class Template Reference}
+\label{classmhvlib_1_1_p_w_m_matrix}\index{mhvlib\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$@{mhvlib\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}}
+}
+
+
+{\ttfamily \#include $<$P\-W\-M\-Matrix.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.655353cm]{classmhvlib_1_1_p_w_m_matrix}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_p_w_m_matrix_af51830ca25564a0b6e43eb18e959d342}{P\-W\-M\-Matrix} (\hyperlink{classmhvlib_1_1_p_w_m_matrix_driver}{P\-W\-M\-Matrix\-Driver} \&driver)
+\item 
+void \hyperlink{classmhvlib_1_1_p_w_m_matrix_a30b89cdb739cf937558eea7e5b38c4f8}{alarm} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E mode$>$class mhvlib\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}
+
+A driver for bitbashed L\-E\-D matrices 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+{\em mode} & whether to scan rows, cols, individual pixels or auto \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 67 of file P\-W\-M\-Matrix.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_p_w_m_matrix_af51830ca25564a0b6e43eb18e959d342}{\index{mhvlib\-::\-P\-W\-M\-Matrix@{mhvlib\-::\-P\-W\-M\-Matrix}!P\-W\-M\-Matrix@{P\-W\-M\-Matrix}}
+\index{P\-W\-M\-Matrix@{P\-W\-M\-Matrix}!mhvlib::PWMMatrix@{mhvlib\-::\-P\-W\-M\-Matrix}}
+\subsubsection[{P\-W\-M\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E mode$>$ {\bf mhvlib\-::\-P\-W\-M\-Matrix}$<$ cols, rows, tx\-Buffers, mode $>$\-::{\bf P\-W\-M\-Matrix} (
+\begin{DoxyParamCaption}
+\item[{{\bf P\-W\-M\-Matrix\-Driver} \&}]{driver}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_p_w_m_matrix_af51830ca25564a0b6e43eb18e959d342}
+Establish a new matrix 
+\begin{DoxyParams}{Parameters}
+{\em driver} & the driver to turn on/off rows and columns \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 175 of file P\-W\-M\-Matrix.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_p_w_m_matrix_a30b89cdb739cf937558eea7e5b38c4f8}{\index{mhvlib\-::\-P\-W\-M\-Matrix@{mhvlib\-::\-P\-W\-M\-Matrix}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib::PWMMatrix@{mhvlib\-::\-P\-W\-M\-Matrix}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-P\-W\-M\-Matrix}$<$ cols, rows, tx\-Buffers, mode $>$\-::{\bf alarm} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_p_w_m_matrix_a30b89cdb739cf937558eea7e5b38c4f8}
+Called when an alarm goes off 
+
+Implements \hyperlink{classmhvlib_1_1_timer_listener_afd620e7d363a34525cd4b96827300de1}{mhvlib\-::\-Timer\-Listener}.
+
+
+
+Definition at line 192 of file P\-W\-M\-Matrix.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_p_w_m_matrix_8h}{P\-W\-M\-Matrix.\-h}\end{DoxyCompactItemize}

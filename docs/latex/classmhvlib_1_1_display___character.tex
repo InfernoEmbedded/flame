@@ -1,0 +1,458 @@
+\hypertarget{classmhvlib_1_1_display___character}{\section{mhvlib\-:\-:Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib_1_1_display___character}\index{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$@{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Character.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.389831cm]{classmhvlib_1_1_display___character}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_display___character_adc84df1de3ee7731c0d487cff890c6fd}{Display\-\_\-\-Character} ()
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___character_a5bdec4055085c5023b35e70ffab032fd}{get\-Width} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___character_ae64e651272eff783000051354c0af7cf}{get\-Height} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_ab81171f8d0c6ad80aeba80c826d7972d}{write} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, \hyperlink{classmhvlib_1_1_t_x_buffer}{T\-X\-Buffer} \&tx\-Buffer)
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_a8a2d3fd24d5cb24dcb3958100008eaf0}{write\-String} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, const char $\ast$string)
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_a35f6e2155528fc0a904b77bf0cf8393a}{write\-Buffer} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_aa90f6bf0f3061d57ceb19c45fa53bbc4}{write\-String\-\_\-\-P} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_a2dbf95a78674f4e061c45a25e876beaa}{write\-Buffer\-\_\-\-P} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_a03674a7c620545467b71b137b24fbc5c}{run\-Tx\-Buffers} ()
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_ab889b4aa2988f57ed87cef539d1221f9}{tx\-Animation} (uint16\-\_\-t row)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_acb01612ec8f5d46d318903b8e1e72440}{set\-Wrap} (bool should\-Wrap)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_a1b57978621bb0d758a5f3973edae6caa}{set\-Scroll} (bool should\-Scroll)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_a609c8b86422a30af2f899eb803d78cda}{set\-Cursor} (uint16\-\_\-t col, uint16\-\_\-t row)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_ae959cef3979b65fbc06ddea6bd69629a}{write\-Char} (char character)
+\item 
+void \hyperlink{classmhvlib_1_1_display___character_aec9db04d4873961c2015a2c7c8f3e7b6}{scroll\-Vertically} ()
+\item 
+virtual void \hyperlink{classmhvlib_1_1_display___character_a762a42c313b6564989fd4430a6554089}{\-\_\-write\-Char} (char character)=0
+\item 
+virtual char \hyperlink{classmhvlib_1_1_display___character_a17761076940658303d3f91f1f842f09a}{\-\_\-read\-Char} ()=0
+\item 
+virtual void \hyperlink{classmhvlib_1_1_display___character_a8a27b478b9c392fddaac116d35224cd8}{\-\_\-set\-Cursor} (uint8\-\_\-t col, uint8\-\_\-t row)=0
+\item 
+virtual void \hyperlink{classmhvlib_1_1_display___character_ac8a0c7d5bf14760b6de2a79d4e253db4}{clear} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int16\-\_\-t \hyperlink{classmhvlib_1_1_display___character_adf8f97cb0d4d3c8972fae1b6193484ad}{\-\_\-tx\-Offset}
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_a15cfb25693d29606e1c7cd7d5aaf43dd}{\-\_\-wrap}
+\item 
+bool \hyperlink{classmhvlib_1_1_display___character_a7cca385d4236d082091311f9c295b167}{\-\_\-scroll}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_display___character_a6e99a9d6f438c7f576f9b7fc57d1a386}{\-\_\-current\-Row}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_display___character_a5a8ee5a95fde0a9cc463ffd9451cbc45}{\-\_\-current\-Col}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}
+
+A generic text display Origin (0,0) is bottom left 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 42 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_display___character_adc84df1de3ee7731c0d487cff890c6fd}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!Display\-\_\-\-Character@{Display\-\_\-\-Character}}
+\index{Display\-\_\-\-Character@{Display\-\_\-\-Character}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{Display\-\_\-\-Character}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::{\bf Display\-\_\-\-Character} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_adc84df1de3ee7731c0d487cff890c6fd}
+Create a new character display 
+
+Definition at line 54 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_display___character_a17761076940658303d3f91f1f842f09a}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-read\-Char@{\-\_\-read\-Char}}
+\index{\-\_\-read\-Char@{\-\_\-read\-Char}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-read\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual char {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-read\-Char (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___character_a17761076940658303d3f91f1f842f09a}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780_a49bddf9b4c387f59aaaac6026e27373d}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classmhvlib_1_1_display___character_a8a27b478b9c392fddaac116d35224cd8}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-set\-Cursor@{\-\_\-set\-Cursor}}
+\index{\-\_\-set\-Cursor@{\-\_\-set\-Cursor}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___character_a8a27b478b9c392fddaac116d35224cd8}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780_a20a5006af33d5e62e08484102cf0b875}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classmhvlib_1_1_display___character_a762a42c313b6564989fd4430a6554089}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-write\-Char@{\-\_\-write\-Char}}
+\index{\-\_\-write\-Char@{\-\_\-write\-Char}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___character_a762a42c313b6564989fd4430a6554089}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780_a86e0155089fa7d2d09bae44e6b7cab79}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classmhvlib_1_1_display___character_ac8a0c7d5bf14760b6de2a79d4e253db4}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!clear@{clear}}
+\index{clear@{clear}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___character_ac8a0c7d5bf14760b6de2a79d4e253db4}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780_ad4f7fb68e6c7d57bd5705dd8780ce7ca}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classmhvlib_1_1_display___character_ae64e651272eff783000051354c0af7cf}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_ae64e651272eff783000051354c0af7cf}
+Get the width of the display 
+
+Definition at line 71 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a5bdec4055085c5023b35e70ffab032fd}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a5bdec4055085c5023b35e70ffab032fd}
+Get the width of the display 
+
+Definition at line 64 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a03674a7c620545467b71b137b24fbc5c}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___character_a03674a7c620545467b71b137b24fbc5c}
+Start rendering T\-X buffers 
+
+Implements \hyperlink{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{mhvlib\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 346 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_aec9db04d4873961c2015a2c7c8f3e7b6}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!scroll\-Vertically@{scroll\-Vertically}}
+\index{scroll\-Vertically@{scroll\-Vertically}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{scroll\-Vertically}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::scroll\-Vertically (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_aec9db04d4873961c2015a2c7c8f3e7b6}
+Scroll the display up, leaving a blank line at the bottom 
+
+Definition at line 474 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a609c8b86422a30af2f899eb803d78cda}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!set\-Cursor@{set\-Cursor}}
+\index{set\-Cursor@{set\-Cursor}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a609c8b86422a30af2f899eb803d78cda}
+Position the cursor 
+\begin{DoxyParams}{Parameters}
+{\em col} & the column to set \\
+\hline
+{\em row} & the row to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 401 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a1b57978621bb0d758a5f3973edae6caa}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!set\-Scroll@{set\-Scroll}}
+\index{set\-Scroll@{set\-Scroll}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Scroll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Scroll (
+\begin{DoxyParamCaption}
+\item[{bool}]{should\-Scroll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a1b57978621bb0d758a5f3973edae6caa}
+Should the automatically scroll characters vertically? 
+\begin{DoxyParams}{Parameters}
+{\em should\-Scroll} & true to scroll \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 392 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_acb01612ec8f5d46d318903b8e1e72440}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!set\-Wrap@{set\-Wrap}}
+\index{set\-Wrap@{set\-Wrap}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Wrap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Wrap (
+\begin{DoxyParamCaption}
+\item[{bool}]{should\-Wrap}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_acb01612ec8f5d46d318903b8e1e72440}
+Should the display automatically wrap characters? 
+\begin{DoxyParams}{Parameters}
+{\em should\-Wrap} & true to wrap \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 384 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_ab889b4aa2988f57ed87cef539d1221f9}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!tx\-Animation@{tx\-Animation}}
+\index{tx\-Animation@{tx\-Animation}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{tx\-Animation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::tx\-Animation (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_ab889b4aa2988f57ed87cef539d1221f9}
+Render a frame of T\-X buffer animation -\/ scrolls text from right to left, before moving to the next buffer 
+\begin{DoxyParams}{Parameters}
+{\em row} & the vertical pixel offset to start writing at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more frames to be rendered 
+\end{DoxyReturn}
+
+
+Definition at line 356 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_ab81171f8d0c6ad80aeba80c826d7972d}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write@{write}}
+\index{write@{write}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{{\bf T\-X\-Buffer} \&}]{tx\-Buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_ab81171f8d0c6ad80aeba80c826d7972d}
+Write a T\-X buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em tx\-Buffer} & the buffer to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 82 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a35f6e2155528fc0a904b77bf0cf8393a}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write\-Buffer@{write\-Buffer}}
+\index{write\-Buffer@{write\-Buffer}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a35f6e2155528fc0a904b77bf0cf8393a}
+Write a buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a2dbf95a78674f4e061c45a25e876beaa}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}}
+\index{write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Buffer\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a2dbf95a78674f4e061c45a25e876beaa}
+Write a P\-R\-O\-G\-M\-E\-M buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 206 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_ae959cef3979b65fbc06ddea6bd69629a}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write\-Char@{write\-Char}}
+\index{write\-Char@{write\-Char}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_ae959cef3979b65fbc06ddea6bd69629a}
+Write a character to the display Will interpret the following special characters\-: \textbackslash{}b Backspace \textbackslash{}t Tab \textbackslash{}n Newline
+
+
+\begin{DoxyParams}{Parameters}
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 416 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a8a2d3fd24d5cb24dcb3958100008eaf0}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write\-String@{write\-String}}
+\index{write\-String@{write\-String}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-String (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_a8a2d3fd24d5cb24dcb3958100008eaf0}
+Write a string to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_aa90f6bf0f3061d57ceb19c45fa53bbc4}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!write\-String\-\_\-\-P@{write\-String\-\_\-\-P}}
+\index{write\-String\-\_\-\-P@{write\-String\-\_\-\-P}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-String\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-String\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___character_aa90f6bf0f3061d57ceb19c45fa53bbc4}
+Write a P\-R\-O\-G\-M\-E\-M string to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_display___character_a5a8ee5a95fde0a9cc463ffd9451cbc45}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-current\-Col@{\-\_\-current\-Col}}
+\index{\-\_\-current\-Col@{\-\_\-current\-Col}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-current\-Col}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-current\-Col\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___character_a5a8ee5a95fde0a9cc463ffd9451cbc45}
+
+
+Definition at line 48 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a6e99a9d6f438c7f576f9b7fc57d1a386}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-current\-Row@{\-\_\-current\-Row}}
+\index{\-\_\-current\-Row@{\-\_\-current\-Row}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-current\-Row}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-current\-Row\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___character_a6e99a9d6f438c7f576f9b7fc57d1a386}
+
+
+Definition at line 47 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a7cca385d4236d082091311f9c295b167}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-scroll@{\-\_\-scroll}}
+\index{\-\_\-scroll@{\-\_\-scroll}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-scroll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-scroll\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___character_a7cca385d4236d082091311f9c295b167}
+
+
+Definition at line 46 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_adf8f97cb0d4d3c8972fae1b6193484ad}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-tx\-Offset@{\-\_\-tx\-Offset}}
+\index{\-\_\-tx\-Offset@{\-\_\-tx\-Offset}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-tx\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ int16\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-tx\-Offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___character_adf8f97cb0d4d3c8972fae1b6193484ad}
+
+
+Definition at line 44 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classmhvlib_1_1_display___character_a15cfb25693d29606e1c7cd7d5aaf43dd}{\index{mhvlib\-::\-Display\-\_\-\-Character@{mhvlib\-::\-Display\-\_\-\-Character}!\-\_\-wrap@{\-\_\-wrap}}
+\index{\-\_\-wrap@{\-\_\-wrap}!mhvlib::Display_Character@{mhvlib\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-wrap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-wrap\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___character_a15cfb25693d29606e1c7cd7d5aaf43dd}
+
+
+Definition at line 45 of file Display\-\_\-\-Character.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_display___character_8h}{Display\-\_\-\-Character.\-h}\end{DoxyCompactItemize}

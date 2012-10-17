@@ -1,0 +1,204 @@
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register}{\section{mhvlib\-:\-:Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$ Class Template Reference}
+\label{classmhvlib_1_1_display___h_d44780___shift___register}\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classmhvlib_1_1_display___h_d44780___shift___register}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a7c6fb7a2e09ba106ece1c9ce7580ab64}{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a2b8c3fd393f9e5f90c1b10ba76f249c6}{init} (bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_ab80259dc0b5e01e9419318655f9cc970}{push\-Bits} (uint8\-\_\-t byte, bool rs)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a4f77e6aa1e7184f038c3ae9b74fcdb8e}{write\-Byte} (uint8\-\_\-t byte, bool rs)
+\item 
+uint8\-\_\-t \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a75f38cb2c57b07ee5a23a2565f0a9742}{read\-Byte} (\hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D} bool rs)
+\item 
+bool \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_afa66f2f0a00b7a6bac606e504a8ba8ba}{is\-Busy} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a2ee1206c387708291b58cb1858a78b2b}{delay} (\hyperlink{namespacemhvlib_a810a3cc703298cdd5d00c913cb1bfec9}{H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock), M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable)$>$class mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$}
+
+A class for operating H\-D44780 based L\-C\-D displays via a shift register such as a 74\-H\-C164
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+{\em clock...} & the clock pin \\
+\hline
+{\em data...} & the data pin (should be on the same port as clock) \\
+\hline
+{\em enable...} & the enable pin \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 54 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_a7c6fb7a2e09ba106ece1c9ce7580ab64}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\index{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::{\bf Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_a7c6fb7a2e09ba106ece1c9ce7580ab64}
+A class for operating H\-D44780 based L\-C\-D displays via a shift register such as a 74\-H\-C164 
+
+Definition at line 139 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_a2ee1206c387708291b58cb1858a78b2b}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!delay@{delay}}
+\index{delay@{delay}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::delay (
+\begin{DoxyParamCaption}
+\item[{{\bf H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_a2ee1206c387708291b58cb1858a78b2b}
+Post-\/command delays 
+
+Implements \hyperlink{classmhvlib_1_1_display___h_d44780_a9280b292432c96c67a8ce4b848c8c097}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 117 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_a2b8c3fd393f9e5f90c1b10ba76f249c6}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!init@{init}}
+\index{init@{init}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::init (
+\begin{DoxyParamCaption}
+\item[{bool}]{multi\-Line, }
+\item[{bool}]{big\-Font, }
+\item[{bool}]{cursor\-On, }
+\item[{bool}]{cursor\-Blink, }
+\item[{bool}]{left2right, }
+\item[{bool}]{scroll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_a2b8c3fd393f9e5f90c1b10ba76f249c6}
+Initialise the display 
+\begin{DoxyParams}{Parameters}
+{\em multi\-Line} & true if there is more than 1 line \\
+\hline
+{\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
+\hline
+{\em cursor\-On} & turn the curson on \\
+\hline
+{\em cursor\-Blink} & blink the cursor \\
+\hline
+{\em left2right} & true for text reading left to right \\
+\hline
+{\em scroll} & true to scroll text rather than moving the cursor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_afa66f2f0a00b7a6bac606e504a8ba8ba}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!is\-Busy@{is\-Busy}}
+\index{is\-Busy@{is\-Busy}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ bool {\bf C\-O\-N\-S\-T} {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::is\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_afa66f2f0a00b7a6bac606e504a8ba8ba}
+Check if the display is busy \begin{DoxyReturn}{Returns}
+true if the display is busy 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___h_d44780_a9b5d66702c6be04794d9788257518a47}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 110 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_ab80259dc0b5e01e9419318655f9cc970}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!push\-Bits@{push\-Bits}}
+\index{push\-Bits@{push\-Bits}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{push\-Bits}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::push\-Bits (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{byte, }
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_ab80259dc0b5e01e9419318655f9cc970}
+Write 8 data bits to the display 
+\begin{DoxyParams}{Parameters}
+{\em byte} & the data to write (nibble or true byte) \\
+\hline
+{\em rs} & true to set the R\-S pin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 64 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_a75f38cb2c57b07ee5a23a2565f0a9742}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!read\-Byte@{read\-Byte}}
+\index{read\-Byte@{read\-Byte}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ uint8\-\_\-t {\bf C\-O\-N\-S\-T} {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::read\-Byte (
+\begin{DoxyParamCaption}
+\item[{{\bf U\-N\-U\-S\-E\-D} bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_a75f38cb2c57b07ee5a23a2565f0a9742}
+Read a byte from the display 
+\begin{DoxyParams}{Parameters}
+{\em rs} & true to set the R\-S pin \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 102 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780___shift___register_a4f77e6aa1e7184f038c3ae9b74fcdb8e}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}!write\-Byte@{write\-Byte}}
+\index{write\-Byte@{write\-Byte}!mhvlib::Display_HD44780_Shift_Register@{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}}
+\subsubsection[{write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers, M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(enable) $>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register}$<$ cols, rows, tx\-Buffers,,, $>$\-::write\-Byte (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{byte, }
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780___shift___register_a4f77e6aa1e7184f038c3ae9b74fcdb8e}
+Write a byte to the display 
+\begin{DoxyParams}{Parameters}
+{\em byte} & the data to write \\
+\hline
+{\em rs} & true to set the R\-S pin (aka data pin ) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___h_d44780_a1d20c6cdaee32775805dcf8ec7dabbbf}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 84 of file Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_display___h_d44780___shift___register_8h}{Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register.\-h}\end{DoxyCompactItemize}

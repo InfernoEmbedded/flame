@@ -1,0 +1,92 @@
+\hypertarget{classmhvlib_1_1_software_p_w_m}{\section{mhvlib\-:\-:Software\-P\-W\-M$<$ listener\-Count $>$ Class Template Reference}
+\label{classmhvlib_1_1_software_p_w_m}\index{mhvlib\-::\-Software\-P\-W\-M$<$ listener\-Count $>$@{mhvlib\-::\-Software\-P\-W\-M$<$ listener\-Count $>$}}
+}
+
+
+{\ttfamily \#include $<$Software\-P\-W\-M.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Software\-P\-W\-M$<$ listener\-Count $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmhvlib_1_1_software_p_w_m}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_software_p_w_m_a21bd77712032c871ccf4bedfe106fbbe}{Software\-P\-W\-M} (\hyperlink{classmhvlib_1_1_timer}{Timer} \&timer)
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_software_p_w_m_a936918b44eca5e593abca6f608356904}{add\-Listener} (\hyperlink{classmhvlib_1_1_software_p_w_m_listener}{Software\-P\-W\-M\-Listener} \&listener)
+\item 
+void \hyperlink{classmhvlib_1_1_software_p_w_m_ac450b4de360a9a36abe0d2e65637b524}{alarm} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t listener\-Count = 8$>$class mhvlib\-::\-Software\-P\-W\-M$<$ listener\-Count $>$}
+
+
+
+Definition at line 71 of file Software\-P\-W\-M.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_software_p_w_m_a21bd77712032c871ccf4bedfe106fbbe}{\index{mhvlib\-::\-Software\-P\-W\-M@{mhvlib\-::\-Software\-P\-W\-M}!Software\-P\-W\-M@{Software\-P\-W\-M}}
+\index{Software\-P\-W\-M@{Software\-P\-W\-M}!mhvlib::SoftwarePWM@{mhvlib\-::\-Software\-P\-W\-M}}
+\subsubsection[{Software\-P\-W\-M}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t listener\-Count = 8$>$ {\bf mhvlib\-::\-Software\-P\-W\-M}$<$ listener\-Count $>$\-::{\bf Software\-P\-W\-M} (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer} \&}]{timer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_software_p_w_m_a21bd77712032c871ccf4bedfe106fbbe}
+Create a new software P\-W\-M manager 
+\begin{DoxyParams}{Parameters}
+{\em timer} & the timer to drive the manager with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 83 of file Software\-P\-W\-M.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_software_p_w_m_a936918b44eca5e593abca6f608356904}{\index{mhvlib\-::\-Software\-P\-W\-M@{mhvlib\-::\-Software\-P\-W\-M}!add\-Listener@{add\-Listener}}
+\index{add\-Listener@{add\-Listener}!mhvlib::SoftwarePWM@{mhvlib\-::\-Software\-P\-W\-M}}
+\subsubsection[{add\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t listener\-Count = 8$>$ uint8\-\_\-t {\bf mhvlib\-::\-Software\-P\-W\-M}$<$ listener\-Count $>$\-::add\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf Software\-P\-W\-M\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_software_p_w_m_a936918b44eca5e593abca6f608356904}
+Register a listener 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the index of listener, or 0 if the add failed 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file Software\-P\-W\-M.\-h.
+
+\hypertarget{classmhvlib_1_1_software_p_w_m_ac450b4de360a9a36abe0d2e65637b524}{\index{mhvlib\-::\-Software\-P\-W\-M@{mhvlib\-::\-Software\-P\-W\-M}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib::SoftwarePWM@{mhvlib\-::\-Software\-P\-W\-M}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t listener\-Count = 8$>$ void {\bf mhvlib\-::\-Software\-P\-W\-M}$<$ listener\-Count $>$\-::{\bf alarm} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_software_p_w_m_ac450b4de360a9a36abe0d2e65637b524}
+Handle the timer interrupt by setting the outputs 
+
+Implements \hyperlink{classmhvlib_1_1_timer_listener_afd620e7d363a34525cd4b96827300de1}{mhvlib\-::\-Timer\-Listener}.
+
+
+
+Definition at line 108 of file Software\-P\-W\-M.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_software_p_w_m_8h}{Software\-P\-W\-M.\-h}\end{DoxyCompactItemize}

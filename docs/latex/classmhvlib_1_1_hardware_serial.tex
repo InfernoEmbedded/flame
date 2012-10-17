@@ -1,0 +1,299 @@
+\hypertarget{classmhvlib_1_1_hardware_serial}{\section{mhvlib\-:\-:Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib_1_1_hardware_serial}\index{mhvlib\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$@{mhvlib\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Hardware\-Serial.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.448980cm]{classmhvlib_1_1_hardware_serial}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_hardware_serial_ab394f939d4ffaf6ac002cc904876004a}{Hardware\-Serial} ()
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a4c122e18df598146345c8c9f8d82de5f}{rx} ()
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_ae2c2856b508c2c2604f6b3b9d2d6887f}{tx} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classmhvlib_1_1_hardware_serial_a513bc3c5f5bb534a2d6166dc92cb1b20}{set\-Speed} (unsigned long new\-Baud)
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_af8c6bc0b71848c41700c98783cde2b4a}{end} ()
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a50b4b931601afd638f85045a6b791c7b}{echo} (bool echo\-On)
+\item 
+bool \hyperlink{classmhvlib_1_1_hardware_serial_af5ca4e5279bddfe5a6e1abd047316d1b}{can\-Send\-Busy} ()
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a5eab32b3c009c8d52d3b12326b15da9f}{busy\-Write} (char c)
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a8d05554a0e2e5290c00bdb147f082170}{busy\-Write\-\_\-\-P} (P\-G\-M\-\_\-\-P buffer)
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a05de04bdedb34cc76a16f1bba44186bf}{busy\-Write} (const char $\ast$buffer)
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a2e5830f92080c1f130a61712bff14c50}{busy\-Write\-\_\-\-P} (P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a1f48ac4bae620e3bae013963ff1e0344}{busy\-Write} (const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classmhvlib_1_1_hardware_serial_a81dc5b3625e24a12988abb8d9879fb89}{busy} (void)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_hardware_serial_a1b412910dd80a178cdb406d2952593e1}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart), uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$class mhvlib\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}
+
+Create now serial port driver 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em usart} & the serial port parameters \\
+\hline
+{\em baud} & the baud rate to run at \\
+\hline
+{\em rx\-Buf\-Length} & the maximum number of characters to receive \\
+\hline
+{\em tx\-Buffers} & the number of send buffers \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyPostcond}{Postcondition}
+Interrupts should be assigned to the driver 
+\end{DoxyPostcond}
+
+
+Definition at line 79 of file Hardware\-Serial.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_hardware_serial_ab394f939d4ffaf6ac002cc904876004a}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!Hardware\-Serial@{Hardware\-Serial}}
+\index{Hardware\-Serial@{Hardware\-Serial}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{Hardware\-Serial}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::{\bf Hardware\-Serial} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_ab394f939d4ffaf6ac002cc904876004a}
+Constructor 
+
+Definition at line 108 of file Hardware\-Serial.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_hardware_serial_a81dc5b3625e24a12988abb8d9879fb89}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy@{busy}}
+\index{busy@{busy}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a81dc5b3625e24a12988abb8d9879fb89}
+Check if the hardware is busy -\/ note that this should not be used to determine if you can actually write -\/ use can\-Send instead
+
+\begin{DoxyReturn}{Returns}
+true if the hardware is busy 
+\end{DoxyReturn}
+
+
+Definition at line 366 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a5eab32b3c009c8d52d3b12326b15da9f}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a5eab32b3c009c8d52d3b12326b15da9f}
+Write a character
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 192 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a05de04bdedb34cc76a16f1bba44186bf}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a05de04bdedb34cc76a16f1bba44186bf}
+Write a null terminated string to the serial port
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the string to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 228 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a1f48ac4bae620e3bae013963ff1e0344}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a1f48ac4bae620e3bae013963ff1e0344}
+Write a buffer 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 346 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a8d05554a0e2e5290c00bdb147f082170}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}}
+\index{busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy\-Write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy\-Write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a8d05554a0e2e5290c00bdb147f082170}
+Write a null terminated progmem string
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the string to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 206 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a2e5830f92080c1f130a61712bff14c50}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}}
+\index{busy\-Write\-\_\-\-P@{busy\-Write\-\_\-\-P}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{busy\-Write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::busy\-Write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a2e5830f92080c1f130a61712bff14c50}
+Write a buffer from P\-R\-O\-G\-M\-E\-M 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 327 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_af5ca4e5279bddfe5a6e1abd047316d1b}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!can\-Send\-Busy@{can\-Send\-Busy}}
+\index{can\-Send\-Busy@{can\-Send\-Busy}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{can\-Send\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::can\-Send\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_af5ca4e5279bddfe5a6e1abd047316d1b}
+Can we send something via busywrite
+
+\begin{DoxyReturn}{Returns}
+true if we can send something 
+\end{DoxyReturn}
+
+
+Definition at line 183 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a50b4b931601afd638f85045a6b791c7b}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!echo@{echo}}
+\index{echo@{echo}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{echo}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::echo (
+\begin{DoxyParamCaption}
+\item[{bool}]{echo\-On}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a50b4b931601afd638f85045a6b791c7b}
+Enable echoing data received by us back to the sender (useful for terminal interaction
+
+
+\begin{DoxyParams}{Parameters}
+{\em echo\-On} & true to enable echo \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 174 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_af8c6bc0b71848c41700c98783cde2b4a}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!end@{end}}
+\index{end@{end}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_af8c6bc0b71848c41700c98783cde2b4a}
+Halt the serial port 
+
+Definition at line 164 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a1b412910dd80a178cdb406d2952593e1}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_hardware_serial_a1b412910dd80a178cdb406d2952593e1}
+Start sending async data 
+
+Implements \hyperlink{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{mhvlib\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 88 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a4c122e18df598146345c8c9f8d82de5f}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!rx@{rx}}
+\index{rx@{rx}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{rx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::rx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a4c122e18df598146345c8c9f8d82de5f}
+R\-X interrupt handler 
+
+Definition at line 117 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_a513bc3c5f5bb534a2d6166dc92cb1b20}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!set\-Speed@{set\-Speed}}
+\index{set\-Speed@{set\-Speed}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{set\-Speed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::set\-Speed (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{new\-Baud}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_a513bc3c5f5bb534a2d6166dc92cb1b20}
+Configure the serial port for a specific baud rate 
+\begin{DoxyParams}{Parameters}
+{\em new\-Baud} & the baud rate to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 145 of file Hardware\-Serial.\-h.
+
+\hypertarget{classmhvlib_1_1_hardware_serial_ae2c2856b508c2c2604f6b3b9d2d6887f}{\index{mhvlib\-::\-Hardware\-Serial@{mhvlib\-::\-Hardware\-Serial}!tx@{tx}}
+\index{tx@{tx}!mhvlib::HardwareSerial@{mhvlib\-::\-Hardware\-Serial}}
+\subsubsection[{tx}]{\setlength{\rightskip}{0pt plus 5cm}template$<$M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(usart) , uint32\-\_\-t baud, uint8\-\_\-t rx\-Buf\-Length, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Hardware\-Serial}$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$\-::tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_hardware_serial_ae2c2856b508c2c2604f6b3b9d2d6887f}
+T\-X interrupt handler 
+
+Definition at line 129 of file Hardware\-Serial.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_hardware_serial_8h}{Hardware\-Serial.\-h}\end{DoxyCompactItemize}

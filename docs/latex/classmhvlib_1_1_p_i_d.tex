@@ -1,0 +1,288 @@
+\hypertarget{classmhvlib_1_1_p_i_d}{\section{mhvlib\-:\-:P\-I\-D Class Reference}
+\label{classmhvlib_1_1_p_i_d}\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}}
+}
+
+
+{\ttfamily \#include $<$P\-I\-D.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_p_i_d_a6dbbc68bdb97abca87469e0c19552dc4}{P\-I\-D} (float setpoint, float k\-P, float k\-I, float k\-D, uint16\-\_\-t period, bool reverse, uint16\-\_\-t min, uint16\-\_\-t max)
+\item 
+void \hyperlink{classmhvlib_1_1_p_i_d_a5e66a4eba89c47f4272495e2ae1d11d7}{set\-Direction} (bool reverse)
+\item 
+void \hyperlink{classmhvlib_1_1_p_i_d_ac8e574e52810bfdf5fcc2fd9c38e901a}{enable} (bool enable)
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_ac7a6acd5776868bf4485271fb8c98ebd}{compute} (float input)
+\item 
+void \hyperlink{classmhvlib_1_1_p_i_d_a0a63f3d2b28e739d29345f64e454fe4c}{set\-Tuning} (float k\-P, float k\-I, float k\-D, uint16\-\_\-t period)
+\item 
+void \hyperlink{classmhvlib_1_1_p_i_d_ae4b9310d17b344ea2b449e71e6a7252b}{set\-Output\-Limits} (float, float)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_p_i_d_a834fdda3492f2d3e4bd8a204c6dfa555}{clamp\-Integral} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_a5934b986f7b2101c151102aa9d8a3b4a}{\-\_\-k\-P}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_aee19a521b92e4c0a4b35e35a92b10788}{\-\_\-k\-I}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_a52a95f70a6235bee3cc395dfa8d009cb}{\-\_\-k\-D}
+\item 
+bool \hyperlink{classmhvlib_1_1_p_i_d_a4f734792b8105b3b5c1ec412d934fcf2}{\-\_\-reverse}
+\item 
+bool \hyperlink{classmhvlib_1_1_p_i_d_a0644293ed53cbe44a5dfcd11f70fdf77}{\-\_\-enabled}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_a51556d4248979a704496105b1fe9dc8c}{\-\_\-setpoint}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_ae005b6daed4a5fdb051a7be0534a0539}{\-\_\-integral}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_a3e4094d63aaa4e00ebe6060a7340261d}{\-\_\-last\-Input}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_ae7b21577ebbf12be988586c386c91e56}{\-\_\-last\-Output}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_af655645a3642704bf8fe23e2bb336481}{\-\_\-out\-Min}
+\item 
+float \hyperlink{classmhvlib_1_1_p_i_d_a1f08d07dd7d2c48456cba27b1444c168}{\-\_\-out\-Max}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 39 of file P\-I\-D.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_p_i_d_a6dbbc68bdb97abca87469e0c19552dc4}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!P\-I\-D@{P\-I\-D}}
+\index{P\-I\-D@{P\-I\-D}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{P\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-P\-I\-D\-::\-P\-I\-D (
+\begin{DoxyParamCaption}
+\item[{float}]{setpoint, }
+\item[{float}]{k\-P, }
+\item[{float}]{k\-I, }
+\item[{float}]{k\-D, }
+\item[{uint16\-\_\-t}]{period, }
+\item[{bool}]{reverse, }
+\item[{uint16\-\_\-t}]{min, }
+\item[{uint16\-\_\-t}]{max}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_a6dbbc68bdb97abca87469e0c19552dc4}
+Create a new \hyperlink{classmhvlib_1_1_p_i_d}{P\-I\-D} 
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & the target value \\
+\hline
+{\em k\-P} & the proportional constant \\
+\hline
+{\em k\-I} & the integral constant \\
+\hline
+{\em k\-D} & the derivative constant \\
+\hline
+{\em period} & the period that \hyperlink{classmhvlib_1_1_p_i_d_ac7a6acd5776868bf4485271fb8c98ebd}{compute()} is called, in ms \\
+\hline
+{\em reverse} & true if there is an inverse relationship between the output and the input (eg. running a cooler to reduce temperature) \\
+\hline
+{\em min} & the minimum value for output \\
+\hline
+{\em max} & the maximum value for output \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file P\-I\-D.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_p_i_d_a834fdda3492f2d3e4bd8a204c6dfa555}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!clamp\-Integral@{clamp\-Integral}}
+\index{clamp\-Integral@{clamp\-Integral}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{clamp\-Integral}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-P\-I\-D\-::clamp\-Integral (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a834fdda3492f2d3e4bd8a204c6dfa555}
+
+
+Definition at line 64 of file P\-I\-D.\-cpp.
+
+\hypertarget{classmhvlib_1_1_p_i_d_ac7a6acd5776868bf4485271fb8c98ebd}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!compute@{compute}}
+\index{compute@{compute}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{compute}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::compute (
+\begin{DoxyParamCaption}
+\item[{float}]{input}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_ac7a6acd5776868bf4485271fb8c98ebd}
+Calculate the next output 
+\begin{DoxyParams}{Parameters}
+{\em input} & the latest sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file P\-I\-D.\-cpp.
+
+\hypertarget{classmhvlib_1_1_p_i_d_ac8e574e52810bfdf5fcc2fd9c38e901a}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!enable@{enable}}
+\index{enable@{enable}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-P\-I\-D\-::enable (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_ac8e574e52810bfdf5fcc2fd9c38e901a}
+Enable/\-Disable the \hyperlink{classmhvlib_1_1_p_i_d}{P\-I\-D} 
+\begin{DoxyParams}{Parameters}
+{\em enable} & true to enable the pid \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file P\-I\-D.\-cpp.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a5e66a4eba89c47f4272495e2ae1d11d7}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!set\-Direction@{set\-Direction}}
+\index{set\-Direction@{set\-Direction}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{set\-Direction}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-P\-I\-D\-::set\-Direction (
+\begin{DoxyParamCaption}
+\item[{bool}]{reverse}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_a5e66a4eba89c47f4272495e2ae1d11d7}
+Set the direction for the \hyperlink{classmhvlib_1_1_p_i_d}{P\-I\-D}.
+
+Setting reverse means that increasing output reduces the input (eg. increasing power to a cooler, with the input being temperature) 
+
+Definition at line 152 of file P\-I\-D.\-cpp.
+
+\hypertarget{classmhvlib_1_1_p_i_d_ae4b9310d17b344ea2b449e71e6a7252b}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!set\-Output\-Limits@{set\-Output\-Limits}}
+\index{set\-Output\-Limits@{set\-Output\-Limits}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{set\-Output\-Limits}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-P\-I\-D\-::set\-Output\-Limits (
+\begin{DoxyParamCaption}
+\item[{float}]{min, }
+\item[{float}]{max}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_ae4b9310d17b344ea2b449e71e6a7252b}
+Alter the minimum \& maximum values for the output 
+\begin{DoxyParams}{Parameters}
+{\em min} & the new minimum output value \\
+\hline
+{\em max} & the new maximum output value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file P\-I\-D.\-cpp.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a0a63f3d2b28e739d29345f64e454fe4c}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!set\-Tuning@{set\-Tuning}}
+\index{set\-Tuning@{set\-Tuning}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{set\-Tuning}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-P\-I\-D\-::set\-Tuning (
+\begin{DoxyParamCaption}
+\item[{float}]{k\-P, }
+\item[{float}]{k\-I, }
+\item[{float}]{k\-D, }
+\item[{uint16\-\_\-t}]{period}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_p_i_d_a0a63f3d2b28e739d29345f64e454fe4c}
+Adjust \hyperlink{classmhvlib_1_1_p_i_d}{P\-I\-D} parameters 
+\begin{DoxyParams}{Parameters}
+{\em k\-P} & the proportional constant \\
+\hline
+{\em k\-I} & the integral constant \\
+\hline
+{\em k\-D} & the derivative constant \\
+\hline
+{\em period} & the period that \hyperlink{classmhvlib_1_1_p_i_d_ac7a6acd5776868bf4485271fb8c98ebd}{compute()} is called, in ms \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 104 of file P\-I\-D.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_p_i_d_a0644293ed53cbe44a5dfcd11f70fdf77}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-enabled@{\-\_\-enabled}}
+\index{\-\_\-enabled@{\-\_\-enabled}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-P\-I\-D\-::\-\_\-enabled\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a0644293ed53cbe44a5dfcd11f70fdf77}
+
+
+Definition at line 46 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_ae005b6daed4a5fdb051a7be0534a0539}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-integral@{\-\_\-integral}}
+\index{\-\_\-integral@{\-\_\-integral}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-integral}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-integral\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_ae005b6daed4a5fdb051a7be0534a0539}
+
+
+Definition at line 49 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a52a95f70a6235bee3cc395dfa8d009cb}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-k\-D@{\-\_\-k\-D}}
+\index{\-\_\-k\-D@{\-\_\-k\-D}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-D}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-k\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a52a95f70a6235bee3cc395dfa8d009cb}
+
+
+Definition at line 43 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_aee19a521b92e4c0a4b35e35a92b10788}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-k\-I@{\-\_\-k\-I}}
+\index{\-\_\-k\-I@{\-\_\-k\-I}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-I}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-k\-I\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_aee19a521b92e4c0a4b35e35a92b10788}
+
+
+Definition at line 42 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a5934b986f7b2101c151102aa9d8a3b4a}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-k\-P@{\-\_\-k\-P}}
+\index{\-\_\-k\-P@{\-\_\-k\-P}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-P}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-k\-P\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a5934b986f7b2101c151102aa9d8a3b4a}
+
+
+Definition at line 41 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a3e4094d63aaa4e00ebe6060a7340261d}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-last\-Input@{\-\_\-last\-Input}}
+\index{\-\_\-last\-Input@{\-\_\-last\-Input}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-last\-Input}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-last\-Input\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a3e4094d63aaa4e00ebe6060a7340261d}
+
+
+Definition at line 50 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_ae7b21577ebbf12be988586c386c91e56}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-last\-Output@{\-\_\-last\-Output}}
+\index{\-\_\-last\-Output@{\-\_\-last\-Output}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-last\-Output}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-last\-Output\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_ae7b21577ebbf12be988586c386c91e56}
+
+
+Definition at line 51 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a1f08d07dd7d2c48456cba27b1444c168}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-out\-Max@{\-\_\-out\-Max}}
+\index{\-\_\-out\-Max@{\-\_\-out\-Max}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-out\-Max}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-out\-Max\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a1f08d07dd7d2c48456cba27b1444c168}
+
+
+Definition at line 54 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_af655645a3642704bf8fe23e2bb336481}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-out\-Min@{\-\_\-out\-Min}}
+\index{\-\_\-out\-Min@{\-\_\-out\-Min}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-out\-Min}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-out\-Min\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_af655645a3642704bf8fe23e2bb336481}
+
+
+Definition at line 53 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a4f734792b8105b3b5c1ec412d934fcf2}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-reverse@{\-\_\-reverse}}
+\index{\-\_\-reverse@{\-\_\-reverse}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-reverse}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-P\-I\-D\-::\-\_\-reverse\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a4f734792b8105b3b5c1ec412d934fcf2}
+
+
+Definition at line 45 of file P\-I\-D.\-h.
+
+\hypertarget{classmhvlib_1_1_p_i_d_a51556d4248979a704496105b1fe9dc8c}{\index{mhvlib\-::\-P\-I\-D@{mhvlib\-::\-P\-I\-D}!\-\_\-setpoint@{\-\_\-setpoint}}
+\index{\-\_\-setpoint@{\-\_\-setpoint}!mhvlib::PID@{mhvlib\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-setpoint}]{\setlength{\rightskip}{0pt plus 5cm}float mhvlib\-::\-P\-I\-D\-::\-\_\-setpoint\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_p_i_d_a51556d4248979a704496105b1fe9dc8c}
+
+
+Definition at line 48 of file P\-I\-D.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_p_i_d_8h}{P\-I\-D.\-h}\item 
+\hyperlink{_p_i_d_8cpp}{P\-I\-D.\-cpp}\end{DoxyCompactItemize}

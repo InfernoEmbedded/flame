@@ -1,0 +1,239 @@
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m}{\section{mhvlib\-:\-:E\-E\-P\-R\-O\-M Class Reference}
+\label{classmhvlib_1_1_e_e_p_r_o_m}\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+}
+
+
+{\ttfamily \#include $<$E\-E\-P\-R\-O\-M.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_e_e_p_r_o_m_adb83b14d67eaf89756cb430bb3875a08}{E\-E\-P\-R\-O\-M} ()
+\item 
+int16\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_aa80923ec60ff6b31fc2198b942d1c7eb}{read} (uint16\-\_\-t address)
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_ac66458bbafbc01f44049b3eea5275f12}{busy\-Read} (uint16\-\_\-t address)
+\item 
+int8\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_a64962d33ab18cf1c884af508da498438}{read} (void $\ast$buffer, uint16\-\_\-t address, uint16\-\_\-t length)
+\item 
+void \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_a90f74eb2d977331a77b86d2ae93af21a}{busy\-Read} (void $\ast$buffer, uint16\-\_\-t address, uint16\-\_\-t length)
+\item 
+int8\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_af2e6ca3e64774fba74bbc6c3dc31e193}{write} (uint16\-\_\-t address, uint8\-\_\-t data)
+\item 
+int8\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_a51fd372faf5f9fe5c425646d9f97e0e8}{busy\-Write} (void $\ast$buffer, uint16\-\_\-t address, uint16\-\_\-t length)
+\item 
+int8\-\_\-t \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_af901921bc9b36044117f4695cc0178b0}{write} (void $\ast$buffer, uint16\-\_\-t address, uint16\-\_\-t length, void($\ast$done\-Callback)(void $\ast$buffer, void $\ast$data), void $\ast$done\-Callback\-Data)
+\item 
+void \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_a66b70503b83a26fd99c4377f9a49670e}{write\-Interrupt} ()
+\item 
+bool \hyperlink{classmhvlib_1_1_e_e_p_r_o_m_a2380b1457aa996eb905b4fc3cbb9702b}{is\-Busy} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 54 of file E\-E\-P\-R\-O\-M.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_adb83b14d67eaf89756cb430bb3875a08}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!E\-E\-P\-R\-O\-M@{E\-E\-P\-R\-O\-M}}
+\index{E\-E\-P\-R\-O\-M@{E\-E\-P\-R\-O\-M}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{E\-E\-P\-R\-O\-M}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-E\-E\-P\-R\-O\-M\-::\-E\-E\-P\-R\-O\-M (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_adb83b14d67eaf89756cb430bb3875a08}
+Create a new \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access class 
+
+Definition at line 36 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_ac66458bbafbc01f44049b3eea5275f12}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!busy\-Read@{busy\-Read}}
+\index{busy\-Read@{busy\-Read}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{busy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::busy\-Read (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_ac66458bbafbc01f44049b3eea5275f12}
+Read a byte from \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M}, waiting until the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} is available 
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the byte 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_a90f74eb2d977331a77b86d2ae93af21a}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!busy\-Read@{busy\-Read}}
+\index{busy\-Read@{busy\-Read}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{busy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-E\-E\-P\-R\-O\-M\-::busy\-Read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{address, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_a90f74eb2d977331a77b86d2ae93af21a}
+Read a buffer from \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M}, waiting until the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} is available 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to populate \\
+\hline
+{\em address} & the address to read from \\
+\hline
+{\em length} & the number of bytes to read \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 106 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_a51fd372faf5f9fe5c425646d9f97e0e8}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!busy\-Write@{busy\-Write}}
+\index{busy\-Write@{busy\-Write}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{busy\-Write}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::busy\-Write (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{address, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_a51fd372faf5f9fe5c425646d9f97e0e8}
+Write a buffer to \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to read from \\
+\hline
+{\em address} & the address to write to \\
+\hline
+{\em length} & the number of bytes to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_a2380b1457aa996eb905b4fc3cbb9702b}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!is\-Busy@{is\-Busy}}
+\index{is\-Busy@{is\-Busy}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-E\-E\-P\-R\-O\-M\-::is\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_a2380b1457aa996eb905b4fc3cbb9702b}
+Check if the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} hardware is busy \begin{DoxyReturn}{Returns}
+true if the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} hardware is busy 
+\end{DoxyReturn}
+
+
+Definition at line 219 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_aa80923ec60ff6b31fc2198b942d1c7eb}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!read@{read}}
+\index{read@{read}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::read (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_aa80923ec60ff6b31fc2198b942d1c7eb}
+Read a byte from \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to read from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the byte, or M\-H\-V\-\_\-\-E\-E\-P\-R\-O\-M\-\_\-\-B\-U\-S\-Y if the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} is busy 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_a64962d33ab18cf1c884af508da498438}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!read@{read}}
+\index{read@{read}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::read (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{address, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_a64962d33ab18cf1c884af508da498438}
+Read a buffer from \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to populate \\
+\hline
+{\em address} & the address to read from \\
+\hline
+{\em length} & the number of bytes to read \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 82 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_af2e6ca3e64774fba74bbc6c3dc31e193}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!write@{write}}
+\index{write@{write}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::write (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{address, }
+\item[{uint8\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_af2e6ca3e64774fba74bbc6c3dc31e193}
+Write a byte to \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em address} & the address to write to \\
+\hline
+{\em data} & the byte to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+M\-H\-V\-\_\-\-E\-E\-P\-R\-O\-M\-\_\-\-B\-U\-S\-Y if the \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} is busy 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_af901921bc9b36044117f4695cc0178b0}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!write@{write}}
+\index{write@{write}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}int8\-\_\-t mhvlib\-::\-E\-E\-P\-R\-O\-M\-::write (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{address, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{void($\ast$)(void $\ast$buffer, void $\ast$data)}]{done\-Callback, }
+\item[{void $\ast$}]{done\-Callback\-Data}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_af901921bc9b36044117f4695cc0178b0}
+Write a buffer to \hyperlink{classmhvlib_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer to read from \\
+\hline
+{\em address} & the address to write to \\
+\hline
+{\em length} & the number of bytes to write (must be greater than 0) \\
+\hline
+{\em done\-Callback} & A callback to call when the buffer has been written (can be N\-U\-L\-L) \\
+\hline
+{\em done\-Callback\-Data} & A pointer to pass to the callback \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 167 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+\hypertarget{classmhvlib_1_1_e_e_p_r_o_m_a66b70503b83a26fd99c4377f9a49670e}{\index{mhvlib\-::\-E\-E\-P\-R\-O\-M@{mhvlib\-::\-E\-E\-P\-R\-O\-M}!write\-Interrupt@{write\-Interrupt}}
+\index{write\-Interrupt@{write\-Interrupt}!mhvlib::EEPROM@{mhvlib\-::\-E\-E\-P\-R\-O\-M}}
+\subsubsection[{write\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-E\-E\-P\-R\-O\-M\-::write\-Interrupt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_e_e_p_r_o_m_a66b70503b83a26fd99c4377f9a49670e}
+Interrupt handler for async writes 
+
+Definition at line 195 of file E\-E\-P\-R\-O\-M.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_e_e_p_r_o_m_8h}{E\-E\-P\-R\-O\-M.\-h}\item 
+\hyperlink{_e_e_p_r_o_m_8cpp}{E\-E\-P\-R\-O\-M.\-cpp}\end{DoxyCompactItemize}

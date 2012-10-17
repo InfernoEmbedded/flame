@@ -1,0 +1,601 @@
+\hypertarget{classmhvlib_1_1_timer_implementation}{\section{mhvlib\-:\-:Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$ Class Template Reference}
+\label{classmhvlib_1_1_timer_implementation}\index{mhvlib\-::\-Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$@{mhvlib\-::\-Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$}}
+}
+
+
+{\ttfamily \#include $<$Timer.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.992028cm]{classmhvlib_1_1_timer_implementation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_a5c5b9a3d3911caaea2bf03a8c15bee9e}{current} ()
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_a6f4a1da5198291f97365070555c4572a}{calculate\-Prescaler} (uint32\-\_\-t \hyperlink{structmhvlib_1_1time}{time}, \hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} $\ast$prescaler, uint16\-\_\-t $\ast$factor)
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_ae2ce66b4210629f464cc5d4cdf1887c2}{get\-Prescaler\-Multiplier} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a1a733b0365ea87136390b22af8c7c417}{set\-Periods} (\hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a08d0df48d1aa20b749850f0971d7fb4a}{set\-Periods} (\hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2, uint16\-\_\-t time3)
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_ac6a2dd5c06e8c3ae5bace6d964cc1154}{get\-Top} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a18d5d9f91b5992b0753b3f945200de96}{set\-Top} (uint16\-\_\-t value)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a68dc788e7ca5a40e7fd066b663af4787}{set\-Output} (uint8\-\_\-t channel, uint16\-\_\-t value)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a81e6a2c9593f7b88c2078ad4c09c28f5}{set\-Output1} (uint16\-\_\-t value)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_ac5bd2fc62ca3df1b3fd0e0f1051dcdcd}{set\-Output2} (uint16\-\_\-t value)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a23b3e5537973765879e16e07a5fbd35c}{set\-Output3} (uint16\-\_\-t value)
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_a69562dc2a6df1396f52228fa9fcb740a}{get\-Output} (uint8\-\_\-t channel)
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_a907104d55aca56718aae6991862a5a94}{get\-Output1} ()
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_abc2ce51acda9f71c9aa8465f07cafb6e}{get\-Output2} ()
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_timer_implementation_a21da6ee07ec7f23ffe7c736e4ec87a88}{get\-Output3} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a5efd6b56f6a5a26747a266681315db0c}{connect\-Output} (uint8\-\_\-t channel, \hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T} connect\-Type)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_aed9ab5334055ccc676266651649d03d6}{connect\-Output1} (\hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T} connect\-Type)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a51a0667fa6e6de6cb4bc1f8e6d7a9747}{connect\-Output2} (\hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T} connect\-Type)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a1542d756ee3d1573f98e19c8b153a10c}{connect\-Output3} (\hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T} connect\-Type)
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a56d91998c31cab9618b4d58c0d42f499}{enable} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_aaa3b47cdecd9b209074a77edbd878246}{disable} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_afe4a733b13273676907a765419efd6e3}{trigger1} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_aee518bdfdb49046366b9e0afb27bd8d6}{\-\_\-set\-Prescaler} (\hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} prescaler)
+\item 
+\hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} \hyperlink{classmhvlib_1_1_timer_implementation_a331190b1a3f175dc53910ef1e0f99224}{get\-Prescaler} ()
+\item 
+void \hyperlink{classmhvlib_1_1_timer_implementation_a2d71ce0874281bffc8ea9707f6842f4b}{set\-Generation\-Mode} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classmhvlib_1_1_timer_implementation_a47a4861cf076333bcf6c320c993bec90}{\-\_\-have\-Time2}
+\item 
+bool \hyperlink{classmhvlib_1_1_timer_implementation_a35ab0a13feb6011e01f5d9b850ef15e4}{\-\_\-have\-Time3}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$class mhvlib\-::\-Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$}
+
+A hardware timer 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em bits} & the number of bits of the timer (8 or 16) \\
+\hline
+{\em type} & the type of timer (number of prescalers) \\
+\hline
+{\em control\-Reg\-A} & the address of the first control reg, in S\-F\-R\-\_\-\-M\-E\-M8 format \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 267 of file Timer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_timer_implementation_aee518bdfdb49046366b9e0afb27bd8d6}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}}
+\index{\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::\-\_\-set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_aee518bdfdb49046366b9e0afb27bd8d6}
+Set the prescaler (internal use only) 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler value (only the lowest 3 bits may be set) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_aeec0e358acaee963e167bad8c8fba294}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 276 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a6f4a1da5198291f97365070555c4572a}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!calculate\-Prescaler@{calculate\-Prescaler}}
+\index{calculate\-Prescaler@{calculate\-Prescaler}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{calculate\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint8\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::calculate\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{time, }
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} $\ast$}]{prescaler, }
+\item[{uint16\-\_\-t $\ast$}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a6f4a1da5198291f97365070555c4572a}
+Set the prescaler 
+\begin{DoxyParams}{Parameters}
+{\em time} & the time in timer ticks \\
+\hline
+{\em prescaler} & the prescaler to set \\
+\hline
+{\em factor} & the prescale factor return 0 on success \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a664e4ccc8c1b8bafa5fbbaf1f190787b}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 380 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a5efd6b56f6a5a26747a266681315db0c}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!connect\-Output@{connect\-Output}}
+\index{connect\-Output@{connect\-Output}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::connect\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_timer_implementation_a5efd6b56f6a5a26747a266681315db0c}
+
+
+Definition at line 806 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_aed9ab5334055ccc676266651649d03d6}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!connect\-Output1@{connect\-Output1}}
+\index{connect\-Output1@{connect\-Output1}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::connect\-Output1 (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_aed9ab5334055ccc676266651649d03d6}
+Connect channel 1 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_aeb55cb01edbbf974bcdb46c0065d18a8}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 827 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a51a0667fa6e6de6cb4bc1f8e6d7a9747}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!connect\-Output2@{connect\-Output2}}
+\index{connect\-Output2@{connect\-Output2}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::connect\-Output2 (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a51a0667fa6e6de6cb4bc1f8e6d7a9747}
+Connect channel 2 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_af79ec5fd8d372787aff3a2686ca5d69b}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 835 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a1542d756ee3d1573f98e19c8b153a10c}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!connect\-Output3@{connect\-Output3}}
+\index{connect\-Output3@{connect\-Output3}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::connect\-Output3 (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a1542d756ee3d1573f98e19c8b153a10c}
+Connect channel 3 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a5a1e72f2e956fc0ad8e93ab257b7c1ce}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 843 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a5c5b9a3d3911caaea2bf03a8c15bee9e}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!current@{current}}
+\index{current@{current}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a5c5b9a3d3911caaea2bf03a8c15bee9e}
+Get the current value of the timer \begin{DoxyReturn}{Returns}
+the current value of the timer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a10a1f5a2d2762a64bd525e4950b4b82d}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 355 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_aaa3b47cdecd9b209074a77edbd878246}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!disable@{disable}}
+\index{disable@{disable}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_aaa3b47cdecd9b209074a77edbd878246}
+Disable the timer 
+
+Implements \hyperlink{classmhvlib_1_1_timer_a2a512d63703ec0b4b6a03f25122df473}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 886 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a56d91998c31cab9618b4d58c0d42f499}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!enable@{enable}}
+\index{enable@{enable}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a56d91998c31cab9618b4d58c0d42f499}
+Enable the timer module 
+
+Implements \hyperlink{classmhvlib_1_1_timer_aff85bb710354e6f7ea05852db0882e74}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 850 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a69562dc2a6df1396f52228fa9fcb740a}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Output@{get\-Output}}
+\index{get\-Output@{get\-Output}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a69562dc2a6df1396f52228fa9fcb740a}
+Get the current value of a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current value of the selected channel 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a30c572f5662c6971c634f38450a88ba1}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 717 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a907104d55aca56718aae6991862a5a94}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Output1@{get\-Output1}}
+\index{get\-Output1@{get\-Output1}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Output1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a907104d55aca56718aae6991862a5a94}
+Return the current value of channel 1 \begin{DoxyReturn}{Returns}
+the current value of channel 1 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_aa70ebfcae548be91d84056fd13150e83}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 757 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_abc2ce51acda9f71c9aa8465f07cafb6e}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Output2@{get\-Output2}}
+\index{get\-Output2@{get\-Output2}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Output2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_abc2ce51acda9f71c9aa8465f07cafb6e}
+Return the current value of channel 2 \begin{DoxyReturn}{Returns}
+the current value of channel 2 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a2056f4b6fecc19053eebf59085e4f921}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 774 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a21da6ee07ec7f23ffe7c736e4ec87a88}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Output3@{get\-Output3}}
+\index{get\-Output3@{get\-Output3}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Output3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a21da6ee07ec7f23ffe7c736e4ec87a88}
+Return the current value of channel 3 \begin{DoxyReturn}{Returns}
+the current value of channel 3 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_af241c8cb76bcb6d4652d4bbfc7d39875}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 791 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a331190b1a3f175dc53910ef1e0f99224}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Prescaler@{get\-Prescaler}}
+\index{get\-Prescaler@{get\-Prescaler}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ {\bf T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R} {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Prescaler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a331190b1a3f175dc53910ef1e0f99224}
+Get the prescaler \begin{DoxyReturn}{Returns}
+the prescaler value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a16dca27ad7f1fe2aa81e15bea22fab86}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 284 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_ae2ce66b4210629f464cc5d4cdf1887c2}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}}
+\index{get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Prescaler\-Multiplier}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Prescaler\-Multiplier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_ae2ce66b4210629f464cc5d4cdf1887c2}
+Get the prescaler multiplier 
+
+Implements \hyperlink{classmhvlib_1_1_timer_acf81c55aa93235d46038e80259036fc7}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 444 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_ac6a2dd5c06e8c3ae5bace6d964cc1154}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!get\-Top@{get\-Top}}
+\index{get\-Top@{get\-Top}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ uint16\-\_\-t {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::get\-Top (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_ac6a2dd5c06e8c3ae5bace6d964cc1154}
+Get the number of timer cycles available \begin{DoxyReturn}{Returns}
+the number of cycles in an iteration of the timer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a04d9d2ac51d0b5f2abfc9e63f98f3c9c}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 553 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a2d71ce0874281bffc8ea9707f6842f4b}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Generation\-Mode@{set\-Generation\-Mode}}
+\index{set\-Generation\-Mode@{set\-Generation\-Mode}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Generation\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Generation\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a2d71ce0874281bffc8ea9707f6842f4b}
+Set the generation mode 
+
+Implements \hyperlink{classmhvlib_1_1_timer_accaaf4d01a6b67edc209481dc009963c}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 291 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a68dc788e7ca5a40e7fd066b663af4787}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Output@{set\-Output}}
+\index{set\-Output@{set\-Output}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a68dc788e7ca5a40e7fd066b663af4787}
+Set the current value of a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to set \\
+\hline
+{\em value} & the new value of the channel \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a2bd209afac9d4b4b9157f1ea87c19af6}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 630 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a81e6a2c9593f7b88c2078ad4c09c28f5}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Output1@{set\-Output1}}
+\index{set\-Output1@{set\-Output1}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Output1 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a81e6a2c9593f7b88c2078ad4c09c28f5}
+Set the current value of channel 1 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 1 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a990dd4fab70b07fe9d29f02c41695cfb}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 664 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_ac5bd2fc62ca3df1b3fd0e0f1051dcdcd}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Output2@{set\-Output2}}
+\index{set\-Output2@{set\-Output2}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Output2 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_ac5bd2fc62ca3df1b3fd0e0f1051dcdcd}
+Set the current value of channel 2 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 2 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a60dbd0974b837a298c84a640ee8180fe}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 681 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a23b3e5537973765879e16e07a5fbd35c}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Output3@{set\-Output3}}
+\index{set\-Output3@{set\-Output3}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Output3 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a23b3e5537973765879e16e07a5fbd35c}
+Set the current value of channel 3 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 3 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a9542259e5ee5db959c8c75e115d0c37a}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 698 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a1a733b0365ea87136390b22af8c7c417}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a1a733b0365ea87136390b22af8c7c417}
+Set the overflow periods for an 8 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+{\em time1} & the first time in prescaled timer ticks \\
+\hline
+{\em time2} & the second time in prescaled timer ticks \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a574800a9f4055d1d20e05b241ed3b7dc}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 493 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a08d0df48d1aa20b749850f0971d7fb4a}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2, }
+\item[{uint16\-\_\-t}]{time3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a08d0df48d1aa20b749850f0971d7fb4a}
+Set the overflow periods for a 16 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+{\em time1} & the first time in prescaled timer ticks \\
+\hline
+{\em time2} & the second time in prescaled timer ticks \\
+\hline
+{\em time3} & the second time in prescaled timer ticks \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_aab24ae5690d7638d258014cd1b8f63fb}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 521 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a18d5d9f91b5992b0753b3f945200de96}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!set\-Top@{set\-Top}}
+\index{set\-Top@{set\-Top}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::set\-Top (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_a18d5d9f91b5992b0753b3f945200de96}
+Set the number of timer cycles available 
+\begin{DoxyParams}{Parameters}
+{\em value} & the number of cycles in an iteration of the timer \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_timer_a8c066e145941b93e32bcd44d552fd6e2}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 589 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_afe4a733b13273676907a765419efd6e3}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!trigger1@{trigger1}}
+\index{trigger1@{trigger1}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{trigger1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ void {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::trigger1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_timer_implementation_afe4a733b13273676907a765419efd6e3}
+Trigger the listener for channel 1 
+
+Implements \hyperlink{classmhvlib_1_1_timer_a41cdd9e0f2f4cc0cc87e7117123fb34d}{mhvlib\-::\-Timer}.
+
+
+
+Definition at line 902 of file Timer.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_timer_implementation_a47a4861cf076333bcf6c320c993bec90}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!\-\_\-have\-Time2@{\-\_\-have\-Time2}}
+\index{\-\_\-have\-Time2@{\-\_\-have\-Time2}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-have\-Time2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ bool {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::\-\_\-have\-Time2\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_timer_implementation_a47a4861cf076333bcf6c320c993bec90}
+
+
+Definition at line 269 of file Timer.\-h.
+
+\hypertarget{classmhvlib_1_1_timer_implementation_a35ab0a13feb6011e01f5d9b850ef15e4}{\index{mhvlib\-::\-Timer\-Implementation@{mhvlib\-::\-Timer\-Implementation}!\-\_\-have\-Time3@{\-\_\-have\-Time3}}
+\index{\-\_\-have\-Time3@{\-\_\-have\-Time3}!mhvlib::TimerImplementation@{mhvlib\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-have\-Time3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t bits, T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E type, mhv\-\_\-register control\-Reg\-A, mhv\-\_\-register control\-Reg\-B, mhv\-\_\-register control\-Reg\-C, mhv\-\_\-register output\-Compare1, mhv\-\_\-register output\-Compare2, mhv\-\_\-register output\-Compare3, mhv\-\_\-register input\-Capture1, mhv\-\_\-register counter, mhv\-\_\-register interrupt, uint8\-\_\-t interrupt\-Enable\-A, T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E mode$>$ bool {\bf mhvlib\-::\-Timer\-Implementation}$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$\-::\-\_\-have\-Time3\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_timer_implementation_a35ab0a13feb6011e01f5d9b850ef15e4}
+
+
+Definition at line 270 of file Timer.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_timer_8h}{Timer.\-h}\end{DoxyCompactItemize}

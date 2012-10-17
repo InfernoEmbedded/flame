@@ -1,0 +1,626 @@
+\hypertarget{io_8h}{\section{mhvlib/io.h File Reference}
+\label{io_8h}\index{mhvlib/io.\-h@{mhvlib/io.\-h}}
+}
+{\ttfamily \#include $<$avr/io.\-h$>$}\\*
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$stddef.\-h$>$}\\*
+{\ttfamily \#include $<$util/atomic.\-h$>$}\\*
+{\ttfamily \#include $<$chips/\-M\-H\-V\-\_\-io\-\_\-chip.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structmhvlib_1_1mhv__pin}{mhvlib\-::mhv\-\_\-pin}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{io_8h_aa1728270d73c5d1598de1fd691762eb1}{N\-O\-R\-E\-T\-U\-R\-N}~\hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-} ((noreturn))
+\item 
+\#define \hyperlink{io_8h_a3af99897b60119951af8961dbd52dd3f}{U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E}~\-\_\-\-\_\-builtin\-\_\-unreachable();
+\item 
+\#define \hyperlink{io_8h_acd42770aecb025cfac170d4d3ace4544}{P\-U\-R\-E}~\hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-} ((pure))
+\item 
+\#define \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}~\hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-} ((const))
+\item 
+\#define \hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E}~inline \hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-}((\-\_\-\-\_\-always\-\_\-inline\-\_\-\-\_\-))
+\item 
+\#define \hyperlink{io_8h_a34b04bd23b07b485921a728ad0805ac4}{M\-A\-I\-N}~int \hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-} ((O\-S\-\_\-main)) main()
+\item 
+\#define \hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D}~\hyperlink{_pure_virtual_8cpp_a786d1bd3fe5b3ec3d23c8854dafc7fb8}{\-\_\-\-\_\-attribute\-\_\-\-\_\-} ((unused))
+\item 
+\#define \hyperlink{io_8h_adbba0f726fc66d7100916c683b7568ae}{G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}~(\-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-\_\- $\ast$ 10000 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-M\-I\-N\-O\-R\-\_\-\-\_\- $\ast$ 100 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-P\-A\-T\-C\-H\-L\-E\-V\-E\-L\-\_\-\-\_\-)
+\item 
+\#define \hyperlink{io_8h_aec65536f7b46b621e10ad31cfb13cf4e}{M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}(\-\_\-mhv\-\_\-port, \hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit})~\hyperlink{io_8h_aa9c24052e3e6bd7256130b8c5cdfce42}{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}(\-\_\-mhv\-\_\-port, \hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit})
+\item 
+\#define \hyperlink{io_8h_aa9c24052e3e6bd7256130b8c5cdfce42}{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}(\-\_\-mhv\-\_\-port, \hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit})~M\-H\-V\-\_\-\-P\-I\-N\-\_\- \#\# \-\_\-mhv\-\_\-port \#\# \hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit}
+\item 
+\#define \hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(\-\_\-mhv\-Prefix)
+\item 
+\#define \hyperlink{io_8h_ae38d8c2f6d0cb5fec5ef1979c50647f2}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T}(\-\_\-mhv\-Prefix)
+\item 
+\#define \hyperlink{io_8h_add203d01207ff98c001d8ce187c42427}{M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S}(\-\_\-mhv\-Prefix)~\-\_\-mhv\-Prefix \#\# Dir, \-\_\-mhv\-Prefix \#\# Out, \-\_\-mhv\-Prefix \#\# In, \-\_\-mhv\-Prefix \#\# Pin, \-\_\-mhv\-Prefix \#\# Pinchange\-Interrupt
+\item 
+\#define \hyperlink{io_8h_ab1eee3d9ad2bffb40285bcb444558305}{mhv\-\_\-pin}(mhv\-Parms)~\hyperlink{io_8h_a35c2bc661161826f95bdb11cacc53d6c}{\-\_\-mhv\-\_\-pin}(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_a35c2bc661161826f95bdb11cacc53d6c}{\-\_\-mhv\-\_\-pin}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~\{mhv\-Dir, mhv\-Output, mhv\-Input, \-\_\-\-B\-V(mhv\-Bit), mhv\-P\-C\-Int\}
+\item 
+\#define \hyperlink{io_8h_a5955925df1268646f14dab966d454c21}{M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F}(\-\_\-mhv\-Item)~(uint8\-\_\-t)(sizeof(\-\_\-mhv\-Item))
+\item 
+\#define \hyperlink{io_8h_ac59cdce37836e1922380801158ea6132}{mhv\-\_\-out}(mhv\-Parms)~\hyperlink{io_8h_a6ef71c38d4504fc9421faf82af54df29}{\-\_\-mhv\-\_\-out}(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_a6ef71c38d4504fc9421faf82af54df29}{\-\_\-mhv\-\_\-out}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Output
+\item 
+\#define \hyperlink{io_8h_a029368f3cab1cc789b6cb95cb711bed7}{mhv\-\_\-in}(mhv\-Parms)~\hyperlink{io_8h_ac2ef617d9047aab1de9d4165db3f0d99}{\-\_\-mhv\-\_\-in}(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_ac2ef617d9047aab1de9d4165db3f0d99}{\-\_\-mhv\-\_\-in}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Input
+\item 
+\#define \hyperlink{io_8h_ab3a8d80106983248da489c25ab3ec556}{mhv\-\_\-bit}(mhv\-Parms)~\hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit}(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\-\_\-mhv\-\_\-bit}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Bit
+\item 
+\#define \hyperlink{io_8h_a9472a0cb737739bd772445975647be3a}{mhv\-\_\-dir}(mhv\-Parms)~\hyperlink{io_8h_acd72c031114221de739dc41ce1a2a58e}{\-\_\-mhv\-\_\-dir}(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_acd72c031114221de739dc41ce1a2a58e}{\-\_\-mhv\-\_\-dir}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-Dir
+\item 
+\#define \hyperlink{io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}{mhv\-\_\-pcint}(mhv\-Parms)~\-\_\-mhv\-\_\-pcint(mhv\-Parms)
+\item 
+\#define \hyperlink{io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}{\-\_\-mhv\-\_\-\-P\-C\-Int}(mhv\-Dir, mhv\-Output, mhv\-Input, mhv\-Bit, mhv\-P\-C\-Int)~mhv\-P\-C\-Int
+\item 
+\#define \hyperlink{io_8h_a4645a034d7cc7ce9932088342a880d3e}{mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Function)~\hyperlink{io_8h_ae6e779df498b67e3c79678c98c0c2ff9}{\-\_\-mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Function)
+\item 
+\#define \hyperlink{io_8h_ae6e779df498b67e3c79678c98c0c2ff9}{\-\_\-mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Handler, mhv\-Mode\-Register, mhv\-Mode\-Bitshift, mhv\-Function)~I\-S\-R(mhv\-Interrupt\-Handler) mhv\-Function
+\item 
+\#define \hyperlink{io_8h_a4920d6b22bf37464759debaebfc2987e}{mhv\-\_\-enable\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Interrupt\-Mode)
+\item 
+\#define \hyperlink{io_8h_a7cd281ce18e1879706a84d4ad98c59f8}{\-\_\-mhv\-\_\-enable\-External\-Interrupt}(mhv\-Interrupt\-Handler, mhv\-Mode\-Register, mhv\-Mode\-Bitshift, mhv\-Interrupt\-Mode)~$\ast$mhv\-Mode\-Register = ($\ast$mhv\-Mode\-Register \& $\sim$(0x03 $<$$<$ mhv\-Mode\-Bitshift)) $|$ (mhv\-Interrupt\-Mode $<$$<$ mhv\-Mode\-Bitshift)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint16\-\_\-t \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhvlib\-::mhv\-\_\-register}
+\item 
+typedef struct \hyperlink{io_8h_ab1eee3d9ad2bffb40285bcb444558305}{mhv\-\_\-pin} \hyperlink{namespacemhvlib_a3fc44352ee2826fe480452ba1acd5de7}{mhvlib\-::\-M\-H\-V\-\_\-\-P\-I\-N}
+\item 
+typedef enum mhv\-\_\-interrupt\-Mode \hyperlink{namespacemhvlib_a6d4bdd6a3350e14306ea380cf5bba370}{mhvlib\-::\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacemhvlib_a362dabb801976750e4eea2ad26261989}{mhvlib\-::mhv\-\_\-interrupt\-Mode} \{ \hyperlink{namespacemhvlib_a362dabb801976750e4eea2ad26261989a762d39bd1786b7226526961513660cbb}{mhvlib\-::\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-L\-O\-W}, 
+\hyperlink{namespacemhvlib_a362dabb801976750e4eea2ad26261989afecdce009d77dff9c97ed8a2137d0344}{mhvlib\-::\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-C\-H\-A\-N\-G\-E}, 
+\hyperlink{namespacemhvlib_a362dabb801976750e4eea2ad26261989a1bdf63bd3feea0006a7381aabe0fa957}{mhvlib\-::\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-F\-A\-L\-L\-I\-N\-G}, 
+\hyperlink{namespacemhvlib_a362dabb801976750e4eea2ad26261989ac76ccf4f743c32f76b9825e27e772265}{mhvlib\-::\-M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-R\-I\-S\-I\-N\-G}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a0838594e2fe439340e24ae93ef27c9a8}{mhvlib\-::pin\-On} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ae0c14d064f421a207d51a3af6bf96596}{mhvlib\-::pin\-On\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ad0dd0c27390bf9c2043e1c4e73254cd2}{mhvlib\-::pin\-On} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a464565ac010eaa97b6fe6048daf23a63}{mhvlib\-::pin\-On\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a5b7f534da76c990f21f9328c3a4bd684}{mhvlib\-::pin\-Off} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aa20d054715ba9797f1bf8e91023b873a}{mhvlib\-::pin\-Off\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aa4b0bb1f68c452e4af07f59eafcc5dcc}{mhvlib\-::pin\-Off} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ab9ef7a264c4b1fd4bbe6b0ca53bb4f99}{mhvlib\-::pin\-Off\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aec269d191ce7075adc141333b3847291}{mhvlib\-::pin\-Set} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), bool state)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a45fd142a5d3f644b383d7279923ba331}{mhvlib\-::pin\-Set\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), bool state)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_af936e2d4e6ee2af485963f51673edce7}{mhvlib\-::set\-Output} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a1722d67db891bfae9f55c4ccea9a6375}{mhvlib\-::set\-Output\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a628b389f15647af4f050065c2a405c9b}{mhvlib\-::set\-Output} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a27c204c16bbdc76a443f122005ec2d10}{mhvlib\-::set\-Output\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aa0ed067ba23f41fd0fda97c66ee432a4}{mhvlib\-::set\-Input} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a9f71562d01298486bd79e167428bf910}{mhvlib\-::set\-Input\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a438841f41a3107688f2727a993d1a708}{mhvlib\-::set\-Input} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a138ded2de6bb394c5989d73d61b3e2f3}{mhvlib\-::set\-Input\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a34c9b2e3555b4ffa80531ddd19188262}{mhvlib\-::set\-Input\-Pullup} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a7ceb896654ee992f8391ae86fcff8d08}{mhvlib\-::set\-Input\-Pullup\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ab9c16b3a102ec9ed8daa083fba2e5499}{mhvlib\-::set\-Input\-Pullup} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aa144dafeae6d776b114c614ca51e0480}{mhvlib\-::set\-Input\-Pullup\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ae8c63b97b099ba07df137fc112a6cf78}{mhvlib\-::pin\-Toggle} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_adf5a1cac133feb6570aa4763af2f9c80}{mhvlib\-::pin\-Toggle\-Atomic} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a667a0b3c95712f6ccff67383f8d2f61f}{mhvlib\-::pin\-Toggle} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a86dc483eef7718ff9f130373389a6465}{mhvlib\-::pin\-Toggle\-Atomic} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{namespacemhvlib_a2e96b6fec41888af90bbe3d97609a9bf}{mhvlib\-::pin\-Read} (M\-H\-V\-\_\-\-P\-I\-N $\ast$pin)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{namespacemhvlib_aa534678c25bea838ee6c812eb6c237e9}{mhvlib\-::pin\-Read} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin))
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ae4f3192ceb9e2000efd2023f4cbd2a7a}{mhvlib\-::mem\-Set} (void $\ast$buf\-In, char value, uint8\-\_\-t len, uint8\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ab74e81ed6209670365343a874878f457}{mhvlib\-::mem\-Set} (void $\ast$buf\-In, char value, uint8\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aeecbcaf76266788cee06acacfa86b4cc}{mhvlib\-::mem\-Set16} (void $\ast$buf\-In, char value, uint8\-\_\-t len, uint16\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_aa7d6d322931da1cc3de4a04d7b30cbfe}{mhvlib\-::mem\-Set16} (void $\ast$buf\-In, char value, uint16\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a5d6286de16c8eb8cf10cef0d6a81ddf6}{mhvlib\-::mem\-Clear} (void $\ast$buf\-In, uint8\-\_\-t len, uint8\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a4321772216989fdb163d9c5ae89046b0}{mhvlib\-::mem\-Clear} (void $\ast$buf\-In, uint8\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ab2e9bda999c582b29be6dcf67c31370d}{mhvlib\-::mem\-Clear16} (void $\ast$buf\-In, uint8\-\_\-t len, uint16\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_ad587cd34f1560cb4c1cc66014635ed8f}{mhvlib\-::mem\-Clear16} (void $\ast$buf\-In, uint16\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a39bea1804064b2d58fcd8a6f1a4512a2}{mhvlib\-::mem\-Copy} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len, uint8\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a841dfdab3ba859a1dffb32bb28c93c85}{mhvlib\-::mem\-Copy} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a3b391a337d0de771a247b949390d8260}{mhvlib\-::mem\-Copy16} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len, uint16\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a929234851088212c74830570ca228c07}{mhvlib\-::mem\-Copy16} (void $\ast$buf\-Out, void $\ast$buf\-In, uint16\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a35668afc06c28017cf48f26fce5eda9a}{mhvlib\-::mem\-Copy\-Tail\-First} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len, uint8\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a3624e079631f7d1b721d4e5a997824ec}{mhvlib\-::mem\-Copy\-Tail\-First} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_a4feb6b26d74bfc4976b3cadad32bcb26}{mhvlib\-::mem\-Copy\-Tail\-First16} (void $\ast$buf\-Out, void $\ast$buf\-In, uint8\-\_\-t len, uint16\-\_\-t count)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{namespacemhvlib_af54cc65a0f9af60efe2fc27151581ecc}{mhvlib\-::mem\-Copy\-Tail\-First16} (void $\ast$buf\-Out, void $\ast$buf\-In, uint16\-\_\-t len)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-bit@{\-\_\-mhv\-\_\-bit}}
+\index{\-\_\-mhv\-\_\-bit@{\-\_\-mhv\-\_\-bit}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-bit(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Bit}}\label{io_8h_a97dc692dcb015db1b1b7c0ed5b77067b}
+
+
+Definition at line 698 of file io.\-h.
+
+\hypertarget{io_8h_ae6e779df498b67e3c79678c98c0c2ff9}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-declare\-External\-Interrupt@{\-\_\-mhv\-\_\-declare\-External\-Interrupt}}
+\index{\-\_\-mhv\-\_\-declare\-External\-Interrupt@{\-\_\-mhv\-\_\-declare\-External\-Interrupt}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-declare\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-declare\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Handler, }
+\item[{}]{mhv\-Mode\-Register, }
+\item[{}]{mhv\-Mode\-Bitshift, }
+\item[{}]{mhv\-Function}
+\end{DoxyParamCaption}
+)~I\-S\-R(mhv\-Interrupt\-Handler) mhv\-Function}}\label{io_8h_ae6e779df498b67e3c79678c98c0c2ff9}
+
+
+Definition at line 730 of file io.\-h.
+
+\hypertarget{io_8h_acd72c031114221de739dc41ce1a2a58e}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-dir@{\-\_\-mhv\-\_\-dir}}
+\index{\-\_\-mhv\-\_\-dir@{\-\_\-mhv\-\_\-dir}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-dir(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Dir}}\label{io_8h_acd72c031114221de739dc41ce1a2a58e}
+
+
+Definition at line 708 of file io.\-h.
+
+\hypertarget{io_8h_a7cd281ce18e1879706a84d4ad98c59f8}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-enable\-External\-Interrupt@{\-\_\-mhv\-\_\-enable\-External\-Interrupt}}
+\index{\-\_\-mhv\-\_\-enable\-External\-Interrupt@{\-\_\-mhv\-\_\-enable\-External\-Interrupt}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-enable\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-enable\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Handler, }
+\item[{}]{mhv\-Mode\-Register, }
+\item[{}]{mhv\-Mode\-Bitshift, }
+\item[{}]{mhv\-Interrupt\-Mode}
+\end{DoxyParamCaption}
+)~$\ast$mhv\-Mode\-Register = ($\ast$mhv\-Mode\-Register \& $\sim$(0x03 $<$$<$ mhv\-Mode\-Bitshift)) $|$ (mhv\-Interrupt\-Mode $<$$<$ mhv\-Mode\-Bitshift)}}\label{io_8h_a7cd281ce18e1879706a84d4ad98c59f8}
+
+
+Definition at line 755 of file io.\-h.
+
+\hypertarget{io_8h_ac2ef617d9047aab1de9d4165db3f0d99}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-in@{\-\_\-mhv\-\_\-in}}
+\index{\-\_\-mhv\-\_\-in@{\-\_\-mhv\-\_\-in}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-in(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Input}}\label{io_8h_ac2ef617d9047aab1de9d4165db3f0d99}
+
+
+Definition at line 688 of file io.\-h.
+
+\hypertarget{io_8h_aa9c24052e3e6bd7256130b8c5cdfce42}{\index{io.\-h@{io.\-h}!\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N@{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}}
+\index{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N@{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-\_\-port, }
+\item[{}]{{\bf \-\_\-mhv\-\_\-bit}}
+\end{DoxyParamCaption}
+)~M\-H\-V\-\_\-\-P\-I\-N\-\_\- \#\# \-\_\-mhv\-\_\-port \#\# {\bf \-\_\-mhv\-\_\-bit}}}\label{io_8h_aa9c24052e3e6bd7256130b8c5cdfce42}
+
+
+Definition at line 92 of file io.\-h.
+
+\hypertarget{io_8h_a6ef71c38d4504fc9421faf82af54df29}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-out@{\-\_\-mhv\-\_\-out}}
+\index{\-\_\-mhv\-\_\-out@{\-\_\-mhv\-\_\-out}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-out(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-Output}}\label{io_8h_a6ef71c38d4504fc9421faf82af54df29}
+
+
+Definition at line 678 of file io.\-h.
+
+\hypertarget{io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-\-P\-C\-Int@{\-\_\-mhv\-\_\-\-P\-C\-Int}}
+\index{\-\_\-mhv\-\_\-\-P\-C\-Int@{\-\_\-mhv\-\_\-\-P\-C\-Int}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-\-P\-C\-Int}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-\-P\-C\-Int(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~mhv\-P\-C\-Int}}\label{io_8h_a098a1f83d32ed57fd6100a467f9b0a3d}
+
+
+Definition at line 718 of file io.\-h.
+
+\hypertarget{io_8h_a35c2bc661161826f95bdb11cacc53d6c}{\index{io.\-h@{io.\-h}!\-\_\-mhv\-\_\-pin@{\-\_\-mhv\-\_\-pin}}
+\index{\-\_\-mhv\-\_\-pin@{\-\_\-mhv\-\_\-pin}!io.h@{io.\-h}}
+\subsubsection[{\-\_\-mhv\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-mhv\-\_\-pin(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Dir, }
+\item[{}]{mhv\-Output, }
+\item[{}]{mhv\-Input, }
+\item[{}]{mhv\-Bit, }
+\item[{}]{mhv\-P\-C\-Int}
+\end{DoxyParamCaption}
+)~\{mhv\-Dir, mhv\-Output, mhv\-Input, \-\_\-\-B\-V(mhv\-Bit), mhv\-P\-C\-Int\}}}\label{io_8h_a35c2bc661161826f95bdb11cacc53d6c}
+
+
+Definition at line 130 of file io.\-h.
+
+\hypertarget{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{\index{io.\-h@{io.\-h}!C\-O\-N\-S\-T@{C\-O\-N\-S\-T}}
+\index{C\-O\-N\-S\-T@{C\-O\-N\-S\-T}!io.h@{io.\-h}}
+\subsubsection[{C\-O\-N\-S\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-N\-S\-T~{\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-} ((const))}}\label{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}
+
+
+Definition at line 55 of file io.\-h.
+
+\hypertarget{io_8h_adbba0f726fc66d7100916c683b7568ae}{\index{io.\-h@{io.\-h}!G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N@{G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}}
+\index{G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N@{G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}!io.h@{io.\-h}}
+\subsubsection[{G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\-C\-C\-\_\-\-V\-E\-R\-S\-I\-O\-N~(\-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-\_\- $\ast$ 10000 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-M\-I\-N\-O\-R\-\_\-\-\_\- $\ast$ 100 + \-\_\-\-\_\-\-G\-N\-U\-C\-\_\-\-P\-A\-T\-C\-H\-L\-E\-V\-E\-L\-\_\-\-\_\-)}}\label{io_8h_adbba0f726fc66d7100916c683b7568ae}
+
+
+Definition at line 68 of file io.\-h.
+
+\hypertarget{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{\index{io.\-h@{io.\-h}!I\-N\-L\-I\-N\-E@{I\-N\-L\-I\-N\-E}}
+\index{I\-N\-L\-I\-N\-E@{I\-N\-L\-I\-N\-E}!io.h@{io.\-h}}
+\subsubsection[{I\-N\-L\-I\-N\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\-N\-L\-I\-N\-E~inline {\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-}((\-\_\-\-\_\-always\-\_\-inline\-\_\-\-\_\-))}}\label{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}
+
+
+Definition at line 58 of file io.\-h.
+
+\hypertarget{io_8h_a34b04bd23b07b485921a728ad0805ac4}{\index{io.\-h@{io.\-h}!M\-A\-I\-N@{M\-A\-I\-N}}
+\index{M\-A\-I\-N@{M\-A\-I\-N}!io.h@{io.\-h}}
+\subsubsection[{M\-A\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-I\-N~int {\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-} ((O\-S\-\_\-main)) main()}}\label{io_8h_a34b04bd23b07b485921a728ad0805ac4}
+
+
+Definition at line 61 of file io.\-h.
+
+\hypertarget{io_8h_ab3a8d80106983248da489c25ab3ec556}{\index{io.\-h@{io.\-h}!mhv\-\_\-bit@{mhv\-\_\-bit}}
+\index{mhv\-\_\-bit@{mhv\-\_\-bit}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-bit(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-bit}(mhv\-Parms)}}\label{io_8h_ab3a8d80106983248da489c25ab3ec556}
+Grab the bit offset of a pin declaration 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & A M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ Macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 695 of file io.\-h.
+
+\hypertarget{io_8h_a5955925df1268646f14dab966d454c21}{\index{io.\-h@{io.\-h}!M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F@{M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F}}
+\index{M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F@{M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F}!io.h@{io.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-B\-Y\-T\-E\-S\-I\-Z\-E\-O\-F(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Item}
+\end{DoxyParamCaption}
+)~(uint8\-\_\-t)(sizeof(\-\_\-mhv\-Item))}}\label{io_8h_a5955925df1268646f14dab966d454c21}
+Get the size of an item as a byte 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-Item} & the item to get the size of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the size of the item 
+\end{DoxyReturn}
+
+
+Definition at line 405 of file io.\-h.
+
+\hypertarget{io_8h_afb172d17be3890bb07e5ceec5a014b91}{\index{io.\-h@{io.\-h}!M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N@{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}}
+\index{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N@{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}!io.h@{io.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Prefix}
+\end{DoxyParamCaption}
+)}}\label{io_8h_afb172d17be3890bb07e5ceec5a014b91}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} \_mhvPrefix ## Dir, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} \_mhvPrefix
+       ## Out, \(\backslash\)
+        mhv\_register \_mhvPrefix ## In, uint8\_t \_mhvPrefix ## Pin, \(\backslash\)
+        int8\_t \_mhvPrefix ## PinchangeInterrupt
+\end{DoxyCode}
+Get the list of parms for a pin declaration 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-Prefix} & the prefix to use for the variable names \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 100 of file io.\-h.
+
+\hypertarget{io_8h_ae38d8c2f6d0cb5fec5ef1979c50647f2}{\index{io.\-h@{io.\-h}!M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T@{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T}}
+\index{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T@{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T}!io.h@{io.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-U\-S\-A\-R\-T(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Prefix}
+\end{DoxyParamCaption}
+)}}\label{io_8h_ae38d8c2f6d0cb5fec5ef1979c50647f2}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} \_mhvPrefix ## Baud, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} 
+      \_mhvPrefix ## Status, \(\backslash\)
+                mhv\_register \_mhvPrefix ## Control, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} 
+      \_mhvPrefix ## IO, \(\backslash\)
+                mhv\_register \_mhvPrefix ## RxEnable, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} 
+      \_mhvPrefix ## TxEnable, \(\backslash\)
+                mhv\_register \_mhvPrefix ## RxInterruptEnable, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register}
+       \_mhvPrefix ## TxInterruptEnable, \(\backslash\)
+                mhv\_register \_mhvPrefix ## DataEmpty, \hyperlink{namespacemhvlib_a0c171f0b162817f27df6c10c611a0f37}{mhv\_register} 
+      \_mhvPrefix ## U2X
+\end{DoxyCode}
+Get the list of parms for a U\-S\-A\-R\-T 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-Prefix} & the prefix to use for the variable names \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 109 of file io.\-h.
+
+\hypertarget{io_8h_a4645a034d7cc7ce9932088342a880d3e}{\index{io.\-h@{io.\-h}!mhv\-\_\-declare\-External\-Interrupt@{mhv\-\_\-declare\-External\-Interrupt}}
+\index{mhv\-\_\-declare\-External\-Interrupt@{mhv\-\_\-declare\-External\-Interrupt}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-declare\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-declare\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Parms, }
+\item[{}]{mhv\-Function}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-declare\-External\-Interrupt}(mhv\-Interrupt\-Parms, mhv\-Function)}}\label{io_8h_a4645a034d7cc7ce9932088342a880d3e}
+Assign a function to be triggered by an external interrupt 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Interrupt\-Parms} & A M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-$\ast$ Macro \\
+\hline
+{\em mhv\-Function} & a block to execute when the interrupt occurs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 727 of file io.\-h.
+
+\hypertarget{io_8h_a9472a0cb737739bd772445975647be3a}{\index{io.\-h@{io.\-h}!mhv\-\_\-dir@{mhv\-\_\-dir}}
+\index{mhv\-\_\-dir@{mhv\-\_\-dir}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-dir(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-dir}(mhv\-Parms)}}\label{io_8h_a9472a0cb737739bd772445975647be3a}
+Grab the direction register of a pin declaration 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & A M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ Macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 705 of file io.\-h.
+
+\hypertarget{io_8h_a4920d6b22bf37464759debaebfc2987e}{\index{io.\-h@{io.\-h}!mhv\-\_\-enable\-External\-Interrupt@{mhv\-\_\-enable\-External\-Interrupt}}
+\index{mhv\-\_\-enable\-External\-Interrupt@{mhv\-\_\-enable\-External\-Interrupt}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-enable\-External\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-enable\-External\-Interrupt(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Interrupt\-Parms, }
+\item[{}]{mhv\-Interrupt\-Mode}
+\end{DoxyParamCaption}
+)}}\label{io_8h_a4920d6b22bf37464759debaebfc2987e}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+                \_mhv\_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode
+      ); \(\backslash\)
+        \} \textcolor{keywordflow}{while} (0)
+\end{DoxyCode}
+Enable an external interrupt 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Interrupt\-Parms} & A M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-$\ast$ Macro \\
+\hline
+{\em mhv\-Interrupt\-Mode} & When to raise the interrupt (see M\-H\-V\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-M\-O\-D\-E) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 750 of file io.\-h.
+
+\hypertarget{io_8h_a029368f3cab1cc789b6cb95cb711bed7}{\index{io.\-h@{io.\-h}!mhv\-\_\-in@{mhv\-\_\-in}}
+\index{mhv\-\_\-in@{mhv\-\_\-in}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-in}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-in(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-in}(mhv\-Parms)}}\label{io_8h_a029368f3cab1cc789b6cb95cb711bed7}
+Grab the input register of a pin declaration 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & a M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 685 of file io.\-h.
+
+\hypertarget{io_8h_aec65536f7b46b621e10ad31cfb13cf4e}{\index{io.\-h@{io.\-h}!M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N@{M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}}
+\index{M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N@{M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}!io.h@{io.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-\_\-port, }
+\item[{}]{{\bf \-\_\-mhv\-\_\-bit}}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-\-M\-H\-V\-\_\-\-M\-A\-K\-E\-\_\-\-P\-I\-N}(\-\_\-mhv\-\_\-port, {\bf \-\_\-mhv\-\_\-bit})}}\label{io_8h_aec65536f7b46b621e10ad31cfb13cf4e}
+Convert a literal port and pin into a pin macro 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-\_\-port} & the port (eg, B) \\
+\hline
+{\em \-\_\-mhv\-\_\-bit} & the bit (eg, 3) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 89 of file io.\-h.
+
+\hypertarget{io_8h_ac59cdce37836e1922380801158ea6132}{\index{io.\-h@{io.\-h}!mhv\-\_\-out@{mhv\-\_\-out}}
+\index{mhv\-\_\-out@{mhv\-\_\-out}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-out}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-out(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-out}(mhv\-Parms)}}\label{io_8h_ac59cdce37836e1922380801158ea6132}
+Grab the output register of a pin declaration 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & a M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 675 of file io.\-h.
+
+\hypertarget{io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}{\index{io.\-h@{io.\-h}!mhv\-\_\-pcint@{mhv\-\_\-pcint}}
+\index{mhv\-\_\-pcint@{mhv\-\_\-pcint}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-pcint}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-pcint(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-\_\-pcint(mhv\-Parms)}}\label{io_8h_a3b24ec03e3b1c945e767d6cfb48f220c}
+Grab the pin change interrupt of a pin 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & A M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ Macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 715 of file io.\-h.
+
+\hypertarget{io_8h_ab1eee3d9ad2bffb40285bcb444558305}{\index{io.\-h@{io.\-h}!mhv\-\_\-pin@{mhv\-\_\-pin}}
+\index{mhv\-\_\-pin@{mhv\-\_\-pin}!io.h@{io.\-h}}
+\subsubsection[{mhv\-\_\-pin}]{\setlength{\rightskip}{0pt plus 5cm}\#define mhv\-\_\-pin(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Parms}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-mhv\-\_\-pin}(mhv\-Parms)}}\label{io_8h_ab1eee3d9ad2bffb40285bcb444558305}
+Convert a pin declaration to a pin struct 
+\begin{DoxyParams}{Parameters}
+{\em mhv\-Parms} & a M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 127 of file io.\-h.
+
+\hypertarget{io_8h_add203d01207ff98c001d8ce187c42427}{\index{io.\-h@{io.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S@{M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S@{M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S}!io.h@{io.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Prefix}
+\end{DoxyParamCaption}
+)~\-\_\-mhv\-Prefix \#\# Dir, \-\_\-mhv\-Prefix \#\# Out, \-\_\-mhv\-Prefix \#\# In, \-\_\-mhv\-Prefix \#\# Pin, \-\_\-mhv\-Prefix \#\# Pinchange\-Interrupt}}\label{io_8h_add203d01207ff98c001d8ce187c42427}
+Get the parameter list for a pin 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-Prefix} & the prefix to use for the variable names \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 120 of file io.\-h.
+
+\hypertarget{io_8h_aa1728270d73c5d1598de1fd691762eb1}{\index{io.\-h@{io.\-h}!N\-O\-R\-E\-T\-U\-R\-N@{N\-O\-R\-E\-T\-U\-R\-N}}
+\index{N\-O\-R\-E\-T\-U\-R\-N@{N\-O\-R\-E\-T\-U\-R\-N}!io.h@{io.\-h}}
+\subsubsection[{N\-O\-R\-E\-T\-U\-R\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-O\-R\-E\-T\-U\-R\-N~{\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-} ((noreturn))}}\label{io_8h_aa1728270d73c5d1598de1fd691762eb1}
+
+
+Definition at line 42 of file io.\-h.
+
+\hypertarget{io_8h_acd42770aecb025cfac170d4d3ace4544}{\index{io.\-h@{io.\-h}!P\-U\-R\-E@{P\-U\-R\-E}}
+\index{P\-U\-R\-E@{P\-U\-R\-E}!io.h@{io.\-h}}
+\subsubsection[{P\-U\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\-U\-R\-E~{\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-} ((pure))}}\label{io_8h_acd42770aecb025cfac170d4d3ace4544}
+
+
+Definition at line 50 of file io.\-h.
+
+\hypertarget{io_8h_a3af99897b60119951af8961dbd52dd3f}{\index{io.\-h@{io.\-h}!U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E@{U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E}}
+\index{U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E@{U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E}!io.h@{io.\-h}}
+\subsubsection[{U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-N\-R\-E\-A\-C\-H\-A\-B\-L\-E~\-\_\-\-\_\-builtin\-\_\-unreachable();}}\label{io_8h_a3af99897b60119951af8961dbd52dd3f}
+
+
+Definition at line 45 of file io.\-h.
+
+\hypertarget{io_8h_addf5ec070e9499d36b7f2009ce736076}{\index{io.\-h@{io.\-h}!U\-N\-U\-S\-E\-D@{U\-N\-U\-S\-E\-D}}
+\index{U\-N\-U\-S\-E\-D@{U\-N\-U\-S\-E\-D}!io.h@{io.\-h}}
+\subsubsection[{U\-N\-U\-S\-E\-D}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\-N\-U\-S\-E\-D~{\bf \-\_\-\-\_\-attribute\-\_\-\-\_\-} ((unused))}}\label{io_8h_addf5ec070e9499d36b7f2009ce736076}
+
+
+Definition at line 66 of file io.\-h.
+

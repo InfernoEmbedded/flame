@@ -1,0 +1,87 @@
+\hypertarget{classmhvlib_1_1_lock}{\section{mhvlib\-:\-:Lock Class Reference}
+\label{classmhvlib_1_1_lock}\index{mhvlib\-::\-Lock@{mhvlib\-::\-Lock}}
+}
+
+
+{\ttfamily \#include $<$Lock.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_lock_a689dbb92e3452337d5f0daee133d086b}{Lock} ()
+\item 
+bool \hyperlink{classmhvlib_1_1_lock_a7e657b9ac5a5428de89d073b88bd6bbb}{obtain} ()
+\item 
+void \hyperlink{classmhvlib_1_1_lock_a31fd50c37aa8e0dbf272d539eaa35e18}{release} ()
+\item 
+bool \hyperlink{classmhvlib_1_1_lock_af105a6e2ddcc9629249ee68cb5bf4475}{check} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Lock.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_lock_a689dbb92e3452337d5f0daee133d086b}{\index{mhvlib\-::\-Lock@{mhvlib\-::\-Lock}!Lock@{Lock}}
+\index{Lock@{Lock}!mhvlib::Lock@{mhvlib\-::\-Lock}}
+\subsubsection[{Lock}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-Lock\-::\-Lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_lock_a689dbb92e3452337d5f0daee133d086b}
+Create a new lock 
+
+Definition at line 15 of file Lock.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_lock_af105a6e2ddcc9629249ee68cb5bf4475}{\index{mhvlib\-::\-Lock@{mhvlib\-::\-Lock}!check@{check}}
+\index{check@{check}!mhvlib::Lock@{mhvlib\-::\-Lock}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Lock\-::check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_lock_af105a6e2ddcc9629249ee68cb5bf4475}
+Check if the lock is currently held \begin{DoxyReturn}{Returns}
+true if the lock is held 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file Lock.\-cpp.
+
+\hypertarget{classmhvlib_1_1_lock_a7e657b9ac5a5428de89d073b88bd6bbb}{\index{mhvlib\-::\-Lock@{mhvlib\-::\-Lock}!obtain@{obtain}}
+\index{obtain@{obtain}!mhvlib::Lock@{mhvlib\-::\-Lock}}
+\subsubsection[{obtain}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-Lock\-::obtain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_lock_a7e657b9ac5a5428de89d073b88bd6bbb}
+Obtain the lock \begin{DoxyReturn}{Returns}
+true if the lock was successfully obtained, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 23 of file Lock.\-cpp.
+
+\hypertarget{classmhvlib_1_1_lock_a31fd50c37aa8e0dbf272d539eaa35e18}{\index{mhvlib\-::\-Lock@{mhvlib\-::\-Lock}!release@{release}}
+\index{release@{release}!mhvlib::Lock@{mhvlib\-::\-Lock}}
+\subsubsection[{release}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-Lock\-::release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib_1_1_lock_a31fd50c37aa8e0dbf272d539eaa35e18}
+Release the lock 
+
+Definition at line 36 of file Lock.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_lock_8h}{Lock.\-h}\item 
+\hyperlink{_lock_8cpp}{Lock.\-cpp}\end{DoxyCompactItemize}

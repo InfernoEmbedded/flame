@@ -1,0 +1,399 @@
+\hypertarget{classmhvlib_1_1_display___h_d44780}{\section{mhvlib\-:\-:Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib_1_1_display___h_d44780}\index{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$@{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-H\-D44780.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.389831cm]{classmhvlib_1_1_display___h_d44780}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_display___h_d44780_ae106f7cbe9ce5b29c306bc09c4d63f79}{Display\-\_\-\-H\-D44780} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a6674c87aee34f849ea5c4d4b11543997}{init} (bool byte\-Mode, bool multi\-Line, bool big\-Font, bool cursor\-On, bool cursor\-Blink, bool left2right, bool scroll)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_ad4f7fb68e6c7d57bd5705dd8780ce7ca}{clear} ()
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_ac44003d5e1c6f9b8b9a2c9631e851ab5}{entry\-Mode} (bool left2\-Right, bool scroll)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a1d500b4291219f0e4430ea1cb2011ffe}{control} (bool display\-On, bool cursor\-On, bool cursor\-Blink)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a67637859517965612b1df3d70bc9924b}{write\-Command} (\hyperlink{namespacemhvlib_a810a3cc703298cdd5d00c913cb1bfec9}{H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command, uint8\-\_\-t data)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_aa79b044992f0f0d923a6aa1c018a7530}{function} (bool byte\-Mode, bool multi\-Line, bool big\-Font)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_aa4459af77facd485c414285c449466de}{address\-C\-G\-R\-A\-M} (uint8\-\_\-t address)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a7cb27b4321f535163ff96297c01a31b9}{address\-D\-D\-R\-A\-M} (uint8\-\_\-t address)
+\item 
+virtual void \hyperlink{classmhvlib_1_1_display___h_d44780_a1d20c6cdaee32775805dcf8ec7dabbbf}{write\-Byte} (uint8\-\_\-t byte, bool rs)=0
+\item 
+virtual uint8\-\_\-t \hyperlink{classmhvlib_1_1_display___h_d44780_a20390768822b144aec6a3736d252a824}{read\-Byte} (bool rs)=0
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a20a5006af33d5e62e08484102cf0b875}{\-\_\-set\-Cursor} (uint8\-\_\-t col, uint8\-\_\-t row)
+\item 
+void \hyperlink{classmhvlib_1_1_display___h_d44780_a86e0155089fa7d2d09bae44e6b7cab79}{\-\_\-write\-Char} (char character)
+\item 
+char \hyperlink{classmhvlib_1_1_display___h_d44780_a49bddf9b4c387f59aaaac6026e27373d}{\-\_\-read\-Char} ()
+\item 
+virtual bool \hyperlink{classmhvlib_1_1_display___h_d44780_a9b5d66702c6be04794d9788257518a47}{is\-Busy} ()=0
+\item 
+virtual void \hyperlink{classmhvlib_1_1_display___h_d44780_a9280b292432c96c67a8ce4b848c8c097}{delay} (\hyperlink{namespacemhvlib_a810a3cc703298cdd5d00c913cb1bfec9}{H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D} command)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_display___h_d44780_a22c01174d10b5567e3862f05c4e3ffe4}{\-\_\-ticks}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_display___h_d44780_a1fc6a61b685899443b518c06ae809f3e}{\-\_\-animate\-Ticks}
+\item 
+bool \hyperlink{classmhvlib_1_1_display___h_d44780_a636ba89b43ae6fe21cdeb0c225d1b6ca}{\-\_\-must\-Delay}
+\item 
+bool \hyperlink{classmhvlib_1_1_display___h_d44780_ac8a09ff374404a58c3358dec12281014}{\-\_\-byte\-Mode}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}
+
+A class for operating H\-D44780 based L\-C\-D displays (and compatible) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 69 of file Display\-\_\-\-H\-D44780.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_display___h_d44780_ae106f7cbe9ce5b29c306bc09c4d63f79}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!Display\-\_\-\-H\-D44780@{Display\-\_\-\-H\-D44780}}
+\index{Display\-\_\-\-H\-D44780@{Display\-\_\-\-H\-D44780}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{Display\-\_\-\-H\-D44780}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::{\bf Display\-\_\-\-H\-D44780} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780_ae106f7cbe9ce5b29c306bc09c4d63f79}
+Create a new display 
+
+Definition at line 190 of file Display\-\_\-\-H\-D44780.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_display___h_d44780_a49bddf9b4c387f59aaaac6026e27373d}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-read\-Char@{\-\_\-read\-Char}}
+\index{\-\_\-read\-Char@{\-\_\-read\-Char}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-read\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ char {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-read\-Char (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a49bddf9b4c387f59aaaac6026e27373d}
+Read a character from the display at the current location, incrementing the location by 1 \begin{DoxyReturn}{Returns}
+the character at the current location 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___character_a17761076940658303d3f91f1f842f09a}{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 178 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a20a5006af33d5e62e08484102cf0b875}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-set\-Cursor@{\-\_\-set\-Cursor}}
+\index{\-\_\-set\-Cursor@{\-\_\-set\-Cursor}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a20a5006af33d5e62e08484102cf0b875}
+Move the cursor to a location, so the next write\-Char will write a character at that location (Origin is at the bottom left) 
+\begin{DoxyParams}{Parameters}
+{\em col} & the column to put the character \\
+\hline
+{\em row} & the row to put the character \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___character_a8a27b478b9c392fddaac116d35224cd8}{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 139 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a86e0155089fa7d2d09bae44e6b7cab79}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-write\-Char@{\-\_\-write\-Char}}
+\index{\-\_\-write\-Char@{\-\_\-write\-Char}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a86e0155089fa7d2d09bae44e6b7cab79}
+Write a character to the display at the current location, incrementing the location by 1 
+\begin{DoxyParams}{Parameters}
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_display___character_a762a42c313b6564989fd4430a6554089}{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 168 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_aa4459af77facd485c414285c449466de}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!address\-C\-G\-R\-A\-M@{address\-C\-G\-R\-A\-M}}
+\index{address\-C\-G\-R\-A\-M@{address\-C\-G\-R\-A\-M}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{address\-C\-G\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::address\-C\-G\-R\-A\-M (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_aa4459af77facd485c414285c449466de}
+Set the C\-G\-R\-A\-M address 
+\begin{DoxyParams}{Parameters}
+{\em address} & the C\-G\-R\-A\-M address \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a7cb27b4321f535163ff96297c01a31b9}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!address\-D\-D\-R\-A\-M@{address\-D\-D\-R\-A\-M}}
+\index{address\-D\-D\-R\-A\-M@{address\-D\-D\-R\-A\-M}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{address\-D\-D\-R\-A\-M}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::address\-D\-D\-R\-A\-M (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_a7cb27b4321f535163ff96297c01a31b9}
+Set the D\-D\-R\-A\-M address 
+\begin{DoxyParams}{Parameters}
+{\em address} & the D\-D\-R\-A\-M address \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_ad4f7fb68e6c7d57bd5705dd8780ce7ca}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!clear@{clear}}
+\index{clear@{clear}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_display___h_d44780_ad4f7fb68e6c7d57bd5705dd8780ce7ca}
+Clear the display 
+
+Implements \hyperlink{classmhvlib_1_1_display___character_ac8a0c7d5bf14760b6de2a79d4e253db4}{mhvlib\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 235 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a1d500b4291219f0e4430ea1cb2011ffe}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!control@{control}}
+\index{control@{control}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{control}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::control (
+\begin{DoxyParamCaption}
+\item[{bool}]{display\-On, }
+\item[{bool}]{cursor\-On, }
+\item[{bool}]{cursor\-Blink}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780_a1d500b4291219f0e4430ea1cb2011ffe}
+Set parameters on the display 
+\begin{DoxyParams}{Parameters}
+{\em display\-On} & turn the display on \\
+\hline
+{\em cursor\-On} & turn the cursor on \\
+\hline
+{\em cursor\-Blink} & blink the cursor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 262 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a9280b292432c96c67a8ce4b848c8c097}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!delay@{delay}}
+\index{delay@{delay}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::delay (
+\begin{DoxyParamCaption}
+\item[{{\bf H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a9280b292432c96c67a8ce4b848c8c097}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a2ee1206c387708291b58cb1858a78b2b}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$}.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_ac44003d5e1c6f9b8b9a2c9631e851ab5}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!entry\-Mode@{entry\-Mode}}
+\index{entry\-Mode@{entry\-Mode}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{entry\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::entry\-Mode (
+\begin{DoxyParamCaption}
+\item[{bool}]{left2\-Right, }
+\item[{bool}]{scroll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780_ac44003d5e1c6f9b8b9a2c9631e851ab5}
+Set the entry mode -\/ allows for left or right printing, allows for scrolling display or moving cursor 
+\begin{DoxyParams}{Parameters}
+{\em left2\-Right} & true for text reading left to right \\
+\hline
+{\em scroll} & true to scroll text rather than moving the cursor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 248 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_aa79b044992f0f0d923a6aa1c018a7530}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!function@{function}}
+\index{function@{function}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::function (
+\begin{DoxyParamCaption}
+\item[{bool}]{byte\-Mode, }
+\item[{bool}]{multi\-Line, }
+\item[{bool}]{big\-Font}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_aa79b044992f0f0d923a6aa1c018a7530}
+Initialise the display 
+\begin{DoxyParams}{Parameters}
+{\em byte\-Mode} & true to use 8 bit protocol \\
+\hline
+{\em multi\-Line} & true if there is more than 1 line \\
+\hline
+{\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 98 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a6674c87aee34f849ea5c4d4b11543997}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!init@{init}}
+\index{init@{init}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::init (
+\begin{DoxyParamCaption}
+\item[{bool}]{byte\-Mode, }
+\item[{bool}]{multi\-Line, }
+\item[{bool}]{big\-Font, }
+\item[{bool}]{cursor\-On, }
+\item[{bool}]{cursor\-Blink, }
+\item[{bool}]{left2right, }
+\item[{bool}]{scroll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_display___h_d44780_a6674c87aee34f849ea5c4d4b11543997}
+Initialise the display 
+\begin{DoxyParams}{Parameters}
+{\em byte\-Mode} & true to use 8 bit transfers \\
+\hline
+{\em multi\-Line} & true if there is more than 1 line \\
+\hline
+{\em big\-Font} & true to use 5x11 fonts, false for 5x8 \\
+\hline
+{\em cursor\-On} & turn the curson on \\
+\hline
+{\em cursor\-Blink} & blink the cursor \\
+\hline
+{\em left2right} & true for text reading left to right \\
+\hline
+{\em scroll} & true to scroll text rather than moving the cursor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 206 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a9b5d66702c6be04794d9788257518a47}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!is\-Busy@{is\-Busy}}
+\index{is\-Busy@{is\-Busy}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{is\-Busy}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual bool {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::is\-Busy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a9b5d66702c6be04794d9788257518a47}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780___direct___connect_ab9d47d3b9fc9b297724bc070b9cddb45}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}, and \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_afa66f2f0a00b7a6bac606e504a8ba8ba}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$}.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a20390768822b144aec6a3736d252a824}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!read\-Byte@{read\-Byte}}
+\index{read\-Byte@{read\-Byte}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{read\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual uint8\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::read\-Byte (
+\begin{DoxyParamCaption}
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a20390768822b144aec6a3736d252a824}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780___direct___connect_a4d0a9ca52ef1e532a8f68a7086833614}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a1d20c6cdaee32775805dcf8ec7dabbbf}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!write\-Byte@{write\-Byte}}
+\index{write\-Byte@{write\-Byte}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{write\-Byte}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::write\-Byte (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{byte, }
+\item[{bool}]{rs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_display___h_d44780_a1d20c6cdaee32775805dcf8ec7dabbbf}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_display___h_d44780___direct___connect_a9b90f3d4ef0af006c86a77ea40bff3ad}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}, and \hyperlink{classmhvlib_1_1_display___h_d44780___shift___register_a4f77e6aa1e7184f038c3ae9b74fcdb8e}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Shift\-\_\-\-Register$<$ cols, rows, tx\-Buffers,,, $>$}.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a67637859517965612b1df3d70bc9924b}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!write\-Command@{write\-Command}}
+\index{write\-Command@{write\-Command}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{write\-Command}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::write\-Command (
+\begin{DoxyParamCaption}
+\item[{{\bf H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}}]{command, }
+\item[{uint8\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_a67637859517965612b1df3d70bc9924b}
+Send a command to the display 
+
+Definition at line 79 of file Display\-\_\-\-H\-D44780.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_display___h_d44780_a1fc6a61b685899443b518c06ae809f3e}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-animate\-Ticks@{\-\_\-animate\-Ticks}}
+\index{\-\_\-animate\-Ticks@{\-\_\-animate\-Ticks}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-animate\-Ticks}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-animate\-Ticks\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_a1fc6a61b685899443b518c06ae809f3e}
+
+
+Definition at line 72 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_ac8a09ff374404a58c3358dec12281014}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-byte\-Mode@{\-\_\-byte\-Mode}}
+\index{\-\_\-byte\-Mode@{\-\_\-byte\-Mode}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-byte\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-byte\-Mode\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_ac8a09ff374404a58c3358dec12281014}
+
+
+Definition at line 74 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a636ba89b43ae6fe21cdeb0c225d1b6ca}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-must\-Delay@{\-\_\-must\-Delay}}
+\index{\-\_\-must\-Delay@{\-\_\-must\-Delay}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-must\-Delay}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-must\-Delay\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_a636ba89b43ae6fe21cdeb0c225d1b6ca}
+
+
+Definition at line 73 of file Display\-\_\-\-H\-D44780.\-h.
+
+\hypertarget{classmhvlib_1_1_display___h_d44780_a22c01174d10b5567e3862f05c4e3ffe4}{\index{mhvlib\-::\-Display\-\_\-\-H\-D44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!mhvlib::Display_HD44780@{mhvlib\-::\-Display\-\_\-\-H\-D44780}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf mhvlib\-::\-Display\-\_\-\-H\-D44780}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-ticks\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_display___h_d44780_a22c01174d10b5567e3862f05c4e3ffe4}
+
+
+Reimplemented in \hyperlink{classmhvlib_1_1_display___h_d44780___direct___connect_a0ce9e9fada2886430619900c3a130049}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}.
+
+
+
+Definition at line 71 of file Display\-\_\-\-H\-D44780.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_display___h_d44780_8h}{Display\-\_\-\-H\-D44780.\-h}\end{DoxyCompactItemize}

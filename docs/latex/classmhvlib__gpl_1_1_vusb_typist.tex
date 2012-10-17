@@ -1,0 +1,129 @@
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist}{\section{mhvlib\-\_\-gpl\-:\-:Vusb\-Typist$<$ tx\-Buffers $>$ Class Template Reference}
+\label{classmhvlib__gpl_1_1_vusb_typist}\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Vusb\-Typist.\-h$>$}
+
+Inheritance diagram for mhvlib\-\_\-gpl\-:\-:Vusb\-Typist$<$ tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.989324cm]{classmhvlib__gpl_1_1_vusb_typist}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib__gpl_1_1_vusb_typist_a4219f6cd56ed81e01c7841b714348fab}{Vusb\-Typist} (\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_typist_aa8cbae0d5abbf10b851f816e61c611ff}{alarm} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} void \hyperlink{classmhvlib__gpl_1_1_vusb_typist_ab293c01051f77e5c4278b5cc26ecaadb}{run\-Tx\-Buffers} ()
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_typist_a64fc9a57dac30c2782666d1c7afd21a0}{type\-Char} (char c)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classmhvlib__gpl_1_1_vusb_typist_a3bd7a4e9766883e0239a485a8e513fe8}{\-\_\-is\-Typing}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t tx\-Buffers$>$class mhvlib\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}
+
+A U\-S\-B keyboard emulator that will type what you print to it 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 38 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist_a4219f6cd56ed81e01c7841b714348fab}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}!Vusb\-Typist@{Vusb\-Typist}}
+\index{Vusb\-Typist@{Vusb\-Typist}!mhvlib_gpl::VusbTypist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{Vusb\-Typist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::{\bf Vusb\-Typist} (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib__gpl_1_1_vusb_typist_a4219f6cd56ed81e01c7841b714348fab}
+Emulate a U\-S\-B keyboard using V-\/\-U\-S\-B This class can also be passed strings, which it will type out on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to trigger events from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 197 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist_aa8cbae0d5abbf10b851f816e61c611ff}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib_gpl::VusbTypist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::{\bf alarm} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib__gpl_1_1_vusb_typist_aa8cbae0d5abbf10b851f816e61c611ff}
+Periodically called to maintain U\-S\-B comms 
+
+Reimplemented from \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a472517a25e847b1be68c1bb3a3dd011b}{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}.
+
+
+
+Definition at line 204 of file Vusb\-Typist.\-h.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist_ab293c01051f77e5c4278b5cc26ecaadb}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!mhvlib_gpl::VusbTypist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf C\-O\-N\-S\-T} void {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib__gpl_1_1_vusb_typist_ab293c01051f77e5c4278b5cc26ecaadb}
+Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
+
+Implements \hyperlink{classmhvlib_1_1_device___t_x_aa9a0eb462357b51beb7072d8003b8959}{mhvlib\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 46 of file Vusb\-Typist.\-h.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist_a64fc9a57dac30c2782666d1c7afd21a0}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}!type\-Char@{type\-Char}}
+\index{type\-Char@{type\-Char}!mhvlib_gpl::VusbTypist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{type\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::type\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib__gpl_1_1_vusb_typist_a64fc9a57dac30c2782666d1c7afd21a0}
+Type a single character on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em c} & the character to type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_typist_a3bd7a4e9766883e0239a485a8e513fe8}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Typist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}!\-\_\-is\-Typing@{\-\_\-is\-Typing}}
+\index{\-\_\-is\-Typing@{\-\_\-is\-Typing}!mhvlib_gpl::VusbTypist@{mhvlib\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{\-\_\-is\-Typing}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ bool {\bf mhvlib\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::\-\_\-is\-Typing\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib__gpl_1_1_vusb_typist_a3bd7a4e9766883e0239a485a8e513fe8}
+
+
+Definition at line 40 of file Vusb\-Typist.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+A\-:/eclipse/mhvlib/mhvlib-\/\-Vusb-\/\-Keyboard/mhvlib/\hyperlink{_vusb_typist_8h}{Vusb\-Typist.\-h}\end{DoxyCompactItemize}

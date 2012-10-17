@@ -1,0 +1,186 @@
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard}{\section{mhvlib\-\_\-gpl\-:\-:Vusb\-Keyboard Class Reference}
+\label{classmhvlib__gpl_1_1_vusb_keyboard}\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+}
+
+
+{\ttfamily \#include $<$Vusb\-Keyboard.\-h$>$}
+
+Inheritance diagram for mhvlib\-\_\-gpl\-:\-:Vusb\-Keyboard\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmhvlib__gpl_1_1_vusb_keyboard}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_ae34243e3e512918b86066977bb0394af}{Vusb\-Keyboard} (\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_abd324de4eee8d87722686c0394806293}{key\-Stroke} (\hyperlink{namespacemhvlib__gpl_aa9b4ef45d3803d8e5cd3ab8c7441e74f}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a3c440d46d4a5af9599eed8071875848c}{key\-Stroke} (\hyperlink{namespacemhvlib__gpl_aa9b4ef45d3803d8e5cd3ab8c7441e74f}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key, uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_ae99f6d9ef695e1396773f2845a4d25ec}{key\-Down} (\hyperlink{namespacemhvlib__gpl_aa9b4ef45d3803d8e5cd3ab8c7441e74f}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key, uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a14d59300774582a759d5a8ded0911705}{keys\-Up} (uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a9b278d7b02da26dc584abfbef345f57b}{keys\-Up} ()
+\item 
+void \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a472517a25e847b1be68c1bb3a3dd011b}{alarm} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \& \hyperlink{classmhvlib__gpl_1_1_vusb_keyboard_a11636f0a8857d64b24ff569b6fbc77e9}{\-\_\-rtc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 186 of file Vusb\-Keyboard.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_ae34243e3e512918b86066977bb0394af}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!Vusb\-Keyboard@{Vusb\-Keyboard}}
+\index{Vusb\-Keyboard@{Vusb\-Keyboard}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{Vusb\-Keyboard}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::\-Vusb\-Keyboard (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_ae34243e3e512918b86066977bb0394af}
+Emulate a U\-S\-B keyboard using V-\/\-U\-S\-B Uses pins D4/\-D2 for A\-Tmega (can be changed in V\-U\-S\-B\-Keyboard/usbconfig.\-h) Uses pins B0/\-B2 for A\-Ttiny25/45/85 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to schedule jobs on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file Vusb\-Keyboard.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_a472517a25e847b1be68c1bb3a3dd011b}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classmhvlib__gpl_1_1_vusb_keyboard_a472517a25e847b1be68c1bb3a3dd011b}
+Periodically called to maintain U\-S\-B comms 
+
+Implements \hyperlink{classmhvlib_1_1_timer_listener_afd620e7d363a34525cd4b96827300de1}{mhvlib\-::\-Timer\-Listener}.
+
+
+
+Reimplemented in \hyperlink{classmhvlib__gpl_1_1_vusb_typist_aa8cbae0d5abbf10b851f816e61c611ff}{mhvlib\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}.
+
+
+
+Definition at line 244 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_ae99f6d9ef695e1396773f2845a4d25ec}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Down@{key\-Down}}
+\index{key\-Down@{key\-Down}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Down}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Down (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key, }
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_ae99f6d9ef695e1396773f2845a4d25ec}
+Press a key 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send \\
+\hline
+{\em modifiers} & the key modifiers \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 213 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_abd324de4eee8d87722686c0394806293}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Stroke@{key\-Stroke}}
+\index{key\-Stroke@{key\-Stroke}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Stroke}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Stroke (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_abd324de4eee8d87722686c0394806293}
+Send a single keystroke 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the key\-Stroke was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_a3c440d46d4a5af9599eed8071875848c}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Stroke@{key\-Stroke}}
+\index{key\-Stroke@{key\-Stroke}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Stroke}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Stroke (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key, }
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_a3c440d46d4a5af9599eed8071875848c}
+Send a single keystroke 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send \\
+\hline
+{\em modifiers} & the key modifiers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the key\-Stroke was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 193 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_a14d59300774582a759d5a8ded0911705}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!keys\-Up@{keys\-Up}}
+\index{keys\-Up@{keys\-Up}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{keys\-Up}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::keys\-Up (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_a14d59300774582a759d5a8ded0911705}
+Release all keys 
+\begin{DoxyParams}{Parameters}
+{\em modifiers} & the key modifiers still held \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 226 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_a9b278d7b02da26dc584abfbef345f57b}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!keys\-Up@{keys\-Up}}
+\index{keys\-Up@{keys\-Up}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{keys\-Up}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::keys\-Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmhvlib__gpl_1_1_vusb_keyboard_a9b278d7b02da26dc584abfbef345f57b}
+Release all keys 
+
+Definition at line 237 of file Vusb\-Keyboard.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib__gpl_1_1_vusb_keyboard_a11636f0a8857d64b24ff569b6fbc77e9}{\index{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}!\-\_\-rtc@{\-\_\-rtc}}
+\index{\-\_\-rtc@{\-\_\-rtc}!mhvlib_gpl::VusbKeyboard@{mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-T\-C}\& mhvlib\-\_\-gpl\-::\-Vusb\-Keyboard\-::\-\_\-rtc\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib__gpl_1_1_vusb_keyboard_a11636f0a8857d64b24ff569b6fbc77e9}
+
+
+Definition at line 188 of file Vusb\-Keyboard.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+A\-:/eclipse/mhvlib/mhvlib-\/\-Vusb-\/\-Keyboard/mhvlib/\hyperlink{_vusb_keyboard_8h}{Vusb\-Keyboard.\-h}\item 
+A\-:/eclipse/mhvlib/mhvlib-\/\-Vusb-\/\-Keyboard/\hyperlink{_vusb_keyboard_8cpp}{Vusb\-Keyboard.\-cpp}\end{DoxyCompactItemize}

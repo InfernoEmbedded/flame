@@ -1,0 +1,119 @@
+\hypertarget{_pin_change_manager_8h}{\section{mhvlib/\-Pin\-Change\-Manager.h File Reference}
+\label{_pin_change_manager_8h}\index{mhvlib/\-Pin\-Change\-Manager.\-h@{mhvlib/\-Pin\-Change\-Manager.\-h}}
+}
+{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Device\-\_\-\-R\-X.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_pin_event_listener}{mhvlib\-::\-Pin\-Event\-Listener}
+\item 
+struct \hyperlink{structmhvlib_1_1event_pin}{mhvlib\-::event\-Pin}
+\item 
+class \hyperlink{classmhvlib_1_1_pin_change_manager}{mhvlib\-::\-Pin\-Change\-Manager}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_pin_change_manager_8h_acec75922d6c9c697af5df48ced973ec4}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}(\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager)
+\item 
+\#define \hyperlink{_pin_change_manager_8h_ae34d5bfce0c0a87228b27def6cb8080c}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0}(\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager)
+\item 
+\#define \hyperlink{_pin_change_manager_8h_a9f040c0a58a914b53db07027ff01fece}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1}(\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager)
+\item 
+\#define \hyperlink{_pin_change_manager_8h_a151b914a0f2b9a93a05dccbee1e6273d}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2}(\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager)
+\item 
+\#define \hyperlink{_pin_change_manager_8h_a21db787fb93f9b17ce6742eca0e3d037}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(\-\_\-\-\_\-mhv\-Event\-Manager)~\hyperlink{_pin_change_manager_8h_acec75922d6c9c697af5df48ced973ec4}{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}(\-\_\-\-\_\-mhv\-Event\-Manager)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct event\-Pin \hyperlink{namespacemhvlib_acf4cd7c00d020d1fef8ecfe350328f3b}{mhvlib\-::\-E\-V\-E\-N\-T\-\_\-\-P\-I\-N}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_pin_change_manager_8h_a21db787fb93f9b17ce6742eca0e3d037}{\index{Pin\-Change\-Manager.\-h@{Pin\-Change\-Manager.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!PinChangeManager.h@{Pin\-Change\-Manager.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-mhv\-Event\-Manager}
+\end{DoxyParamCaption}
+)~{\bf M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}(\-\_\-\-\_\-mhv\-Event\-Manager)}}\label{_pin_change_manager_8h_a21db787fb93f9b17ce6742eca0e3d037}
+
+
+Definition at line 67 of file Pin\-Change\-Manager.\-h.
+
+\hypertarget{_pin_change_manager_8h_acec75922d6c9c697af5df48ced973ec4}{\index{Pin\-Change\-Manager.\-h@{Pin\-Change\-Manager.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}!PinChangeManager.h@{Pin\-Change\-Manager.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager}
+\end{DoxyParamCaption}
+)}}\label{_pin_change_manager_8h_acec75922d6c9c697af5df48ced973ec4}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(PCINT\_vect) \{ \(\backslash\)
+        \_\_\_mhvEventManager.pinChange0(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 34 of file Pin\-Change\-Manager.\-h.
+
+\hypertarget{_pin_change_manager_8h_ae34d5bfce0c0a87228b27def6cb8080c}{\index{Pin\-Change\-Manager.\-h@{Pin\-Change\-Manager.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0}!PinChangeManager.h@{Pin\-Change\-Manager.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T0(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager}
+\end{DoxyParamCaption}
+)}}\label{_pin_change_manager_8h_ae34d5bfce0c0a87228b27def6cb8080c}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(PCINT0\_vect) \{ \(\backslash\)
+        \_\_\_mhvEventManager.pinChange0(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 39 of file Pin\-Change\-Manager.\-h.
+
+\hypertarget{_pin_change_manager_8h_a9f040c0a58a914b53db07027ff01fece}{\index{Pin\-Change\-Manager.\-h@{Pin\-Change\-Manager.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1}!PinChangeManager.h@{Pin\-Change\-Manager.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T1(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager}
+\end{DoxyParamCaption}
+)}}\label{_pin_change_manager_8h_a9f040c0a58a914b53db07027ff01fece}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(PCINT1\_vect) \{ \(\backslash\)
+        \_\_\_mhvEventManager.pinChange1(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 44 of file Pin\-Change\-Manager.\-h.
+
+\hypertarget{_pin_change_manager_8h_a151b914a0f2b9a93a05dccbee1e6273d}{\index{Pin\-Change\-Manager.\-h@{Pin\-Change\-Manager.\-h}!M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2}}
+\index{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2@{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2}!PinChangeManager.h@{Pin\-Change\-Manager.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-P\-I\-N\-C\-H\-A\-N\-G\-E\-\_\-\-M\-A\-N\-A\-G\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-P\-C\-I\-N\-T2(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-\-\_\-mhv\-Event\-Manager}
+\end{DoxyParamCaption}
+)}}\label{_pin_change_manager_8h_a151b914a0f2b9a93a05dccbee1e6273d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(PCINT2\_vect) \{ \(\backslash\)
+        \_\_\_mhvEventManager.pinChange2(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 49 of file Pin\-Change\-Manager.\-h.
+

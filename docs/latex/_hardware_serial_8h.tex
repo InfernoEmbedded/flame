@@ -1,0 +1,105 @@
+\hypertarget{_hardware_serial_8h}{\section{mhvlib/\-Hardware\-Serial.h File Reference}
+\label{_hardware_serial_8h}\index{mhvlib/\-Hardware\-Serial.\-h@{mhvlib/\-Hardware\-Serial.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Ring\-Buffer.\-h$>$}\\*
+{\ttfamily \#include $<$avr/pgmspace.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Device\-\_\-\-T\-X.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Device\-\_\-\-R\-X.\-h$>$}\\*
+{\ttfamily \#include $<$avr/sfr\-\_\-defs.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_hardware_serial}{mhvlib\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)~\hyperlink{_hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)
+\item 
+\#define \hyperlink{_hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Rx\-Vect, mhv\-Tx\-Vect)
+\item 
+\#define \hyperlink{_hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N, \-\_\-mhv\-T\-X\-B\-U\-F\-C\-O\-U\-N\-T, \-\_\-mhv\-S\-E\-R\-I\-A\-L, \-\_\-mhv\-B\-A\-U\-D)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}{\index{Hardware\-Serial.\-h@{Hardware\-Serial.\-h}!\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!HardwareSerial.h@{Hardware\-Serial.\-h}}
+\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Hardware\-Serial, }
+\item[{}]{mhv\-Rx\-Vect, }
+\item[{}]{mhv\-Tx\-Vect}
+\end{DoxyParamCaption}
+)}}\label{_hardware_serial_8h_a0a11cc049f24d7d0adf42c34f470e353}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(mhvRxVect) \{ \(\backslash\)
+        mhvHardwareSerial.rx(); \(\backslash\)
+\} \(\backslash\)
+ISR(mhvTxVect) \{ \(\backslash\)
+        mhvHardwareSerial.tx(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 48 of file Hardware\-Serial.\-h.
+
+\hypertarget{_hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}{\index{Hardware\-Serial.\-h@{Hardware\-Serial.\-h}!M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!HardwareSerial.h@{Hardware\-Serial.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Hardware\-Serial, }
+\item[{}]{mhv\-Hardware\-Serial\-Interrupts}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-\-M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Hardware\-Serial, mhv\-Hardware\-Serial\-Interrupts)}}\label{_hardware_serial_8h_a293fda00fa60d64bc7efb6f19a61fead}
+
+
+Definition at line 45 of file Hardware\-Serial.\-h.
+
+\hypertarget{_hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}{\index{Hardware\-Serial.\-h@{Hardware\-Serial.\-h}!M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}!HardwareSerial.h@{Hardware\-Serial.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-H\-A\-R\-D\-W\-A\-R\-E\-S\-E\-R\-I\-A\-L\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Object\-Name, }
+\item[{}]{\-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N, }
+\item[{}]{\-\_\-mhv\-T\-X\-B\-U\-F\-C\-O\-U\-N\-T, }
+\item[{}]{\-\_\-mhv\-S\-E\-R\-I\-A\-L, }
+\item[{}]{\-\_\-mhv\-B\-A\-U\-D}
+\end{DoxyParamCaption}
+)}}\label{_hardware_serial_8h_af5a2cfbfaec30f29030a11571a891b09}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+HardwareSerial<\_mhvSERIAL, \_mhvBAUD, \_mhvRXBUFLEN, \_mhvTXBUFCOUNT> 
+      \_mhvObjectName; \(\backslash\)
+                MHV\_HARDWARESERIAL\_ASSIGN\_INTERRUPTS(\_mhvObjectName, \_mhvSERIAL
+       ## \_INTERRUPTS);
+\end{DoxyCode}
+Create a new serial object 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-mhv\-Object\-Name} & the variable name of the object \\
+\hline
+{\em \-\_\-mhv\-R\-X\-B\-U\-F\-L\-E\-N} & the maximum length of the line to be received \\
+\hline
+{\em \-\_\-mhv\-T\-X\-B\-U\-F\-C\-O\-U\-N\-T} & the maximum number of tx buffers to send asynchonously \\
+\hline
+{\em \-\_\-mhv\-S\-E\-R\-I\-A\-L} & serial port parameters \\
+\hline
+{\em \-\_\-mhv\-B\-A\-U\-D} & the baud rate requested \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 64 of file Hardware\-Serial.\-h.
+

@@ -1,0 +1,49 @@
+\hypertarget{_device___r_x_8h}{\section{mhvlib/\-Device\-\_\-\-R\-X.h File Reference}
+\label{_device___r_x_8h}\index{mhvlib/\-Device\-\_\-\-R\-X.\-h@{mhvlib/\-Device\-\_\-\-R\-X.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Ring\-Buffer.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_r_x_listener}{mhvlib\-::\-R\-X\-Listener}
+\item 
+class \hyperlink{classmhvlib_1_1_device___r_x}{mhvlib\-::\-Device\-\_\-\-R\-X}
+\item 
+class \hyperlink{classmhvlib_1_1_device___r_x_implementation}{mhvlib\-::\-Device\-\_\-\-R\-X\-Implementation$<$ buffer\-Length $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_device___r_x_8h_ac84429c20d2e54881a1cb64815019f80}{M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Rx\-Name, \-\_\-mhv\-Rx\-Character\-Count)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_device___r_x_8h_ac84429c20d2e54881a1cb64815019f80}{\index{Device\-\_\-\-R\-X.\-h@{Device\-\_\-\-R\-X.\-h}!M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}!Device_RX.h@{Device\-\_\-\-R\-X.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-R\-X\-\_\-\-B\-U\-F\-F\-E\-R\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-mhv\-Rx\-Name, }
+\item[{}]{\-\_\-mhv\-Rx\-Character\-Count}
+\end{DoxyParamCaption}
+)}}\label{_device___r_x_8h_ac84429c20d2e54881a1cb64815019f80}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{char} \_mhvRxName ## Buf[\_mhvRxCharacterCount + 1]; \(\backslash\)
+        MHV\_RingBuffer \_mhvRxName(\_mhvRxName ## Buf, \_mhvRxCharacterCount + 1);
+\end{DoxyCode}
+
+
+Definition at line 40 of file Device\-\_\-\-R\-X.\-h.
+

@@ -1,0 +1,698 @@
+\hypertarget{classmhvlib_1_1_r_t_c}{\section{mhvlib\-:\-:R\-T\-C Class Reference}
+\label{classmhvlib_1_1_r_t_c}\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}}
+}
+
+
+{\ttfamily \#include $<$R\-T\-C.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:R\-T\-C\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classmhvlib_1_1_r_t_c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_r_t_c_aaa083afe94685139e84e50b792e17d2a}{R\-T\-C} (int16\-\_\-t timezone=0)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_ae772500a20ba592f0f5b472ed2c4bbd9}{synchronise} (\hyperlink{classmhvlib_1_1_timer}{Timer} \&timer)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a4e7ee63690ad06b030b05c8130cc281a}{set\-Time} (uint32\-\_\-t \hyperlink{structmhvlib_1_1timestamp}{timestamp}, uint16\-\_\-t milliseconds)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a8316b2ba3f322b8a082180bd77637c71}{set\-Time} (\hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structmhvlib_1_1timestamp}{timestamp})
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a10c75b277164f2c4386b0515073672c3}{alarm} ()
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a699fae329f931809405f492d48cd0684}{current} (\hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structmhvlib_1_1timestamp}{timestamp})
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_ab34a4ce24b5ecb32b8e8348513b17e57}{elapsed} (const \hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&since, \hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&elapsed)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a32dd522583554aed4c4dc912304344c6}{to\-Time} (\hyperlink{namespacemhvlib_ae8a0c3208996dd45e613708c01cbc83c}{T\-I\-M\-E} \&to, const \hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&from)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a5f52af1fa5bb398024159b2efda51245}{to\-Timestamp} (\hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&to, const \hyperlink{namespacemhvlib_ae8a0c3208996dd45e613708c01cbc83c}{T\-I\-M\-E} \&from)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_ac966e2a3b173f4b702caf154b91b96cf}{timestamp\-Increment} (\hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structmhvlib_1_1timestamp}{timestamp}, const \hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp2)
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_a2c10e1c3273eea7d58ba76d62f51caef}{timestamp\-Increment} (\hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structmhvlib_1_1timestamp}{timestamp}, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds, uint8\-\_\-t ticks)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_a55f44d8642c5a1c739da2b681bb40849}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_a78f8590483bb7c288f1a2cce16579339}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_afd4e9449abbe7405bdf3ab2a42331e86}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_acc895a7eea823477a76728c346828987}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_ac55f0cc6d87ad04c0cd2ced86292f780}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_a231e4481ad234a58dccca904c3fcabd5}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_af29ac7903e602ec8d64d299362be778d}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_a2ec2f624aa9870fd04bfb161334dbba7}{add\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds)
+\item 
+bool \hyperlink{classmhvlib_1_1_r_t_c_a6244f80e3a32eff6274451c34078dd3d}{add\-Alarm} (\hyperlink{namespacemhvlib_a3fa96bbaa152dfe112dd50663d5caef5}{A\-L\-A\-R\-M} \&\hyperlink{structmhvlib_1_1alarm}{alarm})
+\item 
+virtual bool \hyperlink{classmhvlib_1_1_r_t_c_a01d3852ef9e585676a3c31c9ea142485}{register\-Alarm} (\hyperlink{namespacemhvlib_a3fa96bbaa152dfe112dd50663d5caef5}{A\-L\-A\-R\-M} \&\hyperlink{structmhvlib_1_1alarm}{alarm})=0
+\item 
+virtual void \hyperlink{classmhvlib_1_1_r_t_c_ab65b29ec1b86852867563774b5859f9c}{handle\-Events} ()=0
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_a951ba6ed32251d5429146ae0a53776e9}{alarms\-Pending} ()
+\item 
+virtual void \hyperlink{classmhvlib_1_1_r_t_c_a8204a5e30e83c92bd300757a88aaf5b0}{remove\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} \&listener)=0
+\item 
+virtual void \hyperlink{classmhvlib_1_1_r_t_c_a453ff9d87c1e20861cd5a5402469593e}{remove\-Alarm} (\hyperlink{classmhvlib_1_1_timer_listener}{Timer\-Listener} $\ast$listener)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_r_t_c_ae1aee6c31af6197b0aa6edaded12b8a0}{increment\-Milliseconds} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_a0936e7af2c9071bce11a2f2abb58df40}{\-\_\-alarm\-Count}
+\item 
+uint32\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_ac9bca1039573baccfd05fd2ccb219495}{\-\_\-timestamp}
+\item 
+uint16\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_a22ee8aadbcec10d624e37ce4c1c2796a}{\-\_\-milliseconds}
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_a85bb4d09098ea477190bd97b08c09e7d}{\-\_\-ticks}
+\item 
+uint8\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_ae87ddcdc3c98b9fc9d762fdcadb758f5}{\-\_\-ticks\-Per\-Millisecond}
+\item 
+int16\-\_\-t \hyperlink{classmhvlib_1_1_r_t_c_a27f82fc89f040744c940bbe98d57f1b1}{\-\_\-tz\-Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 231 of file R\-T\-C.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_r_t_c_aaa083afe94685139e84e50b792e17d2a}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!R\-T\-C@{R\-T\-C}}
+\index{R\-T\-C@{R\-T\-C}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{R\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}mhvlib\-::\-R\-T\-C\-::\-R\-T\-C (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{timezone = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_aaa083afe94685139e84e50b792e17d2a}
+Create a new \hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} 
+\begin{DoxyParams}{Parameters}
+{\em timezone} & minutes offset from U\-T\-C \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 258 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_r_t_c_a55f44d8642c5a1c739da2b681bb40849}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
+\item[{uint8\-\_\-t}]{repeat\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a55f44d8642c5a1c739da2b681bb40849}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 527 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a78f8590483bb7c288f1a2cce16579339}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a78f8590483bb7c288f1a2cce16579339}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 551 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_afd4e9449abbe7405bdf3ab2a42331e86}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_afd4e9449abbe7405bdf3ab2a42331e86}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 574 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_acc895a7eea823477a76728c346828987}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_acc895a7eea823477a76728c346828987}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 595 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ac55f0cc6d87ad04c0cd2ced86292f780}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
+\item[{uint8\-\_\-t}]{repeat\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_ac55f0cc6d87ad04c0cd2ced86292f780}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 620 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a231e4481ad234a58dccca904c3fcabd5}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a231e4481ad234a58dccca904c3fcabd5}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 644 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_af29ac7903e602ec8d64d299362be778d}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_af29ac7903e602ec8d64d299362be778d}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 667 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a2ec2f624aa9870fd04bfb161334dbba7}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a2ec2f624aa9870fd04bfb161334dbba7}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 688 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a6244f80e3a32eff6274451c34078dd3d}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool mhvlib\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a6244f80e3a32eff6274451c34078dd3d}
+Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 710 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a10c75b277164f2c4386b0515073672c3}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!alarm@{alarm}}
+\index{alarm@{alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::alarm (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_r_t_c_a10c75b277164f2c4386b0515073672c3}
+Alarm handler from the timer 
+
+Implements \hyperlink{classmhvlib_1_1_timer_listener_afd620e7d363a34525cd4b96827300de1}{mhvlib\-::\-Timer\-Listener}.
+
+
+
+Definition at line 303 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a951ba6ed32251d5429146ae0a53776e9}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!alarms\-Pending@{alarms\-Pending}}
+\index{alarms\-Pending@{alarms\-Pending}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{alarms\-Pending}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhvlib\-::\-R\-T\-C\-::alarms\-Pending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a951ba6ed32251d5429146ae0a53776e9}
+How many events are left in the queue \begin{DoxyReturn}{Returns}
+the number of events 
+\end{DoxyReturn}
+
+
+Definition at line 736 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a699fae329f931809405f492d48cd0684}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!current@{current}}
+\index{current@{current}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::current (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a699fae329f931809405f492d48cd0684}
+Get the current timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to write into \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 324 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ab34a4ce24b5ecb32b8e8348513b17e57}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{elapsed}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::elapsed (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{since, }
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{elapsed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_ab34a4ce24b5ecb32b8e8348513b17e57}
+Determine how long has elapsed since the supplied timestamp Fixme\-: Does not deal with ticks
+
+
+\begin{DoxyParams}{Parameters}
+{\em since} & the timestamp to measure against \\
+\hline
+{\em elapsed} & returns how much time has elapsed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 340 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ab65b29ec1b86852867563774b5859f9c}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}virtual void mhvlib\-::\-R\-T\-C\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_r_t_c_ab65b29ec1b86852867563774b5859f9c}
+Check for events that are due, and run them Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
+
+Implemented in \hyperlink{classmhvlib_1_1_r_t_c_implementation_ada5160b3ee34cdd7614bc55915c4643b}{mhvlib\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ae1aee6c31af6197b0aa6edaded12b8a0}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!increment\-Milliseconds@{increment\-Milliseconds}}
+\index{increment\-Milliseconds@{increment\-Milliseconds}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{increment\-Milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::increment\-Milliseconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_ae1aee6c31af6197b0aa6edaded12b8a0}
+Increment milliseconds by 1 
+
+Definition at line 243 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a01d3852ef9e585676a3c31c9ea142485}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!register\-Alarm@{register\-Alarm}}
+\index{register\-Alarm@{register\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{register\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool mhvlib\-::\-R\-T\-C\-::register\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_r_t_c_a01d3852ef9e585676a3c31c9ea142485}
+Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_r_t_c_implementation_a5f90324cfffabcb857d65be1e2b1f254}{mhvlib\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a8204a5e30e83c92bd300757a88aaf5b0}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void mhvlib\-::\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_r_t_c_a8204a5e30e83c92bd300757a88aaf5b0}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_r_t_c_implementation_a9227ec78a3483ef7a55b475f476de7cb}{mhvlib\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a453ff9d87c1e20861cd5a5402469593e}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void mhvlib\-::\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classmhvlib_1_1_r_t_c_a453ff9d87c1e20861cd5a5402469593e}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classmhvlib_1_1_r_t_c_implementation_ad6b7e1094069e809648818bafc83fa1d}{mhvlib\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a4e7ee63690ad06b030b05c8130cc281a}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{timestamp, }
+\item[{uint16\-\_\-t}]{milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a4e7ee63690ad06b030b05c8130cc281a}
+Set the current time 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the current Unix timestamp \\
+\hline
+{\em milliseconds} & the current milliseconds offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 280 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a8316b2ba3f322b8a082180bd77637c71}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a8316b2ba3f322b8a082180bd77637c71}
+Set the current time 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the current Unix timestamp \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 291 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ae772500a20ba592f0f5b472ed2c4bbd9}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!synchronise@{synchronise}}
+\index{synchronise@{synchronise}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{synchronise}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::synchronise (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer} \&}]{timer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_ae772500a20ba592f0f5b472ed2c4bbd9}
+Synchronise the ticks\-Per\-Millisecond with the timer This is useful if you change the timer values, or if you are are running the timer faster than 1ms 
+\begin{DoxyParams}{Parameters}
+{\em timer} & the timer to sync with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 270 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ac966e2a3b173f4b702caf154b91b96cf}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
+\index{timestamp\-Increment@{timestamp\-Increment}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_ac966e2a3b173f4b702caf154b91b96cf}
+Increment a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em timestamp2} & the timestamp to increment by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 475 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a2c10e1c3273eea7d58ba76d62f51caef}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
+\index{timestamp\-Increment@{timestamp\-Increment}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
+\item[{uint32\-\_\-t}]{seconds, }
+\item[{uint16\-\_\-t}]{milliseconds, }
+\item[{uint8\-\_\-t}]{ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a2c10e1c3273eea7d58ba76d62f51caef}
+Increment a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em seconds} & the number of seconds to increment by \\
+\hline
+{\em milliseconds} & the number of milliseconds to increment by \\
+\hline
+{\em ticks} & the number of ticks to increment by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 499 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a32dd522583554aed4c4dc912304344c6}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!to\-Time@{to\-Time}}
+\index{to\-Time@{to\-Time}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{to\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::to\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E} \&}]{to, }
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a32dd522583554aed4c4dc912304344c6}
+Convert a timestamp into year,month,day,hours,minutes,seconds 
+\begin{DoxyParams}{Parameters}
+{\em to} & the M\-H\-V\-\_\-\-T\-I\-M\-E to store the results \\
+\hline
+{\em from} & the M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 362 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a5f52af1fa5bb398024159b2efda51245}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!to\-Timestamp@{to\-Timestamp}}
+\index{to\-Timestamp@{to\-Timestamp}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{to\-Timestamp}]{\setlength{\rightskip}{0pt plus 5cm}void mhvlib\-::\-R\-T\-C\-::to\-Timestamp (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{to, }
+\item[{const {\bf T\-I\-M\-E} \&}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_r_t_c_a5f52af1fa5bb398024159b2efda51245}
+Convert year,month,day,hours,minutes,seconds into a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em to} & the M\-H\-V\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P to store the results \\
+\hline
+{\em from} & the M\-H\-V\-\_\-\-T\-I\-M\-E struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 431 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_r_t_c_a0936e7af2c9071bce11a2f2abb58df40}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-alarm\-Count@{\-\_\-alarm\-Count}}
+\index{\-\_\-alarm\-Count@{\-\_\-alarm\-Count}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-alarm\-Count}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-alarm\-Count\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_a0936e7af2c9071bce11a2f2abb58df40}
+
+
+Definition at line 233 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a22ee8aadbcec10d624e37ce4c1c2796a}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-milliseconds@{\-\_\-milliseconds}}
+\index{\-\_\-milliseconds@{\-\_\-milliseconds}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-milliseconds\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_a22ee8aadbcec10d624e37ce4c1c2796a}
+
+
+Definition at line 235 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a85bb4d09098ea477190bd97b08c09e7d}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-ticks\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_a85bb4d09098ea477190bd97b08c09e7d}
+
+
+Definition at line 236 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ae87ddcdc3c98b9fc9d762fdcadb758f5}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}}
+\index{\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks\-Per\-Millisecond}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-ticks\-Per\-Millisecond\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_ae87ddcdc3c98b9fc9d762fdcadb758f5}
+
+
+Definition at line 237 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_ac9bca1039573baccfd05fd2ccb219495}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-timestamp@{\-\_\-timestamp}}
+\index{\-\_\-timestamp@{\-\_\-timestamp}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-timestamp}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-timestamp\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_ac9bca1039573baccfd05fd2ccb219495}
+
+
+Definition at line 234 of file R\-T\-C.\-h.
+
+\hypertarget{classmhvlib_1_1_r_t_c_a27f82fc89f040744c940bbe98d57f1b1}{\index{mhvlib\-::\-R\-T\-C@{mhvlib\-::\-R\-T\-C}!\-\_\-tz\-Offset@{\-\_\-tz\-Offset}}
+\index{\-\_\-tz\-Offset@{\-\_\-tz\-Offset}!mhvlib::RTC@{mhvlib\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-tz\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t mhvlib\-::\-R\-T\-C\-::\-\_\-tz\-Offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_r_t_c_a27f82fc89f040744c940bbe98d57f1b1}
+
+
+Definition at line 238 of file R\-T\-C.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_r_t_c_8h}{R\-T\-C.\-h}\end{DoxyCompactItemize}

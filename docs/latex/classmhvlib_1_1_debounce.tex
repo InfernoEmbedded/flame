@@ -1,0 +1,194 @@
+\hypertarget{classmhvlib_1_1_debounce}{\section{mhvlib\-:\-:Debounce$<$ debounce\-Time, held\-Time, repeat\-Time $>$ Class Template Reference}
+\label{classmhvlib_1_1_debounce}\index{mhvlib\-::\-Debounce$<$ debounce\-Time, held\-Time, repeat\-Time $>$@{mhvlib\-::\-Debounce$<$ debounce\-Time, held\-Time, repeat\-Time $>$}}
+}
+
+
+{\ttfamily \#include $<$Debounce.\-h$>$}
+
+Inheritance diagram for mhvlib\-:\-:Debounce$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classmhvlib_1_1_debounce}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_debounce_aced241255864ff44195cc6000287ef0f}{Debounce} (\hyperlink{classmhvlib_1_1_pin_change_manager}{Pin\-Change\-Manager} \&pin\-Change\-Manager, \hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classmhvlib_1_1_debounce_ae25b18e47359cc03ac58eded6cbeaeaa}{assign\-Key} (\hyperlink{io_8h_afb172d17be3890bb07e5ceec5a014b91}{M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), \hyperlink{classmhvlib_1_1_debounce_listener}{Debounce\-Listener} \&listener)
+\item 
+void \hyperlink{classmhvlib_1_1_debounce_a72fb4a7a39efced90d7dbea8c691c286}{deassign\-Key} (int8\-\_\-t pin\-Pinchange\-Interrupt)
+\item 
+void \hyperlink{classmhvlib_1_1_debounce_a432a7d4dd88965beef3f16bdbb865172}{check\-Held} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmhvlib_1_1_debounce_a48366cf03e885a4c739a9e5ab00be17e}{pin\-Changed} (uint8\-\_\-t pc\-Int, bool new\-State)
+\item 
+void \hyperlink{classmhvlib_1_1_debounce_a0df368d4ac0a2467148dde7d967d65ff}{init\-Pin} (uint8\-\_\-t pinchange\-Interrupt)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmhvlib_1_1_r_t_c}{R\-T\-C} \& \hyperlink{classmhvlib_1_1_debounce_a6fc47650f1f285bd100799b736bb7e08}{\-\_\-rtc}
+\item 
+\hyperlink{namespacemhvlib_a290c64687661f8a9ffaa662db0052f63}{D\-E\-B\-O\-U\-N\-C\-E\-\_\-\-P\-I\-N} \hyperlink{classmhvlib_1_1_debounce_a1c47f6a0b463c510752509abc41fc51a}{\-\_\-pins} \mbox{[}\hyperlink{_m_h_v__io__attiny85_8h_ac3370faa54861753416a738657731f6b}{M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}
+\item 
+\hyperlink{classmhvlib_1_1_pin_change_manager}{Pin\-Change\-Manager} \& \hyperlink{classmhvlib_1_1_debounce_a27200f042e5c5bad29c9c1a8a8fbad47}{\-\_\-pin\-Change\-Manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$class mhvlib\-::\-Debounce$<$ debounce\-Time, held\-Time, repeat\-Time $>$}
+
+A debouncing class triggered by pin changes 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em debounce\-Time} & the minimum amount of time to count as a button press (in milliseconds) \\
+\hline
+{\em held\-Time} & the minimum amount of time to consider a button held down \\
+\hline
+{\em repeat\-Time} & the time after which the held call repeats \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 79 of file Debounce.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmhvlib_1_1_debounce_aced241255864ff44195cc6000287ef0f}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!Debounce@{Debounce}}
+\index{Debounce@{Debounce}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{Debounce}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::{\bf Debounce} (
+\begin{DoxyParamCaption}
+\item[{{\bf Pin\-Change\-Manager} \&}]{pin\-Change\-Manager, }
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_debounce_aced241255864ff44195cc6000287ef0f}
+Debouncing helper for buttons connected directly to P\-C\-I\-N\-T capable pins The user must pull the pin up, either externally (and initing the pin by calling mhv\-\_\-set\-Input), or internally by calling mhv\-\_\-set\-Input\-Pullup
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin\-Change\-Manager} & the pin change manager \\
+\hline
+{\em rtc} & the realtime clock we will use for timing \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 125 of file Debounce.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmhvlib_1_1_debounce_ae25b18e47359cc03ac58eded6cbeaeaa}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!assign\-Key@{assign\-Key}}
+\index{assign\-Key@{assign\-Key}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{assign\-Key}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ void {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::assign\-Key (
+\begin{DoxyParamCaption}
+\item[{{\bf M\-H\-V\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin)}]{, }
+\item[{{\bf Debounce\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_debounce_ae25b18e47359cc03ac58eded6cbeaeaa}
+Assign a pin to debounce 
+\begin{DoxyParams}{Parameters}
+{\em pin} & An M\-H\-V\-\_\-\-P\-I\-N\-\_\-$\ast$ macro \\
+\hline
+{\em listener} & a class to call when the button is pressed or held down \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 139 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a432a7d4dd88965beef3f16bdbb865172}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!check\-Held@{check\-Held}}
+\index{check\-Held@{check\-Held}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{check\-Held}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ void {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::check\-Held (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_debounce_a432a7d4dd88965beef3f16bdbb865172}
+Called periodically to check if pins have been held Ideally, this should be called from the main loop, rather than the interrupt context 
+
+Definition at line 167 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a72fb4a7a39efced90d7dbea8c691c286}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!deassign\-Key@{deassign\-Key}}
+\index{deassign\-Key@{deassign\-Key}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{deassign\-Key}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ void {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::deassign\-Key (
+\begin{DoxyParamCaption}
+\item[{int8\-\_\-t}]{pin\-Pinchange\-Interrupt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classmhvlib_1_1_debounce_a72fb4a7a39efced90d7dbea8c691c286}
+Deassign a pin 
+\begin{DoxyParams}{Parameters}
+{\em pin\-Pinchange\-Interrupt} & the pin change interrupt to deregister \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 158 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a0df368d4ac0a2467148dde7d967d65ff}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!init\-Pin@{init\-Pin}}
+\index{init\-Pin@{init\-Pin}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{init\-Pin}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ void {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::init\-Pin (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{pinchange\-Interrupt}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classmhvlib_1_1_debounce_a0df368d4ac0a2467148dde7d967d65ff}
+
+
+Definition at line 112 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a48366cf03e885a4c739a9e5ab00be17e}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!pin\-Changed@{pin\-Changed}}
+\index{pin\-Changed@{pin\-Changed}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{pin\-Changed}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ void {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::pin\-Changed (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{pc\-Int, }
+\item[{bool}]{new\-State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classmhvlib_1_1_debounce_a48366cf03e885a4c739a9e5ab00be17e}
+Trigger for pin change interrupts -\/ scans through 8 pins starting at the offset 
+\begin{DoxyParams}{Parameters}
+{\em pc\-Int} & the pin change interrupt that was triggered \\
+\hline
+{\em new\-State} & the new state of the pin \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classmhvlib_1_1_pin_event_listener_af026c686b2a5cedb3b52e2a440fb6d99}{mhvlib\-::\-Pin\-Event\-Listener}.
+
+
+
+Definition at line 90 of file Debounce.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmhvlib_1_1_debounce_a27200f042e5c5bad29c9c1a8a8fbad47}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!\-\_\-pin\-Change\-Manager@{\-\_\-pin\-Change\-Manager}}
+\index{\-\_\-pin\-Change\-Manager@{\-\_\-pin\-Change\-Manager}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{\-\_\-pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ {\bf Pin\-Change\-Manager}\& {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::\-\_\-pin\-Change\-Manager\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_debounce_a27200f042e5c5bad29c9c1a8a8fbad47}
+
+
+Definition at line 83 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a1c47f6a0b463c510752509abc41fc51a}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!\-\_\-pins@{\-\_\-pins}}
+\index{\-\_\-pins@{\-\_\-pins}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{\-\_\-pins}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ {\bf D\-E\-B\-O\-U\-N\-C\-E\-\_\-\-P\-I\-N} {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::\-\_\-pins\mbox{[}{\bf M\-H\-V\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_debounce_a1c47f6a0b463c510752509abc41fc51a}
+
+
+Definition at line 82 of file Debounce.\-h.
+
+\hypertarget{classmhvlib_1_1_debounce_a6fc47650f1f285bd100799b736bb7e08}{\index{mhvlib\-::\-Debounce@{mhvlib\-::\-Debounce}!\-\_\-rtc@{\-\_\-rtc}}
+\index{\-\_\-rtc@{\-\_\-rtc}!mhvlib::Debounce@{mhvlib\-::\-Debounce}}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t debounce\-Time, uint16\-\_\-t held\-Time, uint16\-\_\-t repeat\-Time$>$ {\bf R\-T\-C}\& {\bf mhvlib\-::\-Debounce}$<$ debounce\-Time, held\-Time, repeat\-Time $>$\-::\-\_\-rtc\hspace{0.3cm}{\ttfamily [protected]}}}\label{classmhvlib_1_1_debounce_a6fc47650f1f285bd100799b736bb7e08}
+
+
+Definition at line 81 of file Debounce.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+mhvlib/\hyperlink{_debounce_8h}{Debounce.\-h}\end{DoxyCompactItemize}

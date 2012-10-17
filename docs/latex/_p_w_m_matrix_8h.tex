@@ -1,0 +1,55 @@
+\hypertarget{_p_w_m_matrix_8h}{\section{mhvlib/\-P\-W\-M\-Matrix.h File Reference}
+\label{_p_w_m_matrix_8h}\index{mhvlib/\-P\-W\-M\-Matrix.\-h@{mhvlib/\-P\-W\-M\-Matrix.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$math.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/\-Timer.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_p_w_m_matrix_driver}{mhvlib\-::\-P\-W\-M\-Matrix\-Driver}
+\item 
+class \hyperlink{classmhvlib_1_1_p_w_m_matrix}{mhvlib\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}{\-\_\-\-M\-O\-D\-E}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum P\-W\-M\-Matrix\-\_\-\-Mode \hyperlink{namespacemhvlib_a65e3004ad916bc283b80fb7e2a7f29b7}{mhvlib\-::\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25}{mhvlib\-::\-P\-W\-M\-Matrix\-\_\-\-Mode} \{ \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25aee484148cc9d4ae63dddaea68d04bd1c}{mhvlib\-::\-A\-U\-T\-O}, 
+\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a7307c4c9f5d55e8dbba14782a9c45498}{mhvlib\-::\-R\-O\-W\-S}, 
+\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a64e0b460403a2c6727eaecb47b0f5921}{mhvlib\-::\-C\-O\-L\-S}, 
+\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a5684ea86bf63f2315a0a8af994b89368}{mhvlib\-::\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}{\index{P\-W\-M\-Matrix.\-h@{P\-W\-M\-Matrix.\-h}!\-\_\-\-M\-O\-D\-E@{\-\_\-\-M\-O\-D\-E}}
+\index{\-\_\-\-M\-O\-D\-E@{\-\_\-\-M\-O\-D\-E}!PWMMatrix.h@{P\-W\-M\-Matrix.\-h}}
+\subsubsection[{\-\_\-\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-O\-D\-E}}\label{_p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+((\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25aee484148cc9d4ae63dddaea68d04bd1c}{PWMMATRIX\_MODE::AUTO} == mode) ? \(\backslash\)
+        ((rows <= cols) ? \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a7307c4c9f5d55e8dbba14782a9c45498}{PWMMATRIX\_MODE::ROWS} : 
+      \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a64e0b460403a2c6727eaecb47b0f5921}{PWMMATRIX\_MODE::COLS}) : mode)
+\end{DoxyCode}
+
+
+Definition at line 55 of file P\-W\-M\-Matrix.\-h.
+

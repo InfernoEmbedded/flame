@@ -1,0 +1,169 @@
+\hypertarget{_timer_8h}{\section{mhvlib/\-Timer.h File Reference}
+\label{_timer_8h}\index{mhvlib/\-Timer.\-h@{mhvlib/\-Timer.\-h}}
+}
+{\ttfamily \#include $<$inttypes.\-h$>$}\\*
+{\ttfamily \#include $<$avr/interrupt.\-h$>$}\\*
+{\ttfamily \#include $<$avr/io.\-h$>$}\\*
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmhvlib_1_1_timer_listener}{mhvlib\-::\-Timer\-Listener}
+\item 
+class \hyperlink{classmhvlib_1_1_timer}{mhvlib\-::\-Timer}
+\item 
+class \hyperlink{classmhvlib_1_1_timer_implementation}{mhvlib\-::\-Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \hyperlink{namespacemhvlib}{mhvlib}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)~\hyperlink{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)
+\item 
+\#define \hyperlink{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vect1, mhv\-Timer\-Vect2, mhv\-Timer\-Vect3)
+\item 
+\#define \hyperlink{_timer_8h_a7067822196970292e879b9778772427b}{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)~\hyperlink{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)
+\item 
+\#define \hyperlink{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vect1, mhv\-Timer\-Vect2, mhv\-T\-Imer\-Vect3)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum timer\-\_\-mode \hyperlink{namespacemhvlib_a7e3e41da5cee0e53606cd51fe2cd2dc7}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E}
+\item 
+typedef enum timer\-\_\-type \hyperlink{namespacemhvlib_a52fce76188d4cfd21a4af570cf2db41d}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E}
+\item 
+typedef enum timer\-\_\-prescaler \hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}
+\item 
+typedef enum timer\-\_\-connect \hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45}{mhvlib\-::timer\-\_\-mode} \{ \\*
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a6484acd2b6f1f15eac8e620ec49b574c}{mhvlib\-::\-O\-N\-E\-\_\-\-S\-H\-O\-T}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45aedbc5d7904b91982e9265e3b453cb283}{mhvlib\-::\-R\-E\-P\-E\-T\-I\-T\-I\-V\-E}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a356e18207516f3244ab8f340fbc79feb}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a108ace45db505dfc0c509cb4316323ba}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
+\\*
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45aca343ad6b3b9ccd1ad96651d3b06f271}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45ad28f628afc20685336cd6c185ba584f1}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a12ff6c8e9fdb86df059214056931052b}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-16}, 
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a45765b516338cfadf1aed9a70fe05ccd}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}, 
+\\*
+\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45ab45cd624451a22ae0d0bb24e91fd83ec}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-F\-R\-E\-Q\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}
+ \}
+\item 
+enum \hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5}{mhvlib\-::timer\-\_\-type} \{ \hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5acc79a96a7b1c2338d6e299040b50657a}{mhvlib\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} =  5, 
+\hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5a7c45810094f7c2d09557b405b929c3c1}{mhvlib\-::\-H\-A\-S\-\_\-7\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} =  7
+ \}
+\item 
+enum \hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffead}{mhvlib\-::timer\-\_\-prescaler} \{ \\*
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadafcf4b64ca8c3cceb035c90adf8c464bb}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D} =  0, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada1936785fc53c16f7aed1561ff2cd6dbd}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1} =  1, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab8a735d20c2a53ae27c5c29011723bf7}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-8} =  2, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada9b7bbbcbce5f63a2c4f4ea406958b38e}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-64} =  3, 
+\\*
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadae99b84b51be95eaee5faa5d4b4bac222}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-256} =  4, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaee5e0fed71e42cfb1fc5fb75c2b16586}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1024} =  5, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab8a433b3d0a7de129435b4010abc73d2}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-F\-A\-L\-L} =  6, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadae133ab5438ada21de9a7911ab47316ef}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-R\-I\-S\-E} =  7, 
+\\*
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada94ec33985df45ed8c5285e5025eeb912}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1} =  1, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaa298c077ee92109ef7dbe4a0b88e41fb}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-8} =  2, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab354a8e0439e0e1cb54fdd52edee7013}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-32} =  3, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada98482d0ed9e6f24951f8f578486f23b8}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-64} =  4, 
+\\*
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada70f12738ffc62eaf87d9c0964d07edf8}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-128} =  5, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada87f36b88829114f9430f5929fec35494}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-256} =  6, 
+\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaf840ad9be0faebd80371121d639f9603}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1024} =  7
+ \}
+\item 
+enum \hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88}{mhvlib\-::timer\-\_\-connect} \{ \hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa99e038245d0083e2e47a2cb28290705}{mhvlib\-::\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-E\-D} =  0, 
+\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88a2bb98378045d031e80358e2b373f6a3f}{mhvlib\-::\-T\-O\-G\-G\-L\-E} =  1, 
+\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa51fa53f0b4783ff3376a0f78d711d5e}{mhvlib\-::\-C\-L\-E\-A\-R} =  0x001, 
+\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88ab97cdcca59e46584456ffc806ad4ed9e}{mhvlib\-::\-S\-E\-T} =  3
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_af6b8de3202d479555161cdc8696758e7}{mhvlib\-::operator$|$} (uint8\-\_\-t ored\-With, T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R prescaler)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_a6e7077952ae7582b5593a6a8dcdc4b71}{mhvlib\-::operator$<$$<$} (T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T type, uint8\-\_\-t shift)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
+\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Timer, }
+\item[{}]{mhv\-Timer\-Vect1, }
+\item[{}]{mhv\-Timer\-Vect2, }
+\item[{}]{mhv\-Timer\-Vect3}
+\end{DoxyParamCaption}
+)}}\label{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(mhvTimerVect1) \{ \(\backslash\)
+        mhvTimer.trigger1(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 96 of file Timer.\-h.
+
+\hypertarget{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
+\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Timer, }
+\item[{}]{mhv\-Timer\-Vect1, }
+\item[{}]{mhv\-Timer\-Vect2, }
+\item[{}]{mhv\-T\-Imer\-Vect3}
+\end{DoxyParamCaption}
+)}}\label{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(mhvTimerVect1) \{ \(\backslash\)
+        mhvTimer.trigger1(); \(\backslash\)
+\} \(\backslash\)
+ISR(mhvTimerVect2) \{ \(\backslash\)
+        mhvTimer.trigger2(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 103 of file Timer.\-h.
+
+\hypertarget{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}{\index{Timer.\-h@{Timer.\-h}!M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Timer, }
+\item[{}]{mhv\-Timer\-Vectors}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)}}\label{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}
+
+
+Definition at line 94 of file Timer.\-h.
+
+\hypertarget{_timer_8h_a7067822196970292e879b9778772427b}{\index{Timer.\-h@{Timer.\-h}!M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
+\subsubsection[{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\begin{DoxyParamCaption}
+\item[{}]{mhv\-Timer, }
+\item[{}]{mhv\-Timer\-Vectors}
+\end{DoxyParamCaption}
+)~{\bf \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)}}\label{_timer_8h_a7067822196970292e879b9778772427b}
+
+
+Definition at line 101 of file Timer.\-h.
+
