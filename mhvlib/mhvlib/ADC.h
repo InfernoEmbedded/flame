@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, Make, Hack, Void Inc
+ * Copyright (c) 2012, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,8 @@
 
 #ifndef MHV_ADC_H_
 #define MHV_ADC_H_
+
+namespace mhvlib {
 
 #include <mhvlib/io.h>
 #include <mhvlib/AD.h>
@@ -60,7 +62,7 @@ typedef struct eventADC EVENT_ADC;
  * @tparam	events	the number of ADC events we can handle
  */
 template<uint8_t events>
-class MHV_ADC {
+class ADC {
 protected:
 	uint16_t _adcValue;
 	int8_t _adcChannel;
@@ -71,15 +73,15 @@ public:
 	 * An event manager for ADC events
 	 */
 
-	MHV_ADC::MHV_ADC() {
-		_adcChannel = -1;
+	ADC() :
+		_adcChannel(-1) {
 		memClear(_adcs, sizeof(*_adcs), events);
 	}
 
 	/**
 	 * Interrupt handler to read the ADC
 	 */
-	void MHV_ADC::adc() {
+	void adc() {
 		_adcValue = ADC;
 		_adcChannel = MHV_AD_CHANNEL;
 
@@ -92,7 +94,7 @@ public:
 	 * @param	listener	an MHV_ADCListener to notify when an ADC reading has been completed
 	 */
 #pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
-	void MHV_ADC::registerListener(int8_t channel, ADCListener &listener) {
+	void registerListener(int8_t channel, ADCListener &listener) {
 		for (uint8_t i = 0; i < events; i++) {
 			if (_adcs[i].channel == -1) {
 				_adcs[i].channel = channel;
@@ -107,7 +109,7 @@ public:
 	 * Deregister interest for an ADC channel
 	 * @param	channel		the ADC channel
 	 */
-	void MHV_ADC::deregisterListener(int8_t channel) {
+	void deregisterListener(int8_t channel) {
 		for (uint8_t i = 0; i < events; i++) {
 			if (_adcs[i].channel == channel) {
 				_adcs[i].channel = -1;
@@ -121,7 +123,7 @@ public:
 	 * @param	channel		the channel to read
 	 * @param	reference	the voltage reference to use
 	 */
-	uint16_t MHV_ADC::busyRead(int8_t channel, uint8_t reference) {
+	uint16_t busyRead(int8_t channel, uint8_t reference) {
 		ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -142,7 +144,7 @@ public:
 	 * @param	channel		the channel to read
 	 * @param	reference	the voltage reference to use
 	 */
-	void MHV_ADC::asyncRead(int8_t channel, uint8_t reference) {
+	void asyncRead(int8_t channel, uint8_t reference) {
 		ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -159,14 +161,14 @@ public:
 	 * Set the ADC clock prescaler
 	 * @param	prescaler	the prescaler to use
 	 */
-	void MHV_ADC::setPrescaler(AD_PRESCALER prescaler) {
+	void setPrescaler(AD_PRESCALER prescaler) {
 		ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
 	}
 
 	/**
 	 * Call from the main loop to handle any events
 	 */
-	void MHV_ADC::handleEvents() {
+	void handleEvents() {
 		uint8_t i;
 
 		if (_adcChannel != -1) {
@@ -179,8 +181,7 @@ public:
 			}
 		}
 	}
-};
-
-}
+}; // class MHV_ADC
+} // namespace mhvlib
 
 #endif /* MHV_ADC_H_ */

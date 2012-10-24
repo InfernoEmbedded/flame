@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, Make, Hack, Void Inc
+ * Copyright (c) 2012, Make, Hack, Void Inc
  * All rights reserved.
  *
  *  License: GNU GPL v2 (see mhvlib-Vusb-Keyboard/vusb/License.txt)
