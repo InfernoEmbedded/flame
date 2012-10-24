@@ -159,7 +159,7 @@ sub emitHeaders($$) {
 
 	print $handle <<"EOF"
 /*
- * Copyright (c) 2011, Make, Hack, Void Inc
+ * Copyright (c) 2012, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
