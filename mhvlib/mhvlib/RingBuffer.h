@@ -37,10 +37,10 @@ namespace mhvlib {
 
 class RingBuffer {
 protected:
-	uint8_t 	_head;
-	uint8_t 	_tail;
-	uint8_t		*_buffer;
-	uint8_t		_size;
+	volatile uint8_t 	_head;
+	volatile uint8_t 	_tail;
+	volatile uint8_t	*_buffer;
+	uint8_t				_size;
 
 	/**
 	 * Determine where the next location will be
@@ -67,8 +67,22 @@ public:
 	/**
 	 * Get the size of the ringbuffer
 	 */
-	uint8_t size () {
+	uint8_t size() {
 		return _size;
+	}
+
+	/**
+	 * Get the head offset
+	 */
+	uint8_t head() {
+		return _head;
+	}
+
+	/**
+	 * Get the tail offset
+	 */
+	uint8_t tail() {
+		return _tail;
 	}
 
 	/**
@@ -160,7 +174,7 @@ public:
 		int16_t length = _head - _tail;
 		if (length < 0) {
 	// The pointers have wrapped
-			length = (_size - _tail) + _head + 1;
+			length = (_size - _tail) + _head;
 		}
 
 		return (uint8_t) length;
@@ -185,7 +199,7 @@ public:
 
 
 	/**
-	 * Check the first character in the buffer
+	 * Check the most recent character in the buffer
 	 * @return the character, or -1 if the buffer is empty
 	 */
 	int peekHead() {
@@ -211,7 +225,7 @@ public:
 template<uint8_t bufSize>
 class RingBufferImplementation : public RingBuffer {
 protected:
-	uint8_t _myBuffer[bufSize + 1];
+	volatile uint8_t _myBuffer[bufSize + 1];
 
 public:
 	/**

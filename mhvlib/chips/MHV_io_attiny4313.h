@@ -49,12 +49,12 @@
 
 
 // USART			Baud   Status Control I/O
-//      			ubrr,  ucsra, ucsrb,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
-#define MHV_USART0	0,     0x2b,  0x2a,   0,     RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
-#define MHV_USART1	1,     0x2b,  0x2a,   1,     RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
-#define MHV_USART2	2,     0x2b,  0x2a,   2,     RXEN2, TXEN2, RXCIE2, TXCIE2, UDRE2, U2X2
-#define MHV_USART3	3,     0x2b,  0x2a,   3,     RXEN3, TXEN3, RXCIE3, TXCIE3, UDRE3, U2X3
-#define MHV_USART0	0x29,  0x2b,  0x2a,   0x2c,  RXEN,  TXEN,  RXCIE,  TXCIE,  UDRE,  U2X
+//      			ubrr,  ucsra, ucsrb, ucsrc,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
+#define MHV_USART0	0,     0x2b,  0x2a,   0x23,   0,     RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
+#define MHV_USART1	1,     0x2b,  0x2a,   0x23,   1,     RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
+#define MHV_USART2	2,     0x2b,  0x2a,   0x23,   2,     RXEN2, TXEN2, RXCIE2, TXCIE2, UDRE2, U2X2
+#define MHV_USART3	3,     0x2b,  0x2a,   0x23,   3,     RXEN3, TXEN3, RXCIE3, TXCIE3, UDRE3, U2X3
+#define MHV_USART0	0x29,  0x2b,  0x2a,   0x23,   0x2c,  RXEN,  TXEN,  RXCIE,  TXCIE,  UDRE,  U2X
 
 
 #define MHV_USART0_INTERRUPTS	USART_RX_vect, USART_TX_vect

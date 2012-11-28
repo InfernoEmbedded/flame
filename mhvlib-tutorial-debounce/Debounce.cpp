@@ -36,7 +36,7 @@
 #include <mhvlib/RTC.h>
 #include <mhvlib/Debounce.h>
 
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 #include <avr/power.h>
 #include <avr/sleep.h>

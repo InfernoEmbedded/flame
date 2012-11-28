@@ -48,7 +48,7 @@
 
 
 // USART			Baud   Status Control I/O
-//      			ubrr,  ucsra, ucsrb,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
+//      			ubrr,  ucsra, ucsrb, ucsrc,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
 
 
 

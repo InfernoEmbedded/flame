@@ -108,7 +108,8 @@ typedef struct mhv_pin MHV_PIN;
  */
 #define MHV_DECLARE_USART(_mhvPrefix) \
 		mhv_register _mhvPrefix ## Baud, mhv_register _mhvPrefix ## Status, \
-		mhv_register _mhvPrefix ## Control, mhv_register _mhvPrefix ## IO, \
+		mhv_register _mhvPrefix ## ControlB, mhv_register _mhvPrefix ## ControlC, \
+		mhv_register _mhvPrefix ## IO, \
 		mhv_register _mhvPrefix ## RxEnable, mhv_register _mhvPrefix ## TxEnable, \
 		mhv_register _mhvPrefix ## RxInterruptEnable, mhv_register _mhvPrefix ## TxInterruptEnable, \
 		mhv_register _mhvPrefix ## DataEmpty, mhv_register _mhvPrefix ## U2X

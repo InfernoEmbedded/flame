@@ -37,6 +37,8 @@
 #include <avr/pgmspace.h>
 #include <stdlib.h>
 
+#include <util/delay.h>
+
 #define MHV_DEBUG(__dbg_tx, __dbg_format, __dbg_args...) \
 do {\
 	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
@@ -57,21 +59,32 @@ enum AddressType {
 
 class TXBuffer {
 protected:
-	const void	*_data;
-	uint16_t 	_offset;
-	uint16_t	_length;
-	void		(*_completeFunction)(const char *);
-	AddressType	_type;
-	bool		_isString;
+	volatile void			*_data;
+	volatile uint16_t 		_offset;
+	volatile uint16_t		_length;
+	void					(*_completeFunction)(const char *);
+	volatile AddressType	_type;
+	volatile bool			_isString;
 
 public:
+	/**
+	 * Create an empty buffer
+	 * @param string	the string to stick in the buffer
+	 */
+	TXBuffer() :
+		_data(NULL),
+		_offset(0),
+		_length(0),
+		_completeFunction(NULL),
+		_type(NORMAL),
+		_isString(false) {}
 
 	/**
 	 * Create a buffer holding a string
 	 * @param string	the string to stick in the buffer
 	 */
 	TXBuffer(const char *string) :
-		_data(string),
+		_data((volatile char *)string),
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
@@ -84,7 +97,7 @@ public:
 	 * @param completeFunction	a function to call when we are done with the string, will be passed the string
 	 */
 	TXBuffer(const char *string, void (*completeFunction)(const char *)) :
-		_data(string),
+		_data((volatile char *)string),
 		_offset(0),
 		_length(0),
 		_completeFunction(completeFunction),
@@ -96,8 +109,8 @@ public:
 	 * @param string	the string to stick in the buffer
 	 * @param ignored	provided only to distinguish against a memory string
 	 */
-	TXBuffer(PGM_P string, char ignored UNUSED) :
-		_data(string),
+	TXBuffer(PGM_P string, bool ignored UNUSED) :
+		_data((volatile char *)string),
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
@@ -140,7 +153,7 @@ public:
 	 * @param length	the length of the buffer
 	 */
 	TXBuffer(const char *buffer, uint16_t length) :
-		_data(buffer),
+		_data((volatile char *)buffer),
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
@@ -154,7 +167,7 @@ public:
 	 * @param completeFunction	a function to call when we are done with the string, will be passed the buffer
 	 */
 	TXBuffer(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) :
-		_data(buffer),
+		_data((volatile char *)buffer),
 		_offset(0),
 		_length(length),
 		_completeFunction(completeFunction),
@@ -168,8 +181,8 @@ public:
 	 * @param length	the length of the buffer
 	 * @param ignored	provided only to distinguish against a memory string
 	 */
-	TXBuffer(PGM_P buffer, uint16_t length, char ignored UNUSED) :
-		_data(buffer),
+	TXBuffer(PGM_P buffer, uint16_t length, bool ignored UNUSED) :
+		_data((volatile char *)buffer),
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
@@ -239,7 +252,7 @@ public:
 	int peek(uint16_t offset) {
 		char c = '\0';
 
-		if (!_isString && offset >= (_length - 1)) {
+		if (!_isString && offset >= (_length)) {
 			return -1;
 		}
 
@@ -290,6 +303,13 @@ public:
 		if (NULL != _completeFunction) {
 			_completeFunction((const char *)_data);
 		}
+
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			_offset = 0;
+			_length = 0;
+			_completeFunction = NULL;
+			_isString = false;
+		}
 	}
 
 	/**
@@ -297,7 +317,25 @@ public:
 	 * @return true if there are more characters
 	 */
 	bool hasMore() {
+		if (NULL == _data) {
+			return false;
+		}
 		return -1 != peek(_offset);
+	}
+
+	/**
+	 * Dump the current state into a buffer for debugging
+	 * @param	buf			the buffer to write to
+	 * @param	bufLength	the space available in the buffer
+	 * @param	func		the name of the caller
+	 */
+	void dumpState(char *buf, uint8_t bufLength, const char *func) {
+		int c = peek(_offset);
+		snprintf(buf, bufLength, "\r\n%s: Data=%p offset=%i length=%i completeFunc=%p type=%s isString=%i char=%d  (%c)\r\n",
+				func, _data, _offset, _length, _completeFunction,
+				(_type == PROG_MEM ? "PROG_MEM" :
+						(_type == NORMAL ? "NORMAL" : "UNKNOWN")),
+				_isString, c, ((c >= 32 && c < 127) ? c : '?'));
 	}
 };
 
@@ -309,15 +347,14 @@ void device_tx_free(const char *buf);
  */
 class Device_TX {
 protected:
-	TXBuffer				_currentTx;
-	RingBuffer				&_txPointers;
+	TXBuffer		_currentTx;
+	RingBuffer		&_txPointers;
 
 	/**
 	 * Constructor
 	 * @param	txPointers	a ringbuffer to store TX elements in
 	 */
 	Device_TX(RingBuffer &txPointers) :
-			_currentTx(NULL),
 			_txPointers(txPointers) {}
 
 	virtual void runTxBuffers()=0;
@@ -330,6 +367,7 @@ protected:
 		_currentTx.discard();
 
 		if (_txPointers.consume(&_currentTx, sizeof(_currentTx))) {
+// no more buffers
 			return false;
 		}
 
@@ -348,9 +386,6 @@ protected:
 			}
 
 			c = _currentTx.nextCharacter();
-			if (-1 != c) {
-				break;
-			}
 		}
 
 		return c;
@@ -373,7 +408,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P string) {
-		TXBuffer buf(string);
+		TXBuffer buf(string, false);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -491,7 +526,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P buffer, uint16_t length) {
-		TXBuffer buf(buffer, length);
+		TXBuffer buf(buffer, length, false);
 
 		if (_txPointers.full(sizeof(buf))) {
 			return true;
@@ -620,18 +655,23 @@ public:
 		va_list	ap;
 		va_start(ap, format);
 
-		int length = snprintf_P(NULL, 0, PSTR("%s:%d\t%s():\t\t"),
+		PGM_P prefix = PSTR("%s:%d\t%s():\t\t");
+
+		int length = snprintf_P(NULL, 0, prefix,
 				file, line, function);
 		length += vsnprintf_P(NULL, 0, format, ap);
 		length += 3; // "\r\n\0"
 
-		char *buf = (char *)malloc(length);
+		char *buf;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			buf = (char *)malloc(length);
+		}
 		char *cur = buf;
 		if (NULL != cur) {
-			cur += snprintf_P(cur, length, PSTR("%s:%d\t%s():\t\t"),
+			cur += snprintf_P(cur, length, prefix,
 						file, line, function);
-			length -= cur - buf;
-			cur += vsnprintf_P(cur, length, format, ap);
+			int lengthRemaining = length - (cur - buf);
+			cur += vsnprintf_P(cur, lengthRemaining, format, ap);
 			*(cur++) = '\r';
 			*(cur++) = '\n';
 			*cur = '\0';
@@ -664,7 +704,11 @@ public:
 		int length = vsnprintf_P(NULL, 0, format, ap);
 		length++; // "\0"
 
-		char *buf = (char *)malloc(length);
+		char *buf;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			buf = (char *)malloc(length);
+		}
+
 		if (NULL != buf) {
 			vsnprintf_P(buf, length, format, ap);
 
@@ -727,6 +771,7 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write(uint32_t value) {
+		//                        4294967296 + \0
 		char *buf = (char *)malloc(11);
 		if (NULL != buf) {
 			ultoa(value, buf, 10);

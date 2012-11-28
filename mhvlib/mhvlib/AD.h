@@ -99,9 +99,10 @@ INLINE uint8_t operator& (AD_PRESCALER prescaler, uint8_t andedWith) {
 
 
 uint16_t ad_busyRead(uint8_t channel, uint8_t reference);
+void ad_startRead(uint8_t channel, uint8_t reference);
 void ad_asyncRead(uint8_t channel, uint8_t reference);
 void ad_setPrescaler(AD_PRESCALER prescaler);
-}
+} // End of namespace mhvlib
 
 #endif // ADC
 #endif /* MHV_AD_H_ */

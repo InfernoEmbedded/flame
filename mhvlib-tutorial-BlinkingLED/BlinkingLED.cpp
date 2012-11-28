@@ -32,7 +32,7 @@
 #include <mhvlib/io.h>
 
 // Bring in Arduino defines
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>

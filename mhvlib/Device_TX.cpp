@@ -25,6 +25,7 @@
  */
 
 #include <mhvlib/Device_TX.h>
+#include <boards/Arduino.h>
 
 namespace mhvlib {
 
@@ -33,7 +34,9 @@ namespace mhvlib {
  * @param buf	the buffer to free
  */
 void device_tx_free(const char *buf) {
-	free((void *)buf);
+	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		free((void *)buf);
+	}
 }
 
 }

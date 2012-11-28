@@ -71,6 +71,7 @@ sub runPreprocessor($) {
 		evaluateMacro($srcFile, "UBRR${usart}");
 		evaluateMacro($srcFile, "UCSR${usart}A");
 		evaluateMacro($srcFile, "UCSR${usart}B");
+		evaluateMacro($srcFile, "UCSR${usart}C");
 		evaluateMacro($srcFile, "UDR${usart}");
 	} ## end for (my $usart = 0; $usart...
 	evaluateMacro($srcFile, "USART_RX_vect");
@@ -79,6 +80,7 @@ sub runPreprocessor($) {
 	evaluateMacro($srcFile, "UDR");
 	evaluateMacro($srcFile, "UCSRA");
 	evaluateMacro($srcFile, "UCSRB");
+	evaluateMacro($srcFile, "UCSRC");
 
 	foreach my $port (qw 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z') {
 		evaluateMacro($srcFile, "PIN$port");
@@ -141,7 +143,7 @@ sub evaluateMacros($) {
 			}
 			$macros{$macro} = cleanValue($value);
 
-#			print "'$macro' = '$macros{$macro}'\n";
+#           print "'$macro' = '$macros{$macro}'\n";
 		} ## end if (/\"(.*)\" = (.*);/)
 	} ## end while (<$preprocessed>)
 
@@ -315,7 +317,7 @@ sub emitUSARTs($$%) {
 
 	print $handle <<"EOF";
 // USART\t\t\tBaud   Status Control I/O
-//      \t\t\tubrr,  ucsra, ucsrb,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
+//      \t\t\tubrr,  ucsra, ucsrb, ucsrc,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
 EOF
 
 	for (my $usart = 0; $usart < $usarts; $usart++) {
@@ -326,11 +328,14 @@ EOF
 			my $status = pack 'A7', $ucsra . ',';
 			my $ucsrb = $macros{"UCSR${usart}B"};
 			$ucsrb //= $macros{"UCSRB"};
-			my $control = pack 'A8', $ucsrb . ',';
+			my $controlB = pack 'A8', $ucsrb . ',';
+			my $ucsrc = $macros{"UCSR${usart}C"};
+			$ucsrc //= $macros{"UCSRC"};
+			my $controlC = pack 'A8', $ucsrc . ',';
 			my $io      = pack 'A7', $macros{"UDR${usart}"} . ',';
 
 			print $handle <<"EOF";
-#define MHV_USART${usart}\t$ubrr$status$control${io}RXEN${usart}, TXEN${usart}, RXCIE${usart}, TXCIE${usart}, UDRE${usart}, U2X${usart}
+#define MHV_USART${usart}\t$ubrr$status$controlB$controlC${io}RXEN${usart}, TXEN${usart}, RXCIE${usart}, TXCIE${usart}, UDRE${usart}, U2X${usart}
 EOF
 		} ## end if (defined $macros{"UDR${usart}"...
 	} ## end for (my $usart = 0; $usart...
@@ -340,11 +345,12 @@ EOF
 		$ubrr //= $macros{"UBRRL"};
 		$ubrr = pack 'A7', $ubrr . ',';
 		my $status  = pack 'A7', $macros{"UCSRA"} . ',';
-		my $control = pack 'A8', $macros{"UCSRB"} . ',';
+		my $controlB = pack 'A8', $macros{"UCSRB"} . ',';
+		my $controlC = pack 'A8', $macros{"UCSRC"} . ',';
 		my $io      = pack 'A7', $macros{"UDR"} . ',';
 
 		print $handle <<"EOF";
-#define MHV_USART0\t$ubrr$status$control${io}RXEN,  TXEN,  RXCIE,  TXCIE,  UDRE,  U2X
+#define MHV_USART0\t$ubrr$status$controlB$controlC${io}RXEN,  TXEN,  RXCIE,  TXCIE,  UDRE,  U2X
 EOF
 	} ## end if (defined $macros{"UDR"...
 

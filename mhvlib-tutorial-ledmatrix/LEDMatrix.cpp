@@ -36,7 +36,7 @@
 
 // Bring in the IO library
 #include <mhvlib/io.h>
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 // Bring in the timers we need for animation and PWM
 #include <mhvlib/Timer.h>

@@ -62,8 +62,6 @@ RTCImplementation<ALARM_COUNT> rtc(TIMEZONE);
 
 class OncePerSecond : public TimerListener {
 	/* An event that we will trigger every second
-	 * We will be passed the event that triggered us - we can have parameters
-	 * passed through the actionData member of the event
 	 */
 	void alarm() {
 		// Get the current timestamp

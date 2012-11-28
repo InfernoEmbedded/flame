@@ -57,9 +57,9 @@
 
 
 // USART			Baud   Status Control I/O
-//      			ubrr,  ucsra, ucsrb,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
-#define MHV_USART0	0xc4,  0xc0,  0xc1,   0xc6,  RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
-#define MHV_USART1	0xcc,  0xc8,  0xc9,   0xce,  RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
+//      			ubrr,  ucsra, ucsrb, ucsrc,  udr,   rxen,  txen,  rxcie,  txcie,  udre,  u2x
+#define MHV_USART0	0xc4,  0xc0,  0xc1,   0xc2,   0xc6,  RXEN0, TXEN0, RXCIE0, TXCIE0, UDRE0, U2X0
+#define MHV_USART1	0xcc,  0xc8,  0xc9,   0xca,   0xce,  RXEN1, TXEN1, RXCIE1, TXCIE1, UDRE1, U2X1
 
 
 #define MHV_USART0_INTERRUPTS	USART0_RX_vect, USART0_TX_vect

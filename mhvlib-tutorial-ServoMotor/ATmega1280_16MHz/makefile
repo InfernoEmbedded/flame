@@ -61,14 +61,14 @@ sizedummy \
 all: mhvlib-tutorial-ServoMotor.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/ATmega328P_20MHz && $(MAKE) clean all
-	-cd A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
-mhvlib-tutorial-ServoMotor.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
+mhvlib-tutorial-ServoMotor.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-ServoMotor.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib/ATmega1280_16MHz" -L"A:\eclipse\mhvlib-Vusb-Keyboard/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-ServoMotor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-ServoMotor.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib\mhvlib/ATmega1280_16MHz" -L"A:\eclipse\mhvlib\mhvlib-Vusb-Keyboard/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-ServoMotor.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -98,14 +98,14 @@ sizedummy: mhvlib-tutorial-ServoMotor.elf
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(ELFS)$(FLASH_IMAGE)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-ServoMotor.elf
+	-$(RM) $(OBJS)$(C_DEPS)$(EEPROM_IMAGE)$(FLASH_IMAGE)$(ELFS)$(LSS)$(S_DEPS)$(CXX_DEPS)$(S_UPPER_DEPS)$(C++_DEPS)$(ASM_DEPS)$(CC_DEPS)$(CPP_DEPS)$(C_UPPER_DEPS)$(SIZEDUMMY) mhvlib-tutorial-ServoMotor.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/ATmega328P_20MHz/libmhvlib.a:
-A:/eclipse/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a:
+A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a:
+A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a:
 
 -include ../makefile.targets

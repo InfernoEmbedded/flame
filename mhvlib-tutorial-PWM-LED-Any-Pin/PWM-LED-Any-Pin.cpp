@@ -32,7 +32,7 @@
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 // Bring in the MHV timer header
 #include <mhvlib/Timer.h>

@@ -40,19 +40,19 @@
 #endif
 
 #if defined(__AVR_ATmega1280__)
-#include <boards/MHV_io_ArduinoMega.h>
+#include <boards/ArduinoMega.h>
 #elif defined(__AVR_ATmega168__)
-#include <boards/MHV_io_ArduinoDiecimilla.h>
+#include <boards/ArduinoDiecimilla.h>
 #elif defined(__AVR_ATmega168A__)
-#include <boards/MHV_io_ArduinoDiecimilla.h>
+#include <boards/ArduinoDiecimilla.h>
 #elif defined(__AVR_ATmega168P__)
-#include <boards/MHV_io_ArduinoDiecimilla.h>
+#include <boards/ArduinoDiecimilla.h>
 #elif defined(__AVR_ATmega2560__)
-#include <boards/MHV_io_ArduinoMega.h>
+#include <boards/ArduinoMega.h>
 #elif defined(__AVR_ATmega328__)
-#include <boards/MHV_io_ArduinoDiecimilla.h>
+#include <boards/ArduinoDiecimilla.h>
 #elif defined(__AVR_ATmega328P__)
-#include <boards/MHV_io_ArduinoDiecimilla.h>
+#include <boards/ArduinoDiecimilla.h>
 #else
 #error unknown chip
 #endif

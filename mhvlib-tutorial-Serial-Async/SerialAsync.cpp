@@ -32,15 +32,12 @@
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 // Bring in the MHV Serial header
 #include <mhvlib/HardwareSerial.h>
 
-// Bring in the AVR delay header (needed for _delay_ms)
-#include <util/delay.h>
-
-// Bring in the AVR interrupt header (needed for cli)
+// Bring in the AVR interrupt header (needed for sei)
 #include <avr/interrupt.h>
 
 // Bring in the AVR PROGMEM header, needed to store data in PROGMEM
@@ -48,9 +45,6 @@
 
 // Bring in the power management header
 #include <avr/power.h>
-
-// Bring in stdio, required for snprintf
-#include <stdio.h>
 
 using namespace mhvlib;
 
@@ -68,7 +62,6 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
  * Just turn on the LED and stop execution
  */
 void NORETURN writeFailed() {
-	setOutput(MHV_ARDUINO_PIN_13);
 	pinOn(MHV_ARDUINO_PIN_13);
 
 	for (;;);
@@ -82,6 +75,8 @@ MAIN {
 // Enable interrupts
 	sei();
 
+	setOutput(MHV_ARDUINO_PIN_13);
+
 	for (;;) {
 // Wait until there is space to send
 		while (!serial.canWrite()) {}
@@ -91,7 +86,7 @@ MAIN {
  * instead
  *   (void)serial.asyncWrite("some string");
  */
-		if (serial.write("asyncWrite: A string has been written\r\n")) {
+		if (serial.write("asyncWrite: 1 A string has been written\r\n")) {
 			writeFailed();
 		}
 
@@ -102,7 +97,7 @@ MAIN {
 		while (!serial.canWrite()) {}
 
 		// Wait until there is space to send
-		if (serial.write("asyncWrite: A buffer has been written\r\n this will not show", 39)) {
+		if (serial.write("asyncWrite: 2 A buffer has been written\r\n this will not show", 42)) {
 			writeFailed();
 		}
 
@@ -114,7 +109,7 @@ MAIN {
 		while (!serial.canWrite()) {}
 
 // Write a literal PROGMEM string out
-		if (serial.write_P(PSTR("asyncWrite_P: A string has been written\r\n"))) {
+		if (serial.write_P(PSTR("asyncWrite_P: 3 A string has been written\r\n"))) {
 			writeFailed();
 		}
 
@@ -122,8 +117,13 @@ MAIN {
 		while (!serial.canWrite()) {}
 
 // Write a PROGMEM buffer out
-		(void)serial.write_P(PSTR("asyncWrite_P: A buffer has been written\r\n this will not show"),
-				41);
+		(void)serial.write_P(PSTR("asyncWrite_P: 4 A buffer has been written\r\n this will not show"),
+				44);
+
+// Wait until there is space to send
+		while (!serial.canWrite()) {}
+		(void)serial.printf(PSTR("You can use printf to format output containing numbers such as %i and other %s\r\n"),
+				5, "strings");
 	} // Loop
 
 	return 0;

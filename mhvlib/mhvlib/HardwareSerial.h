@@ -41,6 +41,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MHV_DEBUG_TX	0
 
 #define MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts) \
 	_MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(mhvHardwareSerial, mhvHardwareSerialInterrupts)
@@ -67,6 +68,18 @@ ISR(mhvTxVect) { \
 
 namespace mhvlib {
 
+enum SerialParity {
+	NONE = 0,
+	EVEN = 2,
+	ODD = 3
+};
+
+enum SerialMode {
+	ASYNC = 0,
+	SYNC = 1,
+	MASTER_SPI = 3
+};
+
 /**
  * Create now serial port driver
  * @tparam	usart			the serial port parameters
@@ -86,14 +99,31 @@ protected:
 	 * Start sending async data
 	 */
 	void runTxBuffers() {
+#if MHV_DEBUG_TX
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		dumpTXBufferState(__func__);
+		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+#endif
+
 		int c = Device_TX::nextCharacter();
+
+#if MHV_DEBUG_TX
+//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		dumpTXBufferState(__func__);
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+
+		// Wait until the send is done
+		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+#endif
+
+
 		if (-1 == c) {
 	// This should never happen
 			return;
 		}
 
 		// Enable tx interrupt
-		_MMIO_BYTE(usartControl) |= _BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
 
 		// If the UART isn't already sending data, start sending
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -108,7 +138,65 @@ public:
 	HardwareSerial() {
 		_echo = false;
 
+		configure(ASYNC, 8, NONE, 1, 0);
 		setSpeed(baud);
+	}
+
+	/**
+	 * Constructor
+	 * @param	mode		the mode to run the serial port in
+	 * @param	bits		the number of data bits
+	 * @param	parity		the type of parity
+	 * @param	stopBits	the number of stop bits
+	 * @param	polarity	used only for synchronous mode
+	 * 						when 0:	Change TX on rising,  sample RX on falling
+	 * 						when 1:	Change TX on falling, sample RX on rising
+	 */
+	HardwareSerial(SerialMode mode, uint8_t bits, SerialParity parity, uint8_t stopBits, uint8_t polarity) {
+		_echo = false;
+
+		configure(mode, bits, parity, stopBits, polarity);
+		setSpeed(baud);
+	}
+
+	/**
+	 * Set data characteristics
+	 * @param	mode		the mode to run the serial port in
+	 * @param	bits		the number of data bits
+	 * @param	parity		the type of parity
+	 * @param	stopBits	the number of stop bits
+	 * @param	polarity	used only for synchronous mode
+	 * 						when 0:	Change TX on rising,  sample RX on falling
+	 * 						when 1:	Change TX on falling, sample RX on rising
+	 */
+	void configure(SerialMode mode, uint8_t bits, SerialParity parity, uint8_t stopBits, uint8_t polarity) {
+		stopBits -= 1;
+
+		uint8_t frameSizeMask;
+
+		switch (bits) {
+		case 5:
+			frameSizeMask = 0;
+			break;
+		case 6:
+			frameSizeMask = 1;
+			break;
+		case 7:
+			frameSizeMask = 2;
+			break;
+		case 8:
+		default:
+			frameSizeMask = 3;
+			break;
+
+		case 9:
+			frameSizeMask = 3;
+			_MMIO_BYTE(usartControlB) &= 1 << 2;
+			break;
+
+		}
+
+		_MMIO_BYTE(usartControlC) = (mode << 6) | (parity << 4) | (frameSizeMask << 1) | polarity;
 	}
 
 	/**
@@ -124,14 +212,39 @@ public:
 	}
 
 	/**
+	 * Dump the state of the TX buffer
+	 * @param	func	the name of the caller
+	 */
+	void dumpTXBufferState(const char *func) {
+		char buf[100];
+		Device_TX::_currentTx.dumpState(buf, sizeof(buf), func);
+		busyWrite(buf);
+	}
+
+	/**
 	 * TX interrupt handler
 	 */
 	void tx() {
+//		int c = Device_TX::nextCharacter();
+
+#if MHV_DEBUG_TX
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		dumpTXBufferState(__func__);
+		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+#endif
+
 		int c = Device_TX::nextCharacter();
+
+#if MHV_DEBUG_TX
+//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		dumpTXBufferState(__func__);
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+#endif
+
 
 		if (-1 == c) {
 			// Nothing more to send, disable the TX interrupt
-			_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+			_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 			return;
 		}
 
@@ -155,14 +268,15 @@ public:
 			_MMIO_BYTE(usartBaud) = (uint16_t)(F_CPU / 8 / newBaud - 1) / 2;
 		}
 
-		_MMIO_BYTE(usartControl) |= _BV(usartRxEnable) | _BV(usartTxEnable) | _BV(usartRxInterruptEnable);
+		// Enable the port
+		_MMIO_BYTE(usartControlB) |= _BV(usartRxEnable) | _BV(usartTxEnable) | _BV(usartRxInterruptEnable);
 	}
 
 	/**
 	 * Halt the serial port
 	 */
 	void end() {
-		_MMIO_BYTE(usartControl) &= ~_BV(usartRxEnable) & ~_BV(usartTxEnable) & ~_BV(usartRxInterruptEnable) & ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartRxEnable) & ~_BV(usartTxEnable) & ~_BV(usartRxInterruptEnable) & ~_BV(usartTxInterruptEnable);
 	}
 
 	/**
@@ -191,7 +305,7 @@ public:
 	 */
 	void busyWrite(char c) {
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
@@ -207,7 +321,7 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		p = buffer;
 		char c = pgm_read_byte(p++);
@@ -229,7 +343,7 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -249,7 +363,7 @@ public:
 		const __flash char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -267,7 +381,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -288,7 +402,7 @@ public:
 		const __memx char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -306,7 +420,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -328,7 +442,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -347,7 +461,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControl) &= ~_BV(usartTxInterruptEnable);
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front

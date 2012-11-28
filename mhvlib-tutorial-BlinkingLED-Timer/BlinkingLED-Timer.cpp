@@ -47,7 +47,7 @@
 #include <avr/sleep.h>
 
 // Bring in Arduino defines
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 using namespace mhvlib;
 

@@ -130,6 +130,27 @@ public:
 		}
 	}
 
+	/**
+	 * Set a limit to trigger the listener
+	 * @param which	the channel limit to set
+	 * @param limit	the value of the limit
+	 */
+	void setLimit(AccelerometerChannel which, int16_t limit) {
+		switch (which) {
+		case X:
+			_limitX = limit;
+			break;
+		case Y:
+			_limitY = limit;
+			break;
+		case Z:
+			_limitZ = limit;
+			break;
+		case MAGNITUDE:
+			_limitMagnitudeSquared = limit * limit;
+			break;
+		}
+	}
 }; // class Accelerometer
 
 } // namespace mhvlib

@@ -1,4 +1,3 @@
-#Fri Dec 31 15:27:06 EST 2010
 avrtarget/ClockFrequency=16000000
 avrtarget/ExtRAMSize=0
 avrtarget/ExtendedRAM=false
@@ -38,6 +37,21 @@ avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.88326
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/MCUType=atmega328p
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/UseEEPROM=false
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/UseExtendedRAMforHeap=true
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/BitBangDelay=
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/Bitclock=
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/EEPROMFile=
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/EEPROMFromConfig=true
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/FlashFile=
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/FlashFromConfig=true
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/NoChipErase=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/NoSigCheck=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/NoVerify=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/NoWrite=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/OtherOptions=
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/ProgrammerID=programmerconfig.4
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/UseCounter=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/WriteEEPROM=false
+avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205.883267302/avrdude/WriteFlash=true
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205/ClockFrequency=16000000
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205/ExtRAMSize=0
 avrtarget/de.innot.avreclipse.configuration.app.release.73431120.302770205/ExtendedRAM=false

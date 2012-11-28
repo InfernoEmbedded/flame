@@ -36,7 +36,7 @@
 #include <mhvlib/Font_SansSerif_10x8.h>
 #include <avr/interrupt.h>
 #include <avr/power.h>
-#include <boards/MHV_io_Arduino.h>
+#include <boards/Arduino.h>
 
 #include <mhvlib/Display_Holtek_HT1632.h>
 

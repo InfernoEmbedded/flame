@@ -37,9 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MHV_RX_BUFFER_CREATE(_mhvRxName, _mhvRxCharacterCount) \
-	char _mhvRxName ## Buf[_mhvRxCharacterCount + 1]; \
-	MHV_RingBuffer _mhvRxName(_mhvRxName ## Buf, _mhvRxCharacterCount + 1);
+#include <boards/Arduino.h>
 
 namespace mhvlib {
 
@@ -79,11 +77,11 @@ public:
 	 * returns -3 if we have reached the end of the ringbuffer with no line terminator
 	 */
 	int asyncReadLine(char *buffer, uint8_t bufferLength) {
-		// Peek at the last character & see if its a newline
-		int last = _rxBuffer.peekHead();
-
 		bool isFull = _rxBuffer.full();
 		if (!isFull) {
+			// Peek at the last character & see if its a newline
+			char last = (char)_rxBuffer.peekHead();
+
 			if ('\r' != last && '\n' != last) {
 				return -1;
 			}
