@@ -245,6 +245,7 @@ public:
 		if (-1 == c) {
 			// Nothing more to send, disable the TX interrupt
 			_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+
 			return;
 		}
 

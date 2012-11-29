@@ -292,7 +292,13 @@ public:
 	 * @return the character, or -1 if there is nothing left
 	 */
 	int nextCharacter() {
-		return peek(_offset++);
+		int c;
+
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			c = peek(_offset++);
+		}
+
+		return c;
 	}
 
 
@@ -366,10 +372,12 @@ protected:
 	bool moreTX() {
 		_currentTx.discard();
 
-		if (_txPointers.consume(&_currentTx, sizeof(_currentTx))) {
+		if (_txPointers.consume(&_currentTx)) {
 // no more buffers
 			return false;
 		}
+
+		_currentTx.seek(0);
 
 		return true;
 	}
@@ -398,7 +406,7 @@ public:
 	 * Can we accept another buffer?
 	 */
 	bool canWrite() {
-		return !(_txPointers.full(sizeof(TXBuffer)));
+		return !(_txPointers.full());
 	}
 
 	/**
@@ -410,11 +418,11 @@ public:
 	bool write_P(PGM_P string) {
 		TXBuffer buf(string, false);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -482,11 +490,11 @@ public:
 	bool write(const char *string) {
 		TXBuffer buf(string);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -505,11 +513,11 @@ public:
 	bool write(const char *string, void (*completeFunction)(const char *)) {
 		TXBuffer buf(string, completeFunction);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -528,11 +536,11 @@ public:
 	bool write_P(PGM_P buffer, uint16_t length) {
 		TXBuffer buf(buffer, length, false);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -553,11 +561,11 @@ public:
 	bool write(const __flash char *buffer, uint16_t length) {
 		TXBuffer buf(buffer, length);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -578,11 +586,11 @@ public:
 	bool write(const __memx char *buffer, uint16_t length) {
 		TXBuffer buf(buffer, length);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -603,11 +611,11 @@ public:
 	bool write(const char *buffer, uint16_t length) {
 		TXBuffer buf(buffer, length);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -627,11 +635,11 @@ public:
 	bool write(const char *buffer, uint16_t length, void (*completeFunction)(const char *)) {
 		TXBuffer buf(buffer, length, completeFunction);
 
-		if (_txPointers.full(sizeof(buf))) {
+		if (_txPointers.full()) {
 			return true;
 		}
 
-		_txPointers.append(&buf, sizeof(buf));
+		_txPointers.append(&buf);
 
 		if (!_currentTx.hasMore()) {
 			runTxBuffers();
@@ -789,7 +797,7 @@ public:
 template<uint8_t txCount>
 class Device_TXImplementation : public Device_TX {
 protected:
-	RingBufferImplementation<txCount * sizeof(TXBuffer)>
+	RingBufferImplementation<txCount, sizeof(TXBuffer)>
 					_myTxPointers;
 
 	/**

@@ -72,7 +72,7 @@ RTCImplementation<ALARM_COUNT> rtc(TIMEZONE);
 // A serial port to talk to the user with
 #define RX_BUFFER_SIZE	4
 // The number of elements we want to be able to store to send asynchronously
-#define TX_ELEMENTS_COUNT 17
+#define TX_ELEMENTS_COUNT 15
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 #define MAX_ADC_CHANNELS	3

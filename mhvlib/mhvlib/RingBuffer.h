@@ -40,16 +40,18 @@ protected:
 	volatile uint8_t 	_head;
 	volatile uint8_t 	_tail;
 	volatile uint8_t	*_buffer;
-	uint8_t				_size;
+	uint16_t			_bufferSize;
+	uint8_t				_elementCount;
+	uint8_t				_elementSize;
 
 	/**
 	 * Determine where the next location will be
 	 * @param	index	the current index
 	 * @return the next index
 	 */
-	uint8_t increment (uint8_t index) {
+	uint16_t increment (uint16_t index) {
 		uint8_t next = index + 1;
-		if (next == _size) {
+		if (next == _bufferSize) {
 			next = 0;
 		}
 
@@ -67,21 +69,21 @@ public:
 	/**
 	 * Get the size of the ringbuffer
 	 */
-	uint8_t size() {
-		return _size;
+	uint16_t size() {
+		return _bufferSize;
 	}
 
 	/**
 	 * Get the head offset
 	 */
-	uint8_t head() {
+	uint16_t head() {
 		return _head;
 	}
 
 	/**
 	 * Get the tail offset
 	 */
-	uint8_t tail() {
+	uint16_t tail() {
 		return _tail;
 	}
 
@@ -90,7 +92,7 @@ public:
 	 * @return false if we succeeded, true otherwise
 	 */
 	bool append(char c) {
-		uint8_t next = increment(_head);
+		uint16_t next = increment(_head);
 
 		// Don't overwrite valid data in the buffer
 		if (next == _tail) {
@@ -99,6 +101,29 @@ public:
 
 		_buffer[_head] = c;
 		_head = next;
+
+		return false;
+	}
+
+	/**
+	 * Append an element to the buffer
+	 * @param	p	the pointer to append from
+	 * @return false if we succeeded, true otherwise
+	 */
+	bool append(const void *p) {
+		if (full(_elementSize)) {
+			return true;
+		}
+
+		uint8_t i;
+
+		char *c = (char *)p;
+
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			for (i = 0; i < _elementSize; i++) {
+				append(*c++);
+			}
+		}
 
 		return false;
 	}
@@ -117,8 +142,11 @@ public:
 		uint8_t i;
 
 		char *c = (char *)p;
-		for (i = 0; i < pLength; i++) {
-			append(*c++);
+
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			for (i = 0; i < pLength; i++) {
+				append(*c++);
+			}
 		}
 
 		return false;
@@ -151,8 +179,32 @@ public:
 		uint8_t i;
 		char *c = (char *)p;
 
-		for (i = 0; i < pLength; i++) {
-			*c++ = (char)consume();
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			for (i = 0; i < pLength; i++) {
+				*c++ = (char)consume();
+			}
+		}
+
+		return false;
+	}
+
+	/**
+	 * Pop an element off the ringbuffer
+	 * @param p			where to write the block
+	 * @return false if we succeeded, true otherwise
+	 */
+	bool consume(void *p) {
+		if (length() < _elementSize) {
+			return true;
+		}
+
+		uint8_t i;
+		char *c = (char *)p;
+
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			for (i = 0; i < _elementSize; i++) {
+				*c++ = (char)consume();
+			}
 		}
 
 		return false;
@@ -170,14 +222,14 @@ public:
 	 * Get the length of the contents of the ringbuffer
 	 * Return the number of bytes in the ringbuffer
 	 */
-	uint8_t length() {
+	uint16_t length() {
 		int16_t length = _head - _tail;
 		if (length < 0) {
 	// The pointers have wrapped
-			length = (_size - _tail) + _head;
+			length = (_bufferSize - _tail) + _head;
 		}
 
-		return (uint8_t) length;
+		return (uint16_t) length;
 	}
 
 	/**
@@ -185,7 +237,8 @@ public:
 	 * @return true if the ringbuffer is full
 	 */
 	bool full() {
-		return length() == _size - 1;
+//		return length() == _bufferSize - 1;
+		return length() > (_bufferSize - 1 - _elementSize);
 	}
 
 	/**
@@ -194,7 +247,7 @@ public:
 	 * @return true if the ringbuffer is full
 	 */
 	bool full(uint8_t blockLength) {
-		return length() > (_size - 1 - blockLength);
+		return length() > (_bufferSize - 1 - blockLength);
 	}
 
 
@@ -210,7 +263,7 @@ public:
 		// We want the character just before head
 		int offset;
 		if (0 == _head) {
-			offset = _size - 1;
+			offset = _bufferSize - 1;
 		} else {
 			offset = _head - 1;
 		}
@@ -220,12 +273,13 @@ public:
 
 /**
  * A ring buffer
- * @tparam	bufSize	the number of bytes to store
+ * @tparam	elementCount	the number of elements
+ * @tparam	elementSize		the number of bytes in an element
  */
-template<uint8_t bufSize>
+template<uint8_t elementCount, uint8_t elementSize = 1>
 class RingBufferImplementation : public RingBuffer {
 protected:
-	volatile uint8_t _myBuffer[bufSize + 1];
+	volatile uint8_t _myBuffer[elementCount * elementSize + 1];
 
 public:
 	/**
@@ -234,7 +288,9 @@ public:
 	RingBufferImplementation() :
 		RingBuffer() {
 		_buffer = _myBuffer;
-		_size = bufSize;
+		_bufferSize = elementCount* elementSize + 1;
+		_elementCount = elementCount;
+		_elementSize = elementSize;
 	}
 };
 
