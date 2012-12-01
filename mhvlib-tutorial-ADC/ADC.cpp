@@ -100,12 +100,6 @@ class PrintADC : public ADCListener {
 	 * @param adcValue		the value from the ADC
 	 */
 	void adc(uint8_t adcChannel, uint16_t adcValue) {
-//		char buf[80];
-//		snprintf_P(buf, sizeof(buf), PSTR("ADC Channel %i = %i\r\n"), adcChannel, adcValue);
-//		serial.busyWrite(buf);
-
-//		serial.printf(PSTR("ADC Channel %i = %i\r\n"), adcChannel, adcValue);
-
 		serial.write_P(PSTR("ADC Channel "));
 		serial.write(adcChannel);
 		serial.write_P(PSTR(" = "));

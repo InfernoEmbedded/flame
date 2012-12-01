@@ -26,6 +26,7 @@
 
 #include <stddef.h>
 #include <mhvlib/EEPROM.h>
+#include <util/CRC16.h>
 
 namespace mhvlib {
 
@@ -33,14 +34,12 @@ namespace mhvlib {
 /**
  * Create a new EEPROM access class
  */
-EEPROM::EEPROM() {
-	_writeAddress = 0;
-	_writeBuffer = NULL;
-	_bytesWritten = 0;
-	_bytesToWrite = 0;
-	_doneCallback = NULL;
-	_doneCallbackData = NULL;
-}
+EEPROM::EEPROM() :
+	_writeAddress(0),
+	_writeBuffer(NULL),
+	_bytesWritten(0),
+	_bytesToWrite(0),
+	_done(NULL) {}
 
 /**
  * Read a byte from EEPROM
@@ -161,12 +160,10 @@ int8_t EEPROM::busyWrite(void *buffer, uint16_t address, uint16_t length) {
  * @param	buffer				the buffer to read from
  * @param	address				the address to write to
  * @param	length				the number of bytes to write (must be greater than 0)
- * @param	doneCallback		A callback to call when the buffer has been written (can be NULL)
- * @param	doneCallbackData	A pointer to pass to the callback
+ * @param	done				A listener to notify when the buffer has been written (can be NULL)
  */
 int8_t EEPROM::write(void *buffer, uint16_t address, uint16_t length,
-		void (*doneCallback)(void *buffer, void *data),
-		void *doneCallbackData) {
+		EEPROMListener *done) {
 	if ((EECR & _BV(EEPE)) || !_lock.obtain()) {
 		return MHV_EEPROM_BUSY;
 	}
@@ -175,8 +172,7 @@ int8_t EEPROM::write(void *buffer, uint16_t address, uint16_t length,
 	_writeBuffer = (uint8_t *)buffer;
 	_bytesWritten = 0;
 	_bytesToWrite = length;
-	_doneCallback = doneCallback;
-	_doneCallbackData = doneCallbackData;
+	_done = done;
 
 	// Start the first write
 	EEAR = address;
@@ -198,8 +194,8 @@ void EEPROM::writeInterrupt() {
 		EECR = 0;
 		_lock.release();
 
-		if (_doneCallback) {
-			_doneCallback(_writeBuffer, _doneCallbackData);
+		if (_done) {
+			_done->eepromDone(this, _writeAddress, _writeBuffer);
 		}
 
 		return;
@@ -222,6 +218,22 @@ bool EEPROM::isBusy() {
 	}
 
 	return false;
+}
+
+/**
+ * Calculate the CRC of a block of EEPROM
+ * @param address	the address of the block
+ * @param length	the length of the block
+ * @return the CRC
+ */
+uint16_t EEPROM::crc(uint16_t address, uint16_t length) {
+	uint16_t crc = 0;
+
+	for (uint16_t i = 0; i < length; i++) {
+		crc = _crc16_update(crc, busyRead(address + i));
+	}
+
+	return crc;
 }
 
 }

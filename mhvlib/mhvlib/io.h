@@ -36,6 +36,19 @@
 #include <chips/MHV_io_chip.h>
 
 
+struct Int3Axis {
+	int16_t		x;
+	int16_t		y;
+	int16_t		z;
+};
+
+struct Float3Axis {
+	float		x;
+	float		y;
+	float		z;
+};
+
+
 // Some useful attributes
 
 // A function that does not return

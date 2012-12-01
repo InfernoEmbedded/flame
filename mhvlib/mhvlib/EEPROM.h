@@ -49,17 +49,33 @@ ISR(EEPROM_READY_vect) { \
 
 #define MHV_EEPROM_BUSY	-1
 
+#define MHV_ACCELEROMETER_CAL_EEPROM_ADDRESS	1003
+// 6 bytes offsets + 12 bytes scaling + 2 bytes checksum
+#define MHVBOARD_TIMEOUT_EEPROM_ADDRESS			1023
+
 namespace mhvlib {
+
+class EEPROM;
+
+class EEPROMListener {
+public:
+	/**
+	 * Called when an EEPROM write is finished
+	 * @param eeprom		the EEPROM access instance
+	 * @param address		the EEPROM address that the data was written to
+	 * @param buffer		the pointer that the data was wriiten from
+	 */
+	virtual void eepromDone(EEPROM *eeprom, uint16_t address, void *buffer) =0;
+};
 
 class EEPROM {
 private:
-	Lock		_lock;
-	uint16_t	_writeAddress;
-	uint8_t		*_writeBuffer;
-	uint16_t	_bytesWritten;
-	uint16_t	_bytesToWrite;
-	void		(*_doneCallback)(void *buffer, void *data);
-	void		*_doneCallbackData;
+	Lock			_lock;
+	uint16_t		_writeAddress;
+	uint8_t			*_writeBuffer;
+	uint16_t		_bytesWritten;
+	uint16_t		_bytesToWrite;
+	EEPROMListener	*_done;
 
 public:
 	EEPROM();
@@ -70,10 +86,10 @@ public:
 	int8_t write(uint16_t address, uint8_t data);
 	int8_t busyWrite(void *buffer, uint16_t address, uint16_t length);
 	int8_t write(void *buffer, uint16_t address, uint16_t length,
-			void (*doneCallback)(void *buffer, void *data),
-			void *doneCallbackData);
+			EEPROMListener *done);
 	void writeInterrupt();
 	bool isBusy();
+	uint16_t crc(uint16_t address, uint16_t length);
 };
 
 }

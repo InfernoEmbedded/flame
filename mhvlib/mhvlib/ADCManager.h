@@ -41,17 +41,22 @@ ISR(ADC_vect) { \
 }
 
 /**
- * Create a new serial object
+ * Create a new ADC object
  * @param	_mhvObjectName	the variable name of the object
  * @param	_mhvMaxChannels	the maximum number of channels the ADC needs to support
  * @param	_prescaler		the prescaler to run the ADC at
  */
 #define MHV_ADC_CREATE(_mhvObjectName, _mhvMaxChannels, _prescaler) \
-		ADCManager<_mhvMaxChannels> _mhvObjectName(_prescaler); \
+		ADCManagerImplementation<_mhvMaxChannels> _mhvObjectName(_prescaler); \
 		MHV_ADC_ASSIGN_INTERRUPT(_mhvObjectName);
 
 class ADCListener {
 public:
+	/**
+	 * Handle incoming ADC reads
+	 * @param adcChannel	the channel that was read from
+	 * @param adcValue		the value read from the channel
+	 */
 	virtual void adc(uint8_t adcChannel, uint16_t adcValue) =0;
 };
 
@@ -61,16 +66,34 @@ struct eventADC {
 };
 typedef struct eventADC EVENT_ADC;
 
+
+class ADCManager {
+protected:
+	volatile uint16_t	_adcValue;
+	volatile int8_t		_adcChannel;
+	EVENT_ADC 			*_adcs;
+	uint8_t				_eventCount;
+
+public:
+	ADCManager(EVENT_ADC *adcs, uint8_t adcCount, AD_PRESCALER prescaler);
+	void adc();
+	void registerListener(int8_t channel, ADCListener &listener);
+	void registerListener(int8_t channel, ADCListener *listener);
+	void deregisterListener(int8_t channel);
+	int16_t busyRead(int8_t channel, uint8_t reference);
+	void read(int8_t channel, uint8_t reference);
+	void setPrescaler(AD_PRESCALER prescaler);
+	void handleEvents();
+}; // class ADCManager
+
 /**
  * An event manager for ADC events
  * @tparam	events	the number of ADC events we can handle
  */
 template<uint8_t events>
-class ADCManager {
+class ADCManagerImplementation : public ADCManager {
 protected:
-	volatile uint16_t _adcValue;
-	volatile int8_t _adcChannel;
-	EVENT_ADC _adcs[events];
+	EVENT_ADC _myAdcs[events];
 
 public:
 	/**
@@ -78,121 +101,8 @@ public:
 	 * @param prescaler	the prescaler to run the ADC at
 	 */
 
-	ADCManager(AD_PRESCALER prescaler) :
-			_adcChannel(-1) {
-		for (uint8_t i = 0; i < events; i++) {
-			_adcs[i].channel = -1;
-			_adcs[i].listener = NULL;
-		}
-
-		setPrescaler(prescaler);
-		MHV_AD_ENABLE;
-	}
-
-	/**
-	 * Interrupt handler to read the ADC
-	 */
-	void adc() {
-		_adcValue = ADC;
-		_adcChannel = MHV_AD_CHANNEL;
-
-		MHV_AD_DISABLE_INTERRUPT;
-	}
-
-	/**
-	 * Register interest for an ADC channel
-	 * @param	channel		the ADC channel
-	 * @param	listener	an ADCListener to notify when an ADC reading has been completed
-	 */
-//#pragma GCC diagnostic ignored "-Wsuggest-attribute=const"
-	void registerListener(int8_t channel, ADCListener &listener) {
-		for (uint8_t i = 0; i < events; i++) {
-			if (_adcs[i].channel == -1) {
-				_adcs[i].channel = channel;
-				_adcs[i].listener = &listener;
-				break;
-			}
-		}
-	}
-//#pragma GCC diagnostic warning "-Wsuggest-attribute=const"
-
-	/**
-	 * Deregister interest for an ADC channel
-	 * @param	channel		the ADC channel
-	 */
-	void deregisterListener(int8_t channel) {
-		for (uint8_t i = 0; i < events; i++) {
-			if (_adcs[i].channel == channel) {
-				_adcs[i].channel = -1;
-				break;
-			}
-		}
-	}
-
-	/**
-	 * Read an ADC channel
-	 * @param	channel		the channel to read
-	 * @param	reference	the voltage reference to use
-	 */
-	int16_t busyRead(int8_t channel, uint8_t reference) {
-		ADMUX = reference | (channel & 0x0F);
-
-#ifdef MUX5
-		ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5-MUX5)));
-#endif
-
-		// Start the conversion
-		ADCSRA |= _BV(ADSC);
-
-		MHV_AD_ENABLE_INTERRUPT;
-
-		while (ADCSRA & _BV(ADSC)) {};
-
-		return ADC;
-	}
-
-	/**
-	 * Trigger an ADC channel event
-	 * @param	channel		the channel to read
-	 * @param	reference	the voltage reference to use
-	 */
-	void read(int8_t channel, uint8_t reference) {
-		ADMUX = reference | (channel & 0x0F);
-
-#ifdef MUX5
-		ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5-MUX5)));
-#endif
-
-		// Start the conversion
-		ADCSRA |= _BV(ADSC);
-
-		MHV_AD_ENABLE_INTERRUPT;
-	}
-
-	/**
-	 * Set the ADC clock prescaler
-	 * @param	prescaler	the prescaler to use
-	 */
-	void setPrescaler(AD_PRESCALER prescaler) {
-		ad_setPrescaler(prescaler);
-	}
-
-	/**
-	 * Call from the main loop to handle any events
-	 */
-	void handleEvents() {
-		uint8_t i;
-
-		if (_adcChannel != -1) {
-			for (i = 0; i < events; i++) {
-				if (_adcs[i].channel == _adcChannel) {
-					_adcChannel = -1;
-					_adcs[i].listener->adc(_adcs[i].channel, _adcValue);
-					break;
-				}
-			}
-		}
-	}
+	ADCManagerImplementation(AD_PRESCALER prescaler) :
+			ADCManager(_myAdcs, events, prescaler) {}
 }; // class ADCManager
 
 }// namespace mhvlib

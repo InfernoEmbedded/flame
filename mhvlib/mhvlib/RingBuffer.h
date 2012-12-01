@@ -39,10 +39,10 @@ class RingBuffer {
 protected:
 	volatile uint8_t 	_head;
 	volatile uint8_t 	_tail;
-	volatile uint8_t	*_buffer;
-	uint16_t			_bufferSize;
-	uint8_t				_elementCount;
-	uint8_t				_elementSize;
+	volatile uint8_t	*_buffer = NULL;
+	uint16_t			_bufferSize = 0;
+	uint8_t				_elementCount = 0;
+	uint8_t				_elementSize = 0;
 
 	/**
 	 * Determine where the next location will be
