@@ -100,7 +100,7 @@ class PrintADC : public ADCListener {
 	 * @param adcValue		the value from the ADC
 	 */
 	void adc(uint8_t adcChannel, uint16_t adcValue) {
-		serial.write_P(PSTR("ADC Channel "));
+		serial.write_P(PSTR("\r\nADC Channel "));
 		serial.write(adcChannel);
 		serial.write_P(PSTR(" = "));
 		serial.write(adcValue);
@@ -136,9 +136,6 @@ MAIN {
 	adc.registerListener(0, printADC);
 	adc.registerListener(1, printADC);
 	adc.registerListener(2, printADC);
-
-	setOutput(MHV_PIN_B5);
-	pinOff(MHV_PIN_B5);
 
 	serial.write_P(PSTR("Setting initial alarm\r\n"));
 	// Insert the initial alarm

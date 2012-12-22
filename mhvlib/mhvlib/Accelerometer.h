@@ -28,93 +28,17 @@
 #ifndef MHV_ACCELEROMETER_H_
 #define MHV_ACCELEROMETER_H_
 
-#include <mhvlib/io.h>
-#include <mhvlib/EEPROM.h>
-#include <inttypes.h>
-#include <math.h>
+#include <mhvlib/TripleAxisSensor.h>
 
 namespace mhvlib {
-
-// Forward declaration of Accelerometer
-class Accelerometer;
-
-enum AccelerometerChannel {
-	X,
-	Y,
-	Z,
-	MAGNITUDE
-};
-
-typedef struct Float3Axis ACCELEROMETER_READING;
-typedef struct Int3Axis ACCELEROMETER_OFFSETS;
-typedef struct Int3Axis ACCELEROMETER_LIMITS;
-typedef struct Float3Axis ACCELEROMETER_SCALING;
-
-class AccelerometerListener {
-	/**
-	 * Called when a sample is ready
-	 * @param accelerometer	the accelerometer whose sample is ready
-	 */
-	virtual void sampleIsReady(Accelerometer *accelerometer) {};
-
-	/**
-	 * Called when an acceleration limit is reached
-	 * @param accelerometer	the accelerometer whose limit was reached
-	 * @param which			which limit was reached
-	 */
-	virtual void limitReached(Accelerometer *accelerometer, AccelerometerChannel which) {};
-};
 
 /**
  * Accelerometer Interface
  */
-class Accelerometer : EEPROMListener {
-protected:
-	AccelerometerListener			*_listener = NULL;
-	ACCELEROMETER_READING			_valueTemp = (0.0f, 0.0f, 0.0f);
-	ACCELEROMETER_READING			_valueOut = (0.0f, 0.0f, 0.0f);
-	ACCELEROMETER_LIMITS			_limit = (0, 0, 0);
-	int32_t							_limitMagnitudeSquared = 0;
-	ACCELEROMETER_OFFSETS			_offsets = (0, 0, 0);
-	ACCELEROMETER_SCALING			_scaling = (0.0f, 0.0f, 0.0f);
-
-	/**
-	 * Push a sample from the driver into this class
-	 * @param which		Which channel to push
-	 * @param value		the updated value
-	 */
-	void pushSample(AccelerometerChannel which, int16_t value);
-
+class Accelerometer : public TripleAxisSensor {
 public:
-	Accelerometer();
-
-	/**
-	 * Initiate a sampling of the accelerometer
-	 */
-	virtual void sample() =0;
-
-	/**
-	 * Check if a sample is ready
-	 * @return true if the sample is ready
-	 */
-	virtual bool isSampleReady() =0;
-
-	void saveCalibration(EEPROM &eeprom, uint16_t address);
-	void eepromDone(EEPROM *eeprom, uint16_t address, void *buffer);
-	bool loadCalibration(EEPROM &eeprom, uint16_t address);
-	void setOffsets(ACCELEROMETER_OFFSETS *offsets);
-	void setOffsets(int16_t x, int16_t y, int16_t z);
-	void setScale(ACCELEROMETER_SCALING *scales);
-	void setScale(float x, float y, float z);
-	void registerListener(AccelerometerListener &listener);
-	void deregisterListener();
-	void getValues(float *x, float *y, float *z);
-	void getValues(ACCELEROMETER_READING *value);
-	float magnitudeSquared();
-	float magnitude();
-	void handleEvents();
-	void setLimit(AccelerometerChannel which, float limit);
-	void getLimits(ACCELEROMETER_READING *limits);
+	bool loadCalibration(EEPROM &eeprom);
+	void saveCalibration(EEPROM &eeprom);
 }; // class Accelerometer
 
 } // namespace mhvlib

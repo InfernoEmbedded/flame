@@ -35,19 +35,23 @@
 
 #include <chips/MHV_io_chip.h>
 
-
-struct Int3Axis {
-	int16_t		x;
-	int16_t		y;
-	int16_t		z;
+union Int3Axis {
+	struct {
+		int16_t		x;
+		int16_t		y;
+		int16_t		z;
+	} axis;
+	int16_t			value[3];
 };
 
-struct Float3Axis {
-	float		x;
-	float		y;
-	float		z;
+union Float3Axis {
+	struct {
+		float		x;
+		float		y;
+		float		z;
+	} axis;
+	float			value[3];
 };
-
 
 // Some useful attributes
 

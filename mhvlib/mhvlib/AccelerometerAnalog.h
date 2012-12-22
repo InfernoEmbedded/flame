@@ -28,16 +28,23 @@
 #ifndef MHV_ACCELEROMETER_ANALOG_H_
 #define MHV_ACCELEROMETER_ANALOG_H_
 
+#include <mhvlib/Accelerometer.h>
 #include <mhvlib/ADCManager.h>
 #include <math.h>
 
 namespace mhvlib {
 
 /**
- * Accelerometer Interface
+ * An accelerometer that presents its data as analog values to be read by
+ * the AVR's ADC channels
+ * @tparam	adcChannelX		the ADC channel to use for the X axis
+ * @tparam	adcChannelY		the ADC channel to use for the Y axis
+ * @tparam	adcChannelZ		the ADC channel to use for the Z axis
+ * @tparam	adcReference	the voltage reference to use
+ *
  */
 template<uint8_t adcChannelX, uint8_t adcChannelY, uint8_t adcChannelZ, uint8_t adcReference>
-class AccelerometerAnalog : public Accelerometer, ADCListener {
+class AccelerometerAnalog : public Accelerometer, public ADCListener {
 protected:
 	ADCManager		*_adc;
 	bool			_sampleReady;
@@ -102,7 +109,6 @@ public:
 	bool isSampleReady() {
 		return _sampleReady;
 	}
-
 }; // class AccelerometerAnalog
 
 } // namespace mhvlib
