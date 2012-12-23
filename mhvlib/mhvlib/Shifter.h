@@ -66,104 +66,104 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutMSBRising(uint8_t *shiftData, uint8_t shiftLength) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (shiftLength--) {
 			mhv_dataCopy = *shiftData++;
 			if (mhv_dataCopy & _BV(7)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(6)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(5)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(4)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(3)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(2)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(1)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(0)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 		}
-		_SFR_IO8(dataOut) = dataOffClockOff;
+		_MMIO_BYTE(dataOut) = dataOffClockOff;
 	}
 
 	/**
@@ -172,104 +172,104 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutMSBFalling(uint8_t *shiftData, uint8_t shiftLength) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (!shiftLength--) {
 			mhv_dataCopy = *shiftData++;
 			if (mhv_dataCopy & _BV(7)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(6)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(5)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(4)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(3)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(2)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(1)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(0)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 		}
-		_SFR_IO8(dataOut) = dataOffClockOn;
+		_MMIO_BYTE(dataOut) = dataOffClockOn;
 	}
 
 	/**
@@ -278,104 +278,104 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutLSBRising(uint8_t *shiftData, uint8_t shiftLength) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (shiftLength--) {
 			mhv_dataCopy = *shiftData++;
 			if (mhv_dataCopy & _BV(0)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(1)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(2)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(3)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(4)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(5)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(6)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(7)) {
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
 			}
 		}
-		_SFR_IO8(dataOut) = dataOffClockOff;
+		_MMIO_BYTE(dataOut) = dataOffClockOff;
 	}
 
 	/**
@@ -384,104 +384,104 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutLSBFalling(uint8_t *shiftData, uint8_t shiftLength) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (!shiftLength--) {
 			mhv_dataCopy = *shiftData++;
 			if (mhv_dataCopy & _BV(0)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(1)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(2)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(3)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(4)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(5)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(6)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 			if (mhv_dataCopy & _BV(7)) {
-				_SFR_IO8(dataOut) = dataOnClockOn;
+				_MMIO_BYTE(dataOut) = dataOnClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOnClockOff;
+				_MMIO_BYTE(dataOut) = dataOnClockOff;
 				MHV_SHIFT_DELAY;
 			} else {
-				_SFR_IO8(dataOut) = dataOffClockOn;
+				_MMIO_BYTE(dataOut) = dataOffClockOn;
 				MHV_SHIFT_DELAY;
-				_SFR_IO8(dataOut) = dataOffClockOff;
+				_MMIO_BYTE(dataOut) = dataOffClockOff;
 				MHV_SHIFT_DELAY;
 			}
 		}
-		_SFR_IO8(dataOut) = dataOffClockOn;
+		_MMIO_BYTE(dataOut) = dataOffClockOn;
 	}
 
 	/**
@@ -491,10 +491,10 @@ private:
 	 * @param elements		the number of elements
 	 */
 	INLINE void shiftOutElementsMSBRising(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (elements--) {
@@ -502,95 +502,95 @@ private:
 			while (length--) {
 				mhv_dataCopy = *shiftData++;
 				if (mhv_dataCopy & _BV(7)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(6)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(5)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(4)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(3)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(2)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(1)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(0)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 			}
-			_SFR_IO8(dataOut) = dataOffClockOff;
+			_MMIO_BYTE(dataOut) = dataOffClockOff;
 		}
 	}
 
@@ -600,10 +600,10 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutElementsMSBFalling(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (elements--) {
@@ -611,95 +611,95 @@ private:
 			while (length--) {
 				mhv_dataCopy = *shiftData++;
 				if (mhv_dataCopy & _BV(7)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(6)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(5)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(4)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(3)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(2)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(1)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(0)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 			}
-			_SFR_IO8(dataOut) = dataOffClockOn;
+			_MMIO_BYTE(dataOut) = dataOffClockOn;
 		}
 	}
 
@@ -709,10 +709,10 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutElementsLSBRising(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (elements--) {
@@ -720,95 +720,95 @@ private:
 			while (length--) {
 				mhv_dataCopy = *shiftData++;
 				if (mhv_dataCopy & _BV(0)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(1)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(2)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(3)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(4)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(5)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(6)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(7)) {
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
 				}
 			}
-			_SFR_IO8(dataOut) = dataOffClockOff;
+			_MMIO_BYTE(dataOut) = dataOffClockOff;
 		}
 	}
 
@@ -818,10 +818,10 @@ private:
 	 * @param shiftLength	the number of bytes to shift
 	 */
 	INLINE void shiftOutElementsLSBFalling(uint8_t *shiftData, uint8_t shiftLength, uint16_t elements) {
-		uint8_t dataOffClockOff = _SFR_IO8(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
-		uint8_t dataOffClockOn = (_SFR_IO8(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
-		uint8_t dataOnClockOff = (_SFR_IO8(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
-		uint8_t dataOnClockOn = _SFR_IO8(dataOut) | _BV(clockPin) | _BV(dataPin);
+		uint8_t dataOffClockOff = _MMIO_BYTE(dataOut) & ~_BV(dataPin) & ~_BV(clockPin);
+		uint8_t dataOffClockOn = (_MMIO_BYTE(dataOut) & ~_BV(dataPin)) | _BV(clockPin);
+		uint8_t dataOnClockOff = (_MMIO_BYTE(dataOut) & ~_BV(clockPin)) | _BV(dataPin);
+		uint8_t dataOnClockOn = _MMIO_BYTE(dataOut) | _BV(clockPin) | _BV(dataPin);
 		uint8_t mhv_dataCopy;
 
 		while (elements--) {
@@ -829,95 +829,95 @@ private:
 			while (length--) {
 				mhv_dataCopy = *shiftData++;
 				if (mhv_dataCopy & _BV(0)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(1)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(2)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(3)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(4)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(5)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(6)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 				if (mhv_dataCopy & _BV(7)) {
-					_SFR_IO8(dataOut) = dataOnClockOn;
+					_MMIO_BYTE(dataOut) = dataOnClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOnClockOff;
+					_MMIO_BYTE(dataOut) = dataOnClockOff;
 					MHV_SHIFT_DELAY;
 				} else {
-					_SFR_IO8(dataOut) = dataOffClockOn;
+					_MMIO_BYTE(dataOut) = dataOffClockOn;
 					MHV_SHIFT_DELAY;
-					_SFR_IO8(dataOut) = dataOffClockOff;
+					_MMIO_BYTE(dataOut) = dataOffClockOff;
 					MHV_SHIFT_DELAY;
 				}
 			}
-			_SFR_IO8(dataOut) = dataOffClockOn;
+			_MMIO_BYTE(dataOut) = dataOffClockOn;
 		}
 	}
 

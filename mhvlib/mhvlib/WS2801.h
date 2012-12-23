@@ -36,18 +36,6 @@ namespace mhvlib {
 
 /**
  * Create a new WS2801 object to control a string of LED drivers
- * The MHV_SHIFT_WRITECLOCK & MHV_SHIFT_WRITEDATA macros should be defined in advance
- *
- * @param	__mhvObjectName		the variable name of the object
- * @param	__mhvLength			the number of chips in the string
- */
-#define MHV_WS2801_CREATE(__mhvObjectName,__mhvLength) \
-	MHV_RGB __mhvObjectName ## _Buffer[__mhvLength]; \
-	MHV_SHIFTER_CLOCKED_RISING_CREATE(__mhvObjectName ## _Shifter); \
-	MHV_WS2801 __mhvObjectName(__mhvObjectName ## _Buffer, __mhvLength, __mhvObjectName ## _Shifter);
-
-/**
- * Create a new WS2801 object to control a string of LED drivers
  * @tparam	clock...	the clock pin for the LEDs
  * @tparam	data...		the data pin for the LEDs, mult be on the same port as the clock
  * @tparam	length		the number of LEDs in the string
@@ -125,8 +113,8 @@ public:
 	 * Set a pixel to a gamma corrected value
 	 * @param	pixel	the pixel to set
 	 * @param	red		the red value
-	 * @param	blue	the blue value
 	 * @param	green	the green value
+	 * @param	blue	the blue value
 	 */
 	void setPixelGamma(uint16_t pixel, uint8_t red, uint8_t green, uint8_t blue) {
 		RGB *chip = _data + pixel;
