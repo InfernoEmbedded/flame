@@ -28,8 +28,6 @@
 /* Drive a string of WS2801 controlled LEDs,
  */
 
-
-
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
 
@@ -48,47 +46,74 @@ using namespace mhvlib;
 // Instantiate the driver
 WS2801<MHV_PIN_B0, MHV_PIN_B1, LEDS> ws2801;
 
+// Bring in the MHV Serial header
+#include <mhvlib/HardwareSerial.h>
+
+// Create a buffer we will use for a receive buffer
+#define RX_BUFFER_SIZE	3
+// The number of elements we want to be able to store to send asynchronously
+#define TX_ELEMENTS_COUNT 10
+/* Declare the serial object on USART0 using the above ring buffer
+ * Set the baud rate to 115,200
+ */
+MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
+
+
 MAIN {
+	// Enable interrupts
+	sei();
+
+	setOutput(MHV_PIN_B3);
+
+	serial.write_P(PSTR("Setting to 50% brightness\r\n"));
+
 	ws2801.setAll(128, 128, 128);
 	ws2801.flush();
 
 	for (;;) {
+		serial.write_P(PSTR("Fading up blue\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(0, 0, i);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from blue to red\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(i, 0, 255 - i);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from red to green\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(255 - i, i, 0);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from green to blue\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(0, 255 - i, i);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from blue to magenta\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(i, 0, 255);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from magenta to white\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(255, i, 255);
 			ws2801.flush();
 			_delay_ms(5);
 		}
 
+		serial.write_P(PSTR("Fading from white to black\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2801.setAllGamma(255 - i, 255 - i, 255 - i);
 			ws2801.flush();
@@ -104,11 +129,14 @@ MAIN {
 		for (; i > 0; i -= 10) {
 			ws2801.setPixelGamma(led++, (uint8_t)i / 1.5, (uint8_t)i, 0);
 		}
+		serial.write_P(PSTR("Rotating forward\r\n"));
 		for (i = 0; i < LEDS - led; i++) {
 			ws2801.flush();
 			_delay_ms(1);
 			ws2801.rotate(true);
 		}
+
+		serial.write_P(PSTR("Rotating backwards\r\n"));
 		for (i = 0; i < LEDS - led; i++) {
 			ws2801.flush();
 			_delay_ms(1);
