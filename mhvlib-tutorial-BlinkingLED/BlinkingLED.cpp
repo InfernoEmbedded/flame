@@ -25,14 +25,11 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-/* A simple blinking LED on Arduino pin 13 - a loop with sleeps
+/* A simple blinking LED on Arduino pin 13 (B5) - a loop with sleeps
  */
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
-
-// Bring in Arduino defines
-#include <boards/Arduino.h>
 
 // Bring in the AVR delay header (needed for _delay_ms)
 #include <util/delay.h>
@@ -46,17 +43,17 @@ MAIN {
 	power_all_disable();
 
 // Enable output on pin 13 of the Arduino - this normally has an LED connected
-	setOutput(MHV_ARDUINO_PIN_13);
+	setOutput(MHV_PIN_B5);
 
 	for (;;) {
 // Turn off the LED
-		pinOff(MHV_ARDUINO_PIN_13);
+		pinOff(MHV_PIN_B5);
 
 // Sleep for 1/3 sec
 		_delay_ms(333);
 
 // Turn on the LED
-		pinOn(MHV_ARDUINO_PIN_13);
+		pinOn(MHV_PIN_B5);
 
 // Sleep for 1/3 sec
 		_delay_ms(333);
