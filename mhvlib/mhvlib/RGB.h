@@ -29,6 +29,7 @@
 #define MHV_RGB_H_
 
 #include <mhvlib/io.h>
+#include <mhvlib/GammaCorrect.h>
 
 namespace mhvlib {
 
@@ -53,45 +54,232 @@ namespace mhvlib {
 #define MHV_RGB_ORDER	MHV_RGB_ORDER_RGB
 #endif
 
+union rgb {
+	int8_t			value[3];
 #if MHV_RGB_ORDER == MHV_RGB_ORDER_RGB
-struct rgb {
-	uint8_t	red;
-	uint8_t	green;
-	uint8_t	blue;
+	struct {
+		uint8_t	red;
+		uint8_t	green;
+		uint8_t	blue;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 0,
+	GREEN = 1,
+	BLUE = 2
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_RBG
-struct rgb {
-	uint8_t	red;
-	uint8_t	blue;
-	uint8_t	green;
+	struct {
+		uint8_t	red;
+		uint8_t	blue;
+		uint8_t	green;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 0,
+	GREEN = 2,
+	BLUE = 1
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_GRB
-struct rgb {
-	uint8_t	green;
-	uint8_t	red;
-	uint8_t	blue;
+	struct {
+		uint8_t	green;
+		uint8_t	red;
+		uint8_t	blue;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 1,
+	GREEN = 0,
+	BLUE = 2
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_GBR
-struct rgb {
-	uint8_t	green;
-	uint8_t	blue;
-	uint8_t	red;
+	struct {
+		uint8_t	green;
+		uint8_t	blue;
+		uint8_t	red;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 2,
+	GREEN = 0,
+	BLUE = 1
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_BGR
-struct rgb {
-	uint8_t	blue;
-	uint8_t	green;
-	uint8_t	red;
+	struct {
+		uint8_t	blue;
+		uint8_t	green;
+		uint8_t	red;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 2,
+	GREEN = 1,
+	BLUE = 0
 };
 #elif MHV_RGB_ORDER == MHV_RGB_ORDER_BRG
-struct rgb {
-	uint8_t	blue;
-	uint8_t	red;
-	uint8_t	green;
+	struct {
+		uint8_t	blue;
+		uint8_t	red;
+		uint8_t	green;
+	} channel;
+};
+
+enum RGB_CHANNEL {
+	RED	= 1,
+	GREEN = 2,
+	BLUE = 0
 };
 #endif
 
-typedef struct rgb RGB;
+
+class RGB {
+protected:
+	union rgb	_data;
+
+	/**
+	 * Fade from an initial value to a final value
+	 * @param initial	value to fade from
+	 * @param final 	value to fade to
+	 * @param iterations	total number of iterations to fade across
+	 * @return the faded value
+	 */
+	uint8_t fade(uint8_t initial, uint8_t final, uint16_t iterations) {
+		return (float)initial + (1 / (float)iterations) * (final - initial);
+	}
+
+public:
+	/**
+	 * Constructor
+	 * @param red	the red value
+	 * @param green	the green value
+	 * @param blue	the blue value
+	 */
+	RGB(uint8_t red, uint8_t green, uint8_t blue) {
+		_data.channel.red = red;
+		_data.channel.green = green;
+		_data.channel.blue = blue;
+	}
+
+	/**
+	 * Constructor
+	 * @param value	an RGB to take the value of
+	 */
+	RGB(RGB &value) {
+		_data.channel.red = value._data.channel.red;
+		_data.channel.green = value._data.channel.green;
+		_data.channel.blue = value._data.channel.blue;
+	}
+
+	/**
+	 * Constructor
+	 * @param value	an RGB to take the value of
+	 */
+	RGB(RGB *value) {
+		_data.channel.red = value->_data.channel.red;
+		_data.channel.green = value->_data.channel.green;
+		_data.channel.blue = value->_data.channel.blue;
+	}
+
+	/**
+	 * Constructor
+	 */
+	RGB() {
+		_data.channel.red = 0;
+		_data.channel.green = 0;
+		_data.channel.blue = 0;
+	}
+
+	/**
+	 * Fade from an initial value to a final value (should be called repeatedly with decreasing iterations)
+	 * @param final 	value to fade to
+	 * @param out 		the output value
+	 * @param currentIteration	current iteration
+	 * @param iterationsLeft	total number of iterations remaining to fade across
+	 */
+	void fadeTo(const RGB &final, uint16_t iterations) {
+		_data.channel.red = fade(_data.channel.red, final._data.channel.red, iterations);
+		_data.channel.green = fade(_data.channel.green, final._data.channel.green, iterations);
+		_data.channel.blue = fade(_data.channel.blue, final._data.channel.blue, iterations);
+	}
+
+	/**
+	 * Set a value
+	 * @param red	the red value
+	 * @param green	the green value
+	 * @param blue	the blue value
+	 */
+	void set (uint8_t red, uint8_t green, uint8_t blue) {
+		_data.channel.red = red;
+		_data.channel.green = green;
+		_data.channel.blue = blue;
+	}
+
+	/**
+	 * Override the = operator
+	 * @param rhs	the value to assign to the left hand side
+	 */
+	RGB &operator=(const RGB &rhs) {
+		set(rhs);
+		return *this;
+	}
+
+	/**
+	 * Set a value and gamma correct
+	 * @param red	the red value
+	 * @param green	the green value
+	 * @param blue	the blue value
+	 */
+	void setGamma (uint8_t red, uint8_t green, uint8_t blue) {
+		_data.channel.red = precalculatedGammaCorrect(red);
+		_data.channel.green = precalculatedGammaCorrect(green);
+		_data.channel.blue = precalculatedGammaCorrect(blue);
+	}
+
+	/**
+	 * Set a value
+	 * @param value		the new value
+	 */
+	void set (const RGB &value) {
+		_data.channel.red = value._data.channel.red;
+		_data.channel.green = value._data.channel.green;
+		_data.channel.blue = value._data.channel.blue;
+	}
+
+	/**
+	 * Set a value and gamma correct
+	 * @param value		the new value
+	 */
+	void setGamma (const RGB &value) {
+		_data.channel.red = precalculatedGammaCorrect(value._data.channel.red);
+		_data.channel.green = precalculatedGammaCorrect(value._data.channel.green);
+		_data.channel.blue = precalculatedGammaCorrect(value._data.channel.blue);
+	}
+
+	/**
+	 * Set a value
+	 * @param value		the new value
+	 */
+	void set (const RGB *value) {
+		_data.channel.red = value->_data.channel.red;
+		_data.channel.green = value->_data.channel.green;
+		_data.channel.blue = value->_data.channel.blue;
+	}
+
+	/**
+	 * Set a value and gamma correct
+	 * @param value		the new value
+	 */
+	void setGamma (const RGB *value) {
+		_data.channel.red = precalculatedGammaCorrect(value->_data.channel.red);
+		_data.channel.green = precalculatedGammaCorrect(value->_data.channel.green);
+		_data.channel.blue = precalculatedGammaCorrect(value->_data.channel.blue);
+	}
+};
 
 }
 

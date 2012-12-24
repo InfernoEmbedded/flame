@@ -63,7 +63,7 @@ public:
 	 * Called when an EEPROM write is finished
 	 * @param eeprom		the EEPROM access instance
 	 * @param address		the EEPROM address that the data was written to
-	 * @param buffer		the pointer that the data was wriiten from
+	 * @param buffer		the pointer that the data was written from
 	 */
 	virtual void eepromDone(EEPROM *eeprom, uint16_t address, void *buffer) =0;
 };

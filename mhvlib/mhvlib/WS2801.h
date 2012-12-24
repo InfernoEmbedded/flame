@@ -67,9 +67,7 @@ public:
 	void setPixel(uint16_t pixel, uint8_t red, uint8_t green, uint8_t blue) {
 		RGB *chip = _data + pixel;
 
-		chip->red = red;
-		chip->green = green;
-		chip->blue = blue;
+		chip->set(red, green, blue);
 	}
 
 	/**
@@ -77,8 +75,17 @@ public:
 	 * @param	pixel	the pixel to set
 	 * @param	value	the value to set
 	 */
-	void setPixel(uint16_t pixel, RGB *value) {
-		memcpy(_data + pixel, value, MHV_BYTESIZEOF(*value));
+	void setPixel(uint16_t pixel, const RGB *value) {
+		memCopy(_data + pixel, value, MHV_BYTESIZEOF(*value));
+	}
+
+	/**
+	 * Set a pixel to a particular value
+	 * @param	pixel	the pixel to set
+	 * @param	value	the value to set
+	 */
+	void setPixel(uint16_t pixel, const RGB &value) {
+		memCopy(_data + pixel, &value, MHV_BYTESIZEOF(value));
 	}
 
 	/**
@@ -88,24 +95,17 @@ public:
 	 * @param	green	the green value
 	 */
 	void setAll(uint8_t red, uint8_t green, uint8_t blue) {
-		RGB *chip;
-
-		for (uint16_t i = 0; i < length; i++) {
-			chip = _data + i;
-
-			chip->red = red;
-			chip->green = green;
-			chip->blue = blue;
-		}
+		RGB newValue(red, green, blue);
+		setAll(newValue);
 	}
 
 	/**
 	 * Set the strip to a particular value
 	 * @param	value	the value to set
 	 */
-	void setAll(RGB *value) {
+	void setAll(const RGB &value) {
 		for (uint16_t i = 0; i < length; i++) {
-			memcpy(_data + i, value, MHV_BYTESIZEOF(*value));
+			memCopy(_data + i, &value, MHV_BYTESIZEOF(value));
 		}
 	}
 
@@ -119,9 +119,7 @@ public:
 	void setPixelGamma(uint16_t pixel, uint8_t red, uint8_t green, uint8_t blue) {
 		RGB *chip = _data + pixel;
 
-		chip->red = precalculatedGammaCorrect(red);
-		chip->green = precalculatedGammaCorrect(green);
-		chip->blue = precalculatedGammaCorrect(blue);
+		chip->setGamma(red, green, blue);
 	}
 
 	/**
@@ -129,12 +127,21 @@ public:
 	 * @param	pixel	the pixel to set
 	 * @param	value	the value to set
 	 */
-	void setPixelGamma(uint16_t pixel, RGB *value) {
+	void setPixelGamma(uint16_t pixel, const RGB *value) {
 		RGB *chip = _data + pixel;
 
-		chip->red = precalculatedGammaCorrect(value->red);
-		chip->green = precalculatedGammaCorrect(value->green);
-		chip->blue = precalculatedGammaCorrect(value->blue);
+		chip->setGamma(value);
+	}
+
+	/**
+	 * Set a pixel to a gamma corrected value
+	 * @param	pixel	the pixel to set
+	 * @param	value	the value to set
+	 */
+	void setPixelGamma(uint16_t pixel, const RGB &value) {
+		RGB *chip = _data + pixel;
+
+		chip->setGamma(value);
 	}
 
 	/**
@@ -144,14 +151,11 @@ public:
 	 * @param	green	the green value
 	 */
 	void setAllGamma(uint8_t red, uint8_t green, uint8_t blue) {
-		RGB *chip;
+		RGB newValue;
+		newValue.setGamma(red, green, blue);
 
 		for (uint16_t i = 0; i < length; i++) {
-			chip = _data + i;
-
-			chip->red = precalculatedGammaCorrect(red);
-			chip->green = precalculatedGammaCorrect(green);
-			chip->blue = precalculatedGammaCorrect(blue);
+			memCopy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
 		}
 	}
 
@@ -159,16 +163,14 @@ public:
 	 * Set the strip to a gamma corrected value
 	 * @param	value	the value to set
 	 */
-	void setAllGamma(RGB *value) {
-		RGB newValue = {precalculatedGammaCorrect(value->red),
-				precalculatedGammaCorrect(value->green),
-				precalculatedGammaCorrect(value->blue)};
+	void setAllGamma(const RGB &value) {
+		RGB newValue;
+		newValue.setGamma(value);
 
 		for (uint16_t i = 0; i < length; i++) {
-			memcpy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
+			memCopy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
 		}
 	}
-
 
 	/**
 	 * Write the current buffer to the string of chips

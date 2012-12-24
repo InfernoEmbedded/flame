@@ -546,7 +546,7 @@ INLINE void memClear16(void *bufIn, uint16_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
+INLINE void memCopy(void *bufOut, const void *bufIn, uint8_t len, uint8_t count) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -563,7 +563,7 @@ INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len) {
+INLINE void memCopy(void *bufOut, const void *bufIn, uint8_t len) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -580,7 +580,7 @@ INLINE void memCopy(void *bufOut, void *bufIn, uint8_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void memCopy16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
+INLINE void memCopy16(void *bufOut, const void *bufIn, uint8_t len, uint16_t count) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -597,7 +597,7 @@ INLINE void memCopy16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void memCopy16(void *bufOut, void *bufIn, uint16_t len) {
+INLINE void memCopy16(void *bufOut, const void *bufIn, uint16_t len) {
 	char *src = (char *)bufIn;
 	char *dst = (char *)bufOut;
 
@@ -613,7 +613,7 @@ INLINE void memCopy16(void *bufOut, void *bufIn, uint16_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint8_t count) {
+INLINE void memCopyTailFirst(void *bufOut, const void *bufIn, uint8_t len, uint8_t count) {
 	size_t offset = (size_t)len * count;
 	char *src = (char *)bufIn + offset;
 	char *dst = (char *)bufOut + offset;
@@ -631,7 +631,7 @@ INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len, uint8_t cou
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len) {
+INLINE void memCopyTailFirst(void *bufOut, const void *bufIn, uint8_t len) {
 	char *src = (char *)bufIn + len;
 	char *dst = (char *)bufOut + len;
 
@@ -648,7 +648,7 @@ INLINE void memCopyTailFirst(void *bufOut, void *bufIn, uint8_t len) {
  * @param	len		the length of an element in the buffer
  * @param	count	the number of elements in the buffer
  */
-INLINE void memCopyTailFirst16(void *bufOut, void *bufIn, uint8_t len, uint16_t count) {
+INLINE void memCopyTailFirst16(void *bufOut, const void *bufIn, uint8_t len, uint16_t count) {
 	size_t offset = (size_t)len * count;
 	char *src = (char *)bufIn + offset;
 	char *dst = (char *)bufOut + offset;
@@ -666,7 +666,7 @@ INLINE void memCopyTailFirst16(void *bufOut, void *bufIn, uint8_t len, uint16_t 
  * @param	bufIn	a pointer to the source buffer
  * @param	len		the length of the buffer
  */
-INLINE void memCopyTailFirst16(void *bufOut, void *bufIn, uint16_t len) {
+INLINE void memCopyTailFirst16(void *bufOut, const void *bufIn, uint16_t len) {
 	char *src = (char *)bufIn + len;
 	char *dst = (char *)bufOut + len;
 
