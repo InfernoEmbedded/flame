@@ -130,7 +130,7 @@ MAIN {
 
 		// Write the data to the EEPROM asynchronously
 		serial.busyWrite_P(PSTR("Writing data"));
-		eeprom.write(buf, DATA_ADDRESS, length, NULL, NULL);
+		eeprom.write(buf, DATA_ADDRESS, length, NULL);
 		while (eeprom.isBusy()) {
 			serial.write_P(PSTR("."));
 			_delay_ms(1);

@@ -66,6 +66,17 @@ ISR(mhvTxVect) { \
 		HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName; \
 		MHV_HARDWARESERIAL_ASSIGN_INTERRUPTS(_mhvObjectName, _mhvSERIAL ## _INTERRUPTS);
 
+/**
+ * Import an external serial object
+ * @param	_mhvObjectName	the variable name of the object
+ * @param	_mhvRXBUFLEN	the maximum length of the line to be received
+ * @param	_mhvTXBUFCOUNT	the maximum number of tx buffers to send asynchonously
+ * @param	_mhvSERIAL		serial port parameters
+ * @param	_mhvBAUD		the baud rate requested
+ */
+#define MHV_HARDWARESERIAL_IMPORT(_mhvObjectName, _mhvRXBUFLEN, _mhvTXBUFCOUNT, _mhvSERIAL, _mhvBAUD) \
+		extern HardwareSerial<_mhvSERIAL, _mhvBAUD, _mhvRXBUFLEN, _mhvTXBUFCOUNT> _mhvObjectName;
+
 namespace mhvlib {
 
 enum SerialParity {

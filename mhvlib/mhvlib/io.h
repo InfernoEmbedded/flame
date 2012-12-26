@@ -675,6 +675,45 @@ INLINE void memCopyTailFirst16(void *bufOut, const void *bufIn, uint16_t len) {
 	}
 }
 
+#include <avr/pgmspace.h>
+/**
+ * Compare a PROGMEM string to a region of memory
+ * @param	source	the PROGMEM string
+ * @param	target	the target to compare
+ * @return false if the strings match
+ */
+INLINE PURE bool stringCompare_P(PGM_P source, char *target) {
+	for (;; source++, target++) {
+		char c = pgm_read_byte(source);
+		if ('\0' == c  && '\0' == *target) {
+				return false;
+		}
+		if (c != *target) {
+			return true;
+		}
+	}
+
+	UNREACHABLE;
+	return true;
+}
+
+/**
+ * Compare a PROGMEM buffer to a region of memory
+ * @param	source		the PROGMEM buffer
+ * @param	target	the target to compare
+ * @param	length	the length of both buffer
+ * @return false if the strings match
+ */
+INLINE bool memCompare_P(PGM_P source, char *target, uint8_t length) {
+	for (;length > 0; source++, target++, length--) {
+		char c = pgm_read_byte(source);
+		if (c != *target) {
+			return true;
+		}
+	}
+
+	return false;
+}
 
 
 /* We have to shadow all the macros below as the precedence of macro expansion means that

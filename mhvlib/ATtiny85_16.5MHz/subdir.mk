@@ -5,6 +5,9 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../AD.cpp \
+../ADCManager.cpp \
+../Accelerometer.cpp \
+../BestSphereGaussNewtonCalibrator.cpp \
 ../DAC.cpp \
 ../Device_TX.cpp \
 ../EEPROM.cpp \
@@ -20,10 +23,15 @@ CPP_SRCS += \
 ../SoftwareHBridge.cpp \
 ../StepperMotor.cpp \
 ../Timer.cpp \
+../TripleAxisCalibrator.cpp \
+../TripleAxisSensor.cpp \
 ../WaveGenerator.cpp 
 
 OBJS += \
 ./AD.o \
+./ADCManager.o \
+./Accelerometer.o \
+./BestSphereGaussNewtonCalibrator.o \
 ./DAC.o \
 ./Device_TX.o \
 ./EEPROM.o \
@@ -39,10 +47,15 @@ OBJS += \
 ./SoftwareHBridge.o \
 ./StepperMotor.o \
 ./Timer.o \
+./TripleAxisCalibrator.o \
+./TripleAxisSensor.o \
 ./WaveGenerator.o 
 
 CPP_DEPS += \
 ./AD.d \
+./ADCManager.d \
+./Accelerometer.d \
+./BestSphereGaussNewtonCalibrator.d \
 ./DAC.d \
 ./Device_TX.d \
 ./EEPROM.d \
@@ -58,6 +71,8 @@ CPP_DEPS += \
 ./SoftwareHBridge.d \
 ./StepperMotor.d \
 ./Timer.d \
+./TripleAxisCalibrator.d \
+./TripleAxisSensor.d \
 ./WaveGenerator.d 
 
 

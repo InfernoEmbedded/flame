@@ -64,7 +64,7 @@ union rgb {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 0,
 	GREEN = 1,
 	BLUE = 2
@@ -77,7 +77,7 @@ enum RGB_CHANNEL {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 0,
 	GREEN = 2,
 	BLUE = 1
@@ -90,7 +90,7 @@ enum RGB_CHANNEL {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 1,
 	GREEN = 0,
 	BLUE = 2
@@ -103,7 +103,7 @@ enum RGB_CHANNEL {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 2,
 	GREEN = 0,
 	BLUE = 1
@@ -116,7 +116,7 @@ enum RGB_CHANNEL {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 2,
 	GREEN = 1,
 	BLUE = 0
@@ -129,13 +129,14 @@ enum RGB_CHANNEL {
 	} channel;
 };
 
-enum RGB_CHANNEL {
+enum rgbChannel {
 	RED	= 1,
 	GREEN = 2,
 	BLUE = 0
 };
 #endif
 
+typedef enum rgbChannel RGB_CHANNEL;
 
 class RGB {
 protected:
@@ -149,7 +150,10 @@ protected:
 	 * @return the faded value
 	 */
 	uint8_t fade(uint8_t initial, uint8_t final, uint16_t iterations) {
-		return (float)initial + (1 / (float)iterations) * (final - initial);
+		initial = precalculatedInverseGammaCorrect(initial);
+		final = precalculatedInverseGammaCorrect(final);
+		uint8_t val = (float)initial + (1 / (float)iterations) * (final - initial);
+		return precalculatedGammaCorrect(val);
 	}
 
 public:
@@ -169,7 +173,7 @@ public:
 	 * Constructor
 	 * @param value	an RGB to take the value of
 	 */
-	RGB(RGB &value) {
+	RGB(const RGB &value) {
 		_data.channel.red = value._data.channel.red;
 		_data.channel.green = value._data.channel.green;
 		_data.channel.blue = value._data.channel.blue;
@@ -179,7 +183,7 @@ public:
 	 * Constructor
 	 * @param value	an RGB to take the value of
 	 */
-	RGB(RGB *value) {
+	RGB(const RGB *value) {
 		_data.channel.red = value->_data.channel.red;
 		_data.channel.green = value->_data.channel.green;
 		_data.channel.blue = value->_data.channel.blue;
@@ -271,6 +275,15 @@ public:
 	}
 
 	/**
+	 * Set a value for a channel
+	 * @param channel	the channel
+	 * @param value		the new value
+	 */
+	void set (RGB_CHANNEL channel, uint8_t value) {
+		_data.value[channel] = value;
+	}
+
+	/**
 	 * Set a value and gamma correct
 	 * @param value		the new value
 	 */
@@ -278,6 +291,25 @@ public:
 		_data.channel.red = precalculatedGammaCorrect(value->_data.channel.red);
 		_data.channel.green = precalculatedGammaCorrect(value->_data.channel.green);
 		_data.channel.blue = precalculatedGammaCorrect(value->_data.channel.blue);
+	}
+
+	/**
+	 * Gamma correct the current value
+	 */
+	void gammaCorrect() {
+		_data.channel.red = precalculatedGammaCorrect(_data.channel.red);
+		_data.channel.green = precalculatedGammaCorrect(_data.channel.green);
+		_data.channel.blue = precalculatedGammaCorrect(_data.channel.blue);
+
+	}
+
+	/**
+	 * Inverse gamma correct the current value
+	 */
+	void inverseGammaCorrect() {
+		_data.channel.red = precalculatedInverseGammaCorrect(_data.channel.red);
+		_data.channel.green = precalculatedInverseGammaCorrect(_data.channel.green);
+		_data.channel.blue = precalculatedInverseGammaCorrect(_data.channel.blue);
 	}
 };
 

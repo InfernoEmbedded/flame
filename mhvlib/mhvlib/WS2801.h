@@ -58,6 +58,14 @@ public:
 	}
 
 	/**
+	 * Get a pixel
+	 * @param	pixel	the pikel to get
+	 */
+	RGB &getPixel(uint16_t pixel) {
+		return _data[pixel];
+	}
+
+	/**
 	 * Set a pixel to a particular value
 	 * @param	pixel	the pixel to set
 	 * @param	red		the red value
@@ -196,7 +204,6 @@ public:
 			memCopy(_data, &temp, MHV_BYTESIZEOF(temp));
 		}
 	}
-
 };
 
 }

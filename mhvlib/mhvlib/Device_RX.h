@@ -48,7 +48,7 @@ class Device_RX;
  */
 class RXListener {
 public:
-	virtual void rxReady(Device_RX *rx) =0;
+	virtual void rxReady(Device_RX &rx) =0;
 };
 
 
@@ -174,7 +174,7 @@ public:
 	 */
 	void handleEvents() {
 			if (ready()) {
-			_listener->rxReady(this);
+			_listener->rxReady(*this);
 		}
 	}
 };

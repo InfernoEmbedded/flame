@@ -100,8 +100,10 @@ bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second
 			return true;
 		}
 
-		if (first.ticks >= second.ticks) {
-			return true;
+		if (first.milliseconds == second.milliseconds) {
+			if (first.ticks >= second.ticks) {
+				return true;
+			}
 		}
 	}
 
