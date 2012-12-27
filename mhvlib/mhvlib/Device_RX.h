@@ -168,12 +168,11 @@ public:
 		_listener = NULL;
 	}
 
-
 	/**
 	 * Call from the main loop to handle any events
 	 */
 	void handleEvents() {
-			if (ready()) {
+		if (ready()) {
 			_listener->rxReady(*this);
 		}
 	}
