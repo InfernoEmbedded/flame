@@ -133,13 +133,13 @@ protected:
 			return;
 		}
 
-		// Enable tx interrupt
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
-
 		// If the UART isn't already sending data, start sending
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
 		_MMIO_BYTE(usartIO) = (char)c;
+
+		// Enable tx interrupt
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
 	}
 
 public:
@@ -236,8 +236,6 @@ public:
 	 * TX interrupt handler
 	 */
 	void tx() {
-//		int c = Device_TX::nextCharacter();
-
 #if MHV_DEBUG_TX
 		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
 		dumpTXBufferState(__func__);
