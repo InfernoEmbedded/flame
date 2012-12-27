@@ -146,14 +146,24 @@ protected:
 	 * Fade from an initial value to a final value
 	 * @param initial	value to fade from
 	 * @param final 	value to fade to
-	 * @param iterations	total number of iterations to fade across
+	 * @param iteration	The current iteration
+	 * @param total		total number of iterations to fade across
 	 * @return the faded value
 	 */
-	uint8_t fade(uint8_t initial, uint8_t final, uint16_t iterations) {
-		initial = precalculatedInverseGammaCorrect(initial);
-		final = precalculatedInverseGammaCorrect(final);
-		uint8_t val = (float)initial + (1 / (float)iterations) * (final - initial);
-		return precalculatedGammaCorrect(val);
+	uint8_t fade(uint8_t initial, uint8_t final, int16_t iteration, int16_t total) {
+		if (0 == total || iteration >= total) {
+			return final;
+		}
+
+		if (iteration <= 0) {
+			return initial;
+		}
+
+		int32_t di = iteration;
+		di *= final - initial;
+		di /= total;
+
+		return initial + di;
 	}
 
 public:
@@ -205,10 +215,13 @@ public:
 	 * @param currentIteration	current iteration
 	 * @param iterationsLeft	total number of iterations remaining to fade across
 	 */
-	void fadeTo(const RGB &final, uint16_t iterations) {
-		_data.channel.red = fade(_data.channel.red, final._data.channel.red, iterations);
-		_data.channel.green = fade(_data.channel.green, final._data.channel.green, iterations);
-		_data.channel.blue = fade(_data.channel.blue, final._data.channel.blue, iterations);
+	void fadeTo(const RGB &final, uint16_t currentIteration, uint16_t iterations) {
+		_data.channel.red = fade(_data.channel.red, final._data.channel.red,
+				currentIteration, iterations);
+		_data.channel.green = fade(_data.channel.green, final._data.channel.green,
+				currentIteration, iterations);
+		_data.channel.blue = fade(_data.channel.blue, final._data.channel.blue,
+				currentIteration, iterations);
 	}
 
 	/**
@@ -253,6 +266,15 @@ public:
 		_data.channel.green = value._data.channel.green;
 		_data.channel.blue = value._data.channel.blue;
 	}
+
+	/**
+	 * Get the value for a channel
+	 * @param channel	the channel to get
+	 */
+	uint8_t get (RGB_CHANNEL channel) {
+		return _data.value[channel];
+	}
+
 
 	/**
 	 * Set a value and gamma correct
