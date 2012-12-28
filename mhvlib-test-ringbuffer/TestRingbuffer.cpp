@@ -87,7 +87,7 @@ MAIN {
 	serial.busyWrite(buffer);
 
 	char object[10];
-	memSet(&object, '_', sizeof(object));
+	memset(&object, '_', sizeof(object));
 
 	int i;
 	for (i = 0; i < 4; i++) {

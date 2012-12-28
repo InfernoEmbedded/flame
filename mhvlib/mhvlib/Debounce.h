@@ -110,7 +110,7 @@ protected:
 	}
 
 	void initPin(uint8_t pinchangeInterrupt) {
-		memClear(_pins + pinchangeInterrupt, MHV_BYTESIZEOF(*_pins), (uint8_t)1);
+		memset(_pins + pinchangeInterrupt, 1, MHV_BYTESIZEOF(*_pins));
 	}
 
 public:

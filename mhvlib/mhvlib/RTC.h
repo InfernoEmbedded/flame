@@ -31,6 +31,7 @@
 #include <avr/pgmspace.h>
 #include <string.h> // Needed for memmove
 #include <util/atomic.h>
+#include <mhvlib/Device_TX.h>
 
 namespace mhvlib {
 
@@ -609,6 +610,25 @@ public:
 	/**
 	 * Insert an alarm to be triggered at a later time
 	 * @param	listener			the alarm listener to be called when the alarm is triggered
+	 * @param	when				the time the alarm will be executed
+	 * @return	true if the event could not be added
+	 */
+	bool addAlarm(TimerListener &listener, TIMESTAMP &when) {
+		ALARM alarm;
+
+		alarm.listener = &listener;
+
+		memcpy(&alarm.when, &when, MHV_BYTESIZEOF(when));
+		alarm.repeat.timestamp = 0;
+		alarm.repeat.milliseconds = 0;
+		alarm.repeat.ticks = 0;
+
+		return registerAlarm(alarm);
+	}
+
+	/**
+	 * Insert an alarm to be triggered at a later time
+	 * @param	listener			the alarm listener to be called when the alarm is triggered
 	 * @param	whenSeconds			the number of seconds past current that the alarm will be executed
 	 * @param	whenMilliseconds	the number of milliseconds past current that the alarm will be executed
 	 * @param	whenTicks			the number of ticks past current that the alarm will be executed
@@ -762,7 +782,7 @@ public:
 	 * @param	timezone	minutes offset from UTC
 	 */
 	RTCImplementation(int16_t timezone = 0) : RTC(timezone) {
-		memSet (_alarms, sizeof(_alarms[0]), alarmMax);
+		memset (_alarms, sizeof(_alarms[0]), alarmMax);
 	}
 
 	/**
@@ -770,16 +790,7 @@ public:
 	 * @param	listener		the listener for the event to remove
 	 */
 	void removeAlarm(TimerListener &listener) {
-		for (uint8_t i = 0; i < _alarmCount; i++) {
-			if (_alarms[i].listener == &listener) {
-				// Shift remaining events down
-				if (i < _alarmCount) {
-					memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
-				}
-
-				_alarmCount -= i;
-			}
-		}
+		removeAlarm(&listener);
 	}
 
 	/**
@@ -791,10 +802,10 @@ public:
 			if (_alarms[i].listener == listener) {
 				// Shift remaining events down
 				if (i < _alarmCount) {
-					memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+					memcpy(_alarms + i,  _alarms + i + 1, MHV_BYTESIZEOF(*_alarms) * (uint8_t)(_alarmCount - i));
 				}
 
-				_alarmCount -= i;
+				_alarmCount--;
 			}
 		}
 	}
@@ -813,23 +824,27 @@ public:
 		// Run any events pending
 		for (i = 0; i < _alarmCount && timestampGreaterThanOrEqual(timestamp, _alarms[i].when);
 				i++, current(timestamp)) {
+//			tx.printf(PSTR("Handing alarm at %d, current = %ld.%d, scheduled = %ld.%d\r\n"),
+//					i, timestamp.timestamp, timestamp.milliseconds,
+//					_alarms[i].when.timestamp, _alarms[i].when.milliseconds);
+
 			_alarms[i].listener->alarm();
 
 			// Repeat the event if necessary
 			if (0 != _alarms[i].repeat.ticks || 0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {
-				current(_alarms[i].when);
 				timestampIncrement(_alarms[i].when, _alarms[i].repeat);
 				registerAlarm(_alarms[i]);
 			}
 		}
 
+		// i is now the number of handled events
 		if (0 == i) {
 			return;
 		}
 
 		// Shift remaining events down
 		if (i < _alarmCount) {
-			memCopy(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+			memcpy(_alarms,  &(_alarms[i]), sizeof(*_alarms) * (uint8_t)(_alarmCount - i));
 		}
 
 		_alarmCount -= i;
@@ -857,15 +872,30 @@ public:
 		}
 		// i now is the offset of where the timestamp should be inserted
 		if (i < _alarmCount) {
-			memCopyTailFirst(_alarms + i + 1, _alarms + i, MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
-			memCopy(_alarms + i, &alarm, MHV_BYTESIZEOF(*_alarms));
+			memmove(&_alarms[i + 1], &_alarms[i], MHV_BYTESIZEOF(*_alarms) * (uint8_t)(_alarmCount - i));
+			memcpy(&_alarms[i], &alarm, MHV_BYTESIZEOF(*_alarms));
 		} else {
-			memCopy(&(_alarms[_alarmCount]), &alarm, MHV_BYTESIZEOF(*_alarms));
+			memcpy(&(_alarms[_alarmCount]), &alarm, MHV_BYTESIZEOF(*_alarms));
 		}
 
 		_alarmCount++;
 
 		return false;
+	}
+
+	/**
+	 * Dump the current alarms
+	 * @param	tx	an output device to write to
+	 */
+	void dumpAlarms(Device_TX &tx) {
+		tx.printf(PSTR("Dumping %d alarms\r\n"), _alarmCount);
+		for (uint8_t i = 0; i < _alarmCount; i++) {
+			tx.printf(PSTR("Alarm %d (%p)\t"), i, _alarms[i].listener);
+			tx.printf(PSTR("Execute at:  %ld.%d.%d\tRepeat  at:  %ld.%d.%d\r\n"),
+					_alarms[i].when.timestamp, _alarms[i].when.milliseconds, _alarms[i].when.ticks,
+					_alarms[i].repeat.timestamp, _alarms[i].repeat.milliseconds, _alarms[i].repeat.ticks);
+		}
+		tx.write_P(PSTR("\r\n"));
 	}
 };
 

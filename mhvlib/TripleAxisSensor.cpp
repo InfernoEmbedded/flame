@@ -28,6 +28,7 @@
 #include <mhvlib/TripleAxisSensor.h>
 #include <math.h>
 #include <mhvlib/Device_TX.h>
+#include <string.h>
 
 namespace mhvlib {
 /**
@@ -111,7 +112,7 @@ bool TripleAxisSensor::loadCalibration(EEPROM &eeprom, uint16_t address) {
  * @param offsets	the new values for the offsets
  */
 void TripleAxisSensor::setOffsets(const TRIPLEAXISSENSOR_OFFSETS &offsets) {
-	memCopy(&_offsets, &offsets, sizeof(offsets));
+	memcpy(&_offsets, &offsets, sizeof(offsets));
 }
 
 /**
@@ -131,7 +132,7 @@ void TripleAxisSensor::setOffsets(int16_t x, int16_t y, int16_t z) {
  * @param scales	the new values for scaling
  */
 void TripleAxisSensor::setScale(const TRIPLEAXISSENSOR_SCALING &scales) {
-	memCopy(&_scaling, &scales, sizeof(scales));
+	memcpy(&_scaling, &scales, sizeof(scales));
 }
 
 /**
@@ -197,7 +198,7 @@ void TripleAxisSensor::getValue(float *x, float *y, float *z) {
  * Get the current values
  */
 void TripleAxisSensor::getValue(TRIPLEAXISSENSOR_READING *value) {
-		memCopy((void *)value, (void *)&_valueOut, sizeof(*value));
+		memcpy((void *)value, (void *)&_valueOut, sizeof(*value));
 }
 
 /**
@@ -225,7 +226,7 @@ float PURE TripleAxisSensor::magnitude() {
 void TripleAxisSensor::handleEvents() {
 	if (isSampleReady()) {
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			memCopy((void *)&_valueOut, (void *)&_valueTemp, sizeof(_valueOut));
+			memcpy((void *)&_valueOut, (void *)&_valueTemp, sizeof(_valueOut));
 		}
 
 		if (_limitMagnitudeSquared) {
@@ -269,7 +270,7 @@ void TripleAxisSensor::setLimit(TripleAxisSensorChannel which, float limit) {
  * Get the current limits (unscaled)
  */
 void TripleAxisSensor::getLimits(TRIPLEAXISSENSOR_READING *limits) {
-	memCopy((void *)limits, (void *)&_limit, sizeof(*limits));
+	memcpy((void *)limits, (void *)&_limit, sizeof(*limits));
 }
 
 /**

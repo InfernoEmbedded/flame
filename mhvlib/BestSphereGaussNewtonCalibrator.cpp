@@ -35,6 +35,7 @@
 #include <stdint.h>
 #include <math.h>
 #include <mhvlib/io.h>
+#include <string.h>
 #include <mhvlib/3AxisCalibration/BestSphereGaussNewtonCalibrator.h>
 
 #define	AXIS_COUNT	3
@@ -84,7 +85,7 @@ void BestSphereGaussNewtonCalibrator::addObservation(const TRIPLEAXISSENSOR_RAW_
 		for (uint8_t j = 0; j < AXIS_COUNT; ++j) {
 			_ipX2X[i][j] += squareObs[i] * static_cast<int32_t>(sample.value[j]);
 			if (i <= j) {
-				size_t idx = upperTriangularIndex(i, j);
+				uint8_t idx = upperTriangularIndex(i, j);
 				_ipXX[idx] += static_cast<int32_t>(sample.value[i]) * static_cast<int32_t>(sample.value[j]);
 				_ipX2X2[idx] += squareObs[i] * static_cast<float>(squareObs[j]);
 			}
@@ -98,29 +99,29 @@ void BestSphereGaussNewtonCalibrator::addObservation(const TRIPLEAXISSENSOR_RAW_
  */
 void BestSphereGaussNewtonCalibrator::clearObservationMatrices() {
 	_observationCount = 0;
-	memClear(_mu, 3, sizeof(*_mu));
-	memClear(_mu2, 3, sizeof(*_mu2));
-	memClear(_ipXX, 6, sizeof(*_ipXX));
-	memClear(_ipX2X2, 6, sizeof(*_ipX2X2));
 
-	memClear(_obsMin, 3, sizeof(*_obsMin));
-	memClear(_obsMax, 3, sizeof(*_obsMax));
+	memset(_obsMin, 0, 3 * sizeof(*_obsMin));
+	memset(_obsMax, 0, 3 * sizeof(*_obsMax));
 
 	for (uint8_t i = 0; i < 3; ++i) {
 		_obsMin[i] =INT16_MAX;
 		_obsMax[i] = INT16_MIN;
+		_mu[i] = 0.0f;
+		_mu2[i] = 0.0f;
+		_ipXX[i] = 0.0f;
+		_ipX2X2[i] = 0.0f;
+
 		for (uint8_t j = 0; j < 3; ++j) {
-			_ipX2X[i][j] = 0.0;
+			_ipX2X[i][j] = 0.0f;
 		}
 	}
 }
 
 void BestSphereGaussNewtonCalibrator::clearGNMatrices(float JtJ[][6], float JtR[]) {
-	size_t j, k;
-	for (j = 0; j < 6; ++j) {
-		JtR[j] = 0.0;
-		for (k = 0; k < 6; ++k) {
-			JtJ[j][k] = 0.0;
+	for (uint8_t j = 0; j < 6; ++j) {
+		JtR[j] = 0.0f;
+		for (uint8_t k = 0; k < 6; ++k) {
+			JtJ[j][k] = 0.0f;
 		}
 	}
 

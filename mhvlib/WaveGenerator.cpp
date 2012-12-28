@@ -26,6 +26,7 @@
  */
 
 #include <mhvlib/WaveGenerator.h>
+#include <string.h>
 
 namespace mhvlib {
 
@@ -174,7 +175,7 @@ inline SAMPLE WaveGenerator::renderVoice(VOICE &voice) {
  * Render the current instruments to the buffer
  */
 inline void WaveGenerator::renderBuffer() {
-	memClear(_samples, _sampleLength);
+	memset(_samples, 0, _sampleLength);
 
 	for (uint8_t i = 0; i < _sampleLength; i++) {
 		for (uint8_t voice = 0; voice < _voiceCount; voice++) {

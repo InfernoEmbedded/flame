@@ -27,7 +27,9 @@
 
 #include <mhvlib/TripleAxisCalibrator.h>
 #include <stdlib.h>
-#include <avr/delay.h>
+#include <util/delay.h>
+#include <string.h>
+
 
 namespace mhvlib {
 
@@ -67,7 +69,7 @@ bool TripleAxisCalibrator::isSampleGood(const TRIPLEAXISSENSOR_RAW_READING &samp
 		if (abs(sample.value[i] - _previousSample.value[i]) > MAX_DIFFERENCE) {
 			DIRECT_USER("Hold it steady\r\n");
 
-			memCopy(&_previousSample, &sample, sizeof(_previousSample));
+			memcpy(&_previousSample, &sample, sizeof(_previousSample));
 			return false;
 		}
 	}

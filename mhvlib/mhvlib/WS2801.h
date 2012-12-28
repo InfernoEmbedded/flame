@@ -84,7 +84,7 @@ public:
 	 * @param	value	the value to set
 	 */
 	void setPixel(uint16_t pixel, const RGB *value) {
-		memCopy(_data + pixel, value, MHV_BYTESIZEOF(*value));
+		memcpy(_data + pixel, value, MHV_BYTESIZEOF(*value));
 	}
 
 	/**
@@ -93,7 +93,7 @@ public:
 	 * @param	value	the value to set
 	 */
 	void setPixel(uint16_t pixel, const RGB &value) {
-		memCopy(_data + pixel, &value, MHV_BYTESIZEOF(value));
+		memcpy(_data + pixel, &value, MHV_BYTESIZEOF(value));
 	}
 
 	/**
@@ -113,7 +113,7 @@ public:
 	 */
 	void setAll(const RGB &value) {
 		for (uint16_t i = 0; i < length; i++) {
-			memCopy(_data + i, &value, MHV_BYTESIZEOF(value));
+			memcpy(_data + i, &value, MHV_BYTESIZEOF(value));
 		}
 	}
 
@@ -163,7 +163,7 @@ public:
 		newValue.setGamma(red, green, blue);
 
 		for (uint16_t i = 0; i < length; i++) {
-			memCopy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
+			memcpy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
 		}
 	}
 
@@ -176,7 +176,7 @@ public:
 		newValue.setGamma(value);
 
 		for (uint16_t i = 0; i < length; i++) {
-			memCopy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
+			memcpy(_data + i, &newValue, MHV_BYTESIZEOF(newValue));
 		}
 	}
 
@@ -195,13 +195,13 @@ public:
 		RGB temp;
 
 		if (forwards) {
-			memCopy(&temp, _data + length - 1, MHV_BYTESIZEOF(temp));
-			memCopyTailFirst(_data + 1, _data, MHV_BYTESIZEOF(*_data), length - 1);
-			memCopy(_data, &temp, MHV_BYTESIZEOF(temp));
+			memcpy(&temp, _data + length - 1, MHV_BYTESIZEOF(temp));
+			memmove(_data + 1, _data, MHV_BYTESIZEOF(*_data) * (length - 1));
+			memcpy(_data, &temp, MHV_BYTESIZEOF(temp));
 		} else {
-			memCopy(&temp, _data, MHV_BYTESIZEOF(temp));
-			memCopy(_data, _data + 1,  MHV_BYTESIZEOF(*_data), length - 1);
-			memCopy(_data, &temp, MHV_BYTESIZEOF(temp));
+			memcpy(&temp, _data, MHV_BYTESIZEOF(temp));
+			memcpy(_data, _data + 1,  MHV_BYTESIZEOF(*_data) * (length - 1));
+			memcpy(_data, &temp, MHV_BYTESIZEOF(temp));
 		}
 	}
 };
