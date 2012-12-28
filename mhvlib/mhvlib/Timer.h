@@ -155,8 +155,8 @@ public:
 		uint16_t factor;
 		uint32_t maxTime;
 
-		usec1 *= F_CPU / (1000000 * 2); // time is now in timer ticks
-		usec2 *= F_CPU / (1000000 * 2); // time is now in timer ticks
+		usec1 *= F_CPU / 1000000; // time is now in timer ticks
+		usec2 *= F_CPU / 1000000; // time is now in timer ticks
 
 		if (usec1 > usec2) {
 			maxTime = usec1;
@@ -186,9 +186,9 @@ public:
 		uint16_t factor = 0;
 		uint32_t maxTime;
 
-		usec1 *= F_CPU / (1000000 * 2); // time is now in clocks
-		usec2 *= F_CPU / (1000000 * 2); // time is now in clocks
-		usec3 *= F_CPU / (1000000 * 2); // time is now in clocks
+		usec1 *= F_CPU / 1000000; // time is now in clocks
+		usec2 *= F_CPU / 1000000; // time is now in clocks
+		usec3 *= F_CPU / 1000000; // time is now in clocks
 
 		if (usec1 > usec2) {
 			maxTime = usec1;
