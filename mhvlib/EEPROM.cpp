@@ -195,7 +195,7 @@ void EEPROM::writeInterrupt() {
 		_lock.release();
 
 		if (_done) {
-			_done->eepromDone(this, _writeAddress, _writeBuffer);
+			_done->eepromDone(*this, _writeAddress, _writeBuffer);
 		}
 
 		return;

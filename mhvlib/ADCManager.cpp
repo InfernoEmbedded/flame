@@ -35,7 +35,6 @@ namespace mhvlib {
  * @param eventCount	the maximum number of events to handle
  * @param prescaler		the prescaler to run the ADC at
  */
-
 ADCManager::ADCManager(EVENT_ADC *eventsBuffer, uint8_t eventCount, AD_PRESCALER prescaler) :
 		_adcChannel(-1) {
 	_adcs = eventsBuffer;

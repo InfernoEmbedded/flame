@@ -25,13 +25,16 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MHV_SENSOR_H_
+#ifndef MHV_TRIPLEAXISSENSOR_H_
 #define MHV_TRIPLEAXISSENSOR_H_
 
 #include <mhvlib/io.h>
 #include <mhvlib/EEPROM.h>
 #include <mhvlib/Timer.h>
 #include <inttypes.h>
+
+#include <mhvlib/Device_TX.h>
+
 
 namespace mhvlib {
 
@@ -48,7 +51,7 @@ enum TripleAxisSensorChannel {
 typedef union Float3Axis TRIPLEAXISSENSOR_READING;
 typedef union Int3Axis TRIPLEAXISSENSOR_RAW_READING;
 typedef union Int3Axis TRIPLEAXISSENSOR_OFFSETS;
-typedef union Int3Axis TRIPLEAXISSENSOR_LIMITS;
+typedef union Float3Axis TRIPLEAXISSENSOR_LIMITS;
 typedef union Float3Axis TRIPLEAXISSENSOR_SCALING;
 
 class TripleAxisSensorListener {
@@ -57,14 +60,14 @@ public:
 	 * Called when a sample is ready
 	 * @param sensor	the sensor whose sample is ready
 	 */
-	virtual void sampleIsReady(TripleAxisSensor *sensor) =0;
+	virtual void sampleIsReady(TripleAxisSensor &sensor) =0;
 
 	/**
 	 * Called when an acceleration limit is reached
 	 * @param sensor	the sensor whose limit was reached
 	 * @param which			which limit was reached
 	 */
-	virtual void limitReached(TripleAxisSensor *sensor, TripleAxisSensorChannel which) =0;
+	virtual void limitReached(TripleAxisSensor &sensor, TripleAxisSensorChannel which) =0;
 };
 
 /**
@@ -75,10 +78,12 @@ protected:
 	TripleAxisSensorListener			*_listener = NULL;
 	TRIPLEAXISSENSOR_READING			_valueTemp = {{0.0f, 0.0f, 0.0f}};
 	TRIPLEAXISSENSOR_READING			_valueOut = {{0.0f, 0.0f, 0.0f}};
-	TRIPLEAXISSENSOR_LIMITS				_limit = {{0, 0, 0}};
+	TRIPLEAXISSENSOR_LIMITS				_limit = {{0.0f, 0.0f, 0.0f}};
 	float								_limitMagnitudeSquared = 0.0f;
 	TRIPLEAXISSENSOR_OFFSETS			_offsets = {{0, 0, 0}};
-	TRIPLEAXISSENSOR_SCALING			_scaling = {{0.0f, 0.0f, 0.0f}};
+	TRIPLEAXISSENSOR_SCALING			_scaling = {{1.0f, 1.0f, 1.0f}};
+	TRIPLEAXISSENSOR_RAW_READING		_raw = {{0, 0, 0}};
+	bool								_calibrated = false;
 
 	/**
 	 * Push a sample from the driver into this class
@@ -100,24 +105,29 @@ public:
 	virtual bool isSampleReady() =0;
 
 	void saveCalibration(EEPROM &eeprom, uint16_t address);
-	void eepromDone(EEPROM *eeprom, uint16_t address, void *buffer);
+	void eepromDone(EEPROM &eeprom, uint16_t address, void *buffer);
 	bool loadCalibration(EEPROM &eeprom, uint16_t address);
-	void setOffsets(TRIPLEAXISSENSOR_OFFSETS *offsets);
+	void setOffsets(const TRIPLEAXISSENSOR_OFFSETS &offsets);
 	void setOffsets(int16_t x, int16_t y, int16_t z);
-	void setScale(TRIPLEAXISSENSOR_SCALING *scales);
+	void setScale(const TRIPLEAXISSENSOR_SCALING &scales);
 	void setScale(float x, float y, float z);
+	void getParameters(TRIPLEAXISSENSOR_OFFSETS *offsets, TRIPLEAXISSENSOR_SCALING *scales);
 	void registerListener(TripleAxisSensorListener &listener);
 	void deregisterListener();
-	void getValues(float *x, float *y, float *z);
-	void getValues(TRIPLEAXISSENSOR_READING *value);
+	TripleAxisSensorListener *getListener();
+	void getValue(float *x, float *y, float *z);
+	void getValue(TRIPLEAXISSENSOR_READING *value);
+	void getRawValue(TRIPLEAXISSENSOR_RAW_READING *value);
 	float magnitudeSquared();
 	float magnitude();
 	void handleEvents();
 	void setLimit(TripleAxisSensorChannel which, float limit);
 	void getLimits(TRIPLEAXISSENSOR_READING *limits);
 	void alarm();
+	bool isCalibrated();
+	void setCalibrated(bool calibrated);
 }; // class TripleAxisSensor
 
 } // namespace mhvlib
 
-#endif /* MHV_SENSOR_H_ */
+#endif /* MHV_TRIPLEAXISSENSOR_H_ */

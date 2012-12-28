@@ -52,10 +52,9 @@ protected:
 
 public:
 	AccelerometerAnalog(ADCManager &adc) :
-		_adc(&adc),
-		_sampleReady(false),
-		_dummyRead(false) {
-
+			_adc(&adc),
+			_sampleReady(false),
+			_dummyRead(false) {
 		_adc->registerListener(adcChannelX, this);
 		_adc->registerListener(adcChannelY, this);
 		_adc->registerListener(adcChannelZ, this);
@@ -88,6 +87,7 @@ public:
 
 		switch (adcChannel) {
 		case adcChannelX:
+			_sampleReady = false;
 			pushSample(X, adcValue);
 			_adc->read(adcChannelY, adcReference);
 			break;
@@ -107,7 +107,11 @@ public:
 	 * @return true if the sample is ready
 	 */
 	bool isSampleReady() {
-		return _sampleReady;
+		if (_sampleReady) {
+			_sampleReady = false;
+			return true;
+		}
+		return false;
 	}
 }; // class AccelerometerAnalog
 

@@ -30,6 +30,7 @@
 
 #include <avr/pgmspace.h>
 #include <mhvlib/io.h>
+#include <mhvlib/Device_TX.h>
 #include <mhvlib/TripleAxisSensor.h>
 
 namespace mhvlib {
@@ -44,31 +45,42 @@ enum TripleAxisCalibratorState {
 	BACK_DOWN
 };
 
-class TripleAxisCalibrator {
+class TripleAxisCalibrator : public TripleAxisSensorListener {
 protected:
-	union Int3Axis	_previousSample = {{0, 0, 0}};
-	uint8_t			_goodSamples = 0;
-	PGM_P			_lastMessage = NULL;
-	uint8_t			_samplesToTake = 32; // the number of samples to take at each calibration point
-	uint8_t			_currentSamples;
+	TRIPLEAXISSENSOR_RAW_READING	_previousSample = {{0, 0, 0}};
+	uint8_t							_goodSamples = 0;
+	PGM_P							_lastMessage = NULL;
+	uint8_t							_samplesToTake = 32; // the number of samples to take at each calibration point
+	uint8_t							_currentSamples;
 	enum TripleAxisCalibratorState	_state = SETUP;
+	TripleAxisSensor				&_sensor;
+	Device_TX 						&_output;
+	TripleAxisSensorListener		*_savedListener = NULL;
 
-	bool isSampleGood(union Int3Axis *sample, PGM_P *feedback);
+	bool isSampleGood(const TRIPLEAXISSENSOR_RAW_READING &sample, PGM_P *feedback);
 
 public:
-	bool pushSample(union Int3Axis *sample, PGM_P *feedback);
+	TripleAxisCalibrator(TripleAxisSensor &sensor, Device_TX &output);
+	bool pushSample(const TRIPLEAXISSENSOR_RAW_READING &sample, PGM_P *feedback);
+	void calibrate();
+
+	// Implement TripleAxisSensorListener
+	void sampleIsReady(TripleAxisSensor &sensor);
+	void limitReached(TripleAxisSensor &sensor, TripleAxisSensorChannel which);
 
 	/**
 	 * Add a sample to the calibrator
 	 * @param	sample		the sample to send
 	 */
-	virtual void addObservation(union Int3Axis *sample) =0;
+	virtual void addObservation(const TRIPLEAXISSENSOR_RAW_READING &sample) =0;
 
 	/**
 	 * Write the offsets and scales to the sensor
 	 * @param	sensor		the sensor to write to (should be the same sensor that is pushing the sample
 	 */
-	virtual void calibrateSensor(TripleAxisSensor *sensor) =0;
+	virtual void calibrateSensor(TripleAxisSensor &sensor) =0;
+
+
 
 
 }; // class TripleAxisCalibrator

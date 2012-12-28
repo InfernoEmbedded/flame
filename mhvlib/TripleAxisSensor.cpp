@@ -27,9 +27,9 @@
 
 #include <mhvlib/TripleAxisSensor.h>
 #include <math.h>
+#include <mhvlib/Device_TX.h>
 
 namespace mhvlib {
-
 /**
  * Push a sample from the driver into this instance
  * @param which		Which channel to push
@@ -40,7 +40,18 @@ void TripleAxisSensor::pushSample(TripleAxisSensorChannel which, int16_t value) 
 		return;
 	}
 
+	_raw.value[which] = value;
 	_valueTemp.value[which] = (value - _offsets.value[which]) / _scaling.value[which];
+}
+
+/**
+ * Get the raw values
+ * @param value	the Int3Axis to populate
+ */
+void TripleAxisSensor::getRawValue(TRIPLEAXISSENSOR_RAW_READING *value) {
+	value->axis.x = _raw.axis.x;
+	value->axis.y = _raw.axis.y;
+	value->axis.z = _raw.axis.z;
 }
 
 /**
@@ -59,11 +70,16 @@ void TripleAxisSensor::saveCalibration(EEPROM &eeprom, uint16_t address) {
  * @param address	the EEPROM address that the data was written to
  * @param buffer	the pointer that the data was wriiten from
  */
-void TripleAxisSensor::eepromDone(EEPROM *eeprom, uint16_t address, void *buffer) {
+void TripleAxisSensor::eepromDone(EEPROM &eeprom, uint16_t address, void *buffer) {
 	if (buffer == &_offsets) {
 		// now write the scaling factors
-		eeprom->write((void *)&_scaling, address + sizeof(_offsets),
-				sizeof(_scaling), NULL);
+		eeprom.write((void *)&_scaling, address + sizeof(_offsets),
+				sizeof(_scaling), this);
+	} else if (buffer == &_scaling) {
+		// write the checksum
+		uint16_t origAddress = address - sizeof(_offsets);
+		uint16_t crc = eeprom.crc(origAddress, sizeof(_offsets) + sizeof(_scaling));
+		eeprom.write((void *)&crc, address + sizeof(_scaling), sizeof(crc), NULL);
 	}
 }
 
@@ -94,8 +110,8 @@ bool TripleAxisSensor::loadCalibration(EEPROM &eeprom, uint16_t address) {
  * Set the offsets (pre-scaling) for the accelerometer
  * @param offsets	the new values for the offsets
  */
-void TripleAxisSensor::setOffsets(TRIPLEAXISSENSOR_OFFSETS *offsets) {
-	memCopy(&_offsets, offsets, sizeof(*offsets));
+void TripleAxisSensor::setOffsets(const TRIPLEAXISSENSOR_OFFSETS &offsets) {
+	memCopy(&_offsets, &offsets, sizeof(offsets));
 }
 
 /**
@@ -114,8 +130,8 @@ void TripleAxisSensor::setOffsets(int16_t x, int16_t y, int16_t z) {
  * Set the scaling for the accelerometer
  * @param scales	the new values for scaling
  */
-void TripleAxisSensor::setScale(TRIPLEAXISSENSOR_SCALING *scales) {
-	memCopy(&_scaling, scales, sizeof(*scales));
+void TripleAxisSensor::setScale(const TRIPLEAXISSENSOR_SCALING &scales) {
+	memCopy(&_scaling, &scales, sizeof(scales));
 }
 
 /**
@@ -131,11 +147,34 @@ void TripleAxisSensor::setScale(float x, float y, float z) {
 }
 
 /**
+ * Get the function parameters for this sensor
+ * @param offsets	the offsets for each axis
+ * @param scales	the scale for each axis
+ */
+void TripleAxisSensor::getParameters(TRIPLEAXISSENSOR_OFFSETS *offsets, TRIPLEAXISSENSOR_SCALING *scales) {
+	offsets->axis.x = _offsets.axis.x;
+	offsets->axis.y = _offsets.axis.y;
+	offsets->axis.z = _offsets.axis.z;
+
+	scales->axis.x = _scaling.axis.x;
+	scales->axis.y = _scaling.axis.y;
+	scales->axis.z = _scaling.axis.z;
+}
+
+/**
  * Register a listener
  * @param	listener	the listener to notify
  */
 void TripleAxisSensor::registerListener(TripleAxisSensorListener &listener) {
 	_listener = &listener;
+}
+
+/**
+ * Get the current listener
+ * @return the listener
+ */
+TripleAxisSensorListener *TripleAxisSensor::getListener() {
+	return _listener;
 }
 
 /**
@@ -148,7 +187,7 @@ void TripleAxisSensor::deregisterListener() {
 /**
  * Get the current values
  */
-void TripleAxisSensor::getValues(float *x, float *y, float *z) {
+void TripleAxisSensor::getValue(float *x, float *y, float *z) {
 		*x = _valueOut.axis.x;
 		*y = _valueOut.axis.y;
 		*z = _valueOut.axis.z;
@@ -157,7 +196,7 @@ void TripleAxisSensor::getValues(float *x, float *y, float *z) {
 /**
  * Get the current values
  */
-void TripleAxisSensor::getValues(TRIPLEAXISSENSOR_READING *value) {
+void TripleAxisSensor::getValue(TRIPLEAXISSENSOR_READING *value) {
 		memCopy((void *)value, (void *)&_valueOut, sizeof(*value));
 }
 
@@ -193,20 +232,22 @@ void TripleAxisSensor::handleEvents() {
 			int32_t magSquared = magnitudeSquared();
 
 			if (magSquared >= _limitMagnitudeSquared) {
-				_listener->limitReached(this, TripleAxisSensorChannel::MAGNITUDE);
+				_listener->limitReached(*this, TripleAxisSensorChannel::MAGNITUDE);
 			}
 		}
 
+		if (_listener) {
 		TRIPLEAXISSENSOR_READING value;
-		getValues(&value);
+		getValue(&value);
 
 		for (uint8_t i = 0; i < 3; i++) {
-			if (_limit.value[i] && fabs(value.value[i]) >= _limit.value[i]) {
-				_listener->limitReached(this, (TripleAxisSensorChannel)i);
+			if (_limit.value[i] && (value.value[i] * value.value[i]) >= _limit.value[i]) {
+				_listener->limitReached(*this, (TripleAxisSensorChannel)i);
 			}
 		}
 
-		_listener->sampleIsReady(this);
+		_listener->sampleIsReady(*this);
+		}
 	}
 }
 
@@ -221,7 +262,7 @@ void TripleAxisSensor::setLimit(TripleAxisSensorChannel which, float limit) {
 		return;
 	}
 
-	_limit.value[which] = limit * _scaling.value[which] + _offsets.value[which];
+	_limit.value[which] = limit * limit;
 }
 
 /**
@@ -238,5 +279,20 @@ void TripleAxisSensor::alarm() {
 	sample();
 }
 
+/**
+ * Set whether the sensor is calibrated calibrated
+ * @param calibrated	true if the sensor is now calibrated
+ */
+void TripleAxisSensor::setCalibrated(bool calibrated) {
+	_calibrated = calibrated;
+}
+
+/**
+ * Check if the sensor is calibrated
+ * @return true if the sensor is calibrated
+ */
+bool TripleAxisSensor::isCalibrated() {
+	return _calibrated;
+}
 
 }

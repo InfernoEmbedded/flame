@@ -68,18 +68,14 @@ protected:
 	int16_t _obsMax[3]; // Keep track of min and max observation in each dimension to guess parameters
 
 public:
-	BestSphereGaussNewtonCalibrator();
-	/**
-	 * Add a sample to the calibrator
-	 * @param	sample		the sample to send
-	 */
-	void addObservation(union Int3Axis *sample);
-
-	virtual void calibrate();
+	BestSphereGaussNewtonCalibrator(TripleAxisSensor &sensor, Device_TX &output);
+	void addObservation(const TRIPLEAXISSENSOR_RAW_READING &sample);
+	void calibrateSensor(TripleAxisSensor &sensor);
 
 private:
-	const uint8_t upperTriangularIndex(uint8_t i, uint8_t j);
+	CONST uint8_t upperTriangularIndex(uint8_t i, uint8_t j);
 	void clearObservationMatrices();
+	void calculate();
 	void guessParameters();
 	void clearGNMatrices(float JtJ[][6], float JtR[]);
 	void computeGNMatrices(float JtJ[][6], float JtR[]);

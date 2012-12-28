@@ -44,11 +44,12 @@ namespace mhvlib {
 /**
  * Constructor
  */
-BestSphereGaussNewtonCalibrator::BestSphereGaussNewtonCalibrator() {
+BestSphereGaussNewtonCalibrator::BestSphereGaussNewtonCalibrator(TripleAxisSensor &sensor, Device_TX &output) :
+		TripleAxisCalibrator(sensor, output) {
 	clearObservationMatrices();
 }
 
-const uint8_t BestSphereGaussNewtonCalibrator::upperTriangularIndex(uint8_t i, uint8_t j) {
+CONST uint8_t BestSphereGaussNewtonCalibrator::upperTriangularIndex(uint8_t i, uint8_t j) {
 	if (i > j) {
 		uint8_t temp = i;
 		i = j;
@@ -58,29 +59,33 @@ const uint8_t BestSphereGaussNewtonCalibrator::upperTriangularIndex(uint8_t i, u
 	return (j * (j + 1)) / 2 + i;
 }
 
-void BestSphereGaussNewtonCalibrator::addObservation(union Int3Axis *sample) {
+/**
+ * Add a sample to the calibrator
+ * @param	sample		the sample to send
+ */
+void BestSphereGaussNewtonCalibrator::addObservation(const TRIPLEAXISSENSOR_RAW_READING &sample) {
 	_observationCount++;
 
 	int32_t squareObs[AXIS_COUNT];
 	for (uint8_t i = 0; i < AXIS_COUNT; i++) {
-		squareObs[i] = static_cast<int32_t>(sample->value[i]) * sample->value[i];
+		squareObs[i] = static_cast<int32_t>(sample.value[i]) * sample.value[i];
 	}
 
 	for (uint8_t i = 0; i < AXIS_COUNT; ++i) {
 		//Keep track of min and max in each dimension
-		_obsMin[i] = (sample->value[i] < _obsMin[i]) ? sample->value[i] : _obsMin[i];
-		_obsMax[i] = (sample->value[i] > _obsMax[i]) ? sample->value[i] : _obsMax[i];
+		_obsMin[i] = (sample.value[i] < _obsMin[i]) ? sample.value[i] : _obsMin[i];
+		_obsMax[i] = (sample.value[i] > _obsMax[i]) ? sample.value[i] : _obsMax[i];
 
 		//accumulate sum and sum of squares in each dimension
-		_mu[i] += sample->value[i];
+		_mu[i] += sample.value[i];
 		_mu2[i] += squareObs[i];
 
 		//accumulate inner products of the vector of observations and the vector of squared observations.
 		for (uint8_t j = 0; j < AXIS_COUNT; ++j) {
-			_ipX2X[i][j] += squareObs[i] * static_cast<int32_t>(sample->value[j]);
+			_ipX2X[i][j] += squareObs[i] * static_cast<int32_t>(sample.value[j]);
 			if (i <= j) {
 				size_t idx = upperTriangularIndex(i, j);
-				_ipXX[idx] += static_cast<int32_t>(sample->value[i]) * static_cast<int32_t>(sample->value[j]);
+				_ipXX[idx] += static_cast<int32_t>(sample.value[i]) * static_cast<int32_t>(sample.value[j]);
 				_ipX2X2[idx] += squareObs[i] * static_cast<float>(squareObs[j]);
 			}
 		}
@@ -120,12 +125,6 @@ void BestSphereGaussNewtonCalibrator::clearGNMatrices(float JtJ[][6], float JtR[
 	}
 
 }
-
-//void BestSphereGaussNewtonCalibrator::transform(const int16_t* rawInput, float* output) const {
-//	for (int i = 0; i < 3; ++i) {
-//		output[i] = (static_cast<float>(rawInput[i]) - _beta[i]) / _beta[3 + i];
-//	}
-//}
 
 void BestSphereGaussNewtonCalibrator::computeGNMatrices(float JtJ[][6], float JtR[]) {
 	float beta2[6]; //precompute the squares of the model parameters
@@ -213,7 +212,7 @@ void BestSphereGaussNewtonCalibrator::findDelta(float JtJ[][6], float JtR[]) {
 
 }
 
-void BestSphereGaussNewtonCalibrator::calibrate() {
+void BestSphereGaussNewtonCalibrator::calculate() {
 	guessParameters();
 	float JtJ[6][6];
 	float JtR[6];
@@ -242,9 +241,18 @@ void BestSphereGaussNewtonCalibrator::calibrate() {
 		}
 
 		clearGNMatrices(JtJ, JtR);
-
 	}
+}
 
+/**
+ * Write the offsets and scales to the sensor
+ * @param	sensor		the sensor to write to (should be the same sensor that is pushing the sample
+ */
+void BestSphereGaussNewtonCalibrator::calibrateSensor(TripleAxisSensor &sensor) {
+	calculate();
+
+	sensor.setOffsets(_beta[0], _beta[1], _beta[2]);
+	sensor.setScale(_beta[3], _beta[4], _beta[5]);
 }
 
 void BestSphereGaussNewtonCalibrator::guessParameters() {

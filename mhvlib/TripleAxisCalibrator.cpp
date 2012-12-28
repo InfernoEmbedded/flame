@@ -27,6 +27,7 @@
 
 #include <mhvlib/TripleAxisCalibrator.h>
 #include <stdlib.h>
+#include <avr/delay.h>
 
 namespace mhvlib {
 
@@ -39,9 +40,20 @@ namespace mhvlib {
 		if (_lastMessage == *feedback) { \
 			*feedback = NULL; \
 		} else { \
+			_currentSamples = 0; \
+			for (uint8_t i = 0; i < 5; i++) { \
+				_delay_ms(1000); \
+			} \
 			_lastMessage = *feedback; \
 		} \
 	} while (0);
+
+/**
+ * Constructor
+ */
+TripleAxisCalibrator::TripleAxisCalibrator(TripleAxisSensor &sensor, Device_TX &output) :
+		_sensor(sensor),
+		_output(output) {}
 
 /**
  * Check if the sensor is steady, and complain if it is not
@@ -50,12 +62,12 @@ namespace mhvlib {
  * 						(or NULL)
  * @return true if the sample was good
  */
-bool TripleAxisCalibrator::isSampleGood(union Int3Axis *sample, PGM_P *feedback) {
+bool TripleAxisCalibrator::isSampleGood(const TRIPLEAXISSENSOR_RAW_READING &sample, PGM_P *feedback) {
 	for (uint8_t i = 0; i < 3; i++) {
-		if (abs(sample->value[i] - _previousSample.value[i]) > MAX_DIFFERENCE) {
-			DIRECT_USER("Hold it steady");
+		if (abs(sample.value[i] - _previousSample.value[i]) > MAX_DIFFERENCE) {
+			DIRECT_USER("Hold it steady\r\n");
 
-			memCopy(&_previousSample, sample, sizeof(_previousSample));
+			memCopy(&_previousSample, &sample, sizeof(_previousSample));
 			return false;
 		}
 	}
@@ -70,13 +82,14 @@ bool TripleAxisCalibrator::isSampleGood(union Int3Axis *sample, PGM_P *feedback)
  * 						(or NULL)
  * @return true if more samples are required
  */
-bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
+bool TripleAxisCalibrator::pushSample(const TRIPLEAXISSENSOR_RAW_READING &sample, PGM_P *feedback) {
 	*feedback = NULL;
 
 	switch (_state) {
 	case SETUP:
-		DIRECT_USER ("Place the bottom pointing down");
+		DIRECT_USER ("Place the bottom pointing down\r\n");
 		_currentSamples = 0;
+		_state = BOTTOM_DOWN;
 		return true;
 		break;
 
@@ -86,7 +99,7 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				DIRECT_USER ("Place the top pointing down");
+				DIRECT_USER ("Place the top pointing down\r\n");
 				_state = TOP_DOWN;
 				return true;
 			}
@@ -99,7 +112,7 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				DIRECT_USER ("Place the left side pointing down");
+				DIRECT_USER ("Place the left side pointing down\r\n");
 				_state = LEFT_DOWN;
 				return true;
 			}
@@ -112,7 +125,7 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				DIRECT_USER ("Place the right side pointing down");
+				DIRECT_USER ("Place the right side pointing down\r\n");
 				_state = RIGHT_DOWN;
 				return true;
 			}
@@ -125,7 +138,7 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				DIRECT_USER ("Place the front pointing down");
+				DIRECT_USER ("Place the front pointing down\r\n");
 				_state = FRONT_DOWN;
 				return true;
 			}
@@ -138,7 +151,7 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				DIRECT_USER ("Place the back pointing down");
+				DIRECT_USER ("Place the back pointing down\r\n");
 				_state = BACK_DOWN;
 				return true;
 			}
@@ -158,7 +171,49 @@ bool TripleAxisCalibrator::pushSample(union Int3Axis *sample, PGM_P *feedback) {
 		break;
 	} // switch
 
-	return false;
+	return true;
 } // TripleAxisCalibrator::pushSample
+
+/**
+ * Calibrate a sensor
+ * @param sensor	the sensor to calibrate
+ */
+void TripleAxisCalibrator::calibrate() {
+	_savedListener = _sensor.getListener();
+	_sensor.registerListener(*this);
+	_sensor.sample();
+}
+
+/**
+ * Called when a sample is ready
+ * @param sensor	the sensor whose sample is ready
+ */
+void TripleAxisCalibrator::sampleIsReady(TripleAxisSensor &sensor) {
+	TRIPLEAXISSENSOR_RAW_READING value;
+	sensor.getRawValue(&value);
+
+	PGM_P feedback = NULL;
+
+	if (!pushSample(value, &feedback)) {
+		calibrateSensor(_sensor);
+		_sensor.setCalibrated(true);
+		_sensor.registerListener(*_savedListener);
+		return;
+	}
+
+	if (feedback) {
+		_output.write_P(feedback);
+	}
+
+	_delay_ms(10);
+	_sensor.sample();
+}
+
+/**
+ * Called when an acceleration limit is reached
+ * @param sensor	the sensor whose limit was reached
+ * @param which			which limit was reached
+ */
+void TripleAxisCalibrator::limitReached(TripleAxisSensor &sensor, TripleAxisSensorChannel which) {}
 
 } // namespace mhvlib
