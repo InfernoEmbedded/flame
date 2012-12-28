@@ -829,7 +829,7 @@ public:
 
 		// Shift remaining events down
 		if (i < _alarmCount) {
-			memCopyTailFirst(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
+			memCopy(_alarms,  &(_alarms[i]), MHV_BYTESIZEOF(*_alarms), (uint8_t)(_alarmCount - i));
 		}
 
 		_alarmCount -= i;
