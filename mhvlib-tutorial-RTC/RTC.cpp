@@ -26,9 +26,8 @@
  */
 
 /* A clock to demonstrate the RTC class
+ * Once started, blinks B5 at 1Hz, B4 at 2Hz, B3 at 4Hz
  */
-
-
 
 #include <mhvlib/io.h>
 #include <mhvlib/HardwareSerial.h>
@@ -81,6 +80,28 @@ class OncePerSecond : public TimerListener {
 };
 
 OncePerSecond oncePerSecond;
+
+class Blink1Hz : public TimerListener {
+	void alarm() {
+		pinToggle(MHV_PIN_B5);
+	}
+};
+
+class Blink2Hz : public TimerListener {
+	void alarm() {
+		pinToggle(MHV_PIN_B4);
+	}
+};
+
+class Blink4Hz : public TimerListener {
+	void alarm() {
+		pinToggle(MHV_PIN_B3);
+	}
+};
+
+Blink1Hz blink1Hz;
+Blink2Hz blink2Hz;
+Blink4Hz blink4Hz;
 
 MAIN {
 	// Disable all peripherals and enable just what we need
@@ -183,6 +204,14 @@ MAIN {
 			1, 0)) { // Repeat (seconds, milliseconds)
 		serial.write_P(PSTR("Adding alarm failed\r\n"));
 	}
+
+	setOutput(MHV_PIN_B5);
+	setOutput(MHV_PIN_B4);
+	setOutput(MHV_PIN_B3);
+
+	rtc.addAlarm(blink1Hz, 1, 0, 1, 0);
+	rtc.addAlarm(blink2Hz, 1, 0, 0, 500);
+	rtc.addAlarm(blink4Hz, 1, 0, 0, 250);
 
 	// main loop
 	for (;;) {
