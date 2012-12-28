@@ -106,8 +106,8 @@ class AccelerometerListener : public TripleAxisSensorListener {
 		TRIPLEAXISSENSOR_READING value;
 		sensor.getValue(&value);
 
-		serial.printf(PSTR("Value: x: %f  y: %f  z: %f\r\n"),
-				value.axis.x, value.axis.y, value.axis.z);
+		serial.printf(PSTR("Value: x: %f  y: %f  z: %f  magnitude: %f\r\n"),
+				value.axis.x, value.axis.y, value.axis.z, sensor.magnitude());
 	}
 
 	/**
