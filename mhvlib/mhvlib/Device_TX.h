@@ -42,7 +42,6 @@
 #define MHV_DEBUG(__dbg_tx, __dbg_format, __dbg_args...) \
 do {\
 	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
-	_delay_ms(10); \
 } while (0)
 
 namespace mhvlib {
