@@ -37,13 +37,13 @@ namespace mhvlib {
 /**
  * An accelerometer that presents its data as analog values to be read by
  * the AVR's ADC channels
- * @tparam	adcChannelX		the ADC channel to use for the X axis
- * @tparam	adcChannelY		the ADC channel to use for the Y axis
- * @tparam	adcChannelZ		the ADC channel to use for the Z axis
- * @tparam	adcReference	the voltage reference to use
+ * @tparam	ADCChannelX		the ADC channel to use for the X axis
+ * @tparam	ADCChannelY		the ADC channel to use for the Y axis
+ * @tparam	ADCChannelZ		the ADC channel to use for the Z axis
+ * @tparam	ADCReference	the voltage reference to use
  *
  */
-template<uint8_t adcChannelX, uint8_t adcChannelY, uint8_t adcChannelZ, uint8_t adcReference>
+template<ADCChannel ADCChannelX, ADCChannel ADCChannelY, ADCChannel ADCChannelZ, ADCReference ADCReference>
 class AccelerometerAnalog : public Accelerometer, public ADCListener {
 protected:
 	ADCManager		*_adc;
@@ -55,49 +55,51 @@ public:
 			_adc(&adc),
 			_sampleReady(false),
 			_dummyRead(false) {
-		_adc->registerListener(adcChannelX, this);
-		_adc->registerListener(adcChannelY, this);
-		_adc->registerListener(adcChannelZ, this);
+		_adc->registerListener(ADCChannelX, this);
+		_adc->registerListener(ADCChannelY, this);
+		_adc->registerListener(ADCChannelZ, this);
 	}
 
 	/**
 	 * Initiate a sampling of the accelerometer
 	 */
 	void sample() {
-		if (MHV_AD_REFERENCE != adcReference) {
+		if (MHV_AD_REFERENCE != (uint8_t)ADCReference) {
 // Do a dummy read since we are changing ADC references and the reading may not be accurate
 			_dummyRead = true;
 		}
 
-		_adc->read(adcChannelX, adcReference);
+		_adc->read(ADCChannelX, ADCReference);
 	}
 
 	/**
 	 * Handle incoming ADC reads
-	 * @param adcChannel	the channel that was read from
-	 * @param adcValue		the value read from the channel
+	 * @param channel	the channel that was read from
+	 * @param adcValue	the value read from the channel
 	 */
-	void adc(uint8_t adcChannel, uint16_t adcValue) {
+	void adc(ADCChannel channel, uint16_t adcValue) {
 		if (_dummyRead) {
 // Redo the read since we the ADC reference was changed and the reading may not be accurate
 			_dummyRead = false;
-			_adc->read(adcChannelX, adcReference);
+			_adc->read(ADCChannelX, ADCReference);
 			return;
 		}
 
-		switch (adcChannel) {
-		case adcChannelX:
+		switch (channel) {
+		case ADCChannelX:
 			_sampleReady = false;
-			pushSample(X, adcValue);
-			_adc->read(adcChannelY, adcReference);
+			pushSample(TripleAxisSensorChannel::X, adcValue);
+			_adc->read(ADCChannelY, ADCReference);
 			break;
-		case adcChannelY:
-			pushSample(Y, adcValue);
-			_adc->read(adcChannelZ, adcReference);
+		case ADCChannelY:
+			pushSample(TripleAxisSensorChannel::Y, adcValue);
+			_adc->read(ADCChannelZ, ADCReference);
 			break;
-		case adcChannelZ:
-			pushSample(Z, adcValue);
+		case ADCChannelZ:
+			pushSample(TripleAxisSensorChannel::Z, adcValue);
 			_sampleReady = true;
+			break;
+		default:
 			break;
 		}
 	}

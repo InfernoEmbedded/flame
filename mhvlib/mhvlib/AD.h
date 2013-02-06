@@ -82,7 +82,7 @@ ISR(ADC_vect) { \
 #endif
 
 namespace mhvlib {
-enum class ad_prescaler : uint8_t {
+enum class ADCPrescaler : uint8_t {
 	DIVIDE_BY_2   = 1,
 	DIVIDE_BY_4   = 2,
 	DIVIDE_BY_8   = 3,
@@ -91,17 +91,36 @@ enum class ad_prescaler : uint8_t {
 	DIVIDE_BY_64  = 6,
 	DIVIDE_BY_128 = 7
 };
-typedef enum ad_prescaler AD_PRESCALER;
-INLINE uint8_t operator& (AD_PRESCALER prescaler, uint8_t andedWith) {
+INLINE uint8_t operator& (ADCPrescaler prescaler, uint8_t andedWith) {
 	const uint8_t myPrescaler = static_cast<uint8_t>(prescaler);
-	return(myPrescaler & andedWith);
+	return (myPrescaler & andedWith);
+}
+
+INLINE ADCChannel operator+ (ADCChannel channel, uint8_t increment) {
+	const uint8_t myChannel = static_cast<uint8_t>(channel);
+	return static_cast<ADCChannel>(myChannel + increment);
+}
+
+INLINE uint8_t operator& (ADCChannel channel, uint8_t andedWith) {
+	const uint8_t myChannel = static_cast<uint8_t>(channel);
+	return (myChannel & andedWith);
+}
+
+INLINE uint8_t operator& (ADCReference ref, uint8_t andedWith) {
+	const uint8_t myRef = static_cast<uint8_t>(ref);
+	return (myRef & andedWith);
+}
+
+INLINE uint8_t operator| (ADCReference ref, uint8_t oredWith) {
+	const uint8_t myRef = static_cast<uint8_t>(ref);
+	return (myRef | oredWith);
 }
 
 
-uint16_t ad_busyRead(uint8_t channel, uint8_t reference);
-void ad_startRead(uint8_t channel, uint8_t reference);
-void ad_asyncRead(uint8_t channel, uint8_t reference);
-void ad_setPrescaler(AD_PRESCALER prescaler);
+uint16_t ad_busyRead(ADCChannel channel, ADCReference reference);
+void ad_startRead(ADCChannel channel, ADCReference reference);
+void ad_asyncRead(ADCChannel channel, ADCReference reference);
+void ad_setPrescaler(ADCPrescaler prescaler);
 } // End of namespace mhvlib
 
 #endif // ADC

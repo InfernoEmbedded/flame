@@ -28,7 +28,7 @@
 
 namespace mhvlib {
 
-void ad_startRead(uint8_t channel, uint8_t reference) {
+void ad_startRead(ADCChannel channel, ADCReference reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -39,12 +39,12 @@ void ad_startRead(uint8_t channel, uint8_t reference) {
 	ADCSRA |= _BV(ADSC);
 }
 
-void ad_asyncRead(uint8_t channel, uint8_t reference) {
+void ad_asyncRead(ADCChannel channel, ADCReference reference) {
 	ad_startRead(channel, reference);
 	MHV_AD_ENABLE_INTERRUPT;
 }
 
-uint16_t ad_busyRead(uint8_t channel, uint8_t reference) {
+uint16_t ad_busyRead(ADCChannel channel, ADCReference reference) {
 	ad_startRead(channel, reference);
 
 	while (ADCSRA & _BV(ADSC)) {};
@@ -52,7 +52,7 @@ uint16_t ad_busyRead(uint8_t channel, uint8_t reference) {
 	return ADC;
 }
 
-void ad_setPrescaler(AD_PRESCALER prescaler) {
+void ad_setPrescaler(ADCPrescaler prescaler) {
 	ADCSRA = (ADCSRA & 0xf8) | (prescaler & 0x7);
 }
 

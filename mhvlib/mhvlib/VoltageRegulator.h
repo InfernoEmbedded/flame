@@ -64,11 +64,11 @@ typedef enum vreg_modes VREG_MODE;
  * @param vrefVoltage	the reference voltage value
  * @param vref			the voltage reference
  * @param divider		the value of the feedback resistor divider used, multiplied by 16384 (eg: (16384 * 1/10, or (16384 * R2/(R1 + R2) )
- * @param adcChannel	the ADC channel for feedback
+ * @param ADCChannel	the ADC channel for feedback
  */
 
-template <VREG_MODE mode, uint32_t millivolts, uint32_t vrefMillivolts, uint8_t vref, uint16_t divider,
-	uint8_t adcChannel>
+template <VREG_MODE mode, uint32_t millivolts, uint32_t vrefMillivolts, ADCReference vref, uint16_t divider,
+	ADCChannel adcChannel>
 class VoltageRegulator : public TimerListener {
 private:
 	uint16_t	_targetADC;

@@ -104,7 +104,7 @@ void BestSphereGaussNewtonCalibrator::clearObservationMatrices() {
 	memset(_obsMax, 0, 3 * sizeof(*_obsMax));
 
 	for (uint8_t i = 0; i < 3; ++i) {
-		_obsMin[i] =INT16_MAX;
+		_obsMin[i] = INT16_MAX;
 		_obsMax[i] = INT16_MIN;
 		_mu[i] = 0.0f;
 		_mu2[i] = 0.0f;
@@ -210,7 +210,6 @@ void BestSphereGaussNewtonCalibrator::findDelta(float JtJ[][6], float JtR[]) {
 			JtJ[j][i] = 0.0;
 		}
 	}
-
 }
 
 void BestSphereGaussNewtonCalibrator::calculate() {
@@ -230,14 +229,13 @@ void BestSphereGaussNewtonCalibrator::calculate() {
 		change = JtR[0] * JtR[0] + JtR[1] * JtR[1] + JtR[2] * JtR[2] + JtR[3] * JtR[3] * (_beta[3] * _beta[3])
 				+ JtR[4] * JtR[4] * (_beta[4] * _beta[4]) + JtR[5] * JtR[5] * (_beta[5] * _beta[5]);
 
-		uint8_t i;
 		if (!isnan(change)) {
-			for (i = 0; i < 6; ++i) {
+			for (uint8_t i = 0; i < 6; ++i) {
 				_beta[i] -= JtR[i];
-			}
 
-			if (i >= 3) {
-				_beta[i] = fabs(_beta[i]);
+				if (i >= 3) {
+					_beta[i] = fabs(_beta[i]);
+				}
 			}
 		}
 

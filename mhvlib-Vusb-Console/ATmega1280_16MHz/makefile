@@ -56,10 +56,10 @@ sizedummy \
 all: libmhvlib-Vusb-Console.a secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
-libmhvlib-Vusb-Console.a: $(OBJS) A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a
+libmhvlib-Vusb-Console.a: $(OBJS) A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz/libmhvlib.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR Archiver'
 	avr-ar -r  "libmhvlib-Vusb-Console.a" $(OBJS) $(LIBS)
@@ -87,6 +87,6 @@ secondary-outputs: $(LSS) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a:
+A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz/libmhvlib.a:
 
 -include ../makefile.targets

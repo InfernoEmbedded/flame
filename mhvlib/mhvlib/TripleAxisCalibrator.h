@@ -51,7 +51,7 @@ protected:
 	uint8_t							_goodSamples = 0;
 	PGM_P							_lastMessage = NULL;
 	uint8_t							_samplesToTake = 32; // the number of samples to take at each calibration point
-	uint8_t							_currentSamples;
+	uint8_t							_currentSamples = 0;
 	enum TripleAxisCalibratorState	_state = SETUP;
 	TripleAxisSensor				&_sensor;
 	Device_TX 						&_output;

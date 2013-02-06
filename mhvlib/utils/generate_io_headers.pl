@@ -388,9 +388,9 @@ sub emitADCReference($$) {
 			%refs = (
 				'0X00 << 4' => 'VCC',
 				'0x04 << 4' => 'AREF',
-				'0x08 << 6' => '1V1',
-				'0x09 << 6' => '2V56',
-				'0x0d << 6' => '2V56_AREF',
+				'0x08 << 6' => 'REF1V1',
+				'0x09 << 6' => 'REF2V56',
+				'0x0d << 6' => 'REF2V56_AREF',
 			);
 
 		} ## end when (/attiny(2|4|8)5/)
@@ -398,15 +398,15 @@ sub emitADCReference($$) {
 			%refs = (
 				'0x00 << 6' => 'AREF',
 				'0x01 << 6' => 'AVCC',
-				'0x03 << 6' => '1V1',
+				'0x03 << 6' => 'REF1V1',
 			);
 		} ## end when (/atmega((4|8|16)8P?A?|328P?)/)
 		when (/atmega(640|1280|1281|2560|2561)/) {
 			%refs = (
 				'0x00 << 6' => 'AREF',
 				'0x01 << 6' => 'AVCC',
-				'0x02 << 6' => '1V1',
-				'0x03 << 6' => '2V56',
+				'0x02 << 6' => 'REF1V1',
+				'0x03 << 6' => 'REF2V56',
 			);
 		} ## end when (/atmega(640|1280|1281|2560|2561)/)
 
@@ -421,13 +421,13 @@ sub emitADCReference($$) {
 	}
 
 	print $handle <<"EOF";
-enum mhv_ad_reference {
+enum class ADCReference {
 EOF
 
 	foreach my $value (sort keys %refs) {
 		my $reference = $refs{$value};
 
-		print $handle "\tMHV_AD_REFERENCE_${reference}\t= ($value)";
+		print $handle "\t${reference}\t= ($value)";
 
 		if (0 != --$count) {
 			print $handle ',';
@@ -438,7 +438,6 @@ EOF
 
 	print $handle <<"EOF";
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
 
 EOF
 
@@ -570,13 +569,15 @@ sub emitADCChannels($$) {
 	}
 
 	print $handle <<"EOF";
-enum mhv_ad_channel {
+enum class ADCChannel {
 EOF
+
+	print $handle "\tUNDEFINED   = 0xff,\n";
 
 	foreach my $value (sort keys %channels) {
 		my $channel = $channels{$value};
 
-		print $handle "\tMHV_AD_CHANNEL_${channel}   = $value";
+		print $handle "\tCHANNEL_${channel}   = $value";
 
 		if (0 != --$count) {
 			print $handle ',';
@@ -587,8 +588,6 @@ EOF
 
 	print $handle <<"EOF";
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
-
 
 EOF
 

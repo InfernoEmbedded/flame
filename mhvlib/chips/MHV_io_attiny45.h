@@ -53,34 +53,32 @@
 
 
 
-enum mhv_ad_reference {
-	MHV_AD_REFERENCE_VCC	= (0X00 << 4),
-	MHV_AD_REFERENCE_AREF	= (0x04 << 4),
-	MHV_AD_REFERENCE_1V1	= (0x08 << 6),
-	MHV_AD_REFERENCE_2V56	= (0x09 << 6),
-	MHV_AD_REFERENCE_2V56_AREF	= (0x0d << 6)
+enum class ADCReference {
+	VCC	= (0X00 << 4),
+	AREF	= (0x04 << 4),
+	REF1V1	= (0x08 << 6),
+	REF2V56	= (0x09 << 6),
+	REF2V56_AREF	= (0x0d << 6)
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
 
-enum mhv_ad_channel {
-	MHV_AD_CHANNEL_0   = 0x00,
-	MHV_AD_CHANNEL_1   = 0x01,
-	MHV_AD_CHANNEL_2   = 0x02,
-	MHV_AD_CHANNEL_3   = 0x03,
-	MHV_AD_CHANNEL_2_X1_2   = 0x04,
-	MHV_AD_CHANNEL_2_X20_2   = 0x05,
-	MHV_AD_CHANNEL_2_X1_3   = 0x06,
-	MHV_AD_CHANNEL_2_X20_3   = 0x07,
-	MHV_AD_CHANNEL_0_X1_0   = 0x08,
-	MHV_AD_CHANNEL_0_X20_0   = 0x09,
-	MHV_AD_CHANNEL_0_X1_1   = 0x0a,
-	MHV_AD_CHANNEL_0_X20_1   = 0x0b,
-	MHV_AD_CHANNEL_V_BANDGAP   = 0x0c,
-	MHV_AD_CHANNEL_0V   = 0x0d,
-	MHV_AD_CHANNEL_TEMPERATURE   = 0x0f
+enum class ADCChannel {
+	UNDEFINED   = 0xff,
+	CHANNEL_0   = 0x00,
+	CHANNEL_1   = 0x01,
+	CHANNEL_2   = 0x02,
+	CHANNEL_3   = 0x03,
+	CHANNEL_2_X1_2   = 0x04,
+	CHANNEL_2_X20_2   = 0x05,
+	CHANNEL_2_X1_3   = 0x06,
+	CHANNEL_2_X20_3   = 0x07,
+	CHANNEL_0_X1_0   = 0x08,
+	CHANNEL_0_X20_0   = 0x09,
+	CHANNEL_0_X1_1   = 0x0a,
+	CHANNEL_0_X20_1   = 0x0b,
+	CHANNEL_V_BANDGAP   = 0x0c,
+	CHANNEL_0V   = 0x0d,
+	CHANNEL_TEMPERATURE   = 0x0f
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
-
 
 //                   Dir,   Output, Input,  Bit,PCINT
 #define MHV_PIN_B0	0x37,   0x38,   0x36,   0,  0

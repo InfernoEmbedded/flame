@@ -64,7 +64,7 @@ RTCImplementation<ALARM_COUNT> rtc;
 // The number of output strings to buffer for async transmission
 #define TX_BUFFERS	5
 
-// The USB Keyboard driver
+// The USB Console driver
 VusbConsole<TX_BUFFERS> console(rtc);
 
 class WriteString : public TimerListener {

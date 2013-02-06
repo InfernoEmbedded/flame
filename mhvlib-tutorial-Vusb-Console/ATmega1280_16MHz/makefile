@@ -61,11 +61,11 @@ sizedummy \
 all: mhvlib-tutorial-Vusb-Console.elf secondary-outputs
 
 dependents:
-	-cd A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz && $(MAKE) clean all
+	-cd A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz && $(MAKE) clean all
 	-cd A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz && $(MAKE) clean all
 
 # Tool invocations
-mhvlib-tutorial-Vusb-Console.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
+mhvlib-tutorial-Vusb-Console.elf: $(OBJS) $(USER_OBJS) A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz/libmhvlib.a A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
 	avr-g++ -Wl,-Map,mhvlib-tutorial-Vusb-Console.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib\mhvlib/ATmega1280_16MHz" -L"A:\eclipse\mhvlib\mhvlib-Vusb-Console/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-Vusb-Console.elf" $(OBJS) $(USER_OBJS) $(LIBS)
@@ -105,7 +105,7 @@ secondary-outputs: $(LSS) $(FLASH_IMAGE) $(EEPROM_IMAGE) $(SIZEDUMMY)
 
 .PHONY: all clean dependents
 .SECONDARY:
-A:/eclipse/mhvlib/mhvlib/ATmega328P_20MHz/libmhvlib.a:
+A:/eclipse/mhvlib/mhvlib/ATmega1280_16MHz/libmhvlib.a:
 A:/eclipse/mhvlib/mhvlib-Vusb-Keyboard/ATmega1280_16MHz/libmhvlib-Vusb-Keyboard.a:
 
 -include ../makefile.targets

@@ -37,8 +37,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <boards/Arduino.h>
-
 namespace mhvlib {
 
 class Device_RX;

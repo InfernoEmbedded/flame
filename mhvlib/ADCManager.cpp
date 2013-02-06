@@ -35,13 +35,13 @@ namespace mhvlib {
  * @param eventCount	the maximum number of events to handle
  * @param prescaler		the prescaler to run the ADC at
  */
-ADCManager::ADCManager(EVENT_ADC *eventsBuffer, uint8_t eventCount, AD_PRESCALER prescaler) :
-		_adcChannel(-1) {
+ADCManager::ADCManager(EVENT_ADC *eventsBuffer, uint8_t eventCount, ADCPrescaler prescaler) :
+		_channel(ADCChannel::UNDEFINED) {
 	_adcs = eventsBuffer;
 	_eventCount = eventCount;
 
 	for (uint8_t i = 0; i < _eventCount; i++) {
-		_adcs[i].channel = -1;
+		_adcs[i].channel = ADCChannel::UNDEFINED;
 		_adcs[i].listener = NULL;
 	}
 
@@ -54,7 +54,7 @@ ADCManager::ADCManager(EVENT_ADC *eventsBuffer, uint8_t eventCount, AD_PRESCALER
  */
 void ADCManager::adc() {
 	_adcValue = ADC;
-	_adcChannel = MHV_AD_CHANNEL;
+	_channel = (ADCChannel)MHV_AD_CHANNEL;
 
 	MHV_AD_DISABLE_INTERRUPT;
 }
@@ -65,9 +65,9 @@ void ADCManager::adc() {
  * @param	channel		the ADC channel
  * @param	listener	an ADCListener to notify when an ADC reading has been completed
  */
-void ADCManager::registerListener(int8_t channel, ADCListener &listener) {
+void ADCManager::registerListener(ADCChannel channel, ADCListener &listener) {
 	for (uint8_t i = 0; i < _eventCount; i++) {
-		if (_adcs[i].channel == -1) {
+		if (_adcs[i].channel == ADCChannel::UNDEFINED) {
 			_adcs[i].channel = channel;
 			_adcs[i].listener = &listener;
 			break;
@@ -81,9 +81,9 @@ void ADCManager::registerListener(int8_t channel, ADCListener &listener) {
  * @param	channel		the ADC channel
  * @param	listener	an ADCListener to notify when an ADC reading has been completed
  */
-void ADCManager::registerListener(int8_t channel, ADCListener *listener) {
+void ADCManager::registerListener(ADCChannel channel, ADCListener *listener) {
 	for (uint8_t i = 0; i < _eventCount; i++) {
-		if (_adcs[i].channel == -1) {
+		if (_adcs[i].channel == ADCChannel::UNDEFINED) {
 			_adcs[i].channel = channel;
 			_adcs[i].listener = listener;
 			break;
@@ -96,10 +96,10 @@ void ADCManager::registerListener(int8_t channel, ADCListener *listener) {
  * Deregister interest for an ADC channel
  * @param	channel		the ADC channel
  */
-void ADCManager::deregisterListener(int8_t channel) {
+void ADCManager::deregisterListener(ADCChannel channel) {
 	for (uint8_t i = 0; i < _eventCount; i++) {
 		if (_adcs[i].channel == channel) {
-			_adcs[i].channel = -1;
+			_adcs[i].channel = ADCChannel::UNDEFINED;
 			break;
 		}
 	}
@@ -111,7 +111,7 @@ void ADCManager::deregisterListener(int8_t channel) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-int16_t ADCManager::busyRead(int8_t channel, uint8_t reference) {
+int16_t ADCManager::busyRead(ADCChannel channel, ADCReference reference) {
 	ADMUX = reference | (channel & 0x0F);
 
 #ifdef MUX5
@@ -134,8 +134,8 @@ int16_t ADCManager::busyRead(int8_t channel, uint8_t reference) {
  * @param	channel		the channel to read
  * @param	reference	the voltage reference to use
  */
-void ADCManager::read(int8_t channel, uint8_t reference) {
-	ADMUX = reference | (channel & 0x0F);
+void ADCManager::read(ADCChannel channel, ADCReference reference) {
+	ADMUX = (uint8_t)reference | ((uint8_t)channel & 0x0F);
 
 #ifdef MUX5
 	ADCSRB = (ADCSRB & ~_BV(MUX5)) | ((channel & _BV(5) >> (5-MUX5)));
@@ -152,7 +152,7 @@ void ADCManager::read(int8_t channel, uint8_t reference) {
  * Set the ADC clock prescaler
  * @param	prescaler	the prescaler to use
  */
-void ADCManager::setPrescaler(AD_PRESCALER prescaler) {
+void ADCManager::setPrescaler(ADCPrescaler prescaler) {
 	ad_setPrescaler(prescaler);
 }
 
@@ -163,10 +163,10 @@ void ADCManager::setPrescaler(AD_PRESCALER prescaler) {
 void ADCManager::handleEvents() {
 	uint8_t i;
 
-	if (_adcChannel != -1) {
+	if (_channel != ADCChannel::UNDEFINED) {
 		for (i = 0; i < _eventCount; i++) {
-			if (_adcs[i].channel == _adcChannel) {
-				_adcChannel = -1;
+			if (_adcs[i].channel == _channel) {
+				_channel = ADCChannel::UNDEFINED;
 				_adcs[i].listener->adc(_adcs[i].channel, _adcValue);
 				break;
 			}

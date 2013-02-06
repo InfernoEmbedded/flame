@@ -58,28 +58,26 @@
 #define MHV_USART0_INTERRUPTS	USART_RX_vect, USART_TX_vect
 
 
-enum mhv_ad_reference {
-	MHV_AD_REFERENCE_AREF	= (0x00 << 6),
-	MHV_AD_REFERENCE_AVCC	= (0x01 << 6),
-	MHV_AD_REFERENCE_1V1	= (0x03 << 6)
+enum class ADCReference {
+	AREF	= (0x00 << 6),
+	AVCC	= (0x01 << 6),
+	REF1V1	= (0x03 << 6)
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
 
-enum mhv_ad_channel {
-	MHV_AD_CHANNEL_0   = 0x00,
-	MHV_AD_CHANNEL_1   = 0x01,
-	MHV_AD_CHANNEL_2   = 0x02,
-	MHV_AD_CHANNEL_3   = 0x03,
-	MHV_AD_CHANNEL_4   = 0x04,
-	MHV_AD_CHANNEL_5   = 0x05,
-	MHV_AD_CHANNEL_6   = 0x06,
-	MHV_AD_CHANNEL_7   = 0x07,
-	MHV_AD_CHANNEL_TEMPERATURE   = 0x08,
-	MHV_AD_CHANNEL_1V1   = 0xfe,
-	MHV_AD_CHANNEL_0V   = 0xff
+enum class ADCChannel {
+	UNDEFINED   = 0xff,
+	CHANNEL_0   = 0x00,
+	CHANNEL_1   = 0x01,
+	CHANNEL_2   = 0x02,
+	CHANNEL_3   = 0x03,
+	CHANNEL_4   = 0x04,
+	CHANNEL_5   = 0x05,
+	CHANNEL_6   = 0x06,
+	CHANNEL_7   = 0x07,
+	CHANNEL_TEMPERATURE   = 0x08,
+	CHANNEL_1V1   = 0xfe,
+	CHANNEL_0V   = 0xff
 };
-typedef enum mhv_ad_reference MHV_AD_REFERENCE;
-
 
 //                   Dir,   Output, Input,  Bit,PCINT
 #define MHV_PIN_B0	0x24,   0x25,   0x23,   0,  0

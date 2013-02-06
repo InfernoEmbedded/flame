@@ -78,7 +78,7 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
 #define MAX_ADC_CHANNELS	3
 
 // The ADC manager
-MHV_ADC_CREATE(adc, MAX_ADC_CHANNELS, ad_prescaler::DIVIDE_BY_128);
+MHV_ADC_CREATE(adc, MAX_ADC_CHANNELS, ADCPrescaler::DIVIDE_BY_128);
 
 class OncePerSecond: public TimerListener {
 	/**
@@ -87,7 +87,7 @@ class OncePerSecond: public TimerListener {
 	 * Execution will continue in the ADC listener assigned to the channel
 	 */
 	void alarm() {
-		adc.read(0, MHV_AD_REFERENCE_AVCC);
+		adc.read(ADCChannel::CHANNEL_0, ADCReference::AVCC);
 	}
 };
 
@@ -96,19 +96,19 @@ OncePerSecond oncePerSecond;
 class PrintADC : public ADCListener {
 	/**
 	 * Called when the ADC has a value for us
-	 * @param adcChannel	the channel the value was read from
+	 * @param ADCChannel	the channel the value was read from
 	 * @param adcValue		the value from the ADC
 	 */
-	void adc(uint8_t adcChannel, uint16_t adcValue) {
+	void adc(ADCChannel channel, uint16_t adcValue) {
 		serial.write_P(PSTR("ADC Channel "));
-		serial.write(adcChannel);
+		serial.write((uint8_t)channel);
 		serial.write_P(PSTR(" = "));
 		serial.write(adcValue);
 		serial.write_P(PSTR("\r\n"));
 
 // Schedule a read of the next channel
-		if (adcChannel < MAX_ADC_CHANNELS - 1) {
-			::adc.read(adcChannel + 1, MHV_AD_REFERENCE_AVCC);
+		if (channel < ADCChannel::CHANNEL_3) {
+			::adc.read(channel + 1, ADCReference::AVCC);
 		}
 	}
 };
@@ -133,9 +133,9 @@ MAIN {
 	// Start ticking the RTC through its associated timer
 	tickTimer.enable();
 
-	adc.registerListener(0, printADC);
-	adc.registerListener(1, printADC);
-	adc.registerListener(2, printADC);
+	adc.registerListener(ADCChannel::CHANNEL_0, printADC);
+	adc.registerListener(ADCChannel::CHANNEL_1, printADC);
+	adc.registerListener(ADCChannel::CHANNEL_2, printADC);
 
 	serial.write_P(PSTR("Setting initial alarm\r\n"));
 	// Insert the initial alarm

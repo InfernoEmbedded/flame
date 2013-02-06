@@ -64,7 +64,7 @@ all: mhvlib-tutorial-EEPROM.elf secondary-outputs
 mhvlib-tutorial-EEPROM.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C++ Linker'
-	avr-g++ -Wl,-Map,mhvlib-tutorial-EEPROM.map,--cref -Wl,--gc-sections -L"A:\eclipse\mhvlib\mhvlib/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-EEPROM.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-g++ -Wl,-Map,mhvlib-tutorial-EEPROM.map,--cref -Wl,--gc-sections -L"C:\workspace\mhvlib\mhvlib/ATmega1280_16MHz" -mmcu=atmega1280 -o "mhvlib-tutorial-EEPROM.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

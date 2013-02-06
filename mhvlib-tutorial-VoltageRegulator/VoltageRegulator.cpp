@@ -75,9 +75,9 @@ TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16> vOutTimer;
 #define R2	800.00
 
 // Which ADC channel to use
-#define ADC_CHANNEL	MHV_AD_CHANNEL_0
+#define ADC_CHANNEL	ADCChannel::CHANNEL_0
 
-VoltageRegulator<VREG_MODE::BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, MHV_AD_REFERENCE_1V1,
+VoltageRegulator<VREG_MODE::BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, ADCReference::REF1V1,
 	MHV_VREG_DIVIDER(R2/(R2+R1)), ADC_CHANNEL> regulator(vOutTimer);
 
 MAIN {
@@ -89,7 +89,7 @@ MAIN {
 // Enable interrupts
 	sei();
 
-	ad_setPrescaler(AD_PRESCALER::DIVIDE_BY_128);
+	ad_setPrescaler(ADCPrescaler::DIVIDE_BY_128);
 
 // Set the pin the transistor is connected to to output
 	setOutput(OUTPUT_PIN);

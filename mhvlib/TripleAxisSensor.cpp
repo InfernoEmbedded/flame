@@ -37,12 +37,12 @@ namespace mhvlib {
  * @param value		the updated value
  */
 void TripleAxisSensor::pushSample(TripleAxisSensorChannel which, int16_t value) {
-	if (MAGNITUDE == which) {
+	if (TripleAxisSensorChannel::MAGNITUDE == which) {
 		return;
 	}
 
-	_raw.value[which] = value;
-	_valueTemp.value[which] = (value - _offsets.value[which]) / _scaling.value[which];
+	_raw.value[(uint8_t)which] = value;
+	_valueTemp.value[(uint8_t)which] = (value - _offsets.value[(uint8_t)which]) / _scaling.value[(uint8_t)which];
 }
 
 /**
@@ -258,12 +258,12 @@ void TripleAxisSensor::handleEvents() {
  * @param limit	the value of the limit in Gs
  */
 void TripleAxisSensor::setLimit(TripleAxisSensorChannel which, float limit) {
-	if (MAGNITUDE == which) {
+	if (TripleAxisSensorChannel::MAGNITUDE == which) {
 		_limitMagnitudeSquared = limit * limit;
 		return;
 	}
 
-	_limit.value[which] = limit * limit;
+	_limit.value[(uint8_t)which] = limit * limit;
 }
 
 /**

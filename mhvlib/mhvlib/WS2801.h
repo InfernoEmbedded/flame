@@ -31,6 +31,7 @@
 #include <mhvlib/RGB.h>
 #include <mhvlib/GammaCorrect.h>
 #include <mhvlib/Shifter.h>
+#include <string.h>
 
 namespace mhvlib {
 

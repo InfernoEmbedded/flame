@@ -50,18 +50,20 @@ ISR(ADC_vect) { \
 		ADCManagerImplementation<_mhvMaxChannels> _mhvObjectName(_prescaler); \
 		MHV_ADC_ASSIGN_INTERRUPT(_mhvObjectName);
 
+
+
 class ADCListener {
 public:
 	/**
 	 * Handle incoming ADC reads
-	 * @param adcChannel	the channel that was read from
-	 * @param adcValue		the value read from the channel
+	 * @param channel	the channel that was read from
+	 * @param value		the value read from the channel
 	 */
-	virtual void adc(uint8_t adcChannel, uint16_t adcValue) =0;
+	virtual void adc(ADCChannel channel, uint16_t value) =0;
 };
 
 struct eventADC {
-	int8_t channel;
+	ADCChannel channel;
 	ADCListener *listener;
 };
 typedef struct eventADC EVENT_ADC;
@@ -70,19 +72,19 @@ typedef struct eventADC EVENT_ADC;
 class ADCManager {
 protected:
 	volatile uint16_t	_adcValue;
-	volatile int8_t		_adcChannel;
+	volatile ADCChannel	_channel;
 	EVENT_ADC 			*_adcs;
 	uint8_t				_eventCount;
 
 public:
-	ADCManager(EVENT_ADC *adcs, uint8_t adcCount, AD_PRESCALER prescaler);
+	ADCManager(EVENT_ADC *adcs, uint8_t adcCount, ADCPrescaler prescaler);
 	void adc();
-	void registerListener(int8_t channel, ADCListener &listener);
-	void registerListener(int8_t channel, ADCListener *listener);
-	void deregisterListener(int8_t channel);
-	int16_t busyRead(int8_t channel, uint8_t reference);
-	void read(int8_t channel, uint8_t reference);
-	void setPrescaler(AD_PRESCALER prescaler);
+	void registerListener(ADCChannel channel, ADCListener &listener);
+	void registerListener(ADCChannel channel, ADCListener *listener);
+	void deregisterListener(ADCChannel channel);
+	int16_t busyRead(ADCChannel channel, ADCReference reference);
+	void read(ADCChannel channel, ADCReference reference);
+	void setPrescaler(ADCPrescaler prescaler);
 	void handleEvents();
 }; // class ADCManager
 
@@ -101,7 +103,7 @@ public:
 	 * @param prescaler	the prescaler to run the ADC at
 	 */
 
-	ADCManagerImplementation(AD_PRESCALER prescaler) :
+	ADCManagerImplementation(ADCPrescaler prescaler) :
 			ADCManager(_myAdcs, events, prescaler) {}
 }; // class ADCManager
 

@@ -25,7 +25,6 @@
  */
 
 #include <mhvlib/Device_TX.h>
-#include <boards/Arduino.h>
 
 namespace mhvlib {
 

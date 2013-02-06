@@ -41,7 +41,7 @@ namespace mhvlib {
 // Forward declaration of Sensor
 class TripleAxisSensor;
 
-enum TripleAxisSensorChannel {
+enum class TripleAxisSensorChannel {
 	X = 0,
 	Y = 1,
 	Z = 2,

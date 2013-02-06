@@ -91,11 +91,11 @@ MHV_EEPROM_CREATE(eeprom);
 // One channel per axis
 #define MAX_ADC_CHANNELS	3
 // The ADC manager
-MHV_ADC_CREATE(adc, MAX_ADC_CHANNELS, ad_prescaler::DIVIDE_BY_128);
+MHV_ADC_CREATE(adc, MAX_ADC_CHANNELS, ADCPrescaler::DIVIDE_BY_128);
 
 // Create a new accelerometer
-AccelerometerAnalog<MHV_AD_CHANNEL_4, MHV_AD_CHANNEL_3,
-	MHV_AD_CHANNEL_2, MHV_AD_REFERENCE_AVCC> accelerometer(adc);
+AccelerometerAnalog<ADCChannel::CHANNEL_4, ADCChannel::CHANNEL_3,
+	ADCChannel::CHANNEL_2, ADCReference::AVCC> accelerometer(adc);
 
 class AccelerometerListener : public TripleAxisSensorListener {
 	/**
@@ -123,22 +123,22 @@ class AccelerometerListener : public TripleAxisSensorListener {
 		float val;
 
 		switch (which) {
-		case X:
+		case TripleAxisSensorChannel::X:
 			channel = "X";
 			val = value.axis.x;
 			break;
 
-		case Y:
+		case TripleAxisSensorChannel::Y:
 			channel = "Y";
 			val = value.axis.y;
 			break;
 
-		case Z:
+		case TripleAxisSensorChannel::Z:
 			channel = "Z";
 			val = value.axis.z;
 			break;
 
-		case MAGNITUDE:
+		case TripleAxisSensorChannel::MAGNITUDE:
 			channel = "Magnitude";
 			val = sensor.magnitude();
 			break;
@@ -206,10 +206,10 @@ MAIN {
 	serial.write_P(PSTR("Grabbing accelerometer data at 1Hz\r\n"));
 	accelerometer.registerListener(listener);
 
-	accelerometer.setLimit(X, 1.5f);
-	accelerometer.setLimit(Y, 1.5f);
-	accelerometer.setLimit(Z, 1.5f);
-	accelerometer.setLimit(MAGNITUDE, 2.0f);
+	accelerometer.setLimit(TripleAxisSensorChannel::X, 1.5f);
+	accelerometer.setLimit(TripleAxisSensorChannel::Y, 1.5f);
+	accelerometer.setLimit(TripleAxisSensorChannel::Z, 1.5f);
+	accelerometer.setLimit(TripleAxisSensorChannel::MAGNITUDE, 2.0f);
 
 
 	// Insert the initial alarm, repeat 10 times per second
