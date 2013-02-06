@@ -177,7 +177,7 @@ MAIN {
 	// Start ticking the RTC through its associated timer
 	tickTimer.enable();
 
-	if (accelerometer.loadCalibration(eeprom)) {
+	if (accelerometer.loadCalibration(eeprom) || 001) {
 // No calibration data found, better calibrate the sensor
 		serial.write_P(PSTR("Calibrating accelerometer\r\n"));
 		BestSphereGaussNewtonCalibrator calibrator(accelerometer, serial);
