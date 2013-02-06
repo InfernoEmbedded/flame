@@ -26,7 +26,7 @@
 
 #include <stddef.h>
 #include <mhvlib/EEPROM.h>
-#include <util/CRC16.h>
+#include <util/crc16.h>
 
 namespace mhvlib {
 
