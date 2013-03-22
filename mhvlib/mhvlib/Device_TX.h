@@ -46,7 +46,7 @@ do {\
 
 namespace mhvlib {
 
-enum AddressType {
+enum class AddressType {
 	NORMAL,
 #if 0 && defined __FLASH
 	FLASH,
@@ -76,7 +76,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
-		_type(NORMAL),
+		_type(AddressType::NORMAL),
 		_isString(false) {}
 
 	/**
@@ -88,7 +88,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
-		_type(NORMAL),
+		_type(AddressType::NORMAL),
 		_isString(true) {}
 
 	/**
@@ -101,7 +101,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(completeFunction),
-		_type(NORMAL),
+		_type(AddressType::NORMAL),
 		_isString(true) {}
 
 	/**
@@ -114,7 +114,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
-		_type(PROG_MEM),
+		_type(AddressType::PROG_MEM),
 		_isString(true) {}
 
 #ifdef UNSUPPORTED
@@ -128,7 +128,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
-		_type(FLASH),
+		_type(AddressType::FLASH),
 		_isString(true) {}
 #endif
 
@@ -142,7 +142,7 @@ public:
 		_offset(0),
 		_length(0),
 		_completeFunction(NULL),
-		_type(MEMX),
+		_type(AddressType::MEMX),
 		_isString(true) {}
 #endif
 #endif
@@ -157,7 +157,7 @@ public:
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
-		_type(NORMAL),
+		_type(AddressType::NORMAL),
 		_isString(false) {}
 
 	/**
@@ -171,7 +171,7 @@ public:
 		_offset(0),
 		_length(length),
 		_completeFunction(completeFunction),
-		_type(NORMAL),
+		_type(AddressType::NORMAL),
 		_isString(false) {}
 
 
@@ -186,7 +186,7 @@ public:
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
-		_type(PROG_MEM),
+		_type(AddressType::PROG_MEM),
 		_isString(false) {}
 
 #ifdef UNSUPPORTED
@@ -201,7 +201,7 @@ public:
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
-		_type(FLASH),
+		_type(AddressType::FLASH),
 		_isString(false) {}
 #endif
 
@@ -216,7 +216,7 @@ public:
 		_offset(0),
 		_length(length),
 		_completeFunction(NULL),
-		_type(MEMX),
+		_type(AddressType::MEMX),
 		_isString(false) {}
 #endif
 #endif
@@ -257,21 +257,21 @@ public:
 		}
 
 		switch (_type) {
-			case NORMAL:
+			case AddressType::NORMAL:
 				c = *((const char *)_data + offset);
 				break;
-			case PROG_MEM:
+			case AddressType::PROG_MEM:
 				c = pgm_read_byte((PGM_P)_data + offset);
 				break;
 #ifdef UNSUPPORTED
 #ifdef __FLASH
-			case FLASH:
+			case AddressType::FLASH:
 				const __flash char *flash = _data + offset;
 				c = *flash;
 				break;
 #endif
 #ifdef __MEMX
-			case MEMX:
+			case AddressType::MEMX:
 				const __memx char *memx = _data + offset;
 				c = *memx;
 				break;
@@ -339,8 +339,8 @@ public:
 		int c = peek(_offset);
 		snprintf(buf, bufLength, "\r\n%s: Data=%p offset=%i length=%i completeFunc=%p type=%s isString=%i char=%d  (%c)\r\n",
 				func, _data, _offset, _length, _completeFunction,
-				(_type == PROG_MEM ? "PROG_MEM" :
-						(_type == NORMAL ? "NORMAL" : "UNKNOWN")),
+				(_type == AddressType::PROG_MEM ? "PROG_MEM" :
+						(_type == AddressType::NORMAL ? "NORMAL" : "UNKNOWN")),
 				_isString, c, ((c >= 32 && c < 127) ? c : '?'));
 	}
 };

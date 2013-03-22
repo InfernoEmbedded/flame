@@ -69,8 +69,6 @@ enum class StepperMode : uint8_t {
 	FULL,
 	HALF
 };
-typedef enum StepperMode STEPPER_MODE;
-
 
 #define PHASE_MASK (0x0f << phaseAPin)
 
@@ -88,7 +86,7 @@ typedef enum StepperMode STEPPER_MODE;
  * @tparam	mode	the mode of the stepper driver
  * @tparam	phaseA	the pin for the A phase
  */
-template <STEPPER_MODE mode, MHV_DECLARE_PIN(phaseA)>
+template <StepperMode mode, MHV_DECLARE_PIN(phaseA)>
 class StepperMotorUnipolar: public StepperMotor {
 private:
 	int8_t				_state;
@@ -102,25 +100,25 @@ private:
 
 #ifdef __FLASH
 		switch (mode) {
-		case STEPPER_MODE::WAVE:
+		case StepperMode::WAVE:
 			coilPattern = wavedrive[_state];
 			break;
-		case STEPPER_MODE::FULL:
+		case StepperMode::FULL:
 			coilPattern = fulldrive[_state];
 			break;
-		case STEPPER_MODE::HALF:
+		case StepperMode::HALF:
 			coilPattern = halfdrive[_state];
 			break;
 		}
 #else
 		switch (mode) {
-		case STEPPER_MODE::WAVE:
+		case StepperMode::WAVE:
 			coilPattern = pgm_read_byte(wavedrive + _state);
 			break;
-		case STEPPER_MODE::FULL:
+		case StepperMode::FULL:
 			coilPattern = pgm_read_byte(fulldrive + _state);
 			break;
-		case STEPPER_MODE::HALF:
+		case StepperMode::HALF:
 			coilPattern = pgm_read_byte(halfdrive + _state);
 			break;
 		}
@@ -139,7 +137,7 @@ public:
 	StepperMotorUnipolar(RTC &rtc) :
 			StepperMotor(rtc),
 			_state(0),
-			_steps((STEPPER_MODE::HALF == mode) ? 8 : 4) {
+			_steps((StepperMode::HALF == mode) ? 8 : 4) {
 		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 0, phaseAPinchangeInterrupt);
 		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 1, phaseAPinchangeInterrupt);
 		setOutput(phaseADir, phaseAOut, phaseAIn, phaseAPin + 2, phaseAPinchangeInterrupt);

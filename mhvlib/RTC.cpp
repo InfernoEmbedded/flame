@@ -165,8 +165,8 @@ const uint8_t mhv_daysInMonthArray[] PROGMEM = {
  * @param year the year
  * @return the number of days
  */
-uint8_t CONST daysInMonth(MONTH month, uint16_t year) {
-	if (MONTH::FEBRUARY == month && isLeapYear(year)) {
+uint8_t CONST daysInMonth(Month month, uint16_t year) {
+	if (Month::FEBRUARY == month && isLeapYear(year)) {
 		return 29;
 	}
 

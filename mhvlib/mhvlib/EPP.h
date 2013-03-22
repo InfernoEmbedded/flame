@@ -36,16 +36,15 @@
 
 namespace mhvlib {
 
-enum class epp_mode : uint8_t {
+enum class EPPMode : uint8_t {
 	INTERRUPT,
 	POLLED
 };
-typedef enum epp_mode EPP_MODE;
 
 class EPP {
 private:
 		uint8_t				_address;
-		EPP_MODE			_mode;
+		EPPMode				_mode;
 
 		volatile uint8_t	*_dataDir;
 		volatile uint8_t	*_dataInput;
@@ -58,7 +57,7 @@ private:
 		volatile uint8_t	*_controlOutput;
 
 public:
-	EPP(EPP_MODE mode,
+	EPP(EPPMode mode,
 			MHV_DECLARE_PIN(data),
 			MHV_DECLARE_PIN(control));
 	void interruptReset();

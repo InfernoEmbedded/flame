@@ -35,20 +35,18 @@
 
 namespace mhvlib {
 
-enum class ht1632_command : uint8_t {
+enum class HT1632Command : uint8_t {
 	READ	=	0b110,
 	WRITE	=	0b101,
 	CMD		=	0b100
 };
-typedef enum ht1632_command HT1632_COMMAND;
 
-enum class ht1632_mode : uint8_t {
+enum class HT1632Mode : uint8_t {
 	NMOS_32x8	=	0b00,
 	NMOS_24x16	=	0b01,
 	PMOS_32x8	=	0b10,
 	PMOS_24x16	=	0b11
 };
-typedef ht1632_mode HT1632_MODE;
 
 /**
  * Create a new HT1632 driver to control an array of displays
@@ -56,7 +54,7 @@ typedef ht1632_mode HT1632_MODE;
  * @param	__mhvObjectName			the variable name of the object
  * @param	__mhvClockPin			an MHV_PIN macro for the clock line
  * @param	__mhvDataPin			an MHV_PIN macro for the data line
- * @param	__mhvMode				the MHV_HT1632_MODE of the displays
+ * @param	__mhvMode				the MHV_HT1632Mode of the displays
  * @param	__mhvDisplayBytes		the number of bytes in a single display
  * @param	__mhvArrayX				the number of displays in the X axis
  * @param	__mhvArrayY				the number of displays in the Y axis
@@ -77,18 +75,18 @@ typedef ht1632_mode HT1632_MODE;
  * @tparam	arrayY			the height of the array in number of displays
  * @tparam	txBuffers		the number of output buffers
  */
-#define MODULE_X ((mode == HT1632_MODE::NMOS_32x8 || mode == HT1632_MODE::PMOS_32x8) ? 32 : 24)
-#define MODULE_Y ((mode == HT1632_MODE::NMOS_32x8 || mode == HT1632_MODE::PMOS_32x8) ? 8 : 16)
+#define MODULE_X ((mode == HT1632Mode::NMOS_32x8 || mode == HT1632Mode::PMOS_32x8) ? 32 : 24)
+#define MODULE_Y ((mode == HT1632Mode::NMOS_32x8 || mode == HT1632Mode::PMOS_32x8) ? 8 : 16)
 #define DISPLAY_X (arrayX * MODULE_X)
 #define DISPLAY_Y (arrayY * MODULE_Y)
-template <MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), HT1632_MODE mode,
+template <MHV_DECLARE_PIN(clock), MHV_DECLARE_PIN(data), HT1632Mode mode,
 		uint8_t arrayX, uint8_t arrayY, uint8_t txBuffers>
 class Display_Holtek_HT1632 : public Display_Monochrome<DISPLAY_Y, DISPLAY_X, txBuffers> {
 private:
 	ShifterImplementation<MHV_PIN_PARMS(clock), MHV_PIN_PARMS(data)>
 							_shifter;
 	Display_Selector	&_selector;
-#define DISPLAY_BYTES ((mode == HT1632_MODE::NMOS_32x8 || mode == HT1632_MODE::PMOS_32x8) ? 32 : 48)
+#define DISPLAY_BYTES ((mode == HT1632Mode::NMOS_32x8 || mode == HT1632Mode::PMOS_32x8) ? 32 : 48)
 	uint8_t					_frameBuffer[arrayX * arrayY * DISPLAY_BYTES];
 
 	/**
@@ -97,7 +95,7 @@ private:
 	 * @param moduleY	the module to write to
 	 * @param command	the command
 	 */
-	void sendCommand(uint8_t moduleX, uint8_t moduleY, HT1632_COMMAND command) {
+	void sendCommand(uint8_t moduleX, uint8_t moduleY, HT1632Command command) {
 		_selector.select(moduleX, moduleY, 1);
 		_shifter.shiftOut((uint8_t)command, 3);
 	}
@@ -117,7 +115,7 @@ private:
 	 * @param moduleY	the module to write to
 	 */
 	void outputStart(uint8_t moduleX, uint8_t moduleY) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::WRITE);
+		sendCommand(moduleX, moduleY, HT1632Command::WRITE);
 		_shifter.shiftOut((uint8_t)0b0, (uint8_t)7);
 	}
 
@@ -126,7 +124,7 @@ private:
 	 * @param module the module
 	 */
 	void master(uint8_t moduleX, uint8_t moduleY) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b00010100);
 		_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
 		commandComplete(moduleX, moduleY);
@@ -137,7 +135,7 @@ private:
 	 * @param module the module
 	 */
 	void rcMaster(uint8_t moduleX, uint8_t moduleY) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b00011000);
 		_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
 		commandComplete(moduleX, moduleY);
@@ -148,7 +146,7 @@ private:
 	 * @param module the module
 	 */
 	void slave(uint8_t moduleX, uint8_t moduleY) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b00010000);
 		_shifter.shiftOut((uint8_t)0b0, (uint8_t)1);
 		commandComplete(moduleX, moduleY);
@@ -161,7 +159,7 @@ private:
 	 * @param moduleY	the module
 	 */
 	void setMode(uint8_t moduleX, uint8_t moduleY) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b0010, 4);
 		_shifter.shiftOut((uint8_t)mode, 2);
 		_shifter.shiftOut((uint8_t)0b0, 3);
@@ -212,7 +210,7 @@ public:
 	 * @param brightness	the brightness (from 0 to 15)
 	 */
 	void brightness(uint8_t moduleX, uint8_t moduleY, uint8_t brightness) {
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b1010, 4);
 		_shifter.shiftOut(brightness << 1, 5);
 		commandComplete(moduleX, moduleY);
@@ -239,7 +237,7 @@ public:
 	 */
 	void poweroff(uint8_t moduleX, uint8_t moduleY) {
 		// Shut down the oscillator & PWM generator
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0);
 		_shifter.shiftOut((uint8_t)0b0, 1);
 		commandComplete(moduleX, moduleY);
@@ -252,13 +250,13 @@ public:
 	 */
 	void poweron(uint8_t moduleX, uint8_t moduleY) {
 	// Turn on the oscillator
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b00000001);
 		_shifter.shiftOut((uint8_t)0b0, 1);
 		commandComplete(moduleX, moduleY);
 
 	// Turn on the PWM generator
-		sendCommand(moduleX, moduleY, HT1632_COMMAND::CMD);
+		sendCommand(moduleX, moduleY, HT1632Command::CMD);
 		_shifter.shiftOut(0b00000011);
 		_shifter.shiftOut((uint8_t)0b0, 1);
 		commandComplete(moduleX, moduleY);
@@ -298,7 +296,7 @@ public:
 		uint8_t bytes;
 		uint8_t *data;
 
-		bytes = (HT1632_MODE::NMOS_32x8 == mode || HT1632_MODE::PMOS_32x8 == mode) ? 32 : 48;
+		bytes = (HT1632Mode::NMOS_32x8 == mode || HT1632Mode::PMOS_32x8 == mode) ? 32 : 48;
 
 		for (x = 0; x < arrayX; x++) {
 			for (y = 0; y < arrayY; y++) {
@@ -338,11 +336,11 @@ public:
 			uint8_t offset = col;
 			uint8_t bit = row;
 			switch (mode) {
-			case HT1632_MODE::NMOS_32x8:
-			case HT1632_MODE::PMOS_32x8:
+			case HT1632Mode::NMOS_32x8:
+			case HT1632Mode::PMOS_32x8:
 				break;
-			case HT1632_MODE::NMOS_24x16:
-			case HT1632_MODE::PMOS_24x16:
+			case HT1632Mode::NMOS_24x16:
+			case HT1632Mode::PMOS_24x16:
 				offset *= 2;
 				if (bit > 7) {
 					bit -= 8;
@@ -383,11 +381,11 @@ public:
 			uint8_t offset = col;
 			uint8_t bit = row;
 			switch (mode) {
-			case HT1632_MODE::NMOS_32x8:
-			case HT1632_MODE::PMOS_32x8:
+			case HT1632Mode::NMOS_32x8:
+			case HT1632Mode::PMOS_32x8:
 				break;
-			case HT1632_MODE::NMOS_24x16:
-			case HT1632_MODE::PMOS_24x16:
+			case HT1632Mode::NMOS_24x16:
+			case HT1632Mode::PMOS_24x16:
 				offset *= 2;
 				if (bit > 7) {
 					bit -= 8;

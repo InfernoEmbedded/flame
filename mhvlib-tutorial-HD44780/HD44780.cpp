@@ -57,7 +57,7 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the display
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20
@@ -103,7 +103,7 @@ MAIN {
 	display.init(MULTILINE, BIGFONT, CURSORON, CURSORBLINK, LEFT2RIGHT, SCROLL);
 
 	// Configure the tick timer to tick every 0.5ms (at 20MHz) to drive the backlight intensity and animation
-	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_256, 36, 0);
+	tickTimer.setPeriods(TimerPrescaler::PRESCALER_5_256, 36, 0);
 	tickTimer.setListener1(display);
 	tickTimer.enable();
 

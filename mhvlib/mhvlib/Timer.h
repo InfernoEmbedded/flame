@@ -36,7 +36,7 @@
 
 namespace mhvlib {
 
-enum class timer_mode : uint8_t {
+enum class TimerMode : uint8_t {
 	ONE_SHOT,
 	REPETITIVE,
 	PWM_PHASE_CORRECT_VAR_FREQ_8,
@@ -47,15 +47,13 @@ enum class timer_mode : uint8_t {
 	PWM_PHASE_CORRECT_16,
 	PWM_PHASE_FREQ_CORRECT_16
 };
-typedef enum timer_mode TIMER_MODE;
 
-enum class timer_type {
+enum class TimerType {
 	HAS_5_PRESCALERS = 5,
 	HAS_7_PRESCALERS = 7
 };
-typedef enum timer_type TIMER_TYPE;
 
-enum class timer_prescaler : uint8_t {
+enum class TimerPrescaler : uint8_t {
 	PRESCALER_DISABLED = 0,
 	PRESCALER_5_1 = 1,
 	PRESCALER_5_8 = 2,
@@ -72,20 +70,18 @@ enum class timer_prescaler : uint8_t {
 	PRESCALER_7_256 = 6,
 	PRESCALER_7_1024 = 7,
 };
-typedef enum timer_prescaler TIMER_PRESCALER;
-INLINE uint8_t operator| (uint8_t oredWith, TIMER_PRESCALER prescaler) {
+INLINE uint8_t operator| (uint8_t oredWith, TimerPrescaler prescaler) {
 	const uint8_t myPrescaler = static_cast<uint8_t>(prescaler);
 	return(myPrescaler | oredWith);
 }
 
-enum class timer_connect : uint8_t {
+enum class TimerConnect : uint8_t {
 	DISCONNECTED = 0,
 	TOGGLE = 1,
 	CLEAR = 2,
 	SET = 3
 };
-typedef enum timer_connect TIMER_CONNECT;
-INLINE uint8_t operator<< (TIMER_CONNECT type, uint8_t shift) {
+INLINE uint8_t operator<< (TimerConnect type, uint8_t shift) {
 	const uint8_t myType = static_cast<uint8_t>(type);
 	return(myType << shift);
 }
@@ -121,12 +117,12 @@ public:
 
 class Timer {
 protected:
-	TIMER_PRESCALER _prescaler;
+	TimerPrescaler _prescaler;
 	TimerListener *_listener1;
 	TimerListener *_listener2;
 	TimerListener *_listener3;
 
-	virtual uint8_t calculatePrescaler(uint32_t time, TIMER_PRESCALER *prescaler, uint16_t *factor) =0;
+	virtual uint8_t calculatePrescaler(uint32_t time, TimerPrescaler *prescaler, uint16_t *factor) =0;
 
 	/**
 	 * Calculate the top register
@@ -140,7 +136,7 @@ protected:
 	}
 
 	virtual void setGenerationMode() =0;
-	virtual void _setPrescaler(TIMER_PRESCALER prescaler) =0;
+	virtual void _setPrescaler(TimerPrescaler prescaler) =0;
 
 public:
 	/**
@@ -151,7 +147,7 @@ public:
 	 * @return false on success
 	 */
 	INLINE bool setTimes(uint32_t usec1, uint32_t usec2) {
-		TIMER_PRESCALER prescaler;
+		TimerPrescaler prescaler;
 		uint16_t factor;
 		uint32_t maxTime;
 
@@ -182,7 +178,7 @@ public:
 	 * @param	usec3		the third time in microseconds
 	 */
 	INLINE bool setTimes(uint32_t usec1, uint32_t usec2, uint32_t usec3) {
-		TIMER_PRESCALER prescaler;
+		TimerPrescaler prescaler;
 		uint16_t factor = 0;
 		uint32_t maxTime;
 
@@ -218,11 +214,11 @@ public:
 	}
 
 	virtual uint16_t current() =0;
-	virtual void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2) =0;
-	virtual void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) =0;
-	virtual TIMER_PRESCALER getPrescaler() =0;
+	virtual void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2) =0;
+	virtual void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2, uint16_t time3) =0;
+	virtual TimerPrescaler getPrescaler() =0;
 	virtual uint16_t getPrescalerMultiplier() =0;
-	void setPrescaler(TIMER_PRESCALER prescaler);
+	void setPrescaler(TimerPrescaler prescaler);
 
 	virtual uint16_t getTop() =0;
 	virtual void setTop(uint16_t value) =0;
@@ -234,9 +230,9 @@ public:
 	virtual uint16_t getOutput1() =0;
 	virtual uint16_t getOutput2() =0;
 	virtual uint16_t getOutput3() =0;
-	virtual void connectOutput1(TIMER_CONNECT type) =0;
-	virtual void connectOutput2(TIMER_CONNECT type) =0;
-	virtual void connectOutput3(TIMER_CONNECT type) =0;
+	virtual void connectOutput1(TimerConnect type) =0;
+	virtual void connectOutput2(TimerConnect type) =0;
+	virtual void connectOutput3(TimerConnect type) =0;
 	virtual void enable() =0;
 	virtual void disable() =0;
 	bool enabled();
@@ -259,11 +255,11 @@ public:
  * @tparam	type		the type of timer (number of prescalers)
  * @tparam	controlRegA	the address of the first control reg, in SFR_MEM8 format
  */
-template<uint8_t bits, TIMER_TYPE type,
+template<uint8_t bits, TimerType type,
 		mhv_register controlRegA, mhv_register controlRegB, mhv_register controlRegC,
 		mhv_register outputCompare1, mhv_register outputCompare2, mhv_register outputCompare3,
 		mhv_register inputCapture1, mhv_register counter, mhv_register interrupt, uint8_t interruptEnableA,
-		TIMER_MODE mode>
+		TimerMode mode>
 class TimerImplementation: public Timer {
 protected:
 	bool _haveTime2;
@@ -273,7 +269,7 @@ protected:
 	 * Set the prescaler (internal use only)
 	 * @param	prescaler	the prescaler value (only the lowest 3 bits may be set)
 	 */
-	void _setPrescaler(TIMER_PRESCALER prescaler) {
+	void _setPrescaler(TimerPrescaler prescaler) {
 		_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xf8) | prescaler;
 	}
 
@@ -281,8 +277,8 @@ protected:
 	 * Get the prescaler
 	 * @return the prescaler value
 	 */
-	TIMER_PRESCALER getPrescaler() {
-		return (TIMER_PRESCALER) (_SFR_MEM8(controlRegB) & 0x07);
+	TimerPrescaler getPrescaler() {
+		return (TimerPrescaler) (_SFR_MEM8(controlRegB) & 0x07);
 	}
 
 	/**
@@ -292,25 +288,25 @@ protected:
 		switch (bits) {
 		case 8:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
+			case TimerMode::ONE_SHOT:
 				// no break
-			case TIMER_MODE::REPETITIVE:
+			case TimerMode::REPETITIVE:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM01);
 				_SFR_MEM8(controlRegB) = _SFR_MEM8(controlRegB) & 0xf7;
 				break;
-			case TIMER_MODE::PWM_PHASE_CORRECT_VAR_FREQ_8:
+			case TimerMode::PWM_PHASE_CORRECT_VAR_FREQ_8:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM00);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xf7) | _BV(WGM02);
 				break;
-			case TIMER_MODE::PWM_PHASE_CORRECT_2_OUTPUT_8:
+			case TimerMode::PWM_PHASE_CORRECT_2_OUTPUT_8:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM01);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xf7);
 				break;
-			case TIMER_MODE::PWM_FAST_VAR_FREQ_8:
+			case TimerMode::PWM_FAST_VAR_FREQ_8:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM01) | _BV(WGM00);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xf7) | _BV(WGM02);
 				break;
-			case TIMER_MODE::PWM_FAST_2_OUTPUT_8:
+			case TimerMode::PWM_FAST_2_OUTPUT_8:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM01) | _BV(WGM00);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xf7);
 				break;
@@ -321,21 +317,21 @@ protected:
 #ifdef WGM12
 		case 16:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
+			case TimerMode::ONE_SHOT:
 				// no break
-			case TIMER_MODE::REPETITIVE:
+			case TimerMode::REPETITIVE:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xe7) | _BV(WGM12);
 				break;
-			case TIMER_MODE::PWM_PHASE_CORRECT_16:
+			case TimerMode::PWM_PHASE_CORRECT_16:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xe7) | _BV(WGM13);
 				break;
-			case TIMER_MODE::PWM_FAST_16:
+			case TimerMode::PWM_FAST_16:
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc) | _BV(WGM11);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xe7) | _BV(WGM13) | _BV(WGM12);
 				break;
-			case TIMER_MODE::PWM_PHASE_FREQ_CORRECT_16: // Always use ICR for top
+			case TimerMode::PWM_PHASE_FREQ_CORRECT_16: // Always use ICR for top
 				_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xfc);
 				_SFR_MEM8(controlRegB) = (_SFR_MEM8(controlRegB) & 0xe7) | _BV(WGM13);
 				break;
@@ -377,7 +373,7 @@ public:
 	 * @param	factor		the prescale factor
 	 * return 0 on success
 	 */
-	uint8_t calculatePrescaler(uint32_t time, TIMER_PRESCALER *prescaler, uint16_t *factor) {
+	uint8_t calculatePrescaler(uint32_t time, TimerPrescaler *prescaler, uint16_t *factor) {
 		uint32_t limit = 0;
 		if (8 == bits) {
 			limit = 256L;
@@ -386,48 +382,48 @@ public:
 		}
 
 		switch (type) {
-		case TIMER_TYPE::HAS_5_PRESCALERS:
+		case TimerType::HAS_5_PRESCALERS:
 			if (time <= limit) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_5_1;
+				*prescaler = TimerPrescaler::PRESCALER_5_1;
 				*factor = 1;
 			} else if (time <= limit * 8) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_5_8;
+				*prescaler = TimerPrescaler::PRESCALER_5_8;
 				*factor = 8;
 			} else if (time <= limit * 64) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_5_64;
+				*prescaler = TimerPrescaler::PRESCALER_5_64;
 				*factor = 64;
 			} else if (time <= limit * 256) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_5_256;
+				*prescaler = TimerPrescaler::PRESCALER_5_256;
 				*factor = 256;
 			} else if (time <= limit * 1024) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_5_1024;
+				*prescaler = TimerPrescaler::PRESCALER_5_1024;
 				*factor = 1024;
 			} else {
 				return 1;
 			}
 			break;
 
-		case TIMER_TYPE::HAS_7_PRESCALERS:
+		case TimerType::HAS_7_PRESCALERS:
 			if (time <= limit) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_1;
+				*prescaler = TimerPrescaler::PRESCALER_7_1;
 				*factor = 1;
 			} else if (time <= limit * 8) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_8;
+				*prescaler = TimerPrescaler::PRESCALER_7_8;
 				*factor = 8;
 			} else if (time <= limit * 32) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_32;
+				*prescaler = TimerPrescaler::PRESCALER_7_32;
 				*factor = 32;
 			} else if (time <= limit * 64) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_64;
+				*prescaler = TimerPrescaler::PRESCALER_7_64;
 				*factor = 64;
 			} else if (time <= limit * 128) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_128;
+				*prescaler = TimerPrescaler::PRESCALER_7_128;
 				*factor = 128;
 			} else if (time <= limit * 256) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_256;
+				*prescaler = TimerPrescaler::PRESCALER_7_256;
 				*factor = 256;
 			} else if (time <= limit * 1024) {
-				*prescaler = TIMER_PRESCALER::PRESCALER_7_1024;
+				*prescaler = TimerPrescaler::PRESCALER_7_1024;
 				*factor = 1024;
 			} else {
 				return 1;
@@ -443,37 +439,37 @@ public:
 	 */
 	uint16_t getPrescalerMultiplier() {
 		switch (type) {
-		case TIMER_TYPE::HAS_5_PRESCALERS:
+		case TimerType::HAS_5_PRESCALERS:
 			switch (getPrescaler()) {
-			case TIMER_PRESCALER::PRESCALER_5_1:
+			case TimerPrescaler::PRESCALER_5_1:
 				return 1;
-			case TIMER_PRESCALER::PRESCALER_5_8:
+			case TimerPrescaler::PRESCALER_5_8:
 				return 8;
-			case TIMER_PRESCALER::PRESCALER_5_64:
+			case TimerPrescaler::PRESCALER_5_64:
 				return 64;
-			case TIMER_PRESCALER::PRESCALER_5_256:
+			case TimerPrescaler::PRESCALER_5_256:
 				return 256;
-			case TIMER_PRESCALER::PRESCALER_5_1024:
+			case TimerPrescaler::PRESCALER_5_1024:
 				return 1024;
 			default:
 				break;
 			}
 			break;
-		case TIMER_TYPE::HAS_7_PRESCALERS:
+		case TimerType::HAS_7_PRESCALERS:
 			switch (getPrescaler()) {
-			case TIMER_PRESCALER::PRESCALER_7_1:
+			case TimerPrescaler::PRESCALER_7_1:
 				return 1;
-			case TIMER_PRESCALER::PRESCALER_7_8:
+			case TimerPrescaler::PRESCALER_7_8:
 				return 8;
-			case TIMER_PRESCALER::PRESCALER_7_32:
+			case TimerPrescaler::PRESCALER_7_32:
 				return 32;
-			case TIMER_PRESCALER::PRESCALER_7_64:
+			case TimerPrescaler::PRESCALER_7_64:
 				return 64;
-			case TIMER_PRESCALER::PRESCALER_7_128:
+			case TimerPrescaler::PRESCALER_7_128:
 				return 128;
-			case TIMER_PRESCALER::PRESCALER_7_256:
+			case TimerPrescaler::PRESCALER_7_256:
 				return 256;
-			case TIMER_PRESCALER::PRESCALER_7_1024:
+			case TimerPrescaler::PRESCALER_7_1024:
 				return 1024;
 			default:
 				break;
@@ -490,7 +486,7 @@ public:
 	 * @param	time1		the first time in prescaled timer ticks
 	 * @param	time2		the second time in prescaled timer ticks
 	 */
-	void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2) {
+	void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2) {
 		_prescaler = prescaler;
 
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -518,7 +514,7 @@ public:
 	 * @param	time2		the second time in prescaled timer ticks
 	 * @param	time3		the second time in prescaled timer ticks
 	 */
-	void setPeriods(TIMER_PRESCALER prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
+	void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2, uint16_t time3) {
 		_prescaler = prescaler;
 
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -554,13 +550,13 @@ public:
 		switch (bits) {
 		case 8:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
-			case TIMER_MODE::REPETITIVE:
-			case TIMER_MODE::PWM_PHASE_CORRECT_VAR_FREQ_8:
-			case TIMER_MODE::PWM_FAST_VAR_FREQ_8:
+			case TimerMode::ONE_SHOT:
+			case TimerMode::REPETITIVE:
+			case TimerMode::PWM_PHASE_CORRECT_VAR_FREQ_8:
+			case TimerMode::PWM_FAST_VAR_FREQ_8:
 				return _SFR_MEM8(outputCompare1);
-			case TIMER_MODE::PWM_PHASE_CORRECT_2_OUTPUT_8:
-			case TIMER_MODE::PWM_FAST_2_OUTPUT_8:
+			case TimerMode::PWM_PHASE_CORRECT_2_OUTPUT_8:
+			case TimerMode::PWM_FAST_2_OUTPUT_8:
 				return 255;
 			default:
 				return 0;
@@ -568,12 +564,12 @@ public:
 			break;
 		case 16:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
-			case TIMER_MODE::REPETITIVE:
+			case TimerMode::ONE_SHOT:
+			case TimerMode::REPETITIVE:
 				return _SFR_MEM16(outputCompare1);
-			case TIMER_MODE::PWM_PHASE_CORRECT_16:
-			case TIMER_MODE::PWM_FAST_16:
-			case TIMER_MODE::PWM_PHASE_FREQ_CORRECT_16:
+			case TimerMode::PWM_PHASE_CORRECT_16:
+			case TimerMode::PWM_FAST_16:
+			case TimerMode::PWM_PHASE_FREQ_CORRECT_16:
 				return _SFR_MEM16(inputCapture1);
 			default:
 				return 0;
@@ -590,10 +586,10 @@ public:
 		switch (bits) {
 		case 8:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
-			case TIMER_MODE::REPETITIVE:
-			case TIMER_MODE::PWM_PHASE_CORRECT_VAR_FREQ_8:
-			case TIMER_MODE::PWM_FAST_VAR_FREQ_8:
+			case TimerMode::ONE_SHOT:
+			case TimerMode::REPETITIVE:
+			case TimerMode::PWM_PHASE_CORRECT_VAR_FREQ_8:
+			case TimerMode::PWM_FAST_VAR_FREQ_8:
 				_SFR_MEM8(outputCompare1) = value;
 				break;
 			default:
@@ -602,15 +598,15 @@ public:
 			break;
 		case 16:
 			switch (mode) {
-			case TIMER_MODE::ONE_SHOT:
-			case TIMER_MODE::REPETITIVE:
+			case TimerMode::ONE_SHOT:
+			case TimerMode::REPETITIVE:
 				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 					_SFR_MEM16(outputCompare1) = value;
 				}
 				break;
-			case TIMER_MODE::PWM_PHASE_CORRECT_16:
-			case TIMER_MODE::PWM_FAST_16:
-			case TIMER_MODE::PWM_PHASE_FREQ_CORRECT_16:
+			case TimerMode::PWM_PHASE_CORRECT_16:
+			case TimerMode::PWM_FAST_16:
+			case TimerMode::PWM_PHASE_FREQ_CORRECT_16:
 				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 					_SFR_MEM16(inputCapture1) = value;
 				}
@@ -803,7 +799,7 @@ public:
 	}
 
 
-	void connectOutput(uint8_t channel, TIMER_CONNECT connectType) {
+	void connectOutput(uint8_t channel, TimerConnect connectType) {
 		switch (channel) {
 		case 1:
 			_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0x3F) | (connectType << 6);
@@ -824,7 +820,7 @@ public:
 	 * Connect channel 1 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput1(TIMER_CONNECT connectType) {
+	void connectOutput1(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0x3F) | (connectType << 6);
 	}
 
@@ -832,7 +828,7 @@ public:
 	 * Connect channel 2 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput2(TIMER_CONNECT connectType) {
+	void connectOutput2(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xCF) | (connectType << 4);
 	}
 
@@ -840,7 +836,7 @@ public:
 	 * Connect channel 3 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput3(TIMER_CONNECT connectType) {
+	void connectOutput3(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xF3) | (connectType << 2);
 	}
 
@@ -885,7 +881,7 @@ public:
 	 */
 	void disable() {
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			_setPrescaler(TIMER_PRESCALER::PRESCALER_DISABLED);
+			_setPrescaler(TimerPrescaler::PRESCALER_DISABLED);
 			_SFR_MEM8(interrupt) &= ~_BV(interruptEnableA);
 			if (_haveTime2) {
 				_SFR_MEM8(interrupt) &= ~_BV(interruptEnableA + 1);
@@ -900,7 +896,7 @@ public:
 	 * Trigger the listener for channel 1
 	 */
 	void trigger1() {
-		if (TIMER_MODE::ONE_SHOT == mode) {
+		if (TimerMode::ONE_SHOT == mode) {
 			disable();
 		}
 		_listener1->alarm();

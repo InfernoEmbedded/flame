@@ -67,7 +67,7 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_0, TimerMode::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 /* A buffer the RTC will use to store alarms - this determines how many alarms

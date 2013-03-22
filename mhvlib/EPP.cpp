@@ -67,7 +67,7 @@
  * @param		data		Pin0 of the data port (we will use the full port)
  * @param		control		the port register for the control pins
  */
-EPP::EPP(EPP_MODE mode,
+EPP::EPP(EPPMode mode,
 		MHV_DECLARE_PIN(data),
 		MHV_DECLARE_PIN(control)) {
 	_address = 0;

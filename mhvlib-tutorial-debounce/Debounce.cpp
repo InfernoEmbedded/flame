@@ -44,7 +44,7 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	10
@@ -93,7 +93,7 @@ MAIN {
 	setOutput(MHV_ARDUINO_PIN_13);
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TimerPrescaler::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 

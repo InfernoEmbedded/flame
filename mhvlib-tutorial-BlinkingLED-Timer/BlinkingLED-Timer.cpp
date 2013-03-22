@@ -54,7 +54,7 @@ using namespace mhvlib;
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts

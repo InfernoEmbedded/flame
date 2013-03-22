@@ -50,7 +50,7 @@ using namespace mhvlib;
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>animationTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>animationTimer;
 
 /* Each timer module generates interrupts
  * We must assign the timer object created above to handle these interrupts
@@ -61,7 +61,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(animationTimer, MHV_TIMER2_INTERRUPTS);
 
 /* Declare a 16 bit timer for PWM output
  */
-TimerImplementation<MHV_TIMER16_1, TIMER_MODE::REPETITIVE>pwmTimer;
+TimerImplementation<MHV_TIMER16_1, TimerMode::REPETITIVE>pwmTimer;
 MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
 
 /* The maximum value of the PWM
@@ -153,7 +153,7 @@ MAIN {
 	pwmTimer.setListener2(ledOff);
 
 	// Set the PWM prescaler to 1 (no prescaler)
-	pwmTimer.setPrescaler(TIMER_PRESCALER::PRESCALER_5_1);
+	pwmTimer.setPrescaler(TimerPrescaler::PRESCALER_5_1);
 
 	/* Set the TOP value of the PWM timer - this defines the resolution &
 	 * frequency of the PWM output

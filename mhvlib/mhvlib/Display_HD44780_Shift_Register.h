@@ -114,19 +114,19 @@ protected:
 	/**
 	 * Post-command delays
 	 */
-	void delay(HD44780_COMMAND command) {
+	void delay(HD44780Command command) {
 		switch (command) {
-		case HD44780_COMMAND::CLEAR:
-		case HD44780_COMMAND::HOME:
+		case HD44780Command::CLEAR:
+		case HD44780Command::HOME:
 			_delay_ms(2);
 			break;
-		case HD44780_COMMAND::SET_ENTRY_MODE:
-		case HD44780_COMMAND::SET_DISPLAY_MODE:
-		case HD44780_COMMAND::SET_CURSOR_MODE:
-		case HD44780_COMMAND::SET_CG_ADDR:
-		case HD44780_COMMAND::SET_DD_ADDR:
-		case HD44780_COMMAND::WRITE_CHAR:
-		case HD44780_COMMAND::SET_FUNCTION:
+		case HD44780Command::SET_ENTRY_MODE:
+		case HD44780Command::SET_DISPLAY_MODE:
+		case HD44780Command::SET_CURSOR_MODE:
+		case HD44780Command::SET_CG_ADDR:
+		case HD44780Command::SET_DD_ADDR:
+		case HD44780Command::WRITE_CHAR:
+		case HD44780Command::SET_FUNCTION:
 			_delay_us(39);
 			break;
 		}

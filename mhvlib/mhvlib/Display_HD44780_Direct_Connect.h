@@ -183,7 +183,7 @@ protected:
 	 * Delay function
 	 * No delays required as we can check whether the display is busy
 	 */
-	void CONST delay(UNUSED HD44780_COMMAND command) {
+	void CONST delay(UNUSED HD44780Command command) {
 		return;
 	}
 

@@ -35,13 +35,12 @@
 
 namespace mhvlib {
 
-enum class PWMMatrix_Mode : uint8_t {
+enum class PWMMatrixMode : uint8_t {
 	AUTO,
 	ROWS,
 	COLS,
 	INDIVIDUAL
 };
-typedef enum PWMMatrix_Mode PWMMATRIX_MODE;
 
 class PWMMatrixDriver {
 public:
@@ -52,8 +51,8 @@ public:
 };
 
 
-#define _MODE ((PWMMATRIX_MODE::AUTO == mode) ? \
-	((rows <= cols) ? PWMMATRIX_MODE::ROWS : PWMMATRIX_MODE::COLS) : mode)
+#define _MODE ((PWMMatrixMode::AUTO == mode) ? \
+	((rows <= cols) ? PWMMatrixMode::ROWS : PWMMatrixMode::COLS) : mode)
 
 
 /**
@@ -63,7 +62,7 @@ public:
  * @tparam	txBuffers	the number of output buffers
  * @tparam	mode		whether to scan rows, cols, individual pixels or auto
  */
-template<uint16_t cols, uint16_t rows, uint8_t txBuffers, PWMMATRIX_MODE mode>
+template<uint16_t cols, uint16_t rows, uint8_t txBuffers, PWMMatrixMode mode>
 class PWMMatrix : public Display_Monochrome_Buffered<cols, rows, txBuffers>,
 	public TimerListener {
 private:
@@ -191,13 +190,13 @@ public:
 	 */
 	void alarm() {
 		switch (_MODE) {
-		case PWMMATRIX_MODE::ROWS:
+		case PWMMatrixMode::ROWS:
 			tickRow();
 			break;
-		case PWMMATRIX_MODE::COLS:
+		case PWMMatrixMode::COLS:
 			tickCol();
 			break;
-		case PWMMATRIX_MODE::INDIVIDUAL:
+		case PWMMatrixMode::INDIVIDUAL:
 			tickPixel();
 			break;
 		default:

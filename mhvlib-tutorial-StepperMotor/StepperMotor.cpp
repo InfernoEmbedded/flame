@@ -49,7 +49,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
@@ -72,7 +72,7 @@ MHV_RTC_CREATE (rtc, ALARM_COUNT);
 /* The stepper driver
  * Available modes are WAVE, FULL and HALF
  */
-StepperMotorUnipolar<STEPPER_MODE::HALF, MHV_PIN_B0> stepper(rtc);
+StepperMotorUnipolar<StepperMode::HALF, MHV_PIN_B0> stepper(rtc);
 
 
 /* A class that tells the stepper what to do next
@@ -122,10 +122,10 @@ MAIN {
 	power_all_disable();
 #ifdef ATTINY
 	power_timer0_enable();
-#define PRESCALER	MHV_TIMER_PRESCALER_5_64
+#define PRESCALER	TimerPrescaler::PRESCALER_5_64
 #else
 	power_timer2_enable();
-#define PRESCALER	TIMER_PRESCALER::PRESCALER_7_64
+#define PRESCALER	TimerPrescaler::PRESCALER_7_64
 #endif
 
 	// Register the listener with the stepper driver to be notified when moves are complete

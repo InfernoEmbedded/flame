@@ -49,7 +49,7 @@ WaveGenerator::WaveGenerator(DAConverter &dac, SAMPLE *sampleBuffer, uint8_t sam
 		_voices(voices),
 		_voiceCount(voiceCount) {
 	for (uint8_t i = 0; i < _voiceCount; i++) {
-		_voices[i].phase = VOICE_PHASE::AVAILABLE;
+		_voices[i].phase = VoicePhase::AVAILABLE;
 	}
 
 // Kick start the DAC, it will come back to us when it needs more data
@@ -62,33 +62,33 @@ WaveGenerator::WaveGenerator(DAConverter &dac, SAMPLE *sampleBuffer, uint8_t sam
  */
 inline void WaveGenerator::switchPhase(VOICE &voice) {
 	switch (voice.phase) {
-	case VOICE_PHASE::ATTACK:
+	case VoicePhase::ATTACK:
 		if (voice.phaseOffset == voice.instrument->attackTime) {
 			voice.phaseOffset = 0;
-			voice.phase = VOICE_PHASE::DECAY1;
+			voice.phase = VoicePhase::DECAY1;
 		}
 		break;
-	case VOICE_PHASE::DECAY1:
+	case VoicePhase::DECAY1:
 		if (voice.phaseOffset == voice.instrument->decay1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = VOICE_PHASE::SUSTAIN1;
+			voice.phase = VoicePhase::SUSTAIN1;
 		}
 		break;
-	case VOICE_PHASE::SUSTAIN1:
+	case VoicePhase::SUSTAIN1:
 		if (voice.phaseOffset == voice.instrument->sustain1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = VOICE_PHASE::DECAY2;
+			voice.phase = VoicePhase::DECAY2;
 		}
 		break;
-	case VOICE_PHASE::DECAY2:
+	case VoicePhase::DECAY2:
 		if (voice.phaseOffset == voice.instrument->decay1Time) {
 			voice.phaseOffset = 0;
-			voice.phase = VOICE_PHASE::SUSTAIN2;
+			voice.phase = VoicePhase::SUSTAIN2;
 		}
 		break;
-	case VOICE_PHASE::RELEASE:
+	case VoicePhase::RELEASE:
 		if (voice.phaseOffset == voice.instrument->releaseTime) {
-			voice.phase = VOICE_PHASE::AVAILABLE;
+			voice.phase = VoicePhase::AVAILABLE;
 		}
 		break;
 	default:
@@ -97,7 +97,7 @@ inline void WaveGenerator::switchPhase(VOICE &voice) {
 
 	if (voice.currentOffset == voice.duration) {
 		voice.phaseOffset = 0;
-		voice.phase = VOICE_PHASE::RELEASE;
+		voice.phase = VoicePhase::RELEASE;
 	}
 }
 
@@ -111,28 +111,28 @@ inline AMPLITUDE WaveGenerator::currentAmplitude(VOICE &voice) {
 	uint32_t amplitude = voice.velocity;
 
 	switch (voice.phase) {
-	case VOICE_PHASE::ATTACK:
+	case VoicePhase::ATTACK:
 		amplitude *= voice.phaseOffset;
 		amplitude /= voice.instrument->attackTime;
 		voice.amplitude = amplitude;
 		break;
-	case VOICE_PHASE::DECAY1:
+	case VoicePhase::DECAY1:
 		amplitude -= voice.phaseOffset * (voice.velocity - voice.instrument->decay1Amount) / voice.instrument->decay1Time;
 		voice.amplitude = amplitude;
 		break;
-	case VOICE_PHASE::SUSTAIN1:
+	case VoicePhase::SUSTAIN1:
 		amplitude *= voice.instrument->decay1Amount;
 		voice.amplitude = amplitude;
 		break;
-	case VOICE_PHASE::DECAY2:
+	case VoicePhase::DECAY2:
 		amplitude -= voice.phaseOffset * (voice.velocity - voice.instrument->decay2Amount) / voice.instrument->decay2Time;
 		voice.amplitude = amplitude;
 		break;
-	case VOICE_PHASE::SUSTAIN2:
+	case VoicePhase::SUSTAIN2:
 		amplitude *= voice.instrument->decay2Amount;
 		voice.amplitude = amplitude;
 		break;
-	case VOICE_PHASE::RELEASE:
+	case VoicePhase::RELEASE:
 		amplitude = voice.amplitude * (voice.instrument->releaseTime - voice.phaseOffset) / voice.instrument->releaseTime;
 		break;
 	default:
@@ -148,7 +148,7 @@ inline AMPLITUDE WaveGenerator::currentAmplitude(VOICE &voice) {
  * @return the value of the sample
  */
 inline SAMPLE WaveGenerator::renderVoice(VOICE &voice) {
-	if (voice.phase == VOICE_PHASE::AVAILABLE) {
+	if (voice.phase == VoicePhase::AVAILABLE) {
 		return 0;
 	}
 
@@ -200,7 +200,7 @@ bool WaveGenerator::play(INSTRUMENT *instrument, uint16_t frequency, AMPLITUDE v
 // Find a free voice
 	uint8_t voice;
 	for (voice = 0; voice < _voiceCount; voice++) {
-		if (VOICE_PHASE::AVAILABLE == _voices[voice].phase) {
+		if (VoicePhase::AVAILABLE == _voices[voice].phase) {
 			break;
 		}
 	}
@@ -212,7 +212,7 @@ bool WaveGenerator::play(INSTRUMENT *instrument, uint16_t frequency, AMPLITUDE v
 	_voices[voice].velocity = velocity;
 	_voices[voice].frequency = frequency;
 	_voices[voice].duration = duration;
-	_voices[voice].phase = VOICE_PHASE::ATTACK;
+	_voices[voice].phase = VoicePhase::ATTACK;
 
 	return false;
 }

@@ -48,12 +48,12 @@ using namespace mhvlib_gpl;
 #if defined(__AVR_ATtiny25__) || defined(__AVR_ATtiny45__) || defined(__AVR_ATtiny85__)
 #define ATTINY
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_0, TimerMode::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 #else
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE> tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 #endif
 
@@ -95,10 +95,10 @@ MAIN {
 	power_all_disable();
 #ifdef ATTINY
 	power_timer0_enable();
-#define PRESCALER	TIMER_PRESCALER::PRESCALER_5_64
+#define PRESCALER	TimerPrescaler::PRESCALER_5_64
 #else
 	power_timer2_enable();
-#define PRESCALER	TIMER_PRESCALER::PRESCALER_7_64
+#define PRESCALER	TimerPrescaler::PRESCALER_7_64
 #endif
 
 	set_sleep_mode(SLEEP_MODE_IDLE);

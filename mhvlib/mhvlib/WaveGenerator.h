@@ -68,7 +68,7 @@ struct instrument {
 };
 typedef struct instrument INSTRUMENT;
 
-enum class voicePhase : uint8_t {
+enum class VoicePhase : uint8_t {
 	AVAILABLE,
 	ATTACK,
 	DECAY1,
@@ -77,13 +77,12 @@ enum class voicePhase : uint8_t {
 	SUSTAIN2,
 	RELEASE,
 };
-typedef enum voicePhase VOICE_PHASE;
 
 struct voice {
 	INSTRUMENT		*instrument;		/** The instrument playing on the voice */
 	uint16_t		phaseOffset;		/** The current sample offset for the current phase */
 	uint32_t		currentOffset;  	/** The current sample offset for the voice */
-	VOICE_PHASE		phase;				/** The current phase this voice is in */
+	VoicePhase		phase;				/** The current phase this voice is in */
 	AMPLITUDE		velocity;			/** The overall amplitude of the envelope */
 	uint16_t		frequency;			/** The frequency in Hz */
 	uint32_t		duration;			/** The duration of the note, samples */

@@ -42,7 +42,7 @@ static const uint8_t mhv_hd44780AddressTable[] PROGMEM = {
 };
 
 
-enum class hd44780_command : uint8_t {
+enum class HD44780Command : uint8_t {
 	CLEAR					= 0x001,
 	HOME					= 0x002,
 	SET_ENTRY_MODE			= 0x004,
@@ -53,8 +53,8 @@ enum class hd44780_command : uint8_t {
 	SET_DD_ADDR				= 0x080,
 	WRITE_CHAR				= 0xff /* not a real command, only here to support delay */
 };
-typedef enum hd44780_command HD44780_COMMAND;
-INLINE uint8_t operator| (HD44780_COMMAND command, uint8_t oredWith) {
+
+INLINE uint8_t operator| (HD44780Command command, uint8_t oredWith) {
 	const uint8_t myCommand = static_cast<uint8_t>(command);
 	return(myCommand | oredWith);
 }
@@ -76,7 +76,7 @@ protected:
 	/**
 	 * Send a command to the display
 	 */
-	void writeCommand(HD44780_COMMAND command, uint8_t data) {
+	void writeCommand(HD44780Command command, uint8_t data) {
 		uint8_t byte = command | data;
 
 		if (_mustDelay) {
@@ -104,7 +104,7 @@ protected:
 			_delay_ms(4.1);
 		}
 
-		writeCommand(HD44780_COMMAND::SET_FUNCTION, data);
+		writeCommand(HD44780Command::SET_FUNCTION, data);
 	}
 
 	/**
@@ -114,7 +114,7 @@ protected:
 	void addressCGRAM(uint8_t address) {
 		while (isBusy()) {};
 
-		writeCommand(HD44780_COMMAND::SET_CG_ADDR, address);
+		writeCommand(HD44780Command::SET_CG_ADDR, address);
 	}
 
 	/**
@@ -124,7 +124,7 @@ protected:
 	void addressDDRAM(uint8_t address) {
 		while (isBusy()) {};
 
-		writeCommand(HD44780_COMMAND::SET_DD_ADDR, address);
+		writeCommand(HD44780Command::SET_DD_ADDR, address);
 	}
 
 	virtual void writeByte(uint8_t byte, bool rs)=0;
@@ -168,7 +168,7 @@ protected:
 	void _writeChar(char character) {
 		while (isBusy()) {};
 		writeByte(character, true);
-		delay(HD44780_COMMAND::WRITE_CHAR);
+		delay(HD44780Command::WRITE_CHAR);
 	}
 
 	/**
@@ -181,7 +181,7 @@ protected:
 	}
 
 	virtual bool isBusy()=0;
-	virtual void delay(HD44780_COMMAND command)=0;
+	virtual void delay(HD44780Command command)=0;
 
 public:
 	/**
@@ -213,9 +213,9 @@ public:
 	// hardware initialization always set 8 bits mode
 		_byteMode = true;
 		uint8_t resetData = 1 << 4 | multiLine << 3 | bigFont << 2 | 1;
-		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
-		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
-		writeCommand(HD44780_COMMAND::SET_FUNCTION, resetData);
+		writeCommand(HD44780Command::SET_FUNCTION, resetData);
+		writeCommand(HD44780Command::SET_FUNCTION, resetData);
+		writeCommand(HD44780Command::SET_FUNCTION, resetData);
 
 		_byteMode = byteMode;
 
@@ -235,7 +235,7 @@ public:
 	void clear() {
 		while (isBusy()) {};
 
-		writeCommand(HD44780_COMMAND::CLEAR, 0);
+		writeCommand(HD44780Command::CLEAR, 0);
 		Display_Character<cols, rows, txBuffers>::_currentRow = rows - 1;
 		Display_Character<cols, rows, txBuffers>::_currentCol = 0;
 	}
@@ -250,7 +250,7 @@ public:
 
 		while (isBusy()) {};
 
-		writeCommand(HD44780_COMMAND::SET_ENTRY_MODE, data);
+		writeCommand(HD44780Command::SET_ENTRY_MODE, data);
 	}
 
 	/**
@@ -264,7 +264,7 @@ public:
 
 		while (isBusy()) {};
 
-		writeCommand(HD44780_COMMAND::SET_DISPLAY_MODE, data);
+		writeCommand(HD44780Command::SET_DISPLAY_MODE, data);
 	}
 };
 

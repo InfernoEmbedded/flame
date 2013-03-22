@@ -42,7 +42,7 @@ struct timestamp {
 };
 typedef struct timestamp TIMESTAMP;
 
-enum class weekday : uint8_t {
+enum class Weekday : uint8_t {
 	SUNDAY = 0,
 	MONDAY = 1,
 	TUESDAY = 2,
@@ -51,9 +51,8 @@ enum class weekday : uint8_t {
 	FRIDAY = 5,
 	SATURDAY = 6
 };
-typedef enum weekday WEEKDAY;
 
-enum class month : uint8_t {
+enum class Month : uint8_t {
 	JANUARY = 1,
 	FEBRUARY = 2,
 	MARCH = 3,
@@ -67,8 +66,8 @@ enum class month : uint8_t {
 	MHV_NOVEMBER = 11,
 	MHV_DECEMBER = 12
 };
-typedef enum month MONTH;
-INLINE uint8_t operator- (MONTH month, uint8_t subtractValue) {
+
+INLINE uint8_t operator- (Month month, uint8_t subtractValue) {
 	const uint8_t myMonth = static_cast<uint8_t>(month);
 	return(myMonth - subtractValue);
 }
@@ -80,7 +79,7 @@ struct time {
 	uint8_t		minutes;		// 0 - 59
 	uint8_t		hours;			// 0 - 23
 	uint8_t		day;			// 1 - 31	day of the month
-	MONTH	month;			// 1 - 12
+	Month	month;			// 1 - 12
 	uint16_t	year;			// 1970 - 2106
 //	MHV_WEEKDAY	weekday;		// Weekday
 	uint16_t	yearday;		// 0 - 365 Day of the year
@@ -185,7 +184,7 @@ bool isLeapYear(uint16_t year);
 uint16_t getMilliseconds(const TIMESTAMP &timestamp);
 bool timestampGreaterThanOrEqual(const TIMESTAMP &first, const TIMESTAMP &second);
 bool timestampLessThan(const TIMESTAMP &first, const TIMESTAMP &second);
-uint8_t daysInMonth(MONTH month, uint16_t year);
+uint8_t daysInMonth(Month month, uint16_t year);
 
 
 // Used in toTime: Cumulative totals at the end of the month in a normal year
@@ -405,7 +404,7 @@ public:
 		}
 
 		// Increment so we start numbering from 1
-		to.month = (MONTH)(month + 1);
+		to.month = (Month)(month + 1);
 
 		uint32_t day = seconds / 86400;
 		to.day = (uint8_t)day;
@@ -443,9 +442,9 @@ public:
 		} else {
 			seconds += (from.day - 1) * 86400;
 			switch (from.month) {
-			case MONTH::JANUARY:
+			case Month::JANUARY:
 				break;
-			case MONTH::FEBRUARY:
+			case Month::FEBRUARY:
 				seconds += 5097600;
 				break;
 			default:

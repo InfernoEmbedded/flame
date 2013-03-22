@@ -47,7 +47,7 @@ using namespace mhvlib;
 MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_0, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER0_INTERRUPTS);
 
 /* A buffer the RTC will use to store alarms - this determines how many alarms
@@ -114,7 +114,7 @@ MAIN {
 	sei();
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TimerPrescaler::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 
 	// Prompt the user for the current time
@@ -148,7 +148,7 @@ MAIN {
 			serial.write_P(PSTR("Month must be between 1 and 12 inclusive\r\n"));
 			error = true;
 		} else {
-			time.month = (MONTH)month;
+			time.month = (Month)month;
 		}
 
 

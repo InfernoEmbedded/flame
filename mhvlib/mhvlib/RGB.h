@@ -64,7 +64,7 @@ union rgb {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 0,
 	GREEN = 1,
 	BLUE = 2
@@ -77,7 +77,7 @@ enum rgbChannel {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 0,
 	GREEN = 2,
 	BLUE = 1
@@ -90,7 +90,7 @@ enum rgbChannel {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 1,
 	GREEN = 0,
 	BLUE = 2
@@ -103,7 +103,7 @@ enum rgbChannel {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 2,
 	GREEN = 0,
 	BLUE = 1
@@ -116,7 +116,7 @@ enum rgbChannel {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 2,
 	GREEN = 1,
 	BLUE = 0
@@ -129,14 +129,12 @@ enum rgbChannel {
 	} channel;
 };
 
-enum rgbChannel {
+enum class RGBChannel : uint8_t {
 	RED	= 1,
 	GREEN = 2,
 	BLUE = 0
 };
 #endif
-
-typedef enum rgbChannel RGB_CHANNEL;
 
 class RGB {
 protected:
@@ -271,8 +269,8 @@ public:
 	 * Get the value for a channel
 	 * @param channel	the channel to get
 	 */
-	uint8_t get (RGB_CHANNEL channel) {
-		return _data.value[channel];
+	uint8_t get (RGBChannel channel) {
+		return _data.value[(uint8_t)channel];
 	}
 
 
@@ -301,8 +299,8 @@ public:
 	 * @param channel	the channel
 	 * @param value		the new value
 	 */
-	void set (RGB_CHANNEL channel, uint8_t value) {
-		_data.value[channel] = value;
+	void set (RGBChannel channel, uint8_t value) {
+		_data.value[(uint8_t)channel] = value;
 	}
 
 	/**

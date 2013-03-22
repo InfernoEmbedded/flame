@@ -35,7 +35,7 @@
 
 namespace mhvlib {
 
-enum TripleAxisCalibratorState {
+enum class TripleAxisCalibratorState {
 	SETUP,
 	BOTTOM_DOWN,
 	TOP_DOWN,
@@ -52,7 +52,7 @@ protected:
 	PGM_P							_lastMessage = NULL;
 	uint8_t							_samplesToTake = 32; // the number of samples to take at each calibration point
 	uint8_t							_currentSamples = 0;
-	enum TripleAxisCalibratorState	_state = SETUP;
+	TripleAxisCalibratorState		_state = TripleAxisCalibratorState::SETUP;
 	TripleAxisSensor				&_sensor;
 	Device_TX 						&_output;
 	TripleAxisSensorListener		*_savedListener = NULL;

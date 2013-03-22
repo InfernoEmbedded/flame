@@ -65,7 +65,7 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the display
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define COLUMNS		20

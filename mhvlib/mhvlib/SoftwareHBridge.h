@@ -36,23 +36,21 @@
 
 namespace mhvlib {
 
-enum class softwarehbridge_direction : uint8_t {
+enum class SoftwareHBridgeDirection : uint8_t {
 	COAST,
 	FORWARD,
 	BACKWARD,
 	BRAKE
 };
-typedef enum softwarehbridge_direction SOFTWAREHBRIDGE_DIRECTION;
 
-enum class softwarehbridge_type : bool {
+enum class SoftwareHBridgeType : bool {
 	PULLUP,
 	DIRECT
 };
-typedef enum softwarehbridge_type SOFTWAREHBRIDGE_TYPE;
 
 class SoftwareHBridge : public TimerListener {
 protected:
-	SOFTWAREHBRIDGE_TYPE		_type;
+	SoftwareHBridgeType		_type;
 	Timer						&_timer;
 
 	volatile uint8_t			*_dir1Top;
@@ -66,18 +64,18 @@ protected:
 	volatile uint8_t			*_out2Bottom;
 	uint8_t						_pin2Bottom;
 
-	SOFTWAREHBRIDGE_DIRECTION	_direction;
+	SoftwareHBridgeDirection	_direction;
 
 public:
-	SoftwareHBridge(SOFTWAREHBRIDGE_TYPE type, MHV_Timer &timer, uint8_t timerChannel,
+	SoftwareHBridge(SoftwareHBridgeType type, MHV_Timer &timer, uint8_t timerChannel,
 			MHV_DECLARE_PIN(dir1Top),
 			MHV_DECLARE_PIN(dir1Bottom),
 			MHV_DECLARE_PIN(dir2Top),
 			MHV_DECLARE_PIN(dir2Bottom));
 	void reset();
 	void alarm();
-	void set(SOFTWAREHBRIDGE_DIRECTION direction, uint16_t magnitude);
-	void set(SOFTWAREHBRIDGE_DIRECTION direction);
+	void set(SoftwareHBridgeDirection direction, uint16_t magnitude);
+	void set(SoftwareHBridgeDirection direction);
 };
 
 }

@@ -37,11 +37,10 @@
 
 namespace mhvlib {
 
-enum class vreg_modes : bool {
+enum class VoltageRegulatorModes : bool {
 	BUCK,
 	BOOST
 };
-typedef enum vreg_modes VREG_MODE;
 
 #define MHV_VREG_DIVIDER(__mhv_divider_value) ((uint16_t)((__mhv_divider_value) * 16384))
 
@@ -67,7 +66,7 @@ typedef enum vreg_modes VREG_MODE;
  * @param ADCChannel	the ADC channel for feedback
  */
 
-template <VREG_MODE mode, uint32_t millivolts, uint32_t vrefMillivolts, ADCReference vref, uint16_t divider,
+template <VoltageRegulatorModes mode, uint32_t millivolts, uint32_t vrefMillivolts, ADCReference vref, uint16_t divider,
 	ADCChannel adcChannel>
 class VoltageRegulator : public TimerListener {
 private:
@@ -146,10 +145,10 @@ private:
 	 */
 	inline void regulate() {
 		switch (mode) {
-		case VREG_MODE::BOOST:
+		case VoltageRegulatorModes::BOOST:
 			regulateBoost();
 			break;
-		case VREG_MODE::BUCK:
+		case VoltageRegulatorModes::BUCK:
 			regulateBuck();
 			break;
 		}

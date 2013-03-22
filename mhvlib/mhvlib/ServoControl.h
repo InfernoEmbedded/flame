@@ -225,7 +225,7 @@ public:
 			_nextServoIndex = 0;
 			// Set up the timer to end the first servo pulse
 			// Note that the timer is reset to 0 when the interrupt is triggered, so the current value is how long to reach this point
-			_timer.setPeriods(TIMER_PRESCALER::PRESCALER_5_1,
+			_timer.setPeriods(TimerPrescaler::PRESCALER_5_1,
 					_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - _timer.current(), 0, 0);
 			_timer.enable();
 			return;
@@ -249,7 +249,7 @@ public:
 			if ((uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex)].position >
 					(uint32_t)_controlBlocks[SERVO_ORDER(_nextServoIndex-1)].position + _timer.current()) {
 
-				_timer.setPeriods(TIMER_PRESCALER::PRESCALER_5_1,
+				_timer.setPeriods(TimerPrescaler::PRESCALER_5_1,
 						_controlBlocks[SERVO_ORDER(_nextServoIndex)].position - startPosition - _timer.current(), 0, 0);
 				_timer.enable();
 				return;

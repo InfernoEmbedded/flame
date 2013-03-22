@@ -57,11 +57,11 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 // A timer we will use to tick the LED Matrix
-TimerImplementation<MHV_TIMER8_0, TIMER_MODE::REPETITIVE>ledMatrixTimer;
+TimerImplementation<MHV_TIMER8_0, TimerMode::REPETITIVE>ledMatrixTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(ledMatrixTimer, MHV_TIMER0_INTERRUPTS);
 
 #define ALARM_COUNT	4
@@ -136,7 +136,7 @@ public:
 
 LEDDriver ledDriver;
 
-PWMMatrix<LED_MATRIX_COLS, LED_MATRIX_ROWS, 1, PWMMATRIX_MODE::AUTO> ledMatrix(ledDriver);
+PWMMatrix<LED_MATRIX_COLS, LED_MATRIX_ROWS, 1, PWMMatrixMode::AUTO> ledMatrix(ledDriver);
 
 /* Animation routine for the LED matrix
  * brings up each LED in turn, then takes then down in turn

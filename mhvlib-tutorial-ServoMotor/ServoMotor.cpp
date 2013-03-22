@@ -40,7 +40,7 @@
 using namespace mhvlib;
 
 // A timer we will use to tick the RTC
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE>tickTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE>tickTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 
 #define ALARM_COUNT	4
@@ -48,7 +48,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 MHV_RTC_CREATE (rtc, ALARM_COUNT);
 
 // Create the timer that the servo controller will manage
-TimerImplementation<MHV_TIMER16_1, TIMER_MODE::REPETITIVE>servoTimer;
+TimerImplementation<MHV_TIMER16_1, TimerMode::REPETITIVE>servoTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(servoTimer, MHV_TIMER1_INTERRUPTS);
 
 // Create the servo controller
@@ -79,7 +79,7 @@ MAIN {
 
 
 // Configure the tick timer to tick every 1ms (at 16MHz)
-	tickTimer.setPeriods(TIMER_PRESCALER::PRESCALER_5_64, 249, 0);
+	tickTimer.setPeriods(TimerPrescaler::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 

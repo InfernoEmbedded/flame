@@ -81,7 +81,7 @@ void Timer::setListener3(TimerListener *listener) {
  * Set the prescaler (to be used when enabled)
  * @param prescaler	the desired prescaler
  */
-void Timer::setPrescaler(TIMER_PRESCALER prescaler) {
+void Timer::setPrescaler(TimerPrescaler prescaler) {
 	_prescaler = prescaler;
 }
 
@@ -109,7 +109,7 @@ void Timer::trigger3() {
  * @return	true if the timer is enabled
  */
 bool Timer::enabled() {
-	return getPrescaler() != TIMER_PRESCALER::PRESCALER_DISABLED;
+	return getPrescaler() != TimerPrescaler::PRESCALER_DISABLED;
 }
 
 }

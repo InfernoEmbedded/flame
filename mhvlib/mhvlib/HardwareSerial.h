@@ -79,17 +79,25 @@ ISR(mhvTxVect) { \
 
 namespace mhvlib {
 
-enum SerialParity {
+enum class SerialParity : uint8_t {
 	NONE = 0,
 	EVEN = 2,
 	ODD = 3
 };
 
-enum SerialMode {
+INLINE uint8_t operator<<(SerialParity parity, uint8_t bits) {
+	return (uint8_t)parity << bits;
+}
+
+enum class SerialMode : uint8_t {
 	ASYNC = 0,
 	SYNC = 1,
 	MASTER_SPI = 3
 };
+
+INLINE uint8_t operator<<(SerialMode mode, uint8_t bits) {
+	return (uint8_t)mode << bits;
+}
 
 /**
  * Create now serial port driver
@@ -149,7 +157,7 @@ public:
 	HardwareSerial() {
 		_echo = false;
 
-		configure(ASYNC, 8, NONE, 1, 0);
+		configure(SerialMode::ASYNC, 8, SerialParity::NONE, 1, 0);
 		setSpeed(baud);
 	}
 

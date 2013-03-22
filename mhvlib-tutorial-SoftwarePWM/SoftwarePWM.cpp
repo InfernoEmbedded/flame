@@ -34,7 +34,7 @@
 using namespace mhvlib;
 
 // The timer for PWM control
-TimerImplementation<MHV_TIMER8_2, TIMER_MODE::REPETITIVE> pwmTimer;
+TimerImplementation<MHV_TIMER8_2, TimerMode::REPETITIVE> pwmTimer;
 MHV_TIMER_ASSIGN_1INTERRUPT(pwmTimer, MHV_TIMER2_INTERRUPTS);
 
 #define PWM_LISTENER_COUNT	5
@@ -51,7 +51,7 @@ MAIN {
 	power_timer2_enable();
 
 	// Configure the PWM timer, for ~60 fps, 256 levels = ~16kHz  - 64,20
-	pwmTimer.setPeriods(TIMER_PRESCALER::PRESCALER_7_64, 20, 0);
+	pwmTimer.setPeriods(TimerPrescaler::PRESCALER_7_64, 20, 0);
 	pwmTimer.setListener1(pwm);
 	pwmTimer.enable();
 

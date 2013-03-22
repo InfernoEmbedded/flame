@@ -88,85 +88,85 @@ bool TripleAxisCalibrator::pushSample(const TRIPLEAXISSENSOR_RAW_READING &sample
 	*feedback = NULL;
 
 	switch (_state) {
-	case SETUP:
+	case TripleAxisCalibratorState::SETUP:
 		DIRECT_USER ("Place the bottom pointing down\r\n");
 		_currentSamples = 0;
-		_state = BOTTOM_DOWN;
+		_state = TripleAxisCalibratorState::BOTTOM_DOWN;
 		return true;
 		break;
 
-	case BOTTOM_DOWN:
+	case TripleAxisCalibratorState::BOTTOM_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
 				DIRECT_USER ("Place the top pointing down\r\n");
-				_state = TOP_DOWN;
+				_state = TripleAxisCalibratorState::TOP_DOWN;
 				return true;
 			}
 		}
 		break;
 
-	case TOP_DOWN:
+	case TripleAxisCalibratorState::TOP_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
 				DIRECT_USER ("Place the left side pointing down\r\n");
-				_state = LEFT_DOWN;
+				_state = TripleAxisCalibratorState::LEFT_DOWN;
 				return true;
 			}
 		}
 		break;
 
-	case LEFT_DOWN:
+	case TripleAxisCalibratorState::LEFT_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
 				DIRECT_USER ("Place the right side pointing down\r\n");
-				_state = RIGHT_DOWN;
+				_state = TripleAxisCalibratorState::RIGHT_DOWN;
 				return true;
 			}
 		}
 		break;
 
-	case RIGHT_DOWN:
+	case TripleAxisCalibratorState::RIGHT_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
 				DIRECT_USER ("Place the front pointing down\r\n");
-				_state = FRONT_DOWN;
+				_state = TripleAxisCalibratorState::FRONT_DOWN;
 				return true;
 			}
 		}
 		break;
 
-	case FRONT_DOWN:
+	case TripleAxisCalibratorState::FRONT_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
 				DIRECT_USER ("Place the back pointing down\r\n");
-				_state = BACK_DOWN;
+				_state = TripleAxisCalibratorState::BACK_DOWN;
 				return true;
 			}
 		}
 		break;
 
-	case BACK_DOWN:
+	case TripleAxisCalibratorState::BACK_DOWN:
 		if (isSampleGood(sample, feedback)) {
 			_currentSamples++;
 			addObservation(sample);
 
 			if (_currentSamples > _samplesToTake) {
-				_state = SETUP;
+				_state = TripleAxisCalibratorState::SETUP;
 				return false;
 			}
 		}

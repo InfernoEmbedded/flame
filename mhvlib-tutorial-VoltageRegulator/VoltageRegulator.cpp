@@ -63,7 +63,7 @@ MHV_HARDWARESERIAL_CREATE(serial, 0, 2, MHV_USART0, 115200);
 
 // We will be operating using Timer1
 #define OUTPUT_PIN MHV_PIN_TIMER_1_B
-TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16> vOutTimer;
+TimerImplementation<MHV_TIMER16_1, TimerMode::PWM_FAST_16> vOutTimer;
 
 #define TARGET_VOLTAGE 7000
 
@@ -77,7 +77,7 @@ TimerImplementation<MHV_TIMER16_1, TIMER_MODE::PWM_FAST_16> vOutTimer;
 // Which ADC channel to use
 #define ADC_CHANNEL	ADCChannel::CHANNEL_0
 
-VoltageRegulator<VREG_MODE::BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, ADCReference::REF1V1,
+VoltageRegulator<VoltageRegulatorModes::BOOST, TARGET_VOLTAGE, REFERENCE_VOLTAGE, ADCReference::REF1V1,
 	MHV_VREG_DIVIDER(R2/(R2+R1)), ADC_CHANNEL> regulator(vOutTimer);
 
 MAIN {
@@ -95,7 +95,7 @@ MAIN {
 	setOutput(OUTPUT_PIN);
 
 // Set the PWM prescaler to 1 (no prescaler)
-	vOutTimer.setPrescaler(TIMER_PRESCALER::PRESCALER_5_1);
+	vOutTimer.setPrescaler(TimerPrescaler::PRESCALER_5_1);
 
 /* Set the TOP value of the PWM timer - this defines the resolution &
  * frequency of the PWM output. With a 16MHz clock, this gives us a PWM
@@ -107,7 +107,7 @@ MAIN {
  * It will turn off the output pin when the timer elapses, and turn it on
  * when it is reset
  */
-	vOutTimer.connectOutput2(TIMER_CONNECT::CLEAR);
+	vOutTimer.connectOutput2(TimerConnect::CLEAR);
 
 // Start the regulator
 	regulator.enable();

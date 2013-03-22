@@ -537,14 +537,12 @@ ISR(mhvInterruptHandler) mhvFunction
 /**
  * Situations that interrupts can be triggered on
  */
-enum mhv_interruptMode {
-	MHV_INTERRUPT_LOW,    //!< MHV_INTERRUPT_LOW to level trigger when low
-	MHV_INTERRUPT_CHANGE, //!< MHV_INTERRUPT_CHANGE to edge trigger on change
-	MHV_INTERRUPT_FALLING,//!< MHV_INTERRUPT_FALLING to edge trigger when falling
-	MHV_INTERRUPT_RISING  //!< MHV_INTERRUPT_RISING to edge trigger when rising
+enum class InterruptMode {
+	LOW,    //!< MHV_INTERRUPT_LOW to level trigger when low
+	CHANGE, //!< MHV_INTERRUPT_CHANGE to edge trigger on change
+	FALLING,//!< MHV_INTERRUPT_FALLING to edge trigger when falling
+	RISING  //!< MHV_INTERRUPT_RISING to edge trigger when rising
 };
-typedef enum mhv_interruptMode MHV_INTERRUPTMODE;
-
 
 /**
  * Enable an external interrupt
