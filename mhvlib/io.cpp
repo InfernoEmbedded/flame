@@ -26,10 +26,12 @@
 
 #include <io.h>
 
-uint8_t un_BV(uint8_t bv) {
-   uint8_t count = 0;
-   while(bv/=2) {
-     count++;
-   }
-   return count;
-}
+namespace mhvlib {
+  uint8_t un_BV(uint8_t bv) {
+    uint8_t count = 0;
+    while(bv/=2) {
+      count++;
+    }
+    return count;
+  }
+} // end mhvlib namespace
