@@ -15,12 +15,17 @@ my $topDir;
 my $timers = 6;
 my $usarts = 4;
 
-sub usage() {
-	print "Generate the headers for a chip\n";
-	print "If no chip is specified, all chips supported by the compiler will be generated\n";
-	print "Usage:\n";
-	print "\tgenerate_io_headers <top directory> [avr chip identifier] [avr chip identifier] ...";
-	die "\n";
+sub usage_message() {
+	my ($message) = @_;
+	print "\n$message\n\n" if defined $message;
+	return <<"EOF";
+$0: Generate the headers for a chip
+	If no chip is specified, all chips supported by the compiler will be generated
+
+Usage:
+	generate_io_headers <mhvlib-source-directory> [avr chip identifier] [avr chip identifier] ...
+
+EOF
 } ## end sub usage()
 
 ##
@@ -194,11 +199,11 @@ sub emitHeaders($$) {
 #include <avr/io.h>
 
 #ifdef INT0_vect
-#define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
+#define MHV_INTERRUPT_INT0 INT0_vect, &EICRA, ISC00, &EIMSK, INT0
 #endif
 
 #ifdef INT1_vect
-#define MHV_INTERRUPT_INT1 INT1_vect, &MCUCR, ISC10
+#define MHV_INTERRUPT_INT0 INT0_vect, &EICRA, ISC10, &EIMSK, INT1
 #endif
 
 EOF
@@ -924,9 +929,8 @@ EOF
 } ## end sub emitChipList(@)
 
 $topDir = shift @ARGV;
-if (!-d $topDir) {
-	usage;
-}
+die(&usage_message("topDir required")) unless defined $topDir;
+die(&usage_message("($topDir) does not exist")) unless -d $topDir;
 
 my @chips = @ARGV;
 
