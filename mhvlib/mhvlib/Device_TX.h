@@ -706,8 +706,25 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool printf(PGM_P format, ...) {
+		bool ret;
+
 		va_list	ap;
 		va_start(ap, format);
+
+		ret = printf(format,ap);
+
+		va_end(ap);
+		return ret;
+	}
+
+	/**
+	 * Print a message
+	 * @param	format		a printf format
+	 * @param	...			the printf parms
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool printf(PGM_P format, va_list ap) {
 
 		int length = vsnprintf_P(NULL, 0, format, ap);
 		length++; // "\0"
@@ -722,15 +739,12 @@ public:
 
 			if (write(buf, length, &device_tx_free)) {
 				device_tx_free(buf);
-				va_end(ap);
 				return true;
 			}
 
-			va_end(ap);
 			return false;
 		}
 
-		va_end(ap);
 		return true;
 	}
 
@@ -783,6 +797,19 @@ public:
 		char *buf = (char *)malloc(11);
 		if (NULL != buf) {
 			ultoa(value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+	bool write(char value) {
+		char *buf = (char *)malloc(2);
+		if (NULL != buf) {
+			buf[0] = value;
+			buf[1] = 0;
 			if (write(buf, &device_tx_free)) {
 				device_tx_free(buf);
 				return true;
