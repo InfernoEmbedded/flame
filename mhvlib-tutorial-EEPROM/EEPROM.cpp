@@ -39,7 +39,7 @@
 #include <mhvlib/io.h>
 #include <mhvlib/HardwareSerial.h>
 #include <mhvlib/EEPROM.h>
-#include <util/CRC16.h>
+#include <util/crc16.h>
 #include <util/delay.h>
 #include <string.h>
 #include <avr/power.h>
