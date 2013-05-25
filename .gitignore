@@ -8,3 +8,4 @@
 *.map
 *~
 .metadata
+*/ATmega328P_16MHz/*
