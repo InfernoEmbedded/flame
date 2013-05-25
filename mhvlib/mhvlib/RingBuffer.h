@@ -37,8 +37,8 @@ namespace mhvlib {
 
 class RingBuffer {
 protected:
-	volatile uint8_t 	_head;
-	volatile uint8_t 	_tail;
+	volatile uint16_t 	_head;
+	volatile uint16_t 	_tail;
 	volatile uint8_t	*_buffer = NULL;
 	uint16_t			_bufferSize = 0;
 	uint8_t				_elementCount = 0;
@@ -50,7 +50,7 @@ protected:
 	 * @return the next index
 	 */
 	uint16_t increment (uint16_t index) {
-		uint8_t next = index + 1;
+		uint16_t next = index + 1;
 		if (next == _bufferSize) {
 			next = 0;
 		}
