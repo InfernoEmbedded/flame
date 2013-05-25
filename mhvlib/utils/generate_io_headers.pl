@@ -203,7 +203,7 @@ sub emitHeaders($$) {
 #endif
 
 #ifdef INT1_vect
-#define MHV_INTERRUPT_INT0 INT0_vect, &EICRA, ISC10, &EIMSK, INT1
+#define MHV_INTERRUPT_INT1 INT1_vect, &EICRA, ISC10, &EIMSK, INT1
 #endif
 
 EOF

@@ -539,7 +539,7 @@ INLINE bool memCompare_P(PGM_P source, char *target, uint8_t length) {
 #define mhv_declareExternalInterrupt(mhvInterruptParms,mhvFunction) \
 	_mhv_declareExternalInterrupt(mhvInterruptParms, mhvFunction)
 
-#define _mhv_declareExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvFunction) \
+#define _mhv_declareExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvFunction) \
 ISR(mhvInterruptHandler) mhvFunction
 
 /**
@@ -553,18 +553,43 @@ enum class InterruptMode {
 };
 
 /**
- * Enable an external interrupt
+ * Prepare an external interrupt
  * @param	mhvInterruptParms	A MHV_INTERRUPT_* Macro
  * @param	mhvInterruptMode	When to raise the interrupt (see MHV_INTERRUPTMODE)
  */
 #define mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode) \
+  _mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode)
+
+#define _mhv_enableExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvInterruptMode) \
 	do { \
-		_mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode); \
+		_mhv_setExternalInterruptSenseMode(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvInterruptMode); \
+		_mhv_setExternalInterruptMask(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,true);	\
 	} while (0)
 
-#define _mhv_enableExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvInterruptMode) \
-	*mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | (mhvInterruptMode << mhvModeBitshift)
 
-}
+/**
+ * Set Sense mode for an external interrupt
+ * @param	mhvInterruptParms	A MHV_INTERRUPT_* Macro
+ * @param	mhvInterruptMode	When to raise the interrupt (see MHV_INTERRUPTMODE)
+ */
+#define mhv_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode) \
+  _mhv_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode)
+#define _mhv_setExternalInterruptSenseMode(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvInterruptMode) \
+  *mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | (int(mhvInterruptMode) << mhvModeBitshift)
+
+
+/**
+ * Enable an external interrupt in the External Interrupt Mask register
+ * @param	mhvInterruptParms	A MHV_INTERRUPT_* Macro
+ * @param	value bool indicating whether the interrupt should be enabled
+ */
+#define mhv_setExternalInterruptMask(mhvInterruptParms,value) \
+  _mhv_setExternalInterruptMask(mhvInterruptParms,value)
+#define _mhv_setExternalInterruptMask(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIMaskRegister,mhvEIMaskEnableShift,value) \
+  *mhvEIMaskRegister = (*mhvEIMaskRegister & ~(1 << mhvEIMaskEnableShift)) | ((value ? 1 :0) << mhvEIMaskEnableShift)
+
+
+
+} // end namespace
 
 #endif /* MHV_IO_H_ */

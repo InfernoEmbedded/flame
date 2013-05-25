@@ -31,14 +31,6 @@
 
 #include <avr/io.h>
 
-#ifdef INT0_vect
-#define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
-#endif
-
-#ifdef INT1_vect
-#define MHV_INTERRUPT_INT1 INT1_vect, &MCUCR, ISC10
-#endif
-
 #if defined(__AVR_ATmega1280__)
 #include <boards/ArduinoMega.h>
 #elif defined(__AVR_ATmega168__)

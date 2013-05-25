@@ -32,11 +32,11 @@
 #include <avr/io.h>
 
 #ifdef INT0_vect
-#define MHV_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
+#define MHV_INTERRUPT_INT0 INT0_vect, &EICRA, ISC00, &EIMSK, INT0
 #endif
 
 #ifdef INT1_vect
-#define MHV_INTERRUPT_INT1 INT1_vect, &MCUCR, ISC10
+#define MHV_INTERRUPT_INT1 INT1_vect, &EICRA, ISC10, &EIMSK, INT1
 #endif
 
 //						bits,type,                            ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,inputCapture1,counter,interrupt,intEnable
