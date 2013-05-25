@@ -99,6 +99,14 @@ struct mhv_pin {
 typedef struct mhv_pin MHV_PIN;
 
 /**
+ * Pull apart a pin struct into a form suitable for passing as mhvParams
+ * @param _mhv_pin	an MHV_PIN*
+ */
+uint8_t un_BV(uint8_t bv);
+#define MHV_PIN_TO_MHVPARMS(_mhv_pin) \
+  _mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
+
+/**
  * Convert a literal port and pin into a pin macro
  * @param	_mhv_port	the port (eg, B)
  * @param	_mhv_bit	the bit (eg, 3)
