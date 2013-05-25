@@ -86,6 +86,9 @@ void PinChangeManager::pinChange(uint8_t offset) {
 	}
 }
 
+void PinChangeManager::registerListener(MHV_PIN *x, PinEventListener *listener) {
+  PinChangeManager::registerListener(MHV_PIN_TO_MHVPARMS(x),listener);
+}
 /**
  * Register interest for pinchange events
  * @param	pin			A MHV_PIN_* macro, must have a valid pinPinchangeInterrupt
@@ -165,6 +168,14 @@ void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 		PCMSK &= ~_BV(bit);
 	}
 #endif
+}
+
+/**
+ * Deregister interest for pinchange events
+ * @param	_mhv_pin an MHV_PIN* currently listening
+ */
+void PinChangeManager::deregisterListener(MHV_PIN *_mhv_pin) {
+  deregisterListener(_mhv_pin->pcInt);
 }
 
 /**

@@ -104,8 +104,12 @@ public:
 	void pinChange2();
 #endif
 	void pinChange(uint8_t offset);
+
 	void registerListener(MHV_DECLARE_PIN(pin), PinEventListener *listener);
 	void deregisterListener(int8_t pinPinChangeListener);
+
+	void registerListener(MHV_PIN *x, PinEventListener * listener);
+	void deregisterListener(MHV_PIN *_mhv_pin);
 
 	void handleEvents();
 
