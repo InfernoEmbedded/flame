@@ -90,8 +90,8 @@ typedef uint16_t mhv_register;
 
 struct mhv_pin {
 	mhv_register		dir;
-	mhv_register		input;
 	mhv_register		output;
+	mhv_register		input;
 	// Contains a mask of the pin
 	uint8_t				bit;
 	int8_t				pcInt;
