@@ -92,17 +92,20 @@ public:
 	 * @return false if we succeeded, true otherwise
 	 */
 	bool append(char c) {
-		uint16_t next = increment(_head);
+		bool ret;
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			uint16_t next = increment(_head);
 
-		// Don't overwrite valid data in the buffer
-		if (next == _tail) {
-			return true;
+			// Don't overwrite valid data in the buffer
+			if (next == _tail) {
+				ret = true; // failure
+			} else {
+				_buffer[_head] = c;
+				_head = next;
+				ret = 0; // success
+			}
 		}
-
-		_buffer[_head] = c;
-		_head = next;
-
-		return false;
+		return ret;
 	}
 
 	/**
@@ -238,7 +241,7 @@ public:
 	 */
 	bool full() {
 //		return length() == _bufferSize - 1;
-		return length() > (_bufferSize - 1 - _elementSize);
+		return (length() > (_bufferSize - 1 - _elementSize));
 	}
 
 	/**
