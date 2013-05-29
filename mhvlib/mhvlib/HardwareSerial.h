@@ -119,17 +119,17 @@ protected:
 	 */
 	void runTxBuffers() {
 #if MHV_DEBUG_TX
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		//enableTXInterrupt();
 #endif
 
 		int c = Device_TX::nextCharacter();
 
 #if MHV_DEBUG_TX
-//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+//		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		enableTXInterrupt();
 
 		// Wait until the send is done
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -144,10 +144,7 @@ protected:
 		// If the UART isn't already sending data, start sending
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
-		_MMIO_BYTE(usartIO) = (char)c;
-
-		// Enable tx interrupt
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		sendChar(c);
 	}
 
 public:
@@ -245,28 +242,48 @@ public:
 	 */
 	void tx() {
 #if MHV_DEBUG_TX
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		//enableTXInterrupt();
 #endif
 
 		int c = Device_TX::nextCharacter();
 
 #if MHV_DEBUG_TX
-//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+//		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		enableTXInterrupt();
 #endif
 
 
 		if (-1 == c) {
-			// Nothing more to send, disable the TX interrupt
-			_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+			// Nothing more to send
+			disableTXInterrupt();
 
 			return;
 		}
 
 		_MMIO_BYTE(usartIO) = (char)c;
+	}
+
+	/*
+	 * poke a character into the serial output buffer, poke device to send
+	 * @param	c	character to send
+	 */
+	INLINE void sendChar(char c) {
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			_MMIO_BYTE(usartIO) = (char)c;
+			enableTXInterrupt();
+		}
+	}
+	INLINE void enableTXInterrupt() {
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+	}
+	INLINE void disableTXInterrupt() {
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+	}
+	INLINE bool TXInterruptIsEnabled() {
+		return (_MMIO_BYTE(usartControlB) & _BV(usartTxInterruptEnable));
 	}
 
 	/**
@@ -323,7 +340,7 @@ public:
 	 */
 	void busyWrite(char c) {
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
 
@@ -339,7 +356,7 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		p = buffer;
 		char c = pgm_read_byte(p++);
@@ -361,7 +378,7 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -381,7 +398,7 @@ public:
 		const __flash char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -399,7 +416,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -420,7 +437,7 @@ public:
 		const __memx char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
 			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
@@ -438,7 +455,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -460,7 +477,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -479,7 +496,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
