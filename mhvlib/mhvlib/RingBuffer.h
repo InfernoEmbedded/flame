@@ -250,9 +250,16 @@ public:
 	 * @return true if the ringbuffer is full
 	 */
 	bool full(uint8_t blockLength) {
-		return length() > (_bufferSize - 1 - blockLength);
+		return blockLength > freeSpace();
 	}
 
+	/**
+	 * return amount of free space in the buffer
+	 * @return amount of free space in bytes
+	 */
+	 uint16_t freeSpace() {
+		return (_bufferSize - 1 - length());
+	 }
 
 	/**
 	 * Check the most recent character in the buffer
