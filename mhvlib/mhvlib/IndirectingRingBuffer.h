@@ -203,6 +203,23 @@ public:
 	 * @param string		the string to to send
 	 * @param completeFunction	called when string is no longer referenced
 	 */
+	bool appendIndirectly(const char *string,void (*completeFunction)(const char *)) {
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (freeSpace() < 6) {
+				ret = 1; // failure
+			} else {
+				RingBuffer::append(magic_escape_character);
+				RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
+				RingBuffer::append((char)((uint16_t)string >> 8));
+				RingBuffer::append((char)((uint16_t)string & 0xff));
+				RingBuffer::append((char)((uint16_t)completeFunction >> 8));
+				RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+				ret = 0; // success
+			}
+		} 
+		return ret;
+	}
 	bool append(const char *string,void (*completeFunction)(const char *)) {
 		uint16_t escaped_length = escapedLength(string);
 		bool ret;
@@ -210,23 +227,29 @@ public:
 			ret = append(string);
 			completeFunction(string);
 		} else { // indirect it
-			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-				if (freeSpace() < 6) {
-					ret = 1; // failure
-				} else {
-					RingBuffer::append(magic_escape_character);
-					RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
-					RingBuffer::append((char)((uint16_t)string >> 8));
-					RingBuffer::append((char)((uint16_t)string & 0xff));
-					RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-					RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-					ret = 0; // success
-				}
-			} 
+			ret = appendIndirectly(string,completeFunction);
 		}
 		return ret;
 	}
 
+	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
+		bool ret;
+		if (escapedLength > 7) {
+			ret = 1; // failure
+		} else {
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				RingBuffer::append(magic_escape_character);
+				RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
+				RingBuffer::append(pLength);
+				RingBuffer::append((char)((uint16_t)p >> 8));
+				RingBuffer::append((char)((uint16_t)p & 0xff));
+				RingBuffer::append((char)((uint16_t)completeFunction >> 8));
+				RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+				ret = 0; // success
+			}
+		}
+		return ret;
+	}
 	/**
 	 * Send a buffer of fixed length, possibly indirected
 	 * @param p			pointer to buffer to send
@@ -239,20 +262,7 @@ public:
 			ret = append(p,pLength);
 			completeFunction(p);
 		} else {
-			if (escapedLength > 7) {
-				ret = 1; // failure
-			} else {
-				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-					RingBuffer::append(magic_escape_character);
-					RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
-					RingBuffer::append(pLength);
-					RingBuffer::append((char)((uint16_t)p >> 8));
-					RingBuffer::append((char)((uint16_t)p & 0xff));
-					RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-					RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-					ret = 0; // success
-				}
-			}
+			ret = appendIndirectly(p,pLength,completeFunction);
 		}
 		return ret;
 	}
@@ -268,6 +278,45 @@ public:
 		}
 		return count;
 	}
+
+
+
+	bool appendDirectly_P(PGM_P string) {
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			uint16_t escaped_length = escapedLength_P(string);
+			if (escaped_length > freeSpace()) {
+				ret = 1; // failure
+			} else {
+				PGM_P x = string;
+				while((ret = pgm_read_byte((PGM_P)x++))) {
+					append(ret);
+					if (ret == magic_escape_character) {
+						append(ret);
+					}
+				}
+				ret = 0; // success
+			}
+		}
+		return ret;
+	}
+	bool appendIndirectly_P(PGM_P string) {
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (freeSpace() < 5) {
+				ret = 1; // failure
+			} else {
+				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+					RingBuffer::append(magic_escape_character);
+					RingBuffer::append(PGM_P_STRING);
+					RingBuffer::append((char)((uint16_t)string >> 8));
+					RingBuffer::append((char)((uint16_t)string & 0xff));
+				}
+				ret = 0; // success
+			}
+		}
+		return ret;
+	}
 	/**
 	 * Send a null-terminated program string 
 	 * @param string		pointer to progmem string to send
@@ -277,34 +326,9 @@ public:
 		uint16_t escaped_length = escapedLength_P(string);
 		bool ret;
 		if (escaped_length < 5) { // directly append it
-			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-				if (escaped_length > freeSpace()) {
-					ret = 1; // failure
-				} else {
-					PGM_P x = string;
-					while((ret = pgm_read_byte((PGM_P)x++))) {
-						append(ret);
-						if (ret == magic_escape_character) {
-							append(ret);
-						}
-					}
-					ret = 0; // success
-				}
-			}	 
+			ret = appendDirectly_P(string);
 		} else {
-			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-				if (freeSpace() < 5) {
-					ret = 1; // failure
-				} else {
-					ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-						RingBuffer::append(magic_escape_character);
-						RingBuffer::append(PGM_P_STRING);
-						RingBuffer::append((char)((uint16_t)string >> 8));
-						RingBuffer::append((char)((uint16_t)string & 0xff));
-					}
-					ret = 0; // success
-				}
-			}
+			ret = appendIndirectly_P(string);
 		}
 		return ret;
 	}
