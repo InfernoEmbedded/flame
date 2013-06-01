@@ -179,6 +179,10 @@ public:
 	}
 
 
+	/**
+	 * Send a null-terminated string directly
+	 * @param string		the string to to send
+	 */
 	bool append(const char *string) {
 		uint16_t escaped_length = escapedLength(string);
 		bool ret;
@@ -199,7 +203,7 @@ public:
 	}
 
 	/**
-	 * Send a null-terminated string, possibly indirected
+	 * Send a null-terminated string, indirectly
 	 * @param string		the string to to send
 	 * @param completeFunction	called when string is no longer referenced
 	 */
@@ -220,6 +224,12 @@ public:
 		} 
 		return ret;
 	}
+
+	/**
+	 * Send a null-terminated string, possibly indirectly
+	 * @param string		the string to to send
+	 * @param completeFunction	called when string is no longer referenced
+	 */
 	bool append(const char *string,void (*completeFunction)(const char *)) {
 		uint16_t escaped_length = escapedLength(string);
 		bool ret;
@@ -232,6 +242,12 @@ public:
 		return ret;
 	}
 
+	/**
+	 * Send a buffer of fixed length, indirectly
+	 * @param p			pointer to buffer to send
+	 * @param pLength		how many bytes to send
+	 * @param completeFunction	called when buffer is no longer referenced
+	 */
 	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
 		bool ret;
 		if (escapedLength > 7) {
@@ -267,6 +283,10 @@ public:
 		return ret;
 	}
 
+	/**
+	 * Return the length a string will be when it is escaped
+	 * @param string	the string to return the escaped length of
+	 */
 	PURE uint16_t escapedLength_P(PGM_P string) {
 		PGM_P x = string;
 		uint16_t count = 0;
@@ -280,7 +300,10 @@ public:
 	}
 
 
-
+	/*
+	 * Send a null-terminated program string, directly
+	 * @param string		pointer to progmem string to send
+	 */
 	bool appendDirectly_P(PGM_P string) {
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -300,6 +323,10 @@ public:
 		}
 		return ret;
 	}
+	/*
+	 * Send a null-terminated program string, indirectly
+	 * @param string		pointer to progmem string to send
+	 */
 	bool appendIndirectly_P(PGM_P string) {
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -318,7 +345,7 @@ public:
 		return ret;
 	}
 	/**
-	 * Send a null-terminated program string 
+	 * Send a null-terminated program string, possibly indirectly
 	 * @param string		pointer to progmem string to send
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
@@ -407,9 +434,9 @@ public:
 		return ret;
 	}
 
-	bool consume(void *p, uint8_t pLength) {
-		return RingBuffer::consume(p,pLength);
-	}
+	// bool consume(void *p, uint8_t pLength) {
+	// 	return RingBuffer::consume(p,pLength);
+	// }
 	// bool consume(void *p) {
 	// 	return RingBuffer::consume(p);
 	// }
