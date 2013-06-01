@@ -78,31 +78,153 @@ public:
 		currently_consuming = BUFFER;
 	}
 
-	bool append(char c) { // should check can-fit here...
+	/* see if there is room for a character in the buffer:
+	 * @param 			the character to append
+	 */
+	bool canFit(char c) {
 		if (c == magic_escape_character) {
-			RingBuffer::append(c);
+			return freeSpace() > 1;
 		}
-		return RingBuffer::append(c);
+		return freeSpace() > 0;
 	}
-	bool append(const void *p) { // can't indirect this - may be reused by caller
-		return RingBuffer::append(p);
+	/* append a character
+	 * @param 			the character to append
+	 */
+	bool append(char c) {
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (!canFit(c)) {
+				ret = 1; // failure
+			} else {
+				if (c == magic_escape_character) {
+					RingBuffer::append(c); // ignored return value
+				}
+				ret = RingBuffer::append(c);
+			}
+		}
+		return ret;
 	}
+
+	// appending a void pointer no longer supported; elementsize is going away.
+	// bool append(const void *p) { // can't indirect this - may be reused by caller
+	// 	return RingBuffer::append(p);
+	// }
+
+	uint16_t escapedLength(const void *p,uint8_t pLength) {
+		uint16_t count = 0;;
+		for (uint8_t i = 0; i < pLength; i++) {
+			if (((char*)p)[i] == magic_escape_character) {
+				count++;
+			}
+		}
+		return pLength + count;
+	}
+	
+	/* see if there is room for a void pointer in the buffer (directly)
+	 * @param p			pointer to the data
+	 * @param pLength		amount of data to append
+	 */
+	bool canFit(const void *p, uint8_t pLength) {
+		return (escapedLength(p,pLength) > freeSpace());
+	}
+	/* append a specific length of data pointed to by a void pointer
+	 * @param p			pointer to the data
+	 * @param pLength		amount of data to append
+	 */
 	bool append(const void *p, uint8_t pLength) { // can't indirect this - may be reused by caller
-		return RingBuffer::append(p,pLength);
+		bool ret;
+		uint16_t escaped_length = escapedLength(p,pLength);
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (escaped_length > freeSpace()) {
+				ret = 1; // failure
+			} else {
+				for (uint8_t i = 0; i < pLength; i++) {
+					append(((char*)p)[i]);
+					if (((char*)p)[i] == magic_escape_character) {
+						append(((char*)p)[i]);
+					}
+				}
+				ret = 0; // success
+			}
+		}
+		return ret;
 	}
+
+	PURE bool escapedLength(const char *string) {
+		uint8_t count = 0;
+		for (char * x = (char*)string;*x;x++) {
+			count++;
+			if (*x == magic_escape_character) {
+				count++;
+			}
+		}
+		return count;
+	}
+	/* see if there is room for a null-terminated string in the buffer (directly)
+	 * @param p			pointer to the data
+	 */
+	bool canFit(const char *string) {
+		return (escapedLength(string) <= freeSpace());
+	}
+	/* see if there is room for a null-terminated string in the buffer (possibly indirected)
+	 * @param p			pointer to the data
+	 * @param pLength		amount of data to append
+	 */
+	bool canFit(const char *string,void (*completeFunction)(const char *)) {
+		// we require 6 bytes for this....
+		if (freeSpace() >= 6) {
+			return true;
+		}
+		return canFit(string);
+	}
+
+
+	bool append(const char *string) {
+		uint16_t escaped_length = escapedLength(string);
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (escaped_length > freeSpace()) {
+				ret = 1; // failure
+			} else {
+				for(char * x=(char *)string;*x;x++) {
+					append(*x);
+					if (*x == magic_escape_character) {
+						append(*x);
+					}
+				}
+				ret = 0; // success
+			}
+		}
+		return ret;
+	}
+
 	/**
 	 * Send a null-terminated string, possibly indirected
 	 * @param string		the string to to send
 	 * @param completeFunction	called when string is no longer referenced
 	 */
 	bool append(const char *string,void (*completeFunction)(const char *)) {
-			RingBuffer::append(magic_escape_character);
-			RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
-			RingBuffer::append((char)((uint16_t)string >> 8));
-			RingBuffer::append((char)((uint16_t)string & 0xff));
-			RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-			RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-			return 0; // success
+		uint16_t escaped_length = escapedLength(string);
+		bool ret;
+		if (escaped_length <= 6) { // directly append it; should 6 be higher?
+			ret = append(string);
+			completeFunction(string);
+		} else { // indirect it
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				if (freeSpace() < 6) {
+					ret = 1; // failure
+				} else {
+					RingBuffer::append(magic_escape_character);
+					RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
+					RingBuffer::append((char)((uint16_t)string >> 8));
+					RingBuffer::append((char)((uint16_t)string & 0xff));
+					RingBuffer::append((char)((uint16_t)completeFunction >> 8));
+					RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+					ret = 0; // success
+				}
+			} 
+		}
+		return ret;
 	}
 
 	/**
@@ -111,37 +233,81 @@ public:
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
 	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
-		if (pLength > magic_worth_indirecting_threshold) {
-			// should check can_fit here
-			RingBuffer::append(magic_escape_character);
-			RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
-			RingBuffer::append(pLength);
-			RingBuffer::append((char)((uint16_t)p >> 8));
-			RingBuffer::append((char)((uint16_t)p & 0xff));
-			RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-			RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-			return 0; // success
+		uint16_t escaped_length = escapedLength(p,pLength);
+		bool ret;
+		if (escapedLength <= 7) { // directly append it
+			ret = append(p,pLength);
+			completeFunction(p);
+		} else {
+			if (escapedLength > 7) {
+				ret = 1; // failure
+			} else {
+				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+					RingBuffer::append(magic_escape_character);
+					RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
+					RingBuffer::append(pLength);
+					RingBuffer::append((char)((uint16_t)p >> 8));
+					RingBuffer::append((char)((uint16_t)p & 0xff));
+					RingBuffer::append((char)((uint16_t)completeFunction >> 8));
+					RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+					ret = 0; // success
+				}
+			}
 		}
-		return RingBuffer::append(p,pLength);
+		return ret;
 	}
 
+	PURE uint16_t escapedLength_P(PGM_P string) {
+		PGM_P x = string;
+		uint16_t count = 0;
+		while(char ret = pgm_read_byte((PGM_P)x++)) {
+			count++;
+			if (ret == magic_escape_character) {
+				count++;
+			}
+		}
+		return count;
+	}
 	/**
 	 * Send a null-terminated program string 
 	 * @param string		pointer to progmem string to send
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
 	bool append_P(PGM_P string) {
-		// could check to see whether it was work indirecting here
-		RingBuffer::append(magic_escape_character);
-		RingBuffer::append(PGM_P_STRING);
-		RingBuffer::append((char)((uint16_t)string >> 8));
-		RingBuffer::append((char)((uint16_t)string & 0xff));
-		return 0; // success
+		uint16_t escaped_length = escapedLength_P(string);
+		bool ret;
+		if (escaped_length < 5) { // directly append it
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				if (escaped_length > freeSpace()) {
+					ret = 1; // failure
+				} else {
+					PGM_P x = string;
+					while((ret = pgm_read_byte((PGM_P)x++))) {
+						append(ret);
+						if (ret == magic_escape_character) {
+							append(ret);
+						}
+					}
+					ret = 0; // success
+				}
+			}	 
+		} else {
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				if (freeSpace() < 5) {
+					ret = 1; // failure
+				} else {
+					ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+						RingBuffer::append(magic_escape_character);
+						RingBuffer::append(PGM_P_STRING);
+						RingBuffer::append((char)((uint16_t)string >> 8));
+						RingBuffer::append((char)((uint16_t)string & 0xff));
+					}
+					ret = 0; // success
+				}
+			}
+		}
+		return ret;
 	}
-
-	// should really override _full here and count the extra
-	// characters required for escaping!
-
 
 	/**
 	 * Return a character from the ringbuffer
@@ -220,10 +386,9 @@ public:
 	bool consume(void *p, uint8_t pLength) {
 		return RingBuffer::consume(p,pLength);
 	}
-	bool consume(void *p) {
-		return RingBuffer::consume(p);
-	}
-
+	// bool consume(void *p) {
+	// 	return RingBuffer::consume(p);
+	// }
 };
 
 }
