@@ -63,6 +63,7 @@ enum IndirectionType {
   BUFFER = 0,
   VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 1,
   PGM_P_STRING = 2,
+  NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 3,
 };
 public:
 	/**
@@ -74,6 +75,7 @@ public:
 		_bufferSize = elementCount* elementSize + 1;
 		_elementCount = elementCount;
 		_elementSize = elementSize;
+		currently_consuming = BUFFER;
 	}
 
 	bool append(char c) { // should check can-fit here...
@@ -88,8 +90,28 @@ public:
 	bool append(const void *p, uint8_t pLength) { // can't indirect this - may be reused by caller
 		return RingBuffer::append(p,pLength);
 	}
+	/**
+	 * Send a null-terminated string, possibly indirected
+	 * @param string		the string to to send
+	 * @param completeFunction	called when string is no longer referenced
+	 */
+	bool append(const char *string,void (*completeFunction)(const char *)) {
+			RingBuffer::append(magic_escape_character);
+			RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
+			RingBuffer::append((char)((uint16_t)string >> 8));
+			RingBuffer::append((char)((uint16_t)string & 0xff));
+			RingBuffer::append((char)((uint16_t)completeFunction >> 8));
+			RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+			return 0; // success
+	}
+
+	/**
+	 * Send a buffer of fixed length, possibly indirected
+	 * @param p			pointer to buffer to send
+	 * @param completeFunction	called when buffer is no longer referenced
+	 */
 	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
-		if (0 && pLength > magic_worth_indirecting_threshold) {
+		if (pLength > magic_worth_indirecting_threshold) {
 			// should check can_fit here
 			RingBuffer::append(magic_escape_character);
 			RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
@@ -102,12 +124,18 @@ public:
 		}
 		return RingBuffer::append(p,pLength);
 	}
-	bool append_P(PGM_P p) {
+
+	/**
+	 * Send a null-terminated program string 
+	 * @param string		pointer to progmem string to send
+	 * @param completeFunction	called when buffer is no longer referenced
+	 */
+	bool append_P(PGM_P string) {
 		// could check to see whether it was work indirecting here
 		RingBuffer::append(magic_escape_character);
 		RingBuffer::append(PGM_P_STRING);
-		RingBuffer::append((char)((uint16_t)p >> 8));
-		RingBuffer::append((char)((uint16_t)p & 0xff));
+		RingBuffer::append((char)((uint16_t)string >> 8));
+		RingBuffer::append((char)((uint16_t)string & 0xff));
 		return 0; // success
 	}
 
@@ -115,11 +143,14 @@ public:
 	// characters required for escaping!
 
 
-	int consume() { // need to make a while loop in this body - torture test of >1 0-byte void*p indirections
+	/**
+	 * Return a character from the ringbuffer
+	 */
+	int consume() {
 		int ret;
 		while (1) {
-			ret = RingBuffer::consume();
 			if (currently_consuming == BUFFER) {
+				ret = RingBuffer::consume();
 				if (ret != magic_escape_character) {
 					goto done;
 				}
@@ -142,6 +173,12 @@ public:
 					indirection_address = (char*)(RingBuffer::consume() << 8 |
 								      RingBuffer::consume());
 					indirection_offset = 0;
+				} else if(currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {	
+					indirection_address = (char*)(RingBuffer::consume() << 8 |
+								      RingBuffer::consume());
+					indirection_offset = 0;
+					completeFunction =  (void (*)(const char*))(RingBuffer::consume() << 8 |
+						     RingBuffer::consume());
 				} else {
 					// die horribly!
 				}
@@ -159,10 +196,21 @@ public:
 			if (currently_consuming == PGM_P_STRING) {
 				ret = pgm_read_byte((PGM_P)indirection_address + indirection_offset++);
 				if (ret == '\0') {
-					// null-terminated string - all done here (but we return the null!)
+					// null-terminated string - all done (we do NOT return the null!)
 					currently_consuming = BUFFER;
+				} else {
+					goto done;
 				}
-				goto done;
+			}
+			if (currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {
+				ret = indirection_address[indirection_offset++];
+				if (ret == '\0') {
+					// null-terminated string - all done (we do NOT return the null!)
+					completeFunction(indirection_address);
+					currently_consuming = BUFFER;
+				} else {
+					goto done;
+				}
 			}
 		}
 	done:
