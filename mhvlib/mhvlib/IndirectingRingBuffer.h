@@ -53,8 +53,11 @@ enum IndirectionType {
   VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 1,
   PGM_P_STRING = 2,
   NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 3,
+  VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION = 4,
 };
 public:
+	PURE bool success() { return true; };
+
 	/* see if there is room for a character in the buffer:
 	 * @param 			the character to append
 	 */
@@ -82,9 +85,10 @@ public:
 		return ret;
 	}
 
-	PURE uint16_t escapedLength(const void *p,uint8_t pLength) {
-		uint16_t count = 0;;
-		for (uint8_t i = 0; i < pLength; i++) {
+	template<class pLength_t>
+	PURE uint16_t escapedLength(const void *p,pLength_t pLength) {
+		pLength_t count = 0;
+		for (pLength_t i = 0; i < pLength; i++) {
 			if (((char*)p)[i] == magic_escape_character) {
 				count++;
 			}
@@ -96,21 +100,23 @@ public:
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	bool canFit(const void *p, uint8_t pLength) {
+	template<class pLength_t>
+	bool canFit(const void *p, pLength_t pLength) {
 		return (escapedLength(p,pLength) > freeSpace());
 	}
 	/* append a specific length of data pointed to by a void pointer
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	bool append(const void *p, uint8_t pLength) { // can't indirect this - may be reused by caller
+	template<class pLength_t>
+	bool append(const void *p, pLength_t pLength) { // can't indirect this - may be reused by caller
 		bool ret;
 		uint16_t escaped_length = escapedLength(p,pLength);
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (escaped_length > freeSpace()) {
 				ret = 1; // failure
 			} else {
-				for (uint8_t i = 0; i < pLength; i++) {
+				for (pLength_t i = 0; i < pLength; i++) {
 					append(((char*)p)[i]);
 					if (((char*)p)[i] == magic_escape_character) {
 						append(((char*)p)[i]);
@@ -123,7 +129,7 @@ public:
 	}
 
 	PURE uint16_t escapedLength(const char *string) {
-		uint8_t count = 0;
+		uint16_t count = 0;
 		for (char * x = (char*)string;*x;x++) {
 			count++;
 			if (*x == magic_escape_character) {
@@ -214,6 +220,39 @@ public:
 		return ret;
 	}
 
+
+	// *********** start VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION
+
+	/**
+	 * Send a buffer of fixed length, indirectly
+	 * @param p			pointer to buffer to send
+	 * @param pLength		how many bytes to send
+	 * @param completeFunction	called when buffer is no longer referenced
+	 */
+	bool appendIndirectly(const void *p, uint16_t pLength,void (*completeFunction)(const void *)) {
+		uint16_t escaped_length = escapedLength(p,pLength);
+		bool ret;
+		if (escaped_length > 7) {
+			ret = 1; // failure
+		} else {
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				CharRingBuffer::append(magic_escape_character);
+				CharRingBuffer::append(VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION);
+				CharRingBuffer::append((char)(pLength >> 8));
+				CharRingBuffer::append((char)(pLength & 0xff));
+				CharRingBuffer::append((char)((uint16_t)p >> 8));
+				CharRingBuffer::append((char)((uint16_t)p & 0xff));
+				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
+				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+				ret = 0; // success
+			}
+		}
+		return ret;
+	}
+
+	// ************ end VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION
+
+
 	/**
 	 * Send a buffer of fixed length, indirectly
 	 * @param p			pointer to buffer to send
@@ -244,10 +283,11 @@ public:
 	 * @param p			pointer to buffer to send
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
-	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
+	template<class pLength_t>
+	bool append(const void *p, pLength_t pLength,void (*completeFunction)(const void *)) {
 		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
-		if (escaped_length <= 7) { // directly append it
+		if (escaped_length <= 6 + sizeof(pLength_t)) { // directly append it
 			ret = append(p,pLength);
 			completeFunction(p);
 		} else {
@@ -369,6 +409,14 @@ public:
 					indirection_offset = 0;
 					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
 						     CharRingBuffer::consume());
+				} else if (currently_consuming == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
+					indirection_length = CharRingBuffer::consume() << 8 |
+						CharRingBuffer::consume();
+					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
+								      CharRingBuffer::consume());
+					indirection_offset = 0;
+					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+						     CharRingBuffer::consume());
 				} else {
 					// die horribly!
 				}
@@ -399,6 +447,15 @@ public:
 					completeFunction(indirection_address);
 					currently_consuming = BUFFER;
 				} else {
+					goto done;
+				}
+			}
+			if (currently_consuming == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
+				if (indirection_length == indirection_offset) {
+					currently_consuming = BUFFER;
+					completeFunction(indirection_address);
+				} else {
+					ret = indirection_address[indirection_offset++];
 					goto done;
 				}
 			}
