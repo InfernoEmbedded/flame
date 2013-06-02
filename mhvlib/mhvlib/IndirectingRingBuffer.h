@@ -34,19 +34,8 @@
 namespace mhvlib {
 
 class IndirectingRingBuffer : public RingBuffer {
-  };
 
-
-/**
- * A ring buffer
- * @tparam	elementCount	the number of elements
- * @tparam	elementSize		the number of bytes in an element
- */
-template<uint8_t elementCount, uint8_t elementSize = 1>
-  class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
 protected:
-	volatile uint8_t _myBuffer[elementCount * elementSize + 1];
-
 	const char magic_escape_character = '|';
 	const uint8_t magic_worth_indirecting_threshold = 0;
 
@@ -69,14 +58,14 @@ public:
 	/**
 	 * Create a new ringbuffer
 	 */
-	IndirectingRingBufferImplementation() :
-		IndirectingRingBuffer() {
-		_buffer = _myBuffer;
-		_bufferSize = elementCount* elementSize + 1;
-		_elementCount = elementCount;
-		_elementSize = elementSize;
-		currently_consuming = BUFFER;
-	}
+	// IndirectingRingBufferImplementation() :
+	// 	IndirectingRingBuffer() {
+	// 	_buffer = _myBuffer;
+	// 	_bufferSize = elementCount* elementSize + 1;
+	// 	_elementCount = elementCount;
+	// 	_elementSize = elementSize;
+	// 	currently_consuming = BUFFER;
+	// }
 
 	/* see if there is room for a character in the buffer:
 	 * @param 			the character to append
@@ -110,7 +99,7 @@ public:
 	// 	return RingBuffer::append(p);
 	// }
 
-	uint16_t escapedLength(const void *p,uint8_t pLength) {
+	PURE uint16_t escapedLength(const void *p,uint8_t pLength) {
 		uint16_t count = 0;;
 		for (uint8_t i = 0; i < pLength; i++) {
 			if (((char*)p)[i] == magic_escape_character) {
@@ -443,6 +432,25 @@ public:
 	// }
 };
 
-}
+/**
+ * A ring buffer
+ * @tparam	elementCount	the number of elements
+ * @tparam	elementSize		the number of bytes in an element
+ */
+template<uint8_t elementCount, uint8_t elementSize = 1>
+class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
+	volatile uint8_t xBuffer[elementCount * elementSize + 1];
+public:
+
+	IndirectingRingBufferImplementation() :
+		IndirectingRingBuffer() {
+		_buffer = xBuffer;
+		_bufferSize = elementCount* elementSize + 1;
+		_elementCount = elementCount;
+		_elementSize = elementSize;
+	}
+}; // end class IndirectingRingBufferImplementation
+
+}; // end namespace MHV
 
 #endif // MHV_INDIRECTINGRINGBUFFER_H
