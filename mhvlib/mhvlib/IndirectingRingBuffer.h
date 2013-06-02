@@ -249,8 +249,9 @@ public:
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
 	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
+		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
-		if (escapedLength > 7) {
+		if (escaped_length > 7) {
 			ret = 1; // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -274,7 +275,7 @@ public:
 	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
 		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
-		if (escapedLength <= 7) { // directly append it
+		if (escaped_length <= 7) { // directly append it
 			ret = append(p,pLength);
 			completeFunction(p);
 		} else {
