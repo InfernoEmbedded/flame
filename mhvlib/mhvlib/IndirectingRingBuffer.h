@@ -150,7 +150,7 @@ public:
 		return ret;
 	}
 
-	PURE bool escapedLength(const char *string) {
+	PURE uint16_t escapedLength(const char *string) {
 		uint8_t count = 0;
 		for (char * x = (char*)string;*x;x++) {
 			count++;
@@ -170,7 +170,7 @@ public:
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	bool canFit(const char *string,void (*completeFunction)(const char *)) {
+	bool canFit(const char *string,void (*completeFunction)(const char *) UNUSED) {
 		// we require 6 bytes for this....
 		if (freeSpace() >= 6) {
 			return true;
@@ -248,7 +248,7 @@ public:
 	 * @param pLength		how many bytes to send
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
-	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
+	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
 		bool ret;
 		if (escapedLength > 7) {
 			ret = 1; // failure
@@ -271,7 +271,7 @@ public:
 	 * @param p			pointer to buffer to send
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
-	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const char *)) {
+	bool append(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
 		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
 		if (escapedLength <= 7) { // directly append it
