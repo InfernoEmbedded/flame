@@ -231,11 +231,11 @@ public:
 	 * Dump the state of the TX buffer
 	 * @param	func	the name of the caller
 	 */
-	void dumpTXBufferState(const char *func) {
-		char buf[100];
-		Device_TX::_currentTx.dumpState(buf, sizeof(buf), func);
-		busyWrite(buf);
-	}
+	/* void dumpTXBufferState(const char *func) { */
+	/* 	char buf[100]; */
+	/* 	Device_TX::_currentTx.dumpState(buf, sizeof(buf), func); */
+	/* 	busyWrite(buf); */
+	/* } */
 
 	/**
 	 * TX interrupt handler
@@ -330,7 +330,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((!Device_TX::_currentTx.hasMore()) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return (Device_TX::_txbuffer.length() && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
 	}
 
 	/**
