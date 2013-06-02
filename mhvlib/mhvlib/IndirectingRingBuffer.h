@@ -29,11 +29,11 @@
 #ifndef MHV_INDIRECTINGRINGBUFFER_H
 #define MHV_INDIRECTINGRINGBUFFER_H
 
-#include <mhvlib/RingBuffer.h>
+#include <mhvlib/CharRingBuffer.h>
 
 namespace mhvlib {
 
-class IndirectingRingBuffer : public RingBuffer {
+class IndirectingRingBuffer : public CharRingBuffer {
 
 protected:
 	const char magic_escape_character = '|';
@@ -55,18 +55,6 @@ enum IndirectionType {
   NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 3,
 };
 public:
-	/**
-	 * Create a new ringbuffer
-	 */
-	// IndirectingRingBufferImplementation() :
-	// 	IndirectingRingBuffer() {
-	// 	_buffer = _myBuffer;
-	// 	_bufferSize = elementCount* elementSize + 1;
-	// 	_elementCount = elementCount;
-	// 	_elementSize = elementSize;
-	// 	currently_consuming = BUFFER;
-	// }
-
 	/* see if there is room for a character in the buffer:
 	 * @param 			the character to append
 	 */
@@ -86,18 +74,13 @@ public:
 				ret = 1; // failure
 			} else {
 				if (c == magic_escape_character) {
-					RingBuffer::append(c); // ignored return value
+					CharRingBuffer::append(c); // ignored return value
 				}
-				ret = RingBuffer::append(c);
+				ret = CharRingBuffer::append(c);
 			}
 		}
 		return ret;
 	}
-
-	// appending a void pointer no longer supported; elementsize is going away.
-	// bool append(const void *p) { // can't indirect this - may be reused by caller
-	// 	return RingBuffer::append(p);
-	// }
 
 	PURE uint16_t escapedLength(const void *p,uint8_t pLength) {
 		uint16_t count = 0;;
@@ -202,12 +185,12 @@ public:
 			if (freeSpace() < 6) {
 				ret = 1; // failure
 			} else {
-				RingBuffer::append(magic_escape_character);
-				RingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
-				RingBuffer::append((char)((uint16_t)string >> 8));
-				RingBuffer::append((char)((uint16_t)string & 0xff));
-				RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-				RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+				CharRingBuffer::append(magic_escape_character);
+				CharRingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
+				CharRingBuffer::append((char)((uint16_t)string >> 8));
+				CharRingBuffer::append((char)((uint16_t)string & 0xff));
+				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
+				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
 				ret = 0; // success
 			}
 		} 
@@ -244,13 +227,13 @@ public:
 			ret = 1; // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-				RingBuffer::append(magic_escape_character);
-				RingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
-				RingBuffer::append(pLength);
-				RingBuffer::append((char)((uint16_t)p >> 8));
-				RingBuffer::append((char)((uint16_t)p & 0xff));
-				RingBuffer::append((char)((uint16_t)completeFunction >> 8));
-				RingBuffer::append((char)((uint16_t)completeFunction & 0xff));
+				CharRingBuffer::append(magic_escape_character);
+				CharRingBuffer::append(VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION);
+				CharRingBuffer::append(pLength);
+				CharRingBuffer::append((char)((uint16_t)p >> 8));
+				CharRingBuffer::append((char)((uint16_t)p & 0xff));
+				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
+				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
 				ret = 0; // success
 			}
 		}
@@ -324,10 +307,10 @@ public:
 				ret = 1; // failure
 			} else {
 				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-					RingBuffer::append(magic_escape_character);
-					RingBuffer::append(PGM_P_STRING);
-					RingBuffer::append((char)((uint16_t)string >> 8));
-					RingBuffer::append((char)((uint16_t)string & 0xff));
+					CharRingBuffer::append(magic_escape_character);
+					CharRingBuffer::append(PGM_P_STRING);
+					CharRingBuffer::append((char)((uint16_t)string >> 8));
+					CharRingBuffer::append((char)((uint16_t)string & 0xff));
 				}
 				ret = 0; // success
 			}
@@ -357,12 +340,12 @@ public:
 		int ret;
 		while (1) {
 			if (currently_consuming == BUFFER) {
-				ret = RingBuffer::consume();
+				ret = CharRingBuffer::consume();
 				if (ret != magic_escape_character) {
 					goto done;
 				}
 				// OK, so we've hit the magic escape character.
-				currently_consuming = RingBuffer::consume();
+				currently_consuming = CharRingBuffer::consume();
 				if (currently_consuming == magic_escape_character) {
 					// this was an escaped magic escape character
 					ret = currently_consuming;
@@ -370,22 +353,22 @@ public:
 				}
 				// it wasn't an escaped magic character.  Grab all the relevant stuff out of the buffer and then loop around.
 				if (currently_consuming == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
-					indirection_length = RingBuffer::consume();
-					indirection_address = (char*)(RingBuffer::consume() << 8 |
-								      RingBuffer::consume());
+					indirection_length = CharRingBuffer::consume();
+					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
+								      CharRingBuffer::consume());
 					indirection_offset = 0;
-					completeFunction =  (void (*)(const char*))(RingBuffer::consume() << 8 |
-						     RingBuffer::consume());
+					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+						     CharRingBuffer::consume());
 				} else if(currently_consuming == PGM_P_STRING) {
-					indirection_address = (char*)(RingBuffer::consume() << 8 |
-								      RingBuffer::consume());
+					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
+								      CharRingBuffer::consume());
 					indirection_offset = 0;
 				} else if(currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {	
-					indirection_address = (char*)(RingBuffer::consume() << 8 |
-								      RingBuffer::consume());
+					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
+								      CharRingBuffer::consume());
 					indirection_offset = 0;
-					completeFunction =  (void (*)(const char*))(RingBuffer::consume() << 8 |
-						     RingBuffer::consume());
+					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+						     CharRingBuffer::consume());
 				} else {
 					// die horribly!
 				}
@@ -424,30 +407,21 @@ public:
 		return ret;
 	}
 
-	// bool consume(void *p, uint8_t pLength) {
-	// 	return RingBuffer::consume(p,pLength);
-	// }
-	// bool consume(void *p) {
-	// 	return RingBuffer::consume(p);
-	// }
 };
 
 /**
- * A ring buffer
- * @tparam	elementCount	the number of elements
- * @tparam	elementSize		the number of bytes in an element
+ * Am indirecting ring buffer
+ * @tparam	bufferSize	the size of the ringbuffer
  */
-template<uint8_t elementCount, uint8_t elementSize = 1>
+template<uint16_t buffersize = 100>
 class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
-	volatile uint8_t xBuffer[elementCount * elementSize + 1];
+	volatile uint8_t xBuffer[buffersize + 1];
 public:
 
 	IndirectingRingBufferImplementation() :
 		IndirectingRingBuffer() {
 		_buffer = xBuffer;
-		_bufferSize = elementCount* elementSize + 1;
-		_elementCount = elementCount;
-		_elementSize = elementSize;
+		_bufferSize = buffersize + 1;
 	}
 }; // end class IndirectingRingBufferImplementation
 
