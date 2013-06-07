@@ -34,6 +34,7 @@
 #include <mhvlib/io.h>
 #include <stdio.h>
 #include <mhvlib/IndirectingRingBuffer.h>
+#include <mhvlib/CharRingBuffer.h>
 #include <avr/pgmspace.h>
 #include <stdlib.h>
 
@@ -65,13 +66,11 @@ void device_tx_free(const char *buf);
  */
 class Device_TX {
 protected:
-	IndirectingRingBuffer		_txbuffer;
-
 	/**
 	 * Constructor
 	 * @param	txbuffer	a ringbuffer to store TX elements in
 	 */
-	Device_TX(IndirectingRingBuffer txbuffer) :
+	Device_TX(IndirectingRingBuffer &txbuffer) :
 			_txbuffer(txbuffer) {}
 
 	virtual void runTxBuffers()=0;
@@ -81,12 +80,16 @@ protected:
 	 * @return the next character, or -1 if there is no more
 	 */
 	int nextCharacter() {
-		return _txbuffer.consume();
+		int ret;
+		ret = _txbuffer.consume();
+		return ret;
 	}
 
 	//	virtual ~MHV_Device_TX();
 
 public:
+	IndirectingRingBuffer		&_txbuffer;
+
 	/**
 	 * Can we accept another buffer?
 	 * Can't support this - and didn't make sense for malloced-char* stuff anyway! -pb201306021333
@@ -96,6 +99,11 @@ public:
 	// 	return !(_txPointers.full());
 	// }
 
+
+	void tx_flush() {
+		runTxBuffers();
+	}
+
 	/**
 	 * Write a progmem string asynchronously
 	 * @param	string	the progmem string
@@ -103,12 +111,12 @@ public:
 	 * 			true if there is already a string being sent
 	 */
 	bool write_P(PGM_P string) {
-		bool ret = _txbuffer.append(string);
+		bool ret = _txbuffer.append_P(string);
 		if (ret == _txbuffer.success()) {
 			return false;
 		}
 		runTxBuffers();
-		ret = _txbuffer.append(string);
+		ret = _txbuffer.append_P(string);
 		if (ret == _txbuffer.success()) {
 			return false;
 		}
@@ -463,17 +471,16 @@ public:
 		return true;
 	}
 	bool write(char value) {
-		char *buf = (char *)malloc(2);
-		if (NULL != buf) {
-			buf[0] = value;
-			buf[1] = 0;
-			if (write(buf, &device_tx_free)) {
-				device_tx_free(buf);
-				return true;
-			}
-			return false;
+		bool ret = _txbuffer.append(value);
+		if (ret == _txbuffer.success()) {
+			return false; // success
 		}
-		return true;
+		runTxBuffers();
+		ret = _txbuffer.append(value);
+		if (ret == _txbuffer.success()) {
+			return false; // success
+		}
+		return true; // failure
 	}
 };
 
@@ -481,6 +488,7 @@ public:
 template<uint8_t txCount>
 class Device_TXImplementation : public Device_TX {
 protected:
+ public:
 	IndirectingRingBufferImplementation<txCount * 11> _txbuffer;
 
 	/**

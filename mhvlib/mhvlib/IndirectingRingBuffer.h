@@ -74,12 +74,12 @@ public:
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (!canFit(c)) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				if (c == magic_escape_character) {
 					CharRingBuffer::append(c); // ignored return value
 				}
-				ret = CharRingBuffer::append(c);
+				ret = !CharRingBuffer::append(c); // INVERTED
 			}
 		}
 		return ret;
@@ -114,7 +114,7 @@ public:
 		uint16_t escaped_length = escapedLength(p,pLength);
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (escaped_length > freeSpace()) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				for (pLength_t i = 0; i < pLength; i++) {
 					append(((char*)p)[i]);
@@ -122,7 +122,7 @@ public:
 						append(((char*)p)[i]);
 					}
 				}
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -166,7 +166,7 @@ public:
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (escaped_length > freeSpace()) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				for(char * x=(char *)string;*x;x++) {
 					append(*x);
@@ -174,7 +174,7 @@ public:
 						append(*x);
 					}
 				}
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -189,7 +189,7 @@ public:
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (freeSpace() < 6) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				CharRingBuffer::append(magic_escape_character);
 				CharRingBuffer::append(NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION);
@@ -197,7 +197,7 @@ public:
 				CharRingBuffer::append((char)((uint16_t)string & 0xff));
 				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
 				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-				ret = 0; // success
+				ret = success(); // success
 			}
 		} 
 		return ret;
@@ -233,7 +233,7 @@ public:
 		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
 		if (escaped_length > 7) {
-			ret = 1; // failure
+			ret = !success(); // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 				CharRingBuffer::append(magic_escape_character);
@@ -244,7 +244,7 @@ public:
 				CharRingBuffer::append((char)((uint16_t)p & 0xff));
 				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
 				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -263,7 +263,7 @@ public:
 		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
 		if (escaped_length > 7) {
-			ret = 1; // failure
+			ret = !success(); // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 				CharRingBuffer::append(magic_escape_character);
@@ -273,7 +273,7 @@ public:
 				CharRingBuffer::append((char)((uint16_t)p & 0xff));
 				CharRingBuffer::append((char)((uint16_t)completeFunction >> 8));
 				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -322,16 +322,17 @@ public:
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			uint16_t escaped_length = escapedLength_P(string);
 			if (escaped_length > freeSpace()) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				PGM_P x = string;
-				while((ret = pgm_read_byte((PGM_P)x++))) {
-					append(ret);
-					if (ret == magic_escape_character) {
-						append(ret);
+				char c;
+				while((c = pgm_read_byte((PGM_P)x++))) {
+					append(c);
+					if (c == magic_escape_character) {
+						append(c);
 					}
 				}
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -344,7 +345,7 @@ public:
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (freeSpace() < 5) {
-				ret = 1; // failure
+				ret = !success(); // failure
 			} else {
 				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 					CharRingBuffer::append(magic_escape_character);
@@ -352,7 +353,7 @@ public:
 					CharRingBuffer::append((char)((uint16_t)string >> 8));
 					CharRingBuffer::append((char)((uint16_t)string & 0xff));
 				}
-				ret = 0; // success
+				ret = success(); // success
 			}
 		}
 		return ret;
@@ -365,7 +366,7 @@ public:
 	bool append_P(PGM_P string) {
 		uint16_t escaped_length = escapedLength_P(string);
 		bool ret;
-		if (escaped_length < 5) { // directly append it
+		if (escaped_length < 0) { // directly append it
 			ret = appendDirectly_P(string);
 		} else {
 			ret = appendIndirectly_P(string);
@@ -475,8 +476,7 @@ class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
 	volatile uint8_t xBuffer[buffersize + 1];
 public:
 
-	IndirectingRingBufferImplementation() :
-		IndirectingRingBuffer() {
+	IndirectingRingBufferImplementation() :	IndirectingRingBuffer() {
 		_buffer = xBuffer;
 		_bufferSize = buffersize + 1;
 	}

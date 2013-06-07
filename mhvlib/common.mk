@@ -28,7 +28,8 @@ endif
 
 CFLAGS += -std=gnu99 -mmcu=$(MCU) -DF_CPU=$(HZ)UL
 
-CPPFLAGS += -I"." -I"$(LIBDIR)" -I"$(LIBDIR)/mhvlib" -Wall -Wextra -g2 -gstabs -Os -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse -funsigned-char -funsigned-bitfields -mmcu=$(MCU) -DF_CPU=$(HZ)UL
+#CPPFLAGS += -I"." -I"$(LIBDIR)" -I"$(LIBDIR)/mhvlib" -Wall -Wextra -g -gstabs -Os -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse -funsigned-char -funsigned-bitfields -mmcu=$(MCU) -DF_CPU=$(HZ)UL
+CPPFLAGS += -I"." -I"$(LIBDIR)" -I"$(LIBDIR)/mhvlib" -Wall -Wextra -g -gstabs+ -fshort-enums -ffunction-sections -fdata-sections -fmerge-constants -fno-caller-saves -fno-dse -funsigned-char -funsigned-bitfields -mmcu=$(MCU) -DF_CPU=$(HZ)UL
 
 CXXFLAGS += -fno-exceptions -Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn  -Wno-non-virtual-dtor -std=c++11
 

@@ -141,9 +141,6 @@ protected:
 			return;
 		}
 
-		// If the UART isn't already sending data, start sending
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
-
 		sendChar(c);
 	}
 
@@ -241,6 +238,7 @@ public:
 	 * TX interrupt handler
 	 */
 	void tx() {
+
 #if MHV_DEBUG_TX
 		disableTXInterrupt();
 		dumpTXBufferState(__func__);
@@ -270,11 +268,20 @@ public:
 	 * poke a character into the serial output buffer, poke device to send
 	 * @param	c	character to send
 	 */
-	INLINE void sendChar(char c) {
-		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-			_MMIO_BYTE(usartIO) = (char)c;
-			enableTXInterrupt();
+	void sendChar(char c) {
+		while (1) {
+			// Wait for the UART to empty:
+			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+
+			/* ATOMIC_BLOCK (ATOMIC_RESTORESTATE) { */
+				// check that the UART is still empty:
+				if ((_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
+					_MMIO_BYTE(usartIO) = (char)c;
+					break;
+				}
+			/* } */
 		}
+		enableTXInterrupt();
 	}
 	INLINE void enableTXInterrupt() {
 		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);

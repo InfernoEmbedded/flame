@@ -36,7 +36,8 @@ namespace mhvlib {
 
 
 class CharRingBuffer {
-protected:
+	//protected:
+public:
 	volatile uint16_t 	_head;
 	volatile uint16_t 	_tail;
 	volatile uint8_t	*_buffer = NULL;
@@ -47,10 +48,12 @@ protected:
 	 * @param	index	the current index
 	 * @return the next index
 	 */
-	uint16_t increment (uint16_t index) {
-		uint16_t next = index + 1;
-		if (next == _bufferSize) {
+	uint16_t increment (const uint16_t index) {
+		uint16_t next;
+		if (index == _bufferSize - 1) {
 			next = 0;
+		} else {
+			next = index + 1;
 		}
 
 		return next;
@@ -89,7 +92,7 @@ public:
 	 * Append a character to the buffer
 	 * @return false if we succeeded, true otherwise
 	 */
-	bool append(char c) {
+	bool append(const char c) {
 		bool ret;
 		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 			uint16_t next = increment(_head);
@@ -100,7 +103,7 @@ public:
 			} else {
 				_buffer[_head] = c;
 				_head = next;
-				ret = 0; // success
+				ret = false; // success
 			}
 		}
 		return ret;
@@ -138,7 +141,7 @@ public:
 			return -1;
 		}
 
-		unsigned char c = _buffer[_tail];
+		uint8_t c = _buffer[_tail];
 		_tail = increment(_tail);
 		return c;
 	}
