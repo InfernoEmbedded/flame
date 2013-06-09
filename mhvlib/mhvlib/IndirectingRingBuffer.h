@@ -366,7 +366,7 @@ public:
 	bool append_P(PGM_P string) {
 		uint16_t escaped_length = escapedLength_P(string);
 		bool ret;
-		if (escaped_length < 0) { // directly append it
+		if (escaped_length < 1) { // directly append it
 			ret = appendDirectly_P(string);
 		} else {
 			ret = appendIndirectly_P(string);
@@ -473,12 +473,12 @@ public:
  */
 template<uint16_t buffersize = 100>
 class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
-	volatile uint8_t xBuffer[buffersize + 1];
+	volatile uint8_t xBuffer[buffersize];
 public:
 
 	IndirectingRingBufferImplementation() :	IndirectingRingBuffer() {
 		_buffer = xBuffer;
-		_bufferSize = buffersize + 1;
+		_bufferSize = buffersize;
 	}
 }; // end class IndirectingRingBufferImplementation
 

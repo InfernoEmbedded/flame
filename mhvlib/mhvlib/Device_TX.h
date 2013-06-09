@@ -489,7 +489,7 @@ template<uint8_t txCount>
 class Device_TXImplementation : public Device_TX {
 protected:
  public:
-	IndirectingRingBufferImplementation<txCount * 11> _txbuffer;
+	IndirectingRingBufferImplementation<txCount> _txbuffer;
 
 	/**
 	 * Constructor

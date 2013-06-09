@@ -114,6 +114,14 @@ private:
 	volatile bool _echo;
 
 protected:
+
+	INLINE bool usartDataIsEmpty() {
+		return (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
+	}
+	INLINE bool waitForusartDataEmpty() {
+		while (!usartDataIsEmpty()) {}
+	}
+
 	/**
 	 * Start sending async data
 	 */
@@ -124,24 +132,25 @@ protected:
 		//enableTXInterrupt();
 #endif
 
-		int c = Device_TX::nextCharacter();
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			int c = Device_TX::nextCharacter();
+
+			if (-1 == c) {
+				// This should never happen
+			} else {
+				sendChar(c);
+			}
+
+		}
 
 #if MHV_DEBUG_TX
-//		disableTXInterrupt();
+		//		disableTXInterrupt();
 		dumpTXBufferState(__func__);
 		enableTXInterrupt();
 
 		// Wait until the send is done
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+		waitForusartDataEmpty();
 #endif
-
-
-		if (-1 == c) {
-	// This should never happen
-			return;
-		}
-
-		sendChar(c);
 	}
 
 public:
@@ -219,7 +228,7 @@ public:
 		char c = _MMIO_BYTE(usartIO);
 		Device_RX::_rxBuffer.append(c);
 
-		if (_echo && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
+		if (_echo && usartDataIsEmpty()) {
 			_MMIO_BYTE(usartIO) = c;
 		}
 	}
@@ -271,11 +280,11 @@ public:
 	void sendChar(char c) {
 		while (1) {
 			// Wait for the UART to empty:
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			/* ATOMIC_BLOCK (ATOMIC_RESTORESTATE) { */
 				// check that the UART is still empty:
-				if ((_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
+				if (usartDataIsEmpty()) {
 					_MMIO_BYTE(usartIO) = (char)c;
 					break;
 				}
@@ -337,7 +346,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return (Device_TX::_txbuffer.length() && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return (Device_TX::_txbuffer.length() && usartDataIsEmpty());
 	}
 
 	/**
@@ -349,7 +358,7 @@ public:
 		while (!canSendBusy()) {};
 		disableTXInterrupt();
 
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+		waitForusartDataEmpty();
 
 		_MMIO_BYTE(usartIO) = c;
 	}
@@ -368,7 +377,7 @@ public:
 		p = buffer;
 		char c = pgm_read_byte(p++);
 		while (c != '\0') {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = c;
 			c = pgm_read_byte(p++);
@@ -388,7 +397,7 @@ public:
 		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -408,7 +417,7 @@ public:
 		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -447,7 +456,7 @@ public:
 		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -520,7 +529,7 @@ public:
 	 * @return true if the hardware is busy
 	 */
 	bool busy(void) {
-		return !(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
+		return !usartDataIsEmpty();
 	}
 };
 }

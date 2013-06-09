@@ -39,25 +39,9 @@ class CharRingBuffer {
 	//protected:
 public:
 	volatile uint16_t 	_head;
-	volatile uint16_t 	_tail;
+	volatile uint16_t 	_used;
 	volatile uint8_t	*_buffer = NULL;
-	uint16_t			_bufferSize = 0;
-
-	/**
-	 * Determine where the next location will be
-	 * @param	index	the current index
-	 * @return the next index
-	 */
-	uint16_t increment (const uint16_t index) {
-		uint16_t next;
-		if (index == _bufferSize - 1) {
-			next = 0;
-		} else {
-			next = index + 1;
-		}
-
-		return next;
-	}
+	uint16_t			_bufferSize;
 
 public:
 	/**
@@ -65,7 +49,7 @@ public:
 	 */
 	CharRingBuffer() :
 		_head(0),
-		_tail(0) {};
+		_used(0) {};
 
 	/**
 	 * Get the size of the ringbuffer
@@ -82,31 +66,23 @@ public:
 	}
 
 	/**
-	 * Get the tail offset
-	 */
-	uint16_t tail() {
-		return _tail;
-	}
-
-	/**
 	 * Append a character to the buffer
 	 * @return false if we succeeded, true otherwise
 	 */
 	bool append(const char c) {
-		bool ret;
-		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
-			uint16_t next = increment(_head);
-
-			// Don't overwrite valid data in the buffer
-			if (next == _tail) {
-				ret = true; // failure
-			} else {
-				_buffer[_head] = c;
-				_head = next;
-				ret = false; // success
-			}
+		if (_used == _bufferSize) { // we're full
+			return true; // failure
 		}
-		return ret;
+		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+			_buffer[_head] = c;
+			if (_head == _bufferSize - 1) {
+				_head = 0;
+			} else {
+				_head++;
+			}
+			_used++;
+		}
+		return false; // success
 	}
 
 	/**
@@ -137,13 +113,22 @@ public:
 	 * Pop a byte off the ringbuffer
 	 */
 	int consume() {
-		if (_head == _tail) {
+		int ret;
+		
+		if (_used == 0) {
 			return -1;
 		}
-
-		uint8_t c = _buffer[_tail];
-		_tail = increment(_tail);
-		return c;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			uint16_t used_start = _head;
+			if (used_start < _used) {
+				// tail is at other end of buffer
+				ret = _buffer[_bufferSize - (_used - used_start)];
+			} else {
+				ret = _buffer[_head - _used];
+			}
+			_used--;
+		}
+		return ret;
 	}
 
 	/**
@@ -173,7 +158,8 @@ public:
 	 * Discard the contents of the ringbuffer
 	 */
 	void flush() {
-		_head = _tail = 0;
+		_head = 0;
+		_used = 0;
 	}
 
 	/**
@@ -181,13 +167,7 @@ public:
 	 * Return the number of bytes in the ringbuffer
 	 */
 	uint16_t length() {
-		int16_t length = _head - _tail;
-		if (length < 0) {
-	// The pointers have wrapped
-			length = (_bufferSize - _tail) + _head;
-		}
-
-		return (uint16_t) length;
+		return _used;
 	}
 
 	/**
@@ -204,7 +184,7 @@ public:
 	 * @return amount of free space in bytes
 	 */
 	 uint16_t freeSpace() {
-		return (_bufferSize - 1 - length());
+		return (_bufferSize - _used);
 	 }
 
 	/**
@@ -212,7 +192,7 @@ public:
 	 * @return the character, or -1 if the buffer is empty
 	 */
 	int peekHead() {
-		if (_head == _tail) {
+		if (_used == 0) {
 			return -1;
 		}
 
@@ -234,7 +214,7 @@ public:
 template<uint16_t buffersize = 100>
 class CharRingBufferImplementation : public CharRingBuffer {
 protected:
-	volatile uint8_t _myBuffer[buffersize + 1];
+	volatile uint8_t _myBuffer[buffersize];
 
 public:
 	/**
@@ -243,7 +223,7 @@ public:
 	CharRingBufferImplementation() :
 		CharRingBuffer() {
 		_buffer = _myBuffer;
-		_bufferSize = buffersize + 1;
+		_bufferSize = buffersize;
 	}
 };
 
