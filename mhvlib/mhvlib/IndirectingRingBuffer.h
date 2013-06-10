@@ -109,15 +109,15 @@ public:
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	template<class pLength_t>
-	bool append(const void *p, pLength_t pLength) { // can't indirect this - may be reused by caller
+	//	template<class uint16_t>
+	bool append(const void *p, const uint16_t pLength) { // can't indirect this - may be reused by caller
 		bool ret;
 		uint16_t escaped_length = escapedLength(p,pLength);
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			if (escaped_length > freeSpace()) {
 				ret = !success(); // failure
 			} else {
-				for (pLength_t i = 0; i < pLength; i++) {
+				for (uint16_t i = 0; i < pLength; i++) {
 					append(((char*)p)[i]);
 					if (((char*)p)[i] == magic_escape_character) {
 						append(((char*)p)[i]);
@@ -243,9 +243,8 @@ public:
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
 	bool appendIndirectly(const void *p, uint16_t pLength,void (*completeFunction)(const void *)) {
-		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
-		if (escaped_length > 7) {
+		if (freeSpace() < 8) {
 			ret = !success(); // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -273,9 +272,8 @@ public:
 	 * @param completeFunction	called when buffer is no longer referenced
 	 */
 	bool appendIndirectly(const void *p, uint8_t pLength,void (*completeFunction)(const void *)) {
-		uint16_t escaped_length = escapedLength(p,pLength);
 		bool ret;
-		if (escaped_length > 7) {
+		if (freeSpace() < 7) {
 			ret = !success(); // failure
 		} else {
 			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
@@ -302,7 +300,9 @@ public:
 		bool ret;
 		if (escaped_length <= 6 + sizeof(pLength_t)) { // directly append it
 			ret = append(p,pLength);
-			completeFunction(p);
+			if (ret == success()) {
+				completeFunction(p);
+			}
 		} else {
 			ret = appendIndirectly(p,pLength,completeFunction);
 		}
