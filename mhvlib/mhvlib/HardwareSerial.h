@@ -278,17 +278,18 @@ public:
 	 * @param	c	character to send
 	 */
 	void sendChar(char c) {
-		while (1) {
+		bool done = false;
+		while (!done) {
 			// Wait for the UART to empty:
 			waitForusartDataEmpty();
 
-			/* ATOMIC_BLOCK (ATOMIC_RESTORESTATE) { */
+			ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
 				// check that the UART is still empty:
 				if (usartDataIsEmpty()) {
 					_MMIO_BYTE(usartIO) = (char)c;
-					break;
+					done = true;
 				}
-			/* } */
+			}
 		}
 		enableTXInterrupt();
 	}
