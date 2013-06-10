@@ -118,7 +118,7 @@ protected:
 	INLINE bool usartDataIsEmpty() {
 		return (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
 	}
-	INLINE bool waitForusartDataEmpty() {
+	INLINE void waitForusartDataEmpty() {
 		while (!usartDataIsEmpty()) {}
 	}
 
