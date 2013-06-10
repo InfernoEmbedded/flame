@@ -106,6 +106,28 @@ public:
 	uint16_t txQueueLength() {
 		return _txbuffer.length();
 	}
+	uint16_t txQueueSpace() {
+		return _txbuffer.freeSpace();
+	}
+
+	uint16_t spaceRequired(const char * x) {
+		return _txbuffer.escapedLength(x);
+	}
+	uint16_t printfSpaceRequired(PGM_P format, va_list ap) {
+		uint16_t length = vsnprintf_P(NULL, 0, format, ap);
+
+		char *buf = (char *)malloc(length+1); // +1 for "\0"
+
+		uint16_t ret;
+		if (NULL != buf) {
+			vsnprintf_P(buf, length+1, format, ap);
+			ret = spaceRequired(buf);
+			free(buf);
+		} else {
+			// ?!
+		}
+		return ret;
+	}
 
 	bool canFit(char c) {
 		_txbuffer.canFit(c);
