@@ -404,16 +404,12 @@ public:
 	 */
 	bool printf(PGM_P format, va_list ap) {
 
-		int length = vsnprintf_P(NULL, 0, format, ap);
-		length++; // "\0"
+		uint16_t length = vsnprintf_P(NULL, 0, format, ap);
 
-		char *buf;
-		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			buf = (char *)malloc(length);
-		}
+		char *buf = (char *)malloc(length+1); // +1 for "\0"
 
 		if (NULL != buf) {
-			vsnprintf_P(buf, length, format, ap);
+			vsnprintf_P(buf, length+1, format, ap);
 
 			if (write(buf, length, &device_tx_free)) {
 				device_tx_free(buf);
