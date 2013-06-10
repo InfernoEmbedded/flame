@@ -100,8 +100,11 @@ public:
 	// }
 
 
-	void tx_flush() {
-		runTxBuffers();
+	void flush() {
+		_txbuffer.flush();
+	}
+	uint16_t txQueueLength() {
+		return _txbuffer.length();
 	}
 
 	/**

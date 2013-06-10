@@ -122,37 +122,6 @@ protected:
 		while (!usartDataIsEmpty()) {}
 	}
 
-	/**
-	 * Start sending async data
-	 */
-	void runTxBuffers() {
-#if MHV_DEBUG_TX
-		disableTXInterrupt();
-		dumpTXBufferState(__func__);
-		//enableTXInterrupt();
-#endif
-
-		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			int c = Device_TX::nextCharacter();
-
-			if (-1 == c) {
-				// This should never happen
-			} else {
-				sendChar(c);
-			}
-
-		}
-
-#if MHV_DEBUG_TX
-		//		disableTXInterrupt();
-		dumpTXBufferState(__func__);
-		enableTXInterrupt();
-
-		// Wait until the send is done
-		waitForusartDataEmpty();
-#endif
-	}
-
 public:
 	/**
 	 * Constructor
@@ -271,6 +240,33 @@ public:
 		}
 
 		_MMIO_BYTE(usartIO) = (char)c;
+	}
+
+	/**
+	 * Send all buffered data
+	 */
+	INLINE void runTxBuffers() {
+		drain();
+	}
+	void drain() {
+		while (Device_TX::txQueueLength()) {
+			waitForusartDataEmpty();
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				if (usartDataIsEmpty()) {
+					tx();
+				}
+			}
+		}
+	}
+	void flushInput() {
+		Device_TX::flush();
+	}
+	void flushOutput() {
+		Device_RX::flush();
+	}
+	void flush() {
+		flushInput();
+		flushOutput();
 	}
 
 	/*
