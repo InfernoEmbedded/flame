@@ -157,6 +157,18 @@ public:
 		return canFit(string);
 	}
 
+	bool canFit_P(PGM_P string) {
+		uint16_t free = freeSpace();
+		if (free >= 4) {
+			// can be indirected
+			return true;
+		}
+		if (strlen_P(string) < free) {
+			// can just be dropped in
+			return true;
+		}
+		return false;
+	}
 
 	/**
 	 * Send a null-terminated string directly
@@ -365,7 +377,7 @@ public:
 	bool append_P(PGM_P string) {
 		uint16_t escaped_length = escapedLength_P(string);
 		bool ret;
-		if (escaped_length < 1) { // directly append it
+		if (escaped_length < 4) { // directly append it
 			ret = appendDirectly_P(string);
 		} else {
 			ret = appendIndirectly_P(string);
