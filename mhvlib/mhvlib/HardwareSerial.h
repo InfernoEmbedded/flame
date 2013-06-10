@@ -243,11 +243,19 @@ public:
 	}
 
 	/**
-	 * Send all buffered data
+	 * Start sending buffered data
 	 */
 	INLINE void runTxBuffers() {
-		drain();
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			enableTXInterrupt();
+			if (usartDataIsEmpty()) {
+				tx();
+			}
+		}
 	}
+	/**
+	 * Send all buffered data
+	 */
 	void drain() {
 		while (Device_TX::txQueueLength()) {
 			waitForusartDataEmpty();
