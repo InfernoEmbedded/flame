@@ -35,26 +35,27 @@ namespace mhvlib {
 
 class IndirectingRingBuffer : public CharRingBuffer {
 
+// it would be a really bad idea to use magic_escape_character as a
+// value in this enum. 
+enum IndirectionType {
+  BUFFER = 65,
+  VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 66,
+  PGM_P_STRING = 67,
+  NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 68,
+  VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION = 69,
+};
+
 protected:
 	const char magic_escape_character = '|';
 	const uint8_t magic_worth_indirecting_threshold = 0;
 
-	uint8_t currently_consuming;
+	uint8_t currently_consuming = BUFFER;
 
 	uint16_t indirection_length;
 	char * indirection_address;
 	uint16_t indirection_offset;
 	void (*completeFunction)(const char *);
 
-// it would be a really bad idea to use magic_escape_character as a
-// value in this enum. 
-enum IndirectionType {
-  BUFFER = 0,
-  VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 1,
-  PGM_P_STRING = 2,
-  NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 3,
-  VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION = 4,
-};
 public:
 	PURE bool success() { return true; };
 
@@ -344,15 +345,13 @@ public:
 	bool appendIndirectly_P(PGM_P string) {
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-			if (freeSpace() < 5) {
+			if (freeSpace() < 4) {
 				ret = !success(); // failure
 			} else {
-				ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-					CharRingBuffer::append(magic_escape_character);
-					CharRingBuffer::append(PGM_P_STRING);
-					CharRingBuffer::append((char)((uint16_t)string >> 8));
-					CharRingBuffer::append((char)((uint16_t)string & 0xff));
-				}
+				CharRingBuffer::append(magic_escape_character);
+				CharRingBuffer::append(PGM_P_STRING);
+				CharRingBuffer::append((char)((uint16_t)string >> 8));
+				CharRingBuffer::append((char)((uint16_t)string & 0xff));
 				ret = success(); // success
 			}
 		}
@@ -422,6 +421,7 @@ public:
 					// die horribly!
 				}
 			}
+
 			if (currently_consuming == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
 				if (indirection_length == indirection_offset) {
 					currently_consuming = BUFFER;
