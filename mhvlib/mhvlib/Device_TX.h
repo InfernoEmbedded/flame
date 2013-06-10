@@ -107,6 +107,16 @@ public:
 		return _txbuffer.length();
 	}
 
+	bool canFit(char c) {
+		_txbuffer.canFit(c);
+	}
+	bool canFit(const char * string) {
+		_txbuffer.canFit(string);
+	}
+	bool canFit_P(const char * string) {
+		_txbuffer.canFit(string);
+	}
+
 	/**
 	 * Write a progmem string asynchronously
 	 * @param	string	the progmem string
