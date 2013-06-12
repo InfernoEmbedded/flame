@@ -33,6 +33,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include <mhvlib/io.h>
+#include <stdlib.h>
 
 namespace mhvlib {
 
@@ -112,7 +113,15 @@ public:
 	/**
 	 * Called when an alarm goes off
 	 */
+	virtual ~TimerListener() {};
 	virtual void alarm() =0;
+
+	void operator delete(void * ptr) {
+	  free(ptr);
+	} 
+	void * operator new(size_t size) {
+	  return malloc(size);
+	}
 };
 
 class Timer {
