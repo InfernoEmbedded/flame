@@ -130,13 +130,13 @@ public:
 	}
 
 	bool canFit(char c) {
-		_txbuffer.canFit(c);
+		return _txbuffer.canFit(c);
 	}
 	bool canFit(const char * string) {
-		_txbuffer.canFit(string);
+		return _txbuffer.canFit(string);
 	}
 	bool canFit_P(const char * string) {
-		_txbuffer.canFit(string);
+		return _txbuffer.canFit(string);
 	}
 
 	/**
