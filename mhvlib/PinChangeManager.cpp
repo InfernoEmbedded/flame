@@ -76,12 +76,18 @@ void PinChangeManager::pinChange(uint8_t offset) {
 			continue;
 		}
 
-		bool cur = _MMIO_BYTE(pin->port) & pin->mask;
-		if (cur != pin->previous) {
-			// Pin has changed
-			pin->previous = cur;
-			pin->changed = 1;
-			pin->listener->pinChanged(pin - _pins, cur);
+		pinChangeCaught(*pin);
+	}
+}
+void PinChangeManager::pinChangeCaught(EVENT_PIN &pin) {
+	bool cur = _MMIO_BYTE(pin.port) & pin.mask;
+	if (cur != pin.previous) {
+		// Pin has changed
+		pin.previous = cur;
+		if (pin.listener != NULL) {
+			pin.listener->pinChanged(pin.pcInt, cur);
+		} else {
+			pin.changed = 1;
 		}
 	}
 }
@@ -103,7 +109,11 @@ void PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), PinEventListener *
 	_pins[pinPinchangeInterrupt].listener = listener;
 	_pins[pinPinchangeInterrupt].previous = pinRead(MHV_PIN_PARMS(pin));
 	_pins[pinPinchangeInterrupt].changed = false;
+	_pins[pinPinchangeInterrupt].pcInt = pinPinchangeInterrupt;
 
+	 enablepinPinChangeInterrupt(pinPinchangeInterrupt);
+}
+void PinChangeManager::enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt) {
 	// Enable the interrupt
 	uint8_t bit = pinPinchangeInterrupt;
 #if MHV_PC_INT_COUNT > 15
@@ -137,7 +147,7 @@ void PinChangeManager::registerListener(MHV_DECLARE_PIN(pin), PinEventListener *
  * Deregister interest for pinchange events
  * @param	pinPinchangeInterrupt			the pinPinchangeInterrupt to deregister
  */
-void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
+void PinChangeManager::deregisterListener(const int8_t pinPinchangeInterrupt) {
 	if (pinPinchangeInterrupt >= MHV_PC_INT_COUNT) {
 		return;
 	}
@@ -145,7 +155,9 @@ void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 	_pins[pinPinchangeInterrupt].listener = NULL;
 	_pins[pinPinchangeInterrupt].changed = false;
 
-// Disable the interrupt
+	disablepinPinChangeInterrupt(pinPinchangeInterrupt);
+}
+void PinChangeManager::disablepinPinChangeInterrupt(const uint8_t pinPinchangeInterrupt) {
 	uint8_t bit = pinPinchangeInterrupt;
 #if MHV_PC_INT_COUNT > 15
 	if (pinPinchangeInterrupt > 15) {

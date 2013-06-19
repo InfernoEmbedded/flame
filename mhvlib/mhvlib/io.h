@@ -106,6 +106,9 @@ uint8_t un_BV(uint8_t bv);
 #define MHV_PIN_TO_MHVPARMS(_mhv_pin) \
   _mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
 
+#define MHV_PIN_STRUCT_TO_MHVPARMS(_mhv_pin) \
+  _mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
+
 /**
  * Convert a literal port and pin into a pin macro
  * @param	_mhv_port	the port (eg, B)

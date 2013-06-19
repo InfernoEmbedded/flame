@@ -110,7 +110,7 @@ public:
 		return _txbuffer.freeSpace();
 	}
 
-	uint16_t spaceRequired(const char * x) {
+	INLINE uint16_t spaceRequired(const char * x) {
 		return _txbuffer.escapedLength(x);
 	}
 	uint16_t printfSpaceRequired(PGM_P format, va_list ap) {

@@ -92,6 +92,9 @@ protected:
 // Fixme: Allocate externally and pass in
 	EVENT_PIN	_pins[MHV_PC_INT_COUNT];
 //	uint8_t			_pinsUsed;
+	void enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt);
+	void disablepinPinChangeInterrupt(const uint8_t pinPinchangeInterrupt);
+	virtual void pinChangeCaught(EVENT_PIN &pin);
 
 public:
 	PinChangeManager();

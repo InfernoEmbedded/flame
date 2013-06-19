@@ -306,6 +306,15 @@ public:
 	INLINE bool TXInterruptIsEnabled() {
 		return (_MMIO_BYTE(usartControlB) & _BV(usartTxInterruptEnable));
 	}
+	INLINE void enableRXInterrupt() {
+		_MMIO_BYTE(usartControlB) |= _BV(usartRxInterruptEnable);
+	}
+	INLINE void disableRXInterrupt() {
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartRxInterruptEnable);
+	}
+	INLINE bool RXInterruptIsEnabled() {
+		return (_MMIO_BYTE(usartControlB) & _BV(usartRxInterruptEnable));
+	}
 
 	/**
 	 * Configure the serial port for a specific baud rate
