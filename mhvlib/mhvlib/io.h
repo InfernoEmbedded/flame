@@ -244,6 +244,13 @@ INLINE void pinOffAtomic(MHV_DECLARE_PIN(pin)) {
 INLINE void pinSet(MHV_DECLARE_PIN(pin), bool state) {
 	_MMIO_BYTE(pinOut) = (_MMIO_BYTE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
 }
+INLINE void pinSet(MHV_PIN *pin, bool state) {
+	if (state) {
+		pinOn(pin);
+	} else {
+		pinOff(pin);
+	}
+}
 
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
