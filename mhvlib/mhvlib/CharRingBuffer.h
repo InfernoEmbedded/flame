@@ -224,6 +224,7 @@ public:
 		CharRingBuffer() {
 		_buffer = _myBuffer;
 		_bufferSize = buffersize;
+		_used = 0;
 	}
 };
 
