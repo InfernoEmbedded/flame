@@ -289,7 +289,7 @@ public:
 	 * @param timestamp		the current Unix timestamp
 	 */
 	void setTime(TIMESTAMP &timestamp) {
-		ATOMIC_BLOCK(ATOMIC_FORCEON) {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_ticks = timestamp.ticks;
 			_milliseconds = timestamp.milliseconds;
 			_timestamp = timestamp.timestamp;
@@ -322,7 +322,7 @@ public:
 	 * @param	timestamp	the timestamp to write into
 	 */
 	void current(TIMESTAMP &timestamp) {
-		ATOMIC_BLOCK(ATOMIC_FORCEON) {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			timestamp.ticks = _ticks;
 			timestamp.milliseconds = _milliseconds;
 			timestamp.timestamp = _timestamp;
