@@ -444,43 +444,43 @@ public:
 		return true;
 	}
 
-//	/**
-//	 * Print an integer
-//	 * @param	value	the value to print
-//	 * @return 	false on success
-//	 * 			true if there is already a string being sent
-//	 */
-//	bool write(uint8_t value) {
-//		char *buf = (char *)malloc(4);
-//		if (NULL != buf) {
-//			utoa((uint16_t)value, buf, 10);
-//			if (write(buf, &mhv_device_tx_free)) {
-//				mhv_device_tx_free(buf);
-//				return true;
-//			}
-//			return false;
-//		}
-//		return true;
-//	}
-//
-//	/**
-//	 * Print an integer
-//	 * @param	value	the value to print
-//	 * @return 	false on success
-//	 * 			true if there is already a string being sent
-//	 */
-//	bool write(uint16_t value) {
-//		char *buf = (char *)malloc(6);
-//		if (NULL != buf) {
-//			utoa(value, buf, 10);
-//			if (write(buf, &mhv_device_tx_free)) {
-//				mhv_device_tx_free(buf);
-//				return true;
-//			}
-//			return false;
-//		}
-//		return true;
-//	}
+	/**
+	 * Print an integer
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(uint8_t value) {
+		char *buf = (char *)malloc(4);
+		if (NULL != buf) {
+			utoa((uint16_t)value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Print an integer
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(uint16_t value) {
+		char *buf = (char *)malloc(6);
+		if (NULL != buf) {
+			utoa(value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
 
 	/**
 	 * Print an integer
@@ -501,6 +501,65 @@ public:
 		}
 		return true;
 	}
+
+	/**
+	 * Print an integer
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(int8_t value) {
+		char *buf = (char *)malloc(4);
+		if (NULL != buf) {
+			utoa((uint16_t)value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Print an integer
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(int16_t value) {
+		char *buf = (char *)malloc(6);
+		if (NULL != buf) {
+			utoa(value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Print an integer
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(int32_t value) {
+		//                        4294967296 + \0
+		char *buf = (char *)malloc(11);
+		if (NULL != buf) {
+			ultoa(value, buf, 10);
+			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
 	bool write(char value) {
 		bool ret = _txbuffer.append(value);
 		if (ret == _txbuffer.success()) {
@@ -519,7 +578,7 @@ public:
 template<uint8_t txCount>
 class Device_TXImplementation : public Device_TX {
 protected:
- public:
+public:
 	IndirectingRingBufferImplementation<txCount> _txbuffer;
 
 	/**

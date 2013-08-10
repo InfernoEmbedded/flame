@@ -119,8 +119,8 @@ class AccelerometerListener : public TripleAxisSensorListener {
 		TRIPLEAXISSENSOR_READING value;
 		sensor.getValue(&value);
 
-		const char *channel;
-		float val;
+		const char *channel = "";
+		float val = 0;
 
 		switch (which) {
 		case TripleAxisSensorChannel::X:

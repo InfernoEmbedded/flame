@@ -25,7 +25,6 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-
 #ifndef MHV_INDIRECTINGRINGBUFFER_H
 #define MHV_INDIRECTINGRINGBUFFER_H
 
@@ -33,17 +32,17 @@
 
 namespace mhvlib {
 
-class IndirectingRingBuffer : public CharRingBuffer {
+class IndirectingRingBuffer: public CharRingBuffer {
 
 // it would be a really bad idea to use magic_escape_character as a
-// value in this enum. 
-enum IndirectionType {
-  BUFFER = 65,
-  VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 66,
-  PGM_P_STRING = 67,
-  NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 68,
-  VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION = 69,
-};
+// value in this enum.
+	enum IndirectionType {
+		BUFFER = 65,
+		VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION = 66,
+		PGM_P_STRING = 67,
+		NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION = 68,
+		VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION = 69,
+	};
 
 protected:
 	const char magic_escape_character = '|';
@@ -57,9 +56,13 @@ protected:
 	void (*completeFunction)(const char *);
 
 public:
-	PURE bool success() { return true; };
+	PURE bool success() {
+		return true;
+	}
+	;
 
-	/* see if there is room for a character in the buffer:
+	/**
+	 * see if there is room for a character in the buffer:
 	 * @param 			the character to append
 	 */
 	bool canFit(char c) {
@@ -68,12 +71,14 @@ public:
 		}
 		return freeSpace() > 0;
 	}
-	/* append a character
+	/**
+	 * append a character
 	 * @param 			the character to append
 	 */
 	bool append(char c) {
 		bool ret;
-		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+		{
 			if (!canFit(c)) {
 				ret = !success(); // failure
 			} else {
@@ -87,40 +92,42 @@ public:
 	}
 
 	template<class pLength_t>
-	PURE uint16_t escapedLength(const void *p,pLength_t pLength) {
+	PURE uint16_t escapedLength(const void *p, pLength_t pLength) {
 		pLength_t count = 0;
 		for (pLength_t i = 0; i < pLength; i++) {
-			if (((char*)p)[i] == magic_escape_character) {
+			if (((char*) p)[i] == magic_escape_character) {
 				count++;
 			}
 		}
 		return pLength + count;
 	}
-	
-	/* see if there is room for a void pointer in the buffer (directly)
+
+	/**
+	 * see if there is room for a void pointer in the buffer (directly)
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
 	template<class pLength_t>
 	bool canFit(const void *p, pLength_t pLength) {
-		return (escapedLength(p,pLength) > freeSpace());
+		return (escapedLength(p, pLength) > freeSpace());
 	}
-	/* append a specific length of data pointed to by a void pointer
+	/**
+	 * append a specific length of data pointed to by a void pointer
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	//	template<class uint16_t>
 	bool append(const void *p, const uint16_t pLength) { // can't indirect this - may be reused by caller
 		bool ret;
-		uint16_t escaped_length = escapedLength(p,pLength);
-		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+		uint16_t escaped_length = escapedLength(p, pLength);
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
+		{
 			if (escaped_length > freeSpace()) {
 				ret = !success(); // failure
 			} else {
 				for (uint16_t i = 0; i < pLength; i++) {
-					append(((char*)p)[i]);
-					if (((char*)p)[i] == magic_escape_character) {
-						append(((char*)p)[i]);
+					append(((char*) p)[i]);
+					if (((char*) p)[i] == magic_escape_character) {
+						append(((char*) p)[i]);
 					}
 				}
 				ret = success(); // success
@@ -131,7 +138,7 @@ public:
 
 	PURE uint16_t escapedLength(const char *string) {
 		uint16_t count = 0;
-		for (char * x = (char*)string;*x;x++) {
+		for (char * x = (char*) string; *x; x++) {
 			count++;
 			if (*x == magic_escape_character) {
 				count++;
@@ -139,17 +146,19 @@ public:
 		}
 		return count;
 	}
-	/* see if there is room for a null-terminated string in the buffer (directly)
+	/**
+	 * see if there is room for a null-terminated string in the buffer (directly)
 	 * @param p			pointer to the data
 	 */
 	bool canFit(const char *string) {
 		return (escapedLength(string) <= freeSpace());
 	}
-	/* see if there is room for a null-terminated string in the buffer (possibly indirected)
+	/**
+	 * see if there is room for a null-terminated string in the buffer (possibly indirected)
 	 * @param p			pointer to the data
 	 * @param pLength		amount of data to append
 	 */
-	bool canFit(const char *string,void (*completeFunction)(const char *) UNUSED) {
+	bool canFit(const char *string, void (*completeFunction)(const char *) UNUSED) {
 		// we require 6 bytes for this....
 		if (freeSpace() >= 6) {
 			return true;
@@ -212,7 +221,7 @@ public:
 				CharRingBuffer::append((char)((uint16_t)completeFunction & 0xff));
 				ret = success(); // success
 			}
-		} 
+		}
 		return ret;
 	}
 
@@ -232,7 +241,6 @@ public:
 		}
 		return ret;
 	}
-
 
 	// *********** start VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION
 
@@ -263,7 +271,6 @@ public:
 	}
 
 	// ************ end VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION
-
 
 	/**
 	 * Send a buffer of fixed length, indirectly
@@ -325,8 +332,7 @@ public:
 		return count;
 	}
 
-
-	/*
+	/**
 	 * Send a null-terminated program string, directly
 	 * @param string		pointer to progmem string to send
 	 */
@@ -350,7 +356,8 @@ public:
 		}
 		return ret;
 	}
-	/*
+
+	/**
 	 * Send a null-terminated program string, indirectly
 	 * @param string		pointer to progmem string to send
 	 */
@@ -369,6 +376,7 @@ public:
 		}
 		return ret;
 	}
+
 	/**
 	 * Send a null-terminated program string, possibly indirectly
 	 * @param string		pointer to progmem string to send
@@ -407,28 +415,28 @@ public:
 				if (currently_consuming == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
 					indirection_length = CharRingBuffer::consume();
 					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
-								      CharRingBuffer::consume());
+					CharRingBuffer::consume());
 					indirection_offset = 0;
-					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
-						     CharRingBuffer::consume());
+					completeFunction = (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+					CharRingBuffer::consume());
 				} else if(currently_consuming == PGM_P_STRING) {
 					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
-								      CharRingBuffer::consume());
+					CharRingBuffer::consume());
 					indirection_offset = 0;
-				} else if(currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {	
+				} else if(currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {
 					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
-								      CharRingBuffer::consume());
+					CharRingBuffer::consume());
 					indirection_offset = 0;
-					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
-						     CharRingBuffer::consume());
+					completeFunction = (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+					CharRingBuffer::consume());
 				} else if (currently_consuming == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
 					indirection_length = CharRingBuffer::consume() << 8 |
-						CharRingBuffer::consume();
+					CharRingBuffer::consume();
 					indirection_address = (char*)(CharRingBuffer::consume() << 8 |
-								      CharRingBuffer::consume());
+					CharRingBuffer::consume());
 					indirection_offset = 0;
-					completeFunction =  (void (*)(const char*))(CharRingBuffer::consume() << 8 |
-						     CharRingBuffer::consume());
+					completeFunction = (void (*)(const char*))(CharRingBuffer::consume() << 8 |
+					CharRingBuffer::consume());
 				} else {
 					// die horribly!
 				}
@@ -473,7 +481,7 @@ public:
 				}
 			}
 		}
-	done:
+		done:
 		return ret;
 	}
 
@@ -484,16 +492,20 @@ public:
  * @tparam	bufferSize	the size of the ringbuffer
  */
 template<uint16_t buffersize = 100>
-class IndirectingRingBufferImplementation : public IndirectingRingBuffer {
+class IndirectingRingBufferImplementation: public IndirectingRingBuffer {
 	volatile uint8_t xBuffer[buffersize];
 public:
 
-	IndirectingRingBufferImplementation() :	IndirectingRingBuffer() {
+	IndirectingRingBufferImplementation() :
+			IndirectingRingBuffer() {
 		_buffer = xBuffer;
 		_bufferSize = buffersize;
 	}
-}; // end class IndirectingRingBufferImplementation
+};
+// end class IndirectingRingBufferImplementation
 
-}; // end namespace MHV
+}
+;
+// end namespace MHV
 
 #endif // MHV_INDIRECTINGRINGBUFFER_H

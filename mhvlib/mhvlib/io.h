@@ -99,15 +99,27 @@ struct mhv_pin {
 typedef struct mhv_pin MHV_PIN;
 
 /**
+ * Inverse of the _BV macro
+ * @param bv	the _BV'd value
+ * @return the amount it was bitshifted
+ */
+INLINE uint8_t un_BV(uint8_t bv) {
+	uint8_t count = 0;
+	while (bv /= 2) {
+		count++;
+	}
+	return count;
+}
+
+/**
  * Pull apart a pin struct into a form suitable for passing as mhvParams
  * @param _mhv_pin	an MHV_PIN*
  */
-uint8_t un_BV(uint8_t bv);
 #define MHV_PIN_TO_MHVPARMS(_mhv_pin) \
-  _mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
+_mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
 
 #define MHV_PIN_STRUCT_TO_MHVPARMS(_mhv_pin) \
-  _mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
+_mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
 
 /**
  * Convert a literal port and pin into a pin macro
@@ -568,7 +580,7 @@ enum class InterruptMode {
  * @param	mhvInterruptMode	When to raise the interrupt (see MHV_INTERRUPTMODE)
  */
 #define mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode) \
-  _mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode)
+_mhv_enableExternalInterrupt(mhvInterruptParms,mhvInterruptMode)
 
 #define _mhv_enableExternalInterrupt(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvInterruptMode) \
 	do { \
@@ -583,7 +595,7 @@ enum class InterruptMode {
  * @param	mhvInterruptMode	When to raise the interrupt (see MHV_INTERRUPTMODE)
  */
 #define mhv_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode) \
-  _mhv_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode)
+_mhv_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode)
 #define _mhv_setExternalInterruptSenseMode(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIRegister,mhvEIEnableShift,mhvInterruptMode) \
   *mhvModeRegister = (*mhvModeRegister & ~(0x03 << mhvModeBitshift)) | (int(mhvInterruptMode) << mhvModeBitshift)
 
@@ -594,11 +606,9 @@ enum class InterruptMode {
  * @param	value bool indicating whether the interrupt should be enabled
  */
 #define mhv_setExternalInterruptMask(mhvInterruptParms,value) \
-  _mhv_setExternalInterruptMask(mhvInterruptParms,value)
+_mhv_setExternalInterruptMask(mhvInterruptParms,value)
 #define _mhv_setExternalInterruptMask(mhvInterruptHandler,mhvModeRegister,mhvModeBitshift,mhvEIMaskRegister,mhvEIMaskEnableShift,value) \
   *mhvEIMaskRegister = (*mhvEIMaskRegister & ~(1 << mhvEIMaskEnableShift)) | ((value ? 1 :0) << mhvEIMaskEnableShift)
-
-
 
 } // end namespace
 

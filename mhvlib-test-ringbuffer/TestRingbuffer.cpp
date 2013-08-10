@@ -58,15 +58,14 @@ using namespace mhvlib;
  */
 MHV_HARDWARESERIAL_CREATE(serial, 1, 1, MHV_USART0, 115200);
 
-// Space for 3 instances of TX_BUFFER
-#define TX_BUFFER_SIZE 3 * sizeof(TXBuffer) + 1
-RingBufferImplementation<TX_BUFFER_SIZE> testRingBuffer;
+#define TX_BUFFER_SIZE 80
+RingBufferImplementation<TX_BUFFER_SIZE, 1> testRingBuffer;
 
 void dumpRingBufferState() {
 	char buffer[80];
-	snprintf(buffer, sizeof(buffer), "Capacity: %i  Length: %i  Head: %i Tail: %i\r\n",
+	snprintf(buffer, sizeof(buffer), "Capacity: %i  Length: %i  Head: %i Uned: %i\r\n",
 			testRingBuffer.size(), testRingBuffer.length(),
-			testRingBuffer.head(), testRingBuffer.tail());
+			testRingBuffer.head(), testRingBuffer.used());
 	serial.busyWrite(buffer);
 }
 
@@ -87,11 +86,11 @@ MAIN {
 	serial.busyWrite(buffer);
 
 	char object[10];
-	memset(&object, '_', sizeof(object));
+	memset(object, '_', sizeof(object));
 
 	int i;
 	for (i = 0; i < 4; i++) {
-		bool fail = testRingBuffer.append(&object, sizeof(object));
+		bool fail = testRingBuffer.append((const void *)object, sizeof(object));
 		snprintf(buffer, sizeof(buffer),
 				"Inserting object of size %d from %p (%s), buffer now contains %d out of %d bytes\r\n",
 				sizeof(object), &object, (fail) ? "failed" : "success",
@@ -114,7 +113,7 @@ MAIN {
 	data[3] = "4 abcde";
 
 	for (i = 0; i < 4; i++) {
-		bool fail = testRingBuffer.append(data[i], 8);
+		bool fail = testRingBuffer.append((const void *)data[i], 8);
 		snprintf(buffer, sizeof(buffer),
 				"A Inserting '%s' of size %d (%s), buffer now contains %d out of %d bytes\r\n",
 				data[i], 8, (fail) ? "failed" : "success",

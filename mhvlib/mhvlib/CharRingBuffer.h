@@ -66,6 +66,13 @@ public:
 	}
 
 	/**
+	 * Get the number of bytes used
+	 */
+	uint16_t used() {
+		return _used;
+	}
+
+	/**
 	 * Append a character to the buffer
 	 * @return false if we succeeded, true otherwise
 	 */
@@ -114,7 +121,7 @@ public:
 	 */
 	int consume() {
 		int ret;
-		
+
 		if (_used == 0) {
 			return -1;
 		}
@@ -183,9 +190,9 @@ public:
 	 * return amount of free space in the buffer
 	 * @return amount of free space in bytes
 	 */
-	 uint16_t freeSpace() {
+	uint16_t freeSpace() {
 		return (_bufferSize - _used);
-	 }
+	}
 
 	/**
 	 * Check the most recent character in the buffer

@@ -45,6 +45,7 @@ public:
 	bool append(char c) {
 		return CharRingBuffer::append(c);
 	}
+
 	/**
 	 * Append an element to the buffer
 	 * @param	p	the pointer to append from

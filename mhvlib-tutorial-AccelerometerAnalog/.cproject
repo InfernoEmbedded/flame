@@ -201,7 +201,7 @@
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.17083482" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.756211271" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra  -Wno-non-virtual-dtor -std=c++11" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1450810079" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1450810079" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="true" valueType="boolean"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.other.200123790" name="Other Debug Flags" superClass="de.innot.avreclipse.cppcompiler.option.debug.other" value="" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.debug.type.2108976814" name="Debug Info Format" superClass="de.innot.avreclipse.cppcompiler.option.debug.type" value="de.innot.avreclipse.cppcompiler.option.debug.level.stabsplus" valueType="enumerated"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.82627844" superClass="de.innot.avreclipse.cppcompiler.input"/>
@@ -216,7 +216,7 @@
 								<option id="de.innot.avreclipse.cpplinker.option.libpath.1663416562" name="Libraries Path (-L)" superClass="de.innot.avreclipse.cpplinker.option.libpath" valueType="stringList">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}/${ConfigName}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.378481571" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="-Wl,--gc-sections -Wl,-u,vfprintf" valueType="string"/>
+								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.378481571" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="-Wl,--gc-sections -Wl,-u,vfprintf -flto" valueType="string"/>
 								<inputType id="de.innot.avreclipse.tool.cpplinker.input.1349086843" name="OBJ Files" superClass="de.innot.avreclipse.tool.cpplinker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
