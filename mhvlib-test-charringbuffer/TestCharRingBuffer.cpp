@@ -74,7 +74,7 @@ public:
 		}
 	}
 
-	void runTests() { // FIXME: add noreturn attribute here
+	void runTests() {
 #define TMPBUFFERSIZE 40
 		char tmpbuffer[TMPBUFFERSIZE];
 
@@ -106,14 +106,19 @@ public:
 		   (int)-1,
 		   PSTR("Consume on initial buffer returns -1"));
 		is(testRingBuffer.consume(&tmpbuffer,1),
-		   true, // failure!
+		   testRingBuffer.failure(),
 		   PSTR("consume into a void* initially returns failure"));
 
 		char firstcharpushed = 'Y';
 		is(testRingBuffer.append(firstcharpushed),
-		   false, // success!
+		   testRingBuffer.success(),
 		   PSTR("append a character to the buffer"));
-
+		is(testRingBuffer.peekAtOffset(0),
+		   (int)firstcharpushed,
+		   PSTR("peekAtOffset(0) returns firstcharpushed"));
+		is(testRingBuffer.peekAtOffset(1),
+		   (int)-1,
+		   PSTR("peekAtOffset(1) returns -1"));
 		is(testRingBuffer.size(),
 		   (uint16_t)RINGBUFFER_SIZE,
 		   PSTR("Size what we expect"));
@@ -147,11 +152,14 @@ public:
 
 		is(testRingBuffer.consume(),
 		   (int)-1,
-		   PSTR("Consume not returns -1"));
+		   PSTR("Consume now returns -1"));
 
 		is(testRingBuffer.append((void*)"Fred", 4),
-		   false, // success
+		   testRingBuffer.success(),
 		   PSTR("Can append a void*"));
+		is(testRingBuffer.length(),
+		   (uint16_t)4,
+		   PSTR("Content length is as expected"));
 		is(testRingBuffer.peekHead(),
 		   (int)'d',
 		   PSTR("Head character as expected"));
@@ -161,6 +169,9 @@ public:
 		is(testRingBuffer.consume(),
 		   (int)'F',
 		   PSTR("First consumed character as expected"));
+		is(testRingBuffer.length(),
+		   (uint16_t)3,
+		   PSTR("Content length is shorter"));
 		is(testRingBuffer.peekHead(),
 		   (int)'d',
 		   PSTR("Post-consume head character as expected"));
@@ -168,10 +179,10 @@ public:
 		   (int)'r',
 		   PSTR("Post-consume Next character as expected"));
 		is(testRingBuffer.consume((void*)tmpbuffer,4),
-		   true, // failure
+		   testRingBuffer.failure(),
 		   PSTR("Fail to consume more than is in the buffer"));
 		is(testRingBuffer.consume((void*)tmpbuffer,3),
-		   false, //success
+		   testRingBuffer.success(),
 		   PSTR("Consume from buffer"));
 		is_strl_P(tmpbuffer,
 			  PSTR("red"),
@@ -194,7 +205,7 @@ public:
 
 #define secondcharpushed 'X'
 		is(testRingBuffer.append(secondcharpushed),
-		   false, // success
+		   testRingBuffer.success(),
 		   PSTR("Append a character"));
 		is(testRingBuffer.used(),
 		   (uint16_t)1,
@@ -207,7 +218,7 @@ public:
 		// start capacity check:
 		int i;
 		for(i=0;i<RINGBUFFER_SIZE;i++) {
-			if (true == testRingBuffer.append(secondcharpushed)) {
+			if (testRingBuffer.append(secondcharpushed)== testRingBuffer.failure()) {
 				// failure
 				is(1,
 				   0,
@@ -221,20 +232,21 @@ public:
 			   PSTR("Append lots of characters to buffer"));
 		}
 		is(testRingBuffer.append('Y'),
-		   true, // failure
+		   testRingBuffer.failure(),
 		   PSTR("Fail to push onto ring buffer more than it can hold"));
 		is(testRingBuffer.consume(),
 		   (int)secondcharpushed,
 		   PSTR("consume out of the character ring buffer"));
 		is(testRingBuffer.append('Y'),
-		   false, // success
+		   testRingBuffer.success(),
 		   PSTR("push onto ring buffer after consuming something"));
 
 		for(i=0;i<RINGBUFFER_SIZE-1;i++) {
-			if ((int)secondcharpushed != testRingBuffer.consume()) {
+			int foo = testRingBuffer.consume();
+			if (foo != (int)secondcharpushed) {
 				// failure
-				is(1,
-				   0,
+				is(foo,
+				   (int)secondcharpushed,
 				   PSTR("Consume expected character"));
 				break;
 			}
@@ -242,11 +254,11 @@ public:
 		if (i == RINGBUFFER_SIZE-1) {
 			is(1,
 			   1,
-			   PSTR("Consume expected character"));
+			   PSTR("Consume expected characters"));
 		}
 		is (testRingBuffer.consume(),
 		    (int)'Y',
-		    PSTR("Consume expected character"));
+		    PSTR("Consume expected final character"));
 		// end capacity check
 
 		testRingBuffer.flush();

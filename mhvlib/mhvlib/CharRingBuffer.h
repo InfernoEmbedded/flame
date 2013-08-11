@@ -92,6 +92,13 @@ public:
 		return false; // success
 	}
 
+	bool success() {
+	  return false;
+	}
+	bool failure() {
+	  return true;
+	}
+
 	/**
 	 * Append a block of data to the buffer
 	 * @param	p	the pointer to append from
@@ -132,6 +139,24 @@ public:
 				ret = _buffer[_bufferSize - (_used - used_start)];
 			} else {
 				ret = _buffer[_head - _used];
+			}
+		}
+		return ret;
+	}
+	inline int peekAtOffset(uint16_t offset) {
+		int ret;
+		if (_used == 0) {
+			return -1;
+		}
+		if (_used <= offset) {
+			return -1;
+		}
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (_head < _used) {
+				// tail is at other end of buffer
+				ret = _buffer[_bufferSize - (_used - _head) + offset];
+			} else {
+				ret = _buffer[_head - _used + offset];
 			}
 		}
 		return ret;
