@@ -117,11 +117,11 @@ public:
 	}
 
 	/**
-	 * Pop a byte off the ringbuffer
+	 * Returns the character which would be returned by (char)consume
+	 * @return the character, or -1 if the buffer is empty
 	 */
-	int consume() {
+	inline int peek() {
 		int ret;
-
 		if (_used == 0) {
 			return -1;
 		}
@@ -133,7 +133,20 @@ public:
 			} else {
 				ret = _buffer[_head - _used];
 			}
-			_used--;
+		}
+		return ret;
+	}
+
+	/**
+	 * Pop a byte off the ringbuffer
+	 */
+	int consume() {
+		int ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			ret = peek();
+			if (ret != -1) {
+				_used--;
+			}
 		}
 		return ret;
 	}
