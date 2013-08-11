@@ -360,7 +360,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return (Device_TX::_txbuffer.length() && usartDataIsEmpty());
+		return (!Device_TX::_txbuffer.length() && usartDataIsEmpty());
 	}
 
 	/**
