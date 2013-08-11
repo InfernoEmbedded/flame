@@ -159,18 +159,19 @@ MAIN {
 
 		if (success) {
 			snprintf(buffer, sizeof(buffer),
-				"read at %d '%s' buffer now contains %d out of %d bytes\r\n",
+				"OK read at %d '%s' buffer now contains %d out of %d bytes\r\n",
 				i, buf, testRingBuffer.length(), testRingBuffer.size());
+		} else {
+			snprintf(buffer, sizeof(buffer),"FAIL Read");
 		}
-		serial.busyWrite(buffer);
-		snprintf(buffer, sizeof(buffer),
-				"The read did %ssucceed\r\n", success ? "" : "not ");
 		serial.busyWrite(buffer);
 		snprintf(buffer, sizeof(buffer),
 				"Buffer is %sfull\r\n", testRingBuffer.full() ? "" : "not ");
 		serial.busyWrite(buffer);
 		dumpRingBufferState();
 	}
+
+	serial.busyWrite_P(PSTR("Tests complete\r\n"));
 
 	for (;;) {}
 
