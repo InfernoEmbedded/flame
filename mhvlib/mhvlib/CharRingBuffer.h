@@ -98,7 +98,7 @@ public:
 	 * @param	pLength the number of bytes to append
 	 * @return false if we succeeded, true otherwise
 	 */
-	bool append(const void *p, uint8_t pLength) {
+	bool append(const void *p, uint16_t pLength) {
 		if (full(pLength)) {
 			return true;
 		}
@@ -144,12 +144,12 @@ public:
 	 * @param pLength	the length of the block
 	 * @return false if we succeeded, true otherwise
 	 */
-	bool consume(void *p, uint8_t pLength) {
+	bool consume(void *p, uint16_t pLength) {
 		if (length() < pLength) {
 			return true;
 		}
 
-		uint8_t i;
+		uint16_t i;
 		char *c = (char *)p;
 
 		ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
@@ -182,7 +182,7 @@ public:
 	 * @param blockLength	the length of the object to fit in
 	 * @return true if the ringbuffer is full
 	 */
-	bool full(uint8_t blockLength) {
+	bool full(uint16_t blockLength) {
 		return blockLength > freeSpace();
 	}
 
