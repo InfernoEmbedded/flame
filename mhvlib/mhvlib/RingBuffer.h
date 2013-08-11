@@ -45,6 +45,12 @@ public:
 	bool append(char c) {
 		return CharRingBuffer::append(c);
 	}
+	bool append(const void *p, uint16_t pLength) {
+	  	return CharRingBuffer::append(p,pLength);
+	}
+	bool consume(void *p, uint16_t pLength) {
+	  	return CharRingBuffer::consume(p,pLength);
+	}
 
 	/**
 	 * Append an element to the buffer
