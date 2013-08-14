@@ -49,8 +49,21 @@ void TestHarness::is_strl_P(const char * got,
 	}
 }
 
+void TestHarness::torture_verbose_P(PGM_P string) {
+  mhvlib::serial.busyWrite_P(string);
+}
+void TestHarness::torture_verbose(const char * string) {
+  mhvlib::serial.busyWrite(string);
+}
+void TestHarness::torture_verbose(const uint16_t myinteger) {
+  mhvlib::serial.busyWrite(myinteger);
+}
+
 void TestHarness::run() {
 	mhvlib::serial.busyWrite_P(PSTR("Tests Start\r\n"));
 	runTests();
 	mhvlib::serial.busyWrite_P(PSTR("Tests complete\r\n"));
 }
+
+void TestHarness::runTests() {};
+

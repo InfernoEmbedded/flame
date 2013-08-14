@@ -44,6 +44,8 @@ public:
 	uint16_t			_bufferSize;
 
 public:
+
+
 	/**
 	 * Create a new ringbuffer
 	 */

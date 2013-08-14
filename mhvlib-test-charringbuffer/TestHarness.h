@@ -2,6 +2,8 @@
 #define __MHVLIB_TESTINGHARNESS 1
 
 #include <avr/pgmspace.h>
+#include <stdlib.h> // for malloc/free
+#include <avr/pgmspace.h>
 
 class TestHarness {
  public:
@@ -14,6 +16,9 @@ class TestHarness {
 	void testOK();
 	void testFailed();
 	void testFailed(const char * explanaton);
+	void torture_verbose(const char * message);
+	void torture_verbose_P(const char * message);
+	void torture_verbose(const uint16_t message);
 
 	virtual void runTests();
 
@@ -50,6 +55,31 @@ class TestHarness {
 			testFailed(buffer);
 		}
 	}
+		    
+	template <class value_t>
+		void isgt(value_t a,
+			  value_t b,
+			  PGM_P description) {
+
+		testStart(description);
+		if (a > b) {
+			testOK();
+		} else {
+			char buffer[80];
+			snprintf(buffer,80,"a=%d < b=%d",a,b);
+			testFailed(buffer);
+		}
+	}
+
+	/* virtual ~TestHarness(); */
+	/* TestHarness(); */
+	void operator delete(void * ptr) {
+	  free(ptr);
+	} 
+	void * operator new(size_t size) {
+	  return malloc(size);
+	}
+
  public:
 }; // end class TestHarness
 
