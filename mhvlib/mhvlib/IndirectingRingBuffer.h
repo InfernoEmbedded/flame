@@ -46,9 +46,8 @@ class IndirectingRingBuffer: public CharRingBuffer {
 
 protected:
 	const char magic_escape_character = '|';
-	const uint8_t magic_worth_indirecting_threshold = 0;
 
-	uint8_t currently_consuming = BUFFER;
+	IndirectionType currently_consuming = BUFFER;
 
 	uint16_t indirection_length;
 	char * indirection_address;
@@ -56,11 +55,19 @@ protected:
 	void (*completeFunction)(const char *);
 
 public:
+
 	PURE bool success() {
 		return true;
 	}
 	;
+	PURE bool failure() {
+		return false;
+	}
+	;
 
+	char a_magic_escape_character() {
+		return magic_escape_character;
+	}
 	/**
 	 * see if there is room for a character in the buffer:
 	 * @param 			the character to append
@@ -75,12 +82,12 @@ public:
 	 * append a character
 	 * @param 			the character to append
 	 */
-	bool append(char c) {
+	bool append(const char c) {
 		bool ret;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 		{
 			if (!canFit(c)) {
-				ret = !success(); // failure
+				ret = failure(); // failure
 			} else {
 				if (c == magic_escape_character) {
 					CharRingBuffer::append(c); // ignored return value
@@ -90,7 +97,6 @@ public:
 		}
 		return ret;
 	}
-
 	template<class pLength_t>
 	PURE uint16_t escapedLength(const void *p, pLength_t pLength) {
 		pLength_t count = 0;
@@ -122,13 +128,10 @@ public:
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 		{
 			if (escaped_length > freeSpace()) {
-				ret = !success(); // failure
+				ret = failure();
 			} else {
 				for (uint16_t i = 0; i < pLength; i++) {
 					append(((char*) p)[i]);
-					if (((char*) p)[i] == magic_escape_character) {
-						append(((char*) p)[i]);
-					}
 				}
 				ret = success(); // success
 			}
@@ -192,9 +195,6 @@ public:
 			} else {
 				for(char * x=(char *)string;*x;x++) {
 					append(*x);
-					if (*x == magic_escape_character) {
-						append(*x);
-					}
 				}
 				ret = success(); // success
 			}
@@ -341,17 +341,14 @@ public:
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			uint16_t escaped_length = escapedLength_P(string);
 			if (escaped_length > freeSpace()) {
-				ret = !success(); // failure
+				ret = failure();
 			} else {
 				PGM_P x = string;
 				char c;
 				while((c = pgm_read_byte((PGM_P)x++))) {
 					append(c);
-					if (c == magic_escape_character) {
-						append(c);
-					}
 				}
-				ret = success(); // success
+				ret = success();
 			}
 		}
 		return ret;
@@ -402,13 +399,14 @@ public:
 			if (currently_consuming == BUFFER) {
 				ret = CharRingBuffer::consume();
 				if (ret != magic_escape_character) {
-					goto done;
+					goto done; // this also hadles CharRingBuffer() returning -1...
 				}
 				// OK, so we've hit the magic escape character.
-				currently_consuming = CharRingBuffer::consume();
+				currently_consuming = (IndirectionType)CharRingBuffer::consume();
 				if (currently_consuming == magic_escape_character) {
 					// this was an escaped magic escape character
 					ret = currently_consuming;
+					currently_consuming = BUFFER;
 					goto done;
 				}
 				// it wasn't an escaped magic character.  Grab all the relevant stuff out of the buffer and then loop around.
@@ -443,48 +441,147 @@ public:
 			}
 
 			if (currently_consuming == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
+				ret = indirection_address[indirection_offset++];
 				if (indirection_length == indirection_offset) {
 					currently_consuming = BUFFER;
 					completeFunction(indirection_address);
-				} else {
-					ret = indirection_address[indirection_offset++];
-					//					ret = indirection_offset-1 + '0';
-					goto done;
 				}
+				goto done;
 			}
 			if (currently_consuming == PGM_P_STRING) {
 				ret = pgm_read_byte((PGM_P)indirection_address + indirection_offset++);
-				if (ret == '\0') {
+				if (pgm_read_byte((PGM_P)indirection_address + indirection_offset) == '\0') {
 					// null-terminated string - all done (we do NOT return the null!)
 					currently_consuming = BUFFER;
-				} else {
-					goto done;
 				}
+				goto done;
 			}
 			if (currently_consuming == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {
 				ret = indirection_address[indirection_offset++];
-				if (ret == '\0') {
+				if (indirection_address[indirection_offset] == '\0') {
 					// null-terminated string - all done (we do NOT return the null!)
 					completeFunction(indirection_address);
 					currently_consuming = BUFFER;
-				} else {
-					goto done;
 				}
+				goto done;
 			}
 			if (currently_consuming == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
+				ret = indirection_address[indirection_offset++];
 				if (indirection_length == indirection_offset) {
 					currently_consuming = BUFFER;
 					completeFunction(indirection_address);
-				} else {
-					ret = indirection_address[indirection_offset++];
-					goto done;
 				}
+				goto done;
 			}
 		}
 		done:
 		return ret;
 	}
 
+	/**
+	 * return the number of bytes would could be popped out of the buffer
+	 * @return number of bytes would could be popped out of the buffer
+	 */
+	uint16_t length() {
+		uint16_t length = 0;
+		uint16_t bufferPeekOffset = 0;
+		IndirectionType currently_perusing = currently_consuming;
+
+		if (currently_perusing == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
+			length += indirection_length - indirection_offset;
+		} else if(currently_perusing == PGM_P_STRING) {
+			uint16_t tmp_offset = indirection_offset;
+			while (pgm_read_byte((PGM_P)indirection_address + tmp_offset++)) {
+				length++;
+			}
+		} else if(currently_perusing == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {
+			uint16_t tmp_offset = indirection_offset;
+			while (indirection_address[tmp_offset++]) {
+				length++;
+			}
+		} else if (currently_perusing == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
+			length += indirection_length - indirection_offset;
+		} else {
+			// hope it was in BUFFER already...
+		}
+		currently_perusing = BUFFER;
+
+		while (1) {
+			if (currently_perusing == BUFFER) {
+				int current = CharRingBuffer::peekAtOffset(bufferPeekOffset++);
+				if (current == -1) {
+					return length;
+				}
+				if (current != magic_escape_character) {
+					length++;
+					goto done;
+				}
+				// OK, so we've hit the magic escape character.
+				currently_perusing = (IndirectionType)CharRingBuffer::peekAtOffset(bufferPeekOffset++);
+				if (currently_perusing == magic_escape_character) {
+					// this was an escaped magic escape character
+					currently_perusing = BUFFER;
+					length++;
+					goto done;
+				}
+				// otherwise fall through to handle the other types
+			}
+
+			// it wasn't an escaped magic character.  Grab all the relevant stuff out of the buffer and then loop around.
+			if (currently_perusing == VOIDP_WITH_UINT8_LENGTH_AND_COMPLETEFUNCTION) {
+				length += CharRingBuffer::peekAtOffset(bufferPeekOffset++);
+				bufferPeekOffset++; // address-high-bits
+				bufferPeekOffset++; // address-low-bits
+				bufferPeekOffset++; // completefunction-high-bits
+				bufferPeekOffset++; // completefunction-low-bits
+				currently_perusing = BUFFER;
+			} else if(currently_perusing == PGM_P_STRING) {
+				char * x = (char*)(CharRingBuffer::peekAtOffset(bufferPeekOffset) << 8 | CharRingBuffer::peekAtOffset(bufferPeekOffset+1));
+				bufferPeekOffset++; // address high
+				bufferPeekOffset++; // address low
+				length += strlen_P(x);
+				currently_perusing = BUFFER;
+			} else if(currently_perusing == NULL_TERMINATED_CHARSTAR_WITH_COMPLETEFUNCTION) {
+				char * x = (char*)(CharRingBuffer::peekAtOffset(bufferPeekOffset) << 8 | CharRingBuffer::peekAtOffset(bufferPeekOffset+1));
+				bufferPeekOffset++; // address high
+				bufferPeekOffset++; // address low
+				bufferPeekOffset++; // completefunction high
+				bufferPeekOffset++; // completefunction low
+				while (*x) {
+					length++;
+				}
+				currently_perusing = BUFFER;
+			} else if (currently_perusing == VOIDP_WITH_UINT16_LENGTH_AND_COMPLETEFUNCTION) {
+				length += CharRingBuffer::peekAtOffset(bufferPeekOffset) << 8 | CharRingBuffer::peekAtOffset(bufferPeekOffset+1);
+				bufferPeekOffset++; // address-high-bits
+				bufferPeekOffset++; // address-low-bits
+				bufferPeekOffset++; // completefunction high
+				bufferPeekOffset++; // completefunction low
+				currently_perusing = BUFFER;
+			} else {
+				// die horribly!
+			}
+		done:
+			while(0);
+		}
+		return length; // this should never be reached
+	}
+
+	/**
+	 * Pop some stuff out of the ring buffer
+	 * @param p			where to write the block
+	 * @param pLength	the length of the block
+	 * @return false if we succeeded, true otherwise
+	 */
+	bool consume(const void *p, const uint16_t pLength) {
+		if (length() < pLength) {
+			return failure();
+		}
+		for(uint16_t i=0;i<pLength;i++) {
+			((char*)p)[i] = consume();
+		}
+		return success();
+	}
 };
 
 /**
@@ -498,6 +595,7 @@ public:
 
 	IndirectingRingBufferImplementation() :
 			IndirectingRingBuffer() {
+				currently_consuming = BUFFER;
 		_buffer = xBuffer;
 		_bufferSize = buffersize;
 	}

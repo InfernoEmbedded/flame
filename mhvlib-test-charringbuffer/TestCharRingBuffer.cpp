@@ -304,16 +304,16 @@ public:
 		//		TestCharRingBuffer::runTests();
 		char tmp[10];
 
-		{
-			testRingBuffer->fnoo();
-			testRingBuffer->flush();
-			is(testRingBuffer->append('X'),
-			   testRingBuffer->success(),
-			   PSTR("Append an X"));
-			is(testRingBuffer->consume(),
-			   (int)'X',
-			   PSTR("Consume an X"));
-		}
+		// {
+		// 	testRingBuffer->fnoo();
+		// 	testRingBuffer->flush();
+		// 	is(testRingBuffer->append('X'),
+		// 	   testRingBuffer->success(),
+		// 	   PSTR("Append an X"));
+		// 	is(testRingBuffer->consume(),
+		// 	   (int)'X',
+		// 	   PSTR("Consume an X"));
+		// }
 		{
 			testRingBuffer->flush();
 			is (testRingBuffer->append(testRingBuffer->a_magic_escape_character()),
@@ -432,62 +432,114 @@ public:
 				  PSTR("Pop off what we expect from pstrings a second time"));
 		}
 
-		testRingBuffer->flush();
-		uint8_t copies_to_store = 10;
-		for(uint8_t i=0; i<copies_to_store;i++) {
-			testRingBuffer->append_P(string);
-		}
-		is(testRingBuffer->length(),
-		   (uint16_t)100,
-		   PSTR("length of ringbuffer is 100"));
-		isgt(testRingBuffer->length(),
-		     ringBufferSize,
-		     PSTR("more content in ringbuffer than its size would indicate"));
-		is(testRingBuffer->used(),
-		   (uint16_t)40,
-		   PSTR("used of ringbuffer is 40"));
-		is(testRingBuffer->used(),
-		   (uint16_t)ringBufferSize,
-		   PSTR("used is equal to ringBufferSize")); // you changed RINGBUFFER_SIZE, didn't you?
-		is(testRingBuffer->append_P(string),
-		   testRingBuffer->failure(),
-		   PSTR("failed to append string again (hopefully because full)"));
-		is (testRingBuffer->append('X'),
-		    testRingBuffer->failure(),
-		    PSTR("failed to append a single character when it is full"));
-		is(testRingBuffer->canFit('X'),
-		   false,
-		   PSTR("canFit says no more characters"));
+		{
+		  testRingBuffer->flush();
+		  uint8_t copies_to_store = 10;
+		  for(uint8_t i=0; i<copies_to_store;i++) {
+		    testRingBuffer->append_P(string);
+		  }
+		  is(testRingBuffer->length(),
+		     (uint16_t)100,
+		     PSTR("length of ringbuffer is 100"));
+		  isgt(testRingBuffer->length(),
+		       ringBufferSize,
+		       PSTR("more content in ringbuffer than its size would indicate"));
+		  is(testRingBuffer->used(),
+		     (uint16_t)40,
+		     PSTR("used of ringbuffer is 40"));
+		  is(testRingBuffer->used(),
+		     (uint16_t)ringBufferSize,
+		     PSTR("used is equal to ringBufferSize")); // you changed RINGBUFFER_SIZE, didn't you?
+		  is(testRingBuffer->append_P(string),
+		     testRingBuffer->failure(),
+		     PSTR("failed to append string again (hopefully because full)"));
+		  is (testRingBuffer->append('X'),
+		      testRingBuffer->failure(),
+		      PSTR("failed to append a single character when it is full"));
+		  is(testRingBuffer->canFit('X'),
+		     false,
+		     PSTR("canFit says no more characters"));
 
-		memset(tmp,'X',10);
-		for(uint8_t i=0;i<copies_to_store;i++) {
-			is(testRingBuffer->consume(tmp,10),
-			   testRingBuffer->success(),
-			   PSTR("Consume a pstring"));
-			is_strl_P(tmp,
-				 string,
-				 10,
-				 PSTR("Pop off what we expect from pstrings"));
+		  memset(tmp,'X',10);
+		  for(uint8_t i=0;i<copies_to_store;i++) {
+		    is(testRingBuffer->consume(tmp,10),
+		       testRingBuffer->success(),
+		       PSTR("Consume a lengthed-string"));
+		    is_strl_P(tmp,
+			      string,
+			      10,
+			      PSTR("Pop off what we expect from pstrings"));
+		  }
+		  is(testRingBuffer->consume(tmp,10),
+		     testRingBuffer->failure(),
+		     PSTR("Fail to pop off any more data from ringbuffer"));
 		}
-		is(testRingBuffer->consume(tmp,10),
-		   testRingBuffer->failure(),
-		   PSTR("Fail to pop off any more data from ringbuffer"));
+
+		testRingBuffer->flush();
 
 		{
-			testRingBuffer->flush();
-			is (testRingBuffer->append(testRingBuffer->a_magic_escape_character()),
+			char foo[5];
+			const char a_char = 'A';
+			const char * null_terminated_string = "B";
+			PGM_P progam_string = PSTR("C");
+			const char * uint_string = "DDD"; // just 1 appended
+			is (testRingBuffer->append(a_char),
 			    testRingBuffer->success(),
-			    PSTR("Append a magic escape character"));
+			    PSTR("Append a char"));
+			is (testRingBuffer->append(null_terminated_string),
+			    testRingBuffer->success(),
+			    PSTR("Append a null-terminated string"));
+			is (testRingBuffer->append_P(progam_string),
+			    testRingBuffer->success(),
+			    PSTR("Append a program string"));
+			is (testRingBuffer->append(uint_string,1),
+			    testRingBuffer->success(),
+			    PSTR("Append length of char*"));
 			is(testRingBuffer->used(),
-			   (uint16_t)2,
-			   PSTR("two characters used for escaping"));
-			is(testRingBuffer->consume(),
-			   (int)testRingBuffer->a_magic_escape_character(),
-			   PSTR("Get a magic escape character back"));
+			   (uint16_t)4,
+			   PSTR("four bytes used"));
+			is(testRingBuffer->consume(&foo,4),
+			   testRingBuffer->success(),
+			   PSTR("consume 4 characters"));
+			is_strl_P(foo,
+				  PSTR("ABCD"),
+				  4,
+				  PSTR("Get back what we expect"));
+		}
+		{
+			char foo[5];
+			const char a_char = testRingBuffer->a_magic_escape_character();
+			char * null_terminated_string = "B";
+			null_terminated_string[0] = a_char;
+			PGM_P progam_string = PSTR("|"); // sorry - don't change that next time!
+			char * uint_string = "DDD"; // just 1 appended
+			uint_string[0] = a_char;
+			is (testRingBuffer->append(a_char),
+			    testRingBuffer->success(),
+			    PSTR("Append a char (magic_escape_character)"));
+			is (testRingBuffer->append(null_terminated_string),
+			    testRingBuffer->success(),
+			    PSTR("Append a null-terminated string (mec)"));
+			is (testRingBuffer->append_P(progam_string),
+			    testRingBuffer->success(),
+			    PSTR("Append a program string (mec)"));
+			is (testRingBuffer->append(uint_string,1),
+			    testRingBuffer->success(),
+			    PSTR("Append length of char* (mec)"));
+			is(testRingBuffer->used(),
+			   (uint16_t)8,
+			   PSTR("8 bytes used"));
+			is(testRingBuffer->consume(&foo,4),
+			   testRingBuffer->success(),
+			   PSTR("consume 4 characters"));
+			is_strl_P(foo,
+				  PSTR("||||"), // again, sorry
+				  4,
+				  PSTR("Get back what we expect"));
 			is(testRingBuffer->consume(),
 			   (int)-1,
-			   PSTR("No more to consume"));
-		}		
+			   PSTR("ringbuffer now empty"));
+		}
 		   
 	}
 };
