@@ -25,6 +25,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+/* a RingBuffer is a CharRingBuffer which has the concept of a "chunk"
+ *  whose length is stored in _elementSize.  It has methods to append
+ *  and consume "chunks" of this length.
+ */
 
 #ifndef MHV_RINGBUFFER_H_
 #define MHV_RINGBUFFER_H_

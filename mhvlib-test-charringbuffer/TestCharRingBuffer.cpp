@@ -293,6 +293,58 @@ void set_all_done_flag(const void * done) {
 	all_done_flag = true;
 }
 
+class TestRingBuffer : public TestCharRingBuffer {
+public:
+	mhvlib::RingBuffer * testRingBuffer;
+	TestRingBuffer(mhvlib::RingBuffer * x, const uint16_t size) : TestCharRingBuffer(x,size) {
+		testRingBuffer = x;
+	};
+	void runTests() {
+		{
+			is(testRingBuffer->consume(),
+			   (int)-1,
+			   PSTR("Fail to consume from empty buffer"));
+			is(testRingBuffer->append('X'),
+			   testRingBuffer->success(),
+			   PSTR("Append a character"));
+			is(testRingBuffer->consume(),
+			   (int)'X',
+			   PSTR("Consume same character"));
+			is(testRingBuffer->consume(),
+			   (int)-1,
+			   PSTR("Buffer appears to be empty"));
+		}
+		testRingBuffer->flush();
+		{
+			char tmp[10];
+			char src[] = "0123456789";
+			is(testRingBuffer->append(src),
+			   testRingBuffer->success(),
+			   PSTR("Append a void*P to buffer"));
+			is(testRingBuffer->used(),
+			   (uint16_t)10,
+			   PSTR("Used is 10"));
+			memset(tmp,'X',10);
+			is(testRingBuffer->consume(&tmp),
+			   testRingBuffer->success(),
+			   PSTR("Consume a void*p"));
+			bool ok = true;
+			for (uint8_t i = 0; i < 10; i++) {
+				if (tmp[i] != src[i]) {
+					ok = false;
+				}
+			}
+			is(ok,
+			   true,
+			   PSTR("Retrieve same chunk we put in"));
+			// is(strnmp(tmp,src,10),
+			//    0,
+			//    PSTR("Consumed string awesome"));
+		}
+		testRingBuffer->flush();
+	}
+};
+
 class TestIndirectingRingBuffer : public TestCharRingBuffer {
 public:
 	mhvlib::IndirectingRingBuffer * testRingBuffer;
@@ -305,7 +357,6 @@ public:
 		char tmp[10];
 
 		// {
-		// 	testRingBuffer->fnoo();
 		// 	testRingBuffer->flush();
 		// 	is(testRingBuffer->append('X'),
 		// 	   testRingBuffer->success(),
@@ -509,10 +560,10 @@ public:
 		{
 			char foo[5];
 			const char a_char = testRingBuffer->a_magic_escape_character();
-			char * null_terminated_string = "B";
+			char null_terminated_string[] = "B";
 			null_terminated_string[0] = a_char;
 			PGM_P progam_string = PSTR("|"); // sorry - don't change that next time!
-			char * uint_string = "DDD"; // just 1 appended
+			char uint_string[] = "DDD"; // just 1 appended
 			uint_string[0] = a_char;
 			is (testRingBuffer->append(a_char),
 			    testRingBuffer->success(),
@@ -546,14 +597,19 @@ public:
 
 
 #define RINGBUFFER_SIZE 40
-mhvlib::IndirectingRingBufferImplementation<RINGBUFFER_SIZE> fooBuffer;
+mhvlib::CharRingBufferImplementation<RINGBUFFER_SIZE> charRingBuffer;
+mhvlib::IndirectingRingBufferImplementation<RINGBUFFER_SIZE> indirectingRingBuffer;
+mhvlib::RingBufferImplementation<RINGBUFFER_SIZE,10> ringBuffer;
 
 MAIN {
 	sei(); // move this?
 
-	// TestCharRingBuffer * tester = new TestCharRingBuffer(fooBuffer,RINGBUFFER_SIZE);
-	TestIndirectingRingBuffer * tester = new TestIndirectingRingBuffer(&fooBuffer,RINGBUFFER_SIZE);
-	fooBuffer.fnoo();
-	tester->run();
+	TestCharRingBuffer * testCharRingBuffer = new TestCharRingBuffer(&charRingBuffer,RINGBUFFER_SIZE);
+	TestIndirectingRingBuffer * testIndirectingRingBuffer = new TestIndirectingRingBuffer(&indirectingRingBuffer,RINGBUFFER_SIZE);
+	TestRingBuffer * testRingBuffer = new TestRingBuffer(&ringBuffer,RINGBUFFER_SIZE);
+
+	testCharRingBuffer->run();
+	testIndirectingRingBuffer->run();
+	testRingBuffer->run();
 	for (;;) {}
 }
