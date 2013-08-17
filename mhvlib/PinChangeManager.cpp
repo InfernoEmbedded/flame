@@ -76,20 +76,20 @@ void PinChangeManager::pinChange(uint8_t offset) {
 			continue;
 		}
 
-		pinChangeCaught(*pin);
+		bool cur = _MMIO_BYTE(pin->port) & pin->mask;
+		if (cur != pin->previous) {
+			// Pin has changed
+			pin->previous = cur;
+			pinChangeCaught(*pin,cur);
+		}
 	}
 }
-void PinChangeManager::pinChangeCaught(EVENT_PIN &pin) {
-	bool cur = _MMIO_BYTE(pin.port) & pin.mask;
-	if (cur != pin.previous) {
-		// Pin has changed
-		pin.previous = cur;
+	void PinChangeManager::pinChangeCaught(EVENT_PIN pin,bool newval) {
 		if (pin.listener != NULL) {
-			pin.listener->pinChanged(pin.pcInt, cur);
+			pin.listener->pinChanged(pin.pcInt, newval);
 		} else {
 			pin.changed = 1;
 		}
-	}
 }
 
 void PinChangeManager::registerListener(MHV_PIN *x, PinEventListener *listener) {
@@ -119,26 +119,34 @@ void PinChangeManager::enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt
 #if MHV_PC_INT_COUNT > 15
 	if (pinPinchangeInterrupt > 15) {
 		bit -= 16;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK2 |= _BV(bit);
 		PCICR |= _BV(PCIE2);
+		}
 	} else
 #endif
 #if MHV_PC_INT_COUNT > 7
 	if (pinPinchangeInterrupt > 7) {
 		bit -= 8;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK1 |= _BV(bit);
 		PCICR |= _BV(PCIE1);
+		}
 	} else
 #endif
 #ifdef PCMSK0
 	{
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK0 |= _BV(bit);
 		PCICR |= _BV(PCIE0);
+		}
 	}
 #else
 	{
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK |= _BV(bit);
 		GIMSK |= _BV(PCIE);
+		}
 	}
 #endif
 }

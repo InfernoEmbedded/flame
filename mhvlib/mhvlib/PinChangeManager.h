@@ -94,7 +94,7 @@ protected:
 //	uint8_t			_pinsUsed;
 	void enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt);
 	void disablepinPinChangeInterrupt(const uint8_t pinPinchangeInterrupt);
-	virtual void pinChangeCaught(EVENT_PIN &pin);
+	virtual void pinChangeCaught(EVENT_PIN pin, bool newval);
 
 public:
 	PinChangeManager();
