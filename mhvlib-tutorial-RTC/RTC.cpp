@@ -30,6 +30,7 @@
  */
 
 #include <mhvlib/io.h>
+#include <mhvlib/Pin.h>
 #include <mhvlib/HardwareSerial.h>
 #include <mhvlib/Timer.h>
 #include <mhvlib/RTC.h>
@@ -62,7 +63,7 @@ RTCImplementation<ALARM_COUNT> rtc(TIMEZONE);
 class OncePerSecond : public TimerListener {
 	/* An event that we will trigger every second
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		// Get the current timestamp
 		TIMESTAMP timestamp;
 		rtc.current(timestamp);
@@ -81,21 +82,25 @@ class OncePerSecond : public TimerListener {
 
 OncePerSecond oncePerSecond;
 
+PinImplementation<MHV_PIN_B5> led1Hz;
+PinImplementation<MHV_PIN_B4> led2Hz;
+PinImplementation<MHV_PIN_B3> led4Hz;
+
 class Blink1Hz : public TimerListener {
-	void alarm() {
-		pinToggle(MHV_PIN_B5);
+	void alarm(UNUSED AlarmSource source) {
+		led1Hz.toggle();
 	}
 };
 
 class Blink2Hz : public TimerListener {
-	void alarm() {
-		pinToggle(MHV_PIN_B4);
+	void alarm(UNUSED AlarmSource source) {
+		led2Hz.toggle();
 	}
 };
 
 class Blink4Hz : public TimerListener {
-	void alarm() {
-		pinToggle(MHV_PIN_B3);
+	void alarm(UNUSED AlarmSource source) {
+		led4Hz.toggle();
 	}
 };
 

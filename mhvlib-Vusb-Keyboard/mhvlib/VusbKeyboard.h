@@ -194,7 +194,7 @@ public:
 	void keyDown(VUSB_KEYBOARD_KEY key, uint8_t modifiers);
 	void keysUp(uint8_t modifiers);
 	void keysUp();
-	void alarm();
+	void alarm(AlarmSource source);
 };
 
 }

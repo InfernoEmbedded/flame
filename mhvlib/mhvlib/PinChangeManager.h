@@ -29,7 +29,7 @@
 #define MHV_PINCHANGE_MANAGER_H_
 
 #include <mhvlib/io.h>
-#include <mhvlib/Device_RX.h>
+#include <mhvlib/Pin.h>
 
 #define MHV_PINCHANGE_MANAGER_ASSIGN_PCINT(___mhvEventManager) \
 ISR(PCINT_vect) { \
@@ -105,6 +105,7 @@ public:
 #endif
 	void pinChange(uint8_t offset);
 	void registerListener(MHV_DECLARE_PIN(pin), PinEventListener *listener);
+	void registerListener(Pin &pin, PinEventListener *listener);
 	void deregisterListener(int8_t pinPinChangeListener);
 
 	void handleEvents();

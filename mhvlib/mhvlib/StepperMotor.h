@@ -57,7 +57,7 @@ public:
 	bool isMoving() PURE;
 	int32_t	getPosition() PURE;
 	void rotate(bool forward, float speed, int32_t until);
-	void alarm();
+	void alarm(AlarmSource source);
 	void registerListener(StepperListener &listener);
 	void deregisterListener();
 };

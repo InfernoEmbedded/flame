@@ -199,7 +199,7 @@ public:
 
 		_nextServoIndex = 0;
 		sortServos();
-		alarm();
+		alarm(AlarmSource.UNKNOWN);
 	}
 
 	/**
@@ -213,7 +213,7 @@ public:
 	 * Start a servo cycle
 	 * @param	timer	the timer that triggered us (unused)
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		if (255 == _nextServoIndex) {
 			// Start of the servo pulse
 			for (uint8_t i = 0; i < servoCount; i++) {

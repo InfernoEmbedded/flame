@@ -86,6 +86,13 @@ INLINE uint8_t operator<< (TimerConnect type, uint8_t shift) {
 	return(myType << shift);
 }
 
+enum class AlarmSource : uint8_t {
+	UNKNOWN,
+	TIMER_OUTPUT_1,
+	TIMER_OUTPUT_2,
+	TIMER_OUTPUT_3,
+	RTC
+};
 
 #define MHV_TIMER_ASSIGN_1INTERRUPT(mhvTimer, mhvTimerVectors) \
 	_MHV_TIMER_ASSIGN_1INTERRUPT(mhvTimer, mhvTimerVectors)
@@ -112,7 +119,7 @@ public:
 	/**
 	 * Called when an alarm goes off
 	 */
-	virtual void alarm() =0;
+	virtual void alarm(AlarmSource source) =0;
 };
 
 class Timer {
@@ -130,6 +137,17 @@ protected:
 	 * @param	factor		the prescaler factor
 	 */
 	INLINE void calculateTop(uint32_t *time, uint16_t factor) {
+		*time = (*time / factor) - 1;
+
+		return;
+	}
+
+	/**
+	 * Calculate the top register
+	 * @param	time 		input: the time in timer ticks, output: the scaled timer ticks
+	 * @param	factor		the prescaler factor
+	 */
+	INLINE void calculateTop(float *time, uint16_t factor) {
 		*time = (*time / factor) - 1;
 
 		return;
@@ -167,6 +185,39 @@ public:
 		calculateTop(&usec2, factor);
 
 		setPeriods(prescaler, usec1, usec2);
+
+		return false;
+	}
+
+
+	/**
+	 * Set the periods for channels 1 and 2
+	 * Times are in microseconds
+	 * @param	usec1		the first time in microseconds
+	 * @param	usec2		the second time in microseconds
+	 * @return false on success
+	 */
+	INLINE bool setTimes(float usec1, float usec2) {
+		TimerPrescaler prescaler;
+		uint16_t factor;
+		uint32_t maxTime;
+
+		usec1 *= F_CPU / 1000000; // time is now in timer ticks
+		usec2 *= F_CPU / 1000000; // time is now in timer ticks
+
+		if (usec1 > usec2) {
+			maxTime = usec1;
+		} else {
+			maxTime = usec2;
+		}
+
+		if (calculatePrescaler(maxTime, &prescaler, &factor)) {
+			return true;
+		}
+		calculateTop(&usec1, factor);
+		calculateTop(&usec2, factor);
+
+		setPeriods(prescaler, (uint16_t)usec1, (uint16_t)usec2);
 
 		return false;
 	}
@@ -213,7 +264,51 @@ public:
 		return false;
 	}
 
+	/**
+	 * Set the overflow periods for a 16 bit timer
+	 * @param	usec1		the first time in microseconds
+	 * @param	usec2		the second time in microseconds
+	 * @param	usec3		the third time in microseconds
+	 */
+	INLINE bool setTimes(float usec1, float usec2, float usec3) {
+		TimerPrescaler prescaler;
+		uint16_t factor = 0;
+		uint32_t maxTime;
+
+		usec1 *= F_CPU / 1000000; // time is now in clocks
+		usec2 *= F_CPU / 1000000; // time is now in clocks
+		usec3 *= F_CPU / 1000000; // time is now in clocks
+
+		if (usec1 > usec2) {
+			maxTime = usec1;
+		} else {
+			maxTime = usec2;
+		}
+		if (usec3 > maxTime) {
+			maxTime = usec3;
+		}
+
+		if (calculatePrescaler(maxTime, &prescaler, &factor)) {
+			return true;
+		}
+
+		if (usec1) {
+			calculateTop(&usec1, factor);
+		}
+		if (usec2) {
+			calculateTop(&usec2, factor);
+		}
+		if (usec3) {
+			calculateTop(&usec3, factor);
+		}
+		setPeriods(prescaler, (uint16_t)usec1, (uint16_t)usec2, (uint16_t)usec3);
+
+		return false;
+	}
+
+
 	virtual uint16_t current() =0;
+	virtual void setCurrent(uint16_t current) =0;
 	virtual void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2) =0;
 	virtual void setPeriods(TimerPrescaler prescaler, uint16_t time1, uint16_t time2, uint16_t time3) =0;
 	virtual TimerPrescaler getPrescaler() =0;
@@ -247,6 +342,8 @@ public:
 	void setListener3(TimerListener *listener);
 	void setListener(uint8_t channel, TimerListener &listener);
 	void setListener(uint8_t channel, TimerListener *listener);
+	virtual void waitForOverflow();
+	virtual void clearOverflow();
 };
 
 /**
@@ -258,8 +355,8 @@ public:
 template<uint8_t bits, TimerType type,
 		mhv_register controlRegA, mhv_register controlRegB, mhv_register controlRegC,
 		mhv_register outputCompare1, mhv_register outputCompare2, mhv_register outputCompare3,
-		mhv_register inputCapture1, mhv_register counter, mhv_register interrupt, uint8_t interruptEnableA,
-		TimerMode mode>
+		mhv_register inputCapture1, mhv_register counter,
+		mhv_register interruptFlag, mhv_register interruptMask, uint8_t interruptEnableA, TimerMode mode>
 class TimerImplementation: public Timer {
 protected:
 	bool _haveTime2;
@@ -348,7 +445,7 @@ public:
 	 * Get the current value of the timer
 	 * @return the current value of the timer
 	 */
-	uint16_t current() {
+	INLINE uint16_t current() {
 		uint16_t ret;
 
 		switch (bits) {
@@ -364,6 +461,24 @@ public:
 		}
 
 		return ret;
+	}
+
+	/**
+	 * Set the current value of the timer
+	 * @param current	the new value
+	 */
+	INLINE void setCurrent(uint16_t current) {
+		switch (bits) {
+		case 8:
+			_SFR_MEM8(counter) = (uint8_t)current;
+			return;
+
+		case 16:
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				_SFR_MEM16(counter) = current;
+			}
+			return;
+		}
 	}
 
 	/**
@@ -623,7 +738,7 @@ public:
 	 * @param channel	the channel to set
 	 * @param value		the new value of the channel
 	 */
-	void setOutput(uint8_t channel, uint16_t value) {
+	INLINE void setOutput(uint8_t channel, uint16_t value) {
 		switch (bits) {
 		case 8:
 			switch (channel) {
@@ -657,7 +772,7 @@ public:
 	 * Set the current value of channel 1
 	 * @param value	the new value of channel 1
 	 */
-	void setOutput1(uint16_t value) {
+	INLINE void setOutput1(uint16_t value) {
 		switch (bits) {
 		case 8:
 			_SFR_MEM8(outputCompare1) = value;
@@ -674,7 +789,7 @@ public:
 	 * Set the current value of channel 2
 	 * @param value	the new value of channel 2
 	 */
-	void setOutput2(uint16_t value) {
+	INLINE void setOutput2(uint16_t value) {
 		switch (bits) {
 		case 8:
 			_SFR_MEM8(outputCompare2) = value;
@@ -691,7 +806,7 @@ public:
 	 * Set the current value of channel 3
 	 * @param value	the new value of channel 3
 	 */
-	void setOutput3(uint16_t value) {
+	INLINE void setOutput3(uint16_t value) {
 		switch (bits) {
 		case 8:
 			_SFR_MEM8(outputCompare3) = value;
@@ -750,7 +865,7 @@ public:
 	 * Return the current value of channel 1
 	 * @return the current value of channel 1
 	 */
-	uint16_t getOutput1() {
+	INLINE uint16_t getOutput1() {
 		switch (bits) {
 		case 8:
 		return _SFR_MEM8(outputCompare1);
@@ -767,7 +882,7 @@ public:
 	 * Return the current value of channel 2
 	 * @return the current value of channel 2
 	 */
-	uint16_t getOutput2() {
+	INLINE uint16_t getOutput2() {
 		switch (bits) {
 		case 8:
 		return _SFR_MEM8(outputCompare2);
@@ -784,7 +899,7 @@ public:
 	 * Return the current value of channel 3
 	 * @return the current value of channel 3
 	 */
-	uint16_t getOutput3() {
+	INLINE uint16_t getOutput3() {
 		switch (bits) {
 		case 16:
 			uint16_t ret;
@@ -820,7 +935,7 @@ public:
 	 * Connect channel 1 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput1(TimerConnect connectType) {
+	INLINE void connectOutput1(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0x3F) | (connectType << 6);
 	}
 
@@ -828,7 +943,7 @@ public:
 	 * Connect channel 2 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput2(TimerConnect connectType) {
+	INLINE void connectOutput2(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xCF) | (connectType << 4);
 	}
 
@@ -836,7 +951,7 @@ public:
 	 * Connect channel 3 to an output pin
 	 * @param connectType	the method of connection
 	 */
-	void connectOutput3(TimerConnect connectType) {
+	INLINE void connectOutput3(TimerConnect connectType) {
 		_SFR_MEM8(controlRegA) = (_SFR_MEM8(controlRegA) & 0xF3) | (connectType << 2);
 	}
 
@@ -857,18 +972,18 @@ public:
 			_setPrescaler(_prescaler);
 			setGenerationMode();
 			if (_listener1) {
-				_SFR_MEM8(interrupt) |= _BV(interruptEnableA);
+				_SFR_MEM8(interruptMask) |= _BV(interruptEnableA);
 			}
 
 			if (_SFR_MEM8(outputCompare2) && _listener2) {
-				_SFR_MEM8(interrupt) |= _BV(interruptEnableA + 1);
+				_SFR_MEM8(interruptMask) |= _BV(interruptEnableA + 1);
 				_haveTime2 = true;
 			} else {
 				_haveTime2 = false;
 			}
 
 			if ((16 == bits) && _SFR_MEM8(outputCompare3) && _listener3) {
-				_SFR_MEM8(interrupt) |= _BV(interruptEnableA + 2);
+				_SFR_MEM8(interruptMask) |= _BV(interruptEnableA + 2);
 				_haveTime3 = true;
 			} else {
 				_haveTime3 = false;
@@ -882,12 +997,12 @@ public:
 	void disable() {
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_setPrescaler(TimerPrescaler::PRESCALER_DISABLED);
-			_SFR_MEM8(interrupt) &= ~_BV(interruptEnableA);
+			_SFR_MEM8(interruptMask) &= ~_BV(interruptEnableA);
 			if (_haveTime2) {
-				_SFR_MEM8(interrupt) &= ~_BV(interruptEnableA + 1);
+				_SFR_MEM8(interruptMask) &= ~_BV(interruptEnableA + 1);
 			}
 			if ((bits == 16) && _haveTime3) {
-				_SFR_MEM8(interrupt) &= ~_BV(interruptEnableA + 2);
+				_SFR_MEM8(interruptMask) &= ~_BV(interruptEnableA + 2);
 			}
 		}
 	}
@@ -899,8 +1014,23 @@ public:
 		if (TimerMode::ONE_SHOT == mode) {
 			disable();
 		}
-		_listener1->alarm();
+		_listener1->alarm(AlarmSource::TIMER_OUTPUT_1);
 	}
+
+	/**
+	 * Wait for the timer to overflow
+	 */
+	INLINE void waitForOverflow() {
+		while (!(_SFR_MEM8(interruptFlag) & 0x01)) {};
+	}
+
+	/**
+	 * Clear a timer overflow
+	 */
+	INLINE void clearOverflow() {
+		_SFR_MEM8(interruptFlag) &= 0x01;
+	}
+
 };
 
 }

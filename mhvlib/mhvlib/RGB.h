@@ -55,7 +55,7 @@ namespace mhvlib {
 #endif
 
 union rgb {
-	int8_t			value[3];
+	uint8_t			value[3];
 #if MHV_RGB_ORDER == MHV_RGB_ORDER_RGB
 	struct {
 		uint8_t	red;

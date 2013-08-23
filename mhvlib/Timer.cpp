@@ -90,7 +90,7 @@ void Timer::setPrescaler(TimerPrescaler prescaler) {
  */
 void Timer::trigger2() {
 	if (_listener2) {
-		_listener2->alarm();
+		_listener2->alarm(AlarmSource::TIMER_OUTPUT_2);
 	}
 }
 
@@ -99,7 +99,7 @@ void Timer::trigger2() {
  */
 void Timer::trigger3() {
 	if (_listener3) {
-		_listener3->alarm();
+		_listener3->alarm(AlarmSource::TIMER_OUTPUT_3);
 	}
 }
 

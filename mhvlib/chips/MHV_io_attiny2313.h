@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Make, Hack, Void Inc
+ * Copyright (c) 2013, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,8 +40,8 @@
 #endif
 
 //						bits,type,                            ctrlRegA,ctrlRegB,ctrlRegC,overflow1,overflow2,overflow3,inputCapture1,counter,interrupt,intEnable
-#define MHV_TIMER8_0	8,   TimerType::HAS_5_PRESCALERS,     0x50,    0x53,    0,       0x56,     0x5c,     0,        0,            0x52,   0x59,     0
-#define MHV_TIMER16_1	16,  TimerType::HAS_5_PRESCALERS,     0x4f,    0x4e,    0x42,    0x4a,     0x48,     0,        0x44,         0x4c,   0x59,     6
+#define MHV_TIMER8_0	8,   TimerType::HAS_5_PRESCALERS,     0x50,    0x53,    0,       0x56,     0x5c,     0,        0,            0x52,   0,       0x59,     0
+#define MHV_TIMER16_1	16,  TimerType::HAS_5_PRESCALERS,     0x4f,    0x4e,    0x42,    0x4a,     0x48,     0,        0x44,         0x4c,   0,       0x59,     6
 
 
 #define MHV_TIMER0_INTERRUPTS TIMER0_COMPA_vect, TIMER0_COMPB_vect, 0

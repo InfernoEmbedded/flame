@@ -40,7 +40,7 @@ DAConverter::DAConverter(Timer &timer, DACListener &listener) :
 /**
  * Play the next sample if available
  */
-void DAConverter::alarm() {
+void DAConverter::alarm(UNUSED AlarmSource source) {
 	if (_currentSample == _sampleLength) {
 		return;
 	}

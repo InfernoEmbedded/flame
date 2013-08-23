@@ -176,7 +176,7 @@
 								<option id="de.innot.avreclipse.cppcompiler.option.incpath.678825865" name="Include Paths (-I)" superClass="de.innot.avreclipse.cppcompiler.option.incpath" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/mhvlib}&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto -fno-inline" valueType="string"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.other.1817945445" name="Other Optimization Flags" superClass="de.innot.avreclipse.cppcompiler.option.optimize.other" value="-ffunction-sections -fdata-sections -fmerge-constants -flto" valueType="string"/>
 								<option id="de.innot.avreclipse.cppcompiler.option.def.1329090848" name="Define Syms (-D)" superClass="de.innot.avreclipse.cppcompiler.option.def" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
@@ -363,8 +363,22 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="mhvlib.de.innot.avreclipse.project.winavr.staticlib.1332566366" name="AVR Cross Target Static Library" projectType="de.innot.avreclipse.project.winavr.staticlib"/>
 	</storageModule>
-	<storageModule moduleId="refreshScope" versionNumber="1">
-		<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="ATmega328P_16MHz">
+			<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+		</configuration>
+		<configuration configurationName="ATmega168_16MHz">
+			<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+		</configuration>
+		<configuration configurationName="ATmega1280_16MHz">
+			<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+		</configuration>
+		<configuration configurationName="ATmega328P_20MHz">
+			<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+		</configuration>
+		<configuration configurationName="ATtiny85_16.5MHz">
+			<resource resourceType="PROJECT" workspacePath="/mhvlib"/>
+		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets">

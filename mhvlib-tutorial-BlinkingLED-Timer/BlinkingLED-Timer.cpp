@@ -33,6 +33,9 @@
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
 
+// Bring in the MHV Pin header
+#include <mhvlib/Pin.h>
+
 // Bring in the MHV timer header
 #include <mhvlib/Timer.h>
 
@@ -51,6 +54,9 @@
 
 using namespace mhvlib;
 
+// The LED is on Arduino pin 13
+PinImplementation<MHV_ARDUINO_PIN_13> led;
+
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
  */
@@ -66,7 +72,7 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
  * of this, we will instead trigger every 1ms and maintain a counter instead
  */
 class LEDBlinker : public TimerListener {
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 	// static variables are initialised once at boot, and persist between calls
 
 	// A counter to keep track of how many times we are called
@@ -76,7 +82,7 @@ class LEDBlinker : public TimerListener {
 	 * counter
 	 */
 		if (333 == ++count) {
-				pinToggle(MHV_ARDUINO_PIN_13);
+				led.toggle();
 
 			count = 0;
 		}
@@ -101,7 +107,7 @@ MAIN {
  * Instead, we will trigger the timer every 1 ms, and increment a counter within
  * the trigger function to give us our 333ms count
  */
-	tickTimer.setTimes(1000UL, 0);
+	tickTimer.setTimes(1000UL, 0UL);
 
 // Tell the timer to call our trigger function
 	tickTimer.setListener1(blinker);

@@ -32,6 +32,7 @@
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
+#include <mhvlib/Pin.h>
 #include <boards/Arduino.h>
 
 // Bring in the MHV Serial header
@@ -48,6 +49,9 @@
 
 using namespace mhvlib;
 
+PinImplementation<MHV_ARDUINO_PIN_13> failureLED;
+
+
 // Create a buffer we will use for a receive buffer
 #define RX_BUFFER_SIZE	81
 // The number of elements we want to be able to store to send asynchronously
@@ -62,7 +66,8 @@ MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0,
  * Just turn on the LED and stop execution
  */
 void NORETURN writeFailed() {
-	pinOn(MHV_ARDUINO_PIN_13);
+	failureLED.setOutput();
+	failureLED.on();
 
 	for (;;);
 }
@@ -74,8 +79,6 @@ MAIN {
 
 // Enable interrupts
 	sei();
-
-	setOutput(MHV_ARDUINO_PIN_13);
 
 	for (;;) {
 // Wait until there is space to send

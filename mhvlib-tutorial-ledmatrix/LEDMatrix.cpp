@@ -29,14 +29,13 @@
  * and 10 & 11 (columns)
  */
 
-
-
 // Bring in the interrupt library
 #include <avr/interrupt.h>
 
 // Bring in the IO library
 #include <mhvlib/io.h>
 #include <boards/Arduino.h>
+#include <mhvlib/Pin.h>
 
 // Bring in the timers we need for animation and PWM
 #include <mhvlib/Timer.h>
@@ -76,6 +75,12 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
 #define LED_MATRIX_ROWS	2
 #define LED_MATRIX_COLS	2
 
+PinImplementation<MHV_ARDUINO_PIN_8> row0;
+PinImplementation<MHV_ARDUINO_PIN_9> row1;
+
+PinImplementation<MHV_ARDUINO_PIN_10> col0;
+PinImplementation<MHV_ARDUINO_PIN_11> col1;
+
 /* The driver that the PWM Matrix will use to manipulate the LEDs
  * These are implemented as a driver class to allow us to replace directly driven
  * LEDs with shift registers
@@ -83,19 +88,19 @@ MHV_RTC_CREATE(rtc, ALARM_COUNT);
 class LEDDriver: public PWMMatrixDriver {
 public:
 	LEDDriver() {
-		setOutput(MHV_ARDUINO_PIN_8);
-		setOutput(MHV_ARDUINO_PIN_9);
-		setOutput(MHV_ARDUINO_PIN_10);
-		setOutput(MHV_ARDUINO_PIN_11);
+		row0.setOutput();
+		row1.setOutput();
+		col0.setOutput();
+		col1.setOutput();
 	}
 
 	void rowOn(uint16_t row) {
 		switch (row) {
 		case 0:
-			pinOff(MHV_ARDUINO_PIN_8);
+			row0.off();
 			break;
 		case 1:
-			pinOff(MHV_ARDUINO_PIN_9);
+			row1.off();
 			break;
 		}
 	}
@@ -103,10 +108,10 @@ public:
 	void rowOff(uint16_t row) {
 		switch (row) {
 		case 0:
-			pinOn(MHV_ARDUINO_PIN_8);
+			row0.on();
 			break;
 		case 1:
-			pinOn(MHV_ARDUINO_PIN_9);
+			row1.on();
 			break;
 		}
 	}
@@ -114,10 +119,10 @@ public:
 	void colOn(uint16_t col) {
 		switch (col) {
 		case 0:
-			pinOn(MHV_ARDUINO_PIN_10);
+			col0.on();
 			break;
 		case 1:
-			pinOn(MHV_ARDUINO_PIN_11);
+			col1.on();
 			break;
 		}
 	}
@@ -125,10 +130,10 @@ public:
 	void colOff(uint16_t col) {
 		switch (col) {
 		case 0:
-			pinOff(MHV_ARDUINO_PIN_10);
+			col0.off();
 			break;
 		case 1:
-			pinOff(MHV_ARDUINO_PIN_11);
+			col1.off();
 			break;
 		}
 	}
@@ -150,7 +155,7 @@ private:
 
 public:
 	Animation();
-	void alarm();
+	void alarm(AlarmSource source);
 };
 
 Animation::Animation() :
@@ -158,7 +163,7 @@ Animation::Animation() :
 	_fader(0),
 	_direction(true) {}
 
-void Animation::alarm() {
+void Animation::alarm(UNUSED AlarmSource source) {
 	if (_direction) {
 		_fader++;
 	} else {
@@ -204,13 +209,13 @@ void Animation::alarm() {
 
 class LEDMatrixTicker : public TimerListener {
 public:
-	void alarm();
+	void alarm(AlarmSource source);
 };
 
 bool tick = false;
 
 // Notify the main loop that the PWM status of the LED matrix should be refreshed
-void LEDMatrixTicker::alarm() {
+void LEDMatrixTicker::alarm(UNUSED AlarmSource source) {
 	tick = true;
 }
 
@@ -234,12 +239,12 @@ MAIN {
 	 */
 
 	// Configure the tick timer to tick every 1 millisecond
-	tickTimer.setTimes(1000, 0);
+	tickTimer.setTimes(1000UL, 0UL);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
 	// Configure the tick timer to tick every 64 microseconds
-	ledMatrixTimer.setTimes(64, 0);
+	ledMatrixTimer.setTimes(64UL, 0UL);
 	ledMatrixTimer.setListener1(ledMatrixTicker);
 	ledMatrixTimer.enable();
 
@@ -248,7 +253,7 @@ MAIN {
  * Note that we call this within the main loop, to avoid delaying interrupts
  */
 		if (tick) {
-			ledMatrix.alarm();
+			ledMatrix.alarm(AlarmSource::UNKNOWN);
 			tick = false;
 		}
 

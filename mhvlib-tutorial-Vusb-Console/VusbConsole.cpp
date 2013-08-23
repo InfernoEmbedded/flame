@@ -69,7 +69,7 @@ VusbConsole<TX_BUFFERS> console(rtc);
 
 class WriteString : public TimerListener {
 public:
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		console.write_P(PSTR("Greetings, program!\n"));
 		console.printf(PSTR("This is a %s string\n"), "printf");
 		console.write("Here are some numbers: ");

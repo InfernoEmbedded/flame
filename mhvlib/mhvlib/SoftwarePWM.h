@@ -29,6 +29,7 @@
 #define MHV_SOFTWAREPWM_H_
 
 #include <mhvlib/Timer.h>
+#include <mhvlib/Pin.h>
 
 namespace mhvlib {
 
@@ -50,19 +51,22 @@ public:
 };
 
 template<MHV_DECLARE_PIN(pin)>
-class SoftwarePWMPin : public SoftwarePWMListener {
+class SoftwarePWMPin : public SoftwarePWMListener, public PinImplementation<MHV_PIN_PARMS(pin)> {
 public:
 	SoftwarePWMPin() {
-		setOutput(MHV_PIN_PARMS(pin));
+		PinImplementation<MHV_PIN_PARMS(pin)>::setOutput();
 	}
-	void reset() {
-		pinOff(MHV_PIN_PARMS(pin));
+
+	INLINE void reset() {
+		PinImplementation<MHV_PIN_PARMS(pin)>::off();
 	}
-	void set() {
-		pinOn(MHV_PIN_PARMS(pin));
+
+	INLINE void set() {
+		PinImplementation<MHV_PIN_PARMS(pin)>::on();
 	}
-	bool check() {
-		return pinRead(MHV_PIN_PARMS(pin));
+
+	INLINE bool check() {
+		return PinImplementation<MHV_PIN_PARMS(pin)>::read();
 	}
 };
 
@@ -105,7 +109,7 @@ public:
 	/**
 	 * Handle the timer interrupt by setting the outputs
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		if (!_ticks++) {
 			for (uint8_t i = 0; i < _listenerCount; i++) {
 				_listeners[i]->set();

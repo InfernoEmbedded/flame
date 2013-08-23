@@ -59,7 +59,7 @@ protected:
 
 public:
 	DAConverter(Timer &timer, DACListener &listener);
-	void alarm();
+	void alarm(AlarmSource source);
 	void playSamples(SAMPLE *samples, uint8_t sampleLength);
 	void handleEvents();
 };

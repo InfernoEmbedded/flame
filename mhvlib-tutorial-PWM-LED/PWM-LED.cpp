@@ -78,7 +78,7 @@ TimerImplementation<MHV_TIMER16_1, TimerMode::PWM_FAST_16>pwmTimer;
  */
 class Animation : public TimerListener {
 public:
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 	/* static variables are initialised once at boot, and persist between calls
 	 * What is the next action to take
 	 */

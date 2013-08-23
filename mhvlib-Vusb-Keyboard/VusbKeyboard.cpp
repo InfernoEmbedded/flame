@@ -241,7 +241,7 @@ void VusbKeyboard::keysUp() {
 /**
  * Periodically called to maintain USB comms
  */
-void VusbKeyboard::alarm() {
+void VusbKeyboard::alarm(UNUSED AlarmSource source) {
 	usbPoll();
 }
 
