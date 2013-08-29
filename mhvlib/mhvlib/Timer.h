@@ -342,9 +342,19 @@ public:
 	void setListener3(TimerListener *listener);
 	void setListener(uint8_t channel, TimerListener &listener);
 	void setListener(uint8_t channel, TimerListener *listener);
-	virtual void waitForOverflow();
-	virtual void clearOverflow();
+	virtual void waitForOverflow() =0;
+	virtual void clearOverflow() =0;
 };
+
+#define MHV_DECLARE_TIMER uint8_t bits, TimerType type, \
+		mhv_register controlRegA, mhv_register controlRegB, mhv_register controlRegC, \
+		mhv_register outputCompare1, mhv_register outputCompare2, mhv_register outputCompare3, \
+		mhv_register inputCapture1, mhv_register counter, \
+		mhv_register interruptFlag, mhv_register interruptMask, uint8_t interruptEnableA
+
+#define MHV_TIMER_PARMS bits, type, controlRegA, controlRegB, controlRegC, outputCompare1, \
+		outputCompare2, outputCompare3, inputCapture1, counter, interruptFlag, interruptMask, \
+		interruptEnableA
 
 /**
  * A hardware timer
@@ -352,11 +362,7 @@ public:
  * @tparam	type		the type of timer (number of prescalers)
  * @tparam	controlRegA	the address of the first control reg, in SFR_MEM8 format
  */
-template<uint8_t bits, TimerType type,
-		mhv_register controlRegA, mhv_register controlRegB, mhv_register controlRegC,
-		mhv_register outputCompare1, mhv_register outputCompare2, mhv_register outputCompare3,
-		mhv_register inputCapture1, mhv_register counter,
-		mhv_register interruptFlag, mhv_register interruptMask, uint8_t interruptEnableA, TimerMode mode>
+template<MHV_DECLARE_TIMER, TimerMode mode>
 class TimerImplementation: public Timer {
 protected:
 	bool _haveTime2;
