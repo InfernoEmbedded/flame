@@ -52,9 +52,7 @@
 using namespace mhvlib;
 
 // Instantiate the driver
-// Note that pin used must be the same as OutputChannel2 (OCRnB) on the timer
-WS2811<MHV_PIN_TIMER_2_B, LEDS, MHV_TIMER8_2> ws2811;
-
+WS2811<MHV_PIN_B5, LEDS> ws2811;
 // Bring in the MHV Serial header
 #include <mhvlib/HardwareSerial.h>
 
@@ -65,62 +63,62 @@ WS2811<MHV_PIN_TIMER_2_B, LEDS, MHV_TIMER8_2> ws2811;
 /* Declare the serial object on USART0 using the above ring buffer
  * Set the baud rate to 115,200
  */
-//MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
+MHV_HARDWARESERIAL_CREATE(serial, RX_BUFFER_SIZE, TX_ELEMENTS_COUNT, MHV_USART0, 115200);
 
 MAIN {
 // Enable interrupts
 	sei();
 
 	for (;;) {
-//		serial.write_P(PSTR("Setting to 50% brightness\r\n"));
+		serial.write_P(PSTR("Setting to 50% brightness\r\n"));
 
 		ws2811.setAll(255, 128, 128);
 		ws2811.flush();
 		_delay_ms(1000);
 
-//		serial.write_P(PSTR("Fading up blue\r\n"));
+		serial.write_P(PSTR("Fading up blue\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(0, 0, i);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from blue to red\r\n"));
+		serial.write_P(PSTR("Fading from blue to red\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(i, 0, 255 - i);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from red to green\r\n"));
+		serial.write_P(PSTR("Fading from red to green\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(255 - i, i, 0);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from green to blue\r\n"));
+		serial.write_P(PSTR("Fading from green to blue\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(0, 255 - i, i);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from blue to magenta\r\n"));
+		serial.write_P(PSTR("Fading from blue to magenta\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(i, 0, 255);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from magenta to white\r\n"));
+		serial.write_P(PSTR("Fading from magenta to white\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(255, i, 255);
 			ws2811.flush();
 			_delay_ms(5);
 		}
 
-//		serial.write_P(PSTR("Fading from white to black\r\n"));
+		serial.write_P(PSTR("Fading from white to black\r\n"));
 		for (uint8_t i = 0; i < 255; i++) {
 			ws2811.setAllGamma(255 - i, 255 - i, 255 - i);
 			ws2811.flush();
@@ -129,24 +127,24 @@ MAIN {
 
 		ws2811.setAll(0, 0, 0);
 		uint8_t led = 0;
-		uint8_t i;
-		for (i = 0; i < 240; i += 10) {
+		int16_t i;
+		for (i = 0; i < 240; i += 50) {
 			ws2811.setPixelGamma(led++, (uint8_t) i / 2, (uint8_t) i, 0);
 		}
-		for (; i > 0; i -= 10) {
+		for (; i > 0; i -= 60) {
 			ws2811.setPixelGamma(led++, (uint8_t) i / 1.5, (uint8_t) i, 0);
 		}
-//		serial.write_P(PSTR("Rotating forward\r\n"));
+		serial.write_P(PSTR("Rotating forward\r\n"));
 		for (i = 0; i < LEDS - led; i++) {
 			ws2811.flush();
-			_delay_ms(1);
+			_delay_ms(100);
 			ws2811.rotate(true);
 		}
 
-//		serial.write_P(PSTR("Rotating backwards\r\n"));
+		serial.write_P(PSTR("Rotating backwards\r\n"));
 		for (i = 0; i < LEDS - led; i++) {
 			ws2811.flush();
-			_delay_ms(1);
+			_delay_ms(100);
 			ws2811.rotate(false);
 		}
 	}
