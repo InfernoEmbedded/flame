@@ -32,6 +32,7 @@
 
 
 #include <mhvlib/io.h>
+#include <mhvlib/Pin.h>
 #include <mhvlib/Timer.h>
 #include <mhvlib/RTC.h>
 #include <mhvlib/Debounce.h>
@@ -52,6 +53,13 @@ MHV_TIMER_ASSIGN_1INTERRUPT(tickTimer, MHV_TIMER2_INTERRUPTS);
 // The RTC object we will use
 RTCImplementation<ALARM_COUNT> rtc;
 
+// The LED is on Arduino pin 13
+PinImplementation<MHV_ARDUINO_PIN_13> led;
+
+// The button connects pin B0 to ground
+// B0 is pin 53 on the Arduino Mega, pin 8 on the Diecimilla
+PinImplementation<MHV_PIN_B0> button;
+
 // Triggers for button presses
 class ButtonHandler : public DebounceListener {
 	void singlePress(uint8_t pcInt, TIMESTAMP *heldFor);
@@ -59,11 +67,11 @@ class ButtonHandler : public DebounceListener {
 };
 
 void ButtonHandler::singlePress(UNUSED uint8_t pcInt, UNUSED TIMESTAMP *heldFor) {
-	pinToggle(MHV_ARDUINO_PIN_13);
+	led.toggle();
 }
 
 void ButtonHandler::heldDown(UNUSED uint8_t pcInt, UNUSED TIMESTAMP *heldFor) {
-	pinToggle(MHV_ARDUINO_PIN_13);
+	led.toggle();
 }
 
 ButtonHandler buttonHandler;
@@ -90,16 +98,15 @@ MAIN {
 	set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 
 	// Enable output on pin 13 of the Arduino - this normally has an LED connected
-	setOutput(MHV_ARDUINO_PIN_13);
+	led.setOutput();
 
 	// Configure the tick timer to tick every 1ms (at 16MHz)
 	tickTimer.setPeriods(TimerPrescaler::PRESCALER_5_64, 249, 0);
 	tickTimer.setListener1(rtc);
 	tickTimer.enable();
 
-	// B0 is pin 53 on the Arduino Mega, pin 8 on the Diecimilla
-	setInputPullup(MHV_PIN_B0);
-	debouncer.assignKey(MHV_PIN_B0, buttonHandler);
+	button.setInputPullup();
+	debouncer.assignKey(button, buttonHandler);
 
 	// Enable global interrupts
 	sei();

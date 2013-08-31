@@ -13,7 +13,7 @@
 #include <mhvlib/RTC.h>
 #include <mhvlib/io.h>
 #include <mhvlib/PinChangeManager.h>
-
+#include <mhvlib/Pin.h>
 
 #define MHV_DEBOUNCE_ASSIGN_PCINT(__mhvDebounce) \
 ISR(PCINT_vect) { \
@@ -152,14 +152,46 @@ public:
 	}
 
 	/**
+	 * Assign a pin to debounce
+	 * @param	pin						An MHV_PIN_* macro
+	 * @param	listener				a class to call when the button is pressed or held down
+	 */
+	void assignKey(Pin &pin, DebounceListener &listener) {
+		_pins[pin.pinchangeInterrupt()].previous = pin.read();
+		_pins[pin.pinchangeInterrupt()].timestamp.milliseconds = 0;
+		_pins[pin.pinchangeInterrupt()].timestamp.timestamp = 0;
+		_pins[pin.pinchangeInterrupt()].listener = &listener;
+		_pins[pin.pinchangeInterrupt()].held = false;
+
+		if (!_pins[pin.pinchangeInterrupt()].previous) {
+	// Pin started off held down
+			_rtc.current(_pins[pin.pinchangeInterrupt()].timestamp);
+		}
+
+		_pinChangeManager.registerListener(pin, this);
+	}
+
+	/**
 	 * Deassign a pin
 	 * @param	pinPinchangeInterrupt		the pin change interrupt to deregister
 	 */
 	void deassignKey(int8_t pinPinchangeInterrupt) {
-		if (pinPinchangeInterrupt) {
+		if (-1 != pinPinchangeInterrupt) {
 			initPin(pinPinchangeInterrupt);
 		}
 	}
+
+	/**
+	 * Deassign a pin
+	 * @param	pinPinchangeInterrupt		the pin change interrupt to deregister
+	 */
+	void deassignKey(MHV_DECLARE_PIN(pin)) {
+		if (-1 != pinPinchangeInterrupt) {
+			initPin(pinPinchangeInterrupt);
+		}
+	}
+
+
 	/**
 	 * Called periodically to check if pins have been held
 	 * Ideally, this should be called from the main loop, rather than the interrupt context

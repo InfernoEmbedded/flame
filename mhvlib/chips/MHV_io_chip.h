@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Make, Hack, Void Inc
+ * Copyright (c) 2013, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

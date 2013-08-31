@@ -114,7 +114,7 @@ MAIN {
 
 // Update the voltage periodically
 	for(;;) {
-		regulator.alarm();
+		regulator.alarm(AlarmSource::UNKNOWN);
 
 /* No floating point in the default printf library from AVR LibC
  * (it can be enabled with "-Wl,-u,vfprintf -lprintf_flt -lm" at the cost of memory)

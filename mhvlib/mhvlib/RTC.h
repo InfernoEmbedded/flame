@@ -300,7 +300,7 @@ public:
 	/**
 	 * Alarm handler from the timer
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		switch (_ticksPerMillisecond) {
 		case 1:
 			incrementMilliseconds();
@@ -840,7 +840,7 @@ public:
 //					i, timestamp.timestamp, timestamp.milliseconds,
 //					_alarms[i].when.timestamp, _alarms[i].when.milliseconds);
 
-			_alarms[i].listener->alarm();
+			_alarms[i].listener->alarm(AlarmSource::RTC);
 
 			// Repeat the event if necessary
 			if (0 != _alarms[i].repeat.ticks || 0 != _alarms[i].repeat.milliseconds || 0 != _alarms[i].repeat.timestamp) {

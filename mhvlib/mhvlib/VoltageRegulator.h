@@ -171,7 +171,7 @@ public:
 	/**
 	 * Initiate regulation as a MHV_TimerListener
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		regulate();
 	}
 

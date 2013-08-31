@@ -69,11 +69,9 @@ VusbTypist<TX_BUFFERS> typist(rtc);
 
 class TypeString : public TimerListener {
 public:
-	void alarm();
-};
-
-void TypeString::alarm() {
-	typist.write_P(PSTR("Greetings, program!"));
+	void alarm(UNUSED AlarmSource source) {
+		typist.write_P(PSTR("Greetings, program!"));
+	}
 }
 
 TypeString typeString;

@@ -77,7 +77,7 @@ public:
 	/**
 	 * Periodically called to maintain USB comms
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		usbPoll();
 
 		if (usbInterruptIsReady()) {

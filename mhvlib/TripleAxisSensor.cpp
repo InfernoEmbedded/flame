@@ -276,7 +276,7 @@ void TripleAxisSensor::getLimits(TRIPLEAXISSENSOR_READING *limits) {
 /**
  * Called when a timer alarm goes off
  */
-void TripleAxisSensor::alarm() {
+void TripleAxisSensor::alarm(UNUSED AlarmSource source) {
 	sample();
 }
 

@@ -28,11 +28,11 @@
 /* Fade an LED on Arduino pin 13
  * Uses a 16 bit timer for PWM and an 8 bit timer for animation
  */
-#define OUTPUT_PIN	MHV_ARDUINO_PIN_13
 
 // Bring in the MHV IO header
 #include <mhvlib/io.h>
 #include <boards/Arduino.h>
+#include <mhvlib/Pin.h>
 
 // Bring in the MHV timer header
 #include <mhvlib/Timer.h>
@@ -46,6 +46,7 @@
 
 using namespace mhvlib;
 
+PinImplementation<MHV_ARDUINO_PIN_13> led;
 
 /* Declare an 8 bit timer - we will use Timer 2 since it is an 8 bit timer
  * on all microcontrollers used on Arduino boards
@@ -80,7 +81,7 @@ MHV_TIMER_ASSIGN_2INTERRUPTS(pwmTimer, MHV_TIMER1_INTERRUPTS);
  */
 class Animation : public TimerListener {
 public:
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 	/* static variables are initialised once at boot, and persist between calls
 	 * What is the next action to take
 	 */
@@ -114,15 +115,15 @@ Animation animation;
 // More listeners to toggle the LED on and off
 class LEDOn : public TimerListener {
 public:
-	void alarm() {
-		pinOn(OUTPUT_PIN);
+	void alarm(UNUSED AlarmSource source) {
+		led.on();
 	}
 };
 
 class LEDOff : public TimerListener {
 public:
-	void alarm() {
-		pinOff(OUTPUT_PIN);
+	void alarm(UNUSED AlarmSource source) {
+		led.off();
 	}
 };
 

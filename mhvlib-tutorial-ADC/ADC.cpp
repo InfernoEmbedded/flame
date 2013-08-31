@@ -86,7 +86,7 @@ class OncePerSecond: public TimerListener {
 	 * This will trigger an asynchronous read
 	 * Execution will continue in the ADC listener assigned to the channel
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		adc.read(ADCChannel::CHANNEL_0, ADCReference::AVCC);
 	}
 };

@@ -60,6 +60,7 @@ sub runPreprocessor($) {
 		evaluateMacro($srcFile, "OCR${timer}A");
 		evaluateMacro($srcFile, "OCR${timer}B");
 		evaluateMacro($srcFile, "OCR${timer}C");
+		evaluateMacro($srcFile, "TIFR${timer}");
 		evaluateMacro($srcFile, "TCNT${timer}");
 		evaluateMacro($srcFile, "TIMSK${timer}");
 		evaluateMacro($srcFile, "ICR${timer}");
@@ -166,7 +167,7 @@ sub emitHeaders($$) {
 
 	print $handle <<"EOF"
 /*
- * Copyright (c) 2012, Make, Hack, Void Inc
+ * Copyright (c) 2013, Make, Hack, Void Inc
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -278,13 +279,15 @@ EOF
 			$inputCapture1 //= 0;
 			$inputCapture1 = pack 'A14', $inputCapture1 . ',';
 			my $counter = pack 'A8', $macros{"TCNT${timer}"} . ',';
+			my $tifr = $macros{"TIFR${timer}"} // 0;
+			$tifr = pack 'A9', $tifr . ',';
 			my $timsk = $macros{"TIMSK${timer}"};
 			$timsk //= $macros{'TIMSK'};
 			my $interrupt = pack 'A10', $timsk . ',';
 			my $intEnable = $macros{"OCIE${timer}A"};
 
 			print $handle <<"EOF";
-#define MHV_TIMER${bits}_${timer}\t$paddedBits$prescaler$ctrlRegA$ctrlRegB$ctrlRegC$overflow1$overflow2$overflow3$inputCapture1$counter$interrupt$intEnable
+#define MHV_TIMER${bits}_${timer}\t$paddedBits$prescaler$ctrlRegA$ctrlRegB$ctrlRegC$overflow1$overflow2$overflow3$inputCapture1$counter$tifr$interrupt$intEnable
 EOF
 		} ## end if (defined $macros{"TCCR${timer}A"...
 	} ## end for (my $timer = 0; $timer...

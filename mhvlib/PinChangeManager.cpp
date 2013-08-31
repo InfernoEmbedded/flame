@@ -152,6 +152,51 @@ void PinChangeManager::enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt
 }
 
 /**
+ * Register interest for pinchange events
+ * @param	pin			The pin, must have a valid pinPinchangeInterrupt
+ * @param	listener	a MHV_PinEventListener to notify when the pin changes
+ */
+void PinChangeManager::registerListener(Pin &pin, PinEventListener *listener) {
+
+	pin.setInput();
+
+	_pins[pin.pinchangeInterrupt()].port = pin.inputPort();
+	_pins[pin.pinchangeInterrupt()].mask = pin.mask();
+	_pins[pin.pinchangeInterrupt()].listener = listener;
+	_pins[pin.pinchangeInterrupt()].previous = pin.read();
+	_pins[pin.pinchangeInterrupt()].changed = false;
+
+	// Enable the interrupt
+	uint8_t bit = pin.pinchangeInterrupt();
+#if MHV_PC_INT_COUNT > 15
+	if (pin.pinchangeInterrupt() > 15) {
+		bit -= 16;
+		PCMSK2 |= _BV(bit);
+		PCICR |= _BV(PCIE2);
+	} else
+#endif
+#if MHV_PC_INT_COUNT > 7
+	if (pin.pinchangeInterrupt() > 7) {
+		bit -= 8;
+		PCMSK1 |= _BV(bit);
+		PCICR |= _BV(PCIE1);
+	} else
+#endif
+#ifdef PCMSK0
+	{
+		PCMSK0 |= _BV(bit);
+		PCICR |= _BV(PCIE0);
+	}
+#else
+	{
+		PCMSK |= _BV(bit);
+		GIMSK |= _BV(PCIE);
+	}
+#endif
+}
+
+
+/**
  * Deregister interest for pinchange events
  * @param	pinPinchangeInterrupt			the pinPinchangeInterrupt to deregister
  */

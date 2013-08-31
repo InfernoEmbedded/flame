@@ -236,7 +236,7 @@ public:
 	/**
 	 * Tick the display for PWM - this should be called every 500 microseconds
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		if (0 == _ticks) {
 			_SFR_IO8(visualOut) |= HD44780_LED;
 			_SFR_IO8(visualOut) |= HD44780_CONTRAST;

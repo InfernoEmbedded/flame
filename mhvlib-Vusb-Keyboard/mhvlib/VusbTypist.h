@@ -201,8 +201,8 @@ public:
 	/**
 	 * Periodically called to maintain USB comms
 	 */
-	void alarm() {
-		VusbKeyboard::alarm();
+	void alarm(AlarmSource source) {
+		VusbKeyboard::alarm(source);
 		if (usbInterruptIsReady()) {
 			int c = Device_TX::nextCharacter();
 

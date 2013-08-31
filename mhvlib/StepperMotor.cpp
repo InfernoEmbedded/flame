@@ -91,7 +91,7 @@ void StepperMotor::rotate(bool forward, float speed, int32_t until) {
 /**
  * Called periodically to move the motor
  */
-void StepperMotor::alarm() {
+void StepperMotor::alarm(UNUSED AlarmSource source) {
 	if (!_moving) {
 		return;
 	}

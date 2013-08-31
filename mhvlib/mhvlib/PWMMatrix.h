@@ -188,7 +188,7 @@ public:
 
 	/* Process a timer tick
 	 */
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		switch (_MODE) {
 		case PWMMatrixMode::ROWS:
 			tickRow();

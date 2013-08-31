@@ -123,7 +123,7 @@ public:
 	void handleEvents();
 	void setLimit(TripleAxisSensorChannel which, float limit);
 	void getLimits(TRIPLEAXISSENSOR_READING *limits);
-	void alarm();
+	void alarm(AlarmSource source);
 	bool isCalibrated();
 	void setCalibrated(bool calibrated);
 }; // class TripleAxisSensor

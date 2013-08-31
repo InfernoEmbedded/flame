@@ -57,7 +57,7 @@ ServoControl<SERVO_COUNT> servos(servoTimer);
 
 class MoveServos: public TimerListener {
 #define SERVO_INCREMENT 1000
-	void alarm() {
+	void alarm(UNUSED AlarmSource source) {
 		static uint16_t position = 0;
 
 // Increment the servo, we don't mind if it wraps, the motor will just move back to the start
