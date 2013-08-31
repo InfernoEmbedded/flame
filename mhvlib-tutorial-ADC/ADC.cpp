@@ -127,7 +127,7 @@ MAIN {
 	sei();
 
 	// Configure the tick timer to tick every 1ms
-	tickTimer.setTimes(1000, 0);
+	tickTimer.setTimes(1000UL, 0UL);
 	tickTimer.setListener1(rtc);
 
 	// Start ticking the RTC through its associated timer

@@ -72,7 +72,7 @@ public:
 	void alarm(UNUSED AlarmSource source) {
 		typist.write_P(PSTR("Greetings, program!"));
 	}
-}
+};
 
 TypeString typeString;
 

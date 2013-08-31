@@ -5,6 +5,7 @@
 	<projects>
 		<project>mhvlib</project>
 		<project>mhvlib-Vusb-Console</project>
+		<project>mhvlib-Vusb-Keyboard</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -181,7 +181,7 @@
 									<listOptionValue builtIn="false" value="MHVLIB_CORE=1"/>
 								</option>
 								<option id="de.innot.avreclipse.cppcompiler.option.otherflags.2126504471" name="Other flags" superClass="de.innot.avreclipse.cppcompiler.option.otherflags" value="-Wsuggest-attribute=pure -Wsuggest-attribute=const -Wsuggest-attribute=noreturn -Wextra  -Wno-non-virtual-dtor -std=c++11" valueType="string"/>
-								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1745329398" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="true" valueType="boolean"/>
+								<option id="de.innot.avreclipse.cppcompiler.option.optimize.packstruct.1745329398" name="Pack structs (-fpack-struct)" superClass="de.innot.avreclipse.cppcompiler.option.optimize.packstruct" value="false" valueType="boolean"/>
 								<inputType id="de.innot.avreclipse.cppcompiler.input.1862290180" superClass="de.innot.avreclipse.cppcompiler.input"/>
 							</tool>
 							<tool id="de.innot.avreclipse.tool.linker.winavr.base.220794924" name="AVR C Linker" superClass="de.innot.avreclipse.tool.linker.winavr.base"/>

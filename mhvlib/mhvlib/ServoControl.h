@@ -199,7 +199,7 @@ public:
 
 		_nextServoIndex = 0;
 		sortServos();
-		alarm(AlarmSource.UNKNOWN);
+		alarm(AlarmSource::UNKNOWN);
 	}
 
 	/**
