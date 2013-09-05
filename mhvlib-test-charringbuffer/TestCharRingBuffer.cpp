@@ -591,7 +591,41 @@ public:
 			   (int)-1,
 			   PSTR("ringbuffer now empty"));
 		}
-		   
+
+		{
+			const uint8_t tmpBufferSize = 10;
+			char tmp[tmpBufferSize];
+
+			testRingBuffer->flush();
+
+			is(testRingBuffer->length_to_char((char)0),
+			   (uint16_t)0,
+			   PSTR("length until NULL in a buffer of no length is 0"));
+			char unfound = 'A';
+			is(testRingBuffer->length_to_char(&unfound),
+			   (uint16_t)0,
+			   PSTR("length until 'A in a buffer of no length is 0"));
+			is(testRingBuffer->appendNullTerminatedString("fred"),
+			   testRingBuffer->success(),
+			   PSTR("append a null terminated string"));
+			is(testRingBuffer->length(),
+			   (uint16_t)5,
+			   PSTR("5 characters in buffer after appending fred"));
+			is(testRingBuffer->consumeNullTerminatedString(tmp,TMPBUFFERSIZE),
+			   (uint16_t)5,
+			   PSTR("Consume a 5-byte string from ring buffer"));
+			is_strl_P(tmp,
+				  PSTR("fred"),
+				  4,
+				  PSTR("Get back expected string"));
+			is((char)tmp[5],
+			   (char)0,
+			   PSTR("string is null terminated"));
+			testRingBuffer->flush();
+			is(testRingBuffer->length(),
+			   (uint16_t)0,
+			   PSTR("buffer now empty"));
+		}
 	}
 };
 

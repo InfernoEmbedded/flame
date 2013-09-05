@@ -390,6 +390,48 @@ public:
 		return ret;
 	}
 
+	/*
+	 * Append a null-terminated string to the buffer *including the null!*
+	 * @param string		the string to append
+	 */
+	bool appendNullTerminatedString(const char * string) {
+		uint16_t escaped_length = escapedLength(string);
+		escaped_length++; // the null...
+		bool ret;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			if (escaped_length > freeSpace()) {
+				ret = failure();
+			} else {
+				for(char * x=(char *)string;*x;x++) {
+					append(*x);
+				}
+				append((char)0);
+				ret = success();
+			}
+		}
+		return ret;
+	}
+
+	/*
+	 * Consume a null-terminated string to the buffer
+	 * @param buffer		buffer to plonk your stuff in
+	 * @param maxlen		size of buffer
+	 * @return 			length of string in buffer *including* the null character.  returns 0 if no null was found within maxlen characters
+	 */
+	uint16_t consumeNullTerminatedString(char * buffer,uint16_t maxlen) {
+		char mychar = (char)0;
+		uint16_t x = length_to_char(&mychar);
+		if (x > maxlen) {
+			return 0;
+		}
+		uint16_t i = 0;
+		int c;
+		for (c = consume(); c != (char)0; c = consume()) {
+			buffer[i++] = (char)c;
+		}
+		buffer[i++] = (char)c;
+		return i;
+	}
 	/**
 	 * Return a character from the ringbuffer
 	 */
@@ -479,10 +521,19 @@ public:
 	}
 
 	/**
-	 * return the number of bytes would could be popped out of the buffer
+	 * return the number of bytes which could be popped out of the buffer
 	 * @return number of bytes would could be popped out of the buffer
 	 */
 	uint16_t length() {
+		return length_to_char(NULL);
+	}
+
+	/**
+	 * return the number of characters in the buffer up to and including the first instance of a character
+	 * the first occurance of *c
+	 * @param	c	pointer to a character; null for length of whole buffer
+	 */
+	uint16_t length_to_char(char * c) {
 		uint16_t length = 0;
 		uint16_t bufferPeekOffset = 0;
 		IndirectionType currently_perusing = currently_consuming;
@@ -514,6 +565,10 @@ public:
 				}
 				if (current != magic_escape_character) {
 					length++;
+					if (c != NULL &&
+					    current == *c) {
+						return length;
+					}
 					goto done;
 				}
 				// OK, so we've hit the magic escape character.
