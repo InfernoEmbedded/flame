@@ -140,11 +140,11 @@ MAIN {
 
 	/* Enable output on the output pin - see the declaration above
 	 */
-	setOutput(OUTPUT_PIN);
+	led.setOutput();
 
 	/* Trigger the animation routine every 20ms
 	 */
-	(void) animationTimer.setTimes(20000UL, 0);
+	(void) animationTimer.setTimes(20000UL, 0UL);
 
 	// Tell the timer to call our trigger function
 	animationTimer.setListener1(animation);

@@ -34,6 +34,7 @@
 
 // Bring in the timer header
 #include <mhvlib/Timer.h>
+#include <mhvlib/RTC.h>
 
 // Program space header, saves RAM by storing constants in flash
 #include <avr/pgmspace.h>
@@ -72,7 +73,7 @@ public:
 	void alarm(UNUSED AlarmSource source) {
 		typist.write_P(PSTR("Greetings, program!"));
 	}
-}
+};
 
 TypeString typeString;
 
