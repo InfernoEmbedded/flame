@@ -1,0 +1,718 @@
+\hypertarget{classflame_1_1_r_t_c}{\section{flame\-:\-:R\-T\-C Class Reference}
+\label{classflame_1_1_r_t_c}\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}}
+}
+
+
+{\ttfamily \#include $<$R\-T\-C.\-h$>$}
+
+Inheritance diagram for flame\-:\-:R\-T\-C\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_r_t_c}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_r_t_c_a1345e2aa25662edb07a4c0d11ef7db26}{R\-T\-C} (int16\-\_\-t timezone=0)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_afbabe09cc9b0311bf4ae7871b93ad692}{synchronise} (\hyperlink{classflame_1_1_timer}{Timer} \&timer)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_a86aa2ab02475f073179c2b2db51312e8}{set\-Time} (uint32\-\_\-t \hyperlink{structflame_1_1timestamp}{timestamp}, uint16\-\_\-t milliseconds)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_aa806fd984f19bf88515b982b31188d0b}{set\-Time} (\hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structflame_1_1timestamp}{timestamp})
+\item 
+void \hyperlink{classflame_1_1_r_t_c_a7198ccc25a55472063750e91ecb2e442}{alarm} (\hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D} \hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_ab62acf26f8d8930440e37b4eff8ad630}{current} (\hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structflame_1_1timestamp}{timestamp})
+\item 
+void \hyperlink{classflame_1_1_r_t_c_af2287ccb064da38fc546f76cf88c1e53}{elapsed} (const \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&since, \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&elapsed)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_afaf9a803ca66b58067b24f879edec821}{to\-Time} (\hyperlink{namespaceflame_a961fbb5da27b8d64aa0dfc18f55b2be6}{T\-I\-M\-E} \&to, const \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&from)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_a8cf9824b2f59a91c6d2310640927f6ae}{to\-Timestamp} (\hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&to, const \hyperlink{namespaceflame_a961fbb5da27b8d64aa0dfc18f55b2be6}{T\-I\-M\-E} \&from)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_ac9e327bd6696dab66fae72cca5676b11}{timestamp\-Increment} (\hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structflame_1_1timestamp}{timestamp}, const \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&timestamp2)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_a68603e274c5c12bdbeafeab6323465fb}{timestamp\-Increment} (\hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&\hyperlink{structflame_1_1timestamp}{timestamp}, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds, uint8\-\_\-t ticks)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a6398e8a4677ae1a59854a01f2c1ec5e4}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_aa53710bf71cd287d051e104a7edba27c}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a8681ff7b542f02c8a21f1e8dbb2b0034}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a775dfd649ec2ce41c0f64708b32f18c3}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a9e5862b3c4037fb44172e2194ffdc263}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener, \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{T\-I\-M\-E\-S\-T\-A\-M\-P} \&when)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_affcf2d298d1e96c543d508a48c7e65bb}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_aa0c02e91ae48a09802ea66b1771be43f}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Seconds, uint16\-\_\-t repeat\-Milliseconds)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_aa5123c2ac9201b0186edbcb988a25352}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a94834b36f4332dcabd8aee276221f8cb}{add\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener, uint32\-\_\-t when\-Seconds, uint16\-\_\-t when\-Milliseconds)
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_a787e76eee1bbece6133b6f6539d46074}{add\-Alarm} (\hyperlink{namespaceflame_a7a5a7b0bdd1b44d7d0b0a600552b5ab5}{A\-L\-A\-R\-M} \&\hyperlink{structflame_1_1alarm}{alarm})
+\item 
+virtual bool \hyperlink{classflame_1_1_r_t_c_a3ba19efd3cffbe55d363831996657b42}{register\-Alarm} (\hyperlink{namespaceflame_a7a5a7b0bdd1b44d7d0b0a600552b5ab5}{A\-L\-A\-R\-M} \&\hyperlink{structflame_1_1alarm}{alarm})=0
+\item 
+virtual void \hyperlink{classflame_1_1_r_t_c_a123414b982bd03971e057d8fcf4e45ae}{handle\-Events} ()=0
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_r_t_c_afb5a72eef061c794b61ef4cc07ec5aa9}{alarms\-Pending} ()
+\item 
+virtual void \hyperlink{classflame_1_1_r_t_c_ad493295a4babbc7a3dd4ef18b72c4679}{remove\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)=0
+\item 
+virtual void \hyperlink{classflame_1_1_r_t_c_a88d193491a668daf956bcc672f3dfc06}{remove\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classflame_1_1_r_t_c_a0d6e472de2f42bebed345004d20a504d}{increment\-Milliseconds} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\-\_\-t \hyperlink{classflame_1_1_r_t_c_a1d4d07a67ff88e81a09cbd861bd63ad7}{\-\_\-alarm\-Count}
+\item 
+uint32\-\_\-t \hyperlink{classflame_1_1_r_t_c_a31320e54b29c8a1608782dccaea5bf32}{\-\_\-timestamp}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_r_t_c_a0152322ecff4547471a1f8d84b99cb8e}{\-\_\-milliseconds}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_r_t_c_a9dc99aa09ba42642a43f230f5c2df5eb}{\-\_\-ticks}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_r_t_c_afcfc861a7923a01a54e8b03eb46d48c3}{\-\_\-ticks\-Per\-Millisecond}
+\item 
+int16\-\_\-t \hyperlink{classflame_1_1_r_t_c_a88b4f62e5114d3cf608a1c7029881d85}{\-\_\-tz\-Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 231 of file R\-T\-C.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_r_t_c_a1345e2aa25662edb07a4c0d11ef7db26}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!R\-T\-C@{R\-T\-C}}
+\index{R\-T\-C@{R\-T\-C}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{R\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-R\-T\-C\-::\-R\-T\-C (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{timezone = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a1345e2aa25662edb07a4c0d11ef7db26}
+Create a new \hyperlink{classflame_1_1_r_t_c}{R\-T\-C} 
+\begin{DoxyParams}{Parameters}
+{\em timezone} & minutes offset from U\-T\-C \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 258 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_r_t_c_a6398e8a4677ae1a59854a01f2c1ec5e4}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
+\item[{uint8\-\_\-t}]{repeat\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a6398e8a4677ae1a59854a01f2c1ec5e4}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 527 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_aa53710bf71cd287d051e104a7edba27c}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_aa53710bf71cd287d051e104a7edba27c}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 551 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a8681ff7b542f02c8a21f1e8dbb2b0034}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a8681ff7b542f02c8a21f1e8dbb2b0034}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 574 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a775dfd649ec2ce41c0f64708b32f18c3}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a775dfd649ec2ce41c0f64708b32f18c3}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 595 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a9e5862b3c4037fb44172e2194ffdc263}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener, }
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{when}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a9e5862b3c4037fb44172e2194ffdc263}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when} & the time the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 615 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_affcf2d298d1e96c543d508a48c7e65bb}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds, }
+\item[{uint8\-\_\-t}]{repeat\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_affcf2d298d1e96c543d508a48c7e65bb}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 639 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_aa0c02e91ae48a09802ea66b1771be43f}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint32\-\_\-t}]{repeat\-Seconds, }
+\item[{uint16\-\_\-t}]{repeat\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_aa0c02e91ae48a09802ea66b1771be43f}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em repeat\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 663 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_aa5123c2ac9201b0186edbcb988a25352}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds, }
+\item[{uint8\-\_\-t}]{when\-Ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_aa5123c2ac9201b0186edbcb988a25352}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+{\em when\-Ticks} & the number of ticks past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 686 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a94834b36f4332dcabd8aee276221f8cb}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener, }
+\item[{uint32\-\_\-t}]{when\-Seconds, }
+\item[{uint16\-\_\-t}]{when\-Milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a94834b36f4332dcabd8aee276221f8cb}
+Insert an alarm to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the alarm listener to be called when the alarm is triggered \\
+\hline
+{\em when\-Seconds} & the number of seconds past current that the alarm will be executed \\
+\hline
+{\em when\-Milliseconds} & the number of milliseconds past current that the alarm will be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 707 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a787e76eee1bbece6133b6f6539d46074}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!add\-Alarm@{add\-Alarm}}
+\index{add\-Alarm@{add\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{add\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-R\-T\-C\-::add\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a787e76eee1bbece6133b6f6539d46074}
+Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Definition at line 729 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a7198ccc25a55472063750e91ecb2e442}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!alarm@{alarm}}
+\index{alarm@{alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf U\-N\-U\-S\-E\-D} {\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a7198ccc25a55472063750e91ecb2e442}
+Alarm handler from the timer 
+
+Definition at line 303 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_afb5a72eef061c794b61ef4cc07ec5aa9}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!alarms\-Pending@{alarms\-Pending}}
+\index{alarms\-Pending@{alarms\-Pending}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{alarms\-Pending}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-R\-T\-C\-::alarms\-Pending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_afb5a72eef061c794b61ef4cc07ec5aa9}
+How many events are left in the queue \begin{DoxyReturn}{Returns}
+the number of events 
+\end{DoxyReturn}
+
+
+Definition at line 755 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_ab62acf26f8d8930440e37b4eff8ad630}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!current@{current}}
+\index{current@{current}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::current (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_ab62acf26f8d8930440e37b4eff8ad630}
+Get the current timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to write into \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 324 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_af2287ccb064da38fc546f76cf88c1e53}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!elapsed@{elapsed}}
+\index{elapsed@{elapsed}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{elapsed}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::elapsed (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{since, }
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{elapsed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_af2287ccb064da38fc546f76cf88c1e53}
+Determine how long has elapsed since the supplied timestamp Fixme\-: Does not deal with ticks
+
+
+\begin{DoxyParams}{Parameters}
+{\em since} & the timestamp to measure against \\
+\hline
+{\em elapsed} & returns how much time has elapsed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 340 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a123414b982bd03971e057d8fcf4e45ae}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-R\-T\-C\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_r_t_c_a123414b982bd03971e057d8fcf4e45ae}
+Check for events that are due, and run them Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
+
+Implemented in \hyperlink{classflame_1_1_r_t_c_implementation_a36c258ed2b279ec84172186e988310ab}{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classflame_1_1_r_t_c_a0d6e472de2f42bebed345004d20a504d}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!increment\-Milliseconds@{increment\-Milliseconds}}
+\index{increment\-Milliseconds@{increment\-Milliseconds}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{increment\-Milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::increment\-Milliseconds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a0d6e472de2f42bebed345004d20a504d}
+Increment milliseconds by 1 
+
+Definition at line 243 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a3ba19efd3cffbe55d363831996657b42}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!register\-Alarm@{register\-Alarm}}
+\index{register\-Alarm@{register\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{register\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool flame\-::\-R\-T\-C\-::register\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_r_t_c_a3ba19efd3cffbe55d363831996657b42}
+Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classflame_1_1_r_t_c_implementation_aa89b6bdab92700b2c51bcb9c421bbfdb}{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classflame_1_1_r_t_c_ad493295a4babbc7a3dd4ef18b72c4679}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_r_t_c_ad493295a4babbc7a3dd4ef18b72c4679}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_r_t_c_implementation_a30401cf4b8502e2fe0d84de3e8782247}{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classflame_1_1_r_t_c_a88d193491a668daf956bcc672f3dfc06}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-R\-T\-C\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_r_t_c_a88d193491a668daf956bcc672f3dfc06}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_r_t_c_implementation_a8cc6e18423b995561d15b8895dff63be}{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}.
+
+\hypertarget{classflame_1_1_r_t_c_a86aa2ab02475f073179c2b2db51312e8}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{timestamp, }
+\item[{uint16\-\_\-t}]{milliseconds}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a86aa2ab02475f073179c2b2db51312e8}
+Set the current time 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the current Unix timestamp \\
+\hline
+{\em milliseconds} & the current milliseconds offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 280 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_aa806fd984f19bf88515b982b31188d0b}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!set\-Time@{set\-Time}}
+\index{set\-Time@{set\-Time}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{set\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::set\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_aa806fd984f19bf88515b982b31188d0b}
+Set the current time 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the current Unix timestamp \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 291 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_afbabe09cc9b0311bf4ae7871b93ad692}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!synchronise@{synchronise}}
+\index{synchronise@{synchronise}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{synchronise}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::synchronise (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer} \&}]{timer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_afbabe09cc9b0311bf4ae7871b93ad692}
+Synchronise the ticks\-Per\-Millisecond with the timer This is useful if you change the timer values, or if you are are running the timer faster than 1ms 
+\begin{DoxyParams}{Parameters}
+{\em timer} & the timer to sync with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 270 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_ac9e327bd6696dab66fae72cca5676b11}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
+\index{timestamp\-Increment@{timestamp\-Increment}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_ac9e327bd6696dab66fae72cca5676b11}
+Increment a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em timestamp2} & the timestamp to increment by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 475 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a68603e274c5c12bdbeafeab6323465fb}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!timestamp\-Increment@{timestamp\-Increment}}
+\index{timestamp\-Increment@{timestamp\-Increment}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{timestamp\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::timestamp\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{timestamp, }
+\item[{uint32\-\_\-t}]{seconds, }
+\item[{uint16\-\_\-t}]{milliseconds, }
+\item[{uint8\-\_\-t}]{ticks}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a68603e274c5c12bdbeafeab6323465fb}
+Increment a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em timestamp} & the timestamp to increment \\
+\hline
+{\em seconds} & the number of seconds to increment by \\
+\hline
+{\em milliseconds} & the number of milliseconds to increment by \\
+\hline
+{\em ticks} & the number of ticks to increment by \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 499 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_afaf9a803ca66b58067b24f879edec821}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!to\-Time@{to\-Time}}
+\index{to\-Time@{to\-Time}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{to\-Time}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::to\-Time (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E} \&}]{to, }
+\item[{const {\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_afaf9a803ca66b58067b24f879edec821}
+Convert a timestamp into year,month,day,hours,minutes,seconds 
+\begin{DoxyParams}{Parameters}
+{\em to} & the F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E to store the results \\
+\hline
+{\em from} & the F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 362 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a8cf9824b2f59a91c6d2310640927f6ae}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!to\-Timestamp@{to\-Timestamp}}
+\index{to\-Timestamp@{to\-Timestamp}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{to\-Timestamp}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-T\-C\-::to\-Timestamp (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-I\-M\-E\-S\-T\-A\-M\-P} \&}]{to, }
+\item[{const {\bf T\-I\-M\-E} \&}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_a8cf9824b2f59a91c6d2310640927f6ae}
+Convert year,month,day,hours,minutes,seconds into a timestamp 
+\begin{DoxyParams}{Parameters}
+{\em to} & the F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-S\-T\-A\-M\-P to store the results \\
+\hline
+{\em from} & the F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E struct to convert from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 431 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_r_t_c_a1d4d07a67ff88e81a09cbd861bd63ad7}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-alarm\-Count@{\-\_\-alarm\-Count}}
+\index{\-\_\-alarm\-Count@{\-\_\-alarm\-Count}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-alarm\-Count}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-alarm\-Count\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a1d4d07a67ff88e81a09cbd861bd63ad7}
+
+
+Definition at line 233 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a0152322ecff4547471a1f8d84b99cb8e}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-milliseconds@{\-\_\-milliseconds}}
+\index{\-\_\-milliseconds@{\-\_\-milliseconds}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-milliseconds}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-milliseconds\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a0152322ecff4547471a1f8d84b99cb8e}
+
+
+Definition at line 235 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a9dc99aa09ba42642a43f230f5c2df5eb}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-ticks@{\-\_\-ticks}}
+\index{\-\_\-ticks@{\-\_\-ticks}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-ticks\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a9dc99aa09ba42642a43f230f5c2df5eb}
+
+
+Definition at line 236 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_afcfc861a7923a01a54e8b03eb46d48c3}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}}
+\index{\-\_\-ticks\-Per\-Millisecond@{\-\_\-ticks\-Per\-Millisecond}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-ticks\-Per\-Millisecond}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-ticks\-Per\-Millisecond\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_afcfc861a7923a01a54e8b03eb46d48c3}
+
+
+Definition at line 237 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a31320e54b29c8a1608782dccaea5bf32}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-timestamp@{\-\_\-timestamp}}
+\index{\-\_\-timestamp@{\-\_\-timestamp}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-timestamp}]{\setlength{\rightskip}{0pt plus 5cm}uint32\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-timestamp\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a31320e54b29c8a1608782dccaea5bf32}
+
+
+Definition at line 234 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_a88b4f62e5114d3cf608a1c7029881d85}{\index{flame\-::\-R\-T\-C@{flame\-::\-R\-T\-C}!\-\_\-tz\-Offset@{\-\_\-tz\-Offset}}
+\index{\-\_\-tz\-Offset@{\-\_\-tz\-Offset}!flame::RTC@{flame\-::\-R\-T\-C}}
+\subsubsection[{\-\_\-tz\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t flame\-::\-R\-T\-C\-::\-\_\-tz\-Offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_a88b4f62e5114d3cf608a1c7029881d85}
+
+
+Definition at line 238 of file R\-T\-C.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_r_t_c_8h}{R\-T\-C.\-h}\end{DoxyCompactItemize}

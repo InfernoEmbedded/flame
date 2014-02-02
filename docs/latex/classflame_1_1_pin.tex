@@ -1,0 +1,343 @@
+\hypertarget{classflame_1_1_pin}{\section{flame\-:\-:Pin Class Reference}
+\label{classflame_1_1_pin}\index{flame\-::\-Pin@{flame\-::\-Pin}}
+}
+
+
+{\ttfamily \#include $<$Pin.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Pin\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.616822cm]{classflame_1_1_pin}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a662d1c9ebe06f39eca0b344cdcacf71e}{on} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a92602dd2050757ac05f822ffac6c96d4}{on\-Atomic} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a275c305cc869a36b77c6642d2122a7e4}{off} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_ab2c12ae2715f4768478920dc8cd047bd}{off\-Atomic} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_aef5519e00e077ca3d9bf1045c54bb245}{set} (bool state)=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_ad255caef4f0f6b8f1fe886800afa90b5}{set\-Atomic} (bool state)=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_af8941ca0d0284049babc1823ab67366c}{set\-Output} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a1cdaa26a0e0fd3625c1857597796b37b}{set\-Output\-Atomic} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a2a236681d735dfc3120fc52b3247318a}{set\-Input} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a9c60f31713a6052d9529017a6eed00e0}{set\-Input\-Atomic} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_adcfde4a13f068347b0d2110e37aa0cb7}{set\-Input\-Pullup} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a9c597d09c521128beaf56729c2b083c5}{set\-Input\-Pullup\-Atomic} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_a00d7d0568ac59b73879cab10d701d1b4}{toggle} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_pin_af4a4cd28d03658822ec37c4418d42a06}{toggle\-Atomic} ()=0
+\item 
+virtual bool \hyperlink{classflame_1_1_pin_a388fcf1d1902a306aa1f4d8fa18876f3}{read} ()=0
+\item 
+virtual uint8\-\_\-t \hyperlink{classflame_1_1_pin_a6ccab19cacc3a29d488c21af979389b6}{pinchange\-Interrupt} ()=0
+\item 
+virtual \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{F\-L\-A\-M\-E\-\_\-register} \hyperlink{classflame_1_1_pin_a2d87a59132c2a9ec11095f79707dc3bd}{dir\-Port} ()=0
+\item 
+virtual \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{F\-L\-A\-M\-E\-\_\-register} \hyperlink{classflame_1_1_pin_af01a5c7eeb14e74e0bad26772f97bb29}{input\-Port} ()=0
+\item 
+virtual \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{F\-L\-A\-M\-E\-\_\-register} \hyperlink{classflame_1_1_pin_ad90f4028b374a882678728d18ddb69c2}{output\-Port} ()=0
+\item 
+virtual uint8\-\_\-t \hyperlink{classflame_1_1_pin_a78928d23f568f916249fd87ebdc28db7}{bit} ()=0
+\item 
+virtual uint8\-\_\-t \hyperlink{classflame_1_1_pin_a510a078e2de86e28483709381d2b04d5}{mask} ()=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 35 of file Pin.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_pin_a78928d23f568f916249fd87ebdc28db7}{\index{flame\-::\-Pin@{flame\-::\-Pin}!bit@{bit}}
+\index{bit@{bit}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{bit}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t flame\-::\-Pin\-::bit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a78928d23f568f916249fd87ebdc28db7}
+Get the bit 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_ae1826279d7dc9ec6c7ff4a8ab7a4ecff}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_ae1826279d7dc9ec6c7ff4a8ab7a4ecff}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a2d87a59132c2a9ec11095f79707dc3bd}{\index{flame\-::\-Pin@{flame\-::\-Pin}!dir\-Port@{dir\-Port}}
+\index{dir\-Port@{dir\-Port}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{dir\-Port}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf F\-L\-A\-M\-E\-\_\-register} flame\-::\-Pin\-::dir\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a2d87a59132c2a9ec11095f79707dc3bd}
+Get the direction port 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_aa8aded8d5b2b465143e022faba139f07}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_aa8aded8d5b2b465143e022faba139f07}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_af01a5c7eeb14e74e0bad26772f97bb29}{\index{flame\-::\-Pin@{flame\-::\-Pin}!input\-Port@{input\-Port}}
+\index{input\-Port@{input\-Port}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{input\-Port}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf F\-L\-A\-M\-E\-\_\-register} flame\-::\-Pin\-::input\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_af01a5c7eeb14e74e0bad26772f97bb29}
+Get the input port 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_adf064a598546e83a302e843fbe07b1b6}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_adf064a598546e83a302e843fbe07b1b6}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a510a078e2de86e28483709381d2b04d5}{\index{flame\-::\-Pin@{flame\-::\-Pin}!mask@{mask}}
+\index{mask@{mask}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{mask}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t flame\-::\-Pin\-::mask (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a510a078e2de86e28483709381d2b04d5}
+Get the mask 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_aba23157dd8b17c9b4cbf37c34e34d4c2}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_aba23157dd8b17c9b4cbf37c34e34d4c2}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a275c305cc869a36b77c6642d2122a7e4}{\index{flame\-::\-Pin@{flame\-::\-Pin}!off@{off}}
+\index{off@{off}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{off}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::off (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a275c305cc869a36b77c6642d2122a7e4}
+Set the pin off \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a01979e241b9d5aa9b76fc3a90d8938ce}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a01979e241b9d5aa9b76fc3a90d8938ce}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_ab2c12ae2715f4768478920dc8cd047bd}{\index{flame\-::\-Pin@{flame\-::\-Pin}!off\-Atomic@{off\-Atomic}}
+\index{off\-Atomic@{off\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{off\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::off\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_ab2c12ae2715f4768478920dc8cd047bd}
+Set the pin off atomically (used if the state of a pin on the same port is altered in an interrupt handler) \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_aa488f6f695dbf9a477d470d891ea17f9}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_aa488f6f695dbf9a477d470d891ea17f9}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a662d1c9ebe06f39eca0b344cdcacf71e}{\index{flame\-::\-Pin@{flame\-::\-Pin}!on@{on}}
+\index{on@{on}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{on}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::on (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a662d1c9ebe06f39eca0b344cdcacf71e}
+Set the pin on \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a5ee64200c99231a1ba1b6e724d53f3bf}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a5ee64200c99231a1ba1b6e724d53f3bf}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a92602dd2050757ac05f822ffac6c96d4}{\index{flame\-::\-Pin@{flame\-::\-Pin}!on\-Atomic@{on\-Atomic}}
+\index{on\-Atomic@{on\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{on\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::on\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a92602dd2050757ac05f822ffac6c96d4}
+Set the pin on atomically (used if the state of a pin on the same port is altered in an interrupt handler) \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_ad4a7397f4abe95df89b28a2209bed782}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_ad4a7397f4abe95df89b28a2209bed782}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_ad90f4028b374a882678728d18ddb69c2}{\index{flame\-::\-Pin@{flame\-::\-Pin}!output\-Port@{output\-Port}}
+\index{output\-Port@{output\-Port}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{output\-Port}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf F\-L\-A\-M\-E\-\_\-register} flame\-::\-Pin\-::output\-Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_ad90f4028b374a882678728d18ddb69c2}
+Get the output port 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a3e59355e9e55997b71f44ec7ef3880fe}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a3e59355e9e55997b71f44ec7ef3880fe}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a6ccab19cacc3a29d488c21af979389b6}{\index{flame\-::\-Pin@{flame\-::\-Pin}!pinchange\-Interrupt@{pinchange\-Interrupt}}
+\index{pinchange\-Interrupt@{pinchange\-Interrupt}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{pinchange\-Interrupt}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t flame\-::\-Pin\-::pinchange\-Interrupt (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a6ccab19cacc3a29d488c21af979389b6}
+Get the pinchange interrupt for the pin \begin{DoxyReturn}{Returns}
+the pinchange interrupt, or -\/1 if there is none available 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_abc7af958b5833502e349e1b9768493d3}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_abc7af958b5833502e349e1b9768493d3}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a388fcf1d1902a306aa1f4d8fa18876f3}{\index{flame\-::\-Pin@{flame\-::\-Pin}!read@{read}}
+\index{read@{read}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool flame\-::\-Pin\-::read (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a388fcf1d1902a306aa1f4d8fa18876f3}
+Read the pin 
+\begin{DoxyParams}{Parameters}
+{\em pin} & the pin to read \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_aae70a073f94d3ec291e858f51c7c9e72}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_aae70a073f94d3ec291e858f51c7c9e72}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_aef5519e00e077ca3d9bf1045c54bb245}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set@{set}}
+\index{set@{set}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set (
+\begin{DoxyParamCaption}
+\item[{bool}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_aef5519e00e077ca3d9bf1045c54bb245}
+Set the pin on or off \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em state} & true to turn the pin on \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a980549afcbc44720bb9d01706318985b}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a980549afcbc44720bb9d01706318985b}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_ad255caef4f0f6b8f1fe886800afa90b5}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Atomic@{set\-Atomic}}
+\index{set\-Atomic@{set\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Atomic (
+\begin{DoxyParamCaption}
+\item[{bool}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_ad255caef4f0f6b8f1fe886800afa90b5}
+Set the output pin on or off (used if the state of a pin on the same port is altered in an interrupt handler) \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+\begin{DoxyParams}{Parameters}
+{\em state} & true to turn the pin on \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_ae2ea926f7c081bea35247f0b9d03483e}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_ae2ea926f7c081bea35247f0b9d03483e}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a2a236681d735dfc3120fc52b3247318a}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Input@{set\-Input}}
+\index{set\-Input@{set\-Input}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Input (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a2a236681d735dfc3120fc52b3247318a}
+Set the pin to be an input 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_af4aa98133baf5f86180abc911109b90a}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_af4aa98133baf5f86180abc911109b90a}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a9c60f31713a6052d9529017a6eed00e0}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Input\-Atomic@{set\-Input\-Atomic}}
+\index{set\-Input\-Atomic@{set\-Input\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Input\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Input\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a9c60f31713a6052d9529017a6eed00e0}
+Set the pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler) 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a3b4d71dda7c0165b4477671ab8f9ab91}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a3b4d71dda7c0165b4477671ab8f9ab91}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_adcfde4a13f068347b0d2110e37aa0cb7}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Input\-Pullup@{set\-Input\-Pullup}}
+\index{set\-Input\-Pullup@{set\-Input\-Pullup}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Input\-Pullup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Input\-Pullup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_adcfde4a13f068347b0d2110e37aa0cb7}
+Set the pin to be an input, with the internal pullup enabled 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a7c609a01c4f035238e35fc229c8b3498}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a7c609a01c4f035238e35fc229c8b3498}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a9c597d09c521128beaf56729c2b083c5}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Input\-Pullup\-Atomic@{set\-Input\-Pullup\-Atomic}}
+\index{set\-Input\-Pullup\-Atomic@{set\-Input\-Pullup\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Input\-Pullup\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Input\-Pullup\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a9c597d09c521128beaf56729c2b083c5}
+Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler) 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a8a518fb6dea3b772e7fd715e7f13b7bd}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a8a518fb6dea3b772e7fd715e7f13b7bd}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_af8941ca0d0284049babc1823ab67366c}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Output@{set\-Output}}
+\index{set\-Output@{set\-Output}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Output (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_af8941ca0d0284049babc1823ab67366c}
+Set the pin to be an output 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_abf6851b4b0c78d5c5c8e3aec7600a83e}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_abf6851b4b0c78d5c5c8e3aec7600a83e}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a1cdaa26a0e0fd3625c1857597796b37b}{\index{flame\-::\-Pin@{flame\-::\-Pin}!set\-Output\-Atomic@{set\-Output\-Atomic}}
+\index{set\-Output\-Atomic@{set\-Output\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{set\-Output\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::set\-Output\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a1cdaa26a0e0fd3625c1857597796b37b}
+Set the pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler) 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a3f3bb8ec54186e16fbb2670cf2e99460}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a3f3bb8ec54186e16fbb2670cf2e99460}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_a00d7d0568ac59b73879cab10d701d1b4}{\index{flame\-::\-Pin@{flame\-::\-Pin}!toggle@{toggle}}
+\index{toggle@{toggle}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{toggle}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::toggle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_a00d7d0568ac59b73879cab10d701d1b4}
+Toggle a pin 
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_aa29c1d76b786741a4a187ecec173ae25}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_aa29c1d76b786741a4a187ecec173ae25}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+\hypertarget{classflame_1_1_pin_af4a4cd28d03658822ec37c4418d42a06}{\index{flame\-::\-Pin@{flame\-::\-Pin}!toggle\-Atomic@{toggle\-Atomic}}
+\index{toggle\-Atomic@{toggle\-Atomic}!flame::Pin@{flame\-::\-Pin}}
+\subsubsection[{toggle\-Atomic}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Pin\-::toggle\-Atomic (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_pin_af4a4cd28d03658822ec37c4418d42a06}
+Toggle the pin (used if the state of a pin on the same port is altered in an interrupt handler) \begin{DoxyPrecond}{Precondition}
+the pin must be set to output 
+\end{DoxyPrecond}
+
+
+Implemented in \hyperlink{classflame_1_1_pin_implementation_a1f9b38b3465030190afbfd965b65fcce}{flame\-::\-Pin\-Implementation$<$$>$}, and \hyperlink{classflame_1_1_pin_implementation_a1f9b38b3465030190afbfd965b65fcce}{flame\-::\-Pin\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-P\-A\-R\-M\-S(pin)$>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_pin_8h}{Pin.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,368 @@
+\hypertarget{classflame_1_1_ring_buffer}{\section{flame\-:\-:Ring\-Buffer Class Reference}
+\label{classflame_1_1_ring_buffer}\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}}
+}
+
+
+{\ttfamily \#include $<$Ring\-Buffer.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Ring\-Buffer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.942761cm]{classflame_1_1_ring_buffer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_ring_buffer_aa79ec1379a8e0f4785343f1fa59d0bee}{Ring\-Buffer} ()
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a473b7401a5b6801b54523bd5e835739b}{size} ()
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_ace06648c284c5907b97b613333161010}{head} ()
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a442f72d57cad307ec7b3c4bf76b1821b}{tail} ()
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_aaea51784145687f9e96531efb42e710f}{append} (char c)
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_afdfe6d29affdb2cda2859ee99f216efb}{append} (const void $\ast$p)
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_a51d857b8f879e16deb5a5a6f6f26ee39}{append} (const void $\ast$p, uint8\-\_\-t p\-Length)
+\item 
+int \hyperlink{classflame_1_1_ring_buffer_afe46197978f705f5c49fa6175b1005e8}{consume} ()
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_a79bb84830e97b889f069105f293f9cff}{consume} (void $\ast$p, uint8\-\_\-t p\-Length)
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_ac3c660ef536662f7af65de50ff7199f7}{consume} (void $\ast$p)
+\item 
+void \hyperlink{classflame_1_1_ring_buffer_ab2ba45675a348dfe2e31554de4f2fddf}{flush} ()
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a6b7772f29604b611eb6ad202e5fbcfdb}{length} ()
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_adc5bebc1be0a2ca4e6b073eff3c2e2b3}{full} ()
+\item 
+bool \hyperlink{classflame_1_1_ring_buffer_aa827d88e5d9b53a10d60e0160f51d37c}{full} (uint8\-\_\-t block\-Length)
+\item 
+int \hyperlink{classflame_1_1_ring_buffer_a7068eccfcd8bf889bc35de9adabd0935}{peek\-Head} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a94f253a81991f07e6db59943ea2dc267}{increment} (uint16\-\_\-t index)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint8\-\_\-t \hyperlink{classflame_1_1_ring_buffer_af8a6c82581a2a8f62373d43f9f974402}{\-\_\-head}
+\item 
+volatile uint8\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a57382fd37f090fdd43b0c7e0e7f8246d}{\-\_\-tail}
+\item 
+volatile uint8\-\_\-t $\ast$ \hyperlink{classflame_1_1_ring_buffer_a30f510a6336a693d8157650019d145fb}{\-\_\-buffer} = N\-U\-L\-L
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_ring_buffer_aac2742500299b783e4c236298ec3d58c}{\-\_\-buffer\-Size} = 0
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a7104672ac66311b90363c3919125a417}{\-\_\-element\-Count} = 0
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_ring_buffer_a96a3712379a390f16b4ab5a838e794a3}{\-\_\-element\-Size} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 38 of file Ring\-Buffer.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_ring_buffer_aa79ec1379a8e0f4785343f1fa59d0bee}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!Ring\-Buffer@{Ring\-Buffer}}
+\index{Ring\-Buffer@{Ring\-Buffer}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{Ring\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Ring\-Buffer\-::\-Ring\-Buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_aa79ec1379a8e0f4785343f1fa59d0bee}
+Create a new ringbuffer 
+
+Definition at line 65 of file Ring\-Buffer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_ring_buffer_aaea51784145687f9e96531efb42e710f}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!append@{append}}
+\index{append@{append}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::append (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_aaea51784145687f9e96531efb42e710f}
+Append a character to the buffer \begin{DoxyReturn}{Returns}
+false if we succeeded, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_afdfe6d29affdb2cda2859ee99f216efb}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!append@{append}}
+\index{append@{append}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::append (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_afdfe6d29affdb2cda2859ee99f216efb}
+Append an element to the buffer 
+\begin{DoxyParams}{Parameters}
+{\em p} & the pointer to append from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if we succeeded, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 113 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a51d857b8f879e16deb5a5a6f6f26ee39}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!append@{append}}
+\index{append@{append}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{append}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::append (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{p, }
+\item[{uint8\-\_\-t}]{p\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a51d857b8f879e16deb5a5a6f6f26ee39}
+Append a block of data to the buffer 
+\begin{DoxyParams}{Parameters}
+{\em p} & the pointer to append from \\
+\hline
+{\em p\-Length} & the number of bytes to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if we succeeded, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_afe46197978f705f5c49fa6175b1005e8}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!consume@{consume}}
+\index{consume@{consume}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{consume}]{\setlength{\rightskip}{0pt plus 5cm}int flame\-::\-Ring\-Buffer\-::consume (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_afe46197978f705f5c49fa6175b1005e8}
+Pop a byte off the ringbuffer 
+
+Definition at line 158 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a79bb84830e97b889f069105f293f9cff}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!consume@{consume}}
+\index{consume@{consume}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{consume}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::consume (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p, }
+\item[{uint8\-\_\-t}]{p\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a79bb84830e97b889f069105f293f9cff}
+Pop a block off the ringbuffer 
+\begin{DoxyParams}{Parameters}
+{\em p} & where to write the block \\
+\hline
+{\em p\-Length} & the length of the block \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if we succeeded, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_ac3c660ef536662f7af65de50ff7199f7}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!consume@{consume}}
+\index{consume@{consume}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{consume}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::consume (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_ac3c660ef536662f7af65de50ff7199f7}
+Pop an element off the ringbuffer 
+\begin{DoxyParams}{Parameters}
+{\em p} & where to write the block \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if we succeeded, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 196 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_ab2ba45675a348dfe2e31554de4f2fddf}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!flush@{flush}}
+\index{flush@{flush}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{flush}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Ring\-Buffer\-::flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_ab2ba45675a348dfe2e31554de4f2fddf}
+Discard the contents of the ringbuffer 
+
+Definition at line 217 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_adc5bebc1be0a2ca4e6b073eff3c2e2b3}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!full@{full}}
+\index{full@{full}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_adc5bebc1be0a2ca4e6b073eff3c2e2b3}
+Check if the ringbuffer is full \begin{DoxyReturn}{Returns}
+true if the ringbuffer is full 
+\end{DoxyReturn}
+
+
+Definition at line 239 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_aa827d88e5d9b53a10d60e0160f51d37c}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!full@{full}}
+\index{full@{full}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{full}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Ring\-Buffer\-::full (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{block\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_aa827d88e5d9b53a10d60e0160f51d37c}
+Check if an object can fit in the ringbuffer 
+\begin{DoxyParams}{Parameters}
+{\em block\-Length} & the length of the object to fit in \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the ringbuffer is full 
+\end{DoxyReturn}
+
+
+Definition at line 249 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_ace06648c284c5907b97b613333161010}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!head@{head}}
+\index{head@{head}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::head (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_ace06648c284c5907b97b613333161010}
+Get the head offset 
+
+Definition at line 79 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a94f253a81991f07e6db59943ea2dc267}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!increment@{increment}}
+\index{increment@{increment}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{increment}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::increment (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_a94f253a81991f07e6db59943ea2dc267}
+Determine where the next location will be 
+\begin{DoxyParams}{Parameters}
+{\em index} & the current index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the next index 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a6b7772f29604b611eb6ad202e5fbcfdb}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!length@{length}}
+\index{length@{length}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a6b7772f29604b611eb6ad202e5fbcfdb}
+Get the length of the contents of the ringbuffer Return the number of bytes in the ringbuffer 
+
+Definition at line 225 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a7068eccfcd8bf889bc35de9adabd0935}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!peek\-Head@{peek\-Head}}
+\index{peek\-Head@{peek\-Head}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{peek\-Head}]{\setlength{\rightskip}{0pt plus 5cm}int flame\-::\-Ring\-Buffer\-::peek\-Head (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a7068eccfcd8bf889bc35de9adabd0935}
+Check the most recent character in the buffer \begin{DoxyReturn}{Returns}
+the character, or -\/1 if the buffer is empty 
+\end{DoxyReturn}
+
+
+Definition at line 258 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a473b7401a5b6801b54523bd5e835739b}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!size@{size}}
+\index{size@{size}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a473b7401a5b6801b54523bd5e835739b}
+Get the size of the ringbuffer 
+
+Definition at line 72 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a442f72d57cad307ec7b3c4bf76b1821b}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!tail@{tail}}
+\index{tail@{tail}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{tail}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::tail (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_ring_buffer_a442f72d57cad307ec7b3c4bf76b1821b}
+Get the tail offset 
+
+Definition at line 86 of file Ring\-Buffer.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_ring_buffer_a30f510a6336a693d8157650019d145fb}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-buffer@{\-\_\-buffer}}
+\index{\-\_\-buffer@{\-\_\-buffer}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-buffer}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t$\ast$ flame\-::\-Ring\-Buffer\-::\-\_\-buffer = N\-U\-L\-L\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_a30f510a6336a693d8157650019d145fb}
+
+
+Definition at line 42 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_aac2742500299b783e4c236298ec3d58c}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-buffer\-Size@{\-\_\-buffer\-Size}}
+\index{\-\_\-buffer\-Size@{\-\_\-buffer\-Size}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-buffer\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-Ring\-Buffer\-::\-\_\-buffer\-Size = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_aac2742500299b783e4c236298ec3d58c}
+
+
+Definition at line 43 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a7104672ac66311b90363c3919125a417}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-element\-Count@{\-\_\-element\-Count}}
+\index{\-\_\-element\-Count@{\-\_\-element\-Count}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-element\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-Ring\-Buffer\-::\-\_\-element\-Count = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_a7104672ac66311b90363c3919125a417}
+
+
+Definition at line 44 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a96a3712379a390f16b4ab5a838e794a3}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-element\-Size@{\-\_\-element\-Size}}
+\index{\-\_\-element\-Size@{\-\_\-element\-Size}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-element\-Size}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-Ring\-Buffer\-::\-\_\-element\-Size = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_a96a3712379a390f16b4ab5a838e794a3}
+
+
+Definition at line 45 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_af8a6c82581a2a8f62373d43f9f974402}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-head@{\-\_\-head}}
+\index{\-\_\-head@{\-\_\-head}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-head}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t flame\-::\-Ring\-Buffer\-::\-\_\-head\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_af8a6c82581a2a8f62373d43f9f974402}
+
+
+Definition at line 40 of file Ring\-Buffer.\-h.
+
+\hypertarget{classflame_1_1_ring_buffer_a57382fd37f090fdd43b0c7e0e7f8246d}{\index{flame\-::\-Ring\-Buffer@{flame\-::\-Ring\-Buffer}!\-\_\-tail@{\-\_\-tail}}
+\index{\-\_\-tail@{\-\_\-tail}!flame::RingBuffer@{flame\-::\-Ring\-Buffer}}
+\subsubsection[{\-\_\-tail}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint8\-\_\-t flame\-::\-Ring\-Buffer\-::\-\_\-tail\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_ring_buffer_a57382fd37f090fdd43b0c7e0e7f8246d}
+
+
+Definition at line 41 of file Ring\-Buffer.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_ring_buffer_8h}{Ring\-Buffer.\-h}\end{DoxyCompactItemize}

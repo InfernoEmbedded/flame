@@ -1,0 +1,116 @@
+\hypertarget{classflame_1_1_tokenizer}{\section{flame\-:\-:Tokenizer$<$ sep $>$ Class Template Reference}
+\label{classflame_1_1_tokenizer}\index{flame\-::\-Tokenizer$<$ sep $>$@{flame\-::\-Tokenizer$<$ sep $>$}}
+}
+
+
+{\ttfamily \#include $<$Tokenizer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_tokenizer_a1d926b6a94cc50bbad244a8fbf8a355c}{Tokenizer} ()
+\item 
+\hyperlink{classflame_1_1_tokenizer_a16ff1751b2e7b2e963ca4caad6cbea4f}{Tokenizer} (char $\ast$data)
+\item 
+void \hyperlink{classflame_1_1_tokenizer_a74694cf1c3f0bbed932ac97eb4c4a108}{set\-Input} (char $\ast$input)
+\item 
+char $\ast$ \hyperlink{classflame_1_1_tokenizer_a2e3f5b263b0f041b66c5aae165153edd}{next\-Token} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{classflame_1_1_tokenizer_aec4188ffcf47e418b5d6257706aa7067}{\-\_\-string}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$char sep = 'w'$>$class flame\-::\-Tokenizer$<$ sep $>$}
+
+A String tokenizer that corrupts the input string (changing seperators to N\-U\-L\-Ls) 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em sep} & the seperator to split on special cases\-: 'w' Whitespace ( \par
+) \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 41 of file Tokenizer.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_tokenizer_a1d926b6a94cc50bbad244a8fbf8a355c}{\index{flame\-::\-Tokenizer@{flame\-::\-Tokenizer}!Tokenizer@{Tokenizer}}
+\index{Tokenizer@{Tokenizer}!flame::Tokenizer@{flame\-::\-Tokenizer}}
+\subsubsection[{Tokenizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$char sep = 'w'$>$ {\bf flame\-::\-Tokenizer}$<$ sep $>$\-::{\bf Tokenizer} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_tokenizer_a1d926b6a94cc50bbad244a8fbf8a355c}
+Constructor 
+
+Definition at line 49 of file Tokenizer.\-h.
+
+\hypertarget{classflame_1_1_tokenizer_a16ff1751b2e7b2e963ca4caad6cbea4f}{\index{flame\-::\-Tokenizer@{flame\-::\-Tokenizer}!Tokenizer@{Tokenizer}}
+\index{Tokenizer@{Tokenizer}!flame::Tokenizer@{flame\-::\-Tokenizer}}
+\subsubsection[{Tokenizer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$char sep = 'w'$>$ {\bf flame\-::\-Tokenizer}$<$ sep $>$\-::{\bf Tokenizer} (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_tokenizer_a16ff1751b2e7b2e963ca4caad6cbea4f}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em data} & the string to tokenize \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 56 of file Tokenizer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_tokenizer_a2e3f5b263b0f041b66c5aae165153edd}{\index{flame\-::\-Tokenizer@{flame\-::\-Tokenizer}!next\-Token@{next\-Token}}
+\index{next\-Token@{next\-Token}!flame::Tokenizer@{flame\-::\-Tokenizer}}
+\subsubsection[{next\-Token}]{\setlength{\rightskip}{0pt plus 5cm}template$<$char sep = 'w'$>$ char$\ast$ {\bf flame\-::\-Tokenizer}$<$ sep $>$\-::next\-Token (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_tokenizer_a2e3f5b263b0f041b66c5aae165153edd}
+Get the next token \begin{DoxyReturn}{Returns}
+the next token, or N\-U\-L\-L if there are no more 
+\end{DoxyReturn}
+
+
+Definition at line 71 of file Tokenizer.\-h.
+
+\hypertarget{classflame_1_1_tokenizer_a74694cf1c3f0bbed932ac97eb4c4a108}{\index{flame\-::\-Tokenizer@{flame\-::\-Tokenizer}!set\-Input@{set\-Input}}
+\index{set\-Input@{set\-Input}!flame::Tokenizer@{flame\-::\-Tokenizer}}
+\subsubsection[{set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$char sep = 'w'$>$ void {\bf flame\-::\-Tokenizer}$<$ sep $>$\-::set\-Input (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_tokenizer_a74694cf1c3f0bbed932ac97eb4c4a108}
+Set the string to tokenize 
+\begin{DoxyParams}{Parameters}
+{\em input} & the new string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file Tokenizer.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_tokenizer_aec4188ffcf47e418b5d6257706aa7067}{\index{flame\-::\-Tokenizer@{flame\-::\-Tokenizer}!\-\_\-string@{\-\_\-string}}
+\index{\-\_\-string@{\-\_\-string}!flame::Tokenizer@{flame\-::\-Tokenizer}}
+\subsubsection[{\-\_\-string}]{\setlength{\rightskip}{0pt plus 5cm}template$<$char sep = 'w'$>$ char$\ast$ {\bf flame\-::\-Tokenizer}$<$ sep $>$\-::\-\_\-string\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_tokenizer_aec4188ffcf47e418b5d6257706aa7067}
+
+
+Definition at line 43 of file Tokenizer.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_tokenizer_8h}{Tokenizer.\-h}\end{DoxyCompactItemize}

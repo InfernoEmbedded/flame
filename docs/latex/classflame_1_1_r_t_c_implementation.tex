@@ -1,0 +1,174 @@
+\hypertarget{classflame_1_1_r_t_c_implementation}{\section{flame\-:\-:R\-T\-C\-Implementation$<$ alarm\-Max $>$ Class Template Reference}
+\label{classflame_1_1_r_t_c_implementation}\index{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$@{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}}
+}
+
+
+{\ttfamily \#include $<$R\-T\-C.\-h$>$}
+
+Inheritance diagram for flame\-:\-:R\-T\-C\-Implementation$<$ alarm\-Max $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_r_t_c_implementation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_r_t_c_implementation_a492782c8afb5c98850df157c2212fa7b}{R\-T\-C\-Implementation} (int16\-\_\-t timezone=0)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_implementation_a30401cf4b8502e2fe0d84de3e8782247}{remove\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_implementation_a8cc6e18423b995561d15b8895dff63be}{remove\-Alarm} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_r_t_c_implementation_a36c258ed2b279ec84172186e988310ab}{handle\-Events} ()
+\item 
+bool \hyperlink{classflame_1_1_r_t_c_implementation_aa89b6bdab92700b2c51bcb9c421bbfdb}{register\-Alarm} (\hyperlink{namespaceflame_a7a5a7b0bdd1b44d7d0b0a600552b5ab5}{A\-L\-A\-R\-M} \&\hyperlink{structflame_1_1alarm}{alarm})
+\item 
+void \hyperlink{classflame_1_1_r_t_c_implementation_ab93e0c3fcf47d3b12c4b904103bb7b64}{dump\-Alarms} (\hyperlink{classflame_1_1_device___t_x}{Device\-\_\-\-T\-X} \&tx)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame_a7a5a7b0bdd1b44d7d0b0a600552b5ab5}{A\-L\-A\-R\-M} \hyperlink{classflame_1_1_r_t_c_implementation_a78359b4130cbf9bbd314b31b6826a8be}{\-\_\-alarms} \mbox{[}alarm\-Max\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t alarm\-Max = 8$>$class flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}
+
+
+
+Definition at line 774 of file R\-T\-C.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_r_t_c_implementation_a492782c8afb5c98850df157c2212fa7b}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!R\-T\-C\-Implementation@{R\-T\-C\-Implementation}}
+\index{R\-T\-C\-Implementation@{R\-T\-C\-Implementation}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{R\-T\-C\-Implementation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::{\bf R\-T\-C\-Implementation} (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{timezone = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_implementation_a492782c8afb5c98850df157c2212fa7b}
+Create a new \hyperlink{classflame_1_1_r_t_c}{R\-T\-C} 
+\begin{DoxyParams}{Parameters}
+{\em timezone} & minutes offset from U\-T\-C \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 783 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_r_t_c_implementation_ab93e0c3fcf47d3b12c4b904103bb7b64}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!dump\-Alarms@{dump\-Alarms}}
+\index{dump\-Alarms@{dump\-Alarms}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{dump\-Alarms}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ void {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::dump\-Alarms (
+\begin{DoxyParamCaption}
+\item[{{\bf Device\-\_\-\-T\-X} \&}]{tx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_t_c_implementation_ab93e0c3fcf47d3b12c4b904103bb7b64}
+Dump the current alarms 
+\begin{DoxyParams}{Parameters}
+{\em tx} & an output device to write to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 889 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_implementation_a36c258ed2b279ec84172186e988310ab}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ void {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_r_t_c_implementation_a36c258ed2b279ec84172186e988310ab}
+Check for events that are due, and run them Run this from your main loop if you have no blocking calls, otherwise, call tick\-And\-Run\-Events instead of tick from the timer (note that this will run your events in the interrupt handler, so keep them short!) 
+
+Implements \hyperlink{classflame_1_1_r_t_c_a123414b982bd03971e057d8fcf4e45ae}{flame\-::\-R\-T\-C}.
+
+
+
+Definition at line 818 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_implementation_aa89b6bdab92700b2c51bcb9c421bbfdb}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!register\-Alarm@{register\-Alarm}}
+\index{register\-Alarm@{register\-Alarm}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{register\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ bool {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::register\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-L\-A\-R\-M} \&}]{alarm}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_r_t_c_implementation_aa89b6bdab92700b2c51bcb9c421bbfdb}
+Insert an alarm, to be triggered at a later time 
+\begin{DoxyParams}{Parameters}
+{\em alarm} & the alarm, consisting of\-: when it should be triggered how often it should be repeated what should be called (it will be passed a reference to the alarm) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event could not be added 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_r_t_c_a3ba19efd3cffbe55d363831996657b42}{flame\-::\-R\-T\-C}.
+
+
+
+Definition at line 860 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_implementation_a30401cf4b8502e2fe0d84de3e8782247}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ void {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_r_t_c_implementation_a30401cf4b8502e2fe0d84de3e8782247}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_r_t_c_ad493295a4babbc7a3dd4ef18b72c4679}{flame\-::\-R\-T\-C}.
+
+
+
+Definition at line 791 of file R\-T\-C.\-h.
+
+\hypertarget{classflame_1_1_r_t_c_implementation_a8cc6e18423b995561d15b8895dff63be}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!remove\-Alarm@{remove\-Alarm}}
+\index{remove\-Alarm@{remove\-Alarm}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{remove\-Alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ void {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::remove\-Alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_r_t_c_implementation_a8cc6e18423b995561d15b8895dff63be}
+Remove all matching events from the list of pending events 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener for the event to remove \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_r_t_c_a88d193491a668daf956bcc672f3dfc06}{flame\-::\-R\-T\-C}.
+
+
+
+Definition at line 799 of file R\-T\-C.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_r_t_c_implementation_a78359b4130cbf9bbd314b31b6826a8be}{\index{flame\-::\-R\-T\-C\-Implementation@{flame\-::\-R\-T\-C\-Implementation}!\-\_\-alarms@{\-\_\-alarms}}
+\index{\-\_\-alarms@{\-\_\-alarms}!flame::RTCImplementation@{flame\-::\-R\-T\-C\-Implementation}}
+\subsubsection[{\-\_\-alarms}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t alarm\-Max = 8$>$ {\bf A\-L\-A\-R\-M} {\bf flame\-::\-R\-T\-C\-Implementation}$<$ alarm\-Max $>$\-::\-\_\-alarms\mbox{[}alarm\-Max\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_t_c_implementation_a78359b4130cbf9bbd314b31b6826a8be}
+
+
+Definition at line 776 of file R\-T\-C.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_r_t_c_8h}{R\-T\-C.\-h}\end{DoxyCompactItemize}

@@ -1,0 +1,288 @@
+\hypertarget{classflame_1_1_p_i_d}{\section{flame\-:\-:P\-I\-D Class Reference}
+\label{classflame_1_1_p_i_d}\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}}
+}
+
+
+{\ttfamily \#include $<$P\-I\-D.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_p_i_d_a162fc0e59812f591ecef813d7fc7b435}{P\-I\-D} (float setpoint, float k\-P, float k\-I, float k\-D, uint16\-\_\-t period, bool reverse, uint16\-\_\-t min, uint16\-\_\-t max)
+\item 
+void \hyperlink{classflame_1_1_p_i_d_a66ca28c5a02174ee7110a6b26e5381ad}{set\-Direction} (bool reverse)
+\item 
+void \hyperlink{classflame_1_1_p_i_d_a2c7e7a6f3565d0b695a5d0a778403caa}{enable} (bool enable)
+\item 
+float \hyperlink{classflame_1_1_p_i_d_aa8a62b512ed815b1a63dd3f227ead5ac}{compute} (float input)
+\item 
+void \hyperlink{classflame_1_1_p_i_d_a47463b866776572720c1f9f623c9c11a}{set\-Tuning} (float k\-P, float k\-I, float k\-D, uint16\-\_\-t period)
+\item 
+void \hyperlink{classflame_1_1_p_i_d_a9169912fc05aa5edc4e78d33ebca2e3a}{set\-Output\-Limits} (float, float)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classflame_1_1_p_i_d_a8adba7354f12d68571f8c8cabdd166eb}{clamp\-Integral} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_a5c5311d180b839392ee54920c3009b64}{\-\_\-k\-P}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_aad1e934a1f8d11fd2900dc5cac926b5d}{\-\_\-k\-I}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_a9465b06d366929164d5aa4b7e843c841}{\-\_\-k\-D}
+\item 
+bool \hyperlink{classflame_1_1_p_i_d_a73b97134241f384d3bd404fc946febe7}{\-\_\-reverse}
+\item 
+bool \hyperlink{classflame_1_1_p_i_d_ad719042f160c11b99472f17b60becded}{\-\_\-enabled}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_ac5fe71cf9d08a3f802bab87ad6e60832}{\-\_\-setpoint}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_a282d006056bcf192cb69ac8e48f353aa}{\-\_\-integral}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_a3b69bca64857397d299b6f0ea3fd0be8}{\-\_\-last\-Input}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_aa8c71b585685e773b70ece82ad7bbd26}{\-\_\-last\-Output}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_af9be855a07fe11d4c32c542594c3466e}{\-\_\-out\-Min}
+\item 
+float \hyperlink{classflame_1_1_p_i_d_a573488424806f74b3b3811caf473b48a}{\-\_\-out\-Max}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 39 of file P\-I\-D.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_p_i_d_a162fc0e59812f591ecef813d7fc7b435}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!P\-I\-D@{P\-I\-D}}
+\index{P\-I\-D@{P\-I\-D}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{P\-I\-D}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-P\-I\-D\-::\-P\-I\-D (
+\begin{DoxyParamCaption}
+\item[{float}]{setpoint, }
+\item[{float}]{k\-P, }
+\item[{float}]{k\-I, }
+\item[{float}]{k\-D, }
+\item[{uint16\-\_\-t}]{period, }
+\item[{bool}]{reverse, }
+\item[{uint16\-\_\-t}]{min, }
+\item[{uint16\-\_\-t}]{max}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_a162fc0e59812f591ecef813d7fc7b435}
+Create a new \hyperlink{classflame_1_1_p_i_d}{P\-I\-D} 
+\begin{DoxyParams}{Parameters}
+{\em setpoint} & the target value \\
+\hline
+{\em k\-P} & the proportional constant \\
+\hline
+{\em k\-I} & the integral constant \\
+\hline
+{\em k\-D} & the derivative constant \\
+\hline
+{\em period} & the period that \hyperlink{classflame_1_1_p_i_d_aa8a62b512ed815b1a63dd3f227ead5ac}{compute()} is called, in ms \\
+\hline
+{\em reverse} & true if there is an inverse relationship between the output and the input (eg. running a cooler to reduce temperature) \\
+\hline
+{\em min} & the minimum value for output \\
+\hline
+{\em max} & the maximum value for output \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file P\-I\-D.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_p_i_d_a8adba7354f12d68571f8c8cabdd166eb}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!clamp\-Integral@{clamp\-Integral}}
+\index{clamp\-Integral@{clamp\-Integral}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{clamp\-Integral}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-P\-I\-D\-::clamp\-Integral (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a8adba7354f12d68571f8c8cabdd166eb}
+
+
+Definition at line 64 of file P\-I\-D.\-cpp.
+
+\hypertarget{classflame_1_1_p_i_d_aa8a62b512ed815b1a63dd3f227ead5ac}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!compute@{compute}}
+\index{compute@{compute}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{compute}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::compute (
+\begin{DoxyParamCaption}
+\item[{float}]{input}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_aa8a62b512ed815b1a63dd3f227ead5ac}
+Calculate the next output 
+\begin{DoxyParams}{Parameters}
+{\em input} & the latest sample \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file P\-I\-D.\-cpp.
+
+\hypertarget{classflame_1_1_p_i_d_a2c7e7a6f3565d0b695a5d0a778403caa}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!enable@{enable}}
+\index{enable@{enable}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-P\-I\-D\-::enable (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_a2c7e7a6f3565d0b695a5d0a778403caa}
+Enable/\-Disable the \hyperlink{classflame_1_1_p_i_d}{P\-I\-D} 
+\begin{DoxyParams}{Parameters}
+{\em enable} & true to enable the pid \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 136 of file P\-I\-D.\-cpp.
+
+\hypertarget{classflame_1_1_p_i_d_a66ca28c5a02174ee7110a6b26e5381ad}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!set\-Direction@{set\-Direction}}
+\index{set\-Direction@{set\-Direction}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{set\-Direction}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-P\-I\-D\-::set\-Direction (
+\begin{DoxyParamCaption}
+\item[{bool}]{reverse}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_a66ca28c5a02174ee7110a6b26e5381ad}
+Set the direction for the \hyperlink{classflame_1_1_p_i_d}{P\-I\-D}.
+
+Setting reverse means that increasing output reduces the input (eg. increasing power to a cooler, with the input being temperature) 
+
+Definition at line 152 of file P\-I\-D.\-cpp.
+
+\hypertarget{classflame_1_1_p_i_d_a9169912fc05aa5edc4e78d33ebca2e3a}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!set\-Output\-Limits@{set\-Output\-Limits}}
+\index{set\-Output\-Limits@{set\-Output\-Limits}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{set\-Output\-Limits}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-P\-I\-D\-::set\-Output\-Limits (
+\begin{DoxyParamCaption}
+\item[{float}]{min, }
+\item[{float}]{max}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_a9169912fc05aa5edc4e78d33ebca2e3a}
+Alter the minimum \& maximum values for the output 
+\begin{DoxyParams}{Parameters}
+{\em min} & the new minimum output value \\
+\hline
+{\em max} & the new maximum output value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file P\-I\-D.\-cpp.
+
+\hypertarget{classflame_1_1_p_i_d_a47463b866776572720c1f9f623c9c11a}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!set\-Tuning@{set\-Tuning}}
+\index{set\-Tuning@{set\-Tuning}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{set\-Tuning}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-P\-I\-D\-::set\-Tuning (
+\begin{DoxyParamCaption}
+\item[{float}]{k\-P, }
+\item[{float}]{k\-I, }
+\item[{float}]{k\-D, }
+\item[{uint16\-\_\-t}]{period}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_p_i_d_a47463b866776572720c1f9f623c9c11a}
+Adjust \hyperlink{classflame_1_1_p_i_d}{P\-I\-D} parameters 
+\begin{DoxyParams}{Parameters}
+{\em k\-P} & the proportional constant \\
+\hline
+{\em k\-I} & the integral constant \\
+\hline
+{\em k\-D} & the derivative constant \\
+\hline
+{\em period} & the period that \hyperlink{classflame_1_1_p_i_d_aa8a62b512ed815b1a63dd3f227ead5ac}{compute()} is called, in ms \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 104 of file P\-I\-D.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_p_i_d_ad719042f160c11b99472f17b60becded}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-enabled@{\-\_\-enabled}}
+\index{\-\_\-enabled@{\-\_\-enabled}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-P\-I\-D\-::\-\_\-enabled\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_ad719042f160c11b99472f17b60becded}
+
+
+Definition at line 46 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a282d006056bcf192cb69ac8e48f353aa}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-integral@{\-\_\-integral}}
+\index{\-\_\-integral@{\-\_\-integral}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-integral}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-integral\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a282d006056bcf192cb69ac8e48f353aa}
+
+
+Definition at line 49 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a9465b06d366929164d5aa4b7e843c841}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-k\-D@{\-\_\-k\-D}}
+\index{\-\_\-k\-D@{\-\_\-k\-D}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-D}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-k\-D\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a9465b06d366929164d5aa4b7e843c841}
+
+
+Definition at line 43 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_aad1e934a1f8d11fd2900dc5cac926b5d}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-k\-I@{\-\_\-k\-I}}
+\index{\-\_\-k\-I@{\-\_\-k\-I}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-I}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-k\-I\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_aad1e934a1f8d11fd2900dc5cac926b5d}
+
+
+Definition at line 42 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a5c5311d180b839392ee54920c3009b64}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-k\-P@{\-\_\-k\-P}}
+\index{\-\_\-k\-P@{\-\_\-k\-P}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-k\-P}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-k\-P\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a5c5311d180b839392ee54920c3009b64}
+
+
+Definition at line 41 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a3b69bca64857397d299b6f0ea3fd0be8}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-last\-Input@{\-\_\-last\-Input}}
+\index{\-\_\-last\-Input@{\-\_\-last\-Input}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-last\-Input}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-last\-Input\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a3b69bca64857397d299b6f0ea3fd0be8}
+
+
+Definition at line 50 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_aa8c71b585685e773b70ece82ad7bbd26}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-last\-Output@{\-\_\-last\-Output}}
+\index{\-\_\-last\-Output@{\-\_\-last\-Output}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-last\-Output}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-last\-Output\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_aa8c71b585685e773b70ece82ad7bbd26}
+
+
+Definition at line 51 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a573488424806f74b3b3811caf473b48a}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-out\-Max@{\-\_\-out\-Max}}
+\index{\-\_\-out\-Max@{\-\_\-out\-Max}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-out\-Max}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-out\-Max\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a573488424806f74b3b3811caf473b48a}
+
+
+Definition at line 54 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_af9be855a07fe11d4c32c542594c3466e}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-out\-Min@{\-\_\-out\-Min}}
+\index{\-\_\-out\-Min@{\-\_\-out\-Min}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-out\-Min}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-out\-Min\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_af9be855a07fe11d4c32c542594c3466e}
+
+
+Definition at line 53 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_a73b97134241f384d3bd404fc946febe7}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-reverse@{\-\_\-reverse}}
+\index{\-\_\-reverse@{\-\_\-reverse}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-reverse}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-P\-I\-D\-::\-\_\-reverse\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_a73b97134241f384d3bd404fc946febe7}
+
+
+Definition at line 45 of file P\-I\-D.\-h.
+
+\hypertarget{classflame_1_1_p_i_d_ac5fe71cf9d08a3f802bab87ad6e60832}{\index{flame\-::\-P\-I\-D@{flame\-::\-P\-I\-D}!\-\_\-setpoint@{\-\_\-setpoint}}
+\index{\-\_\-setpoint@{\-\_\-setpoint}!flame::PID@{flame\-::\-P\-I\-D}}
+\subsubsection[{\-\_\-setpoint}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-P\-I\-D\-::\-\_\-setpoint\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_p_i_d_ac5fe71cf9d08a3f802bab87ad6e60832}
+
+
+Definition at line 48 of file P\-I\-D.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_p_i_d_8h}{P\-I\-D.\-h}\item 
+\hyperlink{_p_i_d_8cpp}{P\-I\-D.\-cpp}\end{DoxyCompactItemize}

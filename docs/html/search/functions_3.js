@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['calculatedgammacorrect',['calculatedGammaCorrect',['../namespaceflame.html#af25b8343a10ba8a78d51592d8f9f0342',1,'flame::calculatedGammaCorrect()'],['../_gamma_correct_8cpp.html#af77b97edeacfd0c765ad9a7aa7b5bfac',1,'calculatedGammaCorrect():&#160;GammaCorrect.cpp']]],
+  ['calculateprescaler',['calculatePrescaler',['../classflame_1_1_timer.html#a41717d9530f49b0f9ffdc6cd8ed9eb1c',1,'flame::Timer::calculatePrescaler()'],['../classflame_1_1_timer_implementation.html#abec9c25e312eb36bfb693f67739c2375',1,'flame::TimerImplementation::calculatePrescaler()']]],
+  ['calculatetop',['calculateTop',['../classflame_1_1_timer.html#a1b513a84642ecb450ad53ea28fa93b50',1,'flame::Timer::calculateTop(uint32_t *time, uint16_t factor)'],['../classflame_1_1_timer.html#aef1b72c7c0de1049587e899c881733fc',1,'flame::Timer::calculateTop(float *time, uint16_t factor)']]],
+  ['calibrate',['calibrate',['../classflame_1_1_triple_axis_calibrator.html#a95729b080aee3846856ea91c0f9fa73b',1,'flame::TripleAxisCalibrator']]],
+  ['calibratesensor',['calibrateSensor',['../classflame_1_1_best_sphere_gauss_newton_calibrator.html#ac07439f912b1ff230dc3cc80c86c26be',1,'flame::BestSphereGaussNewtonCalibrator::calibrateSensor()'],['../classflame_1_1_triple_axis_calibrator.html#a1a22ce8da6a3e3672f59e876acd3796b',1,'flame::TripleAxisCalibrator::calibrateSensor()']]],
+  ['cansendbusy',['canSendBusy',['../classflame_1_1_hardware_serial.html#a2aac6f2b081b2449a666bd73ac470b26',1,'flame::HardwareSerial']]],
+  ['canwrite',['canWrite',['../classflame_1_1_device___t_x.html#ad9d1d66fe9a4538032e914896f553745',1,'flame::Device_TX']]],
+  ['check',['check',['../classflame_1_1_lock.html#a4fe9d5f697ea23a770e273a9faa77e75',1,'flame::Lock::check()'],['../classflame_1_1_software_p_w_m_listener.html#a2e8a39faa1f233483720a516397df545',1,'flame::SoftwarePWMListener::check()'],['../classflame_1_1_software_p_w_m_pin.html#aa87439920593e3e06605722f5d707e22',1,'flame::SoftwarePWMPin::check()']]],
+  ['checkheld',['checkHeld',['../classflame_1_1_debounce.html#aabe8d69b5a537c39adda9ea88c129249',1,'flame::Debounce']]],
+  ['clampintegral',['clampIntegral',['../classflame_1_1_p_i_d.html#a8adba7354f12d68571f8c8cabdd166eb',1,'flame::PID']]],
+  ['clear',['clear',['../classflame_1_1_display___character.html#ae575b7b3568f820e45029a45715a4f16',1,'flame::Display_Character::clear()'],['../classflame_1_1_display___h_d44780.html#aef98047f4e45787046eaf410f49313c2',1,'flame::Display_HD44780::clear()'],['../classflame_1_1_display___monochrome.html#a7c38727d187106abe6027d1ca1bb8b14',1,'flame::Display_Monochrome::clear()']]],
+  ['clearoverflow',['clearOverflow',['../classflame_1_1_timer.html#a84e3f3f1fdfe90a8b247ee6b15b43c89',1,'flame::Timer::clearOverflow()'],['../classflame_1_1_timer_implementation.html#a413c104e27665c31e2057cdbcef87d36',1,'flame::TimerImplementation::clearOverflow()']]],
+  ['coloff',['colOff',['../classflame_1_1_p_w_m_matrix_driver.html#ab22d1d01a34416f934157607dd09bea8',1,'flame::PWMMatrixDriver']]],
+  ['colon',['colOn',['../classflame_1_1_p_w_m_matrix_driver.html#a8abc10703f2e22be9c8a68f80f99f4fc',1,'flame::PWMMatrixDriver']]],
+  ['compute',['compute',['../classflame_1_1_p_i_d.html#aa8a62b512ed815b1a63dd3f227ead5ac',1,'flame::PID']]],
+  ['configure',['configure',['../classflame_1_1_hardware_serial.html#aeff320dad035e17a806233bcd2a44c34',1,'flame::HardwareSerial']]],
+  ['connectoutput',['connectOutput',['../classflame_1_1_timer_implementation.html#a53ba3822a5d824fc8d35d835ab18afa7',1,'flame::TimerImplementation']]],
+  ['connectoutput1',['connectOutput1',['../classflame_1_1_timer.html#abb864ec27afbf978d4367fb2d58436e9',1,'flame::Timer::connectOutput1()'],['../classflame_1_1_timer_implementation.html#a5a8d88bff958036d3bf55c29c540b3b8',1,'flame::TimerImplementation::connectOutput1()']]],
+  ['connectoutput2',['connectOutput2',['../classflame_1_1_timer.html#a8953b248ee5a1749ea54d571b3254805',1,'flame::Timer::connectOutput2()'],['../classflame_1_1_timer_implementation.html#ac56dc9af8ff923e6d331f69d35375941',1,'flame::TimerImplementation::connectOutput2()']]],
+  ['connectoutput3',['connectOutput3',['../classflame_1_1_timer.html#ac2de7ddb1623fe93e3e5852d6893c005',1,'flame::Timer::connectOutput3()'],['../classflame_1_1_timer_implementation.html#af0e2e07199ea95d45a0220f64b11b803',1,'flame::TimerImplementation::connectOutput3()']]],
+  ['consume',['consume',['../classflame_1_1_ring_buffer.html#afe46197978f705f5c49fa6175b1005e8',1,'flame::RingBuffer::consume()'],['../classflame_1_1_ring_buffer.html#a79bb84830e97b889f069105f293f9cff',1,'flame::RingBuffer::consume(void *p, uint8_t pLength)'],['../classflame_1_1_ring_buffer.html#ac3c660ef536662f7af65de50ff7199f7',1,'flame::RingBuffer::consume(void *p)']]],
+  ['control',['control',['../classflame_1_1_display___h_d44780.html#a9ecdf0cf1754634a243f014170f61f32',1,'flame::Display_HD44780']]],
+  ['crc',['crc',['../classflame_1_1_e_e_p_r_o_m.html#a5b24aa67d9fd4ccbac79601670505d33',1,'flame::EEPROM']]],
+  ['current',['current',['../classflame_1_1_r_t_c.html#ab62acf26f8d8930440e37b4eff8ad630',1,'flame::RTC::current()'],['../classflame_1_1_timer.html#a97eb012afb61476de7597a4515c03d2d',1,'flame::Timer::current()'],['../classflame_1_1_timer_implementation.html#a059cf0b61ce2a5401e0eac765d592876',1,'flame::TimerImplementation::current()']]]
+];

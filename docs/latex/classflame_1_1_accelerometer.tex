@@ -1,0 +1,72 @@
+\hypertarget{classflame_1_1_accelerometer}{\section{flame\-:\-:Accelerometer Class Reference}
+\label{classflame_1_1_accelerometer}\index{flame\-::\-Accelerometer@{flame\-::\-Accelerometer}}
+}
+
+
+{\ttfamily \#include $<$Accelerometer.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Accelerometer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.982301cm]{classflame_1_1_accelerometer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame_1_1_accelerometer_a408179e458d41aa08e06b721a6b8aa81}{load\-Calibration} (\hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} \&eeprom)
+\item 
+void \hyperlink{classflame_1_1_accelerometer_afc95c5291e223eb400a0c9a33a44f71f}{save\-Calibration} (\hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} \&eeprom)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\hyperlink{classflame_1_1_accelerometer}{Accelerometer} Interface 
+
+Definition at line 38 of file Accelerometer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_accelerometer_a408179e458d41aa08e06b721a6b8aa81}{\index{flame\-::\-Accelerometer@{flame\-::\-Accelerometer}!load\-Calibration@{load\-Calibration}}
+\index{load\-Calibration@{load\-Calibration}!flame::Accelerometer@{flame\-::\-Accelerometer}}
+\subsubsection[{load\-Calibration}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Accelerometer\-::load\-Calibration (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-E\-P\-R\-O\-M} \&}]{eeprom}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_accelerometer_a408179e458d41aa08e06b721a6b8aa81}
+Load calibration data from the default location 
+\begin{DoxyParams}{Parameters}
+{\em eeprom} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success, true if the device needs to be calibrated 
+\end{DoxyReturn}
+
+
+Definition at line 37 of file Accelerometer.\-cpp.
+
+\hypertarget{classflame_1_1_accelerometer_afc95c5291e223eb400a0c9a33a44f71f}{\index{flame\-::\-Accelerometer@{flame\-::\-Accelerometer}!save\-Calibration@{save\-Calibration}}
+\index{save\-Calibration@{save\-Calibration}!flame::Accelerometer@{flame\-::\-Accelerometer}}
+\subsubsection[{save\-Calibration}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Accelerometer\-::save\-Calibration (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-E\-P\-R\-O\-M} \&}]{eeprom}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_accelerometer_afc95c5291e223eb400a0c9a33a44f71f}
+Save the current calibration data to \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} at the default location 
+\begin{DoxyParams}{Parameters}
+{\em eeprom} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access instance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file Accelerometer.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_accelerometer_8h}{Accelerometer.\-h}\item 
+\hyperlink{_accelerometer_8cpp}{Accelerometer.\-cpp}\end{DoxyCompactItemize}

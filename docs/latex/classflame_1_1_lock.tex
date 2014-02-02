@@ -1,0 +1,87 @@
+\hypertarget{classflame_1_1_lock}{\section{flame\-:\-:Lock Class Reference}
+\label{classflame_1_1_lock}\index{flame\-::\-Lock@{flame\-::\-Lock}}
+}
+
+
+{\ttfamily \#include $<$Lock.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_lock_a23de9873c6f635b9e93c31c81fd87314}{Lock} ()
+\item 
+bool \hyperlink{classflame_1_1_lock_a8e524207fb6263d2311748a8a0629058}{obtain} ()
+\item 
+void \hyperlink{classflame_1_1_lock_a965b2317354bb36bb744c6ca6d8f3da6}{release} ()
+\item 
+bool \hyperlink{classflame_1_1_lock_a4fe9d5f697ea23a770e273a9faa77e75}{check} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file Lock.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_lock_a23de9873c6f635b9e93c31c81fd87314}{\index{flame\-::\-Lock@{flame\-::\-Lock}!Lock@{Lock}}
+\index{Lock@{Lock}!flame::Lock@{flame\-::\-Lock}}
+\subsubsection[{Lock}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Lock\-::\-Lock (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_lock_a23de9873c6f635b9e93c31c81fd87314}
+Create a new lock 
+
+Definition at line 15 of file Lock.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_lock_a4fe9d5f697ea23a770e273a9faa77e75}{\index{flame\-::\-Lock@{flame\-::\-Lock}!check@{check}}
+\index{check@{check}!flame::Lock@{flame\-::\-Lock}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Lock\-::check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_lock_a4fe9d5f697ea23a770e273a9faa77e75}
+Check if the lock is currently held \begin{DoxyReturn}{Returns}
+true if the lock is held 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file Lock.\-cpp.
+
+\hypertarget{classflame_1_1_lock_a8e524207fb6263d2311748a8a0629058}{\index{flame\-::\-Lock@{flame\-::\-Lock}!obtain@{obtain}}
+\index{obtain@{obtain}!flame::Lock@{flame\-::\-Lock}}
+\subsubsection[{obtain}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Lock\-::obtain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_lock_a8e524207fb6263d2311748a8a0629058}
+Obtain the lock \begin{DoxyReturn}{Returns}
+true if the lock was successfully obtained, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line 23 of file Lock.\-cpp.
+
+\hypertarget{classflame_1_1_lock_a965b2317354bb36bb744c6ca6d8f3da6}{\index{flame\-::\-Lock@{flame\-::\-Lock}!release@{release}}
+\index{release@{release}!flame::Lock@{flame\-::\-Lock}}
+\subsubsection[{release}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Lock\-::release (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_lock_a965b2317354bb36bb744c6ca6d8f3da6}
+Release the lock 
+
+Definition at line 36 of file Lock.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_lock_8h}{Lock.\-h}\item 
+\hyperlink{_lock_8cpp}{Lock.\-cpp}\end{DoxyCompactItemize}

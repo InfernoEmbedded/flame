@@ -1,0 +1,160 @@
+\hypertarget{classflame_1_1_d_a_converter}{\section{flame\-:\-:D\-A\-Converter Class Reference}
+\label{classflame_1_1_d_a_converter}\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}}
+}
+
+
+{\ttfamily \#include $<$D\-A\-C.\-h$>$}
+
+Inheritance diagram for flame\-:\-:D\-A\-Converter\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_d_a_converter}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_d_a_converter_afe3e4f8e96154d3a9c117c0658309caf}{D\-A\-Converter} (\hyperlink{classflame_1_1_timer}{Timer} \&timer, \hyperlink{classflame_1_1_d_a_c_listener}{D\-A\-C\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_d_a_converter_a35dba185dfbd8483069c7a3ee9c19e5c}{alarm} (\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\item 
+void \hyperlink{classflame_1_1_d_a_converter_a6a1864d308d9e9cbf52ec5f8e6149be1}{play\-Samples} (\hyperlink{_d_a_c_8h_a5a6d1dc37ffa32957a63868cd1da39b3}{S\-A\-M\-P\-L\-E} $\ast$samples, uint8\-\_\-t sample\-Length)
+\item 
+void \hyperlink{classflame_1_1_d_a_converter_a3e91956332022f13cc6688217c4010ab}{handle\-Events} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_d_a_c_8h_a5a6d1dc37ffa32957a63868cd1da39b3}{S\-A\-M\-P\-L\-E} $\ast$ \hyperlink{classflame_1_1_d_a_converter_a26a86c298bf06bfc532f1b7cdaad6a75}{\-\_\-samples}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_d_a_converter_a97893edc430924497ee399b9223e4061}{\-\_\-sample\-Length}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_d_a_converter_a7d6c6df7f4e84c768dd92250f959078e}{\-\_\-current\-Sample}
+\item 
+\hyperlink{classflame_1_1_timer}{Timer} \& \hyperlink{classflame_1_1_d_a_converter_a70829abb271ec51a212d558c9087d8c5}{\-\_\-timer}
+\item 
+\hyperlink{classflame_1_1_d_a_c_listener}{D\-A\-C\-Listener} \& \hyperlink{classflame_1_1_d_a_converter_a5ef3241975593e467838c730857772f4}{\-\_\-listener}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 52 of file D\-A\-C.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_d_a_converter_afe3e4f8e96154d3a9c117c0658309caf}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!D\-A\-Converter@{D\-A\-Converter}}
+\index{D\-A\-Converter@{D\-A\-Converter}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{D\-A\-Converter}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-D\-A\-Converter\-::\-D\-A\-Converter (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer} \&}]{timer, }
+\item[{{\bf D\-A\-C\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_d_a_converter_afe3e4f8e96154d3a9c117c0658309caf}
+Create a new D\-A\-C to play samples by P\-W\-Ming a timer 
+\begin{DoxyParams}{Parameters}
+{\em timer} & the timer to P\-W\-M -\/ we will be calling set\-Output2 on this to adjust the output \\
+\hline
+{\em listener} & a listener we will notify when we need more samples to play \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file D\-A\-C.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_d_a_converter_a35dba185dfbd8483069c7a3ee9c19e5c}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!alarm@{alarm}}
+\index{alarm@{alarm}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-D\-A\-Converter\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_d_a_converter_a35dba185dfbd8483069c7a3ee9c19e5c}
+Play the next sample if available 
+
+Implements \hyperlink{classflame_1_1_timer_listener_ad97504b72a25b1fba354803338177335}{flame\-::\-Timer\-Listener}.
+
+
+
+Definition at line 43 of file D\-A\-C.\-cpp.
+
+\hypertarget{classflame_1_1_d_a_converter_a3e91956332022f13cc6688217c4010ab}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-D\-A\-Converter\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_d_a_converter_a3e91956332022f13cc6688217c4010ab}
+Handle any non-\/interrupt context events for the D\-A\-C 
+
+Definition at line 69 of file D\-A\-C.\-cpp.
+
+\hypertarget{classflame_1_1_d_a_converter_a6a1864d308d9e9cbf52ec5f8e6149be1}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!play\-Samples@{play\-Samples}}
+\index{play\-Samples@{play\-Samples}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{play\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-D\-A\-Converter\-::play\-Samples (
+\begin{DoxyParamCaption}
+\item[{{\bf S\-A\-M\-P\-L\-E} $\ast$}]{samples, }
+\item[{uint8\-\_\-t}]{sample\-Length}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_d_a_converter_a6a1864d308d9e9cbf52ec5f8e6149be1}
+Play a set of samples (up to 255) \hyperlink{structflame_1_1_note}{Note} that this will clobber the current sample set if there is one, and the listener will not be called on it!
+
+
+\begin{DoxyParams}{Parameters}
+{\em samples} & the samples to play \\
+\hline
+{\em sample\-Length} & the number of samples to play \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 58 of file D\-A\-C.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_d_a_converter_a7d6c6df7f4e84c768dd92250f959078e}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!\-\_\-current\-Sample@{\-\_\-current\-Sample}}
+\index{\-\_\-current\-Sample@{\-\_\-current\-Sample}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{\-\_\-current\-Sample}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-D\-A\-Converter\-::\-\_\-current\-Sample\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_d_a_converter_a7d6c6df7f4e84c768dd92250f959078e}
+
+
+Definition at line 56 of file D\-A\-C.\-h.
+
+\hypertarget{classflame_1_1_d_a_converter_a5ef3241975593e467838c730857772f4}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!\-\_\-listener@{\-\_\-listener}}
+\index{\-\_\-listener@{\-\_\-listener}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\-A\-C\-Listener}\& flame\-::\-D\-A\-Converter\-::\-\_\-listener\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_d_a_converter_a5ef3241975593e467838c730857772f4}
+
+
+Definition at line 58 of file D\-A\-C.\-h.
+
+\hypertarget{classflame_1_1_d_a_converter_a97893edc430924497ee399b9223e4061}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!\-\_\-sample\-Length@{\-\_\-sample\-Length}}
+\index{\-\_\-sample\-Length@{\-\_\-sample\-Length}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{\-\_\-sample\-Length}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-D\-A\-Converter\-::\-\_\-sample\-Length\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_d_a_converter_a97893edc430924497ee399b9223e4061}
+
+
+Definition at line 55 of file D\-A\-C.\-h.
+
+\hypertarget{classflame_1_1_d_a_converter_a26a86c298bf06bfc532f1b7cdaad6a75}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!\-\_\-samples@{\-\_\-samples}}
+\index{\-\_\-samples@{\-\_\-samples}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{\-\_\-samples}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\-A\-M\-P\-L\-E}$\ast$ flame\-::\-D\-A\-Converter\-::\-\_\-samples\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_d_a_converter_a26a86c298bf06bfc532f1b7cdaad6a75}
+
+
+Definition at line 54 of file D\-A\-C.\-h.
+
+\hypertarget{classflame_1_1_d_a_converter_a70829abb271ec51a212d558c9087d8c5}{\index{flame\-::\-D\-A\-Converter@{flame\-::\-D\-A\-Converter}!\-\_\-timer@{\-\_\-timer}}
+\index{\-\_\-timer@{\-\_\-timer}!flame::DAConverter@{flame\-::\-D\-A\-Converter}}
+\subsubsection[{\-\_\-timer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer}\& flame\-::\-D\-A\-Converter\-::\-\_\-timer\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_d_a_converter_a70829abb271ec51a212d558c9087d8c5}
+
+
+Definition at line 57 of file D\-A\-C.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_d_a_c_8h}{D\-A\-C.\-h}\item 
+\hyperlink{_d_a_c_8cpp}{D\-A\-C.\-cpp}\end{DoxyCompactItemize}

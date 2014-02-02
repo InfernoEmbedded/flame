@@ -1,18 +1,18 @@
 var globals_dup =
 [
-    [ "$", "globals.html", null ],
-    [ "_", "globals_0x5f.html", null ],
-    [ "c", "globals_0x63.html", null ],
-    [ "d", "globals_0x64.html", null ],
-    [ "e", "globals_0x65.html", null ],
-    [ "f", "globals_0x66.html", null ],
-    [ "g", "globals_0x67.html", null ],
-    [ "h", "globals_0x68.html", null ],
-    [ "i", "globals_0x69.html", null ],
-    [ "m", "globals_0x6d.html", null ],
-    [ "n", "globals_0x6e.html", null ],
-    [ "o", "globals_0x6f.html", null ],
-    [ "p", "globals_0x70.html", null ],
-    [ "s", "globals_0x73.html", null ],
-    [ "u", "globals_0x75.html", null ]
+    [ "_", "globals.html", null ],
+    [ "a", "globals_a.html", null ],
+    [ "c", "globals_c.html", null ],
+    [ "d", "globals_d.html", null ],
+    [ "f", "globals_f.html", null ],
+    [ "g", "globals_g.html", null ],
+    [ "h", "globals_h.html", null ],
+    [ "i", "globals_i.html", null ],
+    [ "m", "globals_m.html", null ],
+    [ "n", "globals_n.html", null ],
+    [ "p", "globals_p.html", null ],
+    [ "r", "globals_r.html", null ],
+    [ "s", "globals_s.html", null ],
+    [ "u", "globals_u.html", null ],
+    [ "v", "globals_v.html", null ]
 ];

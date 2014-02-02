@@ -1,0 +1,55 @@
+\hypertarget{_triple_axis_calibrator_8cpp}{\section{Triple\-Axis\-Calibrator.\-cpp File Reference}
+\label{_triple_axis_calibrator_8cpp}\index{Triple\-Axis\-Calibrator.\-cpp@{Triple\-Axis\-Calibrator.\-cpp}}
+}
+{\ttfamily \#include $<$flame/\-Triple\-Axis\-Calibrator.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$util/delay.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame}{flame}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_triple_axis_calibrator_8cpp_ae048feeaa651993f380953e74d0aa61c}{M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E}~3
+\item 
+\#define \hyperlink{_triple_axis_calibrator_8cpp_abd0ac3a76514739483971c180c09249d}{D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R}(message)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_triple_axis_calibrator_8cpp_abd0ac3a76514739483971c180c09249d}{\index{Triple\-Axis\-Calibrator.\-cpp@{Triple\-Axis\-Calibrator.\-cpp}!D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R@{D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R}}
+\index{D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R@{D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R}!TripleAxisCalibrator.cpp@{Triple\-Axis\-Calibrator.\-cpp}}
+\subsubsection[{D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\-I\-R\-E\-C\-T\-\_\-\-U\-S\-E\-R(
+\begin{DoxyParamCaption}
+\item[{}]{message}
+\end{DoxyParamCaption}
+)}}\label{_triple_axis_calibrator_8cpp_abd0ac3a76514739483971c180c09249d}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+                *feedback = PSTR(message); \(\backslash\)
+                if (\_lastMessage == *feedback) \{ \(\backslash\)
+                        *feedback = NULL; \(\backslash\)
+                \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+                        \_currentSamples = 0; \(\backslash\)
+                        for (uint8\_t i = 0; i < 5; i++) \{ \(\backslash\)
+                                \_delay\_ms(1000); \(\backslash\)
+                        \} \(\backslash\)
+                        \_lastMessage = *feedback; \(\backslash\)
+                \} \(\backslash\)
+        \} \textcolor{keywordflow}{while} (0);
+\end{DoxyCode}
+
+
+Definition at line 39 of file Triple\-Axis\-Calibrator.\-cpp.
+
+\hypertarget{_triple_axis_calibrator_8cpp_ae048feeaa651993f380953e74d0aa61c}{\index{Triple\-Axis\-Calibrator.\-cpp@{Triple\-Axis\-Calibrator.\-cpp}!M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E@{M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E}}
+\index{M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E@{M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E}!TripleAxisCalibrator.cpp@{Triple\-Axis\-Calibrator.\-cpp}}
+\subsubsection[{M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-A\-X\-\_\-\-D\-I\-F\-F\-E\-R\-E\-N\-C\-E~3}}\label{_triple_axis_calibrator_8cpp_ae048feeaa651993f380953e74d0aa61c}
+
+
+Definition at line 37 of file Triple\-Axis\-Calibrator.\-cpp.
+

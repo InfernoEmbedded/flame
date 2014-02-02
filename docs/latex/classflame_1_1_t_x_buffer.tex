@@ -1,0 +1,359 @@
+\hypertarget{classflame_1_1_t_x_buffer}{\section{flame\-:\-:T\-X\-Buffer Class Reference}
+\label{classflame_1_1_t_x_buffer}\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}}
+}
+
+
+{\ttfamily \#include $<$Device\-\_\-\-T\-X.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_a98b938f8eb8bbc33578798a430a6f816}{T\-X\-Buffer} ()
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_af0e3d3c373a5e75124636553561cecae}{T\-X\-Buffer} (const char $\ast$string)
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_ad63b3d52cc78eb91a9780e1309e4e644}{T\-X\-Buffer} (const char $\ast$string, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_a873283b83ea650904d4f3ad1626b9775}{T\-X\-Buffer} (P\-G\-M\-\_\-\-P string, bool ignored \hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D})
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_aaa616da48996dcb117a320a23b0b163b}{T\-X\-Buffer} (const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_ab13a5a50c65cff4aeccbe0406b792d8b}{T\-X\-Buffer} (const char $\ast$buffer, uint16\-\_\-t length, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+\hyperlink{classflame_1_1_t_x_buffer_a6f294041f1bd3591e85b0cc78fb7b2b2}{T\-X\-Buffer} (P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length, bool ignored \hyperlink{io_8h_addf5ec070e9499d36b7f2009ce736076}{U\-N\-U\-S\-E\-D})
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_t_x_buffer_ade3eba5c5ed688eb4ea132469c8e2307}{get\-Position} ()
+\item 
+void \hyperlink{classflame_1_1_t_x_buffer_ace94468f27c472f7515e7f355a1377af}{seek} (uint16\-\_\-t position)
+\item 
+int \hyperlink{classflame_1_1_t_x_buffer_a70668a72527ab1516088c38a8229337d}{peek} (uint16\-\_\-t offset)
+\item 
+int \hyperlink{classflame_1_1_t_x_buffer_aa6b30c699c035e69cd0ef2a009479206}{next\-Character} ()
+\item 
+void \hyperlink{classflame_1_1_t_x_buffer_a247c40701875dfaf8caa8d1cc25eb32a}{discard} ()
+\item 
+bool \hyperlink{classflame_1_1_t_x_buffer_a527cc3f0d2cb0519dc613c0832357c5e}{has\-More} ()
+\item 
+void \hyperlink{classflame_1_1_t_x_buffer_aef6d588530706d1436a2473d4814cb56}{dump\-State} (char $\ast$buf, uint8\-\_\-t buf\-Length, const char $\ast$func)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile void $\ast$ \hyperlink{classflame_1_1_t_x_buffer_a66868ca244713911f52da0edac7bd410}{\-\_\-data}
+\item 
+volatile uint16\-\_\-t \hyperlink{classflame_1_1_t_x_buffer_ac2b091fd502d089763813100635c06de}{\-\_\-offset}
+\item 
+volatile uint16\-\_\-t \hyperlink{classflame_1_1_t_x_buffer_a7237489370200b26a4a9ae7b829faa7a}{\-\_\-length}
+\item 
+void($\ast$ \hyperlink{classflame_1_1_t_x_buffer_a5843eca013da741fdfec20916239d708}{\-\_\-complete\-Function} )(const char $\ast$)
+\item 
+volatile \hyperlink{namespaceflame_a62698923ce7cbb06514750e7f0651c7f}{Address\-Type} \hyperlink{classflame_1_1_t_x_buffer_af5929a77f1d17118f0358da1d6cce8f3}{\-\_\-type}
+\item 
+volatile bool \hyperlink{classflame_1_1_t_x_buffer_a266cb738953476ec42dbd08d5d310930}{\-\_\-is\-String}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 60 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_t_x_buffer_a98b938f8eb8bbc33578798a430a6f816}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a98b938f8eb8bbc33578798a430a6f816}
+Create an empty buffer 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string to stick in the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 74 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_af0e3d3c373a5e75124636553561cecae}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_af0e3d3c373a5e75124636553561cecae}
+Create a buffer holding a string 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string to stick in the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 86 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_ad63b3d52cc78eb91a9780e1309e4e644}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_ad63b3d52cc78eb91a9780e1309e4e644}
+Create a buffer holding a string 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string to stick in the buffer \\
+\hline
+{\em complete\-Function} & a function to call when we are done with the string, will be passed the string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 99 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a873283b83ea650904d4f3ad1626b9775}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{string, }
+\item[{bool ignored}]{U\-N\-U\-S\-E\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a873283b83ea650904d4f3ad1626b9775}
+Create a buffer holding a progmem string 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string to stick in the buffer \\
+\hline
+{\em ignored} & provided only to distinguish against a memory string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 112 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_aaa616da48996dcb117a320a23b0b163b}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_aaa616da48996dcb117a320a23b0b163b}
+Create a buffer holding a block of memory 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_ab13a5a50c65cff4aeccbe0406b792d8b}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_ab13a5a50c65cff4aeccbe0406b792d8b}
+Create a buffer holding a block of memory 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+{\em complete\-Function} & a function to call when we are done with the string, will be passed the buffer \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 169 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a6f294041f1bd3591e85b0cc78fb7b2b2}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!T\-X\-Buffer@{T\-X\-Buffer}}
+\index{T\-X\-Buffer@{T\-X\-Buffer}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{T\-X\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-T\-X\-Buffer\-::\-T\-X\-Buffer (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{bool ignored}]{U\-N\-U\-S\-E\-D}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a6f294041f1bd3591e85b0cc78fb7b2b2}
+Create a buffer holding a progmem block of memory 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+{\em ignored} & provided only to distinguish against a memory string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 184 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_t_x_buffer_a247c40701875dfaf8caa8d1cc25eb32a}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!discard@{discard}}
+\index{discard@{discard}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{discard}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-T\-X\-Buffer\-::discard (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a247c40701875dfaf8caa8d1cc25eb32a}
+Called when the buffer is no longer needed 
+
+Definition at line 308 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_aef6d588530706d1436a2473d4814cb56}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!dump\-State@{dump\-State}}
+\index{dump\-State@{dump\-State}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{dump\-State}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-T\-X\-Buffer\-::dump\-State (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{buf, }
+\item[{uint8\-\_\-t}]{buf\-Length, }
+\item[{const char $\ast$}]{func}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_aef6d588530706d1436a2473d4814cb56}
+Dump the current state into a buffer for debugging 
+\begin{DoxyParams}{Parameters}
+{\em buf} & the buffer to write to \\
+\hline
+{\em buf\-Length} & the space available in the buffer \\
+\hline
+{\em func} & the name of the caller \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 338 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_ade3eba5c5ed688eb4ea132469c8e2307}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::\-T\-X\-Buffer\-::get\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_ade3eba5c5ed688eb4ea132469c8e2307}
+Get the position in the current buffer \begin{DoxyReturn}{Returns}
+the current position 
+\end{DoxyReturn}
+
+
+Definition at line 229 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a527cc3f0d2cb0519dc613c0832357c5e}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!has\-More@{has\-More}}
+\index{has\-More@{has\-More}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{has\-More}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-T\-X\-Buffer\-::has\-More (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a527cc3f0d2cb0519dc613c0832357c5e}
+Does this buffer have more characters? \begin{DoxyReturn}{Returns}
+true if there are more characters 
+\end{DoxyReturn}
+
+
+Definition at line 325 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_aa6b30c699c035e69cd0ef2a009479206}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!next\-Character@{next\-Character}}
+\index{next\-Character@{next\-Character}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{next\-Character}]{\setlength{\rightskip}{0pt plus 5cm}int flame\-::\-T\-X\-Buffer\-::next\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_aa6b30c699c035e69cd0ef2a009479206}
+Get a character to transmit \begin{DoxyReturn}{Returns}
+the character, or -\/1 if there is nothing left 
+\end{DoxyReturn}
+
+
+Definition at line 294 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a70668a72527ab1516088c38a8229337d}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!peek@{peek}}
+\index{peek@{peek}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{peek}]{\setlength{\rightskip}{0pt plus 5cm}int flame\-::\-T\-X\-Buffer\-::peek (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{offset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_a70668a72527ab1516088c38a8229337d}
+Get the character at an offset 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the offset \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the character at the offset, or -\/1 if there is none 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_ace94468f27c472f7515e7f355a1377af}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!seek@{seek}}
+\index{seek@{seek}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{seek}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-T\-X\-Buffer\-::seek (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{position}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_t_x_buffer_ace94468f27c472f7515e7f355a1377af}
+Seek the position in the current buffer 
+\begin{DoxyParams}{Parameters}
+{\em position} & the desired position \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 238 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_t_x_buffer_a5843eca013da741fdfec20916239d708}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-complete\-Function@{\-\_\-complete\-Function}}
+\index{\-\_\-complete\-Function@{\-\_\-complete\-Function}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-complete\-Function}]{\setlength{\rightskip}{0pt plus 5cm}void($\ast$ flame\-::\-T\-X\-Buffer\-::\-\_\-complete\-Function)(const char $\ast$)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_a5843eca013da741fdfec20916239d708}
+
+
+Definition at line 65 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a66868ca244713911f52da0edac7bd410}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}volatile void$\ast$ flame\-::\-T\-X\-Buffer\-::\-\_\-data\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_a66868ca244713911f52da0edac7bd410}
+
+
+Definition at line 62 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a266cb738953476ec42dbd08d5d310930}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-is\-String@{\-\_\-is\-String}}
+\index{\-\_\-is\-String@{\-\_\-is\-String}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-is\-String}]{\setlength{\rightskip}{0pt plus 5cm}volatile bool flame\-::\-T\-X\-Buffer\-::\-\_\-is\-String\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_a266cb738953476ec42dbd08d5d310930}
+
+
+Definition at line 67 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_a7237489370200b26a4a9ae7b829faa7a}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-length@{\-\_\-length}}
+\index{\-\_\-length@{\-\_\-length}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-length}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint16\-\_\-t flame\-::\-T\-X\-Buffer\-::\-\_\-length\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_a7237489370200b26a4a9ae7b829faa7a}
+
+
+Definition at line 64 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_ac2b091fd502d089763813100635c06de}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-offset@{\-\_\-offset}}
+\index{\-\_\-offset@{\-\_\-offset}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint16\-\_\-t flame\-::\-T\-X\-Buffer\-::\-\_\-offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_ac2b091fd502d089763813100635c06de}
+
+
+Definition at line 63 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_t_x_buffer_af5929a77f1d17118f0358da1d6cce8f3}{\index{flame\-::\-T\-X\-Buffer@{flame\-::\-T\-X\-Buffer}!\-\_\-type@{\-\_\-type}}
+\index{\-\_\-type@{\-\_\-type}!flame::TXBuffer@{flame\-::\-T\-X\-Buffer}}
+\subsubsection[{\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf Address\-Type} flame\-::\-T\-X\-Buffer\-::\-\_\-type\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_t_x_buffer_af5929a77f1d17118f0358da1d6cce8f3}
+
+
+Definition at line 66 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_device___t_x_8h}{Device\-\_\-\-T\-X.\-h}\end{DoxyCompactItemize}

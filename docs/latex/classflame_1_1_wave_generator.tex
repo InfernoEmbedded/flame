@@ -1,0 +1,108 @@
+\hypertarget{classflame_1_1_wave_generator}{\section{flame\-:\-:Wave\-Generator Class Reference}
+\label{classflame_1_1_wave_generator}\index{flame\-::\-Wave\-Generator@{flame\-::\-Wave\-Generator}}
+}
+
+
+{\ttfamily \#include $<$Wave\-Generator.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Wave\-Generator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_wave_generator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_wave_generator_a33e33b8cbf6ffd8ba02760574188a970}{Wave\-Generator} (\hyperlink{classflame_1_1_d_a_converter}{D\-A\-Converter} \&dac, \hyperlink{_d_a_c_8h_a5a6d1dc37ffa32957a63868cd1da39b3}{S\-A\-M\-P\-L\-E} $\ast$sample\-Buffer, uint8\-\_\-t sample\-Length, uint32\-\_\-t sample\-Rate, \hyperlink{namespaceflame_a69cbce86034387173caf0aaf772a5d3b}{V\-O\-I\-C\-E} $\ast$voices, uint8\-\_\-t voice\-Count)
+\item 
+void \hyperlink{classflame_1_1_wave_generator_ac94e2fa02447ef96aba48b88181eddeb}{more\-Samples} (\hyperlink{classflame_1_1_d_a_converter}{D\-A\-Converter} $\ast$dac, \hyperlink{_d_a_c_8h_a5a6d1dc37ffa32957a63868cd1da39b3}{S\-A\-M\-P\-L\-E} $\ast$old\-Samples, uint8\-\_\-t sample\-Length)
+\item 
+bool \hyperlink{classflame_1_1_wave_generator_a0a1404ff26873712073b396c0a94aac4}{play} (\hyperlink{namespaceflame_a7f0c5adbd1329cd2947d15e6af02dbf1}{I\-N\-S\-T\-R\-U\-M\-E\-N\-T} $\ast$\hyperlink{structflame_1_1instrument}{instrument}, uint16\-\_\-t frequency, \hyperlink{namespaceflame_a7f6447252c60127b805475b293831f99}{A\-M\-P\-L\-I\-T\-U\-D\-E} velocity, uint32\-\_\-t duration)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 93 of file Wave\-Generator.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_wave_generator_a33e33b8cbf6ffd8ba02760574188a970}{\index{flame\-::\-Wave\-Generator@{flame\-::\-Wave\-Generator}!Wave\-Generator@{Wave\-Generator}}
+\index{Wave\-Generator@{Wave\-Generator}!flame::WaveGenerator@{flame\-::\-Wave\-Generator}}
+\subsubsection[{Wave\-Generator}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Wave\-Generator\-::\-Wave\-Generator (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-A\-Converter} \&}]{dac, }
+\item[{{\bf S\-A\-M\-P\-L\-E} $\ast$}]{sample\-Buffer, }
+\item[{uint8\-\_\-t}]{sample\-Length, }
+\item[{uint32\-\_\-t}]{sample\-Rate, }
+\item[{{\bf V\-O\-I\-C\-E} $\ast$}]{voices, }
+\item[{uint8\-\_\-t}]{voice\-Count}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_wave_generator_a33e33b8cbf6ffd8ba02760574188a970}
+Generate waveforms and write them to the D\-A\-C
+
+
+\begin{DoxyParams}{Parameters}
+{\em dac} & the D\-A\-C to write to \\
+\hline
+{\em sample\-Buffer} & a buffer of samples to write to, used to communicate with the D\-A\-C \\
+\hline
+{\em sample\-Length} & the length of the sample buffer \\
+\hline
+{\em sample\-Rate} & the sample rate of the D\-A\-C \\
+\hline
+{\em voices} & the voices to use to generate sound \\
+\hline
+{\em voice\-Count} & the number of voices \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Wave\-Generator.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_wave_generator_ac94e2fa02447ef96aba48b88181eddeb}{\index{flame\-::\-Wave\-Generator@{flame\-::\-Wave\-Generator}!more\-Samples@{more\-Samples}}
+\index{more\-Samples@{more\-Samples}!flame::WaveGenerator@{flame\-::\-Wave\-Generator}}
+\subsubsection[{more\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Wave\-Generator\-::more\-Samples (
+\begin{DoxyParamCaption}
+\item[{{\bf D\-A\-Converter} $\ast$}]{dac, }
+\item[{{\bf S\-A\-M\-P\-L\-E} $\ast$}]{old\-Samples, }
+\item[{uint8\-\_\-t}]{sample\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_wave_generator_ac94e2fa02447ef96aba48b88181eddeb}
+Send more samples to the D\-A\-C 
+
+Reimplemented from \hyperlink{classflame_1_1_d_a_c_listener_a00ede324c36c05647dc31b770e4e1443}{flame\-::\-D\-A\-C\-Listener}.
+
+
+
+Definition at line 190 of file Wave\-Generator.\-cpp.
+
+\hypertarget{classflame_1_1_wave_generator_a0a1404ff26873712073b396c0a94aac4}{\index{flame\-::\-Wave\-Generator@{flame\-::\-Wave\-Generator}!play@{play}}
+\index{play@{play}!flame::WaveGenerator@{flame\-::\-Wave\-Generator}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Wave\-Generator\-::play (
+\begin{DoxyParamCaption}
+\item[{{\bf I\-N\-S\-T\-R\-U\-M\-E\-N\-T} $\ast$}]{instrument, }
+\item[{uint16\-\_\-t}]{frequency, }
+\item[{{\bf A\-M\-P\-L\-I\-T\-U\-D\-E}}]{velocity, }
+\item[{uint32\-\_\-t}]{duration}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_wave_generator_a0a1404ff26873712073b396c0a94aac4}
+Play a note \begin{DoxyReturn}{Returns}
+true if the note could not be played 
+\end{DoxyReturn}
+
+
+Definition at line 199 of file Wave\-Generator.\-cpp.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_wave_generator_8h}{Wave\-Generator.\-h}\item 
+\hyperlink{_wave_generator_8cpp}{Wave\-Generator.\-cpp}\end{DoxyCompactItemize}

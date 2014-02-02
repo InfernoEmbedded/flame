@@ -1,0 +1,146 @@
+\hypertarget{classflame_1_1_shifter_implementation}{\section{flame\-:\-:Shifter\-Implementation$<$,, msb, rising, delay $>$ Class Template Reference}
+\label{classflame_1_1_shifter_implementation}\index{flame\-::\-Shifter\-Implementation$<$,, msb, rising, delay $>$@{flame\-::\-Shifter\-Implementation$<$,, msb, rising, delay $>$}}
+}
+
+
+{\ttfamily \#include $<$Shifter.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Shifter\-Implementation$<$,, msb, rising, delay $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_shifter_implementation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_shifter_implementation_a6a500da4041278c3f2e773ccb86afe8d}{Shifter\-Implementation} ()
+\item 
+void \hyperlink{classflame_1_1_shifter_implementation_abe4372cf69fc72659d95f64f9fa3497d}{shift\-Out} (uint8\-\_\-t data, uint8\-\_\-t bits)
+\item 
+void \hyperlink{classflame_1_1_shifter_implementation_a927327d91cf157895c1ce236a13951a9}{shift\-Out} (uint8\-\_\-t data)
+\item 
+void \hyperlink{classflame_1_1_shifter_implementation_a7c061a25f9c664901f2d9247daf6f37b}{shift\-Out} (uint8\-\_\-t $\ast$shift\-Data, uint8\-\_\-t shift\-Length)
+\item 
+void \hyperlink{classflame_1_1_shifter_implementation_aa380a270ea9d3b40da868822daf9022e}{shift\-Out} (uint8\-\_\-t $\ast$shift\-Data, uint8\-\_\-t data\-Length, uint16\-\_\-t elements)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock), F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data), bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$class flame\-::\-Shifter\-Implementation$<$,, msb, rising, delay $>$}
+
+Create a new shifter 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em clock...} & an pin describing the clock line \\
+\hline
+{\em data...} & an pin describing the data line \\
+\hline
+{\em msb} & true to output M\-S\-B first. false for L\-S\-B \\
+\hline
+{\em rising} & true if the receiver is clocked on the rising edge, false otherwise \\
+\hline
+{\em delay} & the delay between state changes (us) \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 60 of file Shifter.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_shifter_implementation_a6a500da4041278c3f2e773ccb86afe8d}{\index{flame\-::\-Shifter\-Implementation@{flame\-::\-Shifter\-Implementation}!Shifter\-Implementation@{Shifter\-Implementation}}
+\index{Shifter\-Implementation@{Shifter\-Implementation}!flame::ShifterImplementation@{flame\-::\-Shifter\-Implementation}}
+\subsubsection[{Shifter\-Implementation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$ {\bf flame\-::\-Shifter\-Implementation}$<$,, msb, rising, delay $>$\-::{\bf Shifter\-Implementation} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_shifter_implementation_a6a500da4041278c3f2e773ccb86afe8d}
+Constructor -\/ set the pins to output 
+
+Definition at line 928 of file Shifter.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_shifter_implementation_abe4372cf69fc72659d95f64f9fa3497d}{\index{flame\-::\-Shifter\-Implementation@{flame\-::\-Shifter\-Implementation}!shift\-Out@{shift\-Out}}
+\index{shift\-Out@{shift\-Out}!flame::ShifterImplementation@{flame\-::\-Shifter\-Implementation}}
+\subsubsection[{shift\-Out}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$ void {\bf flame\-::\-Shifter\-Implementation}$<$,, msb, rising, delay $>$\-::shift\-Out (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{data, }
+\item[{uint8\-\_\-t}]{bits}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_shifter_implementation_abe4372cf69fc72659d95f64f9fa3497d}
+Shift out a number of bits (L\-S\-B aligned) 
+\begin{DoxyParams}{Parameters}
+{\em data} & a byte containing the bits to shift \\
+\hline
+{\em bits} & the number of bits to shift \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_shifter_ae41737bf06c0c10f4c41ed380bb3f309}{flame\-::\-Shifter}.
+
+
+
+Definition at line 938 of file Shifter.\-h.
+
+\hypertarget{classflame_1_1_shifter_implementation_a927327d91cf157895c1ce236a13951a9}{\index{flame\-::\-Shifter\-Implementation@{flame\-::\-Shifter\-Implementation}!shift\-Out@{shift\-Out}}
+\index{shift\-Out@{shift\-Out}!flame::ShifterImplementation@{flame\-::\-Shifter\-Implementation}}
+\subsubsection[{shift\-Out}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$ void {\bf flame\-::\-Shifter\-Implementation}$<$,, msb, rising, delay $>$\-::shift\-Out (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_shifter_implementation_a927327d91cf157895c1ce236a13951a9}
+Shift out a byte of data 
+\begin{DoxyParams}{Parameters}
+{\em data} & the data to output \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_shifter_a6309a7c637bbf0f697af638401c1bed4}{flame\-::\-Shifter}.
+
+
+
+Definition at line 973 of file Shifter.\-h.
+
+\hypertarget{classflame_1_1_shifter_implementation_a7c061a25f9c664901f2d9247daf6f37b}{\index{flame\-::\-Shifter\-Implementation@{flame\-::\-Shifter\-Implementation}!shift\-Out@{shift\-Out}}
+\index{shift\-Out@{shift\-Out}!flame::ShifterImplementation@{flame\-::\-Shifter\-Implementation}}
+\subsubsection[{shift\-Out}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$ void {\bf flame\-::\-Shifter\-Implementation}$<$,, msb, rising, delay $>$\-::shift\-Out (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{shift\-Data, }
+\item[{uint8\-\_\-t}]{shift\-Length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_shifter_implementation_a7c061a25f9c664901f2d9247daf6f37b}
+
+
+Implements \hyperlink{classflame_1_1_shifter_ae951cbfbe738a62503f906b403e21273}{flame\-::\-Shifter}.
+
+
+
+Definition at line 1005 of file Shifter.\-h.
+
+\hypertarget{classflame_1_1_shifter_implementation_aa380a270ea9d3b40da868822daf9022e}{\index{flame\-::\-Shifter\-Implementation@{flame\-::\-Shifter\-Implementation}!shift\-Out@{shift\-Out}}
+\index{shift\-Out@{shift\-Out}!flame::ShifterImplementation@{flame\-::\-Shifter\-Implementation}}
+\subsubsection[{shift\-Out}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(clock) , F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(data) , bool msb = true, bool rising = true, uint16\-\_\-t delay = 0$>$ void {\bf flame\-::\-Shifter\-Implementation}$<$,, msb, rising, delay $>$\-::shift\-Out (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t $\ast$}]{shift\-Data, }
+\item[{uint8\-\_\-t}]{data\-Length, }
+\item[{uint16\-\_\-t}]{elements}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_shifter_implementation_aa380a270ea9d3b40da868822daf9022e}
+
+
+Implements \hyperlink{classflame_1_1_shifter_a337d5a3460ca61d79e8273e26549b63e}{flame\-::\-Shifter}.
+
+
+
+Definition at line 1021 of file Shifter.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_shifter_8h}{Shifter.\-h}\end{DoxyCompactItemize}

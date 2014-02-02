@@ -1,0 +1,458 @@
+\hypertarget{classflame_1_1_display___character}{\section{flame\-:\-:Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classflame_1_1_display___character}\index{flame\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$@{flame\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Character.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.439803cm]{classflame_1_1_display___character}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_display___character_af56156cb749caf92093c7851a8cc9412}{Display\-\_\-\-Character} ()
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_display___character_a8945b725b35dc3ccb960be48defa04d6}{get\-Width} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_display___character_a1e43e42391796d83cb12dfc57469f1da}{get\-Height} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+bool \hyperlink{classflame_1_1_display___character_a29583da1ca8a9b1ab48982d97828ff18}{write} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, \hyperlink{classflame_1_1_t_x_buffer}{T\-X\-Buffer} \&tx\-Buffer)
+\item 
+bool \hyperlink{classflame_1_1_display___character_aca5ba0e9806ba7296f847f2f4bb8711e}{write\-String} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, const char $\ast$string)
+\item 
+bool \hyperlink{classflame_1_1_display___character_a909a1a46c1072748a596c260c664f127}{write\-Buffer} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classflame_1_1_display___character_ab11d4562a0b93afcf5b41c43d0bb7d45}{write\-String\-\_\-\-P} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{classflame_1_1_display___character_a382ee6d2e408b55277c8f9638a7eb2cc}{write\-Buffer\-\_\-\-P} (int16\-\_\-t $\ast$offset\-X, uint16\-\_\-t offset\-Y, P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+void \hyperlink{classflame_1_1_display___character_a4a3172da51cdb598217654934f9a2ae4}{run\-Tx\-Buffers} ()
+\item 
+bool \hyperlink{classflame_1_1_display___character_a74858e6aa4ba6205047f1dbd03544ece}{tx\-Animation} (uint16\-\_\-t row)
+\item 
+void \hyperlink{classflame_1_1_display___character_a53e7bb7086d34b746628b9c9b9cf13c2}{set\-Wrap} (bool should\-Wrap)
+\item 
+void \hyperlink{classflame_1_1_display___character_adb19293aae6f7944ae498089b083ed36}{set\-Scroll} (bool should\-Scroll)
+\item 
+void \hyperlink{classflame_1_1_display___character_a313f5f98c38a4e73a04128cf3d94e1ba}{set\-Cursor} (uint16\-\_\-t col, uint16\-\_\-t row)
+\item 
+void \hyperlink{classflame_1_1_display___character_aaca15216dc5d78b1c59fcd9368a4f5b4}{write\-Char} (char character)
+\item 
+void \hyperlink{classflame_1_1_display___character_a5d78d106c26666eadc8b0f275bd00b2a}{scroll\-Vertically} ()
+\item 
+virtual void \hyperlink{classflame_1_1_display___character_a7d183c097153664ee102291ac32029c4}{\-\_\-write\-Char} (char character)=0
+\item 
+virtual char \hyperlink{classflame_1_1_display___character_ab68ff09ff8fa79a1b1e0c4afb7e6de95}{\-\_\-read\-Char} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_display___character_a2bd2f2b2b6f062f3c47f3dc417f3781d}{\-\_\-set\-Cursor} (uint8\-\_\-t col, uint8\-\_\-t row)=0
+\item 
+virtual void \hyperlink{classflame_1_1_display___character_ae575b7b3568f820e45029a45715a4f16}{clear} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int16\-\_\-t \hyperlink{classflame_1_1_display___character_a90abfe03430c90c0d50469f7e99c6c5c}{\-\_\-tx\-Offset}
+\item 
+bool \hyperlink{classflame_1_1_display___character_a2f51ff794dec405d8cdb42d470e9f31d}{\-\_\-wrap}
+\item 
+bool \hyperlink{classflame_1_1_display___character_a6216cd7f9631ec8851b2d2ed6a5c2728}{\-\_\-scroll}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_display___character_a04d2c6e9c31084e353be57fa53d97285}{\-\_\-current\-Row}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_display___character_ab6428d22cb0b06d5d1f1a1bbd71d2697}{\-\_\-current\-Col}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class flame\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}
+
+A generic text display Origin (0,0) is bottom left 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 42 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_display___character_af56156cb749caf92093c7851a8cc9412}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!Display\-\_\-\-Character@{Display\-\_\-\-Character}}
+\index{Display\-\_\-\-Character@{Display\-\_\-\-Character}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{Display\-\_\-\-Character}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::{\bf Display\-\_\-\-Character} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_af56156cb749caf92093c7851a8cc9412}
+Create a new character display 
+
+Definition at line 54 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_display___character_ab68ff09ff8fa79a1b1e0c4afb7e6de95}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-read\-Char@{\-\_\-read\-Char}}
+\index{\-\_\-read\-Char@{\-\_\-read\-Char}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-read\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual char {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-read\-Char (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___character_ab68ff09ff8fa79a1b1e0c4afb7e6de95}
+
+
+Implemented in \hyperlink{classflame_1_1_display___h_d44780_a2bf6745d21c83b418df65b065aa8ccb3}{flame\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___character_a2bd2f2b2b6f062f3c47f3dc417f3781d}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-set\-Cursor@{\-\_\-set\-Cursor}}
+\index{\-\_\-set\-Cursor@{\-\_\-set\-Cursor}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___character_a2bd2f2b2b6f062f3c47f3dc417f3781d}
+
+
+Implemented in \hyperlink{classflame_1_1_display___h_d44780_adba62c96c907f965995ceaae8da5dc6d}{flame\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___character_a7d183c097153664ee102291ac32029c4}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-write\-Char@{\-\_\-write\-Char}}
+\index{\-\_\-write\-Char@{\-\_\-write\-Char}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___character_a7d183c097153664ee102291ac32029c4}
+
+
+Implemented in \hyperlink{classflame_1_1_display___h_d44780_aced521ac701a22b68bc935dfc925708c}{flame\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___character_ae575b7b3568f820e45029a45715a4f16}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!clear@{clear}}
+\index{clear@{clear}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___character_ae575b7b3568f820e45029a45715a4f16}
+
+
+Implemented in \hyperlink{classflame_1_1_display___h_d44780_aef98047f4e45787046eaf410f49313c2}{flame\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___character_a1e43e42391796d83cb12dfc57469f1da}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a1e43e42391796d83cb12dfc57469f1da}
+Get the width of the display 
+
+Definition at line 71 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a8945b725b35dc3ccb960be48defa04d6}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a8945b725b35dc3ccb960be48defa04d6}
+Get the width of the display 
+
+Definition at line 64 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a4a3172da51cdb598217654934f9a2ae4}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_display___character_a4a3172da51cdb598217654934f9a2ae4}
+Start rendering T\-X buffers 
+
+Implements \hyperlink{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}{flame\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 346 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a5d78d106c26666eadc8b0f275bd00b2a}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!scroll\-Vertically@{scroll\-Vertically}}
+\index{scroll\-Vertically@{scroll\-Vertically}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{scroll\-Vertically}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::scroll\-Vertically (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a5d78d106c26666eadc8b0f275bd00b2a}
+Scroll the display up, leaving a blank line at the bottom 
+
+Definition at line 474 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a313f5f98c38a4e73a04128cf3d94e1ba}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!set\-Cursor@{set\-Cursor}}
+\index{set\-Cursor@{set\-Cursor}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Cursor}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Cursor (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a313f5f98c38a4e73a04128cf3d94e1ba}
+Position the cursor 
+\begin{DoxyParams}{Parameters}
+{\em col} & the column to set \\
+\hline
+{\em row} & the row to set \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 401 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_adb19293aae6f7944ae498089b083ed36}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!set\-Scroll@{set\-Scroll}}
+\index{set\-Scroll@{set\-Scroll}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Scroll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Scroll (
+\begin{DoxyParamCaption}
+\item[{bool}]{should\-Scroll}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_adb19293aae6f7944ae498089b083ed36}
+Should the automatically scroll characters vertically? 
+\begin{DoxyParams}{Parameters}
+{\em should\-Scroll} & true to scroll \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 392 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a53e7bb7086d34b746628b9c9b9cf13c2}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!set\-Wrap@{set\-Wrap}}
+\index{set\-Wrap@{set\-Wrap}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{set\-Wrap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::set\-Wrap (
+\begin{DoxyParamCaption}
+\item[{bool}]{should\-Wrap}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a53e7bb7086d34b746628b9c9b9cf13c2}
+Should the display automatically wrap characters? 
+\begin{DoxyParams}{Parameters}
+{\em should\-Wrap} & true to wrap \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 384 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a74858e6aa4ba6205047f1dbd03544ece}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!tx\-Animation@{tx\-Animation}}
+\index{tx\-Animation@{tx\-Animation}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{tx\-Animation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::tx\-Animation (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a74858e6aa4ba6205047f1dbd03544ece}
+Render a frame of T\-X buffer animation -\/ scrolls text from right to left, before moving to the next buffer 
+\begin{DoxyParams}{Parameters}
+{\em row} & the vertical pixel offset to start writing at \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more frames to be rendered 
+\end{DoxyReturn}
+
+
+Definition at line 356 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a29583da1ca8a9b1ab48982d97828ff18}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write@{write}}
+\index{write@{write}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{{\bf T\-X\-Buffer} \&}]{tx\-Buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a29583da1ca8a9b1ab48982d97828ff18}
+Write a T\-X buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em tx\-Buffer} & the buffer to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 82 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a909a1a46c1072748a596c260c664f127}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write\-Buffer@{write\-Buffer}}
+\index{write\-Buffer@{write\-Buffer}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a909a1a46c1072748a596c260c664f127}
+Write a buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a382ee6d2e408b55277c8f9638a7eb2cc}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}}
+\index{write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Buffer\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_a382ee6d2e408b55277c8f9638a7eb2cc}
+Write a P\-R\-O\-G\-M\-E\-M buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 206 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_aaca15216dc5d78b1c59fcd9368a4f5b4}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write\-Char@{write\-Char}}
+\index{write\-Char@{write\-Char}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_aaca15216dc5d78b1c59fcd9368a4f5b4}
+Write a character to the display Will interpret the following special characters\-: \textbackslash{}b Backspace \textbackslash{}t Tab \textbackslash{}n Newline
+
+
+\begin{DoxyParams}{Parameters}
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 416 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_aca5ba0e9806ba7296f847f2f4bb8711e}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write\-String@{write\-String}}
+\index{write\-String@{write\-String}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-String (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_aca5ba0e9806ba7296f847f2f4bb8711e}
+Write a string to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 114 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_ab11d4562a0b93afcf5b41c43d0bb7d45}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!write\-String\-\_\-\-P@{write\-String\-\_\-\-P}}
+\index{write\-String\-\_\-\-P@{write\-String\-\_\-\-P}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{write\-String\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::write\-String\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{uint16\-\_\-t}]{offset\-Y, }
+\item[{P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___character_ab11d4562a0b93afcf5b41c43d0bb7d45}
+Write a P\-R\-O\-G\-M\-E\-M string to the display 
+\begin{DoxyParams}{Parameters}
+{\em offset\-X} & the horizontal offset to start writing at \\
+\hline
+{\em offset\-Y} & the vertical offset to start writing at \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file Display\-\_\-\-Character.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_display___character_ab6428d22cb0b06d5d1f1a1bbd71d2697}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-current\-Col@{\-\_\-current\-Col}}
+\index{\-\_\-current\-Col@{\-\_\-current\-Col}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-current\-Col}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-current\-Col\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___character_ab6428d22cb0b06d5d1f1a1bbd71d2697}
+
+
+Definition at line 48 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a04d2c6e9c31084e353be57fa53d97285}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-current\-Row@{\-\_\-current\-Row}}
+\index{\-\_\-current\-Row@{\-\_\-current\-Row}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-current\-Row}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-current\-Row\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___character_a04d2c6e9c31084e353be57fa53d97285}
+
+
+Definition at line 47 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a6216cd7f9631ec8851b2d2ed6a5c2728}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-scroll@{\-\_\-scroll}}
+\index{\-\_\-scroll@{\-\_\-scroll}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-scroll}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-scroll\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___character_a6216cd7f9631ec8851b2d2ed6a5c2728}
+
+
+Definition at line 46 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a90abfe03430c90c0d50469f7e99c6c5c}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-tx\-Offset@{\-\_\-tx\-Offset}}
+\index{\-\_\-tx\-Offset@{\-\_\-tx\-Offset}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-tx\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ int16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-tx\-Offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___character_a90abfe03430c90c0d50469f7e99c6c5c}
+
+
+Definition at line 44 of file Display\-\_\-\-Character.\-h.
+
+\hypertarget{classflame_1_1_display___character_a2f51ff794dec405d8cdb42d470e9f31d}{\index{flame\-::\-Display\-\_\-\-Character@{flame\-::\-Display\-\_\-\-Character}!\-\_\-wrap@{\-\_\-wrap}}
+\index{\-\_\-wrap@{\-\_\-wrap}!flame::Display_Character@{flame\-::\-Display\-\_\-\-Character}}
+\subsubsection[{\-\_\-wrap}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t cols, uint8\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Character}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-wrap\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___character_a2f51ff794dec405d8cdb42d470e9f31d}
+
+
+Definition at line 45 of file Display\-\_\-\-Character.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_display___character_8h}{Display\-\_\-\-Character.\-h}\end{DoxyCompactItemize}

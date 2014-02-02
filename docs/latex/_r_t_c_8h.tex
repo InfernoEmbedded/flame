@@ -1,144 +1,141 @@
-\hypertarget{_r_t_c_8h}{\section{mhvlib/\-R\-T\-C.h File Reference}
-\label{_r_t_c_8h}\index{mhvlib/\-R\-T\-C.\-h@{mhvlib/\-R\-T\-C.\-h}}
+\hypertarget{_r_t_c_8h}{\section{flame/\-R\-T\-C.h File Reference}
+\label{_r_t_c_8h}\index{flame/\-R\-T\-C.\-h@{flame/\-R\-T\-C.\-h}}
 }
-{\ttfamily \#include $<$mhvlib/\-Timer.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Timer.\-h$>$}\\*
 {\ttfamily \#include $<$avr/pgmspace.\-h$>$}\\*
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include $<$util/atomic.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Device\-\_\-\-T\-X.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-struct \hyperlink{structmhvlib_1_1timestamp}{mhvlib\-::timestamp}
+struct \hyperlink{structflame_1_1timestamp}{flame\-::timestamp}
 \item 
-struct \hyperlink{structmhvlib_1_1time}{mhvlib\-::time}
+struct \hyperlink{structflame_1_1time}{flame\-::time}
 \item 
-struct \hyperlink{structmhvlib_1_1alarm}{mhvlib\-::alarm}
+struct \hyperlink{structflame_1_1alarm}{flame\-::alarm}
 \item 
-class \hyperlink{classmhvlib_1_1_r_t_c}{mhvlib\-::\-R\-T\-C}
+class \hyperlink{classflame_1_1_r_t_c}{flame\-::\-R\-T\-C}
 \item 
-class \hyperlink{classmhvlib_1_1_r_t_c_implementation}{mhvlib\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}
+class \hyperlink{classflame_1_1_r_t_c_implementation}{flame\-::\-R\-T\-C\-Implementation$<$ alarm\-Max $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{_r_t_c_8h_aba2b4555e274dbe60e4d527850aeccb5}{S\-E\-C\-O\-N\-D\-S\-\_\-\-F\-R\-O\-M\-\_\-\-Y\-E\-A\-R\-\_\-\-S\-T\-A\-R\-T}(month)~pgm\-\_\-read\-\_\-dword(\&seconds\-From\-Year\-Start\mbox{[}month\mbox{]})
 \item 
-\#define \hyperlink{_r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count, \-\_\-mhv\-Timezone)~M\-H\-V\-\_\-\-R\-T\-C\-Template$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name(\-\_\-mhv\-Timezone);
+\#define \hyperlink{_r_t_c_8h_a613680fbd9b94fa7256cc2ef58b0805e}{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}(\-\_\-flame\-Object\-Name, \-\_\-flame\-Event\-Count, \-\_\-flame\-Timezone)~F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-Template$<$\-\_\-flame\-Event\-Count$>$ \-\_\-flame\-Object\-Name(\-\_\-flame\-Timezone);
 \item 
-\#define \hyperlink{_r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-mhv\-Object\-Name, \-\_\-mhv\-Event\-Count)~R\-T\-C\-Implementation$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name;
+\#define \hyperlink{_r_t_c_8h_a14e87e8b5b3b58e2ffa60d76751079c4}{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-flame\-Object\-Name, \-\_\-flame\-Event\-Count)~R\-T\-C\-Implementation$<$\-\_\-flame\-Event\-Count$>$ \-\_\-flame\-Object\-Name;
 \end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef struct timestamp \hyperlink{namespacemhvlib_ae0658d1591e8aabca3a4b259a0c483cd}{mhvlib\-::\-T\-I\-M\-E\-S\-T\-A\-M\-P}
+typedef struct timestamp \hyperlink{namespaceflame_ad90347e9ea7e54907966260ec5c7d22f}{flame\-::\-T\-I\-M\-E\-S\-T\-A\-M\-P}
 \item 
-typedef enum weekday \hyperlink{namespacemhvlib_ade7995baadfb86fecbbbe6f8d624db9c}{mhvlib\-::\-W\-E\-E\-K\-D\-A\-Y}
+typedef struct time \hyperlink{namespaceflame_a961fbb5da27b8d64aa0dfc18f55b2be6}{flame\-::\-T\-I\-M\-E}
 \item 
-typedef enum month \hyperlink{namespacemhvlib_a2406fef93804eb87fef77054c6a2082c}{mhvlib\-::\-M\-O\-N\-T\-H}
-\item 
-typedef struct time \hyperlink{namespacemhvlib_ae8a0c3208996dd45e613708c01cbc83c}{mhvlib\-::\-T\-I\-M\-E}
-\item 
-typedef struct alarm \hyperlink{namespacemhvlib_a3fa96bbaa152dfe112dd50663d5caef5}{mhvlib\-::\-A\-L\-A\-R\-M}
+typedef struct alarm \hyperlink{namespaceflame_a7a5a7b0bdd1b44d7d0b0a600552b5ab5}{flame\-::\-A\-L\-A\-R\-M}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5}{mhvlib\-::weekday} \{ \\*
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5a2d149ec16b5ba236bc3f7252e999f1e9}{mhvlib\-::\-S\-U\-N\-D\-A\-Y} =  0, 
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5abde61d9fdb7acb822ff3d700e53a13ca}{mhvlib\-::\-M\-O\-N\-D\-A\-Y} =  1, 
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5a5dca72ef7c64463e259a6b0fd7192e52}{mhvlib\-::\-T\-U\-E\-S\-D\-A\-Y} =  2, 
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5a79f7fd1beeee1d8c6dfa9ba28c3d1779}{mhvlib\-::\-W\-E\-D\-N\-E\-S\-D\-A\-Y} =  3, 
+enum \hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdc}{flame\-::\-Weekday} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdca95fa12cb2100ce7081b71f7c44bc12a5}{flame\-::\-Weekday\-::\-S\-U\-N\-D\-A\-Y} = 0, 
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdca98617021b249af0ace0f84ee92ccc7cd}{flame\-::\-Weekday\-::\-M\-O\-N\-D\-A\-Y} = 1, 
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdca5f5140afce13197a89e848004f292f14}{flame\-::\-Weekday\-::\-T\-U\-E\-S\-D\-A\-Y} = 2, 
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdcaaaebdc947e9f7d4ea362e5dc4fe7f825}{flame\-::\-Weekday\-::\-W\-E\-D\-N\-E\-S\-D\-A\-Y} = 3, 
 \\*
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5af09f7ee612e06f728461a3f3771b2fbd}{mhvlib\-::\-T\-H\-U\-R\-S\-D\-A\-Y} =  4, 
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5af061d7470dfa5a8729f28f93ff403dbb}{mhvlib\-::\-F\-R\-I\-D\-A\-Y} =  5, 
-\hyperlink{namespacemhvlib_a6cac32785175aa632dedf0f231f4b2d5a257ec2631a38fef1151bc56bbfc109c8}{mhvlib\-::\-S\-A\-T\-U\-R\-D\-A\-Y} =  6
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdca7a61b324afb4dd8b2fb4a38afc34f755}{flame\-::\-Weekday\-::\-T\-H\-U\-R\-S\-D\-A\-Y} = 4, 
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdca86fb6d343289267f3e9edb9b7403d936}{flame\-::\-Weekday\-::\-F\-R\-I\-D\-A\-Y} = 5, 
+\hyperlink{namespaceflame_a9e91c049f07e339f96e049afde92bcdcafd5ae113ac00b67f69541bc8c7f21ef7}{flame\-::\-Weekday\-::\-S\-A\-T\-U\-R\-D\-A\-Y} = 6
  \}
 \item 
-enum \hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3}{mhvlib\-::month} \{ \\*
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3ad8a7c28a733574babf096d74018a01e6}{mhvlib\-::\-J\-A\-N\-U\-A\-R\-Y} =  1, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3ab1f54c0bc7381698fccc3fb8957bf266}{mhvlib\-::\-F\-E\-B\-R\-U\-A\-R\-Y} =  2, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3ac20ba895d23f01b1855a5e4f9895d5cd}{mhvlib\-::\-M\-A\-R\-C\-H} =  3, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a5f14550d16ffcbb3d1810a50cee1aa4b}{mhvlib\-::\-A\-P\-R\-I\-L} =  4, 
+enum \hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649}{flame\-::\-Month} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a5c247e20ee6ad8dfbccdacbfff50d3f3}{flame\-::\-Month\-::\-J\-A\-N\-U\-A\-R\-Y} = 1, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a1915019c0990fae3943a1a73b3572f24}{flame\-::\-Month\-::\-F\-E\-B\-R\-U\-A\-R\-Y} = 2, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a1c0efa682e6461e3ca25e679b07b30bc}{flame\-::\-Month\-::\-M\-A\-R\-C\-H} = 3, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a0f707dcaa7219c412df1ef6e61bbdcd6}{flame\-::\-Month\-::\-A\-P\-R\-I\-L} = 4, 
 \\*
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a08b9fce7f365960ee751a553480e8bb1}{mhvlib\-::\-M\-A\-Y} =  5, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a219b7270c9434cc8b06dce8da848e406}{mhvlib\-::\-J\-U\-N\-E} =  6, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a84429a6278b9d4cd3e22edf0fffe6344}{mhvlib\-::\-M\-H\-V\-\_\-\-J\-U\-L\-Y} =  7, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a6d0ea6c679b208f57e4107826041afe2}{mhvlib\-::\-M\-H\-V\-\_\-\-A\-U\-G\-U\-S\-T} =  8, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649af94061e4bbcb32597c80ba304f781006}{flame\-::\-Month\-::\-M\-A\-Y} = 5, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a5ed250ff3e59defd24686706d34fcdf6}{flame\-::\-Month\-::\-J\-U\-N\-E} = 6, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a2406085ea45746e864623f4963dcba09}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-J\-U\-L\-Y} = 7, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649af8bd0495677810ace96388b117ba8f9e}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-A\-U\-G\-U\-S\-T} = 8, 
 \\*
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3acf8f96ebf00220b6caeb55b698d240af}{mhvlib\-::\-M\-H\-V\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R} =  9, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a83911686dc506cb10f816b1f4e6b50f3}{mhvlib\-::\-M\-H\-V\-\_\-\-O\-C\-T\-O\-B\-E\-R} =  10, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3ac66bf24818ffed16220989b77f6481c5}{mhvlib\-::\-M\-H\-V\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R} =  11, 
-\hyperlink{namespacemhvlib_ab6dc87074774414e8c185a46c7db18c3a05ea5b2433e1b3d260936600ddb436a6}{mhvlib\-::\-M\-H\-V\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R} =  12
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a5b232c8a46f4f5c6aa66514eff2fffc1}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-S\-E\-P\-T\-E\-M\-B\-E\-R} = 9, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a4d6d7ea4c7e254a27945334c45ab78d8}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-O\-C\-T\-O\-B\-E\-R} = 10, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a93268537443ad49ba0f0d9636765d13d}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-N\-O\-V\-E\-M\-B\-E\-R} = 11, 
+\hyperlink{namespaceflame_aa452b7c1018de4dfa5d302b613109649a1e2531c69e592107cc90684fc16b451b}{flame\-::\-Month\-::\-F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-E\-M\-B\-E\-R} = 12
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_a7205bb572ec5d2b6382aa265569f2f6b}{mhvlib\-::operator-\/} (M\-O\-N\-T\-H month, uint8\-\_\-t subtract\-Value)
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespaceflame_a4a04a17e193625fab0c9e2a16ff80369}{flame\-::operator-\/} (Month month, uint8\-\_\-t subtract\-Value)
 \item 
-void \hyperlink{namespacemhvlib_a0600ac3ecfb070ca4ea6e1d934369405}{mhvlib\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
+void \hyperlink{namespaceflame_ad0a4753055b7fb37368ac8364f271eb2}{flame\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds, uint8\-\_\-t repeat\-Ticks)
 \item 
-void \hyperlink{namespacemhvlib_aecfd7df3e01dd60e1a2e158904151ebe}{mhvlib\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds)
+void \hyperlink{namespaceflame_a930a3a6bf4004a92d4403f6b5fcd993f}{flame\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint32\-\_\-t repeat\-Timestamp, uint16\-\_\-t repeat\-Milliseconds)
 \item 
-void \hyperlink{namespacemhvlib_a86f58414271721f41ad97c7c496f506b}{mhvlib\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
+void \hyperlink{namespaceflame_abc5976713fbe36acaf27f7981f309dd3}{flame\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds, uint8\-\_\-t when\-Ticks)
 \item 
-void \hyperlink{namespacemhvlib_a0d93198b25c028dd09e109b2342bad4c}{mhvlib\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds)
+void \hyperlink{namespaceflame_a2cd69d86c65ff8ba60e8750480a04959}{flame\-::alarm\-Init} (A\-L\-A\-R\-M \&alarm, Timer\-Listener \&listener, uint32\-\_\-t when\-Timestamp, uint16\-\_\-t when\-Milliseconds)
 \item 
-void \hyperlink{namespacemhvlib_a62a5d211e5a6e76c2866d48dcd84c734}{mhvlib\-::timestamp\-Increment} (T\-I\-M\-E\-S\-T\-A\-M\-P \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
+void \hyperlink{namespaceflame_a2d8fea995ad2e8ec4282970472887f36}{flame\-::timestamp\-Increment} (T\-I\-M\-E\-S\-T\-A\-M\-P \&timestamp, uint32\-\_\-t seconds, uint16\-\_\-t milliseconds)
 \item 
-bool \hyperlink{namespacemhvlib_a69b8a887a6723de20794fb1f5c12388b}{mhvlib\-::is\-Leap\-Year} (uint16\-\_\-t year)
+bool \hyperlink{namespaceflame_ad423efa2ae6826bb7802a665749cc3e4}{flame\-::is\-Leap\-Year} (uint16\-\_\-t year)
 \item 
-uint16\-\_\-t \hyperlink{namespacemhvlib_aeaa3844d746c773ae1cb7d34e314d42d}{mhvlib\-::get\-Milliseconds} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&timestamp)
+uint16\-\_\-t \hyperlink{namespaceflame_ae48cbbf3d65d1abcf15b069d39fa092a}{flame\-::get\-Milliseconds} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&timestamp)
 \item 
-bool \hyperlink{namespacemhvlib_a80aadacb231d8f3d8e630a4a49240b4d}{mhvlib\-::timestamp\-Greater\-Than\-Or\-Equal} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&first, const T\-I\-M\-E\-S\-T\-A\-M\-P \&second)
+bool \hyperlink{namespaceflame_a746a6036383ae9b96f0bb1bf6772d0f8}{flame\-::timestamp\-Greater\-Than\-Or\-Equal} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&first, const T\-I\-M\-E\-S\-T\-A\-M\-P \&second)
 \item 
-bool \hyperlink{namespacemhvlib_adae779d2110756e948a326197ccec89e}{mhvlib\-::timestamp\-Less\-Than} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&first, const T\-I\-M\-E\-S\-T\-A\-M\-P \&second)
+bool \hyperlink{namespaceflame_a8bc729a78b5711171fd71a74cf9d3844}{flame\-::timestamp\-Less\-Than} (const T\-I\-M\-E\-S\-T\-A\-M\-P \&first, const T\-I\-M\-E\-S\-T\-A\-M\-P \&second)
 \item 
-uint8\-\_\-t \hyperlink{namespacemhvlib_ac0d737482b9041a1bf77e457a3898364}{mhvlib\-::days\-In\-Month} (M\-O\-N\-T\-H month, uint16\-\_\-t year)
+uint8\-\_\-t \hyperlink{namespaceflame_ab0d0aefa9aa7747b11fcc0f74e0af207}{flame\-::days\-In\-Month} (Month month, uint16\-\_\-t year)
 \end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{_r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}{\index{R\-T\-C.\-h@{R\-T\-C.\-h}!M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}}
-\index{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}!RTC.h@{R\-T\-C.\-h}}
-\subsubsection[{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E(
+\hypertarget{_r_t_c_8h_a14e87e8b5b3b58e2ffa60d76751079c4}{\index{R\-T\-C.\-h@{R\-T\-C.\-h}!F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E@{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}!RTC.h@{R\-T\-C.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E(
 \begin{DoxyParamCaption}
-\item[{}]{\-\_\-mhv\-Object\-Name, }
-\item[{}]{\-\_\-mhv\-Event\-Count}
+\item[{}]{\-\_\-flame\-Object\-Name, }
+\item[{}]{\-\_\-flame\-Event\-Count}
 \end{DoxyParamCaption}
-)~R\-T\-C\-Implementation$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name;}}\label{_r_t_c_8h_a3a0cd83cccff5a23621b1117da967527}
+)~R\-T\-C\-Implementation$<$\-\_\-flame\-Event\-Count$>$ \-\_\-flame\-Object\-Name;}}\label{_r_t_c_8h_a14e87e8b5b3b58e2ffa60d76751079c4}
 Create a new R\-T\-C 
 \begin{DoxyParams}{Parameters}
-{\em \-\_\-mhv\-Object\-Name} & the name of the R\-T\-C to create \\
+{\em \-\_\-flame\-Object\-Name} & the name of the R\-T\-C to create \\
 \hline
-{\em \-\_\-mhv\-Event\-Count} & the number of events \\
+{\em \-\_\-flame\-Event\-Count} & the number of events \\
 \hline
 \end{DoxyParams}
 
 
 Definition at line 227 of file R\-T\-C.\-h.
 
-\hypertarget{_r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}{\index{R\-T\-C.\-h@{R\-T\-C.\-h}!M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}}
-\index{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}!RTC.h@{R\-T\-C.\-h}}
-\subsubsection[{M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z(
+\hypertarget{_r_t_c_8h_a613680fbd9b94fa7256cc2ef58b0805e}{\index{R\-T\-C.\-h@{R\-T\-C.\-h}!F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}}
+\index{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z@{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}!RTC.h@{R\-T\-C.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-\_\-\-C\-R\-E\-A\-T\-E\-\_\-\-T\-Z(
 \begin{DoxyParamCaption}
-\item[{}]{\-\_\-mhv\-Object\-Name, }
-\item[{}]{\-\_\-mhv\-Event\-Count, }
-\item[{}]{\-\_\-mhv\-Timezone}
+\item[{}]{\-\_\-flame\-Object\-Name, }
+\item[{}]{\-\_\-flame\-Event\-Count, }
+\item[{}]{\-\_\-flame\-Timezone}
 \end{DoxyParamCaption}
-)~M\-H\-V\-\_\-\-R\-T\-C\-Template$<$\-\_\-mhv\-Event\-Count$>$ \-\_\-mhv\-Object\-Name(\-\_\-mhv\-Timezone);}}\label{_r_t_c_8h_a87fe8a9eaa30bd8e9eb507db54a02284}
+)~F\-L\-A\-M\-E\-\_\-\-R\-T\-C\-Template$<$\-\_\-flame\-Event\-Count$>$ \-\_\-flame\-Object\-Name(\-\_\-flame\-Timezone);}}\label{_r_t_c_8h_a613680fbd9b94fa7256cc2ef58b0805e}
 Create a new R\-T\-C 
 \begin{DoxyParams}{Parameters}
-{\em \-\_\-mhv\-Object\-Name} & the name of the R\-T\-C to create \\
+{\em \-\_\-flame\-Object\-Name} & the name of the R\-T\-C to create \\
 \hline
-{\em \-\_\-mhv\-Event\-Count} & the number of events \\
+{\em \-\_\-flame\-Event\-Count} & the number of events \\
 \hline
-{\em \-\_\-mhv\-Timezone} & the timezone \\
+{\em \-\_\-flame\-Timezone} & the timezone \\
 \hline
 \end{DoxyParams}
 

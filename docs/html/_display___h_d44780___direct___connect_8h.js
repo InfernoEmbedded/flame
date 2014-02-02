@@ -1,6 +1,6 @@
 var _display___h_d44780___direct___connect_8h =
 [
-    [ "Display_HD44780_Direct_Connect", "classmhvlib_1_1_display___h_d44780___direct___connect.html", "classmhvlib_1_1_display___h_d44780___direct___connect" ],
+    [ "Display_HD44780_Direct_Connect", "classflame_1_1_display___h_d44780___direct___connect.html", "classflame_1_1_display___h_d44780___direct___connect" ],
     [ "HD44780_CONTRAST", "_display___h_d44780___direct___connect_8h.html#a692927c797dbb727ee4107e6da377c75", null ],
     [ "HD44780_DB4", "_display___h_d44780___direct___connect_8h.html#ada62927a3bd126e9088ded6dff1c9c1a", null ],
     [ "HD44780_DB5", "_display___h_d44780___direct___connect_8h.html#ad3dfbcc20eb49b048647d3be4fe684bd", null ],

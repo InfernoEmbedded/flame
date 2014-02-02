@@ -1,0 +1,88 @@
+\hypertarget{classflame_1_1_stepper_motor_unipolar}{\section{flame\-:\-:Stepper\-Motor\-Unipolar$<$ mode, $>$ Class Template Reference}
+\label{classflame_1_1_stepper_motor_unipolar}\index{flame\-::\-Stepper\-Motor\-Unipolar$<$ mode, $>$@{flame\-::\-Stepper\-Motor\-Unipolar$<$ mode, $>$}}
+}
+
+
+{\ttfamily \#include $<$Stepper\-Motor\-Unipolar.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Stepper\-Motor\-Unipolar$<$ mode, $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_stepper_motor_unipolar}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_stepper_motor_unipolar_af690093f238136417f9b051fadd62f28}{Stepper\-Motor\-Unipolar} (\hyperlink{classflame_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_unipolar_ace9ef8057a4a7cb6aa13db88c6a0ef4a}{step} (bool forwards)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$Stepper\-Mode mode, F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(phase\-A)$>$class flame\-::\-Stepper\-Motor\-Unipolar$<$ mode, $>$}
+
+A unipolar stepper motor driver
+
+Phase output is active high, so if you are using transistors to buffer the motor, you will need to pull the common line high and use the transistors to pull the phases to ground.
+
+Phases A \& C share a common ground, as does B \& D
+
+Phases B, C and D use consecutive pins on the same port as A
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em mode} & the mode of the stepper driver \\
+\hline
+{\em phase\-A} & the pin for the A phase \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 90 of file Stepper\-Motor\-Unipolar.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_stepper_motor_unipolar_af690093f238136417f9b051fadd62f28}{\index{flame\-::\-Stepper\-Motor\-Unipolar@{flame\-::\-Stepper\-Motor\-Unipolar}!Stepper\-Motor\-Unipolar@{Stepper\-Motor\-Unipolar}}
+\index{Stepper\-Motor\-Unipolar@{Stepper\-Motor\-Unipolar}!flame::StepperMotorUnipolar@{flame\-::\-Stepper\-Motor\-Unipolar}}
+\subsubsection[{Stepper\-Motor\-Unipolar}]{\setlength{\rightskip}{0pt plus 5cm}template$<$Stepper\-Mode mode, F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(phase\-A) $>$ {\bf flame\-::\-Stepper\-Motor\-Unipolar}$<$ mode, $>$\-::{\bf Stepper\-Motor\-Unipolar} (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_stepper_motor_unipolar_af690093f238136417f9b051fadd62f28}
+Create a driver for a unipolar stepper motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em rtc} & the \hyperlink{classflame_1_1_r_t_c}{R\-T\-C} used for stepper movements \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file Stepper\-Motor\-Unipolar.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_stepper_motor_unipolar_ace9ef8057a4a7cb6aa13db88c6a0ef4a}{\index{flame\-::\-Stepper\-Motor\-Unipolar@{flame\-::\-Stepper\-Motor\-Unipolar}!step@{step}}
+\index{step@{step}!flame::StepperMotorUnipolar@{flame\-::\-Stepper\-Motor\-Unipolar}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}template$<$Stepper\-Mode mode, F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N(phase\-A) $>$ void {\bf flame\-::\-Stepper\-Motor\-Unipolar}$<$ mode, $>$\-::step (
+\begin{DoxyParamCaption}
+\item[{bool}]{forwards}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_stepper_motor_unipolar_ace9ef8057a4a7cb6aa13db88c6a0ef4a}
+
+
+Implements \hyperlink{classflame_1_1_stepper_motor_aab7e060d1704320b560657d912e791c9}{flame\-::\-Stepper\-Motor}.
+
+
+
+Definition at line 149 of file Stepper\-Motor\-Unipolar.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_stepper_motor_unipolar_8h}{Stepper\-Motor\-Unipolar.\-h}\end{DoxyCompactItemize}

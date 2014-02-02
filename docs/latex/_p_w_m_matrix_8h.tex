@@ -1,40 +1,35 @@
-\hypertarget{_p_w_m_matrix_8h}{\section{mhvlib/\-P\-W\-M\-Matrix.h File Reference}
-\label{_p_w_m_matrix_8h}\index{mhvlib/\-P\-W\-M\-Matrix.\-h@{mhvlib/\-P\-W\-M\-Matrix.\-h}}
+\hypertarget{_p_w_m_matrix_8h}{\section{flame/\-P\-W\-M\-Matrix.h File Reference}
+\label{_p_w_m_matrix_8h}\index{flame/\-P\-W\-M\-Matrix.\-h@{flame/\-P\-W\-M\-Matrix.\-h}}
 }
 {\ttfamily \#include $<$inttypes.\-h$>$}\\*
 {\ttfamily \#include $<$string.\-h$>$}\\*
 {\ttfamily \#include $<$math.\-h$>$}\\*
-{\ttfamily \#include $<$mhvlib/\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\\*
-{\ttfamily \#include $<$mhvlib/\-Timer.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Timer.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmhvlib_1_1_p_w_m_matrix_driver}{mhvlib\-::\-P\-W\-M\-Matrix\-Driver}
+class \hyperlink{classflame_1_1_p_w_m_matrix_driver}{flame\-::\-P\-W\-M\-Matrix\-Driver}
 \item 
-class \hyperlink{classmhvlib_1_1_p_w_m_matrix}{mhvlib\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}
+class \hyperlink{classflame_1_1_p_w_m_matrix}{flame\-::\-P\-W\-M\-Matrix$<$ cols, rows, tx\-Buffers, mode $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{_p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}{\-\_\-\-M\-O\-D\-E}
 \end{DoxyCompactItemize}
-\subsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef enum P\-W\-M\-Matrix\-\_\-\-Mode \hyperlink{namespacemhvlib_a65e3004ad916bc283b80fb7e2a7f29b7}{mhvlib\-::\-P\-W\-M\-M\-A\-T\-R\-I\-X\-\_\-\-M\-O\-D\-E}
-\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25}{mhvlib\-::\-P\-W\-M\-Matrix\-\_\-\-Mode} \{ \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25aee484148cc9d4ae63dddaea68d04bd1c}{mhvlib\-::\-A\-U\-T\-O}, 
-\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a7307c4c9f5d55e8dbba14782a9c45498}{mhvlib\-::\-R\-O\-W\-S}, 
-\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a64e0b460403a2c6727eaecb47b0f5921}{mhvlib\-::\-C\-O\-L\-S}, 
-\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a5684ea86bf63f2315a0a8af994b89368}{mhvlib\-::\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
+enum \hyperlink{namespaceflame_aa50d24261454452fef6df853a10b8d9a}{flame\-::\-P\-W\-M\-Matrix\-Mode} \-: uint8\-\_\-t \{ \hyperlink{namespaceflame_aa50d24261454452fef6df853a10b8d9aae1f2d5134ed2543d38a0de9751cf75d9}{flame\-::\-P\-W\-M\-Matrix\-Mode\-::\-A\-U\-T\-O}, 
+\hyperlink{namespaceflame_aa50d24261454452fef6df853a10b8d9aace4aae3bd64ecf94981ad98294919a63}{flame\-::\-P\-W\-M\-Matrix\-Mode\-::\-R\-O\-W\-S}, 
+\hyperlink{namespaceflame_aa50d24261454452fef6df853a10b8d9aa54c65a028ff224383655adab430d6741}{flame\-::\-P\-W\-M\-Matrix\-Mode\-::\-C\-O\-L\-S}, 
+\hyperlink{namespaceflame_aa50d24261454452fef6df853a10b8d9aa938873bbf7fe69b2f3836e6103f2a323}{flame\-::\-P\-W\-M\-Matrix\-Mode\-::\-I\-N\-D\-I\-V\-I\-D\-U\-A\-L}
  \}
 \end{DoxyCompactItemize}
 
@@ -45,11 +40,10 @@ enum \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25}{mhvlib\-::\-P
 \subsubsection[{\-\_\-\-M\-O\-D\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-O\-D\-E}}\label{_p_w_m_matrix_8h_a37a6b31e7f35f6eacbc56a606040fc29}
 {\bfseries Value\-:}
 \begin{DoxyCode}
-((\hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25aee484148cc9d4ae63dddaea68d04bd1c}{PWMMATRIX\_MODE::AUTO} == mode) ? \(\backslash\)
-        ((rows <= cols) ? \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a7307c4c9f5d55e8dbba14782a9c45498}{PWMMATRIX\_MODE::ROWS} : 
-      \hyperlink{namespacemhvlib_a3aee9fc37de555be9719103e177f7b25a64e0b460403a2c6727eaecb47b0f5921}{PWMMATRIX\_MODE::COLS}) : mode)
+((PWMMatrixMode::AUTO == mode) ? \(\backslash\)
+        ((rows <= cols) ? PWMMatrixMode::ROWS : PWMMatrixMode::COLS) : mode)
 \end{DoxyCode}
 
 
-Definition at line 55 of file P\-W\-M\-Matrix.\-h.
+Definition at line 54 of file P\-W\-M\-Matrix.\-h.
 

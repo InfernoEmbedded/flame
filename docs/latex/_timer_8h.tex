@@ -1,169 +1,203 @@
-\hypertarget{_timer_8h}{\section{mhvlib/\-Timer.h File Reference}
-\label{_timer_8h}\index{mhvlib/\-Timer.\-h@{mhvlib/\-Timer.\-h}}
+\hypertarget{_timer_8h}{\section{flame/\-Timer.h File Reference}
+\label{_timer_8h}\index{flame/\-Timer.\-h@{flame/\-Timer.\-h}}
 }
 {\ttfamily \#include $<$inttypes.\-h$>$}\\*
 {\ttfamily \#include $<$avr/interrupt.\-h$>$}\\*
 {\ttfamily \#include $<$avr/io.\-h$>$}\\*
 {\ttfamily \#include $<$stdio.\-h$>$}\\*
-{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+{\ttfamily \#include $<$flame/io.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmhvlib_1_1_timer_listener}{mhvlib\-::\-Timer\-Listener}
+class \hyperlink{classflame_1_1_timer_listener}{flame\-::\-Timer\-Listener}
 \item 
-class \hyperlink{classmhvlib_1_1_timer}{mhvlib\-::\-Timer}
+class \hyperlink{classflame_1_1_timer}{flame\-::\-Timer}
 \item 
-class \hyperlink{classmhvlib_1_1_timer_implementation}{mhvlib\-::\-Timer\-Implementation$<$ bits, type, control\-Reg\-A, control\-Reg\-B, control\-Reg\-C, output\-Compare1, output\-Compare2, output\-Compare3, input\-Capture1, counter, interrupt, interrupt\-Enable\-A, mode $>$}
+class \hyperlink{classflame_1_1_timer_implementation}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)~\hyperlink{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)
+\#define \hyperlink{_timer_8h_a264792c4d3ad62c21ee92fee1d3c59d5}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(flame\-Timer, flame\-Timer\-Vectors)~\hyperlink{_timer_8h_a6f345ad3e28247850f2ba6cd560fd097}{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(flame\-Timer, flame\-Timer\-Vectors)
 \item 
-\#define \hyperlink{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vect1, mhv\-Timer\-Vect2, mhv\-Timer\-Vect3)
+\#define \hyperlink{_timer_8h_a6f345ad3e28247850f2ba6cd560fd097}{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(flame\-Timer, flame\-Timer\-Vect1, flame\-Timer\-Vect2, flame\-Timer\-Vect3)
 \item 
-\#define \hyperlink{_timer_8h_a7067822196970292e879b9778772427b}{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)~\hyperlink{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)
+\#define \hyperlink{_timer_8h_aa23f8cff7d8aa1a6c6c067aa35d3410e}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(flame\-Timer, flame\-Timer\-Vectors)~\hyperlink{_timer_8h_a5ff2a0db3f764b68219e476c4370a587}{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(flame\-Timer, flame\-Timer\-Vectors)
 \item 
-\#define \hyperlink{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vect1, mhv\-Timer\-Vect2, mhv\-T\-Imer\-Vect3)
-\end{DoxyCompactItemize}
-\subsection*{Typedefs}
-\begin{DoxyCompactItemize}
+\#define \hyperlink{_timer_8h_a5ff2a0db3f764b68219e476c4370a587}{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(flame\-Timer, flame\-Timer\-Vect1, flame\-Timer\-Vect2, flame\-T\-Imer\-Vect3)
 \item 
-typedef enum timer\-\_\-mode \hyperlink{namespacemhvlib_a7e3e41da5cee0e53606cd51fe2cd2dc7}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-M\-O\-D\-E}
+\#define \hyperlink{_timer_8h_a4313914370e2338edd2f408060f34e88}{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}
 \item 
-typedef enum timer\-\_\-type \hyperlink{namespacemhvlib_a52fce76188d4cfd21a4af570cf2db41d}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-T\-Y\-P\-E}
-\item 
-typedef enum timer\-\_\-prescaler \hyperlink{namespacemhvlib_ae280d2a7103fc576dbd0e8880c574e6c}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R}
-\item 
-typedef enum timer\-\_\-connect \hyperlink{namespacemhvlib_a670ebf781e5447de855e589e9100e224}{mhvlib\-::\-T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T}
+\#define \hyperlink{_timer_8h_a90f1849ff5d56f521713dc8d49dab64f}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S}
 \end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45}{mhvlib\-::timer\-\_\-mode} \{ \\*
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a6484acd2b6f1f15eac8e620ec49b574c}{mhvlib\-::\-O\-N\-E\-\_\-\-S\-H\-O\-T}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45aedbc5d7904b91982e9265e3b453cb283}{mhvlib\-::\-R\-E\-P\-E\-T\-I\-T\-I\-V\-E}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a356e18207516f3244ab8f340fbc79feb}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a108ace45db505dfc0c509cb4316323ba}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
+enum \hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aa}{flame\-::\-Timer\-Mode} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa5bc2964599423c796ecf0aaecdc5be9d}{flame\-::\-Timer\-Mode\-::\-O\-N\-E\-\_\-\-S\-H\-O\-T}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaab425d02235b479630c23e81cde63132d}{flame\-::\-Timer\-Mode\-::\-R\-E\-P\-E\-T\-I\-T\-I\-V\-E}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaaea684da82a27cd48834545ae6ca7b3e1}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa7474a8784b6723fef7056adee8979aa4}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
 \\*
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45aca343ad6b3b9ccd1ad96651d3b06f271}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45ad28f628afc20685336cd6c185ba584f1}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a12ff6c8e9fdb86df059214056931052b}{mhvlib\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-16}, 
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45a45765b516338cfadf1aed9a70fe05ccd}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa4562a759d64dc0f45fae5f60712ac86c}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-\-V\-A\-R\-\_\-\-F\-R\-E\-Q\-\_\-8}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa05c68d8e326c7b419113394847352887}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-2\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-8}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa91ecdcf9a7ef9a065a4cf9fcd8b7d969}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-F\-A\-S\-T\-\_\-16}, 
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaab8fc43f11834a82630b324e5d916f240}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}, 
 \\*
-\hyperlink{namespacemhvlib_a469ae797645536ad6a46c129233a9f45ab45cd624451a22ae0d0bb24e91fd83ec}{mhvlib\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-F\-R\-E\-Q\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}
+\hyperlink{namespaceflame_a70356630f8f0a7942babeb597a5a87aaa7f45b1432ce98cf793327a42781b9365}{flame\-::\-Timer\-Mode\-::\-P\-W\-M\-\_\-\-P\-H\-A\-S\-E\-\_\-\-F\-R\-E\-Q\-\_\-\-C\-O\-R\-R\-E\-C\-T\-\_\-16}
  \}
 \item 
-enum \hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5}{mhvlib\-::timer\-\_\-type} \{ \hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5acc79a96a7b1c2338d6e299040b50657a}{mhvlib\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} =  5, 
-\hyperlink{namespacemhvlib_af9698df07d406d27bd41ad19b2cd15e5a7c45810094f7c2d09557b405b929c3c1}{mhvlib\-::\-H\-A\-S\-\_\-7\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} =  7
+enum \hyperlink{namespaceflame_ab38e88142da0e4786b021192399ecda7}{flame\-::\-Timer\-Type} \{ \hyperlink{namespaceflame_ab38e88142da0e4786b021192399ecda7ab7f68586d067c687796415a21085f53a}{flame\-::\-Timer\-Type\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} = 5, 
+\hyperlink{namespaceflame_ab38e88142da0e4786b021192399ecda7a9266d6fc5c89794d70a1806d3339ac85}{flame\-::\-Timer\-Type\-::\-H\-A\-S\-\_\-7\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S} = 7
  \}
 \item 
-enum \hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffead}{mhvlib\-::timer\-\_\-prescaler} \{ \\*
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadafcf4b64ca8c3cceb035c90adf8c464bb}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D} =  0, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada1936785fc53c16f7aed1561ff2cd6dbd}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1} =  1, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab8a735d20c2a53ae27c5c29011723bf7}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-8} =  2, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada9b7bbbcbce5f63a2c4f4ea406958b38e}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-64} =  3, 
+enum \hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{flame\-::\-Timer\-Prescaler} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087ae5f1d242189856ee66d1f21cb9cb53a9}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-\-D\-I\-S\-A\-B\-L\-E\-D} = 0, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a9606cc8ead279718ec58be6b9d844fa6}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1} = 1, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a4b829ce2c3e3f5e5fd30d4c9bd6ced91}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-8} = 2, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a1e3dff8c6aeb8f5becc0dfb268d4f318}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-64} = 3, 
 \\*
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadae99b84b51be95eaee5faa5d4b4bac222}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-256} =  4, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaee5e0fed71e42cfb1fc5fb75c2b16586}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1024} =  5, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab8a433b3d0a7de129435b4010abc73d2}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-F\-A\-L\-L} =  6, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadae133ab5438ada21de9a7911ab47316ef}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-R\-I\-S\-E} =  7, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a2c78abc12b47d2a5e6cb6094b9072381}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-256} = 4, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087afb73dd438007633591622a2166af4e88}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-1024} = 5, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087af63517350feb3649abd792d4e974f9c8}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-F\-A\-L\-L} = 6, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a7d9997f1e9c155e542dd9ed5035483c6}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-5\-\_\-\-E\-X\-T\-\_\-\-R\-I\-S\-E} = 7, 
 \\*
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada94ec33985df45ed8c5285e5025eeb912}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1} =  1, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaa298c077ee92109ef7dbe4a0b88e41fb}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-8} =  2, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadab354a8e0439e0e1cb54fdd52edee7013}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-32} =  3, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada98482d0ed9e6f24951f8f578486f23b8}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-64} =  4, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a3856e04e9ea5c1fbfad1bc5ec5e9086b}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1} = 1, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a3c56b3cb6130f62ddb3027d4bd41d22c}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-8} = 2, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a14fdf6b398e0bbe615fd8b0a516636c0}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-32} = 3, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087abbab8dadc52bab4b42627ed3fccd59f0}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-64} = 4, 
 \\*
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada70f12738ffc62eaf87d9c0964d07edf8}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-128} =  5, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeada87f36b88829114f9430f5929fec35494}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-256} =  6, 
-\hyperlink{namespacemhvlib_aef19ff50231eab9355114c5bc20ffeadaf840ad9be0faebd80371121d639f9603}{mhvlib\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1024} =  7
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087aaa196bcfc72e7315426314adcafeff22}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-128} = 5, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087a0283a46ac7e5ebb0008e247aa8905b18}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-256} = 6, 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087ae1c3b254931a2fa986128334d7be271c}{flame\-::\-Timer\-Prescaler\-::\-P\-R\-E\-S\-C\-A\-L\-E\-R\-\_\-7\-\_\-1024} = 7
  \}
 \item 
-enum \hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88}{mhvlib\-::timer\-\_\-connect} \{ \hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa99e038245d0083e2e47a2cb28290705}{mhvlib\-::\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-E\-D} =  0, 
-\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88a2bb98378045d031e80358e2b373f6a3f}{mhvlib\-::\-T\-O\-G\-G\-L\-E} =  1, 
-\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa51fa53f0b4783ff3376a0f78d711d5e}{mhvlib\-::\-C\-L\-E\-A\-R} =  0x001, 
-\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88ab97cdcca59e46584456ffc806ad4ed9e}{mhvlib\-::\-S\-E\-T} =  3
+enum \hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{flame\-::\-Timer\-Connect} \-: uint8\-\_\-t \{ \hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9a99c8ce56e7ab246445d3b134724428f3}{flame\-::\-Timer\-Connect\-::\-D\-I\-S\-C\-O\-N\-N\-E\-C\-T\-E\-D} = 0, 
+\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9a1252c45651289c0b553a30d27bb5ae9b}{flame\-::\-Timer\-Connect\-::\-T\-O\-G\-G\-L\-E} = 1, 
+\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9a813461e0c58e7ad59a2fd83ca2237fec}{flame\-::\-Timer\-Connect\-::\-C\-L\-E\-A\-R} = 2, 
+\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9a8c52684db8f49511e9b44471716bf164}{flame\-::\-Timer\-Connect\-::\-S\-E\-T} = 3
+ \}
+\item 
+enum \hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{flame\-::\-Alarm\-Source} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5a696b031073e74bf2cb98e5ef201d4aa3}{flame\-::\-Alarm\-Source\-::\-U\-N\-K\-N\-O\-W\-N}, 
+\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5a8d203d2a2a904d6889ffa710d276285d}{flame\-::\-Alarm\-Source\-::\-T\-I\-M\-E\-R\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-1}, 
+\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5a7eebc4b900fb380059fc2a75e6dd0c4d}{flame\-::\-Alarm\-Source\-::\-T\-I\-M\-E\-R\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-2}, 
+\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5ac858ecba9866076c23a4841b1c2ba4b8}{flame\-::\-Alarm\-Source\-::\-T\-I\-M\-E\-R\-\_\-\-O\-U\-T\-P\-U\-T\-\_\-3}, 
+\\*
+\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5a60d7c622c274b332962891475cb459fb}{flame\-::\-Alarm\-Source\-::\-R\-T\-C}
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_af6b8de3202d479555161cdc8696758e7}{mhvlib\-::operator$|$} (uint8\-\_\-t ored\-With, T\-I\-M\-E\-R\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R prescaler)
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespaceflame_aa1319586e85825579a43f71b68e27eaf}{flame\-::operator$\vert$} (uint8\-\_\-t ored\-With, Timer\-Prescaler prescaler)
 \item 
-\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_a6e7077952ae7582b5593a6a8dcdc4b71}{mhvlib\-::operator$<$$<$} (T\-I\-M\-E\-R\-\_\-\-C\-O\-N\-N\-E\-C\-T type, uint8\-\_\-t shift)
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespaceflame_a14ec67a99d9c07ff8a555e25514ef983}{flame\-::operator$<$$<$} (Timer\-Connect type, uint8\-\_\-t shift)
 \end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
-\index{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
-\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\hypertarget{_timer_8h_a6f345ad3e28247850f2ba6cd560fd097}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
+\subsubsection[{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
 \begin{DoxyParamCaption}
-\item[{}]{mhv\-Timer, }
-\item[{}]{mhv\-Timer\-Vect1, }
-\item[{}]{mhv\-Timer\-Vect2, }
-\item[{}]{mhv\-Timer\-Vect3}
+\item[{}]{flame\-Timer, }
+\item[{}]{flame\-Timer\-Vect1, }
+\item[{}]{flame\-Timer\-Vect2, }
+\item[{}]{flame\-Timer\-Vect3}
 \end{DoxyParamCaption}
-)}}\label{_timer_8h_afe1c15781e26ef3e45d653d8f2973298}
+)}}\label{_timer_8h_a6f345ad3e28247850f2ba6cd560fd097}
 {\bfseries Value\-:}
 \begin{DoxyCode}
-ISR(mhvTimerVect1) \{ \(\backslash\)
-        mhvTimer.trigger1(); \(\backslash\)
+ISR(flameTimerVect1) \{ \(\backslash\)
+        flameTimer.trigger1(); \(\backslash\)
 \}
 \end{DoxyCode}
 
 
-Definition at line 96 of file Timer.\-h.
+Definition at line 99 of file Timer.\-h.
 
-\hypertarget{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
-\index{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
-\subsubsection[{\-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\hypertarget{_timer_8h_a5ff2a0db3f764b68219e476c4370a587}{\index{Timer.\-h@{Timer.\-h}!\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
+\subsubsection[{\-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define \-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
 \begin{DoxyParamCaption}
-\item[{}]{mhv\-Timer, }
-\item[{}]{mhv\-Timer\-Vect1, }
-\item[{}]{mhv\-Timer\-Vect2, }
-\item[{}]{mhv\-T\-Imer\-Vect3}
+\item[{}]{flame\-Timer, }
+\item[{}]{flame\-Timer\-Vect1, }
+\item[{}]{flame\-Timer\-Vect2, }
+\item[{}]{flame\-T\-Imer\-Vect3}
 \end{DoxyParamCaption}
-)}}\label{_timer_8h_ac36f2c4525ca4908f74c65913df9effa}
+)}}\label{_timer_8h_a5ff2a0db3f764b68219e476c4370a587}
 {\bfseries Value\-:}
 \begin{DoxyCode}
-ISR(mhvTimerVect1) \{ \(\backslash\)
-        mhvTimer.trigger1(); \(\backslash\)
+ISR(flameTimerVect1) \{ \(\backslash\)
+        flameTimer.trigger1(); \(\backslash\)
 \} \(\backslash\)
-ISR(mhvTimerVect2) \{ \(\backslash\)
-        mhvTimer.trigger2(); \(\backslash\)
+ISR(flameTimerVect2) \{ \(\backslash\)
+        flameTimer.trigger2(); \(\backslash\)
 \}
 \end{DoxyCode}
 
 
-Definition at line 103 of file Timer.\-h.
+Definition at line 106 of file Timer.\-h.
 
-\hypertarget{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}{\index{Timer.\-h@{Timer.\-h}!M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
-\index{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
-\subsubsection[{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\hypertarget{_timer_8h_a4313914370e2338edd2f408060f34e88}{\index{Timer.\-h@{Timer.\-h}!F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R@{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}}
+\index{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R@{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}!Timer.h@{Timer.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}}\label{_timer_8h_a4313914370e2338edd2f408060f34e88}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+uint8\_t bits, \hyperlink{namespaceflame_ab38e88142da0e4786b021192399ecda7}{TimerType} type, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{\(\backslash\)}
+\hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{                FLAME\_register} controlRegA, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} controlRegB, 
+      \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} controlRegC, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{\(\backslash\)}
+\hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{                FLAME\_register} outputCompare1, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} outputCompare2,
+       \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} outputCompare3, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{\(\backslash\)}
+\hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{                FLAME\_register} inputCapture1, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} counter, 
+      \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{\(\backslash\)}
+\hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{                FLAME\_register} interruptFlag, \hyperlink{namespaceflame_a7117d3cded694c1ded03c462d677b165}{FLAME\_register} interruptMask, 
+      uint8\_t interruptEnableA
+\end{DoxyCode}
+
+
+Definition at line 349 of file Timer.\-h.
+
+\hypertarget{_timer_8h_a264792c4d3ad62c21ee92fee1d3c59d5}{\index{Timer.\-h@{Timer.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}!Timer.h@{Timer.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T(
 \begin{DoxyParamCaption}
-\item[{}]{mhv\-Timer, }
-\item[{}]{mhv\-Timer\-Vectors}
+\item[{}]{flame\-Timer, }
+\item[{}]{flame\-Timer\-Vectors}
 \end{DoxyParamCaption}
-)~{\bf \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(mhv\-Timer, mhv\-Timer\-Vectors)}}\label{_timer_8h_a0c85d06f214eaacb8d2401194ef97eaa}
+)~{\bf \-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-1\-I\-N\-T\-E\-R\-R\-U\-P\-T}(flame\-Timer, flame\-Timer\-Vectors)}}\label{_timer_8h_a264792c4d3ad62c21ee92fee1d3c59d5}
 
 
-Definition at line 94 of file Timer.\-h.
+Definition at line 97 of file Timer.\-h.
 
-\hypertarget{_timer_8h_a7067822196970292e879b9778772427b}{\index{Timer.\-h@{Timer.\-h}!M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
-\index{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
-\subsubsection[{M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
+\hypertarget{_timer_8h_aa23f8cff7d8aa1a6c6c067aa35d3410e}{\index{Timer.\-h@{Timer.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!Timer.h@{Timer.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S(
 \begin{DoxyParamCaption}
-\item[{}]{mhv\-Timer, }
-\item[{}]{mhv\-Timer\-Vectors}
+\item[{}]{flame\-Timer, }
+\item[{}]{flame\-Timer\-Vectors}
 \end{DoxyParamCaption}
-)~{\bf \-\_\-\-M\-H\-V\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(mhv\-Timer, mhv\-Timer\-Vectors)}}\label{_timer_8h_a7067822196970292e879b9778772427b}
+)~{\bf \-\_\-\-F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-2\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}(flame\-Timer, flame\-Timer\-Vectors)}}\label{_timer_8h_aa23f8cff7d8aa1a6c6c067aa35d3410e}
 
 
-Definition at line 101 of file Timer.\-h.
+Definition at line 104 of file Timer.\-h.
+
+\hypertarget{_timer_8h_a90f1849ff5d56f521713dc8d49dab64f}{\index{Timer.\-h@{Timer.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S}!Timer.h@{Timer.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R\-\_\-\-P\-A\-R\-M\-S}}\label{_timer_8h_a90f1849ff5d56f521713dc8d49dab64f}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+bits, type, controlRegA, controlRegB, controlRegC, outputCompare1, \(\backslash\)
+                outputCompare2, outputCompare3, inputCapture1, counter, interruptFlag, interruptMask, \(\backslash\)
+                interruptEnableA
+\end{DoxyCode}
+
+
+Definition at line 355 of file Timer.\-h.
 

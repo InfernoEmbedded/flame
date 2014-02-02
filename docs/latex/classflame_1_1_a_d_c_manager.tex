@@ -1,0 +1,247 @@
+\hypertarget{classflame_1_1_a_d_c_manager}{\section{flame\-:\-:A\-D\-C\-Manager Class Reference}
+\label{classflame_1_1_a_d_c_manager}\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}}
+}
+
+
+{\ttfamily \#include $<$A\-D\-C\-Manager.\-h$>$}
+
+Inheritance diagram for flame\-:\-:A\-D\-C\-Manager\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_a_d_c_manager}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_a_d_c_manager_ad9113599803b23bb74fcaf1e50e5d6a4}{A\-D\-C\-Manager} (\hyperlink{namespaceflame_a0fb9cd960c9db48d9e068daa2427aecf}{E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$adcs, uint8\-\_\-t adc\-Count, A\-D\-C\-Prescaler prescaler)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_a604cce5bd959bc084896e033d722e973}{adc} ()
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_abbc89646e31553473b48ccacf8c3e05b}{register\-Listener} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, \hyperlink{classflame_1_1_a_d_c_listener}{A\-D\-C\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_ab1d6a02fb4b94d38471f720396bc0040}{register\-Listener} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, \hyperlink{classflame_1_1_a_d_c_listener}{A\-D\-C\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_a1fa15eac782858bd521ab5ea3ee7a913}{deregister\-Listener} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel)
+\item 
+int16\-\_\-t \hyperlink{classflame_1_1_a_d_c_manager_a3ee8ed7fbe1bc144f2521bc725527d84}{busy\-Read} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, \hyperlink{atmega1280_8h_ad19819a3e7273f98d571eab79f5a5d81}{A\-D\-C\-Reference} reference)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_aaef66297e65aa489c1493f55275f84a4}{read} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, \hyperlink{atmega1280_8h_ad19819a3e7273f98d571eab79f5a5d81}{A\-D\-C\-Reference} reference)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_a010eb23bc134b08b372982e7ee6b17d4}{set\-Prescaler} (A\-D\-C\-Prescaler prescaler)
+\item 
+void \hyperlink{classflame_1_1_a_d_c_manager_abc84178ae84687965312bf5ed79667b4}{handle\-Events} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+volatile uint16\-\_\-t \hyperlink{classflame_1_1_a_d_c_manager_a60ec78c37e926899fd23835347a4dcd5}{\-\_\-adc\-Value}
+\item 
+volatile \hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} \hyperlink{classflame_1_1_a_d_c_manager_a1591a81f54b5045fa73807f8ec941ef4}{\-\_\-channel}
+\item 
+\hyperlink{namespaceflame_a0fb9cd960c9db48d9e068daa2427aecf}{E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$ \hyperlink{classflame_1_1_a_d_c_manager_a04cc074d97fbb83004821333a786cc6b}{\-\_\-adcs}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_a_d_c_manager_a92c716e93c9adff0bf1faf8f3a2d68ef}{\-\_\-event\-Count}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 72 of file A\-D\-C\-Manager.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_a_d_c_manager_ad9113599803b23bb74fcaf1e50e5d6a4}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!A\-D\-C\-Manager@{A\-D\-C\-Manager}}
+\index{A\-D\-C\-Manager@{A\-D\-C\-Manager}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{A\-D\-C\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-A\-D\-C\-Manager\-::\-A\-D\-C\-Manager (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-V\-E\-N\-T\-\_\-\-A\-D\-C} $\ast$}]{events\-Buffer, }
+\item[{uint8\-\_\-t}]{event\-Count, }
+\item[{A\-D\-C\-Prescaler}]{prescaler}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_ad9113599803b23bb74fcaf1e50e5d6a4}
+An event manager for A\-D\-C events 
+\begin{DoxyParams}{Parameters}
+{\em events\-Buffer} & storage for channel event data \\
+\hline
+{\em event\-Count} & the maximum number of events to handle \\
+\hline
+{\em prescaler} & the prescaler to run the A\-D\-C at \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 38 of file A\-D\-C\-Manager.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_a_d_c_manager_a604cce5bd959bc084896e033d722e973}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!adc@{adc}}
+\index{adc@{adc}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{adc}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::adc (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_a604cce5bd959bc084896e033d722e973}
+Interrupt handler to read the A\-D\-C 
+
+Definition at line 55 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a3ee8ed7fbe1bc144f2521bc725527d84}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!busy\-Read@{busy\-Read}}
+\index{busy\-Read@{busy\-Read}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{busy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}int16\-\_\-t flame\-::\-A\-D\-C\-Manager\-::busy\-Read (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{{\bf A\-D\-C\-Reference}}]{reference}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_a3ee8ed7fbe1bc144f2521bc725527d84}
+Read an A\-D\-C channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to read \\
+\hline
+{\em reference} & the voltage reference to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a1fa15eac782858bd521ab5ea3ee7a913}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_a1fa15eac782858bd521ab5ea3ee7a913}
+Deregister interest for an A\-D\-C channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the A\-D\-C channel \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 99 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_abc84178ae84687965312bf5ed79667b4}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_abc84178ae84687965312bf5ed79667b4}
+Call from the main loop to handle any events 
+
+Definition at line 163 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_aaef66297e65aa489c1493f55275f84a4}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!read@{read}}
+\index{read@{read}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::read (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{{\bf A\-D\-C\-Reference}}]{reference}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_aaef66297e65aa489c1493f55275f84a4}
+Trigger an A\-D\-C channel event 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to read \\
+\hline
+{\em reference} & the voltage reference to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 137 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_abbc89646e31553473b48ccacf8c3e05b}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{{\bf A\-D\-C\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_abbc89646e31553473b48ccacf8c3e05b}
+Register interest for an A\-D\-C channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the A\-D\-C channel \\
+\hline
+{\em listener} & an \hyperlink{classflame_1_1_a_d_c_listener}{A\-D\-C\-Listener} to notify when an A\-D\-C reading has been completed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_ab1d6a02fb4b94d38471f720396bc0040}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{{\bf A\-D\-C\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_ab1d6a02fb4b94d38471f720396bc0040}
+Register interest for an A\-D\-C channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the A\-D\-C channel \\
+\hline
+{\em listener} & an \hyperlink{classflame_1_1_a_d_c_listener}{A\-D\-C\-Listener} to notify when an A\-D\-C reading has been completed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file A\-D\-C\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a010eb23bc134b08b372982e7ee6b17d4}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!set\-Prescaler@{set\-Prescaler}}
+\index{set\-Prescaler@{set\-Prescaler}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-A\-D\-C\-Manager\-::set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{A\-D\-C\-Prescaler}]{prescaler}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_a_d_c_manager_a010eb23bc134b08b372982e7ee6b17d4}
+Set the A\-D\-C clock prescaler 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file A\-D\-C\-Manager.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_a_d_c_manager_a04cc074d97fbb83004821333a786cc6b}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!\-\_\-adcs@{\-\_\-adcs}}
+\index{\-\_\-adcs@{\-\_\-adcs}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{\-\_\-adcs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf E\-V\-E\-N\-T\-\_\-\-A\-D\-C}$\ast$ flame\-::\-A\-D\-C\-Manager\-::\-\_\-adcs\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_a_d_c_manager_a04cc074d97fbb83004821333a786cc6b}
+
+
+Definition at line 76 of file A\-D\-C\-Manager.\-h.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a60ec78c37e926899fd23835347a4dcd5}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!\-\_\-adc\-Value@{\-\_\-adc\-Value}}
+\index{\-\_\-adc\-Value@{\-\_\-adc\-Value}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{\-\_\-adc\-Value}]{\setlength{\rightskip}{0pt plus 5cm}volatile uint16\-\_\-t flame\-::\-A\-D\-C\-Manager\-::\-\_\-adc\-Value\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_a_d_c_manager_a60ec78c37e926899fd23835347a4dcd5}
+
+
+Definition at line 74 of file A\-D\-C\-Manager.\-h.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a1591a81f54b5045fa73807f8ec941ef4}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!\-\_\-channel@{\-\_\-channel}}
+\index{\-\_\-channel@{\-\_\-channel}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{\-\_\-channel}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf A\-D\-C\-Channel} flame\-::\-A\-D\-C\-Manager\-::\-\_\-channel\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_a_d_c_manager_a1591a81f54b5045fa73807f8ec941ef4}
+
+
+Definition at line 75 of file A\-D\-C\-Manager.\-h.
+
+\hypertarget{classflame_1_1_a_d_c_manager_a92c716e93c9adff0bf1faf8f3a2d68ef}{\index{flame\-::\-A\-D\-C\-Manager@{flame\-::\-A\-D\-C\-Manager}!\-\_\-event\-Count@{\-\_\-event\-Count}}
+\index{\-\_\-event\-Count@{\-\_\-event\-Count}!flame::ADCManager@{flame\-::\-A\-D\-C\-Manager}}
+\subsubsection[{\-\_\-event\-Count}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-A\-D\-C\-Manager\-::\-\_\-event\-Count\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_a_d_c_manager_a92c716e93c9adff0bf1faf8f3a2d68ef}
+
+
+Definition at line 77 of file A\-D\-C\-Manager.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_a_d_c_manager_8h}{A\-D\-C\-Manager.\-h}\item 
+\hyperlink{_a_d_c_manager_8cpp}{A\-D\-C\-Manager.\-cpp}\end{DoxyCompactItemize}

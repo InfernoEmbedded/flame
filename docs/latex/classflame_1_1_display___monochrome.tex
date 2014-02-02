@@ -1,0 +1,432 @@
+\hypertarget{classflame_1_1_display___monochrome}{\section{flame\-:\-:Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classflame_1_1_display___monochrome}\index{flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$@{flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Monochrome.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classflame_1_1_display___monochrome}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_display___monochrome_ad0f4efba436d8aa9111891ea7b95312e}{get\-Width} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_display___monochrome_aca8bb03d86980657ee953ce506a75fcc}{get\-Height} () \hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T}
+\item 
+void \hyperlink{classflame_1_1_display___monochrome_a7c38727d187106abe6027d1ca1bb8b14}{clear} (uint8\-\_\-t value)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a0754b3857615d04dce50e5e52321674f}{write\-Buffer} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, \hyperlink{classflame_1_1_t_x_buffer}{T\-X\-Buffer} \&tx\-Buffer)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a30562aac06dd7a44c9f0d5e9183f6481}{write\-Buffer} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a4149d7999c78ec01474f1e27ba5f4009}{write\-String\-\_\-\-P} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a5f901899fdd1d93b88deeedc59b214a4}{write\-Buffer\-\_\-\-P} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a1bf2a44cb642b6a16e09a690023fe959}{write\-String} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, const char $\ast$string)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a51ef95aa2e4a00a234987559fd350b27}{tx\-Animation} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value)
+\item 
+virtual void \hyperlink{classflame_1_1_display___monochrome_a34002efa6fccb74a4fbea455f2a261d3}{set\-Pixel} (uint16\-\_\-t row, uint16\-\_\-t col, uint8\-\_\-t value)=0
+\item 
+virtual uint8\-\_\-t \hyperlink{classflame_1_1_display___monochrome_a24ddc06684641b00ee27b2630d216f8f}{get\-Pixel} (uint16\-\_\-t row, uint16\-\_\-t col)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_acd31faefdc5f7dd913718d66bb30a0da}{write\-Char} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t on\-Value, uint8\-\_\-t off\-Value, char character)
+\item 
+bool \hyperlink{classflame_1_1_display___monochrome_a652e0ebca82d3743a565a8b31dbbf4da}{write\-Seperator} (const \hyperlink{namespaceflame_a05350b61d7b7be486d5e367522316a33}{F\-O\-N\-T} \&\hyperlink{structflame_1_1font}{font}, int16\-\_\-t $\ast$offset\-X, int16\-\_\-t offset\-Y, uint8\-\_\-t off\-Value)
+\item 
+void \hyperlink{classflame_1_1_display___monochrome_a7f156eaedc986e5432c4b04968417def}{run\-Tx\-Buffers} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int16\-\_\-t \hyperlink{classflame_1_1_display___monochrome_abd53e31a2433730e2390152b7c24918f}{\-\_\-tx\-Offset}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}
+
+A monochrome bitmap display Origin (0,0) is bottom left 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 51 of file Display\-\_\-\-Monochrome.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_display___monochrome_a7c38727d187106abe6027d1ca1bb8b14}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!clear@{clear}}
+\index{clear@{clear}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::clear (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a7c38727d187106abe6027d1ca1bb8b14}
+Clear the display to a particular value 
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to fill the display with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 181 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_aca8bb03d86980657ee953ce506a75fcc}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!get\-Height@{get\-Height}}
+\index{get\-Height@{get\-Height}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Height}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::get\-Height (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_aca8bb03d86980657ee953ce506a75fcc}
+Get the width of the display 
+
+Definition at line 173 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a24ddc06684641b00ee27b2630d216f8f}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual uint8\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint16\-\_\-t}]{col}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___monochrome_a24ddc06684641b00ee27b2630d216f8f}
+
+
+Implemented in \hyperlink{classflame_1_1_display___holtek___h_t1632_aa3930885169c3684f5aaac806a16d682}{flame\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$}, and \hyperlink{classflame_1_1_display___monochrome___buffered_a003e20bbdf7f905cee2dcfb22be61268}{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___monochrome_ad0f4efba436d8aa9111891ea7b95312e}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!get\-Width@{get\-Width}}
+\index{get\-Width@{get\-Width}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{get\-Width}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::get\-Width (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_ad0f4efba436d8aa9111891ea7b95312e}
+Get the width of the display 
+
+Definition at line 166 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a7f156eaedc986e5432c4b04968417def}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classflame_1_1_display___monochrome_a7f156eaedc986e5432c4b04968417def}
+Start rendering T\-X buffers 
+
+Implements \hyperlink{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}{flame\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 157 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a34002efa6fccb74a4fbea455f2a261d3}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ virtual void {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_display___monochrome_a34002efa6fccb74a4fbea455f2a261d3}
+
+
+Implemented in \hyperlink{classflame_1_1_display___holtek___h_t1632_a0fffd0acf421a4b9e00bc5675f526109}{flame\-::\-Display\-\_\-\-Holtek\-\_\-\-H\-T1632$<$,, mode, array\-X, array\-Y, tx\-Buffers $>$}, and \hyperlink{classflame_1_1_display___monochrome___buffered_a5ffe666a9a5ae12931177c05307b48e1}{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_display___monochrome_a51ef95aa2e4a00a234987559fd350b27}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!tx\-Animation@{tx\-Animation}}
+\index{tx\-Animation@{tx\-Animation}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{tx\-Animation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::tx\-Animation (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a51ef95aa2e4a00a234987559fd350b27}
+Render a frame of T\-X buffer animation -\/ scrolls text from right to left, before moving to the next buffer 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value for on pixels \\
+\hline
+{\em off\-Value} & the pixel value for off pixels \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more frames to be rendered 
+\end{DoxyReturn}
+
+
+Definition at line 441 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a0754b3857615d04dce50e5e52321674f}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-Buffer@{write\-Buffer}}
+\index{write\-Buffer@{write\-Buffer}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{{\bf T\-X\-Buffer} \&}]{tx\-Buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a0754b3857615d04dce50e5e52321674f}
+Write a T\-X Buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em tx\-Buffer} & the buffer to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 201 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a30562aac06dd7a44c9f0d5e9183f6481}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-Buffer@{write\-Buffer}}
+\index{write\-Buffer@{write\-Buffer}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a30562aac06dd7a44c9f0d5e9183f6481}
+Write a buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 232 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a5f901899fdd1d93b88deeedc59b214a4}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}}
+\index{write\-Buffer\-\_\-\-P@{write\-Buffer\-\_\-\-P}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Buffer\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-Buffer\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a5f901899fdd1d93b88deeedc59b214a4}
+Write a P\-R\-O\-G\-M\-E\-M buffer to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em buffer} & the buffer to write \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 286 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_acd31faefdc5f7dd913718d66bb30a0da}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-Char@{write\-Char}}
+\index{write\-Char@{write\-Char}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-Char (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{char}]{character}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_display___monochrome_acd31faefdc5f7dd913718d66bb30a0da}
+Write a character to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em character} & the character to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if a character was written 
+\end{DoxyReturn}
+
+
+Definition at line 65 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a652e0ebca82d3743a565a8b31dbbf4da}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-Seperator@{write\-Seperator}}
+\index{write\-Seperator@{write\-Seperator}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-Seperator}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-Seperator (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{off\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_display___monochrome_a652e0ebca82d3743a565a8b31dbbf4da}
+Write a character seperator (a single column of off pixels) to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the seperator was written 
+\end{DoxyReturn}
+
+
+Definition at line 132 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a1bf2a44cb642b6a16e09a690023fe959}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-String@{write\-String}}
+\index{write\-String@{write\-String}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-String (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a1bf2a44cb642b6a16e09a690023fe959}
+Write a string to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 416 of file Display\-\_\-\-Monochrome.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome_a4149d7999c78ec01474f1e27ba5f4009}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!write\-String\-\_\-\-P@{write\-String\-\_\-\-P}}
+\index{write\-String\-\_\-\-P@{write\-String\-\_\-\-P}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{write\-String\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::write\-String\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{const {\bf F\-O\-N\-T} \&}]{font, }
+\item[{int16\-\_\-t $\ast$}]{offset\-X, }
+\item[{int16\-\_\-t}]{offset\-Y, }
+\item[{uint8\-\_\-t}]{on\-Value, }
+\item[{uint8\-\_\-t}]{off\-Value, }
+\item[{P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome_a4149d7999c78ec01474f1e27ba5f4009}
+Write a P\-R\-O\-G\-M\-E\-M string to the display 
+\begin{DoxyParams}{Parameters}
+{\em font} & the font to use \\
+\hline
+{\em offset\-X} & the horizontal pixel offset to start writing at (left side of char) will increment to the next position on return) \\
+\hline
+{\em offset\-Y} & the vertical pixel offset to start writing at (bottom of char) \\
+\hline
+{\em on\-Value} & the pixel value to use for on \\
+\hline
+{\em off\-Value} & the pixel value to use for off \\
+\hline
+{\em string} & the string to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if anything was written 
+\end{DoxyReturn}
+
+
+Definition at line 257 of file Display\-\_\-\-Monochrome.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_display___monochrome_abd53e31a2433730e2390152b7c24918f}{\index{flame\-::\-Display\-\_\-\-Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}!\-\_\-tx\-Offset@{\-\_\-tx\-Offset}}
+\index{\-\_\-tx\-Offset@{\-\_\-tx\-Offset}!flame::Display_Monochrome@{flame\-::\-Display\-\_\-\-Monochrome}}
+\subsubsection[{\-\_\-tx\-Offset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ int16\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-tx\-Offset\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___monochrome_abd53e31a2433730e2390152b7c24918f}
+
+
+Definition at line 53 of file Display\-\_\-\-Monochrome.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_display___monochrome_8h}{Display\-\_\-\-Monochrome.\-h}\end{DoxyCompactItemize}

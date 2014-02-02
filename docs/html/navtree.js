@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "MHVLib", "index.html", [
+  [ "Runtime", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -13,7 +13,7 @@ var NAVTREE =
     ] ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", "classes" ],
+      [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
@@ -36,14 +36,90 @@ var NAVTREE =
   ] ]
 ];
 
-var navTreeIndex;
+var NAVTREEINDEX =
+[
+"_a_d_8cpp.html",
+"_hardware_serial_8h.html#a9cbc9720f0e2f002f6f8fdf746fad4dba6f71c1c9672dcd103b71a7a5287529e1",
+"_vusb_keyboard_8h.html#ac5dd72d2f6257805426f44b0bad032c2a0df25770c1a36669190c486bdbbfbbcb",
+"atmega1280_8h.html#ab5a361d214bf33f4d9d443d9db44043da092756213257856677c580a7db883ff5",
+"atmega1280_8h.html#ab5a361d214bf33f4d9d443d9db44043da6252ed378f7a986d7703cb80c751f391",
+"atmega1280_8h.html#ab5a361d214bf33f4d9d443d9db44043dae6e6178998abf1073c6a4fe903d2de26",
+"atmega1281_8h.html#ab5a361d214bf33f4d9d443d9db44043da0db45d2a4141101bdfe48e3314cfbca3",
+"atmega1281_8h.html#ab5a361d214bf33f4d9d443d9db44043da66c3541b5e7fcd2c7dfaf1cfae2464f2",
+"atmega1281_8h.html#ab5a361d214bf33f4d9d443d9db44043daf7d72aaa683258ffdd8a8c69933b59a4",
+"atmega168_8h.html#ab5a361d214bf33f4d9d443d9db44043da226bc305b0b2edd3c8a6167bbca91db4",
+"atmega168_8h.html#ab5a361d214bf33f4d9d443d9db44043da89209d19cdc620a17b216d97b570b798",
+"atmega168_8h.html#ad19819a3e7273f98d571eab79f5a5d81a73baa1f279879a52ff4215d3c9031d1f",
+"atmega168a_8h.html#ab5a361d214bf33f4d9d443d9db44043da42bb6ef2d0c530bee555c69f17544bf5",
+"atmega168a_8h.html#ab5a361d214bf33f4d9d443d9db44043daa9dffba06ebcfd05916be05e28d33bc6",
+"atmega168p_8h.html#ab5a361d214bf33f4d9d443d9db44043da0cf26229b7ef6396afa89f1044cefcff",
+"atmega168p_8h.html#ab5a361d214bf33f4d9d443d9db44043da646d1ebe4695af06f92a77fa5438909a",
+"atmega168p_8h.html#ab5a361d214bf33f4d9d443d9db44043dae6e6178998abf1073c6a4fe903d2de26",
+"atmega168pa_8h.html#ab5a361d214bf33f4d9d443d9db44043da344eb68bc2729c7a0ea79774afe6c743",
+"atmega168pa_8h.html#ab5a361d214bf33f4d9d443d9db44043daa0de3d57f472ef3401d72f4bda7ce4b5",
+"atmega168pa_8h.html#ad1a28147f994a93db891ecd2c533b26f",
+"atmega2560_8h.html#ab5a361d214bf33f4d9d443d9db44043da42bb6ef2d0c530bee555c69f17544bf5",
+"atmega2560_8h.html#ab5a361d214bf33f4d9d443d9db44043daa3b5b1d4d1e7a43ff19b2665b365f004",
+"atmega2560_8h.html#affabe879a87fd7067e8564130e3ade1a",
+"atmega2561_8h.html#ab5a361d214bf33f4d9d443d9db44043da44de69d99d46150cf1877d9f55970eeb",
+"atmega2561_8h.html#ab5a361d214bf33f4d9d443d9db44043daa9dffba06ebcfd05916be05e28d33bc6",
+"atmega328_8h.html#ab5a361d214bf33f4d9d443d9db44043da092756213257856677c580a7db883ff5",
+"atmega328_8h.html#ab5a361d214bf33f4d9d443d9db44043da61f34650cae6b0e4a4c68957289b80d2",
+"atmega328_8h.html#ab5a361d214bf33f4d9d443d9db44043dae6e6178998abf1073c6a4fe903d2de26",
+"atmega328p_8h.html#ab5a361d214bf33f4d9d443d9db44043da226bc305b0b2edd3c8a6167bbca91db4",
+"atmega328p_8h.html#ab5a361d214bf33f4d9d443d9db44043da78d72dc64e78072b27c9e6833c4a3166",
+"atmega328p_8h.html#ad19819a3e7273f98d571eab79f5a5d81a73baa1f279879a52ff4215d3c9031d1f",
+"atmega48_8h.html#ab5a361d214bf33f4d9d443d9db44043da42bb6ef2d0c530bee555c69f17544bf5",
+"atmega48_8h.html#ab5a361d214bf33f4d9d443d9db44043daa3b5b1d4d1e7a43ff19b2665b365f004",
+"atmega48a_8h.html#ab5a361d214bf33f4d9d443d9db44043da09e66abf35aa5de15e8be5a3d38cc9b4",
+"atmega48a_8h.html#ab5a361d214bf33f4d9d443d9db44043da6252ed378f7a986d7703cb80c751f391",
+"atmega48a_8h.html#ab5a361d214bf33f4d9d443d9db44043dae6e6178998abf1073c6a4fe903d2de26",
+"atmega48hvf_8h.html#ab5a361d214bf33f4d9d443d9db44043da29fb1745a7653927f04a06f8664fc2ee",
+"atmega48hvf_8h.html#ab5a361d214bf33f4d9d443d9db44043da97d77905f2151dbbd8b744f8f2b48ce3",
+"atmega48hvf_8h.html#ad19819a3e7273f98d571eab79f5a5d81aa3f43bc7be55b0fc17f2f303b9f95b95",
+"atmega48p_8h.html#ab5a361d214bf33f4d9d443d9db44043da44de960a31b2e939b49ff2cdfb22d6f9",
+"atmega48p_8h.html#ab5a361d214bf33f4d9d443d9db44043dabd9867e279cf0a6f75b09903da8bcd41",
+"atmega48pa_8h.html#ab5a361d214bf33f4d9d443d9db44043da1c6ac7b315571aaeae41c95944da8f9a",
+"atmega48pa_8h.html#ab5a361d214bf33f4d9d443d9db44043da77d5dde199df8348ed861ec0e9509cad",
+"atmega48pa_8h.html#ad19819a3e7273f98d571eab79f5a5d81a3f8d3ef502702b42070dbffd3a18db9b",
+"atmega640_8h.html#ab5a361d214bf33f4d9d443d9db44043da22bb18bb8c44e529586a2aec3292f3c8",
+"atmega640_8h.html#ab5a361d214bf33f4d9d443d9db44043da8aee536983f26a62a42e97050ef8a8a4",
+"atmega640_8h.html#ad19819a3e7273f98d571eab79f5a5d81a73baa1f279879a52ff4215d3c9031d1f",
+"atmega88_8h.html#ab5a361d214bf33f4d9d443d9db44043da3f448d314f1e24aa08eb32d32f0dd3f8",
+"atmega88_8h.html#ab5a361d214bf33f4d9d443d9db44043daa3b5b1d4d1e7a43ff19b2665b365f004",
+"atmega88a_8h.html#ab39f7ddad6e692db1c00115db776636f",
+"atmega88a_8h.html#ab5a361d214bf33f4d9d443d9db44043da59410440f677f4bd47ae4d005a0588cd",
+"atmega88a_8h.html#ab5a361d214bf33f4d9d443d9db44043dae1052dc45d578bbec6b1d988ededaa8d",
+"atmega88p_8h.html#ab5a361d214bf33f4d9d443d9db44043da1f91aae1c37e7d4199587a50f90f9ed1",
+"atmega88p_8h.html#ab5a361d214bf33f4d9d443d9db44043da77d5dde199df8348ed861ec0e9509cad",
+"atmega88p_8h.html#ad19819a3e7273f98d571eab79f5a5d81a73baa1f279879a52ff4215d3c9031d1f",
+"atmega88pa_8h.html#ab5a361d214bf33f4d9d443d9db44043da42bb6ef2d0c530bee555c69f17544bf5",
+"atmega88pa_8h.html#ab5a361d214bf33f4d9d443d9db44043daa3b5b1d4d1e7a43ff19b2665b365f004",
+"attiny2313a_8h.html",
+"attiny25_8h.html#ab5a361d214bf33f4d9d443d9db44043da44de960a31b2e939b49ff2cdfb22d6f9",
+"attiny25_8h.html#ab5a361d214bf33f4d9d443d9db44043daaaea0244f61ba1bcf5d94181c7e0dcbf",
+"attiny45_8h.html#ab5a361d214bf33f4d9d443d9db44043da0db45d2a4141101bdfe48e3314cfbca3",
+"attiny45_8h.html#ab5a361d214bf33f4d9d443d9db44043da66c3541b5e7fcd2c7dfaf1cfae2464f2",
+"attiny45_8h.html#ab5a361d214bf33f4d9d443d9db44043daf7d72aaa683258ffdd8a8c69933b59a4",
+"attiny85_8h.html#ab5a361d214bf33f4d9d443d9db44043da350ceb78c8f8182328b84f96623e33eb",
+"attiny85_8h.html#ab5a361d214bf33f4d9d443d9db44043daa36705bb3590fd64661c77d8d11b2227",
+"classflame_1_1_a_d_c_manager.html#a1fa15eac782858bd521ab5ea3ee7a913",
+"classflame_1_1_p_i_d.html#a66ca28c5a02174ee7110a6b26e5381ad",
+"classflame_1_1_timer.html#a1c0ca577b10fe85ed51d8159cd8579dc",
+"globals_f.html"
+];
+
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
+var SYNCONMSG = 'click to disable panel synchronisation';
+var SYNCOFFMSG = 'click to enable panel synchronisation';
 var navTreeSubIndices = new Array();
 
 function getData(varName)
 {
   var i = varName.lastIndexOf('/');
   var n = i>=0 ? varName.substring(i+1) : varName;
-  return eval(n);
+  return eval(n.replace(/\-/g,'_'));
 }
 
 function stripPath(uri)
@@ -59,6 +135,40 @@ function stripPath2(uri)
   return m ? uri.substring(i-6) : s;
 }
 
+function localStorageSupported()
+{
+  try {
+    return 'localStorage' in window && window['localStorage'] !== null && window.localStorage.getItem;
+  }
+  catch(e) {
+    return false;
+  }
+}
+
+
+function storeLink(link)
+{
+  if (!$("#nav-sync").hasClass('sync') && localStorageSupported()) {
+      window.localStorage.setItem('navpath',link);
+  }
+}
+
+function deleteLink()
+{
+  if (localStorageSupported()) {
+    window.localStorage.setItem('navpath','');
+  } 
+}
+
+function cachedLink()
+{
+  if (localStorageSupported()) {
+    return window.localStorage.getItem('navpath');
+  } else {
+    return '';
+  }
+}
+
 function getScript(scriptName,func,show)
 {
   var head = document.getElementsByTagName("head")[0]; 
@@ -68,7 +178,7 @@ function getScript(scriptName,func,show)
   script.onload = func; 
   script.src = scriptName+'.js'; 
   if ($.browser.msie && $.browser.version<=8) { 
-    // script.onload does work with older versions of IE
+    // script.onload does not work with older versions of IE
     script.onreadystatechange = function() {
       if (script.readyState=='complete' || script.readyState=='loaded') { 
         func(); if (show) showRoot(); 
@@ -80,24 +190,22 @@ function getScript(scriptName,func,show)
 
 function createIndent(o,domNode,node,level)
 {
-  if (node.parentNode && node.parentNode.parentNode) {
-    createIndent(o,domNode,node.parentNode,level+1);
-  }
-  var imgNode = document.createElement("img");
-  imgNode.width = 16;
-  imgNode.height = 22;
-  if (level==0 && node.childrenData) {
+  var level=-1;
+  var n = node;
+  while (n.parentNode) { level++; n=n.parentNode; }
+  if (node.childrenData) {
+    var imgNode = document.createElement("img");
+    imgNode.style.paddingLeft=(16*level).toString()+'px';
+    imgNode.width  = 16;
+    imgNode.height = 22;
+    imgNode.border = 0;
     node.plus_img = imgNode;
     node.expandToggle = document.createElement("a");
     node.expandToggle.href = "javascript:void(0)";
     node.expandToggle.onclick = function() {
       if (node.expanded) {
         $(node.getChildrenUL()).slideUp("fast");
-        if (node.isLast) {
-          node.plus_img.src = node.relpath+"ftv2plastnode.png";
-        } else {
-          node.plus_img.src = node.relpath+"ftv2pnode.png";
-        }
+        node.plus_img.src = node.relpath+"ftv2pnode.png";
         node.expanded = false;
       } else {
         expandNode(o, node, false, false);
@@ -105,33 +213,43 @@ function createIndent(o,domNode,node,level)
     }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
+    imgNode.src = node.relpath+"ftv2pnode.png";
   } else {
-    domNode.appendChild(imgNode);
+    var span = document.createElement("span");
+    span.style.display = 'inline-block';
+    span.style.width   = 16*(level+1)+'px';
+    span.style.height  = '22px';
+    span.innerHTML = '&#160;';
+    domNode.appendChild(span);
+  } 
+}
+
+var animationInProgress = false;
+
+function gotoAnchor(anchor,aname,updateLocation)
+{
+  var pos, docContent = $('#doc-content');
+  if (anchor.parent().attr('class')=='memItemLeft' ||
+      anchor.parent().attr('class')=='fieldtype' ||
+      anchor.parent().is(':header')) 
+  {
+    pos = anchor.parent().position().top;
+  } else if (anchor.position()) {
+    pos = anchor.position().top;
   }
-  if (level==0) {
-    if (node.isLast) {
-      if (node.childrenData) {
-        imgNode.src = node.relpath+"ftv2plastnode.png";
-      } else {
-        imgNode.src = node.relpath+"ftv2lastnode.png";
-        domNode.appendChild(imgNode);
-      }
-    } else {
-      if (node.childrenData) {
-        imgNode.src = node.relpath+"ftv2pnode.png";
-      } else {
-        imgNode.src = node.relpath+"ftv2node.png";
-        domNode.appendChild(imgNode);
-      }
-    }
-  } else {
-    if (node.isLast) {
-      imgNode.src = node.relpath+"ftv2blank.png";
-    } else {
-      imgNode.src = node.relpath+"ftv2vertline.png";
-    }
+  if (pos) {
+    var dist = Math.abs(Math.min(
+               pos-docContent.offset().top,
+               docContent[0].scrollHeight-
+               docContent.height()-docContent.scrollTop()));
+    animationInProgress=true;
+    docContent.animate({
+      scrollTop: pos + docContent.scrollTop() - docContent.offset().top
+    },Math.max(50,Math.min(500,dist)),function(){
+      if (updateLocation) window.location.href=aname;
+      animationInProgress=false;
+    });
   }
-  imgNode.border = "0";
 }
 
 function newNode(o, po, text, link, childrenData, lastNode)
@@ -175,8 +293,9 @@ function newNode(o, po, text, link, childrenData, lastNode)
       var aname = '#'+link.split('#')[1];
       var srcPage = stripPath($(location).attr('pathname'));
       var targetPage = stripPath(link.split('#')[0]);
-      a.href = srcPage!=targetPage ? url : '#';
+      a.href = srcPage!=targetPage ? url : "javascript:void(0)"; 
       a.onclick = function(){
+        storeLink(link);
         if (!$(a).parent().parent().hasClass('selected'))
         {
           $('.item').removeClass('selected');
@@ -184,26 +303,12 @@ function newNode(o, po, text, link, childrenData, lastNode)
           $(a).parent().parent().addClass('selected');
           $(a).parent().parent().attr('id','selected');
         }
-        var pos, anchor = $(aname), docContent = $('#doc-content');
-        if (anchor.parent().attr('class')=='memItemLeft') {
-          pos = anchor.parent().position().top;
-        } else if (anchor.position()) {
-          pos = anchor.position().top;
-        }
-        if (pos) {
-          var dist = Math.abs(Math.min(
-                     pos-docContent.offset().top,
-                     docContent[0].scrollHeight-
-                     docContent.height()-docContent.scrollTop()));
-          docContent.animate({
-            scrollTop: pos + docContent.scrollTop() - docContent.offset().top
-          },Math.max(50,Math.min(500,dist)),function(){
-            window.location.replace(aname);
-          });
-        }
+        var anchor = $(aname);
+        gotoAnchor(anchor,aname,true);
       };
     } else {
       a.href = url;
+      a.onclick = function() { storeLink(link); }
     }
   } else {
     if (childrenData != null) 
@@ -280,24 +385,29 @@ function glowEffect(n,duration)
 
 function highlightAnchor()
 {
-  var anchor = $($(location).attr('hash'));
+  var aname = $(location).attr('hash');
+  var anchor = $(aname);
   if (anchor.parent().attr('class')=='memItemLeft'){
     var rows = $('.memberdecls tr[class$="'+
                window.location.hash.substring(1)+'"]');
-    glowEffect(rows.children(),300);
+    glowEffect(rows.children(),300); // member without details
+  } else if (anchor.parents().slice(2).prop('tagName')=='TR') {
+    glowEffect(anchor.parents('div.memitem'),1000); // enum value
+  } else if (anchor.parent().attr('class')=='fieldtype'){
+    glowEffect(anchor.parent().parent(),1000); // struct field
   } else if (anchor.parent().is(":header")) {
-    glowEffect(anchor.parent(),1000);
+    glowEffect(anchor.parent(),1000); // section header
   } else {
-    glowEffect(anchor.next(),1000);
+    glowEffect(anchor.next(),1000); // normal member
   }
+  gotoAnchor(anchor,aname,false);
 }
 
-function selectAndHighlight(n)
+function selectAndHighlight(hash,n)
 {
   var a;
-  if ($(location).attr('hash')) {
-    var link=stripPath($(location).attr('pathname'))+':'+
-      $(location).attr('hash').substring(1);
+  if (hash) {
+    var link=stripPath($(location).attr('pathname'))+':'+hash.substring(1);
     a=$('.item a[class$="'+link+'"]');
   }
   if (a && a.length) {
@@ -308,23 +418,28 @@ function selectAndHighlight(n)
     $(n.itemDiv).addClass('selected');
     $(n.itemDiv).attr('id','selected');
   }
+  if ($('#nav-tree-contents .item:first').hasClass('selected')) {
+    $('#nav-sync').css('top','30px');
+  } else {
+    $('#nav-sync').css('top','5px');
+  }
   showRoot();
 }
 
-function showNode(o, node, index)
+function showNode(o, node, index, hash)
 {
   if (node && node.childrenData) {
     if (typeof(node.childrenData)==='string') {
       var varName    = node.childrenData;
       getScript(node.relpath+varName,function(){
         node.childrenData = getData(varName);
-        showNode(o,node,index);
+        showNode(o,node,index,hash);
       },true);
     } else {
       if (!node.childrenVisited) {
         getNode(o, node);
       }
-      $(node.getChildrenUL()).show();
+      $(node.getChildrenUL()).css({'display':'block'});
       if (node.isLast) {
         node.plus_img.src = node.relpath+"ftv2mlastnode.png";
       } else {
@@ -333,31 +448,45 @@ function showNode(o, node, index)
       node.expanded = true;
       var n = node.children[o.breadcrumbs[index]];
       if (index+1<o.breadcrumbs.length) {
-        showNode(o,n,index+1);
+        showNode(o,n,index+1,hash);
       } else {
         if (typeof(n.childrenData)==='string') {
           var varName = n.childrenData;
           getScript(n.relpath+varName,function(){
             n.childrenData = getData(varName);
             node.expanded=false;
-            showNode(o,node,index); // retry with child node expanded
+            showNode(o,node,index,hash); // retry with child node expanded
           },true);
         } else {
-          var rootBase = o.toroot.replace(/\..+$/, '');
-          if (rootBase=="index" || rootBase=="pages") {
+          var rootBase = stripPath(o.toroot.replace(/\..+$/, ''));
+          if (rootBase=="index" || rootBase=="pages" || rootBase=="search") {
             expandNode(o, n, true, true);
           }
-          selectAndHighlight(n);
+          selectAndHighlight(hash,n);
         }
       }
     }
   } else {
-    selectAndHighlight();
+    selectAndHighlight(hash);
   }
+}
+
+function removeToInsertLater(element) {
+  var parentNode = element.parentNode;
+  var nextSibling = element.nextSibling;
+  parentNode.removeChild(element);
+  return function() {
+    if (nextSibling) {
+      parentNode.insertBefore(element, nextSibling);
+    } else {
+      parentNode.appendChild(element);
+    }
+  };
 }
 
 function getNode(o, po)
 {
+  var insertFunction = removeToInsertLater(po.li);
   po.childrenVisited = true;
   var l = po.childrenData.length-1;
   for (var i in po.childrenData) {
@@ -365,52 +494,77 @@ function getNode(o, po)
     po.children[i] = newNode(o, po, nodeData[0], nodeData[1], nodeData[2],
       i==l);
   }
+  insertFunction();
 }
 
-function gotoNode(o,subIndex,root,hash)
+function gotoNode(o,subIndex,root,hash,relpath)
 {
   var nti = navTreeSubIndices[subIndex][root+hash];
-  o.breadcrumbs = nti ? nti : navTreeSubIndices[subIndex][root];
-  if (o.breadcrumbs)
-  {
+  o.breadcrumbs = $.extend(true, [], nti ? nti : navTreeSubIndices[subIndex][root]);
+  if (!o.breadcrumbs && root!=NAVTREE[0][1]) { // fallback: show index
+    navTo(o,NAVTREE[0][1],"",relpath);
+    $('.item').removeClass('selected');
+    $('.item').removeAttr('id');
+  }
+  if (o.breadcrumbs) {
     o.breadcrumbs.unshift(0); // add 0 for root node
-    showNode(o, o.node, 0);
-  }
-}
-
-function gotoSubIndex(o,root,hash,relpath)
-{
-  if (hash.match(/^#l\d+$/)) 
-  {
-    hash=''; // strip line number anchors
-  }
-  var url=root+hash;
-  var i=-1;
-  while (navTreeIndex[i+1]<=url) i++;
-  if (navTreeSubIndices[i]) {
-    gotoNode(o,i,root,hash)
-  } else {
-    getScript(relpath+'navtreeindex'+i,function(){
-      navTreeSubIndices[i] = eval('NAVTREEINDEX'+i);
-      if (navTreeSubIndices[i]) {
-        gotoNode(o,i,root,hash);
-      }
-    },true);
+    showNode(o, o.node, 0, hash);
   }
 }
 
 function navTo(o,root,hash,relpath)
 {
-  if (navTreeIndex){
-    gotoSubIndex(o,root,hash,relpath);
+  var link = cachedLink();
+  if (link) {
+    var parts = link.split('#');
+    root = parts[0];
+    if (parts.length>1) hash = '#'+parts[1];
+    else hash='';
+  }
+  if (hash.match(/^#l\d+$/)) {
+    var anchor=$('a[name='+hash.substring(1)+']');
+    glowEffect(anchor.parent(),1000); // line number
+    hash=''; // strip line number anchors
+    //root=root.replace(/_source\./,'.'); // source link to doc link
+  }
+  var url=root+hash;
+  var i=-1;
+  while (NAVTREEINDEX[i+1]<=url) i++;
+  if (i==-1) { i=0; root=NAVTREE[0][1]; } // fallback: show index
+  if (navTreeSubIndices[i]) {
+    gotoNode(o,i,root,hash,relpath)
   } else {
-    getScript(relpath+"navtreeindex",function(){
-      navTreeIndex = eval('NAVTREEINDEX');
-      if (navTreeIndex){
-        gotoSubIndex(o,root,hash,relpath);
+    getScript(relpath+'navtreeindex'+i,function(){
+      navTreeSubIndices[i] = eval('NAVTREEINDEX'+i);
+      if (navTreeSubIndices[i]) {
+        gotoNode(o,i,root,hash,relpath);
       }
     },true);
-  } 
+  }
+}
+
+function showSyncOff(n,relpath)
+{
+    n.html('<img src="'+relpath+'sync_off.png" title="'+SYNCOFFMSG+'"/>');
+}
+
+function showSyncOn(n,relpath)
+{
+    n.html('<img src="'+relpath+'sync_on.png" title="'+SYNCONMSG+'"/>');
+}
+
+function toggleSyncButton(relpath)
+{
+  var navSync = $('#nav-sync');
+  if (navSync.hasClass('sync')) {
+    navSync.removeClass('sync');
+    showSyncOff(navSync,relpath);
+    storeLink(stripPath2($(location).attr('pathname'))+$(location).attr('hash'));
+  } else {
+    navSync.addClass('sync');
+    showSyncOn(navSync,relpath);
+    deleteLink();
+  }
 }
 
 function initNavTree(toroot,relpath)
@@ -433,7 +587,21 @@ function initNavTree(toroot,relpath)
   o.node.plus_img.width = 16;
   o.node.plus_img.height = 22;
 
-  navTo(o,toroot,window.location.hash,relpath);
+  if (localStorageSupported()) {
+    var navSync = $('#nav-sync');
+    if (cachedLink()) {
+      showSyncOff(navSync,relpath);
+      navSync.removeClass('sync');
+    } else {
+      showSyncOn(navSync,relpath);
+    }
+    navSync.click(function(){ toggleSyncButton(relpath); });
+  }
+
+  $(window).load(function(){
+    navTo(o,toroot,window.location.hash,relpath);
+    showRoot();
+  });
 
   $(window).bind('hashchange', function(){
      if (window.location.hash && window.location.hash.length>1){
@@ -449,9 +617,12 @@ function initNavTree(toroot,relpath)
        }
        var link=stripPath2($(location).attr('pathname'));
        navTo(o,link,$(location).attr('hash'),relpath);
+     } else if (!animationInProgress) {
+       $('#doc-content').scrollTop(0);
+       $('.item').removeClass('selected');
+       $('.item').removeAttr('id');
+       navTo(o,toroot,window.location.hash,relpath);
      }
   })
-
-  $(window).load(showRoot);
 }
 

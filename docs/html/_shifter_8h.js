@@ -1,8 +1,8 @@
 var _shifter_8h =
 [
-    [ "Shifter", "classmhvlib_1_1_shifter.html", "classmhvlib_1_1_shifter" ],
-    [ "ShifterImplementation", "classmhvlib_1_1_shifter_implementation.html", "classmhvlib_1_1_shifter_implementation" ],
-    [ "MHV_SHIFT_DELAY", "_shifter_8h.html#a2f4f482aa20414028355f66010d07e50", null ],
-    [ "shiftout_byte_lsb", "_shifter_8h.html#a706d2cb44231209e5c2472e868f549b5", null ],
-    [ "shiftout_byte_msb", "_shifter_8h.html#a83b8b1ae5aa048241ff663659462350a", null ]
+    [ "Shifter", "classflame_1_1_shifter.html", "classflame_1_1_shifter" ],
+    [ "ShifterImplementation", "classflame_1_1_shifter_implementation.html", "classflame_1_1_shifter_implementation" ],
+    [ "FLAME_SHIFT_DELAY", "_shifter_8h.html#aa5bc2767f2c73e9385fe393e518bf8cc", null ],
+    [ "shiftout_byte_lsb", "_shifter_8h.html#a7ef236223bc8c3d4e8e7f80a12f13be0", null ],
+    [ "shiftout_byte_msb", "_shifter_8h.html#a2254ccc4f89cf8e81bc3f8a4715dad80", null ]
 ];

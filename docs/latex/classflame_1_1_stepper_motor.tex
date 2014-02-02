@@ -1,0 +1,190 @@
+\hypertarget{classflame_1_1_stepper_motor}{\section{flame\-:\-:Stepper\-Motor Class Reference}
+\label{classflame_1_1_stepper_motor}\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}}
+}
+
+
+{\ttfamily \#include $<$Stepper\-Motor.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Stepper\-Motor\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_stepper_motor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_stepper_motor_a17ca894e1297cb5d964c516dc8898fc0}{Stepper\-Motor} (\hyperlink{classflame_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+virtual void \hyperlink{classflame_1_1_stepper_motor_aab7e060d1704320b560657d912e791c9}{step} (bool forward)=0
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_a260cf0be1a9c9d2ff362b8ad816b2c6c}{set\-Position} (int32\-\_\-t position)
+\item 
+bool \hyperlink{classflame_1_1_stepper_motor_ac86907c985c1f382e43790aa15e8c7a7}{is\-Moving} () \hyperlink{io_8h_acd42770aecb025cfac170d4d3ace4544}{P\-U\-R\-E}
+\item 
+int32\-\_\-t \hyperlink{classflame_1_1_stepper_motor_a69b9a3febce0c7e45c304fc5cea95165}{get\-Position} () \hyperlink{io_8h_acd42770aecb025cfac170d4d3ace4544}{P\-U\-R\-E}
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_a5122f463d29b39e9bb9544a57cade8bf}{rotate} (bool forward, float speed, int32\-\_\-t until)
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_a6eec1ffcfd13c4624525b4cabe1eec4c}{alarm} (\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_a2603e1dd71e15543bfb0a3c0d3a491f9}{register\-Listener} (\hyperlink{classflame_1_1_stepper_listener}{Stepper\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_stepper_motor_a90e7ab11b511c68dea947465006ee0c6}{deregister\-Listener} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 41 of file Stepper\-Motor.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_stepper_motor_a17ca894e1297cb5d964c516dc8898fc0}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!Stepper\-Motor@{Stepper\-Motor}}
+\index{Stepper\-Motor@{Stepper\-Motor}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{Stepper\-Motor}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Stepper\-Motor\-::\-Stepper\-Motor (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a17ca894e1297cb5d964c516dc8898fc0}
+Create a new \hyperlink{classflame_1_1_stepper_motor}{Stepper\-Motor} 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an \hyperlink{classflame_1_1_r_t_c}{R\-T\-C} we will use to trigger events \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Stepper\-Motor.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_stepper_motor_a6eec1ffcfd13c4624525b4cabe1eec4c}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!alarm@{alarm}}
+\index{alarm@{alarm}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Stepper\-Motor\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_stepper_motor_a6eec1ffcfd13c4624525b4cabe1eec4c}
+Called periodically to move the motor 
+
+Implements \hyperlink{classflame_1_1_timer_listener_ad97504b72a25b1fba354803338177335}{flame\-::\-Timer\-Listener}.
+
+
+
+Definition at line 94 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_a90e7ab11b511c68dea947465006ee0c6}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Stepper\-Motor\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a90e7ab11b511c68dea947465006ee0c6}
+Deregister the listener 
+
+Definition at line 134 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_a69b9a3febce0c7e45c304fc5cea95165}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t flame\-::\-Stepper\-Motor\-::get\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a69b9a3febce0c7e45c304fc5cea95165}
+Get the current position of the motor \begin{DoxyReturn}{Returns}
+the current position 
+\end{DoxyReturn}
+
+
+Definition at line 55 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_ac86907c985c1f382e43790aa15e8c7a7}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!is\-Moving@{is\-Moving}}
+\index{is\-Moving@{is\-Moving}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{is\-Moving}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Stepper\-Motor\-::is\-Moving (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_ac86907c985c1f382e43790aa15e8c7a7}
+Is the motor current moving? \begin{DoxyReturn}{Returns}
+true if the motor is moving 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_a2603e1dd71e15543bfb0a3c0d3a491f9}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Stepper\-Motor\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf Stepper\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a2603e1dd71e15543bfb0a3c0d3a491f9}
+Register a listener to be notified when moves are complete 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to notify \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 127 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_a5122f463d29b39e9bb9544a57cade8bf}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!rotate@{rotate}}
+\index{rotate@{rotate}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Stepper\-Motor\-::rotate (
+\begin{DoxyParamCaption}
+\item[{bool}]{forward, }
+\item[{float}]{speed, }
+\item[{int32\-\_\-t}]{until}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a5122f463d29b39e9bb9544a57cade8bf}
+Move the motor to a new position (this will override a current move if there is one) 
+\begin{DoxyParams}{Parameters}
+{\em forward} & true to move forward \\
+\hline
+{\em speed} & the speed to move in steps/second \\
+\hline
+{\em until} & the position to stop at \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 73 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_a260cf0be1a9c9d2ff362b8ad816b2c6c}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!set\-Position@{set\-Position}}
+\index{set\-Position@{set\-Position}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{set\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Stepper\-Motor\-::set\-Position (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{position}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_stepper_motor_a260cf0be1a9c9d2ff362b8ad816b2c6c}
+Mark the current position of the motor. This simply changes where we think we are, it does not move the motor
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & the new position \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 47 of file Stepper\-Motor.\-cpp.
+
+\hypertarget{classflame_1_1_stepper_motor_aab7e060d1704320b560657d912e791c9}{\index{flame\-::\-Stepper\-Motor@{flame\-::\-Stepper\-Motor}!step@{step}}
+\index{step@{step}!flame::StepperMotor@{flame\-::\-Stepper\-Motor}}
+\subsubsection[{step}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Stepper\-Motor\-::step (
+\begin{DoxyParamCaption}
+\item[{bool}]{forward}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_stepper_motor_aab7e060d1704320b560657d912e791c9}
+
+
+Implemented in \hyperlink{classflame_1_1_stepper_motor_unipolar_ace9ef8057a4a7cb6aa13db88c6a0ef4a}{flame\-::\-Stepper\-Motor\-Unipolar$<$ mode, $>$}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_stepper_motor_8h}{Stepper\-Motor.\-h}\item 
+\hyperlink{_stepper_motor_8cpp}{Stepper\-Motor.\-cpp}\end{DoxyCompactItemize}

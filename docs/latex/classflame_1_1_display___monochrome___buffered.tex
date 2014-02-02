@@ -1,0 +1,111 @@
+\hypertarget{classflame_1_1_display___monochrome___buffered}{\section{flame\-:\-:Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$ Class Template Reference}
+\label{classflame_1_1_display___monochrome___buffered}\index{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classflame_1_1_display___monochrome___buffered}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_display___monochrome___buffered_afdfaefdd9c432d9f93d52232d6eb4985}{Display\-\_\-\-Monochrome\-\_\-\-Buffered} ()
+\item 
+void \hyperlink{classflame_1_1_display___monochrome___buffered_a5ffe666a9a5ae12931177c05307b48e1}{set\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row, uint8\-\_\-t value)
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_display___monochrome___buffered_a003e20bbdf7f905cee2dcfb22be61268}{get\-Pixel} (uint16\-\_\-t col, uint16\-\_\-t row)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_display___monochrome___buffered_ad1811b000b6d38a4400da0784768544c}{\-\_\-frame\-Buffer} \mbox{[}cols $\ast$rows\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$class flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered$<$ cols, rows, tx\-Buffers $>$}
+
+A monochrome bitmap display Origin (0,0) is bottom left 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em cols} & the number of columns \\
+\hline
+{\em rows} & the number of rows \\
+\hline
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 47 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_display___monochrome___buffered_afdfaefdd9c432d9f93d52232d6eb4985}{\index{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!Display\-\_\-\-Monochrome\-\_\-\-Buffered@{Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\index{Display\-\_\-\-Monochrome\-\_\-\-Buffered@{Display\-\_\-\-Monochrome\-\_\-\-Buffered}!flame::Display_Monochrome_Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{Display\-\_\-\-Monochrome\-\_\-\-Buffered}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ {\bf flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::{\bf Display\-\_\-\-Monochrome\-\_\-\-Buffered} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_display___monochrome___buffered_afdfaefdd9c432d9f93d52232d6eb4985}
+Create a new monochrome display 
+
+Definition at line 55 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_display___monochrome___buffered_a003e20bbdf7f905cee2dcfb22be61268}{\index{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!get\-Pixel@{get\-Pixel}}
+\index{get\-Pixel@{get\-Pixel}!flame::Display_Monochrome_Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{get\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::get\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_display___monochrome___buffered_a003e20bbdf7f905cee2dcfb22be61268}
+
+
+Implements \hyperlink{classflame_1_1_display___monochrome_a24ddc06684641b00ee27b2630d216f8f}{flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 75 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+\hypertarget{classflame_1_1_display___monochrome___buffered_a5ffe666a9a5ae12931177c05307b48e1}{\index{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!set\-Pixel@{set\-Pixel}}
+\index{set\-Pixel@{set\-Pixel}!flame::Display_Monochrome_Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{set\-Pixel}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::set\-Pixel (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{col, }
+\item[{uint16\-\_\-t}]{row, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_display___monochrome___buffered_a5ffe666a9a5ae12931177c05307b48e1}
+
+
+Implements \hyperlink{classflame_1_1_display___monochrome_a34002efa6fccb74a4fbea455f2a261d3}{flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}.
+
+
+
+Definition at line 64 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_display___monochrome___buffered_ad1811b000b6d38a4400da0784768544c}{\index{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}!\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}}
+\index{\-\_\-frame\-Buffer@{\-\_\-frame\-Buffer}!flame::Display_Monochrome_Buffered@{flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}}
+\subsubsection[{\-\_\-frame\-Buffer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint16\-\_\-t cols, uint16\-\_\-t rows, uint8\-\_\-t tx\-Buffers$>$ uint8\-\_\-t {\bf flame\-::\-Display\-\_\-\-Monochrome\-\_\-\-Buffered}$<$ cols, rows, tx\-Buffers $>$\-::\-\_\-frame\-Buffer\mbox{[}cols $\ast$rows\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_display___monochrome___buffered_ad1811b000b6d38a4400da0784768544c}
+
+
+Definition at line 49 of file Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_display___monochrome___buffered_8h}{Display\-\_\-\-Monochrome\-\_\-\-Buffered.\-h}\end{DoxyCompactItemize}

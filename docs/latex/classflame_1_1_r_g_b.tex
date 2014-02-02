@@ -1,0 +1,378 @@
+\hypertarget{classflame_1_1_r_g_b}{\section{flame\-:\-:R\-G\-B Class Reference}
+\label{classflame_1_1_r_g_b}\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}}
+}
+
+
+{\ttfamily \#include $<$R\-G\-B.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_r_g_b_a31a76381cdc18f4652de93d25b209d3e}{R\-G\-B} (uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+\hyperlink{classflame_1_1_r_g_b_a78352769285295d0ec68279fbaf1f0ba}{R\-G\-B} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \&value)
+\item 
+\hyperlink{classflame_1_1_r_g_b_ad0fd397169a383bc643418612ddf64dd}{R\-G\-B} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} $\ast$value)
+\item 
+\hyperlink{classflame_1_1_r_g_b_a8d41ef1df927aabd3477024387aa3a41}{R\-G\-B} ()
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a7be20787cdb4933a3a44dbe8236693dc}{fade\-To} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \&final, uint16\-\_\-t current\-Iteration, uint16\-\_\-t iterations)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a0848bc3467a0545191bb5e3ad6bc004c}{set} (uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+\hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \& \hyperlink{classflame_1_1_r_g_b_abc571808888b8fd2715f7ff1f5ee8c1d}{operator=} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \&rhs)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a1dedc5574dceb31c1fc71212ba0bdf1f}{set\-Gamma} (uint8\-\_\-t red, uint8\-\_\-t green, uint8\-\_\-t blue)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_aebfd60e533ed78c38f6932ac33d0773b}{set} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \&value)
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_r_g_b_a1c7cfd27fd68436e8ec878b50c755559}{get} (\hyperlink{namespaceflame_a47f12f0248f648dbdbfa6fe26d79028d}{R\-G\-B\-Channel} channel)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_ae58cbda8540d05b70e066d7715766c8b}{set\-Gamma} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} \&value)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a16e70fb1f45ce79e38b8c7f647cd1cc2}{set} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a69e0c19e3f5d6742e17fffe66a866927}{set} (\hyperlink{namespaceflame_a47f12f0248f648dbdbfa6fe26d79028d}{R\-G\-B\-Channel} channel, uint8\-\_\-t value)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a35a19e8cc502583aa688a9e1236bd409}{set\-Gamma} (const \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} $\ast$value)
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a66216f39d01050fdc14314790a51108d}{gamma\-Correct} ()
+\item 
+void \hyperlink{classflame_1_1_r_g_b_a302e896be5c8bfed3e8cca54682280aa}{inverse\-Gamma\-Correct} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_r_g_b_a5fc1c274cbfef087d866d6ffb037defb}{fade} (uint8\-\_\-t initial, uint8\-\_\-t final, int16\-\_\-t iteration, int16\-\_\-t total)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+union \hyperlink{unionflame_1_1rgb}{rgb} \hyperlink{classflame_1_1_r_g_b_a154fae5c9f509c283d2df1a3cff37d55}{\-\_\-data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 139 of file R\-G\-B.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_r_g_b_a31a76381cdc18f4652de93d25b209d3e}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!R\-G\-B@{R\-G\-B}}
+\index{R\-G\-B@{R\-G\-B}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{R\-G\-B}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-R\-G\-B\-::\-R\-G\-B (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a31a76381cdc18f4652de93d25b209d3e}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em red} & the red value \\
+\hline
+{\em green} & the green value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 174 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a78352769285295d0ec68279fbaf1f0ba}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!R\-G\-B@{R\-G\-B}}
+\index{R\-G\-B@{R\-G\-B}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{R\-G\-B}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-R\-G\-B\-::\-R\-G\-B (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a78352769285295d0ec68279fbaf1f0ba}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em value} & an \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} to take the value of \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 184 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_ad0fd397169a383bc643418612ddf64dd}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!R\-G\-B@{R\-G\-B}}
+\index{R\-G\-B@{R\-G\-B}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{R\-G\-B}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-R\-G\-B\-::\-R\-G\-B (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_ad0fd397169a383bc643418612ddf64dd}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em value} & an \hyperlink{classflame_1_1_r_g_b}{R\-G\-B} to take the value of \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 194 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a8d41ef1df927aabd3477024387aa3a41}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!R\-G\-B@{R\-G\-B}}
+\index{R\-G\-B@{R\-G\-B}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{R\-G\-B}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-R\-G\-B\-::\-R\-G\-B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a8d41ef1df927aabd3477024387aa3a41}
+Constructor 
+
+Definition at line 203 of file R\-G\-B.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_r_g_b_a5fc1c274cbfef087d866d6ffb037defb}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!fade@{fade}}
+\index{fade@{fade}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{fade}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-R\-G\-B\-::fade (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{initial, }
+\item[{uint8\-\_\-t}]{final, }
+\item[{int16\-\_\-t}]{iteration, }
+\item[{int16\-\_\-t}]{total}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_r_g_b_a5fc1c274cbfef087d866d6ffb037defb}
+Fade from an initial value to a final value 
+\begin{DoxyParams}{Parameters}
+{\em initial} & value to fade from \\
+\hline
+{\em final} & value to fade to \\
+\hline
+{\em iteration} & The current iteration \\
+\hline
+{\em total} & total number of iterations to fade across \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the faded value 
+\end{DoxyReturn}
+
+
+Definition at line 151 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a7be20787cdb4933a3a44dbe8236693dc}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!fade\-To@{fade\-To}}
+\index{fade\-To@{fade\-To}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{fade\-To}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::fade\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} \&}]{final, }
+\item[{uint16\-\_\-t}]{current\-Iteration, }
+\item[{uint16\-\_\-t}]{iterations}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a7be20787cdb4933a3a44dbe8236693dc}
+Fade from an initial value to a final value (should be called repeatedly with decreasing iterations) 
+\begin{DoxyParams}{Parameters}
+{\em final} & value to fade to \\
+\hline
+{\em out} & the output value \\
+\hline
+{\em current\-Iteration} & current iteration \\
+\hline
+{\em iterations\-Left} & total number of iterations remaining to fade across \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 216 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a66216f39d01050fdc14314790a51108d}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!gamma\-Correct@{gamma\-Correct}}
+\index{gamma\-Correct@{gamma\-Correct}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{gamma\-Correct}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::gamma\-Correct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a66216f39d01050fdc14314790a51108d}
+Gamma correct the current value 
+
+Definition at line 319 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a1c7cfd27fd68436e8ec878b50c755559}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!get@{get}}
+\index{get@{get}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-R\-G\-B\-::get (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-G\-B\-Channel}}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a1c7cfd27fd68436e8ec878b50c755559}
+Get the value for a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to get \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 272 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a302e896be5c8bfed3e8cca54682280aa}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!inverse\-Gamma\-Correct@{inverse\-Gamma\-Correct}}
+\index{inverse\-Gamma\-Correct@{inverse\-Gamma\-Correct}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{inverse\-Gamma\-Correct}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::inverse\-Gamma\-Correct (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a302e896be5c8bfed3e8cca54682280aa}
+Inverse gamma correct the current value 
+
+Definition at line 329 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_abc571808888b8fd2715f7ff1f5ee8c1d}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!operator=@{operator=}}
+\index{operator=@{operator=}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-G\-B}\& flame\-::\-R\-G\-B\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_abc571808888b8fd2715f7ff1f5ee8c1d}
+Override the = operator 
+\begin{DoxyParams}{Parameters}
+{\em rhs} & the value to assign to the left hand side \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 241 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a0848bc3467a0545191bb5e3ad6bc004c}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set@{set}}
+\index{set@{set}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a0848bc3467a0545191bb5e3ad6bc004c}
+Set a value 
+\begin{DoxyParams}{Parameters}
+{\em red} & the red value \\
+\hline
+{\em green} & the green value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 231 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_aebfd60e533ed78c38f6932ac33d0773b}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set@{set}}
+\index{set@{set}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_aebfd60e533ed78c38f6932ac33d0773b}
+Set a value 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 262 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a16e70fb1f45ce79e38b8c7f647cd1cc2}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set@{set}}
+\index{set@{set}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a16e70fb1f45ce79e38b8c7f647cd1cc2}
+Set a value 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 291 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a69e0c19e3f5d6742e17fffe66a866927}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set@{set}}
+\index{set@{set}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-G\-B\-Channel}}]{channel, }
+\item[{uint8\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a69e0c19e3f5d6742e17fffe66a866927}
+Set a value for a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel \\
+\hline
+{\em value} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 302 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a1dedc5574dceb31c1fc71212ba0bdf1f}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set\-Gamma@{set\-Gamma}}
+\index{set\-Gamma@{set\-Gamma}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set\-Gamma (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{red, }
+\item[{uint8\-\_\-t}]{green, }
+\item[{uint8\-\_\-t}]{blue}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a1dedc5574dceb31c1fc71212ba0bdf1f}
+Set a value and gamma correct 
+\begin{DoxyParams}{Parameters}
+{\em red} & the red value \\
+\hline
+{\em green} & the green value \\
+\hline
+{\em blue} & the blue value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 252 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_ae58cbda8540d05b70e066d7715766c8b}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set\-Gamma@{set\-Gamma}}
+\index{set\-Gamma@{set\-Gamma}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set\-Gamma (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_ae58cbda8540d05b70e066d7715766c8b}
+Set a value and gamma correct 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 281 of file R\-G\-B.\-h.
+
+\hypertarget{classflame_1_1_r_g_b_a35a19e8cc502583aa688a9e1236bd409}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!set\-Gamma@{set\-Gamma}}
+\index{set\-Gamma@{set\-Gamma}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{set\-Gamma}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-R\-G\-B\-::set\-Gamma (
+\begin{DoxyParamCaption}
+\item[{const {\bf R\-G\-B} $\ast$}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_r_g_b_a35a19e8cc502583aa688a9e1236bd409}
+Set a value and gamma correct 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 310 of file R\-G\-B.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_r_g_b_a154fae5c9f509c283d2df1a3cff37d55}{\index{flame\-::\-R\-G\-B@{flame\-::\-R\-G\-B}!\-\_\-data@{\-\_\-data}}
+\index{\-\_\-data@{\-\_\-data}!flame::RGB@{flame\-::\-R\-G\-B}}
+\subsubsection[{\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}union {\bf rgb} flame\-::\-R\-G\-B\-::\-\_\-data\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_r_g_b_a154fae5c9f509c283d2df1a3cff37d55}
+
+
+Definition at line 141 of file R\-G\-B.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_r_g_b_8h}{R\-G\-B.\-h}\end{DoxyCompactItemize}

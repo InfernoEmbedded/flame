@@ -1,11 +1,14 @@
 var files =
 [
-    [ "boards", "dir_00707067ee219b8daac50da58f9048ec.html", "dir_00707067ee219b8daac50da58f9048ec" ],
-    [ "chips", "dir_79b215133d5a453cf4a217fdf78a2c2e.html", "dir_79b215133d5a453cf4a217fdf78a2c2e" ],
-    [ "mhvlib", "dir_9ae0fde8f116d3ace87a8480283e214e.html", "dir_9ae0fde8f116d3ace87a8480283e214e" ],
-    [ "mhvlib-Vusb-Console", "dir_5a47cda79042a43c6f462815429ba74b.html", "dir_5a47cda79042a43c6f462815429ba74b" ],
-    [ "mhvlib-Vusb-Keyboard", "dir_938464be1fa61359b7bf20a392dd38cd.html", "dir_938464be1fa61359b7bf20a392dd38cd" ],
+    [ "boards", "dir_6011f1759fe53151b8fbbcd398e0a1d4.html", "dir_6011f1759fe53151b8fbbcd398e0a1d4" ],
+    [ "chips", "dir_1c53a31d8e34be5432b6c49a49b4a2ab.html", "dir_1c53a31d8e34be5432b6c49a49b4a2ab" ],
+    [ "flame", "dir_4105b9545a45f558b2c2031973583f3f.html", "dir_4105b9545a45f558b2c2031973583f3f" ],
+    [ "flame-Vusb-Console", "dir_6ed14911ce3ff99bfcdc133bf421db3d.html", "dir_6ed14911ce3ff99bfcdc133bf421db3d" ],
+    [ "flame-Vusb-Keyboard", "dir_4de10c7623c655ba222c94ec8412ac38.html", "dir_4de10c7623c655ba222c94ec8412ac38" ],
+    [ "Accelerometer.cpp", "_accelerometer_8cpp.html", null ],
     [ "AD.cpp", "_a_d_8cpp.html", "_a_d_8cpp" ],
+    [ "ADCManager.cpp", "_a_d_c_manager_8cpp.html", null ],
+    [ "BestSphereGaussNewtonCalibrator.cpp", "_best_sphere_gauss_newton_calibrator_8cpp.html", "_best_sphere_gauss_newton_calibrator_8cpp" ],
     [ "DAC.cpp", "_d_a_c_8cpp.html", null ],
     [ "Device_TX.cpp", "_device___t_x_8cpp.html", "_device___t_x_8cpp" ],
     [ "EEPROM.cpp", "_e_e_p_r_o_m_8cpp.html", null ],
@@ -21,5 +24,7 @@ var files =
     [ "SoftwareHBridge.cpp", "_software_h_bridge_8cpp.html", null ],
     [ "StepperMotor.cpp", "_stepper_motor_8cpp.html", null ],
     [ "Timer.cpp", "_timer_8cpp.html", null ],
+    [ "TripleAxisCalibrator.cpp", "_triple_axis_calibrator_8cpp.html", "_triple_axis_calibrator_8cpp" ],
+    [ "TripleAxisSensor.cpp", "_triple_axis_sensor_8cpp.html", null ],
     [ "WaveGenerator.cpp", "_wave_generator_8cpp.html", null ]
 ];

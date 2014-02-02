@@ -1,0 +1,70 @@
+\hypertarget{classflame_1_1_triple_axis_sensor_listener}{\section{flame\-:\-:Triple\-Axis\-Sensor\-Listener Class Reference}
+\label{classflame_1_1_triple_axis_sensor_listener}\index{flame\-::\-Triple\-Axis\-Sensor\-Listener@{flame\-::\-Triple\-Axis\-Sensor\-Listener}}
+}
+
+
+{\ttfamily \#include $<$Triple\-Axis\-Sensor.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Triple\-Axis\-Sensor\-Listener\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_triple_axis_sensor_listener}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classflame_1_1_triple_axis_sensor_listener_a4451e2df32ad722464a1902ef29ed054}{sample\-Is\-Ready} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor)=0
+\item 
+virtual void \hyperlink{classflame_1_1_triple_axis_sensor_listener_a56c75bbcf89043b53b938e3f9045db38}{limit\-Reached} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor, \hyperlink{namespaceflame_a626e8c99d0f4f232b95e7089c113095a}{Triple\-Axis\-Sensor\-Channel} which)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 57 of file Triple\-Axis\-Sensor.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_triple_axis_sensor_listener_a56c75bbcf89043b53b938e3f9045db38}{\index{flame\-::\-Triple\-Axis\-Sensor\-Listener@{flame\-::\-Triple\-Axis\-Sensor\-Listener}!limit\-Reached@{limit\-Reached}}
+\index{limit\-Reached@{limit\-Reached}!flame::TripleAxisSensorListener@{flame\-::\-Triple\-Axis\-Sensor\-Listener}}
+\subsubsection[{limit\-Reached}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Triple\-Axis\-Sensor\-Listener\-::limit\-Reached (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor, }
+\item[{{\bf Triple\-Axis\-Sensor\-Channel}}]{which}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_sensor_listener_a56c75bbcf89043b53b938e3f9045db38}
+Called when an acceleration limit is reached 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor whose limit was reached \\
+\hline
+{\em which} & which limit was reached \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_triple_axis_calibrator_af80e930aac780ea5b25f99423fb22fd7}{flame\-::\-Triple\-Axis\-Calibrator}.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_listener_a4451e2df32ad722464a1902ef29ed054}{\index{flame\-::\-Triple\-Axis\-Sensor\-Listener@{flame\-::\-Triple\-Axis\-Sensor\-Listener}!sample\-Is\-Ready@{sample\-Is\-Ready}}
+\index{sample\-Is\-Ready@{sample\-Is\-Ready}!flame::TripleAxisSensorListener@{flame\-::\-Triple\-Axis\-Sensor\-Listener}}
+\subsubsection[{sample\-Is\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Triple\-Axis\-Sensor\-Listener\-::sample\-Is\-Ready (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_sensor_listener_a4451e2df32ad722464a1902ef29ed054}
+Called when a sample is ready 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor whose sample is ready \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_triple_axis_calibrator_ab66474b4d1f8f6e9c2ee76233a927e71}{flame\-::\-Triple\-Axis\-Calibrator}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_triple_axis_sensor_8h}{Triple\-Axis\-Sensor.\-h}\end{DoxyCompactItemize}

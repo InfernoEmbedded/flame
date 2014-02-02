@@ -1,38 +1,38 @@
-\hypertarget{_shifter_8h}{\section{mhvlib/\-Shifter.h File Reference}
-\label{_shifter_8h}\index{mhvlib/\-Shifter.\-h@{mhvlib/\-Shifter.\-h}}
+\hypertarget{_shifter_8h}{\section{flame/\-Shifter.h File Reference}
+\label{_shifter_8h}\index{flame/\-Shifter.\-h@{flame/\-Shifter.\-h}}
 }
-{\ttfamily \#include $<$mhvlib/io.\-h$>$}\\*
+{\ttfamily \#include $<$flame/io.\-h$>$}\\*
 {\ttfamily \#include $<$util/delay.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmhvlib_1_1_shifter}{mhvlib\-::\-Shifter}
+class \hyperlink{classflame_1_1_shifter}{flame\-::\-Shifter}
 \item 
-class \hyperlink{classmhvlib_1_1_shifter_implementation}{mhvlib\-::\-Shifter\-Implementation$<$,, msb, rising, delay $>$}
+class \hyperlink{classflame_1_1_shifter_implementation}{flame\-::\-Shifter\-Implementation$<$,, msb, rising, delay $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{_shifter_8h_a2f4f482aa20414028355f66010d07e50}{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}~if (delay) \-\_\-delay\-\_\-us(delay);
+\#define \hyperlink{_shifter_8h_aa5bc2767f2c73e9385fe393e518bf8cc}{F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}~if (delay) \-\_\-delay\-\_\-us(delay);
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{namespacemhvlib_a706d2cb44231209e5c2472e868f549b5}{mhvlib\-::shiftout\-\_\-byte\-\_\-lsb} (M\-H\-V\-\_\-\-P\-I\-N $\ast$data, M\-H\-V\-\_\-\-P\-I\-N $\ast$clock, uint8\-\_\-t byte)
+void \hyperlink{namespaceflame_a7ef236223bc8c3d4e8e7f80a12f13be0}{flame\-::shiftout\-\_\-byte\-\_\-lsb} (F\-L\-A\-M\-E\-\_\-\-P\-I\-N $\ast$data, F\-L\-A\-M\-E\-\_\-\-P\-I\-N $\ast$clock, uint8\-\_\-t byte)
 \item 
-void \hyperlink{namespacemhvlib_a83b8b1ae5aa048241ff663659462350a}{mhvlib\-::shiftout\-\_\-byte\-\_\-msb} (M\-H\-V\-\_\-\-P\-I\-N $\ast$data, M\-H\-V\-\_\-\-P\-I\-N $\ast$clock, uint8\-\_\-t byte)
+void \hyperlink{namespaceflame_a2254ccc4f89cf8e81bc3f8a4715dad80}{flame\-::shiftout\-\_\-byte\-\_\-msb} (F\-L\-A\-M\-E\-\_\-\-P\-I\-N $\ast$data, F\-L\-A\-M\-E\-\_\-\-P\-I\-N $\ast$clock, uint8\-\_\-t byte)
 \end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
-\hypertarget{_shifter_8h_a2f4f482aa20414028355f66010d07e50}{\index{Shifter.\-h@{Shifter.\-h}!M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}}
-\index{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}!Shifter.h@{Shifter.\-h}}
-\subsubsection[{M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-H\-V\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y~if (delay) \-\_\-delay\-\_\-us(delay);}}\label{_shifter_8h_a2f4f482aa20414028355f66010d07e50}
+\hypertarget{_shifter_8h_aa5bc2767f2c73e9385fe393e518bf8cc}{\index{Shifter.\-h@{Shifter.\-h}!F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}}
+\index{F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y@{F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}!Shifter.h@{Shifter.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-S\-H\-I\-F\-T\-\_\-\-D\-E\-L\-A\-Y~if (delay) \-\_\-delay\-\_\-us(delay);}}\label{_shifter_8h_aa5bc2767f2c73e9385fe393e518bf8cc}
 
 
 Definition at line 48 of file Shifter.\-h.

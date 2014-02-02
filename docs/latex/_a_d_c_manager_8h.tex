@@ -1,0 +1,81 @@
+\hypertarget{_a_d_c_manager_8h}{\section{flame/\-A\-D\-C\-Manager.h File Reference}
+\label{_a_d_c_manager_8h}\index{flame/\-A\-D\-C\-Manager.\-h@{flame/\-A\-D\-C\-Manager.\-h}}
+}
+{\ttfamily \#include $<$flame/io.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-A\-D.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Device\-\_\-\-T\-X.\-h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classflame_1_1_a_d_c_listener}{flame\-::\-A\-D\-C\-Listener}
+\item 
+struct \hyperlink{structflame_1_1event_a_d_c}{flame\-::event\-A\-D\-C}
+\item 
+class \hyperlink{classflame_1_1_a_d_c_manager}{flame\-::\-A\-D\-C\-Manager}
+\item 
+class \hyperlink{classflame_1_1_a_d_c_manager_implementation}{flame\-::\-A\-D\-C\-Manager\-Implementation$<$ events $>$}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame}{flame}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_a_d_c_manager_8h_aef1036caf0c050779dad9ab0e9869db8}{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}(\-\_\-\-\_\-flame\-A\-D\-C\-Manager)
+\item 
+\#define \hyperlink{_a_d_c_manager_8h_a24c6b3b64a86e945c97d3eb83161ea3b}{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E}(\-\_\-flame\-Object\-Name, \-\_\-flame\-Max\-Channels, \-\_\-prescaler)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct event\-A\-D\-C \hyperlink{namespaceflame_a0fb9cd960c9db48d9e068daa2427aecf}{flame\-::\-E\-V\-E\-N\-T\-\_\-\-A\-D\-C}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_a_d_c_manager_8h_aef1036caf0c050779dad9ab0e9869db8}{\index{A\-D\-C\-Manager.\-h@{A\-D\-C\-Manager.\-h}!F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}}
+\index{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T@{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}!ADCManager.h@{A\-D\-C\-Manager.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-A\-S\-S\-I\-G\-N\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-\-\_\-flame\-A\-D\-C\-Manager}
+\end{DoxyParamCaption}
+)}}\label{_a_d_c_manager_8h_aef1036caf0c050779dad9ab0e9869db8}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ISR(ADC\_vect) \{ \(\backslash\)
+        \_\_flameADCManager.adc(); \(\backslash\)
+\}
+\end{DoxyCode}
+
+
+Definition at line 38 of file A\-D\-C\-Manager.\-h.
+
+\hypertarget{_a_d_c_manager_8h_a24c6b3b64a86e945c97d3eb83161ea3b}{\index{A\-D\-C\-Manager.\-h@{A\-D\-C\-Manager.\-h}!F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E@{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E}}
+\index{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E@{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E}!ADCManager.h@{A\-D\-C\-Manager.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-A\-D\-C\-\_\-\-C\-R\-E\-A\-T\-E(
+\begin{DoxyParamCaption}
+\item[{}]{\-\_\-flame\-Object\-Name, }
+\item[{}]{\-\_\-flame\-Max\-Channels, }
+\item[{}]{\-\_\-prescaler}
+\end{DoxyParamCaption}
+)}}\label{_a_d_c_manager_8h_a24c6b3b64a86e945c97d3eb83161ea3b}
+{\bfseries Value\-:}
+\begin{DoxyCode}
+ADCManagerImplementation<\_flameMaxChannels> \_flameObjectName(\_prescaler); \hyperlink{_a_d_c_manager_8h_aef1036caf0c050779dad9ab0e9869db8}{\(\backslash\)}
+\hyperlink{_a_d_c_manager_8h_aef1036caf0c050779dad9ab0e9869db8}{                FLAME\_ADC\_ASSIGN\_INTERRUPT}(\_flameObjectName);
+\end{DoxyCode}
+Create a new A\-D\-C object 
+\begin{DoxyParams}{Parameters}
+{\em \-\_\-flame\-Object\-Name} & the variable name of the object \\
+\hline
+{\em \-\_\-flame\-Max\-Channels} & the maximum number of channels the A\-D\-C needs to support \\
+\hline
+{\em \-\_\-prescaler} & the prescaler to run the A\-D\-C at \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file A\-D\-C\-Manager.\-h.
+

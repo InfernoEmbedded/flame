@@ -1,0 +1,129 @@
+\hypertarget{classflame__gpl_1_1_vusb_typist}{\section{flame\-\_\-gpl\-:\-:Vusb\-Typist$<$ tx\-Buffers $>$ Class Template Reference}
+\label{classflame__gpl_1_1_vusb_typist}\index{flame\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$@{flame\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}}
+}
+
+
+{\ttfamily \#include $<$Vusb\-Typist.\-h$>$}
+
+Inheritance diagram for flame\-\_\-gpl\-:\-:Vusb\-Typist$<$ tx\-Buffers $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame__gpl_1_1_vusb_typist}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame__gpl_1_1_vusb_typist_acbf3098e89832c0b07904fc36f935e54}{Vusb\-Typist} (\hyperlink{classflame_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_typist_afc57a75f932afa7202b7c1aee92d9a0b}{alarm} (\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a0c33b494a68ce28497e7ce8e5e95feff}{C\-O\-N\-S\-T} void \hyperlink{classflame__gpl_1_1_vusb_typist_a725357253d37d28f66cbf2c608fefad7}{run\-Tx\-Buffers} ()
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_typist_a122b275feefa5c1379910056ca81bc54}{type\-Char} (char c)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame__gpl_1_1_vusb_typist_abeab655b1c9769ad055805f243993860}{\-\_\-is\-Typing}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$uint8\-\_\-t tx\-Buffers$>$class flame\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}
+
+A U\-S\-B keyboard emulator that will type what you print to it 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em tx\-Buffers} & the number of output buffers \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 38 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_typist_acbf3098e89832c0b07904fc36f935e54}{\index{flame\-\_\-gpl\-::\-Vusb\-Typist@{flame\-\_\-gpl\-::\-Vusb\-Typist}!Vusb\-Typist@{Vusb\-Typist}}
+\index{Vusb\-Typist@{Vusb\-Typist}!flame_gpl::VusbTypist@{flame\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{Vusb\-Typist}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf flame\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::{\bf Vusb\-Typist} (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame__gpl_1_1_vusb_typist_acbf3098e89832c0b07904fc36f935e54}
+Emulate a U\-S\-B keyboard using V-\/\-U\-S\-B This class can also be passed strings, which it will type out on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to trigger events from \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 197 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_typist_afc57a75f932afa7202b7c1aee92d9a0b}{\index{flame\-\_\-gpl\-::\-Vusb\-Typist@{flame\-\_\-gpl\-::\-Vusb\-Typist}!alarm@{alarm}}
+\index{alarm@{alarm}!flame_gpl::VusbTypist@{flame\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::{\bf alarm} (
+\begin{DoxyParamCaption}
+\item[{{\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame__gpl_1_1_vusb_typist_afc57a75f932afa7202b7c1aee92d9a0b}
+Periodically called to maintain U\-S\-B comms 
+
+Reimplemented from \hyperlink{classflame__gpl_1_1_vusb_keyboard_ac78516dbc8ac2519bf2f0b4327c13b4d}{flame\-\_\-gpl\-::\-Vusb\-Keyboard}.
+
+
+
+Definition at line 204 of file Vusb\-Typist.\-h.
+
+\hypertarget{classflame__gpl_1_1_vusb_typist_a725357253d37d28f66cbf2c608fefad7}{\index{flame\-\_\-gpl\-::\-Vusb\-Typist@{flame\-\_\-gpl\-::\-Vusb\-Typist}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!flame_gpl::VusbTypist@{flame\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ {\bf C\-O\-N\-S\-T} void {\bf flame\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classflame__gpl_1_1_vusb_typist_a725357253d37d28f66cbf2c608fefad7}
+Start transmitting a new string (does nothing, alarm will immediately pick up the next character) 
+
+Implements \hyperlink{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}{flame\-::\-Device\-\_\-\-T\-X}.
+
+
+
+Definition at line 46 of file Vusb\-Typist.\-h.
+
+\hypertarget{classflame__gpl_1_1_vusb_typist_a122b275feefa5c1379910056ca81bc54}{\index{flame\-\_\-gpl\-::\-Vusb\-Typist@{flame\-\_\-gpl\-::\-Vusb\-Typist}!type\-Char@{type\-Char}}
+\index{type\-Char@{type\-Char}!flame_gpl::VusbTypist@{flame\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{type\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ void {\bf flame\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::type\-Char (
+\begin{DoxyParamCaption}
+\item[{char}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame__gpl_1_1_vusb_typist_a122b275feefa5c1379910056ca81bc54}
+Type a single character on the keyboard 
+\begin{DoxyParams}{Parameters}
+{\em c} & the character to type \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file Vusb\-Typist.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_typist_abeab655b1c9769ad055805f243993860}{\index{flame\-\_\-gpl\-::\-Vusb\-Typist@{flame\-\_\-gpl\-::\-Vusb\-Typist}!\-\_\-is\-Typing@{\-\_\-is\-Typing}}
+\index{\-\_\-is\-Typing@{\-\_\-is\-Typing}!flame_gpl::VusbTypist@{flame\-\_\-gpl\-::\-Vusb\-Typist}}
+\subsubsection[{\-\_\-is\-Typing}]{\setlength{\rightskip}{0pt plus 5cm}template$<$uint8\-\_\-t tx\-Buffers$>$ bool {\bf flame\-\_\-gpl\-::\-Vusb\-Typist}$<$ tx\-Buffers $>$\-::\-\_\-is\-Typing\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame__gpl_1_1_vusb_typist_abeab655b1c9769ad055805f243993860}
+
+
+Definition at line 40 of file Vusb\-Typist.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+A\-:/eclipse/flame/flame-\/\-Vusb-\/\-Keyboard/flame/\hyperlink{_vusb_typist_8h}{Vusb\-Typist.\-h}\end{DoxyCompactItemize}

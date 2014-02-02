@@ -1,0 +1,377 @@
+\hypertarget{classflame_1_1_device___t_x}{\section{flame\-:\-:Device\-\_\-\-T\-X Class Reference}
+\label{classflame_1_1_device___t_x}\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}}
+}
+
+
+{\ttfamily \#include $<$Device\-\_\-\-T\-X.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Device\-\_\-\-T\-X\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.975610cm]{classflame_1_1_device___t_x}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_ad9d1d66fe9a4538032e914896f553745}{can\-Write} ()
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a1c87e31a7d6b65d7665ff7f266e358df}{write\-\_\-\-P} (P\-G\-M\-\_\-\-P string)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a1dabeeb28eee75aa8d27fa3860244d74}{write} (const char $\ast$string)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a813ba499f49c82722318fa3f8cda2d30}{write} (const char $\ast$string, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_af65ef0e0855089804b34f26a958fdde3}{write\-\_\-\-P} (P\-G\-M\-\_\-\-P buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a42f7f7b191dafbdfeefc03a3d246df1c}{write} (const char $\ast$buffer, uint16\-\_\-t length)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a893f6301eb001fe2bc21e3194ca82c02}{write} (const char $\ast$buffer, uint16\-\_\-t length, void($\ast$complete\-Function)(const char $\ast$))
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a185cec8162abc4fafba59e972f59a57e}{debug} (const char $\ast$file, int line, const char $\ast$function, P\-G\-M\-\_\-\-P format,...)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_ae31487b1b1e3f8c9749a2bae3f48f1bf}{printf} (P\-G\-M\-\_\-\-P format,...)
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_a84d278c2d86fb2419338dc2a71dfcaef}{write} (uint32\-\_\-t value)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_device___t_x_ac8cbfc24dbb82b3d0229c4f48046bed9}{Device\-\_\-\-T\-X} (\hyperlink{classflame_1_1_ring_buffer}{Ring\-Buffer} \&tx\-Pointers)
+\item 
+virtual void \hyperlink{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}{run\-Tx\-Buffers} ()=0
+\item 
+bool \hyperlink{classflame_1_1_device___t_x_aa559b2481ade8d4ffb7c1a06a8c4aced}{more\-T\-X} ()
+\item 
+int \hyperlink{classflame_1_1_device___t_x_a238f4a5bbbc36cf2ee06f616008c537f}{next\-Character} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_t_x_buffer}{T\-X\-Buffer} \hyperlink{classflame_1_1_device___t_x_a8a7dfd6afba59f3144fd20f89186fd19}{\-\_\-current\-Tx}
+\item 
+\hyperlink{classflame_1_1_ring_buffer}{Ring\-Buffer} \& \hyperlink{classflame_1_1_device___t_x_a208fef1a96295f254b913180b5274160}{\-\_\-tx\-Pointers}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A device that can transmit data 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em tx\-Pointers} & the number of available output buffers for non-\/blocking I/\-O \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 354 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_device___t_x_ac8cbfc24dbb82b3d0229c4f48046bed9}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!Device\-\_\-\-T\-X@{Device\-\_\-\-T\-X}}
+\index{Device\-\_\-\-T\-X@{Device\-\_\-\-T\-X}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{Device\-\_\-\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Device\-\_\-\-T\-X\-::\-Device\-\_\-\-T\-X (
+\begin{DoxyParamCaption}
+\item[{{\bf Ring\-Buffer} \&}]{tx\-Pointers}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_device___t_x_ac8cbfc24dbb82b3d0229c4f48046bed9}
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em tx\-Pointers} & a ringbuffer to store T\-X elements in \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 363 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_device___t_x_ad9d1d66fe9a4538032e914896f553745}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!can\-Write@{can\-Write}}
+\index{can\-Write@{can\-Write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{can\-Write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::can\-Write (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_ad9d1d66fe9a4538032e914896f553745}
+Can we accept another buffer? 
+
+Definition at line 408 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a185cec8162abc4fafba59e972f59a57e}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!debug@{debug}}
+\index{debug@{debug}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::debug (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file, }
+\item[{int}]{line, }
+\item[{const char $\ast$}]{function, }
+\item[{P\-G\-M\-\_\-\-P}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a185cec8162abc4fafba59e972f59a57e}
+Print a debug message 
+\begin{DoxyParams}{Parameters}
+{\em file} & the filename \\
+\hline
+{\em line} & the line number \\
+\hline
+{\em function} & the function name \\
+\hline
+{\em format} & a printf format \\
+\hline
+{\em ...} & the printf parms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if the message was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 661 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_aa559b2481ade8d4ffb7c1a06a8c4aced}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!more\-T\-X@{more\-T\-X}}
+\index{more\-T\-X@{more\-T\-X}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{more\-T\-X}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::more\-T\-X (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_device___t_x_aa559b2481ade8d4ffb7c1a06a8c4aced}
+Called when a buffer has been processed \begin{DoxyReturn}{Returns}
+true if there is another buffer to process 
+\end{DoxyReturn}
+
+
+Definition at line 372 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a238f4a5bbbc36cf2ee06f616008c537f}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!next\-Character@{next\-Character}}
+\index{next\-Character@{next\-Character}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{next\-Character}]{\setlength{\rightskip}{0pt plus 5cm}int flame\-::\-Device\-\_\-\-T\-X\-::next\-Character (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_device___t_x_a238f4a5bbbc36cf2ee06f616008c537f}
+Get the next character \begin{DoxyReturn}{Returns}
+the next character, or -\/1 if there is no more 
+\end{DoxyReturn}
+
+
+Definition at line 389 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_ae31487b1b1e3f8c9749a2bae3f48f1bf}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!printf@{printf}}
+\index{printf@{printf}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{printf}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::printf (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{format, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_ae31487b1b1e3f8c9749a2bae3f48f1bf}
+Print a message 
+\begin{DoxyParams}{Parameters}
+{\em format} & a printf format \\
+\hline
+{\em ...} & the printf parms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 708 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!run\-Tx\-Buffers@{run\-Tx\-Buffers}}
+\index{run\-Tx\-Buffers@{run\-Tx\-Buffers}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{run\-Tx\-Buffers}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Device\-\_\-\-T\-X\-::run\-Tx\-Buffers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classflame_1_1_device___t_x_af3cf3dc02a124e5a88841d325555ce3c}
+
+
+Implemented in \hyperlink{classflame_1_1_display___character_a4a3172da51cdb598217654934f9a2ae4}{flame\-::\-Display\-\_\-\-Character$<$ cols, rows, tx\-Buffers $>$}, \hyperlink{classflame_1_1_display___monochrome_a7f156eaedc986e5432c4b04968417def}{flame\-::\-Display\-\_\-\-Monochrome$<$ cols, rows, tx\-Buffers $>$}, \hyperlink{classflame_1_1_display___monochrome_a7f156eaedc986e5432c4b04968417def}{flame\-::\-Display\-\_\-\-Monochrome$<$ D\-I\-S\-P\-L\-A\-Y\-\_\-\-Y, D\-I\-S\-P\-L\-A\-Y\-\_\-\-X, tx\-Buffers $>$}, \hyperlink{classflame_1_1_hardware_serial_a2f045cdba4a0be78d876e383ff1ec6f2}{flame\-::\-Hardware\-Serial$<$, baud, rx\-Buf\-Length, tx\-Buffers $>$}, \hyperlink{classflame__gpl_1_1_vusb_console_a5deb453bdc18579c6f3c592862f71fab}{flame\-\_\-gpl\-::\-Vusb\-Console$<$ tx\-Count $>$}, and \hyperlink{classflame__gpl_1_1_vusb_typist_a725357253d37d28f66cbf2c608fefad7}{flame\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}.
+
+\hypertarget{classflame_1_1_device___t_x_a1dabeeb28eee75aa8d27fa3860244d74}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a1dabeeb28eee75aa8d27fa3860244d74}
+Write a string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 490 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a813ba499f49c82722318fa3f8cda2d30}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{string, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a813ba499f49c82722318fa3f8cda2d30}
+Write a string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the string \\
+\hline
+{\em complete\-Function} & a function to call when the string has been written (the string is passed as a parameter) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 513 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a42f7f7b191dafbdfeefc03a3d246df1c}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a42f7f7b191dafbdfeefc03a3d246df1c}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 611 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a893f6301eb001fe2bc21e3194ca82c02}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{buffer, }
+\item[{uint16\-\_\-t}]{length, }
+\item[{void($\ast$)(const char $\ast$)}]{complete\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a893f6301eb001fe2bc21e3194ca82c02}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+{\em complete\-Function} & a function to call when the string has been written (the string is passed as a parameter) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 635 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a84d278c2d86fb2419338dc2a71dfcaef}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write@{write}}
+\index{write@{write}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a84d278c2d86fb2419338dc2a71dfcaef}
+Print an integer 
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent Print an integer 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent Print an integer 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to print \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 781 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a1c87e31a7d6b65d7665ff7f266e358df}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write\-\_\-\-P@{write\-\_\-\-P}}
+\index{write\-\_\-\-P@{write\-\_\-\-P}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{string}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_a1c87e31a7d6b65d7665ff7f266e358df}
+Write a progmem string asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em string} & the progmem string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 418 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_af65ef0e0855089804b34f26a958fdde3}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!write\-\_\-\-P@{write\-\_\-\-P}}
+\index{write\-\_\-\-P@{write\-\_\-\-P}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{write\-\_\-\-P}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Device\-\_\-\-T\-X\-::write\-\_\-\-P (
+\begin{DoxyParamCaption}
+\item[{P\-G\-M\-\_\-\-P}]{buffer, }
+\item[{uint16\-\_\-t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_device___t_x_af65ef0e0855089804b34f26a958fdde3}
+Write a buffer asynchronously 
+\begin{DoxyParams}{Parameters}
+{\em buffer} & the buffer \\
+\hline
+{\em length} & the length of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success true if there is already a string being sent 
+\end{DoxyReturn}
+
+
+Definition at line 536 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_device___t_x_a8a7dfd6afba59f3144fd20f89186fd19}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!\-\_\-current\-Tx@{\-\_\-current\-Tx}}
+\index{\-\_\-current\-Tx@{\-\_\-current\-Tx}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{\-\_\-current\-Tx}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-X\-Buffer} flame\-::\-Device\-\_\-\-T\-X\-::\-\_\-current\-Tx\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_device___t_x_a8a7dfd6afba59f3144fd20f89186fd19}
+
+
+Definition at line 356 of file Device\-\_\-\-T\-X.\-h.
+
+\hypertarget{classflame_1_1_device___t_x_a208fef1a96295f254b913180b5274160}{\index{flame\-::\-Device\-\_\-\-T\-X@{flame\-::\-Device\-\_\-\-T\-X}!\-\_\-tx\-Pointers@{\-\_\-tx\-Pointers}}
+\index{\-\_\-tx\-Pointers@{\-\_\-tx\-Pointers}!flame::Device_TX@{flame\-::\-Device\-\_\-\-T\-X}}
+\subsubsection[{\-\_\-tx\-Pointers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Ring\-Buffer}\& flame\-::\-Device\-\_\-\-T\-X\-::\-\_\-tx\-Pointers\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_device___t_x_a208fef1a96295f254b913180b5274160}
+
+
+Definition at line 357 of file Device\-\_\-\-T\-X.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_device___t_x_8h}{Device\-\_\-\-T\-X.\-h}\end{DoxyCompactItemize}

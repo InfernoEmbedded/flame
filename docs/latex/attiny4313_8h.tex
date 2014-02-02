@@ -1,0 +1,307 @@
+\hypertarget{attiny4313_8h}{\section{chips/attiny4313.h File Reference}
+\label{attiny4313_8h}\index{chips/attiny4313.\-h@{chips/attiny4313.\-h}}
+}
+{\ttfamily \#include $<$avr/io.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{attiny4313_8h_affabe879a87fd7067e8564130e3ade1a}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0}~8,   Timer\-Type\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S,     0x50,    0x53,    0,       0x56,     0x5c,     0,        0,            0x52,   0,       0x59,     0
+\item 
+\#define \hyperlink{attiny4313_8h_a303e0bf92880a3c91ddd1f0c92dd798d}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1}~16,  Timer\-Type\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S,     0x4f,    0x4e,    0x42,    0x4a,     0x48,     0,        0x44,         0x4c,   0,       0x59,     6
+\item 
+\#define \hyperlink{attiny4313_8h_acb10fcb608c0c9d5d683e0a0b33c91c9}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}~T\-I\-M\-E\-R0\-\_\-\-C\-O\-M\-P\-A\-\_\-vect, T\-I\-M\-E\-R0\-\_\-\-C\-O\-M\-P\-B\-\_\-vect, 0
+\item 
+\#define \hyperlink{attiny4313_8h_af78c56539c7d85620abe2beee0312a88}{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}~T\-I\-M\-E\-R1\-\_\-\-C\-O\-M\-P\-A\-\_\-vect, T\-I\-M\-E\-R1\-\_\-\-C\-O\-M\-P\-B\-\_\-vect, 0
+\item 
+\#define \hyperlink{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}~0,     0x2b,  0x2a,   0x23,   0,     R\-X\-E\-N0, T\-X\-E\-N0, R\-X\-C\-I\-E0, T\-X\-C\-I\-E0, U\-D\-R\-E0, U2\-X0
+\item 
+\#define \hyperlink{attiny4313_8h_aa16aba733adb1b0c65d3d5a85bce6c40}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1}~1,     0x2b,  0x2a,   0x23,   1,     R\-X\-E\-N1, T\-X\-E\-N1, R\-X\-C\-I\-E1, T\-X\-C\-I\-E1, U\-D\-R\-E1, U2\-X1
+\item 
+\#define \hyperlink{attiny4313_8h_adc44acdb58e97138ed0b9b66cc01774c}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2}~2,     0x2b,  0x2a,   0x23,   2,     R\-X\-E\-N2, T\-X\-E\-N2, R\-X\-C\-I\-E2, T\-X\-C\-I\-E2, U\-D\-R\-E2, U2\-X2
+\item 
+\#define \hyperlink{attiny4313_8h_a21f314ea96568b1b4b333053d667524d}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3}~3,     0x2b,  0x2a,   0x23,   3,     R\-X\-E\-N3, T\-X\-E\-N3, R\-X\-C\-I\-E3, T\-X\-C\-I\-E3, U\-D\-R\-E3, U2\-X3
+\item 
+\#define \hyperlink{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}~0x29,  0x2b,  0x2a,   0x23,   0x2c,  R\-X\-E\-N,  T\-X\-E\-N,  R\-X\-C\-I\-E,  T\-X\-C\-I\-E,  U\-D\-R\-E,  U2\-X
+\item 
+\#define \hyperlink{attiny4313_8h_a6868942f51345d459e9397c9673d67c3}{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}~U\-S\-A\-R\-T\-\_\-\-R\-X\-\_\-vect, U\-S\-A\-R\-T\-\_\-\-T\-X\-\_\-vect
+\item 
+\#define \hyperlink{attiny4313_8h_afbcf8e2a83cf2e386d73e094e4e85f48}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0}~0x3a,   0x3b,   0x39,   0,  8
+\item 
+\#define \hyperlink{attiny4313_8h_a465656a43e4f59e687a23d39c3454fdb}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1}~0x3a,   0x3b,   0x39,   1,  9
+\item 
+\#define \hyperlink{attiny4313_8h_a1d589ca3ca66de874e5c2b80046c5b53}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2}~0x3a,   0x3b,   0x39,   2,  10
+\item 
+\#define \hyperlink{attiny4313_8h_a8689ed7412030847149aa99772c89dcc}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0}~0x37,   0x38,   0x36,   0,  0
+\item 
+\#define \hyperlink{attiny4313_8h_a5d454d07bf90521c55746a294f39d11e}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1}~0x37,   0x38,   0x36,   1,  1
+\item 
+\#define \hyperlink{attiny4313_8h_adf7dd36a623ecbb5bc54bc2aa2cff5a2}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}~0x37,   0x38,   0x36,   2,  2
+\item 
+\#define \hyperlink{attiny4313_8h_aa5754e8ee286c23b931f1c48de85df86}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}~0x37,   0x38,   0x36,   3,  3
+\item 
+\#define \hyperlink{attiny4313_8h_af67a60337519d6e0e063e3346c13590e}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}~0x37,   0x38,   0x36,   4,  4
+\item 
+\#define \hyperlink{attiny4313_8h_ae8d201497c45106135f9e4f8d106c877}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5}~0x37,   0x38,   0x36,   5,  5
+\item 
+\#define \hyperlink{attiny4313_8h_ab6be32edc248f473fd19b9b9722b9055}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6}~0x37,   0x38,   0x36,   6,  6
+\item 
+\#define \hyperlink{attiny4313_8h_a68de377263d9f98abe0d08882be5aacf}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7}~0x37,   0x38,   0x36,   7,  7
+\item 
+\#define \hyperlink{attiny4313_8h_a4ad293a743523ac81f311cf5cb7733bc}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0}~0x31,   0x32,   0x30,   0,  11
+\item 
+\#define \hyperlink{attiny4313_8h_a3fb0dfe5fbfbb9bc35e1ea1dbf15d5c5}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1}~0x31,   0x32,   0x30,   1,  12
+\item 
+\#define \hyperlink{attiny4313_8h_a1bf64c0d6061f97cd2c711917d9508da}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2}~0x31,   0x32,   0x30,   2,  13
+\item 
+\#define \hyperlink{attiny4313_8h_ac3a01cb0cae115b5f9153551934a5af9}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3}~0x31,   0x32,   0x30,   3,  14
+\item 
+\#define \hyperlink{attiny4313_8h_a4d9b0d2753f6e71f870d5d5b1d440dbf}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4}~0x31,   0x32,   0x30,   4,  15
+\item 
+\#define \hyperlink{attiny4313_8h_a3a052122d9978d7827173a0af36c319a}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}~0x31,   0x32,   0x30,   5,  16
+\item 
+\#define \hyperlink{attiny4313_8h_a985a3e6a6bd872d16dc312ae63c8da6a}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6}~0x31,   0x32,   0x30,   6,  17
+\item 
+\#define \hyperlink{attiny4313_8h_ab39f7ddad6e692db1c00115db776636f}{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}~18
+\item 
+\#define \hyperlink{attiny4313_8h_a29c1e1c016c4fef53ae812005f4bc15c}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A}~\hyperlink{attiny85_8h_adf7dd36a623ecbb5bc54bc2aa2cff5a2}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}
+\item 
+\#define \hyperlink{attiny4313_8h_a6b32583fee6bd3dfa0611d983268b987}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B}~\hyperlink{attiny4313_8h_a3a052122d9978d7827173a0af36c319a}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}
+\item 
+\#define \hyperlink{attiny4313_8h_a43c30bd907990438c7cf76d9df692d7a}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A}~\hyperlink{attiny85_8h_aa5754e8ee286c23b931f1c48de85df86}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}
+\item 
+\#define \hyperlink{attiny4313_8h_ac2bf58f000a64bcbea3a4dab8d8b2e30}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B}~\hyperlink{attiny85_8h_af67a60337519d6e0e063e3346c13590e}{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{attiny4313_8h_ab39f7ddad6e692db1c00115db776636f}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T@{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T@{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T~18}}\label{attiny4313_8h_ab39f7ddad6e692db1c00115db776636f}
+
+
+Definition at line 83 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_afbcf8e2a83cf2e386d73e094e4e85f48}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A0~0x3a,   0x3b,   0x39,   0,  8}}\label{attiny4313_8h_afbcf8e2a83cf2e386d73e094e4e85f48}
+
+
+Definition at line 64 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a465656a43e4f59e687a23d39c3454fdb}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A1~0x3a,   0x3b,   0x39,   1,  9}}\label{attiny4313_8h_a465656a43e4f59e687a23d39c3454fdb}
+
+
+Definition at line 65 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a1d589ca3ca66de874e5c2b80046c5b53}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-A2~0x3a,   0x3b,   0x39,   2,  10}}\label{attiny4313_8h_a1d589ca3ca66de874e5c2b80046c5b53}
+
+
+Definition at line 66 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a8689ed7412030847149aa99772c89dcc}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B0~0x37,   0x38,   0x36,   0,  0}}\label{attiny4313_8h_a8689ed7412030847149aa99772c89dcc}
+
+
+Definition at line 67 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a5d454d07bf90521c55746a294f39d11e}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B1~0x37,   0x38,   0x36,   1,  1}}\label{attiny4313_8h_a5d454d07bf90521c55746a294f39d11e}
+
+
+Definition at line 68 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_adf7dd36a623ecbb5bc54bc2aa2cff5a2}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2~0x37,   0x38,   0x36,   2,  2}}\label{attiny4313_8h_adf7dd36a623ecbb5bc54bc2aa2cff5a2}
+
+
+Definition at line 69 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_aa5754e8ee286c23b931f1c48de85df86}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3~0x37,   0x38,   0x36,   3,  3}}\label{attiny4313_8h_aa5754e8ee286c23b931f1c48de85df86}
+
+
+Definition at line 70 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_af67a60337519d6e0e063e3346c13590e}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4~0x37,   0x38,   0x36,   4,  4}}\label{attiny4313_8h_af67a60337519d6e0e063e3346c13590e}
+
+
+Definition at line 71 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ae8d201497c45106135f9e4f8d106c877}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B5~0x37,   0x38,   0x36,   5,  5}}\label{attiny4313_8h_ae8d201497c45106135f9e4f8d106c877}
+
+
+Definition at line 72 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ab6be32edc248f473fd19b9b9722b9055}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B6~0x37,   0x38,   0x36,   6,  6}}\label{attiny4313_8h_ab6be32edc248f473fd19b9b9722b9055}
+
+
+Definition at line 73 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a68de377263d9f98abe0d08882be5aacf}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B7~0x37,   0x38,   0x36,   7,  7}}\label{attiny4313_8h_a68de377263d9f98abe0d08882be5aacf}
+
+
+Definition at line 74 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a4ad293a743523ac81f311cf5cb7733bc}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D0~0x31,   0x32,   0x30,   0,  11}}\label{attiny4313_8h_a4ad293a743523ac81f311cf5cb7733bc}
+
+
+Definition at line 75 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a3fb0dfe5fbfbb9bc35e1ea1dbf15d5c5}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D1~0x31,   0x32,   0x30,   1,  12}}\label{attiny4313_8h_a3fb0dfe5fbfbb9bc35e1ea1dbf15d5c5}
+
+
+Definition at line 76 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a1bf64c0d6061f97cd2c711917d9508da}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D2~0x31,   0x32,   0x30,   2,  13}}\label{attiny4313_8h_a1bf64c0d6061f97cd2c711917d9508da}
+
+
+Definition at line 77 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ac3a01cb0cae115b5f9153551934a5af9}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D3~0x31,   0x32,   0x30,   3,  14}}\label{attiny4313_8h_ac3a01cb0cae115b5f9153551934a5af9}
+
+
+Definition at line 78 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a4d9b0d2753f6e71f870d5d5b1d440dbf}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D4~0x31,   0x32,   0x30,   4,  15}}\label{attiny4313_8h_a4d9b0d2753f6e71f870d5d5b1d440dbf}
+
+
+Definition at line 79 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a3a052122d9978d7827173a0af36c319a}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5~0x31,   0x32,   0x30,   5,  16}}\label{attiny4313_8h_a3a052122d9978d7827173a0af36c319a}
+
+
+Definition at line 80 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a985a3e6a6bd872d16dc312ae63c8da6a}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D6~0x31,   0x32,   0x30,   6,  17}}\label{attiny4313_8h_a985a3e6a6bd872d16dc312ae63c8da6a}
+
+
+Definition at line 81 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a29c1e1c016c4fef53ae812005f4bc15c}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-A~{\bf F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B2}}}\label{attiny4313_8h_a29c1e1c016c4fef53ae812005f4bc15c}
+
+
+Definition at line 86 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a6b32583fee6bd3dfa0611d983268b987}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-0\-\_\-\-B~{\bf F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-D5}}}\label{attiny4313_8h_a6b32583fee6bd3dfa0611d983268b987}
+
+
+Definition at line 87 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a43c30bd907990438c7cf76d9df692d7a}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-A~{\bf F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B3}}}\label{attiny4313_8h_a43c30bd907990438c7cf76d9df692d7a}
+
+
+Definition at line 88 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ac2bf58f000a64bcbea3a4dab8d8b2e30}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B}}
+\index{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B@{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-T\-I\-M\-E\-R\-\_\-1\-\_\-\-B~{\bf F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-\-B4}}}\label{attiny4313_8h_ac2bf58f000a64bcbea3a4dab8d8b2e30}
+
+
+Definition at line 89 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_acb10fcb608c0c9d5d683e0a0b33c91c9}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S~T\-I\-M\-E\-R0\-\_\-\-C\-O\-M\-P\-A\-\_\-vect, T\-I\-M\-E\-R0\-\_\-\-C\-O\-M\-P\-B\-\_\-vect, 0}}\label{attiny4313_8h_acb10fcb608c0c9d5d683e0a0b33c91c9}
+
+
+Definition at line 47 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a303e0bf92880a3c91ddd1f0c92dd798d}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R16\-\_\-1~16,  Timer\-Type\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S,     0x4f,    0x4e,    0x42,    0x4a,     0x48,     0,        0x44,         0x4c,   0,       0x59,     6}}\label{attiny4313_8h_a303e0bf92880a3c91ddd1f0c92dd798d}
+
+
+Definition at line 44 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_af78c56539c7d85620abe2beee0312a88}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R1\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S~T\-I\-M\-E\-R1\-\_\-\-C\-O\-M\-P\-A\-\_\-vect, T\-I\-M\-E\-R1\-\_\-\-C\-O\-M\-P\-B\-\_\-vect, 0}}\label{attiny4313_8h_af78c56539c7d85620abe2beee0312a88}
+
+
+Definition at line 48 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_affabe879a87fd7067e8564130e3ade1a}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0}}
+\index{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0@{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-T\-I\-M\-E\-R8\-\_\-0~8,   Timer\-Type\-::\-H\-A\-S\-\_\-5\-\_\-\-P\-R\-E\-S\-C\-A\-L\-E\-R\-S,     0x50,    0x53,    0,       0x56,     0x5c,     0,        0,            0x52,   0,       0x59,     0}}\label{attiny4313_8h_affabe879a87fd7067e8564130e3ade1a}
+
+
+Definition at line 43 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0~0,     0x2b,  0x2a,   0x23,   0,     R\-X\-E\-N0, T\-X\-E\-N0, R\-X\-C\-I\-E0, T\-X\-C\-I\-E0, U\-D\-R\-E0, U2\-X0}}\label{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}
+
+
+Definition at line 57 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0~0x29,  0x2b,  0x2a,   0x23,   0x2c,  R\-X\-E\-N,  T\-X\-E\-N,  R\-X\-C\-I\-E,  T\-X\-C\-I\-E,  U\-D\-R\-E,  U2\-X}}\label{attiny4313_8h_ab4f25321bc2a53f1eeddb6c04a05de87}
+
+
+Definition at line 57 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a6868942f51345d459e9397c9673d67c3}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T0\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-S~U\-S\-A\-R\-T\-\_\-\-R\-X\-\_\-vect, U\-S\-A\-R\-T\-\_\-\-T\-X\-\_\-vect}}\label{attiny4313_8h_a6868942f51345d459e9397c9673d67c3}
+
+
+Definition at line 60 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_aa16aba733adb1b0c65d3d5a85bce6c40}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T1~1,     0x2b,  0x2a,   0x23,   1,     R\-X\-E\-N1, T\-X\-E\-N1, R\-X\-C\-I\-E1, T\-X\-C\-I\-E1, U\-D\-R\-E1, U2\-X1}}\label{attiny4313_8h_aa16aba733adb1b0c65d3d5a85bce6c40}
+
+
+Definition at line 54 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_adc44acdb58e97138ed0b9b66cc01774c}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T2~2,     0x2b,  0x2a,   0x23,   2,     R\-X\-E\-N2, T\-X\-E\-N2, R\-X\-C\-I\-E2, T\-X\-C\-I\-E2, U\-D\-R\-E2, U2\-X2}}\label{attiny4313_8h_adc44acdb58e97138ed0b9b66cc01774c}
+
+
+Definition at line 55 of file attiny4313.\-h.
+
+\hypertarget{attiny4313_8h_a21f314ea96568b1b4b333053d667524d}{\index{attiny4313.\-h@{attiny4313.\-h}!F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3}}
+\index{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3@{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3}!attiny4313.h@{attiny4313.\-h}}
+\subsubsection[{F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\-L\-A\-M\-E\-\_\-\-U\-S\-A\-R\-T3~3,     0x2b,  0x2a,   0x23,   3,     R\-X\-E\-N3, T\-X\-E\-N3, R\-X\-C\-I\-E3, T\-X\-C\-I\-E3, U\-D\-R\-E3, U2\-X3}}\label{attiny4313_8h_a21f314ea96568b1b4b333053d667524d}
+
+
+Definition at line 56 of file attiny4313.\-h.
+

@@ -23,13 +23,13 @@ We recommend using [cppcheck][cppcheck] and the [CPPCeclipse][eclipse] Eclipse P
  * Leverage inheritance to make generic routines available for all objects that need it
  * Expensive operations should be asynchronous where possible, so they run in the background while your code does other things
  * Enable an event driven approach
- * BSD licensed to encourage commercial use (there is a separate GPL project for ports of GPL software to MHVLib, such as V-USB)
+ * BSD licensed to encourage commercial use (there is a separate GPL project for ports of GPL software to Flame, such as V-USB)
 
 ### Getting Started ###
 
-We recommend developing your MHVlib projects in Eclipse. For instructions on how to do so, please see our tutorial.
+We recommend developing your Flame projects in Eclipse. For instructions on how to do so, please see our tutorial.
 
-We also have another tutorial showing how to [build MHVlib using make][makemhv] from the command line.
+We also have another tutorial showing how to [build Flame using make][makeflame] from the command line.
 
 ### Bootloader ###
 
@@ -42,7 +42,7 @@ If USB is more your thing, you may want to consider [USBaspLoader][loader], whic
 [slide]: http://www.slideshare.net/AlastairDSilva/how-to-build-a-better-arduino
 [cppcheck]: http://sourceforge.net/apps/mediawiki/cppcheck/index.php?title=Main_Page
 [eclipse]: http://code.google.com/a/eclipselabs.org/p/cppcheclipse/wiki/Installation
-[makemhv]: http://www.makehackvoid.com/tutorials/building-mhvlib-command-line
+[makeflame]: https://infernoembedded.com/products/flame-runtime/tutorials/building-with-makefiles
 [optiboot]: http://code.google.com/p/optiboot/
 [loader]: http://www.obdev.at/products/vusb/usbasploader.html
 [vusblib]: http://www.obdev.at/products/vusb/index.html

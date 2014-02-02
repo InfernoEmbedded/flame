@@ -1,0 +1,97 @@
+\hypertarget{structflame_1_1instrument}{\section{flame\-:\-:instrument Struct Reference}
+\label{structflame_1_1instrument}\index{flame\-::instrument@{flame\-::instrument}}
+}
+
+
+{\ttfamily \#include $<$Wave\-Generator.\-h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{_d_a_c_8h_a5a6d1dc37ffa32957a63868cd1da39b3}{S\-A\-M\-P\-L\-E} $\ast$ \hyperlink{structflame_1_1instrument_ad8ca175683ca6f0ebd472cf13051929f}{samples}
+\item 
+uint16\-\_\-t \hyperlink{structflame_1_1instrument_a9e8428ddc6afef3392234e1ed89bd442}{attack\-Time}
+\item 
+uint16\-\_\-t \hyperlink{structflame_1_1instrument_ad683abcb6de0196805bd230a2d59fb85}{decay1\-Time}
+\item 
+\hyperlink{namespaceflame_a7f6447252c60127b805475b293831f99}{A\-M\-P\-L\-I\-T\-U\-D\-E} \hyperlink{structflame_1_1instrument_a0a0e0263483ad2e903cbcb854493bc1b}{decay1\-Amount}
+\item 
+uint16\-\_\-t \hyperlink{structflame_1_1instrument_a5214632ee985002310d9c94431f5391f}{sustain1\-Time}
+\item 
+uint16\-\_\-t \hyperlink{structflame_1_1instrument_a31be3cd286103e4364edf36133aeec14}{decay2\-Time}
+\item 
+\hyperlink{namespaceflame_a7f6447252c60127b805475b293831f99}{A\-M\-P\-L\-I\-T\-U\-D\-E} \hyperlink{structflame_1_1instrument_a294a5d9d9d10c3706d2fe362e31fc93c}{decay2\-Amount}
+\item 
+uint16\-\_\-t \hyperlink{structflame_1_1instrument_a40807d7de06391d048f1fff8cfe98964}{release\-Time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 58 of file Wave\-Generator.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{structflame_1_1instrument_a9e8428ddc6afef3392234e1ed89bd442}{\index{flame\-::instrument@{flame\-::instrument}!attack\-Time@{attack\-Time}}
+\index{attack\-Time@{attack\-Time}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{attack\-Time}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::instrument\-::attack\-Time}}\label{structflame_1_1instrument_a9e8428ddc6afef3392234e1ed89bd442}
+The samples for a single/part cycle of the instrument at 440\-Hz (middle A), samples at 32k\-Hz, 72 samples long, stored in progmem 
+
+Definition at line 61 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_a0a0e0263483ad2e903cbcb854493bc1b}{\index{flame\-::instrument@{flame\-::instrument}!decay1\-Amount@{decay1\-Amount}}
+\index{decay1\-Amount@{decay1\-Amount}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{decay1\-Amount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf A\-M\-P\-L\-I\-T\-U\-D\-E} flame\-::instrument\-::decay1\-Amount}}\label{structflame_1_1instrument_a0a0e0263483ad2e903cbcb854493bc1b}
+samples to ramp from 100\% to amount/255 $\ast$ 100\% after the attack 
+
+Definition at line 63 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_ad683abcb6de0196805bd230a2d59fb85}{\index{flame\-::instrument@{flame\-::instrument}!decay1\-Time@{decay1\-Time}}
+\index{decay1\-Time@{decay1\-Time}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{decay1\-Time}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::instrument\-::decay1\-Time}}\label{structflame_1_1instrument_ad683abcb6de0196805bd230a2d59fb85}
+samples to ramp from 0 to 100\% when starting playback 
+
+Definition at line 62 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_a294a5d9d9d10c3706d2fe362e31fc93c}{\index{flame\-::instrument@{flame\-::instrument}!decay2\-Amount@{decay2\-Amount}}
+\index{decay2\-Amount@{decay2\-Amount}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{decay2\-Amount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf A\-M\-P\-L\-I\-T\-U\-D\-E} flame\-::instrument\-::decay2\-Amount}}\label{structflame_1_1instrument_a294a5d9d9d10c3706d2fe362e31fc93c}
+samples spent in decay2 
+
+Definition at line 66 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_a31be3cd286103e4364edf36133aeec14}{\index{flame\-::instrument@{flame\-::instrument}!decay2\-Time@{decay2\-Time}}
+\index{decay2\-Time@{decay2\-Time}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{decay2\-Time}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::instrument\-::decay2\-Time}}\label{structflame_1_1instrument_a31be3cd286103e4364edf36133aeec14}
+samples spent in sustain until decay2 
+
+Definition at line 65 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_a40807d7de06391d048f1fff8cfe98964}{\index{flame\-::instrument@{flame\-::instrument}!release\-Time@{release\-Time}}
+\index{release\-Time@{release\-Time}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{release\-Time}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::instrument\-::release\-Time}}\label{structflame_1_1instrument_a40807d7de06391d048f1fff8cfe98964}
+the amplitude to decay to 
+
+Definition at line 67 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_ad8ca175683ca6f0ebd472cf13051929f}{\index{flame\-::instrument@{flame\-::instrument}!samples@{samples}}
+\index{samples@{samples}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{samples}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf S\-A\-M\-P\-L\-E}$\ast$ flame\-::instrument\-::samples}}\label{structflame_1_1instrument_ad8ca175683ca6f0ebd472cf13051929f}
+
+
+Definition at line 59 of file Wave\-Generator.\-h.
+
+\hypertarget{structflame_1_1instrument_a5214632ee985002310d9c94431f5391f}{\index{flame\-::instrument@{flame\-::instrument}!sustain1\-Time@{sustain1\-Time}}
+\index{sustain1\-Time@{sustain1\-Time}!flame::instrument@{flame\-::instrument}}
+\subsubsection[{sustain1\-Time}]{\setlength{\rightskip}{0pt plus 5cm}uint16\-\_\-t flame\-::instrument\-::sustain1\-Time}}\label{structflame_1_1instrument_a5214632ee985002310d9c94431f5391f}
+the amplitude to decay to 
+
+Definition at line 64 of file Wave\-Generator.\-h.
+
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_wave_generator_8h}{Wave\-Generator.\-h}\end{DoxyCompactItemize}

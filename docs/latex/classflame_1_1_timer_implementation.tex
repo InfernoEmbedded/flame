@@ -1,0 +1,657 @@
+\hypertarget{classflame_1_1_timer_implementation}{\section{flame\-:\-:Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$ Class Template Reference}
+\label{classflame_1_1_timer_implementation}\index{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$@{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}}
+}
+
+
+{\ttfamily \#include $<$Timer.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_timer_implementation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_a059cf0b61ce2a5401e0eac765d592876}{current} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_ae5ad66785471cc2c284662b347973b00}{set\-Current} (uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_a059cf0b61ce2a5401e0eac765d592876}{current})
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_timer_implementation_abec9c25e312eb36bfb693f67739c2375}{calculate\-Prescaler} (uint32\-\_\-t \hyperlink{structflame_1_1time}{time}, \hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} $\ast$prescaler, uint16\-\_\-t $\ast$factor)
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_a78fb5b014f05a5116c74edd893589850}{get\-Prescaler\-Multiplier} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_af94598e1bd64d41383def5a64393f986}{set\-Periods} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2)
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_a506d40fad888634925df6d3f129e2099}{set\-Periods} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2, uint16\-\_\-t time3)
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_a6a5d38f11e26fa6283af22691bc1e0f4}{get\-Top} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_aedf65ab8b5ea5b7d1eca3e16a1993d5a}{set\-Top} (uint16\-\_\-t value)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a62a263dea1b2846908b1e8c9608420f8}{set\-Output} (uint8\-\_\-t channel, uint16\-\_\-t value)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a73813adc78b7a675018ebf81a2bc74aa}{set\-Output1} (uint16\-\_\-t value)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a71850b7feccf996506f0e973f68fa1cf}{set\-Output2} (uint16\-\_\-t value)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a487897e17825a7197396eaf212ce3d1b}{set\-Output3} (uint16\-\_\-t value)
+\item 
+uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_a772d1ec8806c9c2c479b55539d827076}{get\-Output} (uint8\-\_\-t channel)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_adbed484d9369a198238f138e29ed63d3}{get\-Output1} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_ae4108f7c84663eaf80e6958bafefd01f}{get\-Output2} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint16\-\_\-t \hyperlink{classflame_1_1_timer_implementation_aa17aee927a9999422c190420da78dd1d}{get\-Output3} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_a53ba3822a5d824fc8d35d835ab18afa7}{connect\-Output} (uint8\-\_\-t channel, \hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} connect\-Type)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a5a8d88bff958036d3bf55c29c540b3b8}{connect\-Output1} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} connect\-Type)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_ac56dc9af8ff923e6d331f69d35375941}{connect\-Output2} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} connect\-Type)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_af0e2e07199ea95d45a0220f64b11b803}{connect\-Output3} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} connect\-Type)
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_ab411aee6c337500cbcc1758591dda034}{enable} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_a9abba3ade8ddb1dabdb7dc2c100dc98b}{disable} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_a839d62871ebac2ed0d15f3eee8f17249}{trigger1} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a297667d2868424ff25926e58c02821a2}{wait\-For\-Overflow} ()
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_implementation_a413c104e27665c31e2057cdbcef87d36}{clear\-Overflow} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_afe51fd8e8ec6a6b8ec3bf3b5c66f4301}{\-\_\-set\-Prescaler} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler)
+\item 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} \hyperlink{classflame_1_1_timer_implementation_aaf9d86fd95f8b0f1f88108b1bb0a76c5}{get\-Prescaler} ()
+\item 
+void \hyperlink{classflame_1_1_timer_implementation_a7e5bd976aec5f770773656758c4d3f89}{set\-Generation\-Mode} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame_1_1_timer_implementation_ad7e59d3077694195b9d95042f6580e91}{\-\_\-have\-Time2}
+\item 
+bool \hyperlink{classflame_1_1_timer_implementation_a171e3dafa1a40ee3c4660f52eb2582da}{\-\_\-have\-Time3}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, Timer\-Mode mode$>$class flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}
+
+A hardware timer 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em bits} & the number of bits of the timer (8 or 16) \\
+\hline
+{\em type} & the type of timer (number of prescalers) \\
+\hline
+{\em control\-Reg\-A} & the address of the first control reg, in S\-F\-R\-\_\-\-M\-E\-M8 format \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 366 of file Timer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_timer_implementation_afe51fd8e8ec6a6b8ec3bf3b5c66f4301}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}}
+\index{\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::\-\_\-set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_afe51fd8e8ec6a6b8ec3bf3b5c66f4301}
+Set the prescaler (internal use only) 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler value (only the lowest 3 bits may be set) \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a6e1b57b1ad0d7f4d7cd4f7118ebffb18}{flame\-::\-Timer}.
+
+
+
+Definition at line 375 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_abec9c25e312eb36bfb693f67739c2375}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!calculate\-Prescaler@{calculate\-Prescaler}}
+\index{calculate\-Prescaler@{calculate\-Prescaler}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{calculate\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ uint8\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::calculate\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{time, }
+\item[{{\bf Timer\-Prescaler} $\ast$}]{prescaler, }
+\item[{uint16\-\_\-t $\ast$}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_abec9c25e312eb36bfb693f67739c2375}
+Set the prescaler 
+\begin{DoxyParams}{Parameters}
+{\em time} & the time in timer ticks \\
+\hline
+{\em prescaler} & the prescaler to set \\
+\hline
+{\em factor} & the prescale factor return 0 on success \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a41717d9530f49b0f9ffdc6cd8ed9eb1c}{flame\-::\-Timer}.
+
+
+
+Definition at line 497 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a413c104e27665c31e2057cdbcef87d36}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!clear\-Overflow@{clear\-Overflow}}
+\index{clear\-Overflow@{clear\-Overflow}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{clear\-Overflow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::clear\-Overflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a413c104e27665c31e2057cdbcef87d36}
+Clear a timer overflow 
+
+Implements \hyperlink{classflame_1_1_timer_a84e3f3f1fdfe90a8b247ee6b15b43c89}{flame\-::\-Timer}.
+
+
+
+Definition at line 1036 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a53ba3822a5d824fc8d35d835ab18afa7}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!connect\-Output@{connect\-Output}}
+\index{connect\-Output@{connect\-Output}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::connect\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{{\bf Timer\-Connect}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_timer_implementation_a53ba3822a5d824fc8d35d835ab18afa7}
+
+
+Definition at line 923 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a5a8d88bff958036d3bf55c29c540b3b8}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!connect\-Output1@{connect\-Output1}}
+\index{connect\-Output1@{connect\-Output1}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::connect\-Output1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a5a8d88bff958036d3bf55c29c540b3b8}
+Connect channel 1 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_abb864ec27afbf978d4367fb2d58436e9}{flame\-::\-Timer}.
+
+
+
+Definition at line 944 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_ac56dc9af8ff923e6d331f69d35375941}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!connect\-Output2@{connect\-Output2}}
+\index{connect\-Output2@{connect\-Output2}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::connect\-Output2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_ac56dc9af8ff923e6d331f69d35375941}
+Connect channel 2 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a8953b248ee5a1749ea54d571b3254805}{flame\-::\-Timer}.
+
+
+
+Definition at line 952 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_af0e2e07199ea95d45a0220f64b11b803}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!connect\-Output3@{connect\-Output3}}
+\index{connect\-Output3@{connect\-Output3}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{connect\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::connect\-Output3 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{connect\-Type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_af0e2e07199ea95d45a0220f64b11b803}
+Connect channel 3 to an output pin 
+\begin{DoxyParams}{Parameters}
+{\em connect\-Type} & the method of connection \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_ac2de7ddb1623fe93e3e5852d6893c005}{flame\-::\-Timer}.
+
+
+
+Definition at line 960 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a059cf0b61ce2a5401e0eac765d592876}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!current@{current}}
+\index{current@{current}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a059cf0b61ce2a5401e0eac765d592876}
+Get the current value of the timer \begin{DoxyReturn}{Returns}
+the current value of the timer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_a97eb012afb61476de7597a4515c03d2d}{flame\-::\-Timer}.
+
+
+
+Definition at line 454 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a9abba3ade8ddb1dabdb7dc2c100dc98b}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!disable@{disable}}
+\index{disable@{disable}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a9abba3ade8ddb1dabdb7dc2c100dc98b}
+Disable the timer 
+
+Implements \hyperlink{classflame_1_1_timer_ae8aad2641dffe007a8e48e78d9c08dd2}{flame\-::\-Timer}.
+
+
+
+Definition at line 1003 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_ab411aee6c337500cbcc1758591dda034}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!enable@{enable}}
+\index{enable@{enable}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_ab411aee6c337500cbcc1758591dda034}
+Enable the timer module 
+
+Implements \hyperlink{classflame_1_1_timer_a93d5856122c3df8087cadade3992fb75}{flame\-::\-Timer}.
+
+
+
+Definition at line 967 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a772d1ec8806c9c2c479b55539d827076}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Output@{get\-Output}}
+\index{get\-Output@{get\-Output}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a772d1ec8806c9c2c479b55539d827076}
+Get the current value of a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to get \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the current value of the selected channel 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_a29af3ec15a5669430a95a83727097432}{flame\-::\-Timer}.
+
+
+
+Definition at line 834 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_adbed484d9369a198238f138e29ed63d3}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Output1@{get\-Output1}}
+\index{get\-Output1@{get\-Output1}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Output1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_adbed484d9369a198238f138e29ed63d3}
+Return the current value of channel 1 \begin{DoxyReturn}{Returns}
+the current value of channel 1 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_af9cd331d2da4bd5996473469b2454062}{flame\-::\-Timer}.
+
+
+
+Definition at line 874 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_ae4108f7c84663eaf80e6958bafefd01f}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Output2@{get\-Output2}}
+\index{get\-Output2@{get\-Output2}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Output2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_ae4108f7c84663eaf80e6958bafefd01f}
+Return the current value of channel 2 \begin{DoxyReturn}{Returns}
+the current value of channel 2 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_a02a423f8bbd41bf2acacdb60e2164c71}{flame\-::\-Timer}.
+
+
+
+Definition at line 891 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_aa17aee927a9999422c190420da78dd1d}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Output3@{get\-Output3}}
+\index{get\-Output3@{get\-Output3}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Output3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_aa17aee927a9999422c190420da78dd1d}
+Return the current value of channel 3 \begin{DoxyReturn}{Returns}
+the current value of channel 3 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_aded92bd6883a00c8c792ab45df1ad580}{flame\-::\-Timer}.
+
+
+
+Definition at line 908 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_aaf9d86fd95f8b0f1f88108b1bb0a76c5}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Prescaler@{get\-Prescaler}}
+\index{get\-Prescaler@{get\-Prescaler}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf Timer\-Prescaler} {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Prescaler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_aaf9d86fd95f8b0f1f88108b1bb0a76c5}
+Get the prescaler \begin{DoxyReturn}{Returns}
+the prescaler value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_a7f8d6b44b6bfca103f9d91948c669a38}{flame\-::\-Timer}.
+
+
+
+Definition at line 383 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a78fb5b014f05a5116c74edd893589850}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}}
+\index{get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Prescaler\-Multiplier}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Prescaler\-Multiplier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a78fb5b014f05a5116c74edd893589850}
+Get the prescaler multiplier 
+
+Implements \hyperlink{classflame_1_1_timer_a08e913a8f802be0e7b46de3bf001bd3f}{flame\-::\-Timer}.
+
+
+
+Definition at line 561 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a6a5d38f11e26fa6283af22691bc1e0f4}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!get\-Top@{get\-Top}}
+\index{get\-Top@{get\-Top}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{get\-Top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ uint16\-\_\-t {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::get\-Top (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a6a5d38f11e26fa6283af22691bc1e0f4}
+Get the number of timer cycles available \begin{DoxyReturn}{Returns}
+the number of cycles in an iteration of the timer 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_timer_ae7531c4df336c5c70e751581c3c37b4c}{flame\-::\-Timer}.
+
+
+
+Definition at line 670 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_ae5ad66785471cc2c284662b347973b00}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Current@{set\-Current}}
+\index{set\-Current@{set\-Current}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Current}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Current (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{current}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_ae5ad66785471cc2c284662b347973b00}
+Set the current value of the timer 
+\begin{DoxyParams}{Parameters}
+{\em current} & the new value \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a6b911bb96bd1723f20c98162a34b9867}{flame\-::\-Timer}.
+
+
+
+Definition at line 476 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a7e5bd976aec5f770773656758c4d3f89}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Generation\-Mode@{set\-Generation\-Mode}}
+\index{set\-Generation\-Mode@{set\-Generation\-Mode}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Generation\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Generation\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a7e5bd976aec5f770773656758c4d3f89}
+Set the generation mode 
+
+Implements \hyperlink{classflame_1_1_timer_a92a6ed4ed6d6ac6d52ad810d6e9526bd}{flame\-::\-Timer}.
+
+
+
+Definition at line 390 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a62a263dea1b2846908b1e8c9608420f8}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Output@{set\-Output}}
+\index{set\-Output@{set\-Output}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a62a263dea1b2846908b1e8c9608420f8}
+Set the current value of a channel 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel to set \\
+\hline
+{\em value} & the new value of the channel \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a7eb534c6d2b55b329207d8e8f8f7538c}{flame\-::\-Timer}.
+
+
+
+Definition at line 747 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a73813adc78b7a675018ebf81a2bc74aa}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Output1@{set\-Output1}}
+\index{set\-Output1@{set\-Output1}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Output1 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a73813adc78b7a675018ebf81a2bc74aa}
+Set the current value of channel 1 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 1 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_ad5ebb60ff42ff1e8808d867da1d2dfac}{flame\-::\-Timer}.
+
+
+
+Definition at line 781 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a71850b7feccf996506f0e973f68fa1cf}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Output2@{set\-Output2}}
+\index{set\-Output2@{set\-Output2}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Output2 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a71850b7feccf996506f0e973f68fa1cf}
+Set the current value of channel 2 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 2 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_ac9844c4f69ff804e754d74a4a07a1208}{flame\-::\-Timer}.
+
+
+
+Definition at line 798 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a487897e17825a7197396eaf212ce3d1b}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Output3@{set\-Output3}}
+\index{set\-Output3@{set\-Output3}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Output3 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a487897e17825a7197396eaf212ce3d1b}
+Set the current value of channel 3 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new value of channel 3 \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a542f70b81da2198bb6839ae15980dea2}{flame\-::\-Timer}.
+
+
+
+Definition at line 815 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_af94598e1bd64d41383def5a64393f986}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_af94598e1bd64d41383def5a64393f986}
+Set the overflow periods for an 8 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+{\em time1} & the first time in prescaled timer ticks \\
+\hline
+{\em time2} & the second time in prescaled timer ticks \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a1948822bf5c75866e5c2cf9ded4b3b9b}{flame\-::\-Timer}.
+
+
+
+Definition at line 610 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a506d40fad888634925df6d3f129e2099}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2, }
+\item[{uint16\-\_\-t}]{time3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a506d40fad888634925df6d3f129e2099}
+Set the overflow periods for a 16 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the prescaler to use \\
+\hline
+{\em time1} & the first time in prescaled timer ticks \\
+\hline
+{\em time2} & the second time in prescaled timer ticks \\
+\hline
+{\em time3} & the second time in prescaled timer ticks \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a63987b6d5a76895a3afed120b621c8b4}{flame\-::\-Timer}.
+
+
+
+Definition at line 638 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_aedf65ab8b5ea5b7d1eca3e16a1993d5a}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!set\-Top@{set\-Top}}
+\index{set\-Top@{set\-Top}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{set\-Top}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::set\-Top (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_aedf65ab8b5ea5b7d1eca3e16a1993d5a}
+Set the number of timer cycles available 
+\begin{DoxyParams}{Parameters}
+{\em value} & the number of cycles in an iteration of the timer \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_timer_a32523c61b521a74fe4c21cff0332a9e7}{flame\-::\-Timer}.
+
+
+
+Definition at line 706 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a839d62871ebac2ed0d15f3eee8f17249}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!trigger1@{trigger1}}
+\index{trigger1@{trigger1}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{trigger1}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::trigger1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a839d62871ebac2ed0d15f3eee8f17249}
+Trigger the listener for channel 1 
+
+Implements \hyperlink{classflame_1_1_timer_a93bdf45d9aadea6694dea8ef236e8725}{flame\-::\-Timer}.
+
+
+
+Definition at line 1019 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a297667d2868424ff25926e58c02821a2}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!wait\-For\-Overflow@{wait\-For\-Overflow}}
+\index{wait\-For\-Overflow@{wait\-For\-Overflow}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{wait\-For\-Overflow}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ {\bf I\-N\-L\-I\-N\-E} void {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::wait\-For\-Overflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_timer_implementation_a297667d2868424ff25926e58c02821a2}
+Wait for the timer to overflow 
+
+Implements \hyperlink{classflame_1_1_timer_a79db91c2c457766ae8b4dd01d5caf7e4}{flame\-::\-Timer}.
+
+
+
+Definition at line 1029 of file Timer.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_timer_implementation_ad7e59d3077694195b9d95042f6580e91}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!\-\_\-have\-Time2@{\-\_\-have\-Time2}}
+\index{\-\_\-have\-Time2@{\-\_\-have\-Time2}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-have\-Time2}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ bool {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::\-\_\-have\-Time2\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_implementation_ad7e59d3077694195b9d95042f6580e91}
+
+
+Definition at line 368 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_implementation_a171e3dafa1a40ee3c4660f52eb2582da}{\index{flame\-::\-Timer\-Implementation@{flame\-::\-Timer\-Implementation}!\-\_\-have\-Time3@{\-\_\-have\-Time3}}
+\index{\-\_\-have\-Time3@{\-\_\-have\-Time3}!flame::TimerImplementation@{flame\-::\-Timer\-Implementation}}
+\subsubsection[{\-\_\-have\-Time3}]{\setlength{\rightskip}{0pt plus 5cm}template$<$F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R , Timer\-Mode mode$>$ bool {\bf flame\-::\-Timer\-Implementation}$<$ {\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R}, mode $>$\-::\-\_\-have\-Time3\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_implementation_a171e3dafa1a40ee3c4660f52eb2582da}
+
+
+Definition at line 369 of file Timer.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_timer_8h}{Timer.\-h}\end{DoxyCompactItemize}

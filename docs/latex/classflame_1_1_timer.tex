@@ -1,0 +1,762 @@
+\hypertarget{classflame_1_1_timer}{\section{flame\-:\-:Timer Class Reference}
+\label{classflame_1_1_timer}\index{flame\-::\-Timer@{flame\-::\-Timer}}
+}
+
+
+{\ttfamily \#include $<$Timer.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Timer\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classflame_1_1_timer}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{classflame_1_1_timer_a76c79c63e82c6b0f1f498850b48a8cdf}{set\-Times} (uint32\-\_\-t usec1, uint32\-\_\-t usec2)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{classflame_1_1_timer_a69c34533372b494f5e239d95adbabfb3}{set\-Times} (float usec1, float usec2)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{classflame_1_1_timer_a5d0a30b4ad92c295b5943f7f69dc4fbf}{set\-Times} (uint32\-\_\-t usec1, uint32\-\_\-t usec2, uint32\-\_\-t usec3)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} bool \hyperlink{classflame_1_1_timer_ab2260b0aada7c6037e1358c0faa00a06}{set\-Times} (float usec1, float usec2, float usec3)
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_a97eb012afb61476de7597a4515c03d2d}{current} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a6b911bb96bd1723f20c98162a34b9867}{set\-Current} (uint16\-\_\-t \hyperlink{classflame_1_1_timer_a97eb012afb61476de7597a4515c03d2d}{current})=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a1948822bf5c75866e5c2cf9ded4b3b9b}{set\-Periods} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a63987b6d5a76895a3afed120b621c8b4}{set\-Periods} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler, uint16\-\_\-t time1, uint16\-\_\-t time2, uint16\-\_\-t time3)=0
+\item 
+virtual \hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} \hyperlink{classflame_1_1_timer_a7f8d6b44b6bfca103f9d91948c669a38}{get\-Prescaler} ()=0
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_a08e913a8f802be0e7b46de3bf001bd3f}{get\-Prescaler\-Multiplier} ()=0
+\item 
+void \hyperlink{classflame_1_1_timer_a3a937b5424a565d63308aad19254fe7f}{set\-Prescaler} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler)
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_ae7531c4df336c5c70e751581c3c37b4c}{get\-Top} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a32523c61b521a74fe4c21cff0332a9e7}{set\-Top} (uint16\-\_\-t value)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a7eb534c6d2b55b329207d8e8f8f7538c}{set\-Output} (uint8\-\_\-t channel, uint16\-\_\-t value)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_ad5ebb60ff42ff1e8808d867da1d2dfac}{set\-Output1} (uint16\-\_\-t value)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_ac9844c4f69ff804e754d74a4a07a1208}{set\-Output2} (uint16\-\_\-t value)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a542f70b81da2198bb6839ae15980dea2}{set\-Output3} (uint16\-\_\-t value)=0
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_a29af3ec15a5669430a95a83727097432}{get\-Output} (uint8\-\_\-t channel)=0
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_af9cd331d2da4bd5996473469b2454062}{get\-Output1} ()=0
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_a02a423f8bbd41bf2acacdb60e2164c71}{get\-Output2} ()=0
+\item 
+virtual uint16\-\_\-t \hyperlink{classflame_1_1_timer_aded92bd6883a00c8c792ab45df1ad580}{get\-Output3} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_abb864ec27afbf978d4367fb2d58436e9}{connect\-Output1} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} type)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a8953b248ee5a1749ea54d571b3254805}{connect\-Output2} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} type)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_ac2de7ddb1623fe93e3e5852d6893c005}{connect\-Output3} (\hyperlink{namespaceflame_ae65577f52d5a5d4ce0cc5a4b85fb9ba9}{Timer\-Connect} type)=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a93d5856122c3df8087cadade3992fb75}{enable} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_ae8aad2641dffe007a8e48e78d9c08dd2}{disable} ()=0
+\item 
+bool \hyperlink{classflame_1_1_timer_adafe1171cc542d5d76a997593c57b25c}{enabled} ()
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a93bdf45d9aadea6694dea8ef236e8725}{trigger1} ()=0
+\item 
+void \hyperlink{classflame_1_1_timer_a0cbf27eaf4ed9b9ea9f43ad04e868f1a}{trigger2} ()
+\item 
+void \hyperlink{classflame_1_1_timer_ac3b55b8cb98dc81e8dec5bb01fee6d4c}{trigger3} ()
+\item 
+void \hyperlink{classflame_1_1_timer_a01c6c9e054e425c684a164c50b702b4e}{set\-Listener1} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_timer_a1c0ca577b10fe85ed51d8159cd8579dc}{set\-Listener2} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_timer_a0f9696bf191e48f7dfbc81f8147117e0}{set\-Listener3} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_timer_aa0f3fa5e1ee6d4e4585ef1eabef75edf}{set\-Listener1} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_timer_a3d8738555886bd7363e068576386bd8d}{set\-Listener2} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_timer_a7255c3c68fd6b215017b3454934b3033}{set\-Listener3} (\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_timer_a65a79e68a325a494f13702091b40b714}{set\-Listener} (uint8\-\_\-t channel, \hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_timer_aa9a1b254a56cad13b623a4ca6453d0dc}{set\-Listener} (uint8\-\_\-t channel, \hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$listener)
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a79db91c2c457766ae8b4dd01d5caf7e4}{wait\-For\-Overflow} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a84e3f3f1fdfe90a8b247ee6b15b43c89}{clear\-Overflow} ()=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual uint8\-\_\-t \hyperlink{classflame_1_1_timer_a41717d9530f49b0f9ffdc6cd8ed9eb1c}{calculate\-Prescaler} (uint32\-\_\-t \hyperlink{structflame_1_1time}{time}, \hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} $\ast$prescaler, uint16\-\_\-t $\ast$factor)=0
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_a1b513a84642ecb450ad53ea28fa93b50}{calculate\-Top} (uint32\-\_\-t $\ast$\hyperlink{structflame_1_1time}{time}, uint16\-\_\-t factor)
+\item 
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} void \hyperlink{classflame_1_1_timer_aef1b72c7c0de1049587e899c881733fc}{calculate\-Top} (float $\ast$\hyperlink{structflame_1_1time}{time}, uint16\-\_\-t factor)
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a92a6ed4ed6d6ac6d52ad810d6e9526bd}{set\-Generation\-Mode} ()=0
+\item 
+virtual void \hyperlink{classflame_1_1_timer_a6e1b57b1ad0d7f4d7cd4f7118ebffb18}{\-\_\-set\-Prescaler} (\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} prescaler)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame_a24dfd057ba5ab5a827abbc4ed902a087}{Timer\-Prescaler} \hyperlink{classflame_1_1_timer_a42ef3eb87072be64291e7eff82c1d0c2}{\-\_\-prescaler}
+\item 
+\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$ \hyperlink{classflame_1_1_timer_a16d58264dc413116c655a727fa856aaa}{\-\_\-listener1}
+\item 
+\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$ \hyperlink{classflame_1_1_timer_a3bf0ea6030b447a0a56b3e71809914cc}{\-\_\-listener2}
+\item 
+\hyperlink{classflame_1_1_timer_listener}{Timer\-Listener} $\ast$ \hyperlink{classflame_1_1_timer_a7bee9ed9b97f3c13037e28e8b87dfa88}{\-\_\-listener3}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 125 of file Timer.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_timer_a6e1b57b1ad0d7f4d7cd4f7118ebffb18}{\index{flame\-::\-Timer@{flame\-::\-Timer}!\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}}
+\index{\-\_\-set\-Prescaler@{\-\_\-set\-Prescaler}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{\-\_\-set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::\-\_\-set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a6e1b57b1ad0d7f4d7cd4f7118ebffb18}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_afe51fd8e8ec6a6b8ec3bf3b5c66f4301}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a41717d9530f49b0f9ffdc6cd8ed9eb1c}{\index{flame\-::\-Timer@{flame\-::\-Timer}!calculate\-Prescaler@{calculate\-Prescaler}}
+\index{calculate\-Prescaler@{calculate\-Prescaler}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{calculate\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint8\-\_\-t flame\-::\-Timer\-::calculate\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{time, }
+\item[{{\bf Timer\-Prescaler} $\ast$}]{prescaler, }
+\item[{uint16\-\_\-t $\ast$}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a41717d9530f49b0f9ffdc6cd8ed9eb1c}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_abec9c25e312eb36bfb693f67739c2375}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a1b513a84642ecb450ad53ea28fa93b50}{\index{flame\-::\-Timer@{flame\-::\-Timer}!calculate\-Top@{calculate\-Top}}
+\index{calculate\-Top@{calculate\-Top}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{calculate\-Top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} void flame\-::\-Timer\-::calculate\-Top (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t $\ast$}]{time, }
+\item[{uint16\-\_\-t}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_timer_a1b513a84642ecb450ad53ea28fa93b50}
+Calculate the top register 
+\begin{DoxyParams}{Parameters}
+{\em time} & input\-: the time in timer ticks, output\-: the scaled timer ticks \\
+\hline
+{\em factor} & the prescaler factor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 139 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_aef1b72c7c0de1049587e899c881733fc}{\index{flame\-::\-Timer@{flame\-::\-Timer}!calculate\-Top@{calculate\-Top}}
+\index{calculate\-Top@{calculate\-Top}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{calculate\-Top}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} void flame\-::\-Timer\-::calculate\-Top (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{time, }
+\item[{uint16\-\_\-t}]{factor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}}\label{classflame_1_1_timer_aef1b72c7c0de1049587e899c881733fc}
+Calculate the top register 
+\begin{DoxyParams}{Parameters}
+{\em time} & input\-: the time in timer ticks, output\-: the scaled timer ticks \\
+\hline
+{\em factor} & the prescaler factor \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 150 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a84e3f3f1fdfe90a8b247ee6b15b43c89}{\index{flame\-::\-Timer@{flame\-::\-Timer}!clear\-Overflow@{clear\-Overflow}}
+\index{clear\-Overflow@{clear\-Overflow}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{clear\-Overflow}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::clear\-Overflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a84e3f3f1fdfe90a8b247ee6b15b43c89}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a413c104e27665c31e2057cdbcef87d36}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_abb864ec27afbf978d4367fb2d58436e9}{\index{flame\-::\-Timer@{flame\-::\-Timer}!connect\-Output1@{connect\-Output1}}
+\index{connect\-Output1@{connect\-Output1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{connect\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::connect\-Output1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_abb864ec27afbf978d4367fb2d58436e9}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a5a8d88bff958036d3bf55c29c540b3b8}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a8953b248ee5a1749ea54d571b3254805}{\index{flame\-::\-Timer@{flame\-::\-Timer}!connect\-Output2@{connect\-Output2}}
+\index{connect\-Output2@{connect\-Output2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{connect\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::connect\-Output2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a8953b248ee5a1749ea54d571b3254805}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_ac56dc9af8ff923e6d331f69d35375941}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_ac2de7ddb1623fe93e3e5852d6893c005}{\index{flame\-::\-Timer@{flame\-::\-Timer}!connect\-Output3@{connect\-Output3}}
+\index{connect\-Output3@{connect\-Output3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{connect\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::connect\-Output3 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Connect}}]{type}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_ac2de7ddb1623fe93e3e5852d6893c005}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_af0e2e07199ea95d45a0220f64b11b803}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a97eb012afb61476de7597a4515c03d2d}{\index{flame\-::\-Timer@{flame\-::\-Timer}!current@{current}}
+\index{current@{current}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{current}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::current (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a97eb012afb61476de7597a4515c03d2d}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a059cf0b61ce2a5401e0eac765d592876}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_ae8aad2641dffe007a8e48e78d9c08dd2}{\index{flame\-::\-Timer@{flame\-::\-Timer}!disable@{disable}}
+\index{disable@{disable}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{disable}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_ae8aad2641dffe007a8e48e78d9c08dd2}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a9abba3ade8ddb1dabdb7dc2c100dc98b}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a93d5856122c3df8087cadade3992fb75}{\index{flame\-::\-Timer@{flame\-::\-Timer}!enable@{enable}}
+\index{enable@{enable}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{enable}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a93d5856122c3df8087cadade3992fb75}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_ab411aee6c337500cbcc1758591dda034}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_adafe1171cc542d5d76a997593c57b25c}{\index{flame\-::\-Timer@{flame\-::\-Timer}!enabled@{enabled}}
+\index{enabled@{enabled}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Timer\-::enabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_adafe1171cc542d5d76a997593c57b25c}
+Check if the timer is enabled \begin{DoxyReturn}{Returns}
+true if the timer is enabled 
+\end{DoxyReturn}
+
+
+Definition at line 111 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a29af3ec15a5669430a95a83727097432}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Output@{get\-Output}}
+\index{get\-Output@{get\-Output}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Output}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a29af3ec15a5669430a95a83727097432}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a772d1ec8806c9c2c479b55539d827076}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_af9cd331d2da4bd5996473469b2454062}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Output1@{get\-Output1}}
+\index{get\-Output1@{get\-Output1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Output1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_af9cd331d2da4bd5996473469b2454062}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_adbed484d9369a198238f138e29ed63d3}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a02a423f8bbd41bf2acacdb60e2164c71}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Output2@{get\-Output2}}
+\index{get\-Output2@{get\-Output2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Output2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a02a423f8bbd41bf2acacdb60e2164c71}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_ae4108f7c84663eaf80e6958bafefd01f}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_aded92bd6883a00c8c792ab45df1ad580}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Output3@{get\-Output3}}
+\index{get\-Output3@{get\-Output3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Output3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_aded92bd6883a00c8c792ab45df1ad580}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_aa17aee927a9999422c190420da78dd1d}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a7f8d6b44b6bfca103f9d91948c669a38}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Prescaler@{get\-Prescaler}}
+\index{get\-Prescaler@{get\-Prescaler}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Timer\-Prescaler} flame\-::\-Timer\-::get\-Prescaler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a7f8d6b44b6bfca103f9d91948c669a38}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_aaf9d86fd95f8b0f1f88108b1bb0a76c5}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a08e913a8f802be0e7b46de3bf001bd3f}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}}
+\index{get\-Prescaler\-Multiplier@{get\-Prescaler\-Multiplier}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Prescaler\-Multiplier}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Prescaler\-Multiplier (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a08e913a8f802be0e7b46de3bf001bd3f}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a78fb5b014f05a5116c74edd893589850}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_ae7531c4df336c5c70e751581c3c37b4c}{\index{flame\-::\-Timer@{flame\-::\-Timer}!get\-Top@{get\-Top}}
+\index{get\-Top@{get\-Top}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{get\-Top}]{\setlength{\rightskip}{0pt plus 5cm}virtual uint16\-\_\-t flame\-::\-Timer\-::get\-Top (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_ae7531c4df336c5c70e751581c3c37b4c}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a6a5d38f11e26fa6283af22691bc1e0f4}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a6b911bb96bd1723f20c98162a34b9867}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Current@{set\-Current}}
+\index{set\-Current@{set\-Current}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Current}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Current (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{current}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a6b911bb96bd1723f20c98162a34b9867}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_ae5ad66785471cc2c284662b347973b00}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a92a6ed4ed6d6ac6d52ad810d6e9526bd}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Generation\-Mode@{set\-Generation\-Mode}}
+\index{set\-Generation\-Mode@{set\-Generation\-Mode}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Generation\-Mode}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Generation\-Mode (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a92a6ed4ed6d6ac6d52ad810d6e9526bd}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a7e5bd976aec5f770773656758c4d3f89}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a65a79e68a325a494f13702091b40b714}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener@{set\-Listener}}
+\index{set\-Listener@{set\-Listener}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a65a79e68a325a494f13702091b40b714}
+\hypertarget{classflame_1_1_timer_aa9a1b254a56cad13b623a4ca6453d0dc}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener@{set\-Listener}}
+\index{set\-Listener@{set\-Listener}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_aa9a1b254a56cad13b623a4ca6453d0dc}
+\hypertarget{classflame_1_1_timer_a01c6c9e054e425c684a164c50b702b4e}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener1@{set\-Listener1}}
+\index{set\-Listener1@{set\-Listener1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener1}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a01c6c9e054e425c684a164c50b702b4e}
+Attach a listener to channel 1 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 36 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_aa0f3fa5e1ee6d4e4585ef1eabef75edf}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener1@{set\-Listener1}}
+\index{set\-Listener1@{set\-Listener1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener1}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener1 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_aa0f3fa5e1ee6d4e4585ef1eabef75edf}
+Attach a listener to channel 1 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 60 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a1c0ca577b10fe85ed51d8159cd8579dc}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener2@{set\-Listener2}}
+\index{set\-Listener2@{set\-Listener2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener2}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a1c0ca577b10fe85ed51d8159cd8579dc}
+Attach a listener to channel 2 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a3d8738555886bd7363e068576386bd8d}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener2@{set\-Listener2}}
+\index{set\-Listener2@{set\-Listener2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener2}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener2 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a3d8738555886bd7363e068576386bd8d}
+Attach a listener to channel 2 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a0f9696bf191e48f7dfbc81f8147117e0}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener3@{set\-Listener3}}
+\index{set\-Listener3@{set\-Listener3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener3}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener3 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a0f9696bf191e48f7dfbc81f8147117e0}
+Attach a listener to channel 3 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a7255c3c68fd6b215017b3454934b3033}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Listener3@{set\-Listener3}}
+\index{set\-Listener3@{set\-Listener3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Listener3}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Listener3 (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a7255c3c68fd6b215017b3454934b3033}
+Attach a listener to channel 3 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to attach \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a7eb534c6d2b55b329207d8e8f8f7538c}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Output@{set\-Output}}
+\index{set\-Output@{set\-Output}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Output}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Output (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{channel, }
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a7eb534c6d2b55b329207d8e8f8f7538c}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a62a263dea1b2846908b1e8c9608420f8}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_ad5ebb60ff42ff1e8808d867da1d2dfac}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Output1@{set\-Output1}}
+\index{set\-Output1@{set\-Output1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Output1}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Output1 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_ad5ebb60ff42ff1e8808d867da1d2dfac}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a73813adc78b7a675018ebf81a2bc74aa}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_ac9844c4f69ff804e754d74a4a07a1208}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Output2@{set\-Output2}}
+\index{set\-Output2@{set\-Output2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Output2}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Output2 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_ac9844c4f69ff804e754d74a4a07a1208}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a71850b7feccf996506f0e973f68fa1cf}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a542f70b81da2198bb6839ae15980dea2}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Output3@{set\-Output3}}
+\index{set\-Output3@{set\-Output3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Output3}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Output3 (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a542f70b81da2198bb6839ae15980dea2}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a487897e17825a7197396eaf212ce3d1b}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a1948822bf5c75866e5c2cf9ded4b3b9b}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a1948822bf5c75866e5c2cf9ded4b3b9b}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_af94598e1bd64d41383def5a64393f986}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a63987b6d5a76895a3afed120b621c8b4}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Periods@{set\-Periods}}
+\index{set\-Periods@{set\-Periods}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Periods}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Periods (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler, }
+\item[{uint16\-\_\-t}]{time1, }
+\item[{uint16\-\_\-t}]{time2, }
+\item[{uint16\-\_\-t}]{time3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a63987b6d5a76895a3afed120b621c8b4}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a506d40fad888634925df6d3f129e2099}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a3a937b5424a565d63308aad19254fe7f}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Prescaler@{set\-Prescaler}}
+\index{set\-Prescaler@{set\-Prescaler}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Prescaler}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::set\-Prescaler (
+\begin{DoxyParamCaption}
+\item[{{\bf Timer\-Prescaler}}]{prescaler}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a3a937b5424a565d63308aad19254fe7f}
+Set the prescaler (to be used when enabled) 
+\begin{DoxyParams}{Parameters}
+{\em prescaler} & the desired prescaler \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 84 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a76c79c63e82c6b0f1f498850b48a8cdf}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Times@{set\-Times}}
+\index{set\-Times@{set\-Times}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Times}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} bool flame\-::\-Timer\-::set\-Times (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{usec1, }
+\item[{uint32\-\_\-t}]{usec2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_timer_a76c79c63e82c6b0f1f498850b48a8cdf}
+Set the periods for channels 1 and 2 Times are in microseconds 
+\begin{DoxyParams}{Parameters}
+{\em usec1} & the first time in microseconds \\
+\hline
+{\em usec2} & the second time in microseconds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success 
+\end{DoxyReturn}
+
+
+Definition at line 167 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a69c34533372b494f5e239d95adbabfb3}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Times@{set\-Times}}
+\index{set\-Times@{set\-Times}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Times}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} bool flame\-::\-Timer\-::set\-Times (
+\begin{DoxyParamCaption}
+\item[{float}]{usec1, }
+\item[{float}]{usec2}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_timer_a69c34533372b494f5e239d95adbabfb3}
+Set the periods for channels 1 and 2 Times are in microseconds 
+\begin{DoxyParams}{Parameters}
+{\em usec1} & the first time in microseconds \\
+\hline
+{\em usec2} & the second time in microseconds \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success 
+\end{DoxyReturn}
+
+
+Definition at line 200 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a5d0a30b4ad92c295b5943f7f69dc4fbf}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Times@{set\-Times}}
+\index{set\-Times@{set\-Times}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Times}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} bool flame\-::\-Timer\-::set\-Times (
+\begin{DoxyParamCaption}
+\item[{uint32\-\_\-t}]{usec1, }
+\item[{uint32\-\_\-t}]{usec2, }
+\item[{uint32\-\_\-t}]{usec3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_timer_a5d0a30b4ad92c295b5943f7f69dc4fbf}
+Set the overflow periods for a 16 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em usec1} & the first time in microseconds \\
+\hline
+{\em usec2} & the second time in microseconds \\
+\hline
+{\em usec3} & the third time in microseconds \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 231 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_ab2260b0aada7c6037e1358c0faa00a06}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Times@{set\-Times}}
+\index{set\-Times@{set\-Times}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Times}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\-N\-L\-I\-N\-E} bool flame\-::\-Timer\-::set\-Times (
+\begin{DoxyParamCaption}
+\item[{float}]{usec1, }
+\item[{float}]{usec2, }
+\item[{float}]{usec3}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_timer_ab2260b0aada7c6037e1358c0faa00a06}
+Set the overflow periods for a 16 bit timer 
+\begin{DoxyParams}{Parameters}
+{\em usec1} & the first time in microseconds \\
+\hline
+{\em usec2} & the second time in microseconds \\
+\hline
+{\em usec3} & the third time in microseconds \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 273 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a32523c61b521a74fe4c21cff0332a9e7}{\index{flame\-::\-Timer@{flame\-::\-Timer}!set\-Top@{set\-Top}}
+\index{set\-Top@{set\-Top}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{set\-Top}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::set\-Top (
+\begin{DoxyParamCaption}
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a32523c61b521a74fe4c21cff0332a9e7}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_aedf65ab8b5ea5b7d1eca3e16a1993d5a}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a93bdf45d9aadea6694dea8ef236e8725}{\index{flame\-::\-Timer@{flame\-::\-Timer}!trigger1@{trigger1}}
+\index{trigger1@{trigger1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{trigger1}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::trigger1 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a93bdf45d9aadea6694dea8ef236e8725}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a839d62871ebac2ed0d15f3eee8f17249}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+\hypertarget{classflame_1_1_timer_a0cbf27eaf4ed9b9ea9f43ad04e868f1a}{\index{flame\-::\-Timer@{flame\-::\-Timer}!trigger2@{trigger2}}
+\index{trigger2@{trigger2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{trigger2}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::trigger2 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_a0cbf27eaf4ed9b9ea9f43ad04e868f1a}
+Trigger the listener for channel 2 
+
+Definition at line 91 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_ac3b55b8cb98dc81e8dec5bb01fee6d4c}{\index{flame\-::\-Timer@{flame\-::\-Timer}!trigger3@{trigger3}}
+\index{trigger3@{trigger3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{trigger3}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Timer\-::trigger3 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_timer_ac3b55b8cb98dc81e8dec5bb01fee6d4c}
+Trigger the listener for channel 3 
+
+Definition at line 100 of file Timer.\-cpp.
+
+\hypertarget{classflame_1_1_timer_a79db91c2c457766ae8b4dd01d5caf7e4}{\index{flame\-::\-Timer@{flame\-::\-Timer}!wait\-For\-Overflow@{wait\-For\-Overflow}}
+\index{wait\-For\-Overflow@{wait\-For\-Overflow}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{wait\-For\-Overflow}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Timer\-::wait\-For\-Overflow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_timer_a79db91c2c457766ae8b4dd01d5caf7e4}
+
+
+Implemented in \hyperlink{classflame_1_1_timer_implementation_a297667d2868424ff25926e58c02821a2}{flame\-::\-Timer\-Implementation$<$ F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-T\-I\-M\-E\-R, mode $>$}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_timer_a16d58264dc413116c655a727fa856aaa}{\index{flame\-::\-Timer@{flame\-::\-Timer}!\-\_\-listener1@{\-\_\-listener1}}
+\index{\-\_\-listener1@{\-\_\-listener1}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{\-\_\-listener1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer\-Listener}$\ast$ flame\-::\-Timer\-::\-\_\-listener1\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_a16d58264dc413116c655a727fa856aaa}
+
+
+Definition at line 128 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a3bf0ea6030b447a0a56b3e71809914cc}{\index{flame\-::\-Timer@{flame\-::\-Timer}!\-\_\-listener2@{\-\_\-listener2}}
+\index{\-\_\-listener2@{\-\_\-listener2}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{\-\_\-listener2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer\-Listener}$\ast$ flame\-::\-Timer\-::\-\_\-listener2\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_a3bf0ea6030b447a0a56b3e71809914cc}
+
+
+Definition at line 129 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a7bee9ed9b97f3c13037e28e8b87dfa88}{\index{flame\-::\-Timer@{flame\-::\-Timer}!\-\_\-listener3@{\-\_\-listener3}}
+\index{\-\_\-listener3@{\-\_\-listener3}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{\-\_\-listener3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer\-Listener}$\ast$ flame\-::\-Timer\-::\-\_\-listener3\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_a7bee9ed9b97f3c13037e28e8b87dfa88}
+
+
+Definition at line 130 of file Timer.\-h.
+
+\hypertarget{classflame_1_1_timer_a42ef3eb87072be64291e7eff82c1d0c2}{\index{flame\-::\-Timer@{flame\-::\-Timer}!\-\_\-prescaler@{\-\_\-prescaler}}
+\index{\-\_\-prescaler@{\-\_\-prescaler}!flame::Timer@{flame\-::\-Timer}}
+\subsubsection[{\-\_\-prescaler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Timer\-Prescaler} flame\-::\-Timer\-::\-\_\-prescaler\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_timer_a42ef3eb87072be64291e7eff82c1d0c2}
+
+
+Definition at line 127 of file Timer.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_timer_8h}{Timer.\-h}\item 
+\hyperlink{_timer_8cpp}{Timer.\-cpp}\end{DoxyCompactItemize}

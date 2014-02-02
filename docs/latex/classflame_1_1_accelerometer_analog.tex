@@ -1,0 +1,156 @@
+\hypertarget{classflame_1_1_accelerometer_analog}{\section{flame\-:\-:Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$ Class Template Reference}
+\label{classflame_1_1_accelerometer_analog}\index{flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$@{flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$}}
+}
+
+
+{\ttfamily \#include $<$Accelerometer\-Analog.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.321534cm]{classflame_1_1_accelerometer_analog}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_accelerometer_analog_a1beaaa7e83da69d8c92ae08698eaa112}{Accelerometer\-Analog} (\hyperlink{classflame_1_1_a_d_c_manager}{A\-D\-C\-Manager} \&\hyperlink{classflame_1_1_accelerometer_analog_a430e1a8a3b101bfe9d3b988efa1e75f9}{adc})
+\item 
+void \hyperlink{classflame_1_1_accelerometer_analog_a78759b15cda131a4af795f5f1c598076}{sample} ()
+\item 
+void \hyperlink{classflame_1_1_accelerometer_analog_a430e1a8a3b101bfe9d3b988efa1e75f9}{adc} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, uint16\-\_\-t adc\-Value)
+\item 
+bool \hyperlink{classflame_1_1_accelerometer_analog_aa638bdb59ae5392bc61c66329538f89d}{is\-Sample\-Ready} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_a_d_c_manager}{A\-D\-C\-Manager} $\ast$ \hyperlink{classflame_1_1_accelerometer_analog_ac3dda0476fa8c65185f8d6620225b0a3}{\-\_\-adc}
+\item 
+bool \hyperlink{classflame_1_1_accelerometer_analog_a89b9682e1c2817adeb48ab91fc25c507}{\-\_\-sample\-Ready}
+\item 
+bool \hyperlink{classflame_1_1_accelerometer_analog_a16e72bdbf27a8f4ba5b5ed068620d84c}{\-\_\-dummy\-Read}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$class flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$}
+
+An accelerometer that presents its data as analog values to be read by the A\-V\-R's A\-D\-C channels 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em A\-D\-C\-Channel\-X} & the A\-D\-C channel to use for the X axis \\
+\hline
+{\em A\-D\-C\-Channel\-Y} & the A\-D\-C channel to use for the Y axis \\
+\hline
+{\em A\-D\-C\-Channel\-Z} & the A\-D\-C channel to use for the Z axis \\
+\hline
+{\em A\-D\-C\-Reference} & the voltage reference to use \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 47 of file Accelerometer\-Analog.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_accelerometer_analog_a1beaaa7e83da69d8c92ae08698eaa112}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!Accelerometer\-Analog@{Accelerometer\-Analog}}
+\index{Accelerometer\-Analog@{Accelerometer\-Analog}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{Accelerometer\-Analog}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::{\bf Accelerometer\-Analog} (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Manager} \&}]{adc}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classflame_1_1_accelerometer_analog_a1beaaa7e83da69d8c92ae08698eaa112}
+
+
+Definition at line 54 of file Accelerometer\-Analog.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_accelerometer_analog_a430e1a8a3b101bfe9d3b988efa1e75f9}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!adc@{adc}}
+\index{adc@{adc}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{adc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ void {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::adc (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{uint16\-\_\-t}]{adc\-Value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_accelerometer_analog_a430e1a8a3b101bfe9d3b988efa1e75f9}
+Handle incoming A\-D\-C reads 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel that was read from \\
+\hline
+{\em adc\-Value} & the value read from the channel \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_a_d_c_listener_a87fbe7d5aa43969f0a60c653c9e45796}{flame\-::\-A\-D\-C\-Listener}.
+
+
+
+Definition at line 80 of file Accelerometer\-Analog.\-h.
+
+\hypertarget{classflame_1_1_accelerometer_analog_aa638bdb59ae5392bc61c66329538f89d}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!is\-Sample\-Ready@{is\-Sample\-Ready}}
+\index{is\-Sample\-Ready@{is\-Sample\-Ready}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{is\-Sample\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ bool {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::is\-Sample\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_accelerometer_analog_aa638bdb59ae5392bc61c66329538f89d}
+Check if a sample is ready \begin{DoxyReturn}{Returns}
+true if the sample is ready 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{classflame_1_1_triple_axis_sensor_a7223b8884adf0ff42cbfddd2b6f28ce3}{flame\-::\-Triple\-Axis\-Sensor}.
+
+
+
+Definition at line 111 of file Accelerometer\-Analog.\-h.
+
+\hypertarget{classflame_1_1_accelerometer_analog_a78759b15cda131a4af795f5f1c598076}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!sample@{sample}}
+\index{sample@{sample}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{sample}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ void {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classflame_1_1_accelerometer_analog_a78759b15cda131a4af795f5f1c598076}
+Initiate a sampling of the accelerometer 
+
+Implements \hyperlink{classflame_1_1_triple_axis_sensor_ac2ff28538723dc987c6fbec20aa47341}{flame\-::\-Triple\-Axis\-Sensor}.
+
+
+
+Definition at line 66 of file Accelerometer\-Analog.\-h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_accelerometer_analog_ac3dda0476fa8c65185f8d6620225b0a3}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!\-\_\-adc@{\-\_\-adc}}
+\index{\-\_\-adc@{\-\_\-adc}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{\-\_\-adc}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ {\bf A\-D\-C\-Manager}$\ast$ {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::\-\_\-adc\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_accelerometer_analog_ac3dda0476fa8c65185f8d6620225b0a3}
+
+
+Definition at line 49 of file Accelerometer\-Analog.\-h.
+
+\hypertarget{classflame_1_1_accelerometer_analog_a16e72bdbf27a8f4ba5b5ed068620d84c}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!\-\_\-dummy\-Read@{\-\_\-dummy\-Read}}
+\index{\-\_\-dummy\-Read@{\-\_\-dummy\-Read}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{\-\_\-dummy\-Read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ bool {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::\-\_\-dummy\-Read\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_accelerometer_analog_a16e72bdbf27a8f4ba5b5ed068620d84c}
+
+
+Definition at line 51 of file Accelerometer\-Analog.\-h.
+
+\hypertarget{classflame_1_1_accelerometer_analog_a89b9682e1c2817adeb48ab91fc25c507}{\index{flame\-::\-Accelerometer\-Analog@{flame\-::\-Accelerometer\-Analog}!\-\_\-sample\-Ready@{\-\_\-sample\-Ready}}
+\index{\-\_\-sample\-Ready@{\-\_\-sample\-Ready}!flame::AccelerometerAnalog@{flame\-::\-Accelerometer\-Analog}}
+\subsubsection[{\-\_\-sample\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}template$<$A\-D\-C\-Channel A\-D\-C\-Channel\-X, A\-D\-C\-Channel A\-D\-C\-Channel\-Y, A\-D\-C\-Channel A\-D\-C\-Channel\-Z, A\-D\-C\-Reference A\-D\-C\-Reference$>$ bool {\bf flame\-::\-Accelerometer\-Analog}$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, {\bf A\-D\-C\-Reference} $>$\-::\-\_\-sample\-Ready\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_accelerometer_analog_a89b9682e1c2817adeb48ab91fc25c507}
+
+
+Definition at line 50 of file Accelerometer\-Analog.\-h.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_accelerometer_analog_8h}{Accelerometer\-Analog.\-h}\end{DoxyCompactItemize}

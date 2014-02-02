@@ -1,0 +1,186 @@
+\hypertarget{classflame__gpl_1_1_vusb_keyboard}{\section{flame\-\_\-gpl\-:\-:Vusb\-Keyboard Class Reference}
+\label{classflame__gpl_1_1_vusb_keyboard}\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+}
+
+
+{\ttfamily \#include $<$Vusb\-Keyboard.\-h$>$}
+
+Inheritance diagram for flame\-\_\-gpl\-:\-:Vusb\-Keyboard\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame__gpl_1_1_vusb_keyboard}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame__gpl_1_1_vusb_keyboard_a6b4cf0b12233b993265132d7f0b9319e}{Vusb\-Keyboard} (\hyperlink{classflame_1_1_r_t_c}{R\-T\-C} \&rtc)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_a099ca27a1d4477793a37a14dba667d03}{key\-Stroke} (\hyperlink{namespaceflame__gpl_a40752e4f9e83da1573a3d418e0bd5653}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_afb0d91292961af19582fe9a2f904d694}{key\-Stroke} (\hyperlink{namespaceflame__gpl_a40752e4f9e83da1573a3d418e0bd5653}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key, uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_a09736fc4b6a7a17d8b986c3e2d0d47c7}{key\-Down} (\hyperlink{namespaceflame__gpl_a40752e4f9e83da1573a3d418e0bd5653}{V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y} key, uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_a4da937d6fe26a4722bb1f58e293d3c04}{keys\-Up} (uint8\-\_\-t modifiers)
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_a2c25628b812dbfe484ba1eff1eb8dc37}{keys\-Up} ()
+\item 
+void \hyperlink{classflame__gpl_1_1_vusb_keyboard_ac78516dbc8ac2519bf2f0b4327c13b4d}{alarm} (\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_r_t_c}{R\-T\-C} \& \hyperlink{classflame__gpl_1_1_vusb_keyboard_a51d58ef6ae0a603b701818a06f50be14}{\-\_\-rtc}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 186 of file Vusb\-Keyboard.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a6b4cf0b12233b993265132d7f0b9319e}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!Vusb\-Keyboard@{Vusb\-Keyboard}}
+\index{Vusb\-Keyboard@{Vusb\-Keyboard}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{Vusb\-Keyboard}]{\setlength{\rightskip}{0pt plus 5cm}flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::\-Vusb\-Keyboard (
+\begin{DoxyParamCaption}
+\item[{{\bf R\-T\-C} \&}]{rtc}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_a6b4cf0b12233b993265132d7f0b9319e}
+Emulate a U\-S\-B keyboard using V-\/\-U\-S\-B Uses pins D4/\-D2 for A\-Tmega (can be changed in V\-U\-S\-B\-Keyboard/usbconfig.\-h) Uses pins B0/\-B2 for A\-Ttiny25/45/85 
+\begin{DoxyParams}{Parameters}
+{\em rtc} & an R\-T\-C to schedule jobs on \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 161 of file Vusb\-Keyboard.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_ac78516dbc8ac2519bf2f0b4327c13b4d}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!alarm@{alarm}}
+\index{alarm@{alarm}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame__gpl_1_1_vusb_keyboard_ac78516dbc8ac2519bf2f0b4327c13b4d}
+Periodically called to maintain U\-S\-B comms 
+
+Implements \hyperlink{classflame_1_1_timer_listener_ad97504b72a25b1fba354803338177335}{flame\-::\-Timer\-Listener}.
+
+
+
+Reimplemented in \hyperlink{classflame__gpl_1_1_vusb_typist_afc57a75f932afa7202b7c1aee92d9a0b}{flame\-\_\-gpl\-::\-Vusb\-Typist$<$ tx\-Buffers $>$}.
+
+
+
+Definition at line 244 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a09736fc4b6a7a17d8b986c3e2d0d47c7}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Down@{key\-Down}}
+\index{key\-Down@{key\-Down}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Down}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Down (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key, }
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_a09736fc4b6a7a17d8b986c3e2d0d47c7}
+Press a key 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send \\
+\hline
+{\em modifiers} & the key modifiers \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 213 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a099ca27a1d4477793a37a14dba667d03}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Stroke@{key\-Stroke}}
+\index{key\-Stroke@{key\-Stroke}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Stroke}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Stroke (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_a099ca27a1d4477793a37a14dba667d03}
+Send a single keystroke 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the key\-Stroke was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_afb0d91292961af19582fe9a2f904d694}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!key\-Stroke@{key\-Stroke}}
+\index{key\-Stroke@{key\-Stroke}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{key\-Stroke}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::key\-Stroke (
+\begin{DoxyParamCaption}
+\item[{{\bf V\-U\-S\-B\-\_\-\-K\-E\-Y\-B\-O\-A\-R\-D\-\_\-\-K\-E\-Y}}]{key, }
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_afb0d91292961af19582fe9a2f904d694}
+Send a single keystroke 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to send \\
+\hline
+{\em modifiers} & the key modifiers\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false if the key\-Stroke was not sent 
+\end{DoxyReturn}
+
+
+Definition at line 193 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a4da937d6fe26a4722bb1f58e293d3c04}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!keys\-Up@{keys\-Up}}
+\index{keys\-Up@{keys\-Up}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{keys\-Up}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::keys\-Up (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{modifiers}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_a4da937d6fe26a4722bb1f58e293d3c04}
+Release all keys 
+\begin{DoxyParams}{Parameters}
+{\em modifiers} & the key modifiers still held \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 226 of file Vusb\-Keyboard.\-cpp.
+
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a2c25628b812dbfe484ba1eff1eb8dc37}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!keys\-Up@{keys\-Up}}
+\index{keys\-Up@{keys\-Up}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{keys\-Up}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::keys\-Up (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame__gpl_1_1_vusb_keyboard_a2c25628b812dbfe484ba1eff1eb8dc37}
+Release all keys 
+
+Definition at line 237 of file Vusb\-Keyboard.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame__gpl_1_1_vusb_keyboard_a51d58ef6ae0a603b701818a06f50be14}{\index{flame\-\_\-gpl\-::\-Vusb\-Keyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}!\-\_\-rtc@{\-\_\-rtc}}
+\index{\-\_\-rtc@{\-\_\-rtc}!flame_gpl::VusbKeyboard@{flame\-\_\-gpl\-::\-Vusb\-Keyboard}}
+\subsubsection[{\-\_\-rtc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\-T\-C}\& flame\-\_\-gpl\-::\-Vusb\-Keyboard\-::\-\_\-rtc\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame__gpl_1_1_vusb_keyboard_a51d58ef6ae0a603b701818a06f50be14}
+
+
+Definition at line 188 of file Vusb\-Keyboard.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+A\-:/eclipse/flame/flame-\/\-Vusb-\/\-Keyboard/flame/\hyperlink{_vusb_keyboard_8h}{Vusb\-Keyboard.\-h}\item 
+A\-:/eclipse/flame/flame-\/\-Vusb-\/\-Keyboard/\hyperlink{_vusb_keyboard_8cpp}{Vusb\-Keyboard.\-cpp}\end{DoxyCompactItemize}

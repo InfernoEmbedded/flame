@@ -1,0 +1,288 @@
+\hypertarget{classflame_1_1_triple_axis_calibrator}{\section{flame\-:\-:Triple\-Axis\-Calibrator Class Reference}
+\label{classflame_1_1_triple_axis_calibrator}\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+}
+
+
+{\ttfamily \#include $<$Triple\-Axis\-Calibrator.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Triple\-Axis\-Calibrator\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classflame_1_1_triple_axis_calibrator}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_triple_axis_calibrator_a7e2fcf4739bff86d4f3c69b2b7025265}{Triple\-Axis\-Calibrator} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor, \hyperlink{classflame_1_1_device___t_x}{Device\-\_\-\-T\-X} \&output)
+\item 
+bool \hyperlink{classflame_1_1_triple_axis_calibrator_a35446f4f0c1ab5b6ef203c3e0fabda9c}{push\-Sample} (const \hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&sample, P\-G\-M\-\_\-\-P $\ast$feedback)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_calibrator_a95729b080aee3846856ea91c0f9fa73b}{calibrate} ()
+\item 
+void \hyperlink{classflame_1_1_triple_axis_calibrator_ab66474b4d1f8f6e9c2ee76233a927e71}{sample\-Is\-Ready} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_calibrator_af80e930aac780ea5b25f99423fb22fd7}{limit\-Reached} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor, \hyperlink{namespaceflame_a626e8c99d0f4f232b95e7089c113095a}{Triple\-Axis\-Sensor\-Channel} which)
+\item 
+virtual void \hyperlink{classflame_1_1_triple_axis_calibrator_a088b330f58f52e7d3df291cc6e8bafed}{add\-Observation} (const \hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&sample)=0
+\item 
+virtual void \hyperlink{classflame_1_1_triple_axis_calibrator_a1a22ce8da6a3e3672f59e876acd3796b}{calibrate\-Sensor} (\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \&sensor)=0
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classflame_1_1_triple_axis_calibrator_af433d139c778c5c934ca429bbdb430c2}{is\-Sample\-Good} (const \hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&sample, P\-G\-M\-\_\-\-P $\ast$feedback)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \hyperlink{classflame_1_1_triple_axis_calibrator_a11ec83028a6841ec9d89f61e8f72620e}{\-\_\-previous\-Sample} = \{\{0, 0, 0\}\}
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_triple_axis_calibrator_aa3453c42d8b6f0fdb582d3e722a2db07}{\-\_\-good\-Samples} = 0
+\item 
+P\-G\-M\-\_\-\-P \hyperlink{classflame_1_1_triple_axis_calibrator_a2d4c8a4a2944e37341d2e3534a329e24}{\-\_\-last\-Message} = N\-U\-L\-L
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_triple_axis_calibrator_a996c1d5e43bd37fba52d8e9ff4b0349c}{\-\_\-samples\-To\-Take} = 32
+\item 
+uint8\-\_\-t \hyperlink{classflame_1_1_triple_axis_calibrator_a802dbf52302b13c65b7d40dca18742bc}{\-\_\-current\-Samples} = 0
+\item 
+\hyperlink{namespaceflame_a72abf3b66537683db272a18f7d34a5a7}{Triple\-Axis\-Calibrator\-State} \hyperlink{classflame_1_1_triple_axis_calibrator_a4853069366d07f826e099879724b9083}{\-\_\-state} = \hyperlink{namespaceflame_a72abf3b66537683db272a18f7d34a5a7addbb81a9e3aab6cfa19ad8eb2389efd4}{Triple\-Axis\-Calibrator\-State\-::\-S\-E\-T\-U\-P}
+\item 
+\hyperlink{classflame_1_1_triple_axis_sensor}{Triple\-Axis\-Sensor} \& \hyperlink{classflame_1_1_triple_axis_calibrator_a4f0dd2bfe0f85a0229fbf74f9944161d}{\-\_\-sensor}
+\item 
+\hyperlink{classflame_1_1_device___t_x}{Device\-\_\-\-T\-X} \& \hyperlink{classflame_1_1_triple_axis_calibrator_a6fccd0307b71a7dbfa1c4fd0adcaa188}{\-\_\-output}
+\item 
+\hyperlink{classflame_1_1_triple_axis_sensor_listener}{Triple\-Axis\-Sensor\-Listener} $\ast$ \hyperlink{classflame_1_1_triple_axis_calibrator_ae80be2c28e5243d39b12c33f24ecb595}{\-\_\-saved\-Listener} = N\-U\-L\-L
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 48 of file Triple\-Axis\-Calibrator.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_triple_axis_calibrator_a7e2fcf4739bff86d4f3c69b2b7025265}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!Triple\-Axis\-Calibrator@{Triple\-Axis\-Calibrator}}
+\index{Triple\-Axis\-Calibrator@{Triple\-Axis\-Calibrator}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{Triple\-Axis\-Calibrator}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Triple\-Axis\-Calibrator\-::\-Triple\-Axis\-Calibrator (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor, }
+\item[{{\bf Device\-\_\-\-T\-X} \&}]{output}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_calibrator_a7e2fcf4739bff86d4f3c69b2b7025265}
+Constructor 
+
+Definition at line 56 of file Triple\-Axis\-Calibrator.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_triple_axis_calibrator_a088b330f58f52e7d3df291cc6e8bafed}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!add\-Observation@{add\-Observation}}
+\index{add\-Observation@{add\-Observation}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{add\-Observation}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Triple\-Axis\-Calibrator\-::add\-Observation (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&}]{sample}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_calibrator_a088b330f58f52e7d3df291cc6e8bafed}
+Add a sample to the calibrator 
+\begin{DoxyParams}{Parameters}
+{\em sample} & the sample to send \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_best_sphere_gauss_newton_calibrator_af84f75dc992202bbd1b24624d3e22e28}{flame\-::\-Best\-Sphere\-Gauss\-Newton\-Calibrator}.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a95729b080aee3846856ea91c0f9fa73b}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{calibrate}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Calibrator\-::calibrate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_calibrator_a95729b080aee3846856ea91c0f9fa73b}
+Calibrate a sensor 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor to calibrate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 183 of file Triple\-Axis\-Calibrator.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a1a22ce8da6a3e3672f59e876acd3796b}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!calibrate\-Sensor@{calibrate\-Sensor}}
+\index{calibrate\-Sensor@{calibrate\-Sensor}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{calibrate\-Sensor}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Triple\-Axis\-Calibrator\-::calibrate\-Sensor (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_calibrator_a1a22ce8da6a3e3672f59e876acd3796b}
+Write the offsets and scales to the sensor 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor to write to (should be the same sensor that is pushing the sample \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_best_sphere_gauss_newton_calibrator_ac07439f912b1ff230dc3cc80c86c26be}{flame\-::\-Best\-Sphere\-Gauss\-Newton\-Calibrator}.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_af433d139c778c5c934ca429bbdb430c2}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!is\-Sample\-Good@{is\-Sample\-Good}}
+\index{is\-Sample\-Good@{is\-Sample\-Good}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{is\-Sample\-Good}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Triple\-Axis\-Calibrator\-::is\-Sample\-Good (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&}]{sample, }
+\item[{P\-G\-M\-\_\-\-P $\ast$}]{feedback}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_af433d139c778c5c934ca429bbdb430c2}
+Check if the sensor is steady, and complain if it is not 
+\begin{DoxyParams}{Parameters}
+{\em sample} & the sample \\
+\hline
+{\em feedback} & a pointer that will be set to a progmem string to prompt action from the user (or N\-U\-L\-L) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sample was good 
+\end{DoxyReturn}
+
+
+Definition at line 67 of file Triple\-Axis\-Calibrator.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_af80e930aac780ea5b25f99423fb22fd7}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!limit\-Reached@{limit\-Reached}}
+\index{limit\-Reached@{limit\-Reached}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{limit\-Reached}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Calibrator\-::limit\-Reached (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor, }
+\item[{{\bf Triple\-Axis\-Sensor\-Channel}}]{which}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_triple_axis_calibrator_af80e930aac780ea5b25f99423fb22fd7}
+Called when an acceleration limit is reached 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor whose limit was reached \\
+\hline
+{\em which} & which limit was reached \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_triple_axis_sensor_listener_a56c75bbcf89043b53b938e3f9045db38}{flame\-::\-Triple\-Axis\-Sensor\-Listener}.
+
+
+
+Definition at line 219 of file Triple\-Axis\-Calibrator.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a35446f4f0c1ab5b6ef203c3e0fabda9c}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!push\-Sample@{push\-Sample}}
+\index{push\-Sample@{push\-Sample}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{push\-Sample}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Triple\-Axis\-Calibrator\-::push\-Sample (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \&}]{sample, }
+\item[{P\-G\-M\-\_\-\-P $\ast$}]{feedback}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_calibrator_a35446f4f0c1ab5b6ef203c3e0fabda9c}
+Send a sample in to the calibrator if it is good enough Prompt the user with directions if it isn't 
+\begin{DoxyParams}{Parameters}
+{\em sample} & the sample to send \\
+\hline
+{\em feedback} & a pointer that will be set to a progmem string to prompt action from the user (or N\-U\-L\-L) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if more samples are required 
+\end{DoxyReturn}
+
+
+Definition at line 87 of file Triple\-Axis\-Calibrator.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_ab66474b4d1f8f6e9c2ee76233a927e71}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!sample\-Is\-Ready@{sample\-Is\-Ready}}
+\index{sample\-Is\-Ready@{sample\-Is\-Ready}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{sample\-Is\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Calibrator\-::sample\-Is\-Ready (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor} \&}]{sensor}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_triple_axis_calibrator_ab66474b4d1f8f6e9c2ee76233a927e71}
+Called when a sample is ready 
+\begin{DoxyParams}{Parameters}
+{\em sensor} & the sensor whose sample is ready \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_triple_axis_sensor_listener_a4451e2df32ad722464a1902ef29ed054}{flame\-::\-Triple\-Axis\-Sensor\-Listener}.
+
+
+
+Definition at line 193 of file Triple\-Axis\-Calibrator.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_triple_axis_calibrator_a802dbf52302b13c65b7d40dca18742bc}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-current\-Samples@{\-\_\-current\-Samples}}
+\index{\-\_\-current\-Samples@{\-\_\-current\-Samples}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-current\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-current\-Samples = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a802dbf52302b13c65b7d40dca18742bc}
+
+
+Definition at line 54 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_aa3453c42d8b6f0fdb582d3e722a2db07}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-good\-Samples@{\-\_\-good\-Samples}}
+\index{\-\_\-good\-Samples@{\-\_\-good\-Samples}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-good\-Samples}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-good\-Samples = 0\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_aa3453c42d8b6f0fdb582d3e722a2db07}
+
+
+Definition at line 51 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a2d4c8a4a2944e37341d2e3534a329e24}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-last\-Message@{\-\_\-last\-Message}}
+\index{\-\_\-last\-Message@{\-\_\-last\-Message}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-last\-Message}]{\setlength{\rightskip}{0pt plus 5cm}P\-G\-M\-\_\-\-P flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-last\-Message = N\-U\-L\-L\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a2d4c8a4a2944e37341d2e3534a329e24}
+
+
+Definition at line 52 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a6fccd0307b71a7dbfa1c4fd0adcaa188}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-output@{\-\_\-output}}
+\index{\-\_\-output@{\-\_\-output}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-output}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Device\-\_\-\-T\-X}\& flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-output\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a6fccd0307b71a7dbfa1c4fd0adcaa188}
+
+
+Definition at line 57 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a11ec83028a6841ec9d89f61e8f72620e}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-previous\-Sample@{\-\_\-previous\-Sample}}
+\index{\-\_\-previous\-Sample@{\-\_\-previous\-Sample}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-previous\-Sample}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-previous\-Sample = \{\{0, 0, 0\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a11ec83028a6841ec9d89f61e8f72620e}
+
+
+Definition at line 50 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a996c1d5e43bd37fba52d8e9ff4b0349c}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-samples\-To\-Take@{\-\_\-samples\-To\-Take}}
+\index{\-\_\-samples\-To\-Take@{\-\_\-samples\-To\-Take}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-samples\-To\-Take}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-samples\-To\-Take = 32\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a996c1d5e43bd37fba52d8e9ff4b0349c}
+
+
+Definition at line 53 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_ae80be2c28e5243d39b12c33f24ecb595}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-saved\-Listener@{\-\_\-saved\-Listener}}
+\index{\-\_\-saved\-Listener@{\-\_\-saved\-Listener}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-saved\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triple\-Axis\-Sensor\-Listener}$\ast$ flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-saved\-Listener = N\-U\-L\-L\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_ae80be2c28e5243d39b12c33f24ecb595}
+
+
+Definition at line 58 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a4f0dd2bfe0f85a0229fbf74f9944161d}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-sensor@{\-\_\-sensor}}
+\index{\-\_\-sensor@{\-\_\-sensor}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-sensor}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triple\-Axis\-Sensor}\& flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-sensor\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a4f0dd2bfe0f85a0229fbf74f9944161d}
+
+
+Definition at line 56 of file Triple\-Axis\-Calibrator.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_calibrator_a4853069366d07f826e099879724b9083}{\index{flame\-::\-Triple\-Axis\-Calibrator@{flame\-::\-Triple\-Axis\-Calibrator}!\-\_\-state@{\-\_\-state}}
+\index{\-\_\-state@{\-\_\-state}!flame::TripleAxisCalibrator@{flame\-::\-Triple\-Axis\-Calibrator}}
+\subsubsection[{\-\_\-state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triple\-Axis\-Calibrator\-State} flame\-::\-Triple\-Axis\-Calibrator\-::\-\_\-state = {\bf Triple\-Axis\-Calibrator\-State\-::\-S\-E\-T\-U\-P}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_calibrator_a4853069366d07f826e099879724b9083}
+
+
+Definition at line 55 of file Triple\-Axis\-Calibrator.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_triple_axis_calibrator_8h}{Triple\-Axis\-Calibrator.\-h}\item 
+\hyperlink{_triple_axis_calibrator_8cpp}{Triple\-Axis\-Calibrator.\-cpp}\end{DoxyCompactItemize}

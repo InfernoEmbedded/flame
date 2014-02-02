@@ -1,48 +1,43 @@
-\hypertarget{_display___h_d44780_8h}{\section{mhvlib/\-Display\-\_\-\-H\-D44780.h File Reference}
-\label{_display___h_d44780_8h}\index{mhvlib/\-Display\-\_\-\-H\-D44780.\-h@{mhvlib/\-Display\-\_\-\-H\-D44780.\-h}}
+\hypertarget{_display___h_d44780_8h}{\section{flame/\-Display\-\_\-\-H\-D44780.h File Reference}
+\label{_display___h_d44780_8h}\index{flame/\-Display\-\_\-\-H\-D44780.\-h@{flame/\-Display\-\_\-\-H\-D44780.\-h}}
 }
-{\ttfamily \#include $<$mhvlib/\-Display\-\_\-\-Character.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Display\-\_\-\-Character.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmhvlib_1_1_display___h_d44780}{mhvlib\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}
+class \hyperlink{classflame_1_1_display___h_d44780}{flame\-::\-Display\-\_\-\-H\-D44780$<$ cols, rows, tx\-Buffers $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
 \#define \hyperlink{_display___h_d44780_8h_ae8dbb0d3bff2a766514d96c5b83b22f1}{H\-D44780\-\_\-\-T\-I\-N\-I\-T}~300
 \end{DoxyCompactItemize}
-\subsection*{Typedefs}
-\begin{DoxyCompactItemize}
-\item 
-typedef enum hd44780\-\_\-command \hyperlink{namespacemhvlib_a810a3cc703298cdd5d00c913cb1bfec9}{mhvlib\-::\-H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D}
-\end{DoxyCompactItemize}
 \subsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10b}{mhvlib\-::hd44780\-\_\-command} \{ \\*
-\hyperlink{namespacemhvlib_a7e39bb40dc675c17881291836cf5ba88aa51fa53f0b4783ff3376a0f78d711d5e}{mhvlib\-::\-C\-L\-E\-A\-R} =  0x001, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba2497bf6514620be975cf5435c1bbc373}{mhvlib\-::\-H\-O\-M\-E} =  0x002, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10bac68280e02b32065f855c0e56f7c436ac}{mhvlib\-::\-S\-E\-T\-\_\-\-E\-N\-T\-R\-Y\-\_\-\-M\-O\-D\-E} =  0x004, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba009950c9d14fb689fc17fd74951e1e33}{mhvlib\-::\-S\-E\-T\-\_\-\-D\-I\-S\-P\-L\-A\-Y\-\_\-\-M\-O\-D\-E} =  0x008, 
+enum \hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9}{flame\-::\-H\-D44780\-Command} \-: uint8\-\_\-t \{ \\*
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a813461e0c58e7ad59a2fd83ca2237fec}{flame\-::\-H\-D44780\-Command\-::\-C\-L\-E\-A\-R} = 0x001, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a710533dd879dd1202e5c73b27705bf02}{flame\-::\-H\-D44780\-Command\-::\-H\-O\-M\-E} = 0x002, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a9a714ca9aec744e422a3628adfdf723f}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-E\-N\-T\-R\-Y\-\_\-\-M\-O\-D\-E} = 0x004, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a18f26a7e69e5948525ac7a8d169fb95a}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-D\-I\-S\-P\-L\-A\-Y\-\_\-\-M\-O\-D\-E} = 0x008, 
 \\*
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba6d51f6692da80ba39a15460eed3b1f09}{mhvlib\-::\-S\-E\-T\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-M\-O\-D\-E} =  0x010, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba6ab17e4c274ae3fd56e1a3411d086f89}{mhvlib\-::\-S\-E\-T\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} =  0x020, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10baf5d8bb5888cb7a7fcb2d172199605919}{mhvlib\-::\-S\-E\-T\-\_\-\-C\-G\-\_\-\-A\-D\-D\-R} =  0x040, 
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10ba2c0acf751aeeb73923b7cedd13d02c11}{mhvlib\-::\-S\-E\-T\-\_\-\-D\-D\-\_\-\-A\-D\-D\-R} =  0x080, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a90d257a6b55c297e177671dd8c31ea75}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-C\-U\-R\-S\-O\-R\-\_\-\-M\-O\-D\-E} = 0x010, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a8404a3c3633db98ac55c2564c4ec92bf}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} = 0x020, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a576c325fc079d9b812944f1d046d694a}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-C\-G\-\_\-\-A\-D\-D\-R} = 0x040, 
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9aca846c55755637b4bed7288d9d2f1d90}{flame\-::\-H\-D44780\-Command\-::\-S\-E\-T\-\_\-\-D\-D\-\_\-\-A\-D\-D\-R} = 0x080, 
 \\*
-\hyperlink{namespacemhvlib_a663d75c53523cc1b99bb317bb511c10bac535338ebc1852e057785bd8477db786}{mhvlib\-::\-W\-R\-I\-T\-E\-\_\-\-C\-H\-A\-R} =  0xff
+\hyperlink{namespaceflame_ad814bac19b0569ff480de071076a23e9a65b6de8c947ca7db0fc8479a23d3d49f}{flame\-::\-H\-D44780\-Command\-::\-W\-R\-I\-T\-E\-\_\-\-C\-H\-A\-R} = 0xff
  \}
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespacemhvlib_acd3dc66b8c71f47eba2421fd782eb8c9}{mhvlib\-::operator$|$} (H\-D44780\-\_\-\-C\-O\-M\-M\-A\-N\-D command, uint8\-\_\-t ored\-With)
+\hyperlink{io_8h_a2eb6f9e0395b47b8d5e3eeae4fe0c116}{I\-N\-L\-I\-N\-E} uint8\-\_\-t \hyperlink{namespaceflame_af4c71a97c25a2b209ba41dcbc9164237}{flame\-::operator$\vert$} (H\-D44780\-Command command, uint8\-\_\-t ored\-With)
 \end{DoxyCompactItemize}
 
 

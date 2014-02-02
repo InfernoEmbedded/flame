@@ -1,0 +1,574 @@
+\hypertarget{classflame_1_1_triple_axis_sensor}{\section{flame\-:\-:Triple\-Axis\-Sensor Class Reference}
+\label{classflame_1_1_triple_axis_sensor}\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}}
+}
+
+
+{\ttfamily \#include $<$Triple\-Axis\-Sensor.\-h$>$}
+
+Inheritance diagram for flame\-:\-:Triple\-Axis\-Sensor\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.982301cm]{classflame_1_1_triple_axis_sensor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classflame_1_1_triple_axis_sensor_ac2ff28538723dc987c6fbec20aa47341}{sample} ()=0
+\item 
+virtual bool \hyperlink{classflame_1_1_triple_axis_sensor_a7223b8884adf0ff42cbfddd2b6f28ce3}{is\-Sample\-Ready} ()=0
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a8168452d055fad77782e7fd121343d61}{save\-Calibration} (\hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} \&eeprom, uint16\-\_\-t address)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_aaa716e2a07cc7fe544075215c1ac8a75}{eeprom\-Done} (\hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} \&eeprom, uint16\-\_\-t address, void $\ast$buffer)
+\item 
+bool \hyperlink{classflame_1_1_triple_axis_sensor_a64c19829e85e70d0825be3530529d8b0}{load\-Calibration} (\hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} \&eeprom, uint16\-\_\-t address)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a446b55e5557faadf8d73e0111fcaf2bd}{set\-Offsets} (const \hyperlink{namespaceflame_a9c63ea08dcbcedfed611f6afdb992301}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} \&offsets)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a74daeefee092f1f32e4fd0aa7cf15bb0}{set\-Offsets} (int16\-\_\-t x, int16\-\_\-t y, int16\-\_\-t z)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a4147dd086c276dfdae8efcc6652f4df0}{set\-Scale} (const \hyperlink{namespaceflame_a513ac03cc7f92c4b8d7cadb972e6be72}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} \&scales)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a5c4462df5fd335f83eabf60a98297cd8}{set\-Scale} (float x, float y, float z)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a932b8ebc27dbce01dbc7bf5265a9e5ac}{get\-Parameters} (\hyperlink{namespaceflame_a9c63ea08dcbcedfed611f6afdb992301}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} $\ast$offsets, \hyperlink{namespaceflame_a513ac03cc7f92c4b8d7cadb972e6be72}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} $\ast$scales)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a4a655be3990763a0ecddcf081543ee82}{register\-Listener} (\hyperlink{classflame_1_1_triple_axis_sensor_listener}{Triple\-Axis\-Sensor\-Listener} \&listener)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_ab3051eced113bc27eff59be1024f2da0}{deregister\-Listener} ()
+\item 
+\hyperlink{classflame_1_1_triple_axis_sensor_listener}{Triple\-Axis\-Sensor\-Listener} $\ast$ \hyperlink{classflame_1_1_triple_axis_sensor_aabbc82ab78ff5869e8cec0d09c8cd053}{get\-Listener} ()
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a8d1f12483d3a0a068cc623df425ae831}{get\-Value} (float $\ast$x, float $\ast$y, float $\ast$z)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_ab44fd1a3caf553df2e57a7a654dc457e}{get\-Value} (\hyperlink{namespaceflame_a11b86dc8b6fd50d24cec8b9f0259289b}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$value)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_aa036218566ff36f6d5320cf66bf73dbc}{get\-Raw\-Value} (\hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$value)
+\item 
+float \hyperlink{classflame_1_1_triple_axis_sensor_af1f6e5c2dcf25070464dcc65c09cf1b5}{magnitude\-Squared} ()
+\item 
+float \hyperlink{classflame_1_1_triple_axis_sensor_a6d8c6a6011853e2015956c8936ed19ff}{magnitude} ()
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a2ba2508c4a53376126504055e19bcee7}{handle\-Events} ()
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a87a4e16d1637a7acd6c35ab200ea6d74}{set\-Limit} (\hyperlink{namespaceflame_a626e8c99d0f4f232b95e7089c113095a}{Triple\-Axis\-Sensor\-Channel} which, float limit)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_a512ee16a5b45a7e9a30162976538c744}{get\-Limits} (\hyperlink{namespaceflame_a11b86dc8b6fd50d24cec8b9f0259289b}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$limits)
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_ad5fbc92633b96e9432c42a6e405eafbc}{alarm} (\hyperlink{namespaceflame_a6d176ba245556716fd3e32006bb7cfe5}{Alarm\-Source} source)
+\item 
+bool \hyperlink{classflame_1_1_triple_axis_sensor_ac41a5efbd52c5b79acd4b1976f43ec84}{is\-Calibrated} ()
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_ac758b7d4bc3ad72397090e782e947976}{set\-Calibrated} (bool calibrated)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classflame_1_1_triple_axis_sensor_ac61854be2362d25a1d7b86d9afa6355c}{push\-Sample} (\hyperlink{namespaceflame_a626e8c99d0f4f232b95e7089c113095a}{Triple\-Axis\-Sensor\-Channel} which, int16\-\_\-t value)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_triple_axis_sensor_listener}{Triple\-Axis\-Sensor\-Listener} $\ast$ \hyperlink{classflame_1_1_triple_axis_sensor_a13289e03729649c86021beaf5c5e0279}{\-\_\-listener} = N\-U\-L\-L
+\item 
+\hyperlink{namespaceflame_a11b86dc8b6fd50d24cec8b9f0259289b}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} \hyperlink{classflame_1_1_triple_axis_sensor_a5db946bd07a26418e39d5e5f000a8209}{\-\_\-value\-Temp} = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}
+\item 
+\hyperlink{namespaceflame_a11b86dc8b6fd50d24cec8b9f0259289b}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} \hyperlink{classflame_1_1_triple_axis_sensor_aadbb6bb4aa35232bf548c3a9d83ce284}{\-\_\-value\-Out} = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}
+\item 
+\hyperlink{namespaceflame_a2b796938428096c98b4073492baf98a6}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-L\-I\-M\-I\-T\-S} \hyperlink{classflame_1_1_triple_axis_sensor_ac98b09ee7cf74d16a3f772752d7e1d30}{\-\_\-limit} = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}
+\item 
+float \hyperlink{classflame_1_1_triple_axis_sensor_a7e759ec01ad8d2d00038b2edf9fc5913}{\-\_\-limit\-Magnitude\-Squared} = 0.\-0f
+\item 
+\hyperlink{namespaceflame_a9c63ea08dcbcedfed611f6afdb992301}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} \hyperlink{classflame_1_1_triple_axis_sensor_af4c80100c14de0069a584217136187af}{\-\_\-offsets} = \{\{0, 0, 0\}\}
+\item 
+\hyperlink{namespaceflame_a513ac03cc7f92c4b8d7cadb972e6be72}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} \hyperlink{classflame_1_1_triple_axis_sensor_a79e7f229439c0c0e747a2fa8c30ecaba}{\-\_\-scaling} = \{\{1.\-0f, 1.\-0f, 1.\-0f\}\}
+\item 
+\hyperlink{namespaceflame_ab883ad815041824ba548753dae327bc2}{T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} \hyperlink{classflame_1_1_triple_axis_sensor_af87126ea5a6aeab421e4dec5799e58c9}{\-\_\-raw} = \{\{0, 0, 0\}\}
+\item 
+bool \hyperlink{classflame_1_1_triple_axis_sensor_af2a25fe4b795d8e4d48045f23d94a217}{\-\_\-calibrated} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+3 Axis Sensor Interface 
+
+Definition at line 76 of file Triple\-Axis\-Sensor.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_triple_axis_sensor_ad5fbc92633b96e9432c42a6e405eafbc}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!alarm@{alarm}}
+\index{alarm@{alarm}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{alarm}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::alarm (
+\begin{DoxyParamCaption}
+\item[{{\bf Alarm\-Source}}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_triple_axis_sensor_ad5fbc92633b96e9432c42a6e405eafbc}
+Called when a timer alarm goes off 
+
+Implements \hyperlink{classflame_1_1_timer_listener_ad97504b72a25b1fba354803338177335}{flame\-::\-Timer\-Listener}.
+
+
+
+Definition at line 279 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ab3051eced113bc27eff59be1024f2da0}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_ab3051eced113bc27eff59be1024f2da0}
+Deregister the listener 
+
+Definition at line 184 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_aaa716e2a07cc7fe544075215c1ac8a75}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!eeprom\-Done@{eeprom\-Done}}
+\index{eeprom\-Done@{eeprom\-Done}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{eeprom\-Done}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::eeprom\-Done (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-E\-P\-R\-O\-M} \&}]{eeprom, }
+\item[{uint16\-\_\-t}]{address, }
+\item[{void $\ast$}]{buffer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classflame_1_1_triple_axis_sensor_aaa716e2a07cc7fe544075215c1ac8a75}
+Called when an \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} write is finished 
+\begin{DoxyParams}{Parameters}
+{\em eeprom} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access instance \\
+\hline
+{\em address} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} address that the data was written to \\
+\hline
+{\em buffer} & the pointer that the data was wriiten from \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{classflame_1_1_e_e_p_r_o_m_listener_a676ba44ddf2c7927d1c60c017a807279}{flame\-::\-E\-E\-P\-R\-O\-M\-Listener}.
+
+
+
+Definition at line 74 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a512ee16a5b45a7e9a30162976538c744}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Limits@{get\-Limits}}
+\index{get\-Limits@{get\-Limits}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Limits}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::get\-Limits (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$}]{limits}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a512ee16a5b45a7e9a30162976538c744}
+Get the current limits (unscaled) 
+
+Definition at line 272 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_aabbc82ab78ff5869e8cec0d09c8cd053}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Listener@{get\-Listener}}
+\index{get\-Listener@{get\-Listener}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triple\-Axis\-Sensor\-Listener} $\ast$ flame\-::\-Triple\-Axis\-Sensor\-::get\-Listener (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_aabbc82ab78ff5869e8cec0d09c8cd053}
+Get the current listener \begin{DoxyReturn}{Returns}
+the listener 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a932b8ebc27dbce01dbc7bf5265a9e5ac}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Parameters@{get\-Parameters}}
+\index{get\-Parameters@{get\-Parameters}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Parameters}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::get\-Parameters (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} $\ast$}]{offsets, }
+\item[{{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} $\ast$}]{scales}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a932b8ebc27dbce01dbc7bf5265a9e5ac}
+Get the function parameters for this sensor 
+\begin{DoxyParams}{Parameters}
+{\em offsets} & the offsets for each axis \\
+\hline
+{\em scales} & the scale for each axis \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 155 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_aa036218566ff36f6d5320cf66bf73dbc}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Raw\-Value@{get\-Raw\-Value}}
+\index{get\-Raw\-Value@{get\-Raw\-Value}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Raw\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::get\-Raw\-Value (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_aa036218566ff36f6d5320cf66bf73dbc}
+Get the raw values 
+\begin{DoxyParams}{Parameters}
+{\em value} & the \hyperlink{unionflame_1_1_int3_axis}{Int3\-Axis} to populate \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 52 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a8d1f12483d3a0a068cc623df425ae831}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::get\-Value (
+\begin{DoxyParamCaption}
+\item[{float $\ast$}]{x, }
+\item[{float $\ast$}]{y, }
+\item[{float $\ast$}]{z}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a8d1f12483d3a0a068cc623df425ae831}
+Get the current values 
+
+Definition at line 191 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ab44fd1a3caf553df2e57a7a654dc457e}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::get\-Value (
+\begin{DoxyParamCaption}
+\item[{{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} $\ast$}]{value}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_ab44fd1a3caf553df2e57a7a654dc457e}
+Get the current values 
+
+Definition at line 200 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a2ba2508c4a53376126504055e19bcee7}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a2ba2508c4a53376126504055e19bcee7}
+Handle any pending events for the accelerometer 
+
+Definition at line 226 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ac41a5efbd52c5b79acd4b1976f43ec84}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!is\-Calibrated@{is\-Calibrated}}
+\index{is\-Calibrated@{is\-Calibrated}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{is\-Calibrated}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Triple\-Axis\-Sensor\-::is\-Calibrated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_ac41a5efbd52c5b79acd4b1976f43ec84}
+Check if the sensor is calibrated \begin{DoxyReturn}{Returns}
+true if the sensor is calibrated 
+\end{DoxyReturn}
+
+
+Definition at line 295 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a7223b8884adf0ff42cbfddd2b6f28ce3}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!is\-Sample\-Ready@{is\-Sample\-Ready}}
+\index{is\-Sample\-Ready@{is\-Sample\-Ready}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{is\-Sample\-Ready}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool flame\-::\-Triple\-Axis\-Sensor\-::is\-Sample\-Ready (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_sensor_a7223b8884adf0ff42cbfddd2b6f28ce3}
+Check if a sample is ready \begin{DoxyReturn}{Returns}
+true if the sample is ready 
+\end{DoxyReturn}
+
+
+Implemented in \hyperlink{classflame_1_1_accelerometer_analog_aa638bdb59ae5392bc61c66329538f89d}{flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$}.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a64c19829e85e70d0825be3530529d8b0}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!load\-Calibration@{load\-Calibration}}
+\index{load\-Calibration@{load\-Calibration}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{load\-Calibration}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Triple\-Axis\-Sensor\-::load\-Calibration (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-E\-P\-R\-O\-M} \&}]{eeprom, }
+\item[{uint16\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a64c19829e85e70d0825be3530529d8b0}
+Load calibration data 
+\begin{DoxyParams}{Parameters}
+{\em eeprom} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access instance \\
+\hline
+{\em address} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} address that the data was written to \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+false on success, true if the device needs to be calibrated 
+\end{DoxyReturn}
+
+
+Definition at line 93 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a6d8c6a6011853e2015956c8936ed19ff}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!magnitude@{magnitude}}
+\index{magnitude@{magnitude}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{magnitude}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf P\-U\-R\-E} flame\-::\-Triple\-Axis\-Sensor\-::magnitude (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a6d8c6a6011853e2015956c8936ed19ff}
+Get the magnitude 
+
+Definition at line 219 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_af1f6e5c2dcf25070464dcc65c09cf1b5}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!magnitude\-Squared@{magnitude\-Squared}}
+\index{magnitude\-Squared@{magnitude\-Squared}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{magnitude\-Squared}]{\setlength{\rightskip}{0pt plus 5cm}float {\bf P\-U\-R\-E} flame\-::\-Triple\-Axis\-Sensor\-::magnitude\-Squared (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_af1f6e5c2dcf25070464dcc65c09cf1b5}
+Get the magnitude (squared) 
+
+Definition at line 207 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ac61854be2362d25a1d7b86d9afa6355c}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!push\-Sample@{push\-Sample}}
+\index{push\-Sample@{push\-Sample}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{push\-Sample}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::push\-Sample (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor\-Channel}}]{which, }
+\item[{int16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_ac61854be2362d25a1d7b86d9afa6355c}
+Push a sample from the driver into this class 
+\begin{DoxyParams}{Parameters}
+{\em which} & Which channel to push \\
+\hline
+{\em value} & the updated value\\
+\hline
+\end{DoxyParams}
+Push a sample from the driver into this instance 
+\begin{DoxyParams}{Parameters}
+{\em which} & Which channel to push \\
+\hline
+{\em value} & the updated value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 39 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a4a655be3990763a0ecddcf081543ee82}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor\-Listener} \&}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a4a655be3990763a0ecddcf081543ee82}
+Register a listener 
+\begin{DoxyParams}{Parameters}
+{\em listener} & the listener to notify \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 169 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ac2ff28538723dc987c6fbec20aa47341}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!sample@{sample}}
+\index{sample@{sample}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{sample}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-Triple\-Axis\-Sensor\-::sample (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_triple_axis_sensor_ac2ff28538723dc987c6fbec20aa47341}
+Initiate a sampling of the sensor 
+
+Implemented in \hyperlink{classflame_1_1_accelerometer_analog_a78759b15cda131a4af795f5f1c598076}{flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$}.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a8168452d055fad77782e7fd121343d61}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!save\-Calibration@{save\-Calibration}}
+\index{save\-Calibration@{save\-Calibration}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{save\-Calibration}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::save\-Calibration (
+\begin{DoxyParamCaption}
+\item[{{\bf E\-E\-P\-R\-O\-M} \&}]{eeprom, }
+\item[{uint16\-\_\-t}]{address}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a8168452d055fad77782e7fd121343d61}
+Save the current calibration data to \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} 
+\begin{DoxyParams}{Parameters}
+{\em eeprom} & the \hyperlink{classflame_1_1_e_e_p_r_o_m}{E\-E\-P\-R\-O\-M} access instance \\
+\hline
+{\em address} & the address to save to (18 bytes) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ac758b7d4bc3ad72397090e782e947976}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Calibrated@{set\-Calibrated}}
+\index{set\-Calibrated@{set\-Calibrated}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Calibrated}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Calibrated (
+\begin{DoxyParamCaption}
+\item[{bool}]{calibrated}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_ac758b7d4bc3ad72397090e782e947976}
+Set whether the sensor is calibrated calibrated 
+\begin{DoxyParams}{Parameters}
+{\em calibrated} & true if the sensor is now calibrated \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 287 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a87a4e16d1637a7acd6c35ab200ea6d74}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Limit@{set\-Limit}}
+\index{set\-Limit@{set\-Limit}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Limit (
+\begin{DoxyParamCaption}
+\item[{{\bf Triple\-Axis\-Sensor\-Channel}}]{which, }
+\item[{float}]{limit}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a87a4e16d1637a7acd6c35ab200ea6d74}
+Set a limit to trigger the listener 
+\begin{DoxyParams}{Parameters}
+{\em which} & the channel limit to set \\
+\hline
+{\em limit} & the value of the limit in Gs \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 260 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a446b55e5557faadf8d73e0111fcaf2bd}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Offsets@{set\-Offsets}}
+\index{set\-Offsets@{set\-Offsets}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Offsets}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Offsets (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} \&}]{offsets}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a446b55e5557faadf8d73e0111fcaf2bd}
+Set the offsets (pre-\/scaling) for the accelerometer 
+\begin{DoxyParams}{Parameters}
+{\em offsets} & the new values for the offsets \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 114 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a74daeefee092f1f32e4fd0aa7cf15bb0}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Offsets@{set\-Offsets}}
+\index{set\-Offsets@{set\-Offsets}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Offsets}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Offsets (
+\begin{DoxyParamCaption}
+\item[{int16\-\_\-t}]{x, }
+\item[{int16\-\_\-t}]{y, }
+\item[{int16\-\_\-t}]{z}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a74daeefee092f1f32e4fd0aa7cf15bb0}
+Set the offsets (pre-\/scaling) for the accelerometer 
+\begin{DoxyParams}{Parameters}
+{\em x} & the X offset \\
+\hline
+{\em y} & the Y offset \\
+\hline
+{\em z} & the Z offset \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 124 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a4147dd086c276dfdae8efcc6652f4df0}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Scale@{set\-Scale}}
+\index{set\-Scale@{set\-Scale}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Scale (
+\begin{DoxyParamCaption}
+\item[{const {\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} \&}]{scales}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a4147dd086c276dfdae8efcc6652f4df0}
+Set the scaling for the accelerometer 
+\begin{DoxyParams}{Parameters}
+{\em scales} & the new values for scaling \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 134 of file Triple\-Axis\-Sensor.\-cpp.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a5c4462df5fd335f83eabf60a98297cd8}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!set\-Scale@{set\-Scale}}
+\index{set\-Scale@{set\-Scale}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{set\-Scale}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Triple\-Axis\-Sensor\-::set\-Scale (
+\begin{DoxyParamCaption}
+\item[{float}]{x, }
+\item[{float}]{y, }
+\item[{float}]{z}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_triple_axis_sensor_a5c4462df5fd335f83eabf60a98297cd8}
+Set the scaling for the accelerometer 
+\begin{DoxyParams}{Parameters}
+{\em x} & the X scale \\
+\hline
+{\em y} & the Y scale \\
+\hline
+{\em z} & the Z scale \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 144 of file Triple\-Axis\-Sensor.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_triple_axis_sensor_af2a25fe4b795d8e4d48045f23d94a217}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-calibrated@{\-\_\-calibrated}}
+\index{\-\_\-calibrated@{\-\_\-calibrated}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-calibrated}]{\setlength{\rightskip}{0pt plus 5cm}bool flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-calibrated = false\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_af2a25fe4b795d8e4d48045f23d94a217}
+
+
+Definition at line 86 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_ac98b09ee7cf74d16a3f772752d7e1d30}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-limit@{\-\_\-limit}}
+\index{\-\_\-limit@{\-\_\-limit}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-limit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-L\-I\-M\-I\-T\-S} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-limit = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_ac98b09ee7cf74d16a3f772752d7e1d30}
+
+
+Definition at line 81 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a7e759ec01ad8d2d00038b2edf9fc5913}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-limit\-Magnitude\-Squared@{\-\_\-limit\-Magnitude\-Squared}}
+\index{\-\_\-limit\-Magnitude\-Squared@{\-\_\-limit\-Magnitude\-Squared}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-limit\-Magnitude\-Squared}]{\setlength{\rightskip}{0pt plus 5cm}float flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-limit\-Magnitude\-Squared = 0.\-0f\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_a7e759ec01ad8d2d00038b2edf9fc5913}
+
+
+Definition at line 82 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a13289e03729649c86021beaf5c5e0279}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-listener@{\-\_\-listener}}
+\index{\-\_\-listener@{\-\_\-listener}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-listener}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Triple\-Axis\-Sensor\-Listener}$\ast$ flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-listener = N\-U\-L\-L\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_a13289e03729649c86021beaf5c5e0279}
+
+
+Definition at line 78 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_af4c80100c14de0069a584217136187af}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-offsets@{\-\_\-offsets}}
+\index{\-\_\-offsets@{\-\_\-offsets}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-offsets}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-O\-F\-F\-S\-E\-T\-S} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-offsets = \{\{0, 0, 0\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_af4c80100c14de0069a584217136187af}
+
+
+Definition at line 83 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_af87126ea5a6aeab421e4dec5799e58c9}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-raw@{\-\_\-raw}}
+\index{\-\_\-raw@{\-\_\-raw}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-raw}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-A\-W\-\_\-\-R\-E\-A\-D\-I\-N\-G} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-raw = \{\{0, 0, 0\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_af87126ea5a6aeab421e4dec5799e58c9}
+
+
+Definition at line 85 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a79e7f229439c0c0e747a2fa8c30ecaba}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-scaling@{\-\_\-scaling}}
+\index{\-\_\-scaling@{\-\_\-scaling}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-scaling}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-S\-C\-A\-L\-I\-N\-G} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-scaling = \{\{1.\-0f, 1.\-0f, 1.\-0f\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_a79e7f229439c0c0e747a2fa8c30ecaba}
+
+
+Definition at line 84 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_aadbb6bb4aa35232bf548c3a9d83ce284}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-value\-Out@{\-\_\-value\-Out}}
+\index{\-\_\-value\-Out@{\-\_\-value\-Out}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-value\-Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-value\-Out = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_aadbb6bb4aa35232bf548c3a9d83ce284}
+
+
+Definition at line 80 of file Triple\-Axis\-Sensor.\-h.
+
+\hypertarget{classflame_1_1_triple_axis_sensor_a5db946bd07a26418e39d5e5f000a8209}{\index{flame\-::\-Triple\-Axis\-Sensor@{flame\-::\-Triple\-Axis\-Sensor}!\-\_\-value\-Temp@{\-\_\-value\-Temp}}
+\index{\-\_\-value\-Temp@{\-\_\-value\-Temp}!flame::TripleAxisSensor@{flame\-::\-Triple\-Axis\-Sensor}}
+\subsubsection[{\-\_\-value\-Temp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf T\-R\-I\-P\-L\-E\-A\-X\-I\-S\-S\-E\-N\-S\-O\-R\-\_\-\-R\-E\-A\-D\-I\-N\-G} flame\-::\-Triple\-Axis\-Sensor\-::\-\_\-value\-Temp = \{\{0.\-0f, 0.\-0f, 0.\-0f\}\}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_triple_axis_sensor_a5db946bd07a26418e39d5e5f000a8209}
+
+
+Definition at line 79 of file Triple\-Axis\-Sensor.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_triple_axis_sensor_8h}{Triple\-Axis\-Sensor.\-h}\item 
+\hyperlink{_triple_axis_sensor_8cpp}{Triple\-Axis\-Sensor.\-cpp}\end{DoxyCompactItemize}

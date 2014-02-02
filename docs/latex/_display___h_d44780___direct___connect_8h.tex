@@ -1,18 +1,18 @@
-\hypertarget{_display___h_d44780___direct___connect_8h}{\section{mhvlib/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.h File Reference}
-\label{_display___h_d44780___direct___connect_8h}\index{mhvlib/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{mhvlib/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
+\hypertarget{_display___h_d44780___direct___connect_8h}{\section{flame/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.h File Reference}
+\label{_display___h_d44780___direct___connect_8h}\index{flame/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{flame/\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
 }
-{\ttfamily \#include $<$mhvlib/\-Display\-\_\-\-H\-D44780.\-h$>$}\\*
-{\ttfamily \#include $<$mhvlib/\-Timer.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Display\-\_\-\-H\-D44780.\-h$>$}\\*
+{\ttfamily \#include $<$flame/\-Timer.\-h$>$}\\*
 {\ttfamily \#include $<$util/delay.\-h$>$}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmhvlib_1_1_display___h_d44780___direct___connect}{mhvlib\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}
+class \hyperlink{classflame_1_1_display___h_d44780___direct___connect}{flame\-::\-Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect$<$ cols, rows, tx\-Buffers,,, $>$}
 \end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-namespace \hyperlink{namespacemhvlib}{mhvlib}
+\hyperlink{namespaceflame}{flame}
 \end{DoxyCompactItemize}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -35,15 +35,15 @@ namespace \hyperlink{namespacemhvlib}{mhvlib}
 \item 
 \#define \hyperlink{_display___h_d44780___direct___connect_8h_af13190c155cd155d3c7ee1fa2df243b5}{H\-D44780\-\_\-\-L\-E\-D}~(1 $<$$<$ (visual\-Pin + 1))
 \item 
-\#define \hyperlink{_display___h_d44780___direct___connect_8h_a15e6a4c48deb6d69b7ec5b293deec8ec}{H\-D44780\-\_\-\-T\-C}~(1000 $\ast$ 1000000 / \hyperlink{mhvlib-_vusb-_console_2vusb_2oddebug_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} / 3 + 1)
+\#define \hyperlink{_display___h_d44780___direct___connect_8h_a15e6a4c48deb6d69b7ec5b293deec8ec}{H\-D44780\-\_\-\-T\-C}~(1000 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)
 \item 
-\#define \hyperlink{_display___h_d44780___direct___connect_8h_a910e6cbd5b8a18460d2e98088da54212}{H\-D44780\-\_\-\-T\-S\-U1}~(60 $\ast$ 1000000 / \hyperlink{mhvlib-_vusb-_console_2vusb_2oddebug_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} / 3 + 1)
+\#define \hyperlink{_display___h_d44780___direct___connect_8h_a910e6cbd5b8a18460d2e98088da54212}{H\-D44780\-\_\-\-T\-S\-U1}~(60 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)
 \item 
-\#define \hyperlink{_display___h_d44780___direct___connect_8h_a8c4ab72d23d14b12afd2261b709b79d8}{H\-D44780\-\_\-\-T\-S\-U2}~(195 $\ast$ 1000000 / \hyperlink{mhvlib-_vusb-_console_2vusb_2oddebug_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} / 3 + 1)
+\#define \hyperlink{_display___h_d44780___direct___connect_8h_a8c4ab72d23d14b12afd2261b709b79d8}{H\-D44780\-\_\-\-T\-S\-U2}~(195 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)
 \item 
-\#define \hyperlink{_display___h_d44780___direct___connect_8h_a66f3b45e0a58157e37fcf2cb14ad614f}{H\-D44780\-\_\-\-T\-D\-H}~(5 $\ast$ 1000000 / \hyperlink{mhvlib-_vusb-_console_2vusb_2oddebug_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} / 3 + 1)
+\#define \hyperlink{_display___h_d44780___direct___connect_8h_a66f3b45e0a58157e37fcf2cb14ad614f}{H\-D44780\-\_\-\-T\-D\-H}~(5 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)
 \item 
-\#define \hyperlink{_display___h_d44780___direct___connect_8h_aa384bf862b79d4aeec579c8d2a4c0eaf}{H\-D44780\-\_\-\-T\-W}~(450 $\ast$ 1000000 / \hyperlink{mhvlib-_vusb-_console_2vusb_2oddebug_8h_a43bafb28b29491ec7f871319b5a3b2f8}{F\-\_\-\-C\-P\-U} / 3 + 1)
+\#define \hyperlink{_display___h_d44780___direct___connect_8h_aa384bf862b79d4aeec579c8d2a4c0eaf}{H\-D44780\-\_\-\-T\-W}~(450 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)
 \item 
 \#define \hyperlink{_display___h_d44780___direct___connect_8h_ae8dbb0d3bff2a766514d96c5b83b22f1}{H\-D44780\-\_\-\-T\-I\-N\-I\-T}~300
 \item 
@@ -121,7 +121,7 @@ Definition at line 39 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Conn
 
 \hypertarget{_display___h_d44780___direct___connect_8h_a15e6a4c48deb6d69b7ec5b293deec8ec}{\index{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}!H\-D44780\-\_\-\-T\-C@{H\-D44780\-\_\-\-T\-C}}
 \index{H\-D44780\-\_\-\-T\-C@{H\-D44780\-\_\-\-T\-C}!Display_HD44780_Direct_Connect.h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
-\subsubsection[{H\-D44780\-\_\-\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-C~(1000 $\ast$ 1000000 / {\bf F\-\_\-\-C\-P\-U} / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a15e6a4c48deb6d69b7ec5b293deec8ec}
+\subsubsection[{H\-D44780\-\_\-\-T\-C}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-C~(1000 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a15e6a4c48deb6d69b7ec5b293deec8ec}
 
 
 Definition at line 46 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
@@ -135,7 +135,7 @@ Definition at line 52 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Conn
 
 \hypertarget{_display___h_d44780___direct___connect_8h_a66f3b45e0a58157e37fcf2cb14ad614f}{\index{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}!H\-D44780\-\_\-\-T\-D\-H@{H\-D44780\-\_\-\-T\-D\-H}}
 \index{H\-D44780\-\_\-\-T\-D\-H@{H\-D44780\-\_\-\-T\-D\-H}!Display_HD44780_Direct_Connect.h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
-\subsubsection[{H\-D44780\-\_\-\-T\-D\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-D\-H~(5 $\ast$ 1000000 / {\bf F\-\_\-\-C\-P\-U} / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a66f3b45e0a58157e37fcf2cb14ad614f}
+\subsubsection[{H\-D44780\-\_\-\-T\-D\-H}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-D\-H~(5 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a66f3b45e0a58157e37fcf2cb14ad614f}
 
 
 Definition at line 49 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
@@ -163,21 +163,21 @@ Definition at line 54 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Conn
 
 \hypertarget{_display___h_d44780___direct___connect_8h_a910e6cbd5b8a18460d2e98088da54212}{\index{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}!H\-D44780\-\_\-\-T\-S\-U1@{H\-D44780\-\_\-\-T\-S\-U1}}
 \index{H\-D44780\-\_\-\-T\-S\-U1@{H\-D44780\-\_\-\-T\-S\-U1}!Display_HD44780_Direct_Connect.h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
-\subsubsection[{H\-D44780\-\_\-\-T\-S\-U1}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-S\-U1~(60 $\ast$ 1000000 / {\bf F\-\_\-\-C\-P\-U} / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a910e6cbd5b8a18460d2e98088da54212}
+\subsubsection[{H\-D44780\-\_\-\-T\-S\-U1}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-S\-U1~(60 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a910e6cbd5b8a18460d2e98088da54212}
 
 
 Definition at line 47 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{_display___h_d44780___direct___connect_8h_a8c4ab72d23d14b12afd2261b709b79d8}{\index{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}!H\-D44780\-\_\-\-T\-S\-U2@{H\-D44780\-\_\-\-T\-S\-U2}}
 \index{H\-D44780\-\_\-\-T\-S\-U2@{H\-D44780\-\_\-\-T\-S\-U2}!Display_HD44780_Direct_Connect.h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
-\subsubsection[{H\-D44780\-\_\-\-T\-S\-U2}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-S\-U2~(195 $\ast$ 1000000 / {\bf F\-\_\-\-C\-P\-U} / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a8c4ab72d23d14b12afd2261b709b79d8}
+\subsubsection[{H\-D44780\-\_\-\-T\-S\-U2}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-S\-U2~(195 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_a8c4ab72d23d14b12afd2261b709b79d8}
 
 
 Definition at line 48 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.
 
 \hypertarget{_display___h_d44780___direct___connect_8h_aa384bf862b79d4aeec579c8d2a4c0eaf}{\index{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}!H\-D44780\-\_\-\-T\-W@{H\-D44780\-\_\-\-T\-W}}
 \index{H\-D44780\-\_\-\-T\-W@{H\-D44780\-\_\-\-T\-W}!Display_HD44780_Direct_Connect.h@{Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h}}
-\subsubsection[{H\-D44780\-\_\-\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-W~(450 $\ast$ 1000000 / {\bf F\-\_\-\-C\-P\-U} / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_aa384bf862b79d4aeec579c8d2a4c0eaf}
+\subsubsection[{H\-D44780\-\_\-\-T\-W}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\-D44780\-\_\-\-T\-W~(450 $\ast$ 1000000 / F\-\_\-\-C\-P\-U / 3 + 1)}}\label{_display___h_d44780___direct___connect_8h_aa384bf862b79d4aeec579c8d2a4c0eaf}
 
 
 Definition at line 50 of file Display\-\_\-\-H\-D44780\-\_\-\-Direct\-\_\-\-Connect.\-h.

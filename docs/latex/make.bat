@@ -7,7 +7,7 @@ echo ----
 pdflatex refman
 
 setlocal enabledelayedexpansion
-set count=5
+set count=8
 :repeat
 set content=X
 for /F "tokens=*" %%T in ( 'findstr /C:"Rerun LaTeX" refman.log' ) do set content="%%~T"
@@ -21,3 +21,5 @@ pdflatex refman
 goto :repeat
 :skip
 endlocal
+C:/Program Files (x86)/MiKTeX 2.9/miktex/bin/makeindex.exe refman.idx
+pdflatex refman

@@ -1,5 +1,5 @@
 var namespaces =
 [
-    [ "mhvlib", "namespacemhvlib.html", null ],
-    [ "mhvlib_gpl", "namespacemhvlib__gpl.html", null ]
+    [ "flame", "namespaceflame.html", null ],
+    [ "flame_gpl", "namespaceflame__gpl.html", null ]
 ];

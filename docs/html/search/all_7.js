@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['gammacorrect',['gammaCorrect',['../classflame_1_1_r_g_b.html#a66216f39d01050fdc14314790a51108d',1,'flame::RGB']]],
+  ['gammacorrect_2ecpp',['GammaCorrect.cpp',['../_gamma_correct_8cpp.html',1,'']]],
+  ['gammacorrect_2eh',['GammaCorrect.h',['../_gamma_correct_8h.html',1,'']]],
+  ['gcc_5fversion',['GCC_VERSION',['../io_8h.html#adbba0f726fc66d7100916c683b7568ae',1,'io.h']]],
+  ['get',['get',['../classflame_1_1_r_g_b.html#a1c7cfd27fd68436e8ec878b50c755559',1,'flame::RGB']]],
+  ['getdutycycle',['getDutyCycle',['../classflame_1_1_software_p_w_m_listener.html#a497cc44fbc87e08bcae5230298a78461',1,'flame::SoftwarePWMListener']]],
+  ['getheight',['getHeight',['../classflame_1_1_display___character.html#a1e43e42391796d83cb12dfc57469f1da',1,'flame::Display_Character::getHeight()'],['../classflame_1_1_display___monochrome.html#aca8bb03d86980657ee953ce506a75fcc',1,'flame::Display_Monochrome::getHeight()']]],
+  ['getlimits',['getLimits',['../classflame_1_1_triple_axis_sensor.html#a512ee16a5b45a7e9a30162976538c744',1,'flame::TripleAxisSensor']]],
+  ['getlistener',['getListener',['../classflame_1_1_triple_axis_sensor.html#aabbc82ab78ff5869e8cec0d09c8cd053',1,'flame::TripleAxisSensor']]],
+  ['getmilliseconds',['getMilliseconds',['../namespaceflame.html#ae48cbbf3d65d1abcf15b069d39fa092a',1,'flame']]],
+  ['getoutput',['getOutput',['../classflame_1_1_timer.html#a29af3ec15a5669430a95a83727097432',1,'flame::Timer::getOutput()'],['../classflame_1_1_timer_implementation.html#a772d1ec8806c9c2c479b55539d827076',1,'flame::TimerImplementation::getOutput()']]],
+  ['getoutput1',['getOutput1',['../classflame_1_1_timer.html#af9cd331d2da4bd5996473469b2454062',1,'flame::Timer::getOutput1()'],['../classflame_1_1_timer_implementation.html#adbed484d9369a198238f138e29ed63d3',1,'flame::TimerImplementation::getOutput1()']]],
+  ['getoutput2',['getOutput2',['../classflame_1_1_timer.html#a02a423f8bbd41bf2acacdb60e2164c71',1,'flame::Timer::getOutput2()'],['../classflame_1_1_timer_implementation.html#ae4108f7c84663eaf80e6958bafefd01f',1,'flame::TimerImplementation::getOutput2()']]],
+  ['getoutput3',['getOutput3',['../classflame_1_1_timer.html#aded92bd6883a00c8c792ab45df1ad580',1,'flame::Timer::getOutput3()'],['../classflame_1_1_timer_implementation.html#aa17aee927a9999422c190420da78dd1d',1,'flame::TimerImplementation::getOutput3()']]],
+  ['getparameters',['getParameters',['../classflame_1_1_triple_axis_sensor.html#a932b8ebc27dbce01dbc7bf5265a9e5ac',1,'flame::TripleAxisSensor']]],
+  ['getpixel',['getPixel',['../classflame_1_1_display___holtek___h_t1632.html#aa3930885169c3684f5aaac806a16d682',1,'flame::Display_Holtek_HT1632::getPixel()'],['../classflame_1_1_display___monochrome.html#a24ddc06684641b00ee27b2630d216f8f',1,'flame::Display_Monochrome::getPixel()'],['../classflame_1_1_display___monochrome___buffered.html#a003e20bbdf7f905cee2dcfb22be61268',1,'flame::Display_Monochrome_Buffered::getPixel()'],['../classflame_1_1_r_g_b_l_e_d_strip.html#a7b7987933b485e220491af1b66ab8ffd',1,'flame::RGBLEDStrip::getPixel()']]],
+  ['getposition',['getPosition',['../classflame_1_1_t_x_buffer.html#ade3eba5c5ed688eb4ea132469c8e2307',1,'flame::TXBuffer::getPosition()'],['../classflame_1_1_stepper_motor.html#a69b9a3febce0c7e45c304fc5cea95165',1,'flame::StepperMotor::getPosition()']]],
+  ['getprescaler',['getPrescaler',['../classflame_1_1_timer.html#a7f8d6b44b6bfca103f9d91948c669a38',1,'flame::Timer::getPrescaler()'],['../classflame_1_1_timer_implementation.html#aaf9d86fd95f8b0f1f88108b1bb0a76c5',1,'flame::TimerImplementation::getPrescaler()']]],
+  ['getprescalermultiplier',['getPrescalerMultiplier',['../classflame_1_1_timer.html#a08e913a8f802be0e7b46de3bf001bd3f',1,'flame::Timer::getPrescalerMultiplier()'],['../classflame_1_1_timer_implementation.html#a78fb5b014f05a5116c74edd893589850',1,'flame::TimerImplementation::getPrescalerMultiplier()']]],
+  ['getrawvalue',['getRawValue',['../classflame_1_1_triple_axis_sensor.html#aa036218566ff36f6d5320cf66bf73dbc',1,'flame::TripleAxisSensor']]],
+  ['gettop',['getTop',['../classflame_1_1_timer.html#ae7531c4df336c5c70e751581c3c37b4c',1,'flame::Timer::getTop()'],['../classflame_1_1_timer_implementation.html#a6a5d38f11e26fa6283af22691bc1e0f4',1,'flame::TimerImplementation::getTop()']]],
+  ['getvalue',['getValue',['../classflame_1_1_triple_axis_sensor.html#a8d1f12483d3a0a068cc623df425ae831',1,'flame::TripleAxisSensor::getValue(float *x, float *y, float *z)'],['../classflame_1_1_triple_axis_sensor.html#ab44fd1a3caf553df2e57a7a654dc457e',1,'flame::TripleAxisSensor::getValue(TRIPLEAXISSENSOR_READING *value)']]],
+  ['getwidth',['getWidth',['../classflame_1_1_display___character.html#a8945b725b35dc3ccb960be48defa04d6',1,'flame::Display_Character::getWidth()'],['../classflame_1_1_display___monochrome.html#ad0f4efba436d8aa9111891ea7b95312e',1,'flame::Display_Monochrome::getWidth()']]],
+  ['green',['green',['../unionflame_1_1rgb.html#ac6314c6f3c99686284bfa185573b3e61',1,'flame::rgb::green()'],['../namespaceflame.html#a47f12f0248f648dbdbfa6fe26d79028da9de0e5dd94e861317e74964bed179fa0',1,'flame::GREEN()']]]
+];

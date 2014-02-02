@@ -1,0 +1,161 @@
+\hypertarget{classflame_1_1_pin_change_manager}{\section{flame\-:\-:Pin\-Change\-Manager Class Reference}
+\label{classflame_1_1_pin_change_manager}\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}}
+}
+
+
+{\ttfamily \#include $<$Pin\-Change\-Manager.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classflame_1_1_pin_change_manager_a1b60ddb12e1bbff6e5b6b7496e77b5c7}{Pin\-Change\-Manager} ()
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_a113e55dec9a2581dfc1b888399e95cd7}{pin\-Change0} ()
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_a4e718462803b9eb630a4522106029b1f}{pin\-Change} (uint8\-\_\-t offset)
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_a5577f9500502aaaedc0f9e964bfedd8f}{register\-Listener} (\hyperlink{io_8h_ab54f3ca5cc36256b922289e8e92316a3}{F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin), \hyperlink{classflame_1_1_pin_event_listener}{Pin\-Event\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_a9705cc613533d22a35476adc444080a1}{register\-Listener} (\hyperlink{classflame_1_1_pin}{Pin} \&pin, \hyperlink{classflame_1_1_pin_event_listener}{Pin\-Event\-Listener} $\ast$listener)
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_a5e643ae7693542e0d796b02d992171b3}{deregister\-Listener} (int8\-\_\-t pin\-Pin\-Change\-Listener)
+\item 
+void \hyperlink{classflame_1_1_pin_change_manager_ab24024100cf08ec1691f689c2c1dbb37}{handle\-Events} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceflame_a2f4f205987821e931681b9ed5ca0eaf2}{E\-V\-E\-N\-T\-\_\-\-P\-I\-N} \hyperlink{classflame_1_1_pin_change_manager_afaa54897b9dbbfe52593512b9fe19cb2}{\-\_\-pins} \mbox{[}\hyperlink{attiny85_8h_ab39f7ddad6e692db1c00115db776636f}{F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 90 of file Pin\-Change\-Manager.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classflame_1_1_pin_change_manager_a1b60ddb12e1bbff6e5b6b7496e77b5c7}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!Pin\-Change\-Manager@{Pin\-Change\-Manager}}
+\index{Pin\-Change\-Manager@{Pin\-Change\-Manager}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{Pin\-Change\-Manager}]{\setlength{\rightskip}{0pt plus 5cm}flame\-::\-Pin\-Change\-Manager\-::\-Pin\-Change\-Manager (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a1b60ddb12e1bbff6e5b6b7496e77b5c7}
+An event manager for handling pinchange events 
+
+Definition at line 35 of file Pin\-Change\-Manager.\-cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_pin_change_manager_a5e643ae7693542e0d796b02d992171b3}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!deregister\-Listener@{deregister\-Listener}}
+\index{deregister\-Listener@{deregister\-Listener}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{deregister\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::deregister\-Listener (
+\begin{DoxyParamCaption}
+\item[{int8\-\_\-t}]{pin\-Pinchange\-Interrupt}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a5e643ae7693542e0d796b02d992171b3}
+Deregister interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin\-Pinchange\-Interrupt} & the pin\-Pinchange\-Interrupt to deregister \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 182 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_pin_change_manager_ab24024100cf08ec1691f689c2c1dbb37}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!handle\-Events@{handle\-Events}}
+\index{handle\-Events@{handle\-Events}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{handle\-Events}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::handle\-Events (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_ab24024100cf08ec1691f689c2c1dbb37}
+Call from the main loop to handle any events 
+
+Definition at line 218 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_pin_change_manager_a4e718462803b9eb630a4522106029b1f}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!pin\-Change@{pin\-Change}}
+\index{pin\-Change@{pin\-Change}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::pin\-Change (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{offset}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a4e718462803b9eb630a4522106029b1f}
+Trigger for pin change interrupts -\/ scans through 8 pins starting at the offset 
+\begin{DoxyParams}{Parameters}
+{\em offset} & the number of pins to skip before scanning \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 70 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_pin_change_manager_a113e55dec9a2581dfc1b888399e95cd7}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!pin\-Change0@{pin\-Change0}}
+\index{pin\-Change0@{pin\-Change0}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{pin\-Change0}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::pin\-Change0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a113e55dec9a2581dfc1b888399e95cd7}
+Trigger for interrupt P\-C\-I\-N\-T0 
+
+Definition at line 44 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_pin_change_manager_a5577f9500502aaaedc0f9e964bfedd8f}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf F\-L\-A\-M\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-I\-N}(pin)}]{, }
+\item[{{\bf Pin\-Event\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a5577f9500502aaaedc0f9e964bfedd8f}
+Register interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin} & A F\-L\-A\-M\-E\-\_\-\-P\-I\-N\-\_\-$\ast$ macro, must have a valid pin\-Pinchange\-Interrupt \\
+\hline
+{\em listener} & a F\-L\-A\-M\-E\-\_\-\-Pin\-Event\-Listener to notify when the pin changes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file Pin\-Change\-Manager.\-cpp.
+
+\hypertarget{classflame_1_1_pin_change_manager_a9705cc613533d22a35476adc444080a1}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!register\-Listener@{register\-Listener}}
+\index{register\-Listener@{register\-Listener}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{register\-Listener}]{\setlength{\rightskip}{0pt plus 5cm}void flame\-::\-Pin\-Change\-Manager\-::register\-Listener (
+\begin{DoxyParamCaption}
+\item[{{\bf Pin} \&}]{pin, }
+\item[{{\bf Pin\-Event\-Listener} $\ast$}]{listener}
+\end{DoxyParamCaption}
+)}}\label{classflame_1_1_pin_change_manager_a9705cc613533d22a35476adc444080a1}
+Register interest for pinchange events 
+\begin{DoxyParams}{Parameters}
+{\em pin} & The pin, must have a valid pin\-Pinchange\-Interrupt \\
+\hline
+{\em listener} & a F\-L\-A\-M\-E\-\_\-\-Pin\-Event\-Listener to notify when the pin changes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 138 of file Pin\-Change\-Manager.\-cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classflame_1_1_pin_change_manager_afaa54897b9dbbfe52593512b9fe19cb2}{\index{flame\-::\-Pin\-Change\-Manager@{flame\-::\-Pin\-Change\-Manager}!\-\_\-pins@{\-\_\-pins}}
+\index{\-\_\-pins@{\-\_\-pins}!flame::PinChangeManager@{flame\-::\-Pin\-Change\-Manager}}
+\subsubsection[{\-\_\-pins}]{\setlength{\rightskip}{0pt plus 5cm}{\bf E\-V\-E\-N\-T\-\_\-\-P\-I\-N} flame\-::\-Pin\-Change\-Manager\-::\-\_\-pins\mbox{[}{\bf F\-L\-A\-M\-E\-\_\-\-P\-C\-\_\-\-I\-N\-T\-\_\-\-C\-O\-U\-N\-T}\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{classflame_1_1_pin_change_manager_afaa54897b9dbbfe52593512b9fe19cb2}
+
+
+Definition at line 93 of file Pin\-Change\-Manager.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_pin_change_manager_8h}{Pin\-Change\-Manager.\-h}\item 
+\hyperlink{_pin_change_manager_8cpp}{Pin\-Change\-Manager.\-cpp}\end{DoxyCompactItemize}

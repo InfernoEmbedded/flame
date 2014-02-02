@@ -1,0 +1,52 @@
+\hypertarget{classflame_1_1_a_d_c_listener}{\section{flame\-:\-:A\-D\-C\-Listener Class Reference}
+\label{classflame_1_1_a_d_c_listener}\index{flame\-::\-A\-D\-C\-Listener@{flame\-::\-A\-D\-C\-Listener}}
+}
+
+
+{\ttfamily \#include $<$A\-D\-C\-Manager.\-h$>$}
+
+Inheritance diagram for flame\-:\-:A\-D\-C\-Listener\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.982301cm]{classflame_1_1_a_d_c_listener}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \hyperlink{classflame_1_1_a_d_c_listener_a87fbe7d5aa43969f0a60c653c9e45796}{adc} (\hyperlink{atmega1280_8h_ab5a361d214bf33f4d9d443d9db44043d}{A\-D\-C\-Channel} channel, uint16\-\_\-t value)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 55 of file A\-D\-C\-Manager.\-h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classflame_1_1_a_d_c_listener_a87fbe7d5aa43969f0a60c653c9e45796}{\index{flame\-::\-A\-D\-C\-Listener@{flame\-::\-A\-D\-C\-Listener}!adc@{adc}}
+\index{adc@{adc}!flame::ADCListener@{flame\-::\-A\-D\-C\-Listener}}
+\subsubsection[{adc}]{\setlength{\rightskip}{0pt plus 5cm}virtual void flame\-::\-A\-D\-C\-Listener\-::adc (
+\begin{DoxyParamCaption}
+\item[{{\bf A\-D\-C\-Channel}}]{channel, }
+\item[{uint16\-\_\-t}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{classflame_1_1_a_d_c_listener_a87fbe7d5aa43969f0a60c653c9e45796}
+Handle incoming A\-D\-C reads 
+\begin{DoxyParams}{Parameters}
+{\em channel} & the channel that was read from \\
+\hline
+{\em value} & the value read from the channel \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \hyperlink{classflame_1_1_accelerometer_analog_a430e1a8a3b101bfe9d3b988efa1e75f9}{flame\-::\-Accelerometer\-Analog$<$ A\-D\-C\-Channel\-X, A\-D\-C\-Channel\-Y, A\-D\-C\-Channel\-Z, A\-D\-C\-Reference $>$}.
+
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+flame/\hyperlink{_a_d_c_manager_8h}{A\-D\-C\-Manager.\-h}\end{DoxyCompactItemize}
