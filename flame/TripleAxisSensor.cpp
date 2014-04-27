@@ -174,7 +174,7 @@ void TripleAxisSensor::registerListener(TripleAxisSensorListener &listener) {
  * Get the current listener
  * @return the listener
  */
-TripleAxisSensorListener *TripleAxisSensor::getListener() {
+TripleAxisSensorListener PURE *TripleAxisSensor::getListener() {
 	return _listener;
 }
 
@@ -292,7 +292,7 @@ void TripleAxisSensor::setCalibrated(bool calibrated) {
  * Check if the sensor is calibrated
  * @return true if the sensor is calibrated
  */
-bool TripleAxisSensor::isCalibrated() {
+bool PURE TripleAxisSensor::isCalibrated() {
 	return _calibrated;
 }
 

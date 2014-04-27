@@ -33,7 +33,7 @@
 
 #include <flame/Device_TX.h>
 
-namespace flame{
+namespace flame {
 
 #define FLAME_ADC_ASSIGN_INTERRUPT(__flameADCManager) \
 ISR(ADC_vect) { \
@@ -50,42 +50,79 @@ ISR(ADC_vect) { \
 		ADCManagerImplementation<_flameMaxChannels> _flameObjectName(_prescaler); \
 		FLAME_ADC_ASSIGN_INTERRUPT(_flameObjectName);
 
+typedef float Voltage;
 
+INLINE ADCChannel& operator+(ADCChannel &channel, int increment) {
+	channel = static_cast<ADCChannel>(static_cast<int>(channel) + increment);
+	return channel;
+}
+
+INLINE ADCChannel& operator-(ADCChannel &channel, int decrement) {
+	channel = static_cast<ADCChannel>(static_cast<int>(channel) - decrement);
+	return channel;
+}
 
 class ADCListener {
 public:
 	/**
-	 * Handle incoming ADC reads
+	 * Does the listener want voltage?
+	 * @param channel	the channel that was read from
+	 * @param referenceVoltage	the reference Voltage the reading was taken against
+	 * @return true for voltage, false for counts
+	 */
+	virtual bool wantVoltage(ADCChannel UNUSED(channel), Voltage UNUSED(referenceVoltage)) {
+		return false;
+	}
+
+	/**
+	 * Handle incoming ADC reads by count
 	 * @param channel	the channel that was read from
 	 * @param value		the value read from the channel
 	 */
-	virtual void adc(ADCChannel channel, uint16_t value) =0;
+	virtual void adc(ADCChannel UNUSED(channel), int16_t UNUSED(value)) {};
+
+	/**
+	 * Handle incoming ADC reads by Voltage
+	 * @pre ADCManager.read() must be provided with a voltage
+	 * @param channel	the channel that was read from
+	 * @param value		the value read from the channel
+	 */
+	virtual void adc(ADCChannel UNUSED(channel), Voltage UNUSED(value)) {};
+
 };
 
 struct eventADC {
 	ADCChannel channel;
 	ADCListener *listener;
+	int8_t		offset;
 };
 typedef struct eventADC EVENT_ADC;
 
 
 class ADCManager {
 protected:
-	volatile uint16_t	_adcValue;
+	volatile int16_t	_adcValue;
 	volatile ADCChannel	_channel;
+	Voltage 			_referenceVoltage = 0;
 	EVENT_ADC 			*_adcs;
 	uint8_t				_eventCount;
+	bool				_noiseReduction;
 
 public:
-	ADCManager(EVENT_ADC *adcs, uint8_t adcCount, ADCPrescaler prescaler);
+	ADCManager(EVENT_ADC *adcs, uint8_t eventCount, ADCPrescaler prescaler, bool noiseReduction = false);
 	void adc();
+	virtual int16_t measureDifferentialOffset(ADCChannel channel, ADCReference reference);
+	void saveDifferentialOffset(ADCChannel channel, ADCReference reference);
 	void registerListener(ADCChannel channel, ADCListener &listener);
 	void registerListener(ADCChannel channel, ADCListener *listener);
 	void deregisterListener(ADCChannel channel);
 	int16_t busyRead(ADCChannel channel, ADCReference reference);
+	void read(ADCChannel channel, ADCReference reference, Voltage voltage);
 	void read(ADCChannel channel, ADCReference reference);
+	void read();
 	void setPrescaler(ADCPrescaler prescaler);
 	void handleEvents();
+	virtual float voltsPerCount(ADCChannel channel, Voltage referenceVoltage);
 }; // class ADCManager
 
 /**
@@ -102,10 +139,45 @@ public:
 	 * An event manager for ADC events
 	 * @param prescaler	the prescaler to run the ADC at
 	 */
-
 	ADCManagerImplementation(ADCPrescaler prescaler) :
 			ADCManager(_myAdcs, events, prescaler) {}
-}; // class ADCManager
+}; // class ADCManagerImplementation
+
+class ADCManagerOversampling : ADCManager {
+protected:
+	uint8_t				_oversampleBits = 0;
+	uint16_t			_oversampleTotal = 1;
+	uint16_t			_oversampleCount = 0;
+
+public:
+	ADCManagerOversampling(EVENT_ADC *adcs, uint8_t eventCount, ADCPrescaler prescaler, uint8_t bits = 10, bool noiseReduction = false);
+	int16_t measureDifferentialOffset(ADCChannel channel, ADCReference reference);
+	void setOversample(uint8_t bits);
+	virtual float voltsPerCount(ADCChannel channel, Voltage referenceVoltage);
+	void adc();
+	void handleEvents();
+
+};
+
+/**
+ * An event manager for Oversampling ADC events
+ * @tparam	events	the number of ADC events we can handle
+ * @tparam	noiseReduction	true to enter ADC noise reduction sleep on read()
+ */
+template<uint8_t events>
+class ADCManagerOversamplingImplementation : public ADCManagerOversampling {
+protected:
+	EVENT_ADC _myAdcs[events];
+
+public:
+	/**
+	 * An event manager for ADC events
+	 * @param prescaler	the prescaler to run the ADC at
+	 */
+	ADCManagerOversamplingImplementation(ADCPrescaler prescaler) :
+			ADCManagerOversampling(_myAdcs, events, prescaler) {}
+}; // class ADCManagerOversamplingImplementation
+
 
 }// namespace flame
 

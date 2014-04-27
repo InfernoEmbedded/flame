@@ -216,6 +216,6 @@ void TripleAxisCalibrator::sampleIsReady(TripleAxisSensor &sensor) {
  * @param sensor	the sensor whose limit was reached
  * @param which			which limit was reached
  */
-void TripleAxisCalibrator::limitReached(UNUSED TripleAxisSensor &sensor, UNUSED TripleAxisSensorChannel which) {}
+void CONST TripleAxisCalibrator::limitReached(UNUSED TripleAxisSensor &sensor, UNUSED TripleAxisSensorChannel which) {}
 
 } // namespace flame

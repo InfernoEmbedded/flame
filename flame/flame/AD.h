@@ -81,7 +81,7 @@ ISR(ADC_vect) { \
 	} while (0)
 #endif
 
-namespace flame{
+namespace flame {
 enum class ADCPrescaler : uint8_t {
 	DIVIDE_BY_2   = 1,
 	DIVIDE_BY_4   = 2,
