@@ -49,7 +49,7 @@
 #include <flame/io.h>
 #include <flame/TripleAxisCalibrator.h>
 
-namespace flame{
+namespace flame {
 
 class BestSphereGaussNewtonCalibrator : public TripleAxisCalibrator {
 protected:

@@ -34,7 +34,7 @@
 
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 enum class EPPMode : uint8_t {
 	INTERRUPT,

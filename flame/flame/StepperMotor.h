@@ -31,7 +31,7 @@
 #include <flame/io.h>
 #include <flame/RTC.h>
 
-namespace flame{
+namespace flame {
 
 class StepperListener {
 public:

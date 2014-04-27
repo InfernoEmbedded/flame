@@ -31,7 +31,7 @@
 #include <flame/RGBLEDStrip.h>
 #include <flame/Shifter.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Create a new WS2801 object to control a string of LED drivers

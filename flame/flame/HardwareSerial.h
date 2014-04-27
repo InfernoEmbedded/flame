@@ -63,7 +63,7 @@ ISR(flameTxVect) { \
  * @param	_flameBAUD		the baud rate requested
  */
 #define FLAME_HARDWARESERIAL_CREATE(_flameObjectName, _flameRXBUFLEN, _flameTXBUFCOUNT, _flameSERIAL, _flameBAUD) \
-		HardwareSerial<_flameSERIAL, _flameBAUD, _flameRXBUFLEN, _flameTXBUFCOUNT> _flameObjectName; \
+		HardwareSerial<_flameSERIAL, _flameBAUD, _flameRXBUFLEN, _flameTXBUFCOUNT> _flameObjectName __attribute__ ((visibility ("default"))); \
 		FLAME_HARDWARESERIAL_ASSIGN_INTERRUPTS(_flameObjectName, _flameSERIAL ## _INTERRUPTS);
 
 /**
@@ -75,9 +75,9 @@ ISR(flameTxVect) { \
  * @param	_flameBAUD		the baud rate requested
  */
 #define FLAME_HARDWARESERIAL_IMPORT(_flameObjectName, _flameRXBUFLEN, _flameTXBUFCOUNT, _flameSERIAL, _flameBAUD) \
-		extern HardwareSerial<_flameSERIAL, _flameBAUD, _flameRXBUFLEN, _flameTXBUFCOUNT> _flameObjectName;
+		extern flame::HardwareSerial<_flameSERIAL, _flameBAUD, _flameRXBUFLEN, _flameTXBUFCOUNT> _flameObjectName;
 
-namespace flame{
+namespace flame {
 
 enum class SerialParity : uint8_t {
 	NONE = 0,

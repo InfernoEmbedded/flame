@@ -32,7 +32,7 @@
 #include <avr/pgmspace.h>
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 #if 0 && defined __FLASH
 const uint8_t __flash gammaValues[] = {

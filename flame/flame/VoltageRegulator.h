@@ -35,7 +35,7 @@
 #include <flame/Timer.h>
 #include <flame/RTC.h>
 
-namespace flame{
+namespace flame {
 
 enum class VoltageRegulatorModes : bool {
 	BUCK,

@@ -33,7 +33,7 @@
 #include <flame/io.h>
 #include <flame/Font.h>
 
-namespace flame{
+namespace flame {
 
 class Display_Selector {
 public:

@@ -31,7 +31,7 @@
 #define HD44780_TINIT	300		// ms
 
 
-namespace flame{
+namespace flame {
 
 #ifdef __FLASH
 static const __flash uint8_t FLAME_hd44780AddressTable[] = {

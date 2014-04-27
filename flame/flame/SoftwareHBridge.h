@@ -34,7 +34,7 @@
 #include <flame/io.h>
 #include <flame/Timer16.h>
 
-namespace flame{
+namespace flame {
 
 enum class SoftwareHBridgeDirection : uint8_t {
 	COAST,

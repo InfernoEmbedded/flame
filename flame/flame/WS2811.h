@@ -35,7 +35,7 @@
 #include <flame/RGBLEDStrip.h>
 #include <avr/cpufunc.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Create a new WS2811 object to control a string of LED drivers

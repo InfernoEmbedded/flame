@@ -29,7 +29,7 @@
 
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * A String tokenizer that corrupts the input string (changing seperators to NULLs)

@@ -33,7 +33,7 @@
 #include <flame/Device_TX.h>
 #include <flame/TripleAxisSensor.h>
 
-namespace flame{
+namespace flame {
 
 enum class TripleAxisCalibratorState {
 	SETUP,

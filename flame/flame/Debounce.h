@@ -53,7 +53,7 @@ ISR(PCINT2_vect) { \
 		FLAME_DEBOUNCE_ASSIGN_PCINT(_flameDebounce)
 #endif
 
-namespace flame{
+namespace flame {
 
 class DebounceListener {
 public:

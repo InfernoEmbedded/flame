@@ -31,7 +31,7 @@
 
 typedef int8_t SAMPLE;
 
-namespace flame{
+namespace flame {
 
 class DAConverter;
 

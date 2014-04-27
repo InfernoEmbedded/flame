@@ -31,7 +31,7 @@
 #include <flame/StepperMotor.h>
 #include <avr/pgmspace.h>
 
-namespace flame{
+namespace flame {
 
 // coil patterns for wave drive
 #ifdef __FLASH

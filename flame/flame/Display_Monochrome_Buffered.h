@@ -34,7 +34,7 @@
 
 #define pixel(pixelRow, pixelCol) Display_Monochrome_Buffered<cols, rows, txBuffers>::_frameBuffer[pixelRow * cols + pixelCol]
 
-namespace flame{
+namespace flame {
 
 /**
  * A monochrome bitmap display

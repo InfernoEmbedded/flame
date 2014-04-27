@@ -31,7 +31,7 @@
 #include <flame/Timer.h>
 #include <flame/Pin.h>
 
-namespace flame{
+namespace flame {
 
 class SoftwarePWMListener {
 public:

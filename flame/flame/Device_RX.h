@@ -37,7 +37,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-namespace flame{
+namespace flame {
 
 class Device_RX;
 

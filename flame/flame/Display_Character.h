@@ -29,7 +29,7 @@
 
 #include <flame/Device_TX.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * A generic text display

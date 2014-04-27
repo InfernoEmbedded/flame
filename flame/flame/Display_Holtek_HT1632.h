@@ -33,7 +33,7 @@
 #define FLAME_HT1632_BRIGHTNESS_MED	7
 #define FLAME_HT1632_BRIGHTNESS_MAX	15
 
-namespace flame{
+namespace flame {
 
 enum class HT1632Command : uint8_t {
 	READ	=	0b110,

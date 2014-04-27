@@ -30,7 +30,7 @@
 #include <flame/io.h>
 #include <util/delay.h>
 
-namespace flame{
+namespace flame {
 
 void shiftout_byte_lsb(FLAME_PIN *data, FLAME_PIN *clock, uint8_t byte);
 void shiftout_byte_msb(FLAME_PIN *data, FLAME_PIN *clock, uint8_t byte);

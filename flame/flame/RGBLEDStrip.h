@@ -31,7 +31,7 @@
 #include <flame/GammaCorrect.h>
 #include <string.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Create a new RGBLEDSTRIP object to control a string of LED drivers

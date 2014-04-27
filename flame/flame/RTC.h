@@ -33,7 +33,7 @@
 #include <util/atomic.h>
 #include <flame/Device_TX.h>
 
-namespace flame{
+namespace flame {
 
 struct timestamp {
 	uint32_t	timestamp;

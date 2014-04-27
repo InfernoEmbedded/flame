@@ -32,7 +32,7 @@
 #include <flame/ADCManager.h>
 #include <math.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * An accelerometer that presents its data as analog values to be read by

@@ -36,7 +36,7 @@
 #include <flame/Device_TX.h>
 
 
-namespace flame{
+namespace flame {
 
 // Forward declaration of Sensor
 class TripleAxisSensor;

@@ -30,7 +30,7 @@
 
 #include <flame/TripleAxisSensor.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Accelerometer Interface

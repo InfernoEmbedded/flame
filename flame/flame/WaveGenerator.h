@@ -32,7 +32,7 @@
 #include <flame/DAC.h>
 #include <avr/pgmspace.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Waveform amplification envelope

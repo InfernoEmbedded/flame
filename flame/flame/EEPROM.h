@@ -53,7 +53,7 @@ ISR(EEPROM_READY_vect) { \
 // 6 bytes offsets + 12 bytes scaling + 2 bytes checksum
 #define FLAMEBOARD_TIMEOUT_EEPROM_ADDRESS			1023
 
-namespace flame{
+namespace flame {
 
 class EEPROM;
 

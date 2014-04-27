@@ -30,7 +30,7 @@
 
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 class Pin {
 public:

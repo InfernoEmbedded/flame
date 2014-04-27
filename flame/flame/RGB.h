@@ -31,7 +31,7 @@
 #include <flame/io.h>
 #include <flame/GammaCorrect.h>
 
-namespace flame{
+namespace flame {
 
 /**
  * Set the colour order of the FLAME_RGB struct

@@ -31,6 +31,7 @@
 #include <avr/io.h>
 #include <inttypes.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include <util/atomic.h>
 
 #include <chips/whichchip.h>

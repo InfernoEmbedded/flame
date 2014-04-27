@@ -70,7 +70,7 @@ ISR(PCINT2_vect) { \
 
 
 
-namespace flame{
+namespace flame {
 
 class PinEventListener {
 public:

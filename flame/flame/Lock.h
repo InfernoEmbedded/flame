@@ -7,7 +7,7 @@
 #define FLAME_LOCK_H_
 #include <util/atomic.h>
 
-namespace flame{
+namespace flame {
 
 class Lock {
 private:

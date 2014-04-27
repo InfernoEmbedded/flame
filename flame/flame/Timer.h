@@ -34,7 +34,7 @@
 #include <stdio.h>
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 enum class TimerMode : uint8_t {
 	ONE_SHOT,

@@ -34,7 +34,7 @@
 
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 class PID {
 protected:

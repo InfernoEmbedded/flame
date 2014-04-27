@@ -32,7 +32,7 @@
 #include <inttypes.h>
 #include <flame/io.h>
 
-namespace flame{
+namespace flame {
 
 
 class RingBuffer {

@@ -31,7 +31,7 @@
 #include <flame/WaveGenerator.h>
 #include <flame/RTC.h>
 
-namespace flame{
+namespace flame {
 
 struct Note {
 	INSTRUMENT		*instrument;	/** The instrument to use */

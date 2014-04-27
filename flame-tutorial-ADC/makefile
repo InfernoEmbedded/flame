@@ -3,7 +3,7 @@ MCU ?= atmega328p
 MHZ ?= 16
 
 # PROJECT is the name used for the output files
-PROJECT=flame-tutorial-PWM-LED
+PROJECT=flame-tutorial-ADC
 
 LIBDIR=../flame
 include $(LIBDIR)/project.mk

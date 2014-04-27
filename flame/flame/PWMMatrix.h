@@ -33,7 +33,7 @@
 #include <flame/Display_Monochrome_Buffered.h>
 #include <flame/Timer.h>
 
-namespace flame{
+namespace flame {
 
 enum class PWMMatrixMode : uint8_t {
 	AUTO,

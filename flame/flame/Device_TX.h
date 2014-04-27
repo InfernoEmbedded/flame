@@ -42,9 +42,10 @@
 #define FLAME_DEBUG(__dbg_tx, __dbg_format, __dbg_args...) \
 do {\
 	__dbg_tx.debug(__FILE__, __LINE__, __FUNCTION__, PSTR(__dbg_format), ## __dbg_args); \
+	_delay_ms(100); \
 } while (0)
 
-namespace flame{
+namespace flame {
 
 enum class AddressType {
 	NORMAL,
@@ -665,19 +666,17 @@ public:
 
 		PGM_P prefix = PSTR("%s:%d\t%s():\t\t");
 
-		int length = snprintf_P(NULL, 0, prefix,
-				file, line, function);
+		int length = snprintf_P(NULL, 0, prefix, file, line, function);
 		length += vsnprintf_P(NULL, 0, format, ap);
 		length += 3; // "\r\n\0"
 
-		char *buf;
+		char *buf = NULL;
 		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			buf = (char *)malloc(length);
 		}
 		char *cur = buf;
 		if (NULL != cur) {
-			cur += snprintf_P(cur, length, prefix,
-						file, line, function);
+			cur += snprintf_P(cur, length, prefix, file, line, function);
 			int lengthRemaining = length - (cur - buf);
 			cur += vsnprintf_P(cur, lengthRemaining, format, ap);
 			*(cur++) = '\r';
@@ -784,6 +783,25 @@ public:
 		if (NULL != buf) {
 			ultoa(value, buf, 10);
 			if (write(buf, &device_tx_free)) {
+				device_tx_free(buf);
+				return true;
+			}
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Print a float
+	 * @param	value	the value to print
+	 * @return 	false on success
+	 * 			true if there is already a string being sent
+	 */
+	bool write(float value) {
+		char *buf = (char *)malloc(11);
+		if (NULL != buf) {
+			dtostrf(value, 11, 2, buf);
+			if (write(buf, 11, &device_tx_free)) {
 				device_tx_free(buf);
 				return true;
 			}
