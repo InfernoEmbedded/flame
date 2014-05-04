@@ -92,6 +92,9 @@ protected:
 // Fixme: Allocate externally and pass in
 	EVENT_PIN	_pins[FLAME_PC_INT_COUNT];
 //	uint8_t			_pinsUsed;
+	void enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt);
+	void disablepinPinChangeInterrupt(const uint8_t pinPinchangeInterrupt);
+	virtual void pinChangeCaught(EVENT_PIN pin, bool newval);
 
 public:
 	PinChangeManager();
@@ -107,6 +110,9 @@ public:
 	void registerListener(FLAME_DECLARE_PIN(pin), PinEventListener *listener);
 	void registerListener(Pin &pin, PinEventListener *listener);
 	void deregisterListener(int8_t pinPinChangeListener);
+
+	void registerListener(FLAME_PIN *x, PinEventListener * listener);
+	void deregisterListener(FLAME_PIN *_mhv_pin);
 
 	void handleEvents();
 

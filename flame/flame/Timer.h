@@ -33,6 +33,7 @@
 #include <avr/io.h>
 #include <stdio.h>
 #include <flame/io.h>
+#include <stdlib.h>
 
 namespace flame {
 
@@ -119,7 +120,13 @@ public:
 	/**
 	 * Called when an alarm goes off
 	 */
-	virtual void alarm(AlarmSource source) =0;
+	virtual void alarm(AlarmSource source) =0;	virtual ~TimerListener() {};
+	void operator delete(void * ptr) {
+	  free(ptr);
+	} 
+	void * operator new(size_t size) {
+	  return malloc(size);
+	}
 };
 
 class Timer {

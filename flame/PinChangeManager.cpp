@@ -80,12 +80,21 @@ void PinChangeManager::pinChange(uint8_t offset) {
 		if (cur != pin->previous) {
 			// Pin has changed
 			pin->previous = cur;
-			pin->changed = 1;
-			pin->listener->pinChanged(pin - _pins, cur);
+			pinChangeCaught(*pin,cur);
 		}
 	}
 }
+	void PinChangeManager::pinChangeCaught(EVENT_PIN pin,bool newval) {
+		if (pin.listener != NULL) {
+			pin.listener->pinChanged(pin.pcInt, newval);
+		} else {
+			pin.changed = 1;
+		}
+}
 
+void PinChangeManager::registerListener(MHV_PIN *x, PinEventListener *listener) {
+  PinChangeManager::registerListener(MHV_PIN_TO_MHVPARMS(x),listener);
+}
 /**
  * Register interest for pinchange events
  * @param	pin			A FLAME_PIN_* macro, must have a valid pinPinchangeInterrupt
@@ -100,32 +109,44 @@ void PinChangeManager::registerListener(FLAME_DECLARE_PIN(pin), PinEventListener
 	_pins[pinPinchangeInterrupt].listener = listener;
 	_pins[pinPinchangeInterrupt].previous = pinRead(FLAME_PIN_PARMS(pin));
 	_pins[pinPinchangeInterrupt].changed = false;
+	_pins[pinPinchangeInterrupt].pcInt = pinPinchangeInterrupt;
 
+	 enablepinPinChangeInterrupt(pinPinchangeInterrupt);
+}
+void PinChangeManager::enablepinPinChangeInterrupt(uint8_t pinPinchangeInterrupt) {
 	// Enable the interrupt
 	uint8_t bit = pinPinchangeInterrupt;
 #if FLAME_PC_INT_COUNT > 15
 	if (pinPinchangeInterrupt > 15) {
 		bit -= 16;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK2 |= _BV(bit);
 		PCICR |= _BV(PCIE2);
+		}
 	} else
 #endif
 #if FLAME_PC_INT_COUNT > 7
 	if (pinPinchangeInterrupt > 7) {
 		bit -= 8;
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK1 |= _BV(bit);
 		PCICR |= _BV(PCIE1);
+		}
 	} else
 #endif
 #ifdef PCMSK0
 	{
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK0 |= _BV(bit);
 		PCICR |= _BV(PCIE0);
+		}
 	}
 #else
 	{
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		PCMSK |= _BV(bit);
 		GIMSK |= _BV(PCIE);
+		}
 	}
 #endif
 }
@@ -179,7 +200,7 @@ void PinChangeManager::registerListener(Pin &pin, PinEventListener *listener) {
  * Deregister interest for pinchange events
  * @param	pinPinchangeInterrupt			the pinPinchangeInterrupt to deregister
  */
-void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
+void PinChangeManager::deregisterListener(const int8_t pinPinchangeInterrupt) {
 	if (pinPinchangeInterrupt >= FLAME_PC_INT_COUNT) {
 		return;
 	}
@@ -187,7 +208,9 @@ void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 	_pins[pinPinchangeInterrupt].listener = NULL;
 	_pins[pinPinchangeInterrupt].changed = false;
 
-// Disable the interrupt
+	disablepinPinChangeInterrupt(pinPinchangeInterrupt);
+}
+void PinChangeManager::disablepinPinChangeInterrupt(const uint8_t pinPinchangeInterrupt) {
 	uint8_t bit = pinPinchangeInterrupt;
 #if FLAME_PC_INT_COUNT > 15
 	if (pinPinchangeInterrupt > 15) {
@@ -210,6 +233,14 @@ void PinChangeManager::deregisterListener(int8_t pinPinchangeInterrupt) {
 		PCMSK &= ~_BV(bit);
 	}
 #endif
+}
+
+/**
+ * Deregister interest for pinchange events
+ * @param	_mhv_pin an MHV_PIN* currently listening
+ */
+void PinChangeManager::deregisterListener(MHV_PIN *_mhv_pin) {
+  deregisterListener(_mhv_pin->pcInt);
 }
 
 /**

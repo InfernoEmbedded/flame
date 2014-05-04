@@ -114,40 +114,12 @@ private:
 	volatile bool _echo;
 
 protected:
-	/**
-	 * Start sending async data
-	 */
-	void runTxBuffers() {
-#if FLAME_DEBUG_TX
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
-		dumpTXBufferState(__func__);
-		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
-#endif
 
-		int c = Device_TX::nextCharacter();
-
-#if FLAME_DEBUG_TX
-//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
-		dumpTXBufferState(__func__);
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
-
-		// Wait until the send is done
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
-#endif
-
-
-		if (-1 == c) {
-	// This should never happen
-			return;
-		}
-
-		// If the UART isn't already sending data, start sending
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
-
-		_MMIO_BYTE(usartIO) = (char)c;
-
-		// Enable tx interrupt
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+	INLINE bool usartDataIsEmpty() {
+		return (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
+	}
+	INLINE void waitForusartDataEmpty() {
+		while (!usartDataIsEmpty()) {}
 	}
 
 public:
@@ -225,7 +197,7 @@ public:
 		char c = _MMIO_BYTE(usartIO);
 		Device_RX::_rxBuffer.append(c);
 
-		if (_echo && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {
+		if (_echo && usartDataIsEmpty()) {
 			_MMIO_BYTE(usartIO) = c;
 		}
 	}
@@ -234,39 +206,113 @@ public:
 	 * Dump the state of the TX buffer
 	 * @param	func	the name of the caller
 	 */
-	void dumpTXBufferState(const char *func) {
-		char buf[100];
-		Device_TX::_currentTx.dumpState(buf, sizeof(buf), func);
-		busyWrite(buf);
-	}
+	/* void dumpTXBufferState(const char *func) { */
+	/* 	char buf[100]; */
+	/* 	Device_TX::_currentTx.dumpState(buf, sizeof(buf), func); */
+	/* 	busyWrite(buf); */
+	/* } */
 
 	/**
 	 * TX interrupt handler
 	 */
 	void tx() {
 #if FLAME_DEBUG_TX
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		//_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		//enableTXInterrupt();
 #endif
 
 		int c = Device_TX::nextCharacter();
 
 #if FLAME_DEBUG_TX
-//		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+//		disableTXInterrupt();
 		dumpTXBufferState(__func__);
-		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+		enableTXInterrupt();
 #endif
 
 
 		if (-1 == c) {
-			// Nothing more to send, disable the TX interrupt
-			_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+			// Nothing more to send
+			disableTXInterrupt();
 
 			return;
 		}
 
 		_MMIO_BYTE(usartIO) = (char)c;
+	}
+
+	/**
+	 * Start sending buffered data
+	 */
+	INLINE void runTxBuffers() {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+			enableTXInterrupt();
+			if (usartDataIsEmpty()) {
+				tx();
+			}
+		}
+	}
+	/**
+	 * Send all buffered data
+	 */
+	void drain() {
+		while (Device_TX::txQueueLength()) {
+			waitForusartDataEmpty();
+			ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
+				if (usartDataIsEmpty()) {
+					tx();
+				}
+			}
+		}
+	}
+	void flushInput() {
+		Device_TX::flush();
+	}
+	void flushOutput() {
+		Device_RX::flush();
+	}
+	void flush() {
+		flushInput();
+		flushOutput();
+	}
+
+	/*
+	 * poke a character into the serial output buffer, poke device to send
+	 * @param	c	character to send
+	 */
+	void sendChar(char c) {
+		bool done = false;
+		while (!done) {
+			// Wait for the UART to empty:
+			waitForusartDataEmpty();
+
+			ATOMIC_BLOCK (ATOMIC_RESTORESTATE) {
+				// check that the UART is still empty:
+				if (usartDataIsEmpty()) {
+					_MMIO_BYTE(usartIO) = (char)c;
+					done = true;
+				}
+			}
+		}
+		enableTXInterrupt();
+	}
+	INLINE void enableTXInterrupt() {
+		_MMIO_BYTE(usartControlB) |= _BV(usartTxInterruptEnable);
+	}
+	INLINE void disableTXInterrupt() {
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+	}
+	INLINE bool TXInterruptIsEnabled() {
+		return (_MMIO_BYTE(usartControlB) & _BV(usartTxInterruptEnable));
+	}
+	INLINE void enableRXInterrupt() {
+		_MMIO_BYTE(usartControlB) |= _BV(usartRxInterruptEnable);
+	}
+	INLINE void disableRXInterrupt() {
+		_MMIO_BYTE(usartControlB) &= ~_BV(usartRxInterruptEnable);
+	}
+	INLINE bool RXInterruptIsEnabled() {
+		return (_MMIO_BYTE(usartControlB) & _BV(usartRxInterruptEnable));
 	}
 
 	/**
@@ -313,7 +359,7 @@ public:
 	 * @return true if we can send something
 	 */
 	bool canSendBusy() {
-		return ((!Device_TX::_currentTx.hasMore()) && (_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty)));
+		return (!Device_TX::_txbuffer.length() && usartDataIsEmpty());
 	}
 
 	/**
@@ -323,9 +369,9 @@ public:
 	 */
 	void busyWrite(char c) {
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
-		while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+		waitForusartDataEmpty();
 
 		_MMIO_BYTE(usartIO) = c;
 	}
@@ -339,12 +385,12 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		p = buffer;
 		char c = pgm_read_byte(p++);
 		while (c != '\0') {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = c;
 			c = pgm_read_byte(p++);
@@ -361,10 +407,10 @@ public:
 		const char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -381,10 +427,10 @@ public:
 		const __flash char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -399,7 +445,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -420,10 +466,10 @@ public:
 		const __memx char *p;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (p = buffer; *p != '\0';) {
-			while (!(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty))) {}
+			waitForusartDataEmpty();
 
 			_MMIO_BYTE(usartIO) = *(p++);
 		}
@@ -438,7 +484,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -460,7 +506,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -479,7 +525,7 @@ public:
 		uint16_t i;
 
 		while (!canSendBusy()) {};
-		_MMIO_BYTE(usartControlB) &= ~_BV(usartTxInterruptEnable);
+		disableTXInterrupt();
 
 		for (i = 0; i < length; i++) {
 			/* Don't need to check return values as we have already checked up front
@@ -496,7 +542,7 @@ public:
 	 * @return true if the hardware is busy
 	 */
 	bool busy(void) {
-		return !(_MMIO_BYTE(usartStatus) & _BV(usartDataEmpty));
+		return !usartDataIsEmpty();
 	}
 };
 }

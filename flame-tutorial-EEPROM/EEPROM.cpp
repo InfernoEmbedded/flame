@@ -39,7 +39,7 @@
 #include <flame/io.h>
 #include <flame/HardwareSerial.h>
 #include <flame/EEPROM.h>
-#include <util/CRC16.h>
+#include <util/crc16.h>
 #include <util/delay.h>
 #include <string.h>
 #include <avr/power.h>

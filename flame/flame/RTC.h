@@ -289,7 +289,7 @@ public:
 	 * @param timestamp		the current Unix timestamp
 	 */
 	void setTime(TIMESTAMP &timestamp) {
-		ATOMIC_BLOCK(ATOMIC_FORCEON) {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			_ticks = timestamp.ticks;
 			_milliseconds = timestamp.milliseconds;
 			_timestamp = timestamp.timestamp;
@@ -322,7 +322,7 @@ public:
 	 * @param	timestamp	the timestamp to write into
 	 */
 	void current(TIMESTAMP &timestamp) {
-		ATOMIC_BLOCK(ATOMIC_FORCEON) {
+		ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 			timestamp.ticks = _ticks;
 			timestamp.milliseconds = _milliseconds;
 			timestamp.timestamp = _timestamp;
@@ -342,15 +342,28 @@ public:
 
 		current(currentTimestamp);
 
-		elapsed.timestamp = currentTimestamp.timestamp - since.timestamp;
+		minusTimeStamp(currentTimestamp,since,elapsed);
+	}
 
-		if (currentTimestamp.milliseconds > since.milliseconds) {
-			elapsed.milliseconds = currentTimestamp.milliseconds - since.milliseconds;
-		} else if (elapsed.timestamp) {
-			elapsed.timestamp--;
-			elapsed.milliseconds = 1000 + currentTimestamp.milliseconds - since.milliseconds;
+	/**
+	 * Substracts b from a
+	 * Fixme: Does not deal with ticks
+	 * Fixme: should be an operator
+	 *
+	 * @param	a		timestamp to subtract from
+	 * @param	b		timestamp to substract
+	 * @param	delta		the result
+	 */
+	void minusTimeStamp(const TIMESTAMP &a, const TIMESTAMP &b, TIMESTAMP &delta) {
+		delta.timestamp = a.timestamp - b.timestamp;
+
+		if (a.milliseconds > b.milliseconds) {
+			delta.milliseconds = a.milliseconds - b.milliseconds;
+		} else if (delta.timestamp) {
+			delta.timestamp--;
+			delta.milliseconds = 1000 + a.milliseconds - b.milliseconds;
 		} else {
-			elapsed.milliseconds = 0;
+			delta.milliseconds = 0;
 		}
 	}
 
@@ -815,7 +828,7 @@ public:
 	 * tickAndRunEvents instead of tick from the timer (note that this will run your
 	 * events in the interrupt handler, so keep them short!)
 	 */
-	void handleEvents() {
+	void handleEvents_old() {
 		uint8_t i;
 		TIMESTAMP timestamp;
 		current(timestamp);
@@ -847,6 +860,33 @@ public:
 		}
 
 		_alarmCount -= i;
+	}
+
+
+	void handleEvents() {
+		uint8_t i = 0; // this is the number of alarms we know are in the future
+		TIMESTAMP timestamp;
+		ALARM tmp;
+
+		current(timestamp);
+
+		while (i<_alarmCount) {
+			if (timestampGreaterThanOrEqual(timestamp, _alarms[i].when)) {
+				// take a copy:
+				memcpy(&tmp,&_alarms[i],MHV_BYTESIZEOF(*_alarms));
+				// splice out original:
+				memmove(&_alarms[i],&_alarms[i+1],(_alarmCount-i-1)*sizeof(ALARM));
+				_alarmCount--; // take one down, pass it around....
+				tmp.listener->alarm(AlarmSource::RTC); // oh yeah, better do this...
+				if (tmp.repeat.ticks || tmp.repeat.milliseconds || tmp.repeat.timestamp) {
+					// repeat - reinsert it (somewhere!)
+					timestampIncrement(tmp.when, tmp.repeat);
+					registerAlarm(tmp);
+				}
+			} else {
+				i++;
+			}
+		}
 	}
 
 	/**

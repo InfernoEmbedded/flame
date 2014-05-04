@@ -221,7 +221,7 @@
 								<option id="de.innot.avreclipse.cpplinker.option.libpath.1663416562" name="Libraries Path (-L)" superClass="de.innot.avreclipse.cpplinker.option.libpath" valueType="stringList">
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/flame}/${ConfigName}/&quot;"/>
 								</option>
-								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.378481571" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="-Wl,--gc-sections -Wl,-u,vfprintf" valueType="string"/>
+								<option id="de.innot.avreclipse.cpplinker.option.otherlinkargs.378481571" name="Other Arguments" superClass="de.innot.avreclipse.cpplinker.option.otherlinkargs" value="-Wl,--gc-sections -Wl,-u,vfprintf -flto" valueType="string"/>
 								<inputType id="de.innot.avreclipse.tool.cpplinker.input.1349086843" name="OBJ Files" superClass="de.innot.avreclipse.tool.cpplinker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>

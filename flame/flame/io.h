@@ -100,6 +100,29 @@ struct FLAME_pin {
 typedef struct FLAME_pin FLAME_PIN;
 
 /**
+ * Inverse of the _BV macro
+ * @param bv	the _BV'd value
+ * @return the amount it was bitshifted
+ */
+INLINE uint8_t un_BV(uint8_t bv) {
+	uint8_t count = 0;
+	while (bv /= 2) {
+		count++;
+	}
+	return count;
+}
+
+/**
+ * Pull apart a pin struct into a form suitable for passing as mhvParams
+ * @param _mhv_pin	an MHV_PIN*
+ */
+#define MHV_PIN_TO_MHVPARMS(_mhv_pin) \
+_mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
+
+#define MHV_PIN_STRUCT_TO_MHVPARMS(_mhv_pin) \
+_mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
+
+/**
  * Convert a literal port and pin into a pin macro
  * @param	_FLAME_port	the port (eg, B)
  * @param	_FLAME_bit	the bit (eg, 3)
@@ -233,6 +256,13 @@ INLINE void pinOffAtomic(FLAME_DECLARE_PIN(pin)) {
  */
 INLINE void pinSet(FLAME_DECLARE_PIN(pin), bool state) {
 	_MMIO_BYTE(pinOut) = (_MMIO_BYTE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
+}
+INLINE void pinSet(MHV_PIN *pin, bool state) {
+	if (state) {
+		pinOn(pin);
+	} else {
+		pinOff(pin);
+	}
 }
 
 /**
@@ -529,10 +559,10 @@ INLINE bool memCompare_P(PGM_P source, char *target, uint8_t length) {
  * @param	flameInterruptParms	A FLAME_INTERRUPT_* Macro
  * @param	flameFunction			a block to execute when the interrupt occurs
  */
-#define FLAME_declareExternalInterrupt(flameInterruptParms,flameFunction) \
-	_FLAME_declareExternalInterrupt(flameInterruptParms, flameFunction)
+#define flame_declareExternalInterrupt(flameInterruptParms,flameFunction) \
+	_flame_declareExternalInterrupt(flameInterruptParms, flameFunction)
 
-#define _FLAME_declareExternalInterrupt(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameFunction) \
+#define _flame_declareExternalInterrupt(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,flameFunction) \
 ISR(flameInterruptHandler) flameFunction
 
 /**
@@ -546,18 +576,41 @@ enum class InterruptMode {
 };
 
 /**
- * Enable an external interrupt
+ * Prepare an external interrupt
  * @param	flameInterruptParms	A FLAME_INTERRUPT_* Macro
  * @param	flameInterruptMode	When to raise the interrupt (see FLAME_INTERRUPTMODE)
  */
-#define FLAME_enableExternalInterrupt(flameInterruptParms,flameInterruptMode) \
+#define flame_enableExternalInterrupt(flameInterruptParms,flameInterruptMode) \
+_flame_enableExternalInterrupt(flameInterruptParms,flameInterruptMode)
+
+#define _flame_enableExternalInterrupt(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,flameInterruptMode) \
 	do { \
-		_FLAME_enableExternalInterrupt(flameInterruptParms,flameInterruptMode); \
+		_flame_setExternalInterruptSenseMode(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,flameInterruptMode); \
+		_flame_setExternalInterruptMask(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,true);	\
 	} while (0)
 
-#define _FLAME_enableExternalInterrupt(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameInterruptMode) \
-	*flameModeRegister = (*flameModeRegister & ~(0x03 << flameModeBitshift)) | (flameInterruptMode << flameModeBitshift)
 
-}
+/**
+ * Set Sense mode for an external interrupt
+ * @param	flameInterruptParms	A FLAME_INTERRUPT_* Macro
+ * @param	flameInterruptMode	When to raise the interrupt (see FLAME_INTERRUPTMODE)
+ */
+#define flame_setExternalInterruptSenseMode(flameInterruptParms,flameInterruptMode) \
+_flame_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode)
+#define _flame_setExternalInterruptSenseMode(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,flameInterruptMode) \
+  *flameModeRegister = (*flameModeRegister & ~(0x03 << flameModeBitshift)) | (int(flameInterruptMode) << flameModeBitshift)
+
+
+/**
+ * Enable an external interrupt in the External Interrupt Mask register
+ * @param	flameInterruptParms	A FLAME_INTERRUPT_* Macro
+ * @param	value			bool indicating whether the interrupt should be enabled
+ */
+#define flame_setExternalInterruptMask(flameInterruptParms,value) \
+_flame_setExternalInterruptMask(flameInterruptParms,value)
+#define _flame_setExternalInterruptMask(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIMaskRegister,flameEIMaskEnableShift,value) \
+  *flameEIMaskRegister = (*flameEIMaskRegister & ~(1 << flameEIMaskEnableShift)) | ((value ? 1 :0) << flameEIMaskEnableShift)
+
+} // end namespace
 
 #endif /* FLAME_IO_H_ */
