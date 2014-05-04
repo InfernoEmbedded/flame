@@ -32,11 +32,11 @@
 #include <avr/io.h>
 
 #ifdef INT0_vect
-#define FLAME_INTERRUPT_INT0 INT0_vect, &MCUCR, ISC00
+#define FLAME_INTERRUPT_INT0 INT0_vect, &EICRA, ISC00, &EIMSK, INT0
 #endif
 
 #ifdef INT1_vect
-#define FLAME_INTERRUPT_INT1 INT1_vect, &MCUCR, ISC10
+#define FLAME_INTERRUPT_INT1 INT1_vect, &EICRA, ISC10, &EIMSK, INT1
 #endif
 
 #if defined(__AVR_ATmega1280__)
@@ -49,8 +49,6 @@
 #include <chips/atmega168a.h>
 #elif defined(__AVR_ATmega168P__)
 #include <chips/atmega168p.h>
-#elif defined(__AVR_ATmega168PA__)
-#include <chips/atmega168pa.h>
 #elif defined(__AVR_ATmega2560__)
 #include <chips/atmega2560.h>
 #elif defined(__AVR_ATmega2561__)
@@ -63,12 +61,8 @@
 #include <chips/atmega48.h>
 #elif defined(__AVR_ATmega48A__)
 #include <chips/atmega48a.h>
-#elif defined(__AVR_ATmega48HVF__)
-#include <chips/atmega48hvf.h>
 #elif defined(__AVR_ATmega48P__)
 #include <chips/atmega48p.h>
-#elif defined(__AVR_ATmega48PA__)
-#include <chips/atmega48pa.h>
 #elif defined(__AVR_ATmega640__)
 #include <chips/atmega640.h>
 #elif defined(__AVR_ATmega88__)

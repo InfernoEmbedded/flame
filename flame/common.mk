@@ -39,10 +39,10 @@ DEPFLAGS = -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"
 RM := rm -rf
 
 
-# Add MHVAVRTOOLS/bin to the path if it is set and exists as a directory
-MHVAVRTOOLS ?=/usr/local/mhvavrtools
-ifdef $(findstring $(MHVAVRTOOLS)/bin,$(PATH))
-	PATH="$PATH:$MHVAVRTOOLS/bin"
+# Add AVRTOOLS/bin to the path if it is set and exists as a directory
+AVRTOOLS ?=/usr/localavrtools
+ifdef $(findstring $(AVRTOOLS)/bin,$(PATH))
+	PATH="$PATH:$AVRTOOLS/bin"
 endif
 
 %.o: %.cpp | checkparams
