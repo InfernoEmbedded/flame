@@ -82,8 +82,8 @@ struct eventPin {
 	uint8_t					mask;
 	uint8_t					pcInt;
 	PinEventListener	*listener;
-	bool					previous;
-	bool					changed;
+	bool					previous:1;
+	bool					changed:1;
 };
 typedef struct eventPin EVENT_PIN;
 
@@ -109,10 +109,8 @@ public:
 	void pinChange(uint8_t offset);
 	void registerListener(FLAME_DECLARE_PIN(pin), PinEventListener *listener);
 	void registerListener(Pin &pin, PinEventListener *listener);
+	void registerListener(Pin *pin, PinEventListener *listener);
 	void deregisterListener(int8_t pinPinChangeListener);
-
-	void registerListener(FLAME_PIN *x, PinEventListener * listener);
-	void deregisterListener(FLAME_PIN *_mhv_pin);
 
 	void handleEvents();
 

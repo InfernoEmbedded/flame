@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, Make, Hack, Void Inc
+ * Copyright (c) 2014, Inferno Embedded
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -9,14 +9,14 @@
  *  * Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in the
  *    documentation and/or other materials provided with the distribution.
- *  * Neither the name of the Make, Hack, Void nor the
+ *  * Neither the name of the Inferno Embedded nor the
  *    names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL MAKE, HACK, VOID BE LIABLE FOR ANY
+ * DISCLAIMED. IN NO EVENT SHALL INFERNO EMBEDDED BE LIABLE FOR ANY
  * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
  * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
  * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -25,12 +25,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef MHV_INDIRECTINGRINGBUFFER_H
-#define MHV_INDIRECTINGRINGBUFFER_H
+#ifndef FLAME_INDIRECTINGRINGBUFFER_H
+#define FLAME_INDIRECTINGRINGBUFFER_H
 
-#include <mhvlib/CharRingBuffer.h>
+#include <flame/CharRingBuffer.h>
 
-namespace mhvlib {
+namespace flame {
 
 class IndirectingRingBuffer: public CharRingBuffer {
 
@@ -566,7 +566,7 @@ public:
 				if (current != magic_escape_character) {
 					length++;
 					if (c != NULL &&
-					    current == *c) {
+						current == *c) {
 						return length;
 					}
 					goto done;
@@ -659,6 +659,6 @@ public:
 
 }
 ;
-// end namespace MHV
+// end namespace FLAME
 
-#endif // MHV_INDIRECTINGRINGBUFFER_H
+#endif // FLAME_INDIRECTINGRINGBUFFER_H

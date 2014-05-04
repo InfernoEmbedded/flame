@@ -86,7 +86,7 @@ protected:
 		return ret;
 	}
 
-	//	virtual ~MHV_Device_TX();
+	//	virtual ~Device_TX();
 
 public:
 	IndirectingRingBuffer		&_txbuffer;
@@ -461,7 +461,7 @@ public:
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Print an integer
 	 * @param	value	the value to print

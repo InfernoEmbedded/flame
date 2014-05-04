@@ -873,7 +873,7 @@ public:
 		while (i<_alarmCount) {
 			if (timestampGreaterThanOrEqual(timestamp, _alarms[i].when)) {
 				// take a copy:
-				memcpy(&tmp,&_alarms[i],MHV_BYTESIZEOF(*_alarms));
+				memcpy(&tmp,&_alarms[i],FLAME_BYTESIZEOF(*_alarms));
 				// splice out original:
 				memmove(&_alarms[i],&_alarms[i+1],(_alarmCount-i-1)*sizeof(ALARM));
 				_alarmCount--; // take one down, pass it around....

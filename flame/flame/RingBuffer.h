@@ -35,7 +35,7 @@
 
 #include <inttypes.h>
 #include <flame/io.h>
-#include <mhvlib/CharRingBuffer.h>
+#include <flame/CharRingBuffer.h>
 
 namespace flame {
 
@@ -50,10 +50,10 @@ public:
 		return CharRingBuffer::append(c);
 	}
 	bool append(const void *p, uint16_t pLength) {
-	  	return CharRingBuffer::append(p,pLength);
+		return CharRingBuffer::append(p,pLength);
 	}
 	bool consume(void *p, uint16_t pLength) {
-	  	return CharRingBuffer::consume(p,pLength);
+		return CharRingBuffer::consume(p,pLength);
 	}
 
 	/**

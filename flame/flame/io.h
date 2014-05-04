@@ -89,16 +89,6 @@ union Float3Axis {
 
 typedef uint16_t FLAME_register;
 
-struct FLAME_pin {
-	FLAME_register		dir;
-	FLAME_register		input;
-	FLAME_register		output;
-	// Contains a mask of the pin
-	uint8_t				bit;
-	int8_t				pcInt;
-};
-typedef struct FLAME_pin FLAME_PIN;
-
 /**
  * Inverse of the _BV macro
  * @param bv	the _BV'd value
@@ -113,16 +103,6 @@ INLINE uint8_t un_BV(uint8_t bv) {
 }
 
 /**
- * Pull apart a pin struct into a form suitable for passing as mhvParams
- * @param _mhv_pin	an MHV_PIN*
- */
-#define MHV_PIN_TO_MHVPARMS(_mhv_pin) \
-_mhv_pin->dir,_mhv_pin->output,_mhv_pin->input,un_BV(_mhv_pin->bit),_mhv_pin->pcInt
-
-#define MHV_PIN_STRUCT_TO_MHVPARMS(_mhv_pin) \
-_mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
-
-/**
  * Convert a literal port and pin into a pin macro
  * @param	_FLAME_port	the port (eg, B)
  * @param	_FLAME_bit	the bit (eg, 3)
@@ -132,7 +112,6 @@ _mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
 
 #define _FLAME_MAKE_PIN(_FLAME_port, _FLAME_bit) \
 	FLAME_PIN_ ## _FLAME_port ## _FLAME_bit
-
 
 /**
  * Get the list of parms for a pin declaration
@@ -176,31 +155,11 @@ _mhv_pin.dir,_mhv_pin.output,_mhv_pin.input,un_BV(_mhv_pin.bit),_mhv_pin.pcInt
 
 /**
  * Set an output pin on
- * @param	pin		the pin to turn on
- */
-INLINE void pinOn(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->output) |= pin->bit;
-}
-
-/**
- * Set an output pin on atomically (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to turn on
- */
-INLINE void pinOnAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		pinOn(pin);
-	}
-}
-
-
-/**
- * Set an output pin on
  * @param	pin		an FLAME_PIN_* macro
  */
 INLINE void pinOn(FLAME_DECLARE_PIN(pin)) {
 	_MMIO_BYTE(pinOut) |= _BV(pinPin);
 }
-
 
 /**
  * Set an output pin on (used if the state of a pin on the same port is altered in an interrupt handler)
@@ -211,25 +170,6 @@ INLINE void pinOnAtomic(FLAME_DECLARE_PIN(pin)) {
 		pinOn(FLAME_PIN_PARMS(pin));
 	}
 }
-
-/**
- * Set an output pin off
- * @param	pin		the pin to turn off
- */
-INLINE void pinOff(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->output) &= ~(pin->bit);
-}
-
-/**
- * Set an output pin off  (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to turn off
- */
-INLINE void pinOffAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		pinOff(pin);
-	}
-}
-
 
 /**
  * Set an output pin off
@@ -257,13 +197,6 @@ INLINE void pinOffAtomic(FLAME_DECLARE_PIN(pin)) {
 INLINE void pinSet(FLAME_DECLARE_PIN(pin), bool state) {
 	_MMIO_BYTE(pinOut) = (_MMIO_BYTE(pinOut) & ~_BV(pinPin)) | (state << pinPin);
 }
-INLINE void pinSet(MHV_PIN *pin, bool state) {
-	if (state) {
-		pinOn(pin);
-	} else {
-		pinOff(pin);
-	}
-}
 
 /**
  * Set an output pin on or off (state should really be constant for optimal performance)
@@ -274,24 +207,6 @@ INLINE void pinSet(MHV_PIN *pin, bool state) {
 INLINE void pinSetAtomic(FLAME_DECLARE_PIN(pin), bool state) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		pinSet(FLAME_PIN_PARMS(pin), state);
-	}
-}
-
-/**
- * Set a pin to be an output
- * @param	pin		the pin to become an output
- */
-INLINE void setOutput(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->dir) |= pin->bit;
-}
-
-/**
- * Set a pin to be an output (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
- */
-INLINE void setOutputAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		setOutput(pin);
 	}
 }
 
@@ -310,25 +225,6 @@ INLINE void setOutput(FLAME_DECLARE_PIN(pin)) {
 INLINE void setOutputAtomic(FLAME_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		setOutput(FLAME_PIN_PARMS(pin));
-	}
-}
-
-/**
- * Set a pin to be an input
- * @param	pin		the pin to become an output
- */
-INLINE void setInput(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
-	_MMIO_BYTE(pin->output) &= ~(pin->bit);
-}
-
-/**
- * Set a pin to be an input (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
- */
-INLINE void setInputAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		setInput(pin);
 	}
 }
 
@@ -353,27 +249,6 @@ INLINE void setInputAtomic(FLAME_DECLARE_PIN(pin)) {
 
 /**
  * Set a pin to be an input, with the internal pullup enabled
- * @param	pin		the pin to become an output
- */
-INLINE void setInputPullup(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->dir) &= ~(pin->bit);
-	_MMIO_BYTE(pin->output) |= pin->bit;
-}
-
-/**
- * Set a pin to be an input, with the internal pullup enabled (used if the direction of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to become an output
- */
-INLINE void setInputPullupAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		setInputPullup(pin);
-	}
-}
-
-
-
-/**
- * Set a pin to be an input, with the internal pullup enabled
  * @param	pin		an FLAME_PIN_* macro
  */
 INLINE void setInputPullup(FLAME_DECLARE_PIN(pin)) {
@@ -388,24 +263,6 @@ INLINE void setInputPullup(FLAME_DECLARE_PIN(pin)) {
 INLINE void setInputPullupAtomic(FLAME_DECLARE_PIN(pin)) {
 	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
 		setInputPullup(FLAME_PIN_PARMS(pin));
-	}
-}
-
-/**
- * Toggle a pin
- * @param	pin		the pin to toggle
- */
-INLINE void pinToggle(FLAME_PIN *pin) {
-	_MMIO_BYTE(pin->input) |= pin->bit;
-}
-
-/**
- * Toggle a pin (used if the state of a pin on the same port is altered in an interrupt handler)
- * @param	pin		the pin to toggle
- */
-INLINE void pinToggleAtomic(FLAME_PIN *pin) {
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE) {
-		_MMIO_BYTE(pin->input) |= pin->bit;
 	}
 }
 
@@ -426,15 +283,6 @@ INLINE void pinToggleAtomic(FLAME_DECLARE_PIN(pin)) {
 		pinToggle(FLAME_PIN_PARMS(pin));
 	}
 }
-
-/**
- * Read a pin
- * @param	pin		the pin to read
- */
-INLINE bool pinRead(FLAME_PIN *pin) {
-	return _MMIO_BYTE(pin->input) & pin->bit;
-}
-
 
 /**
  * Read a pin
@@ -596,7 +444,7 @@ _flame_enableExternalInterrupt(flameInterruptParms,flameInterruptMode)
  * @param	flameInterruptMode	When to raise the interrupt (see FLAME_INTERRUPTMODE)
  */
 #define flame_setExternalInterruptSenseMode(flameInterruptParms,flameInterruptMode) \
-_flame_setExternalInterruptSenseMode(mhvInterruptParms,mhvInterruptMode)
+_flame_setExternalInterruptSenseMode(flameInterruptParms,flameInterruptMode)
 #define _flame_setExternalInterruptSenseMode(flameInterruptHandler,flameModeRegister,flameModeBitshift,flameEIRegister,flameEIEnableShift,flameInterruptMode) \
   *flameModeRegister = (*flameModeRegister & ~(0x03 << flameModeBitshift)) | (int(flameInterruptMode) << flameModeBitshift)
 
